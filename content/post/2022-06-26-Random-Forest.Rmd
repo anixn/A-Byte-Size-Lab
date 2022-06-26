@@ -2,7 +2,7 @@
 title: "Random forest with easy way"
 author: "Dr. Ankit Deshmukh"
 date: 2022-06-26T11:25:39.307Z 
-categories: ["R"]
+categories: ["ML"]
 tags: ["Random Forest", "plot", "regression"]
 ---
 

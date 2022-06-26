@@ -40,8 +40,8 @@ languages:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
+    description: "Ankit Deshmukh - https://www.ankitdeshmukh.com"
+    author: Dr. Ankit Deshmukh
     # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
