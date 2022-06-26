@@ -1,0 +1,16 @@
+---
+title: "Random forest with easy way"
+author: "Dr. Ankit Deshmukh"
+date: 2022-06-26T11:25:39.307Z 
+categories: ["R"]
+tags: ["Random Forest", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+## A Random forest is made of Random Trees :-)
+Some random trees
+
+
