@@ -1,4 +1,10 @@
 theme: "hugo-PaperMod"
 baseURL: https://a-byte-size-blog.netlify.app/
 languageCode: en-us
-title: My New Hugo Site
+title: A Byte Size Blog
+
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
+    author: Ankit Deshmukh
