@@ -3,7 +3,7 @@ baseURL: https://a-byte-size-blog.netlify.app/
 languageCode: en-us
 title: A Byte Size Blog!
 
-paginate: 3
+paginate: 5
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
