@@ -37,6 +37,7 @@ languages:
                   url: categories/
                   weight: 10
 
+GoogleAnalytics:" G-R5FJKDQD1M"
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
