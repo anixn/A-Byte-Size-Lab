@@ -37,7 +37,7 @@ languages:
                   url: categories/
                   weight: 10
 
-GoogleAnalytics:" G-R5FJKDQD1M"
+GoogleAnalytics: " G-R5FJKDQD1M"
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -47,7 +47,8 @@ params:
 
     defaultTheme: auto
     # disableThemeToggle: true
-    ShowShareButtons: false
+    ShowShareButtons: true
+    ShareButtons: ["linkedin", "twitter"] # To customize which share buttons to be enabled on page
     ShowReadingTime: true
     # disableSpecial1stPost: true
     displayFullLangName: true
@@ -90,3 +91,7 @@ params:
     analytics:
         google:
             SiteVerificationTag: "G-R5FJKDQD1M"
+
+    analytics.google.SiteVerificationTag: "G-R5FJKDQD1M"
+
+    hideFooter: true
