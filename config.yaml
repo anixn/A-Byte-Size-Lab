@@ -60,7 +60,7 @@ params:
 
     profileMode:
         enabled: false
-        title: PaperMod
+        title: anixn
         imageUrl: "#"
         imageTitle: my image
         # imageWidth: 120
@@ -85,3 +85,7 @@ params:
           url: "https://www.linkedin.com/in/anixn/"
         - name: website
           url: "https://www.ankitdeshmukh.com/"
+
+    analytics:
+        google:
+            SiteVerificationTag: "G-R5FJKDQD1M"
