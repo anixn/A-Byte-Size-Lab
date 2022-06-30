@@ -64,12 +64,6 @@ ggplot(gapminder, aes(x = continent, y = lifeExp, fill = continent)) +
     scale_x_discrete(labels = abbreviate, name = "Continent") + themeBox(exFont = "Karla")
 ```
 
-## The Output
-<!-- ![Boxplots with custom fonts](/docs/assets/Image01.png) -->
-```{r}
-plot(cars$speed)
-```
-
 
 ## Links:
 1. [Boxplot customization](https://r-charts.com/distribution/box-plot-ggplot2/)

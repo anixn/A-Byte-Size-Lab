@@ -37,8 +37,6 @@ languages:
                   url: categories/
                   weight: 10
 
-GoogleAnalytics: " G-R5FJKDQD1M"
-
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Ankit Deshmukh - https://www.ankitdeshmukh.com"
@@ -92,6 +90,10 @@ params:
         google:
             SiteVerificationTag: "G-R5FJKDQD1M"
 
-    analytics.google.SiteVerificationTag: "G-R5FJKDQD1M"
-
     hideFooter: true
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
