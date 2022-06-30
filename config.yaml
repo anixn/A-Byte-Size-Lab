@@ -13,6 +13,7 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
+googleAnalytics: 'G-R5FJKDQD1M'
 
 languages:
     en:
@@ -53,7 +54,7 @@ params:
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
-    ShowRssButtonInSectionTermList: false
+    ShowRssButtonInSectionTermList: true
     ShowToc: true
     # comments: false
     images: ["papermod-cover.png"]
@@ -91,6 +92,11 @@ params:
             SiteVerificationTag: "G-R5FJKDQD1M"
 
     hideFooter: true
+
+    assets:
+        # disableHLJS: true # to disable highlight.js
+        # disableFingerprinting: true
+        favicon: "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
 
 outputs:
     home:
