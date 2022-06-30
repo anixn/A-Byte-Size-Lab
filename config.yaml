@@ -75,15 +75,15 @@ params:
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
         Content: >
-            Welcome to my blog, I will post blogs of my learnings.
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
-            - Do give a 🌟 on Github !
-            - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+            "Welcome to my blog, I will be posting the blogs of my learnings in the field of Data Visulization, R-Programming, Machine Learning, and Hydrology.
+            Use **[Categories](https://a-byte-size-blog.netlify.app/categories/)** tab to filter out post for aformensioned categories. Do give a 🌟 on [Github](https://github.com/anixn)! For colebration and webinar reach out to me on [Twitter](https://twitter.com/anix7n).
     socialIcons:
         - name: github
           url: "https://github.com/anixn"
         - name: linkedin
           url: "https://www.linkedin.com/in/anixn/"
+        - name: twitter
+          url: "https://twitter.com/anix7n"
         - name: website
           url: "https://www.ankitdeshmukh.com/"
 
