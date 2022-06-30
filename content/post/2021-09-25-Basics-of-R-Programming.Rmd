@@ -4,7 +4,7 @@ author: "Dr. Ankit Deshmukh"
 date: 2021-09-25T22:40:24Z
 categories: ["Programming"]
 tags: ["R", "Coding"]
-draft: true
+draft: false
 local: true
 cover:
     image: "post/2021-09-25-Basics-of-R-Programming/cover.jpg"
