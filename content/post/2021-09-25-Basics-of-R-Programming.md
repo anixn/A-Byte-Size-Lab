@@ -12,26 +12,22 @@ cover:
     caption: "How to write well with R studio" # 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, warning = FALSE,	collapse = TRUE
-)
-```
+
 
 ## Using R studio as R-IDE
 R studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane. 
 
-```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans."}
-knitr::include_graphics(here::here("post/2021-09-25-Basics-of-R-Programming/Layout.png"), error = FALSE)
-```
+<div class="figure">
+<img src="../../post/2021-09-25-Basics-of-R-Programming/Layout.png" alt="R-Studio IDE have many pans."  />
+<p class="caption">Figure 1: R-Studio IDE have many pans.</p>
+</div>
 
 
 ## Code editor
 You will write your code in this window. R used `#` as the comment character.  To assign a variable to a value we use `←` (lowercase followed by a dash).
  
 
-```{r, include=TRUE, echo=FALSE}
-knitr::include_graphics(here::here("post/2021-09-25-Basics-of-R-Programming/Figures.png"), error = FALSE)
-```
+![](../../post/2021-09-25-Basics-of-R-Programming/Figures.png)<!-- -->
 
 ## Do's and Don't while writing codes in R
 

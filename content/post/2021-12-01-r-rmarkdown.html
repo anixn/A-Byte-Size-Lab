@@ -7,6 +7,9 @@ tags: ["R Markdown", "plot", "regression"]
 
 bibliography: [../../static/bib/references.bib]
 link-citations: true
+output: 
+  html_document:
+    keep_md: true
 ---
 
 
@@ -14,7 +17,7 @@ link-citations: true
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
 <p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>Few useful syntax are shown below in the post.</p>
+<p>A few useful syntax are shown below in the post:</p>
 <div id="you-can-embed-an-r-code-chunk-like-this" class="section level3">
 <h3>1. You can embed an R code chunk like this:</h3>
 <pre class="r"><code>summary(cars)
@@ -54,7 +57,10 @@ Figure 1: A fancy pie chart.
 <ul>
 <li>Referencing a image/figure.</li>
 </ul>
-<pre><code>Use \@ref(fig:pie) to refrence an image. </code></pre>
+<pre><code># Define the tag after lagnuage notation such as `pie`
+{r pie, fig.cap=&#39;A fancy pie chart.&#39;, tidy=FALSE}
+
+Use \@ref(fig:pie) to refrence an image. </code></pre>
 </div>
 <div id="inline-r-code" class="section level3">
 <h3>3. Inline R Code</h3>
@@ -70,7 +76,7 @@ Figure 1: A fancy pie chart.
 <li><a href="http://example.com" class="uri">http://example.com</a></li>
 <li><a href="http://example.com">linked phrase</a></li>
 </ul>
-<p>you can also use use a snippet predefied for Rmd file <code>link</code> (Shfit + Tab) to create a link.</p>
+<p>you can also use use a snippet predefined for Rmd file <code>link</code> (Shfit + Tab) to create a link.</p>
 </div>
 <div id="use-local-images-or-image-urls." class="section level3">
 <h3>5. Use local images or image URLs.</h3>
@@ -78,31 +84,8 @@ Figure 1: A fancy pie chart.
 
 ![optional caption text](figures/img.png)</code></pre>
 </div>
-<div id="latex-equations" class="section level3">
-<h3>6. LaTeX Equations</h3>
-<ul>
-<li>Inline equation:</li>
-</ul>
-<pre><code>$equation$</code></pre>
-<p><span class="math inline">\(\int\limits_{-\infty}^{\infty} e^{-x^{2}} \, dx = \sqrt{\pi}\)</span></p>
-<ul>
-<li>Display equation:</li>
-</ul>
-<pre><code>$$equation$$</code></pre>
-<p><span class="math display">\[\int\limits_{-\infty}^{\infty} e^{-x^{2}} \, dx = \sqrt{\pi}\]</span></p>
-</div>
-<div id="sup-super-scripts" class="section level3">
-<h3>Sup-Super Scripts</h3>
-<pre><code>superscript^2^   
-subscript~2~   
-~~strikethrough~~</code></pre>
-<p>superscript<sup>2</sup><br />
-subscript<sub>2</sub><br />
-<del>strikethrough</del></p>
-<p>Something ==Mark== Somethin</p>
-</div>
 <div id="tables-in-r-markdown" class="section level3">
-<h3>Tables in R markdown</h3>
+<h3>6. Tables in R markdown</h3>
 <ol style="list-style-type: decimal">
 <li>Insert table use <code>knitr::kable()</code> function. Applicable for any 2D rectangular data(Data Frame, Matrix, etc.).</li>
 </ol>
@@ -149,7 +132,7 @@ subscript<sub>2</sub><br />
 </tbody>
 </table>
 <ol start="2" style="list-style-type: decimal">
-<li>Or use the traditional Markdown way.</li>
+<li>Or create table with traditional markdown way.</li>
 </ol>
 <table>
 <thead>
@@ -207,15 +190,45 @@ subscript<sub>2</sub><br />
 </tbody>
 </table>
 </div>
+<div id="latex-equations" class="section level3">
+<h3>7. LaTeX Equations</h3>
+<ul>
+<li>Inline equation:</li>
+</ul>
+<pre><code>$equation$</code></pre>
+<p><span class="math inline">\(\int\limits_{-\infty}^{\infty} e^{-x^{2}} \, dx = \sqrt{\pi}\)</span></p>
+<ul>
+<li>Display equation:</li>
+</ul>
+<pre><code>$$equation$$</code></pre>
+<p><span class="math display">\[\int\limits_{-\infty}^{\infty} e^{-x^{2}} \, dx = \sqrt{\pi}\]</span></p>
+</div>
+<div id="subsuper-scripts-and-others" class="section level3">
+<h3>8. Sub/Super scripts and others</h3>
+<pre><code>superscript^2^   
+subscript~2~   
+~~strikethrough~~
+&lt;mark&gt;This is a highlighted text&lt;/mark&gt;</code></pre>
+<p>superscript<sup>2</sup><br />
+subscript<sub>2</sub><br />
+<del>strikethrough</del><br />
+<mark>This is a highlighted text</mark></p>
+</div>
 <div id="use-bibliography" class="section level3">
-<h3>Use Bibliography</h3>
-<pre><code>Citation in sentence @R-base or after the sentence [@casella2002statistical] and one more [-@king1974nonoperative]</code></pre>
+<h3>9. Use Bibliography</h3>
+<pre><code>Citation in sentence @R-base or after the sentence [@casella2002statistical] 
+and one more [-@king1974nonoperative]</code></pre>
+<blockquote>
 <p>Citation in sentence <span class="citation">R Core Team (<a href="#ref-R-base" role="doc-biblioref">2019</a>)</span> or after the sentence <span class="citation">(<a href="#ref-casella2002statistical" role="doc-biblioref">Casella and Berger 2002</a>)</span> and one more <span class="citation">(<a href="#ref-king1974nonoperative" role="doc-biblioref">1974</a>)</span></p>
-<p>For more information see the <a href="https://www.liechi.org/en/2020/02/a-demo-for-citation-in-blogdown/">Link</a></p>
+</blockquote>
+<p>This will automatically add the bibliography at the end of the documents. For more information <a href="https://www.liechi.org/en/2020/02/a-demo-for-citation-in-blogdown/">see this</a></p>
 </div>
 <div id="links-and-footnotes" class="section level3">
-<h3>Links and footnotes</h3>
+<h3>10. Links and footnotes</h3>
+<pre><code>A sample phrase^[This is a footnote; bottom of the page]</code></pre>
+<blockquote>
 <p>A sample phrase<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
 </div>
 </div>
 <div id="reference" class="section level2 unnumbered">
@@ -235,6 +248,6 @@ R Core Team. 2019. <em>R: A Language and Environment for Statistical Computing</
 <div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
-<li id="fn1"><p>This is a footnote; bottom of the page<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>This is a footnote text; bottom of the page<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>

@@ -1,0 +1,74 @@
+---
+title: "How to create facet-boxplot with custom fonts"
+author: "Dr. Ankit Deshmukh"
+date: 2022-01-21T11:25:39.307Z 
+categories: ["Visulization"]
+tags: ["R", "plot", "boxplot"]
+---
+
+
+
+How to make a better boxplot with custom fonts, let's explore this in this post, it can be used for the standard template for boxplot with `facet` and user defined fonts.
+
+## Required R libraries:
+
+
+```r
+if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)} # for ggplot2 function
+if(!require(gapminder)){install.packages("gapminder");library(gapminder)} # for sample data
+if(!require(showtext)){install.packages("showtext");library(showtext)} # to import fonts
+```
+
+## Add fonts in R session
+
+```r
+font_add_google("Karla", "Karla") # adding local font
+font_add(family = "Helvetica", regular = "C:/Windows/Fonts/Helvetica 400.ttf")
+# Adding from Google fonts
+font_add_google("Roboto Slab", "Roboto Slab") # adding font from the web/google font
+font_families()
+## [1] "sans"         "serif"        "mono"         "wqy-microhei" "Karla"       
+## [6] "Helvetica"    "Roboto Slab"
+```
+
+## Define theme for Boxplot and fonts
+
+```r
+themeBox <- function(base_family = "sans", exFont, ...){
+    theme_bw(base_family = base_family, ...) +
+        theme(
+            panel.grid = element_blank(),
+            plot.title = element_text(size = 8),
+            axis.ticks.length = unit(-0.05, "in"),
+            axis.text.y = element_text(margin=unit(c(0.3,0.3,0.3,0.3), "cm")),
+            axis.text.x = element_text(margin=unit(c(0.3,0.3,0.3,0.3), "cm")),
+            axis.ticks.x = element_blank(),
+            aspect.ratio = 1,
+            legend.background = element_rect(color = "black", fill = "white"),
+            text = element_text(family=exFont)
+        )
+}
+```
+
+## Plot the boxplots of Average Life Expectancy
+
+```r
+
+ggplot(gapminder, aes(x = continent, y = lifeExp, fill = continent)) +
+    facet_wrap(~year) +
+    geom_boxplot(linetype = "dashed") +
+    stat_boxplot(aes(ymin = ..lower.., ymax = ..upper..), outlier.shape = 1) +
+    stat_boxplot(geom = "errorbar", aes(ymin = ..ymax..)) +
+    stat_boxplot(geom = "errorbar", aes(ymax = ..ymin..)) +
+    scale_y_continuous(name = "Average Life Expectancy") +
+    scale_x_discrete(labels = abbreviate, name = "Continent") + themeBox(exFont = "Karla")
+```
+
+<img src="/post/2022-01-21-Facet-Boxplot_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+
+
+## Links:
+1. [Boxplot customization](https://r-charts.com/distribution/box-plot-ggplot2/)
+
+
+

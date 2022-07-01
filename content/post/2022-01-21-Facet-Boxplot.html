@@ -1,7 +1,7 @@
 ---
 title: "How to create facet-boxplot with custom fonts"
 author: "Dr. Ankit Deshmukh"
-date: 2021-09-21T11:25:39.307Z 
+date: 2022-01-21T11:25:39.307Z 
 categories: ["Visulization"]
 tags: ["R", "plot", "boxplot"]
 ---
@@ -53,7 +53,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp, fill = continent)) +
     stat_boxplot(geom = &quot;errorbar&quot;, aes(ymax = ..ymin..)) +
     scale_y_continuous(name = &quot;Average Life Expectancy&quot;) +
     scale_x_discrete(labels = abbreviate, name = &quot;Continent&quot;) + themeBox(exFont = &quot;Karla&quot;)</code></pre>
-<p><img src="/post/2021-10-27-Facet-Boxplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2022-01-21-Facet-Boxplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="links" class="section level2">
 <h2>Links:</h2>
