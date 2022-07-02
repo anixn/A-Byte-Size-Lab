@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on A Byte Size Blog!</title>
+    <link>https://a-byte-size-blog.netlify.app/post/</link>
+    <description>Recent content in Posts on A Byte Size Blog!</description>
+    <image>
+      <url>https://a-byte-size-blog.netlify.app/papermod-cover.png</url>
+      <link>https://a-byte-size-blog.netlify.app/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jun 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random forest with easy way</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/</link>
+      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/</guid>
+      <description>The following packages are required for the random forest
+if(!require(tidyverse)){install.packages(&amp;quot;tidyverse&amp;quot;);library(tidyverse)}if(!require(janitor)){install.packages(&amp;quot;janitor&amp;quot;);library(janitor)} # for renameif(!require(randomForest)){install.packages(&amp;quot;randomForest&amp;quot;);library(randomForest)}if(!require(caret)){install.packages(&amp;quot;caret&amp;quot;);library(caret)} # for `confustionMatrix`A Random forest is made of Random Trees.Data &amp;lt;- read_csv(file = here::here(&amp;quot;static&amp;quot;, &amp;quot;data&amp;quot;, &amp;quot;german_credit.csv&amp;quot;))Exploring the datasetData &amp;lt;- clean_names(Data)Data$creditability &amp;lt;- as.factor(Data$creditability)glimpse(Data)## Rows: 1,000## Columns: 21## $ creditability &amp;lt;fct&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ account_balance &amp;lt;dbl&amp;gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …## $ duration_of_credit_month &amp;lt;dbl&amp;gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…## $ payment_status_of_previous_credit &amp;lt;dbl&amp;gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …## $ purpose &amp;lt;dbl&amp;gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …## $ credit_amount &amp;lt;dbl&amp;gt; 1049, 2799, 841, 2122, 2171, 2241, 3…## $ value_savings_stocks &amp;lt;dbl&amp;gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …## $ length_of_current_employment &amp;lt;dbl&amp;gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …## $ instalment_per_cent &amp;lt;dbl&amp;gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …## $ sex_marital_status &amp;lt;dbl&amp;gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …## $ guarantors &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ duration_in_current_address &amp;lt;dbl&amp;gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …## $ most_valuable_available_asset &amp;lt;dbl&amp;gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …## $ age_years &amp;lt;dbl&amp;gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …## $ concurrent_credits &amp;lt;dbl&amp;gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …## $ type_of_apartment &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …## $ no_of_credits_at_this_bank &amp;lt;dbl&amp;gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …## $ occupation &amp;lt;dbl&amp;gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …## $ no_of_dependents &amp;lt;dbl&amp;gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …## $ telephone &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ foreign_worker &amp;lt;dbl&amp;gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …Assess the creditabiliy with the help of other variables# code -------------------------------------------------------------------------ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) +geom_histogram(binwidth = 5, position = &amp;quot;identity&amp;quot;, alpha = 0.</description>
+    </item>
+    
+    <item>
+      <title>How to create facet-boxplot with custom fonts</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2022-01-21-facet-boxplot/</link>
+      <pubDate>Fri, 21 Jan 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2022-01-21-facet-boxplot/</guid>
+      <description>How to make a better boxplot with custom fonts, let’s explore this in this post, it can be used for the standard template for boxplot with facet and user defined fonts.
+Required R libraries:if(!require(tidyverse)){install.packages(&amp;quot;tidyverse&amp;quot;);library(tidyverse)} # for ggplot2 functionif(!require(gapminder)){install.packages(&amp;quot;gapminder&amp;quot;);library(gapminder)} # for sample dataif(!require(showtext)){install.packages(&amp;quot;showtext&amp;quot;);library(showtext)} # to import fontsAdd fonts in R sessionfont_add_google(&amp;quot;Karla&amp;quot;, &amp;quot;Karla&amp;quot;) # adding local fontfont_add(family = &amp;quot;Helvetica&amp;quot;, regular = &amp;quot;C:/Windows/Fonts/Helvetica 400.ttf&amp;quot;)# Adding from Google fontsfont_add_google(&amp;quot;Roboto Slab&amp;quot;, &amp;quot;Roboto Slab&amp;quot;) # adding font from the web/google fontfont_families()## [1] &amp;quot;sans&amp;quot; &amp;quot;serif&amp;quot; &amp;quot;mono&amp;quot; &amp;quot;wqy-microhei&amp;quot; &amp;quot;Karla&amp;quot; ## [6] &amp;quot;Helvetica&amp;quot; &amp;quot;Roboto Slab&amp;quot;Define theme for Boxplot and fontsthemeBox &amp;lt;- function(base_family = &amp;quot;sans&amp;quot;, exFont, .</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown!</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-rmarkdown/</link>
+      <pubDate>Wed, 01 Dec 2021 21:13:14 -0500</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-rmarkdown/</guid>
+      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+A few useful syntax are shown below in the post:
+1. You can embed an R code chunk like this:summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.</description>
+    </item>
+    
+    <item>
+      <title>Basics of R Programming</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</link>
+      <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</guid>
+      <description>Using R studio as R-IDER studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
+Figure 1: R-Studio IDE have many pans.Code editorYou will write your code in this window. R used # as the comment character. To assign a variable to a value we use ← (lowercase followed by a dash).
+Do’s and Don’t while writing codes in RCasesUse of ← and =</description>
+    </item>
+    
+    <item>
+      <title>Getting started with R</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</link>
+      <pubDate>Tue, 21 Sep 2021 11:25:39 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</guid>
+      <description>R is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.
+1. Installing RStep 01: Install R-Binaries from R-Project
+Step 02: Install RStudio IDE from RStudio
+2. Customizing RStudioA lot of ways you can make RStudio more useful for your personal use.</description>
+    </item>
+    
+  </channel>
+</rss>
