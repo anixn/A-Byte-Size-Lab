@@ -6,7 +6,7 @@ categories: ["Hydrology"]
 tags: ["The Basics", "Concept"]
 
 draft: false
-local: true
+local: false
 cover:
     image: "Hydrology.jpg"
     alt: "Image of mountains vally and river" # alt text
