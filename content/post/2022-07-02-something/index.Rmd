@@ -5,8 +5,6 @@ date: '2022-07-02T16:30:04Z'
 categories: ["Hydrology"]
 tags: ["The Basics", "Concept"]
 
-draft: false
-local: false
 cover:
     image: "Hydrology.jpg"
     alt: "Image of mountains vally and river" # alt text
