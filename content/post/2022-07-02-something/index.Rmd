@@ -1,0 +1,55 @@
+---
+title: Computational Hydrology
+author: 'Dr. Ankit Deshmukh'
+date: '2022-07-02T16:30:04Z'
+categories: ["Hydrology"]
+tags: ["The Basics", "Concept"]
+
+draft: false
+local: true
+cover:
+    image: "Hydrology.jpg"
+    alt: "Image of mountains vally and river" # alt text
+    caption: "" # this will appear below the image
+
+bibliography: [../Bibliography/Bibliography.bib]
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
+```
+
+## Hydrology
+
+Hydrology is the study of water across the earth system. I will tell you some interesting phenomenal for hydrology in this blogs plot. The main goal of writing post is to summarize the knowledge of my understanding of Water resource and Hydrology. 
+
+Mostly I will refer two books of hydrology "Applied Hydrology" [@chow1988Applied] and "Rainfall-Runoff Modelling: The Primer" [@beven2012Rainfallrunoff] 
+
+### Branches of Hydrolgy 
+
+
+### Why computational Hydrology 
+
+
+
+```{r}
+plot(cars)
+```
+
+```{r img01, include=TRUE, echo=FALSE, fig.cap="A test image for directory structure."}
+knitr::include_graphics("img.png", error = FALSE)
+```
+
+
+```{r}
+if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)}
+
+Data <- read_csv(file = here::here("content/post/2022-07-02-something", "german_credit.csv"))
+
+plot(Data$Creditability)
+
+```
+
+## Reference
+

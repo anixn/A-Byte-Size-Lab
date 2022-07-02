@@ -7,9 +7,7 @@ tags: ["R Markdown", "plot", "regression"]
 
 bibliography: [../../static/bib/references.bib]
 link-citations: true
-output: 
-  html_document:
-    keep_md: true
+
 ---
 
 ```{r setup, include=FALSE}
@@ -137,7 +135,7 @@ This will automatically add the bibliography at the end of the documents. For mo
 ```
 A sample phrase^[This is a footnote; bottom of the page]
 ```
-> A sample phrase^[This is a footnote text; bottom of the page]
+> A sample phrase^[This is a footnote text; see in the bottom of the page.]
 
 ## Reference
 

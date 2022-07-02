@@ -109,12 +109,3 @@ outputs:
         - RSS
         - JSON # is necessary
 
-markup:
-    goldmark:
-        renderer:
-            unsafe: true
-    highlight:
-        noClasses: true
-
-
-

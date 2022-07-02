@@ -1,0 +1,56 @@
+---
+title: Computational Hydrology
+author: 'Dr. Ankit Deshmukh'
+date: '2022-07-02T16:30:04Z'
+categories: ["Hydrology"]
+tags: ["The Basics", "Concept"]
+
+draft: false
+local: true
+cover:
+    image: "Hydrology.jpg"
+    alt: "Image of mountains vally and river" # alt text
+    caption: "" # this will appear below the image
+
+bibliography: [../Bibliography/Bibliography.bib]
+link-citations: true
+---
+
+
+
+<div id="hydrology" class="section level2">
+<h2>Hydrology</h2>
+<p>Hydrology is the study of water across the earth system. I will tell you some interesting phenomenal for hydrology in this blogs plot. The main goal of writing post is to summarize the knowledge of my understanding of Water resource and Hydrology.</p>
+<p>Mostly I will refer two books of hydrology “Applied Hydrology” <span class="citation">(<a href="#ref-chow1988Applied" role="doc-biblioref">Chow, Maidment, and Mays 1988</a>)</span> and “Rainfall-Runoff Modelling: The Primer” <span class="citation">(<a href="#ref-beven2012Rainfallrunoff" role="doc-biblioref">Beven 2012</a>)</span></p>
+<div id="branches-of-hydrolgy" class="section level3">
+<h3>Branches of Hydrolgy</h3>
+</div>
+<div id="why-computational-hydrology" class="section level3">
+<h3>Why computational Hydrology</h3>
+<pre class="r"><code>plot(cars)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:img01"></span>
+<img src="img.png" alt="A test image for directory structure." width="400" />
+<p class="caption">
+Figure 1: A test image for directory structure.
+</p>
+</div>
+<pre class="r"><code>if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)}
+
+Data &lt;- read_csv(file = here::here(&quot;content/post/2022-07-02-something&quot;, &quot;german_credit.csv&quot;))
+
+plot(Data$Creditability)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+</div>
+<div id="reference" class="section level2 unnumbered">
+<h2>Reference</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-beven2012Rainfallrunoff" class="csl-entry">
+Beven, K. J. 2012. <em>Rainfall-Runoff Modelling: The Primer</em>. 2nd ed. <span>Chichester, West Sussex ; Hoboken, NJ</span>: <span>Wiley-Blackwell</span>.
+</div>
+<div id="ref-chow1988Applied" class="csl-entry">
+Chow, Ven Te, David R. Maidment, and Larry W. Mays. 1988. <em>Applied Hydrology</em>. <span>McGraw-Hill</span> Series in Water Resources and Environmental Engineering. <span>New York</span>: <span>McGraw-Hill</span>.
+</div>
+</div>
+</div>
