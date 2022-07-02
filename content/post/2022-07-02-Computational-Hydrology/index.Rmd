@@ -1,9 +1,11 @@
 ---
-title: Computational Hydrology
+title: 'Computational Hydrology'
 author: 'Dr. Ankit Deshmukh'
 date: '2022-07-02T16:30:04Z'
 categories: ["Hydrology"]
 tags: ["The Basics", "Concept"]
+slug: []
+draft: false
 
 cover:
     image: "Hydrology.jpg"
@@ -42,7 +44,7 @@ knitr::include_graphics("img.png", error = FALSE)
 ```{r}
 if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)}
 
-Data <- read_csv(file = here::here("content/post/2022-07-02-something", "german_credit.csv"))
+Data <- read_csv(file = here::here("content/post/2022-07-02-Computational-Hydrology", "german_credit.csv"))
 
 plot(Data$Creditability)
 
