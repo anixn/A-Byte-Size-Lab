@@ -10,7 +10,18 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jun 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jul 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Hydrology</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2022-07-02-computational-hydrology/</link>
+      <pubDate>Sat, 02 Jul 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2022-07-02-computational-hydrology/</guid>
+      <description>HydrologyHydrology is the study of water across the earth system. I will tell you some interesting phenomenal for hydrology in this blogs plot. The main goal of writing post is to summarize the knowledge of my understanding of Water resource and Hydrology.
+Mostly I will refer two books of hydrology “Applied Hydrology” (Chow, Maidment, and Mays 1988) and “Rainfall-Runoff Modelling: The Primer” (Beven 2012)
+Branches of HydrolgyWhy computational Hydrologyplot(cars)Figure 1: A test image for directory structure.</description>
+    </item>
+    
     <item>
       <title>Random forest with easy way</title>
       <link>https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/</link>
