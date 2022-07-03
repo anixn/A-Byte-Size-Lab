@@ -101,7 +101,8 @@ params:
     assets:
         # disableHLJS: true # to disable highlight.js
         # disableFingerprinting: true
-        favicon: "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
+        # favicon: "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
+        favicon: "favicon.ico"
 
 outputs:
     home:
