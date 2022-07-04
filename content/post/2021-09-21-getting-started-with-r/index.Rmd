@@ -34,7 +34,7 @@ cat("\014")
 cat("Hi Ankit! What are we doing today?\n")
 ```
 
-```{r, echo=FALSE, include=TRUE, fig.cap="RStudio"}
+```{r, echo=FALSE, include=TRUE, fig.cap="A RStudio window", out.width=600}
 knitr::include_graphics("RStudio01.png", error = FALSE)
 ```
 
@@ -43,7 +43,7 @@ knitr::include_graphics("RStudio01.png", error = FALSE)
 I personally like the dark theme for my R studio. I particularly like to use the ['Gruvbox'](https://github.com/morhetz/gruvbox) theme that is not available in RStudio but can be downloaded from [here](https://www.filehosting.org/file/details/963261/gruvbox.rstheme). Download the file and paste it to `'C:\Users\UserName\AppData\Roaming\RStudio\themes'`. To apply the theme in R studio go to `Tools > Global Option > Appearance` and select editor theme as gruvbox.
 
 
-```{r, echo=FALSE, include=TRUE, fig.cap="RSudio windows"}
+```{r, echo=FALSE, include=TRUE, fig.cap="RSudio configuration windows"}
 knitr::include_graphics("RS.png", error = FALSE)
 ```
 
@@ -52,14 +52,14 @@ knitr::include_graphics("RS.png", error = FALSE)
 This helps to read and understand code faster and efficiently, mostly the merged common occurring 2 characters to one for easy reading but this is just a font rendering feature it means the underlying code remains ASCII-compatible [[Source]](https://github.com/ryanoasis).
 
 
-```{r, echo=FALSE, include=TRUE, fig.cap="Font Ligature"}
+```{r, echo=FALSE, include=TRUE, fig.cap="Font Ligature makes code more asthetic pleasing and readable", wi}
 knitr::include_graphics("FiraFont.png", error = FALSE)
 ```
 
 
 Fira Code is a free monospaced font containing ligatures for common programming multi-character combinations.
 
-```{r, echo=FALSE, include=TRUE, fig.cap="Fira Font"}
+```{r, echo=FALSE, include=TRUE, fig.cap="Fira Font with different themes"}
 knitr::include_graphics("Font.png", error = FALSE)
 ```
 
@@ -69,7 +69,7 @@ Download and FiraCode font from [Here](https://github.com/tonsky/FiraCode/releas
 The snippet is a re-usable piece of code or text. Ordinarily, these are formally defined operative units to incorporate into larger programming modules. To repeat a few operations and formats you can use snippets in R. To edit or add snippets in RStudio go to `Tools > Global Option > Code > Editing`, now enable Snippets and click edit snippets.
 
 
-```{r, echo=FALSE, include=TRUE, fig.cap="R Snipp"}
+```{r, echo=FALSE, include=TRUE, fig.cap="R Snippets for quick code chunks."}
 knitr::include_graphics("Snippets.png", error = FALSE)
 ```
 
