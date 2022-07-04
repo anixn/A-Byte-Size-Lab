@@ -18,17 +18,13 @@ link-citations: true
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
-## Hydrology
+## Computational Hydrology 
 
 Hydrology is the study of water across the earth system. I will tell you some interesting phenomenal for hydrology in this blogs plot. The main goal of writing post is to summarize the knowledge of my understanding of Water resource and Hydrology. 
 
+A cat
+
 Mostly I will refer two books of hydrology "Applied Hydrology" [@chow1988Applied] and "Rainfall-Runoff Modelling: The Primer" [@beven2012Rainfallrunoff] 
-
-### Branches of Hydrolgy 
-
-
-### Why computational Hydrology 
-
 
 ```{r}
 plot(cars)
@@ -41,9 +37,7 @@ knitr::include_graphics("img.png", error = FALSE)
 
 ```{r}
 if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)}
-
 Data <- read_csv(file = here::here("content/post/2022-07-02-Computational-Hydrology", "german_credit.csv"))
-
 plot(Data$Creditability)
 
 ```

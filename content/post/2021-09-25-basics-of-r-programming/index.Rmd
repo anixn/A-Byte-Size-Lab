@@ -1,0 +1,44 @@
+---
+title: "Basics of R Programming"
+author: "Dr. Ankit Deshmukh"
+date: 2021-09-25T22:40:24Z
+categories: ["R"]
+tags: ["R", "Coding"]
+draft: false
+local: true
+cover:
+    image: "cover.jpg"
+    alt: "An image of R coder" # alt text
+    caption: "How to write well with R studio" # 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE,	collapse = TRUE
+)
+```
+
+## Using R studio as R-IDE
+R studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane. 
+
+```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans.", out.width=600}
+knitr::include_graphics("Layout.png", error = FALSE)
+```
+
+
+## Code editor
+You will write your code in this window. R used `#` as the comment character.  To assign a variable to a value we use `←` (lowercase followed by a dash).
+ 
+
+```{r, include=TRUE, echo=FALSE, out.width=600}
+knitr::include_graphics("Figures.png", error = FALSE)
+```
+
+## Do's and Don't while writing codes in R
+
+
+1. Cases 
+2. Use of  ← and = 
+
+
+
+

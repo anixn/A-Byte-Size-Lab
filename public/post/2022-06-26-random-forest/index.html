@@ -15,7 +15,7 @@ if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyvers
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fdcbbe520e036fd656e9b9731a4d9bd029d1f24e7f96b22f93540b4f1ae6fbef.css" integrity="sha256-/cu&#43;Ug4Db9ZW6blzGk2b0CnR8k5/lrIvk1QLTxrm&#43;&#43;8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383">
+<link rel="icon" href="https://a-byte-size-blog.netlify.app/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://a-byte-size-blog.netlify.app/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://a-byte-size-blog.netlify.app/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://a-byte-size-blog.netlify.app/apple-touch-icon.png">
@@ -152,7 +152,7 @@ if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyvers
     "name": "A Byte Size Blog!",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
+      "url": "https://a-byte-size-blog.netlify.app/favicon.ico"
     }
   }
 }
@@ -315,7 +315,7 @@ ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditabili
     geom_histogram(binwidth = 5, position = &quot;identity&quot;, alpha = 0.4) +
     scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
     scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) + theme_minimal()</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>
 
 # Create a training and testing data
@@ -411,12 +411,12 @@ confusionMatrix(predict_test, test$creditability)
 #         1   27 133
 
 varImpPlot(rf_model)</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="optimize-the-performance-of-randomforest." class="section level1">
 <h1>Optimize the performance of randomforest.</h1>
 <pre class="r"><code>plot(rf_model) # black line is out of bag error.</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>
 oob_error &lt;- double(20)
 
@@ -427,7 +427,7 @@ for (mtry in 1:20) {
 
 plot(1:20, oob_error, type  = &quot;b&quot;, xlab = &quot;Number of variable considered&quot;, ylab = &quot;Out of bag erro [-]&quot;, xaxt = &quot;n&quot;)
 axis(1, at = 1:20, labels = 1:20, cex = 0.8)</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 <pre class="r"><code>
 opti_num_var = which.min(oob_error)</code></pre>
 <div id="re-running-the-random-forest-with-optimum-number-of-variables" class="section level2">
@@ -469,7 +469,7 @@ confusionMatrix(predict(rf_optim, test), test$creditability)
 <h1>Exploring useful variables</h1>
 <pre class="r"><code>train &lt;- as.data.frame(train)
 varImpPlot(rf_model)</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>importance(rf_model)
 ##                                   MeanDecreaseGini
 ## account_balance                          36.543019
@@ -495,9 +495,9 @@ varImpPlot(rf_model)</code></pre>
 
 # How variable affect the chance of getting loan.
 partialPlot(rf_model, train, account_balance, &quot;1&quot;)</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
 <pre class="r"><code>partialPlot(rf_model, train, age_years, &quot;1&quot;)</code></pre>
-<p><img src="/post/2022-06-26-Random-Forest_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<p><img src="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
 <p>This analysis for discrete variable of creditability.</p>
 </div>
 
@@ -516,10 +516,10 @@ partialPlot(rf_model, train, account_balance, &quot;1&quot;)</code></pre>
     <br>
     <span>Computational Hydrology</span>
   </a>
-  <a class="next" href="https://a-byte-size-blog.netlify.app/post/2022-01-21-facet-boxplot/">
+  <a class="next" href="https://a-byte-size-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/">
     <span class="title">Next »</span>
     <br>
-    <span>How to create facet-boxplot with custom fonts</span>
+    <span>How to create a pretty facet-boxplot with custom fonts</span>
   </a>
 </nav>
 

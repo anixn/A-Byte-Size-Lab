@@ -13,10 +13,10 @@
     <lastBuildDate>Wed, 01 Dec 2021 21:13:14 -0500</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello R Markdown!</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-rmarkdown/</link>
+      <link>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</link>
       <pubDate>Wed, 01 Dec 2021 21:13:14 -0500</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-rmarkdown/</guid>
+      <guid>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 A few useful syntax are shown below in the post:
 1. You can embed an R code chunk like this:summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.</description>

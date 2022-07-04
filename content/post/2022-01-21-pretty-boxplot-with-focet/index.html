@@ -1,0 +1,63 @@
+---
+title: "How to create a pretty facet-boxplot with custom fonts"
+author: "Dr. Ankit Deshmukh"
+date: 2022-01-21T11:25:39.307Z 
+categories: ["Visulization"]
+tags: ["R", "plot", "boxplot"]
+---
+
+
+
+<p>How to make a better boxplot with custom fonts, let’s explore this in this post, it can be used for the standard template for boxplot with <code>facet</code> and user defined fonts.</p>
+<div id="required-r-libraries" class="section level2">
+<h2>Required R libraries:</h2>
+<pre class="r"><code>if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)} # for ggplot2 function
+if(!require(gapminder)){install.packages(&quot;gapminder&quot;);library(gapminder)} # for sample data
+if(!require(showtext)){install.packages(&quot;showtext&quot;);library(showtext)} # to import fonts</code></pre>
+</div>
+<div id="add-fonts-in-r-session" class="section level2">
+<h2>Add fonts in R session</h2>
+<pre class="r"><code>font_add_google(&quot;Karla&quot;, &quot;Karla&quot;) # adding local font
+font_add(family = &quot;Helvetica&quot;, regular = &quot;C:/Windows/Fonts/Helvetica 400.ttf&quot;)
+# Adding from Google fonts
+font_add_google(&quot;Roboto Slab&quot;, &quot;Roboto Slab&quot;) # adding font from the web/google font
+font_families()
+## [1] &quot;sans&quot;         &quot;serif&quot;        &quot;mono&quot;         &quot;wqy-microhei&quot; &quot;Karla&quot;       
+## [6] &quot;Helvetica&quot;    &quot;Roboto Slab&quot;</code></pre>
+</div>
+<div id="define-theme-for-boxplot-and-fonts" class="section level2">
+<h2>Define theme for Boxplot and fonts</h2>
+<pre class="r"><code>themeBox &lt;- function(base_family = &quot;sans&quot;, exFont, ...){
+    theme_bw(base_family = base_family, ...) +
+        theme(
+            panel.grid = element_blank(),
+            plot.title = element_text(size = 8),
+            axis.ticks.length = unit(-0.05, &quot;in&quot;),
+            axis.text.y = element_text(margin=unit(c(0.3,0.3,0.3,0.3), &quot;cm&quot;)),
+            axis.text.x = element_text(margin=unit(c(0.3,0.3,0.3,0.3), &quot;cm&quot;)),
+            axis.ticks.x = element_blank(),
+            aspect.ratio = 1,
+            legend.background = element_rect(color = &quot;black&quot;, fill = &quot;white&quot;),
+            text = element_text(family=exFont)
+        )
+}</code></pre>
+</div>
+<div id="plot-the-boxplots-of-average-life-expectancy" class="section level2">
+<h2>Plot the boxplots of Average Life Expectancy</h2>
+<pre class="r"><code>
+ggplot(gapminder, aes(x = continent, y = lifeExp, fill = continent)) +
+    facet_wrap(~year) +
+    geom_boxplot(linetype = &quot;dashed&quot;) +
+    stat_boxplot(aes(ymin = ..lower.., ymax = ..upper..), outlier.shape = 1) +
+    stat_boxplot(geom = &quot;errorbar&quot;, aes(ymin = ..ymax..)) +
+    stat_boxplot(geom = &quot;errorbar&quot;, aes(ymax = ..ymin..)) +
+    scale_y_continuous(name = &quot;Average Life Expectancy&quot;) +
+    scale_x_discrete(labels = abbreviate, name = &quot;Continent&quot;) + themeBox(exFont = &quot;Karla&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="links" class="section level2">
+<h2>Links:</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://r-charts.com/distribution/box-plot-ggplot2/">Boxplot customization</a></li>
+</ol>
+</div>

@@ -1,0 +1,129 @@
+---
+title: "Random forest with easy way"
+author: "Dr. Ankit Deshmukh"
+date: 2022-06-26T11:25:39.307Z 
+categories: ["ML"]
+tags: ["Random Forest", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE
+)
+```
+
+The following packages are required for the random forest 
+
+```{r}
+if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)}
+if(!require(janitor)){install.packages("janitor");library(janitor)} # for rename
+
+if(!require(randomForest)){install.packages("randomForest");library(randomForest)}
+if(!require(caret)){install.packages("caret");library(caret)} # for `confustionMatrix`
+
+```
+
+## A Random forest is made of Random Trees.
+
+```{r, include=FALSE, fig.cap="A random forest is the collection of my decistion trees."}
+knitr::include_graphics("forest.jpg", error = FALSE)
+```
+
+```{r message=FALSE, warning=FALSE}
+Data <- read_csv(file = here::here("content/post/2022-26-02-random-forest", "german_credit.csv"))
+```
+
+## Exploring the dataset 
+```{r}
+Data <- clean_names(Data)
+Data$creditability <- as.factor(Data$creditability)
+glimpse(Data)
+```
+
+
+## Assess the creditabiliy with the help of other variables
+```{r}
+# code -------------------------------------------------------------------------
+
+ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) +
+    geom_histogram(binwidth = 5, position = "identity", alpha = 0.4) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+    scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) + theme_minimal()
+
+
+# Create a training and testing data
+set.seed(7791)
+partitioning <- sample(2, nrow(Data), replace = TRUE, prob = c(0.8, 0.2))
+table(partitioning)
+
+train <- Data[partitioning == 1, ]
+table(train$creditability)
+test <- Data[partitioning == 2, ]
+table(test$creditability)
+```
+
+
+## Train the Random forest model
+```{r}
+
+# Generate random forest with train data
+rf_model <- randomForest(formula = creditability ~ ., data = train)
+predict_train <- predict(rf_model, train)
+confusionMatrix(predict_train, train$creditability)
+```
+
+
+# Testing the model `rf_model` on test data
+```{r}
+predict_test <- predict(rf_model, test)
+confusionMatrix(predict_test, test$creditability)
+
+
+#            Reference
+# Prediction   0   1
+#         0   29  14
+#         1   27 133
+
+varImpPlot(rf_model)
+```
+
+# Optimize the performance of randomforest.
+
+```{r}
+plot(rf_model) # black line is out of bag error.
+
+oob_error <- double(20)
+
+for (mtry in 1:20) {
+    rf <- randomForest(formula = creditability ~ ., data = train, mtry = mtry, ntree = 166)
+    oob_error[mtry] <- rf$err.rate[166]
+}
+
+plot(1:20, oob_error, type  = "b", xlab = "Number of variable considered", ylab = "Out of bag erro [-]", xaxt = "n")
+axis(1, at = 1:20, labels = 1:20, cex = 0.8)
+
+opti_num_var = which.min(oob_error)
+```
+
+## Re running the random forest with optimum number of variables
+```{r}
+rf_optim <- randomForest(formula = creditability ~ ., data = train, mtry = opti_num_var, ntree = 166)
+
+# Testing the model `rf_model` on test data
+confusionMatrix(predict(rf_optim, test), test$creditability)
+```
+
+# Exploring useful variables
+```{r}
+train <- as.data.frame(train)
+varImpPlot(rf_model)
+importance(rf_model)
+
+# How variable affect the chance of getting loan.
+partialPlot(rf_model, train, account_balance, "1")
+partialPlot(rf_model, train, age_years, "1")
+```
+
+This analysis for discrete variable of creditability.
