@@ -13,10 +13,10 @@ cover:
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
-The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy. 
+The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy. 
 
 ### Setup Python in Rstudio
-To set up R Python And SQL in the Rstudio you have to first installed [miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda helps to create python virtual environments and let you organize it. 
+To set up R Python And SQL in the Rstudio you have to first install [miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda helps to create python virtual environments and let you organize it. 
 Such as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.
 
 #### Commands to manage conda environment inside RStudio:
