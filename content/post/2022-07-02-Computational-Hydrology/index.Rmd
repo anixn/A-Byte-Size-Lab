@@ -4,6 +4,7 @@ author: "Dr. Ankit Deshmukh"
 date: 2022-07-02T11:25:39.307Z
 categories: ["Hydrology"]
 tags: ["The Basics", "Concept"]
+draft: true
 
 cover:
     image: "Hydrology.jpg"
@@ -18,26 +19,23 @@ link-citations: true
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
-# [Draft Version] 
-
 ## R For Hydrology and Water Resources
 
 - tools available for Hydrology
-    - SWAT
     - TauDEM
     - QGIS
     - Grass GIS
     - R (Geo-spatial analysis)
     - Land use/ Land cover classification
-    
-- basic hydrologic concept methodology 
+    - SWAT
+- basic hydrologic concept and methods 
 - guidelines for the stream network analysis
 
 ## Computational Hydrology 
 
-Hydrology is the study of water across the earth system. I will tell you some interesting phenomenal for hydrology in this blogs plot. The main goal of writing post is to summarize the knowledge of my understanding of Water resource and Hydrology. 
+Hydrology is the study of water across the earth system. I will tell you some interesting phenomenon of hydrology in this blog post(s). The main goal of writing post is to summarize the knowledge of Water resource and Hydrology. 
 
-Mostly I will refer two books of hydrology "Applied Hydrology" [@chow1988Applied] and "Rainfall-Runoff Modelling: The Primer" [@beven2012Rainfallrunoff] 
+Mostly I will refer two books of hydrology _Applied Hydrology_ [@chow1988Applied] and _Rainfall-Runoff Modelling: The Primer_ [@beven2012Rainfallrunoff] 
 
 
 ## Reference
