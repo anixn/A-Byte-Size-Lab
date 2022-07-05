@@ -5,9 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Working with R-Python-SQL in RStudio | A Byte Size Blog!</title>
+<title>Setting up R, Python, and SQL in RStudio | A Byte Size Blog!</title>
 <meta name="keywords" content="Setup, plot">
-<meta name="description" content="Data science uses R-Python-SQL in tandom.Figure 1: R-Studio IDE have many pans.">
+<meta name="description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
+Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first installed miniconda.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -87,18 +88,20 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Working with R-Python-SQL in RStudio" />
-<meta property="og:description" content="Data science uses R-Python-SQL in tandom.Figure 1: R-Studio IDE have many pans." />
+<meta property="og:title" content="Setting up R, Python, and SQL in RStudio" />
+<meta property="og:description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
+Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first installed miniconda." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/" />
-<meta property="og:image" content="https://a-byte-size-blog.netlify.app/Cover" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-07-04T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-07-04T00:00:00&#43;00:00" />
+<meta property="og:image" content="https://a-byte-size-blog.netlify.app/Cover.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-04T20:32:05&#43;00:00" />
+<meta property="article:modified_time" content="2022-07-04T20:32:05&#43;00:00" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://a-byte-size-blog.netlify.app/Cover" />
-<meta name="twitter:title" content="Working with R-Python-SQL in RStudio"/>
-<meta name="twitter:description" content="Data science uses R-Python-SQL in tandom.Figure 1: R-Studio IDE have many pans."/>
+<meta name="twitter:image" content="https://a-byte-size-blog.netlify.app/Cover.png" />
+<meta name="twitter:title" content="Setting up R, Python, and SQL in RStudio"/>
+<meta name="twitter:description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
+Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first installed miniconda."/>
 
 
 <script type="application/ld+json">
@@ -115,7 +118,7 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Working with R-Python-SQL in RStudio",
+      "name": "Setting up R, Python, and SQL in RStudio",
       "item": "https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/"
     }
   ]
@@ -125,17 +128,17 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Working with R-Python-SQL in RStudio",
-  "name": "Working with R-Python-SQL in RStudio",
-  "description": "\rData science uses R-Python-SQL in tandom.\rFigure 1: R-Studio IDE have many pans.\r",
+  "headline": "Setting up R, Python, and SQL in RStudio",
+  "name": "Setting up R, Python, and SQL in RStudio",
+  "description": "The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.\nSetup Python in Rstudio\rTo set up R Python And SQL in the Rstudio you have to first installed miniconda.",
   "keywords": [
     "Setup", "plot"
   ],
-  "articleBody": "\rData science uses R-Python-SQL in tandom.\rFigure 1: R-Studio IDE have many pans.\r",
-  "wordCount" : "13",
+  "articleBody": "\rThe main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.\nSetup Python in Rstudio\rTo set up R Python And SQL in the Rstudio you have to first installed miniconda. Miniconda helps to create python virtual environments and let you organize it.\rSuch as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.\nCommands to manage conda environment inside RStudio:\rOnce you install miniconda You have to use R-reticulate in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.\nReticulate package provides all the necessary functionalities to run and manage python commands, such as\nload reticulate package with install.packages(reticulate) command in R console.\rcommand conda_ create() will create a new python environment.\ruse_condaenv(condaenv = \"ENVNAME\") to select a newly created environment or existing python environment\rto know the existing environments that you have created earlier, use conda_list() function.\ronce you select a environment now you are ready to install python packages with py_install(\"PackageName\").\rUse conda prompt\rI use conda prompt to create environment but some how those environment doesn’t work with my R-reticulate. But if you are using python only then you can configure conda with the following commands (run in system terminal):\nconda help for help.\rconda create --name your_environment to create a conda environment.\rconda env list to list all the environment in conda.\rconda activate your_environment to activate an specific conda environment.\rUse conda config to add other channels for package providers, but I tried pip and it worked just fine.\rconda config --add channels conda-forge (conda-forge is one of many channel)\rconda config --set channel_priority strict (set preference of channel)\rInstall a few packages: conda install pandas scikit-learn matplotlib\rHow to use SQL with R markdown\rUse dplyr, dbplyr, and RSQLite packages\nUse SQL block to view the query output in ln-line mode.\rA blogpot to learn R and SQL in Rstudio https://irene.rbind.io/post/using-sql-in-rstudio/\rExample of R, Python, and SQL with Rmarkdonw (*.Rmd)\rif(!require(dplyr)){install.packages(\"dplyr\");library(dplyr)}\rif(!require(dbplyr)){install.packages(\"dbplyr\");library(dbplyr)}\rif(!require(RSQLite)){install.packages(\"RSQLite\");library(RSQLite)}\rconn \u003c- src_memdb() # create a SQLite database in memory\r# Similar way you can add other database connections see `?dbplyr`\rcon_iso \u003c- conn$con\rcopy_to(conn, storms, # this is a dataset built into dplyr\roverwrite = TRUE)\rtbl(conn, sql(\"SELECT * FROM storms LIMIT 5\"))\r## # Source: SQL [5 x 13]\r## # Database: sqlite 3.38.5 [:memory:]\r## name year month day hour lat long status category wind pressure\r## ## 1 Amy 1975 6 27 0 27.5 -79 tropical de… -1 25 1013\r## 2 Amy 1975 6 27 6 28.5 -79 tropical de… -1 25 1013\r## 3 Amy 1975 6 27 12 29.5 -79 tropical de… -1 25 1013\r## 4 Amy 1975 6 27 18 30.5 -79 tropical de… -1 25 1013\r## 5 Amy 1975 6 28 0 31.5 -78.8 tropical de… -1 25 1012\r## # … with 2 more variables: tropicalstorm_force_diameter ,\r## # hurricane_force_diameter Now create SLQ code chunk to directly run SQL queries from R.\n```{sql connection=con_iso}\rSELECT * FROM storms LIMIT 5;\r```\rThis will print 5 entire form database table storms\nTable 1: 5 records\rname\ryear\rmonth\rday\rhour\rlat\rlong\rstatus\rcategory\rwind\rpressure\rtropicalstorm_force_diameter\rhurricane_force_diameter\rAmy\r1975\r6\r27\r0\r27.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r6\r28.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r12\r29.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r18\r30.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r28\r0\r31.5\r-78.8\rtropical depression\r-1\r25\r1012\rNA\rNA\rSQL code chunk can ouput the data as r-variable i.e. storm_preview\n```{sql connection=con_iso, output.var=\"storm_preview\"}\rSELECT * FROM storms LIMIT 5;\r```\r```{r}\rclass(storm_preview)\rstorm_preview ```\r## [1] \"data.frame\"\r## name year month day hour lat long status category wind\r## 1 Amy 1975 6 27 0 27.5 -79.0 tropical depression -1 25\r## 2 Amy 1975 6 27 6 28.5 -79.0 tropical depression -1 25\r## 3 Amy 1975 6 27 12 29.5 -79.0 tropical depression -1 25\r## 4 Amy 1975 6 27 18 30.5 -79.0 tropical depression -1 25\r## 5 Amy 1975 6 28 0 31.5 -78.8 tropical depression -1 25\r## pressure tropicalstorm_force_diameter hurricane_force_diameter\r## 1 1013 NA NA\r## 2 1013 NA NA\r## 3 1013 NA NA\r## 4 1013 NA NA\r## 5 1012 NA NA\rNow, load reticulate to run python codes\n```{r}\r# Below code will check if `reticulate` is installed or not, if not then it will install and load in the R-session. if(!require(reticulate)){install.packages(\"reticulate\");library(reticulate)}\r```\rA example of Python code inside R markdown.\n```{python}\rfrom matplotlib import pyplot as plt # Importing Numpy Library import numpy as np plt.style.use('fivethirtyeight') mu = 50 sigma = 7 x = np.random.normal(mu, sigma, size=200) fig, ax = plt.subplots() ax.hist(x, 20) ax.set_title('Historgram') ax.set_xlabel('bin range') ax.set_ylabel('frequency') fig.tight_layout() plt.show() # Comment out if you are using blogdown-sites to render the site. ```\r## (array([ 2., 1., 1., 5., 7., 13., 14., 17., 19., 25., 17., 22., 7.,\r## 18., 6., 6., 13., 3., 3., 1.]), array([30.38615055, 32.26212978, 34.13810901, 36.01408825, 37.89006748,\r## 39.76604671, 41.64202594, 43.51800517, 45.3939844 , 47.26996363,\r## 49.14594286, 51.02192209, 52.89790132, 54.77388055, 56.64985978,\r## 58.52583901, 60.40181824, 62.27779747, 64.1537767 , 66.02975594,\r## 67.90573517]), )\rFigure 1: A figure python output of Histogram plot.\r",
+  "wordCount" : "981",
   "inLanguage": "en",
-  "image":"https://a-byte-size-blog.netlify.app/Cover","datePublished": "2022-07-04T00:00:00Z",
-  "dateModified": "2022-07-04T00:00:00Z",
+  "image":"https://a-byte-size-blog.netlify.app/Cover.png","datePublished": "2022-07-04T20:32:05Z",
+  "dateModified": "2022-07-04T20:32:05Z",
   "author":{
     "@type": "Person",
     "name": "Dr. Ankit Deshmukh"
@@ -225,9 +228,9 @@ if (!doNotTrack) {
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://a-byte-size-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://a-byte-size-blog.netlify.app/post/">Posts</a></div>
     <h1 class="post-title">
-      Working with R-Python-SQL in RStudio
+      Setting up R, Python, and SQL in RStudio
     </h1>
-    <div class="post-meta"><span title='2022-07-04 00:00:00 +0000 UTC'>July 4, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
+    <div class="post-meta"><span title='2022-07-04 20:32:05 +0000 UTC'>July 4, 2022</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
 </div>
   </header> 
@@ -244,7 +247,17 @@ if (!doNotTrack) {
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#" aria-label="Data science uses R-Python-SQL in tandom.">Data science uses R-Python-SQL in tandom.</a>
+                    <a href="#" aria-label="Setup Python in Rstudio">Setup Python in Rstudio</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="Commands to manage conda environment inside RStudio:">Commands to manage conda environment inside RStudio:</a></li>
+                <li>
+                    <a href="#" aria-label="Use conda prompt">Use conda prompt</a></li></ul>
+                </li>
+                <li>
+                    <a href="#" aria-label="How to use SQL with R markdown">How to use SQL with R markdown</a></li>
+                <li>
+                    <a href="#" aria-label="Example of R, Python, and SQL with Rmarkdonw (*.Rmd)">Example of R, Python, and SQL with Rmarkdonw (*.Rmd)</a>
                 </li>
             </ul>
         </div>
@@ -254,12 +267,248 @@ if (!doNotTrack) {
   <div class="post-content">
 
 
-<div id="data-science-uses-r-python-sql-in-tandom." class="section level2">
-<h2>Data science uses R-Python-SQL in tandom.</h2>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="Image.png" alt="R-Studio IDE have many pans." width="300" />
+<p>The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.</p>
+<div id="setup-python-in-rstudio" class="section level3">
+<h3>Setup Python in Rstudio</h3>
+<p>To set up R Python And SQL in the Rstudio you have to first installed <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Miniconda helps to create python virtual environments and let you organize it.
+Such as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.</p>
+<div id="commands-to-manage-conda-environment-inside-rstudio" class="section level4">
+<h4>Commands to manage conda environment inside RStudio:</h4>
+<p>Once you install <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> You have to use <a href="https://rstudio.github.io/reticulate/">R-reticulate</a> in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is <strong>recommended</strong> to create and select environment from Rstudio itself.</p>
+<p>Reticulate package provides all the necessary functionalities to run and manage python commands, such as</p>
+<ul>
+<li>load reticulate package with <code>install.packages(reticulate)</code> command in R console.</li>
+<li>command <code>conda_ create()</code> will create a new python environment.</li>
+<li><code>use_condaenv(condaenv = "ENVNAME")</code> to select a newly created environment or existing python environment</li>
+<li>to know the existing environments that you have created earlier, use <code>conda_list()</code> function.</li>
+<li>once you select a environment now you are ready to install python packages with <code>py_install("PackageName")</code>.</li>
+</ul>
+</div>
+<div id="use-conda-prompt" class="section level4">
+<h4>Use conda prompt</h4>
+<p>I use conda prompt to create environment but some how those environment doesn’t work with my R-reticulate. But if you are using python only then you can configure conda with the following commands (run in system terminal):</p>
+<ol style="list-style-type: decimal">
+<li><code>conda help</code> for help.</li>
+<li><code>conda create --name your_environment</code> to create a conda environment.</li>
+<li><code>conda env list</code> to list all the environment in conda.</li>
+<li><code>conda activate your_environment</code> to activate an specific conda environment.</li>
+<li>Use <code>conda config</code> to add other channels for package providers, but I tried <code>pip</code> and it worked just fine.
+<ol style="list-style-type: decimal">
+<li><code>conda config --add channels conda-forge</code> (conda-forge is one of many channel)</li>
+<li><code>conda config --set channel_priority strict</code> (set preference of channel)</li>
+</ol></li>
+<li>Install a few packages: <code>conda install pandas scikit-learn matplotlib</code></li>
+</ol>
+</div>
+</div>
+<div id="how-to-use-sql-with-r-markdown" class="section level3">
+<h3>How to use SQL with R markdown</h3>
+<p>Use <code>dplyr</code>, <code>dbplyr</code>, and <code>RSQLite</code> packages</p>
+<ul>
+<li>Use SQL block to view the query output in ln-line mode.</li>
+<li>A blogpot to learn R and SQL in Rstudio <a href="https://irene.rbind.io/post/using-sql-in-rstudio/" class="uri">https://irene.rbind.io/post/using-sql-in-rstudio/</a></li>
+</ul>
+</div>
+<div id="example-of-r-python-and-sql-with-rmarkdonw-.rmd" class="section level3">
+<h3>Example of R, Python, and SQL with Rmarkdonw (*.Rmd)</h3>
+<pre class="r"><code>if(!require(dplyr)){install.packages(&quot;dplyr&quot;);library(dplyr)}
+if(!require(dbplyr)){install.packages(&quot;dbplyr&quot;);library(dbplyr)}
+if(!require(RSQLite)){install.packages(&quot;RSQLite&quot;);library(RSQLite)}
+
+conn &lt;- src_memdb() # create a SQLite database in memory
+
+# Similar way you can add other database connections see `?dbplyr`
+con_iso &lt;- conn$con
+copy_to(conn, 
+        storms,     # this is a dataset built into dplyr
+        overwrite = TRUE)
+tbl(conn, sql(&quot;SELECT * FROM storms LIMIT 5&quot;))
+## # Source:   SQL [5 x 13]
+## # Database: sqlite 3.38.5 [:memory:]
+##   name   year month   day  hour   lat  long status       category  wind pressure
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;    &lt;int&gt;    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical de… -1          25     1013
+## 2 Amy    1975     6    27     6  28.5 -79   tropical de… -1          25     1013
+## 3 Amy    1975     6    27    12  29.5 -79   tropical de… -1          25     1013
+## 4 Amy    1975     6    27    18  30.5 -79   tropical de… -1          25     1013
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical de… -1          25     1012
+## # … with 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+## #   hurricane_force_diameter &lt;int&gt;</code></pre>
+<p>Now create SLQ code chunk to directly run SQL queries from R.</p>
+<pre class="sql"><code>```{sql connection=con_iso}
+SELECT * FROM storms LIMIT 5;
+```</code></pre>
+<p>This will print 5 entire form database table <code>storms</code></p>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>5 records</caption>
+<colgroup>
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="15%" />
+<col width="6%" />
+<col width="3%" />
+<col width="6%" />
+<col width="21%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="right">year</th>
+<th align="right">month</th>
+<th align="right">day</th>
+<th align="right">hour</th>
+<th align="right">lat</th>
+<th align="right">long</th>
+<th align="left">status</th>
+<th align="left">category</th>
+<th align="right">wind</th>
+<th align="right">pressure</th>
+<th align="right">tropicalstorm_force_diameter</th>
+<th align="right">hurricane_force_diameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">0</td>
+<td align="right">27.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">6</td>
+<td align="right">28.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">12</td>
+<td align="right">29.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">18</td>
+<td align="right">30.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">28</td>
+<td align="right">0</td>
+<td align="right">31.5</td>
+<td align="right">-78.8</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1012</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>SQL code chunk can ouput the data as r-variable i.e. <code>storm_preview</code></p>
+<pre class="sql"><code>```{sql connection=con_iso, output.var=&quot;storm_preview&quot;}
+SELECT * FROM storms LIMIT 5;
+```</code></pre>
+<pre class="r"><code>```{r}
+class(storm_preview)
+storm_preview 
+```</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;
+##   name year month day hour  lat  long              status category wind
+## 1  Amy 1975     6  27    0 27.5 -79.0 tropical depression       -1   25
+## 2  Amy 1975     6  27    6 28.5 -79.0 tropical depression       -1   25
+## 3  Amy 1975     6  27   12 29.5 -79.0 tropical depression       -1   25
+## 4  Amy 1975     6  27   18 30.5 -79.0 tropical depression       -1   25
+## 5  Amy 1975     6  28    0 31.5 -78.8 tropical depression       -1   25
+##   pressure tropicalstorm_force_diameter hurricane_force_diameter
+## 1     1013                           NA                       NA
+## 2     1013                           NA                       NA
+## 3     1013                           NA                       NA
+## 4     1013                           NA                       NA
+## 5     1012                           NA                       NA</code></pre>
+<p>Now, load <code>reticulate</code> to run python codes</p>
+<pre class="r"><code>```{r}
+# Below code will check if `reticulate` is installed or not, if not then it will install and load in the R-session. 
+if(!require(reticulate)){install.packages(&quot;reticulate&quot;);library(reticulate)}
+```</code></pre>
+<p>A <a href="https://www.javatpoint.com/how-to-plot-a-graph-in-python">example</a> of Python code inside R markdown.</p>
+<pre class="r"><code>```{python}
+from matplotlib import pyplot as plt    
+# Importing Numpy Library    
+import numpy as np    
+plt.style.use(&#39;fivethirtyeight&#39;)    
+    
+mu = 50    
+sigma = 7    
+x = np.random.normal(mu, sigma, size=200)    
+fig, ax = plt.subplots()    
+    
+ax.hist(x, 20)    
+ax.set_title(&#39;Historgram&#39;)    
+ax.set_xlabel(&#39;bin range&#39;)    
+ax.set_ylabel(&#39;frequency&#39;)    
+    
+fig.tight_layout()    
+plt.show() # Comment out if you are using blogdown-sites to render the site. 
+```</code></pre>
+<pre><code>## (array([ 2.,  1.,  1.,  5.,  7., 13., 14., 17., 19., 25., 17., 22.,  7.,
+##        18.,  6.,  6., 13.,  3.,  3.,  1.]), array([30.38615055, 32.26212978, 34.13810901, 36.01408825, 37.89006748,
+##        39.76604671, 41.64202594, 43.51800517, 45.3939844 , 47.26996363,
+##        49.14594286, 51.02192209, 52.89790132, 54.77388055, 56.64985978,
+##        58.52583901, 60.40181824, 62.27779747, 64.1537767 , 66.02975594,
+##        67.90573517]), &lt;BarContainer object of 20 artists&gt;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="Figure_1.png" alt="A figure python output of Histogram plot." width="600" />
 <p class="caption">
-Figure 1: R-Studio IDE have many pans.
+Figure 1: A figure python output of Histogram plot.
 </p>
 </div>
 </div>
@@ -273,24 +522,24 @@ Figure 1: R-Studio IDE have many pans.
       <li><a href="https://a-byte-size-blog.netlify.app/tags/plot/">plot</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://a-byte-size-blog.netlify.app/post/2022-07-02-computational-hydrology/">
+  <a class="next" href="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/">
     <span class="title">Next »</span>
     <br>
-    <span>Computational Hydrology</span>
+    <span>Random forest with easy way</span>
   </a>
 </nav>
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Working with R-Python-SQL in RStudio on twitter"
-        href="https://twitter.com/intent/tweet/?text=Working%20with%20R-Python-SQL%20in%20RStudio&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;hashtags=Setup%2cplot">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Setting up R, Python, and SQL in RStudio on twitter"
+        href="https://twitter.com/intent/tweet/?text=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;hashtags=Setup%2cplot">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Working with R-Python-SQL in RStudio on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;title=Working%20with%20R-Python-SQL%20in%20RStudio&amp;summary=Working%20with%20R-Python-SQL%20in%20RStudio&amp;source=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Setting up R, Python, and SQL in RStudio on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;title=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;summary=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;source=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />

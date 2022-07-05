@@ -1,58 +1,55 @@
 ---
-title: "Setting up R, Python, and SQL in RStudio1"
+title: "Setting up R, Python, and SQL in RStudio"
 author: "Dr. Ankit Deshmukh"
 date: 2022-07-04T20:32:05Z
 categories: ["R"]
 tags: ["Setup", "plot"]
 cover:
     image: "Cover.png"
-    alt: "Image contains R, Python, and DB logo" # alt text
+    alt: "Image contains R, Python, and DB logo"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
+The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy. 
+
 ### Setup Python in Rstudio
-To set up R Python And SQL in the Rstudio you have two in first installed miniconda. Miniconda helps to create python virtual environments and let organize it. 
-For data cleaning you might use a data cleaning environment for web cleaning or web scraping you will use web scraping environment and so on.
+To set up R Python And SQL in the Rstudio you have to first installed [miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda helps to create python virtual environments and let you organize it. 
+Such as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.
 
-```{r, include=TRUE, out.width = 300, echo=FALSE, fig.cap="Data science uses R-Python-SQL in tandom."}
-knitr::include_graphics("Image.png", error = FALSE)
-```
+#### Commands to manage conda environment inside RStudio:
+Once you install [miniconda](https://docs.conda.io/en/latest/miniconda.html) You have to use [R-reticulate](https://rstudio.github.io/reticulate/) in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is **recommended** to create and select environment from Rstudio itself.
 
-###  Use conda prompt
-I tried to use the conda prompt to create environment but some how those environment doesn't work with my R-reticulate.
+Reticulate package provides all the necessary functionalities to run and manage python commands, such as 
 
-Commands to manage conda prompt: 
+- load reticulate package with `install.packages(reticulate)` command in R console. 
+- command `conda_ create()` will create a new python environment.
+- `use_condaenv(condaenv = "ENVNAME")` to select a newly created environment or existing python environment 
+- to know the existing environments that you have created earlier, use `conda_list()` function.
+- once you select a environment now you are ready to install python packages with `py_install("PackageName")`.
+
+#### Use conda prompt
+I use conda prompt to create environment but some how those environment doesn't work with my R-reticulate. But if you are using python only then you can configure conda with the following commands (run in system terminal):
+
 1. `conda help` for help.
 2. `conda create --name your_environment` to create a conda environment.
 3. `conda env list` to list all the environment in conda.
 4. `conda activate your_environment` to activate an specific conda environment.
-5. To all some other chanel to download you can add package providers. But I tried `pip` and it worked just fine.
-    1. `conda config --add channels conda-forge` | conda-forge is one of many channel.
-    2. `conda config --set channel_priority strict` | set preference of channel (not sure!).
+5.  Use `conda config` to add other channels for package providers, but I tried `pip` and it worked just fine.
+    1. `conda config --add channels conda-forge` (conda-forge is one of many channel)
+    2. `conda config --set channel_priority strict` (set preference of channel)
 6. Install a few packages: `conda install pandas scikit-learn matplotlib`
 
+### How to use SQL with R markdown
+Use `dplyr`, `dbplyr`, and `RSQLite` packages
 
-Once you install miniconda You have to use R reticulate in  Rstudio, it is REPL(Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.
-
-Reticulate package provides all the necessary functionalists to run and manage python commands, such as 
-- packages like `conda_ create()` will create a new environment,
-- `use_condaenv()` used to select a newly created environment or existing python environment 
-- two know the existing environments you might use `conda_list()` function,
-- once you select a environment now you are ready to install python packages so use `py_install("PackageName")`.
-
-### How use SQL with Rmd files. 
-To use SQL in Rstudio simply use `dplyr`, `dbplyr`, and `RSQLite` packages. 
-
-- Use Rmarkdown for everything
 - Use SQL block to view the query output in ln-line mode.
-A blogpot to learn R and SQL in Rstudio
-<https://irene.rbind.io/post/using-sql-in-rstudio/>
+- A blogpot to learn R and SQL in Rstudio <https://irene.rbind.io/post/using-sql-in-rstudio/>
 
 
-### Example of R, Python, and SQL in Rmd file togather. 
+### Example of R, Python, and SQL with Rmarkdonw (*.Rmd) 
 
 ```{r}
 if(!require(dplyr)){install.packages("dplyr");library(dplyr)}
@@ -61,6 +58,7 @@ if(!require(RSQLite)){install.packages("RSQLite");library(RSQLite)}
 
 conn <- src_memdb() # create a SQLite database in memory
 
+# Similar way you can add other database connections see `?dbplyr`
 con_iso <- conn$con
 copy_to(conn, 
         storms,     # this is a dataset built into dplyr
@@ -69,4 +67,101 @@ tbl(conn, sql("SELECT * FROM storms LIMIT 5"))
 
 ```
 
-Run SQL queries in R.
+Now create SLQ code chunk to directly run SQL queries from R.  
+
+````{verbatim, lang="sql"}
+```{sql connection=con_iso}
+SELECT * FROM storms LIMIT 5;
+```
+````
+
+This will print 5 entire form database table `storms` 
+
+```{sql connection=con_iso, echo=FALSE}
+SELECT * FROM storms LIMIT 5;
+```
+
+SQL code chunk can ouput the data as r-variable i.e. `storm_preview`
+
+````{verbatim, lang="sql"}
+```{sql connection=con_iso, output.var="storm_preview"}
+SELECT * FROM storms LIMIT 5;
+```
+````
+
+```{sql connection=con_iso, output.var="storm_preview", echo=FALSE}
+SELECT * FROM storms LIMIT 5;
+```
+
+````{verbatim, lang="R"}
+```{r}
+class(storm_preview)
+storm_preview 
+```
+````
+
+```{r, echo=FALSE}
+class(storm_preview)
+storm_preview 
+```
+
+Now, load `reticulate` to run python codes
+
+````{verbatim, lang="R"}
+```{r}
+# Below code will check if `reticulate` is installed or not, if not then it will install and load in the R-session. 
+if(!require(reticulate)){install.packages("reticulate");library(reticulate)}
+```
+````
+
+```{r, echo = FALSE}
+if(!require(reticulate)){install.packages("reticulate");library(reticulate)}
+```
+
+A [example](https://www.javatpoint.com/how-to-plot-a-graph-in-python) of Python code inside R markdown. 
+
+````{verbatim, lang="R"}
+```{python}
+from matplotlib import pyplot as plt    
+# Importing Numpy Library    
+import numpy as np    
+plt.style.use('fivethirtyeight')    
+    
+mu = 50    
+sigma = 7    
+x = np.random.normal(mu, sigma, size=200)    
+fig, ax = plt.subplots()    
+    
+ax.hist(x, 20)    
+ax.set_title('Historgram')    
+ax.set_xlabel('bin range')    
+ax.set_ylabel('frequency')    
+    
+fig.tight_layout()    
+plt.show() # Comment out if you are using blogdown-sites to render the site. 
+```
+````
+
+```{python, echo = FALSE}
+from matplotlib import pyplot as plt    
+# Importing Numpy Library    
+import numpy as np    
+plt.style.use('fivethirtyeight')    
+    
+mu = 50    
+sigma = 7    
+x = np.random.normal(mu, sigma, size=200)    
+fig, ax = plt.subplots()    
+    
+ax.hist(x, 20)    
+ax.set_title('Historgram')    
+ax.set_xlabel('bin range')    
+ax.set_ylabel('frequency')    
+    
+fig.tight_layout()    
+# plt.show()    
+```
+
+```{r, include=TRUE, echo=FALSE, out.width=600, fig.cap="A figure python output of Histogram plot."}
+knitr::include_graphics("Figure_1.png", error = FALSE)
+```
