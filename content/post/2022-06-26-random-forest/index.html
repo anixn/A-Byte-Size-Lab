@@ -1,5 +1,5 @@
 ---
-title: "Random forest with easy way"
+title: "Random Forest with R-Programming"
 author: "Dr. Ankit Deshmukh"
 date: 2022-06-26T11:25:39.307Z 
 categories: ["ML"]
@@ -14,9 +14,9 @@ if(!require(janitor)){install.packages(&quot;janitor&quot;);library(janitor)} # 
 
 if(!require(randomForest)){install.packages(&quot;randomForest&quot;);library(randomForest)}
 if(!require(caret)){install.packages(&quot;caret&quot;);library(caret)} # for `confustionMatrix`</code></pre>
-<div id="a-random-forest-is-made-of-random-trees." class="section level2">
-<h2>A Random forest is made of Random Trees.</h2>
-<pre class="r"><code>Data &lt;- read_csv(file = here::here(&quot;static&quot;, &quot;data&quot;, &quot;german_credit.csv&quot;))</code></pre>
+<div id="a-random-forest-is-made-of-random-trees" class="section level2">
+<h2>A Random forest is made of Random Trees</h2>
+<pre class="r"><code>Data &lt;- read_csv(file = here::here(&quot;content/post/2022-06-26-random-forest&quot;, &quot;german_credit.csv&quot;))</code></pre>
 </div>
 <div id="exploring-the-dataset" class="section level2">
 <h2>Exploring the dataset</h2>

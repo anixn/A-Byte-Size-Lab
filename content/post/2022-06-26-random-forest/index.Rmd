@@ -1,5 +1,5 @@
 ---
-title: "Random forest with easy way"
+title: "Random Forest with R-Programming"
 author: "Dr. Ankit Deshmukh"
 date: 2022-06-26T11:25:39.307Z 
 categories: ["ML"]
@@ -25,14 +25,14 @@ if(!require(caret)){install.packages("caret");library(caret)} # for `confustionM
 
 ```
 
-## A Random forest is made of Random Trees.
+## A Random forest is made of Random Trees
 
 ```{r, include=FALSE, fig.cap="A random forest is the collection of my decistion trees."}
 knitr::include_graphics("forest.jpg", error = FALSE)
 ```
 
 ```{r message=FALSE, warning=FALSE}
-Data <- read_csv(file = here::here("content/post/2022-26-02-random-forest", "german_credit.csv"))
+Data <- read_csv(file = here::here("content/post/2022-06-26-random-forest", "german_credit.csv"))
 ```
 
 ## Exploring the dataset 
