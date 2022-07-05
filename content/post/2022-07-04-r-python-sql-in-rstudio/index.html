@@ -1,0 +1,251 @@
+---
+title: "Setting up R, Python, and SQL in RStudio1"
+author: "Dr. Ankit Deshmukh"
+date: 2022-07-04T20:32:05Z
+categories: ["R"]
+tags: ["Setup", "plot"]
+cover:
+    image: "Cover.png"
+    alt: "Image contains R, Python, and DB logo"
+---
+
+
+
+<div id="setup-python-in-rstudio" class="section level3">
+<h3>Setup Python in Rstudio</h3>
+<p>To set up R Python And SQL in the Rstudio you have two in first installed miniconda. Miniconda helps to create python virtual environments and let organize it.
+For data cleaning you might use a data cleaning environment for web cleaning or web scraping you will use web scraping environment and so on.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="Image.png" alt="Data science uses R-Python-SQL in tandom." width="300" />
+<p class="caption">
+Figure 1: Data science uses R-Python-SQL in tandom.
+</p>
+</div>
+</div>
+<div id="use-conda-prompt" class="section level3">
+<h3>Use conda prompt</h3>
+<p>I tried to use the conda prompt to create environment but some how those environment doesn’t work with my R-reticulate.</p>
+<p>Commands to manage conda prompt:</p>
+<ol style="list-style-type: decimal">
+<li><code>conda help</code> for help.</li>
+<li><code>conda create --name your_environment</code> to create a conda environment.</li>
+<li><code>conda env list</code> to list all the environment in conda.</li>
+<li><code>conda activate your_environment</code> to activate an specific conda environment.</li>
+<li>To all some other chanel to download you can add package providers. But I tried <code>pip</code> and it worked just fine.
+<ol style="list-style-type: decimal">
+<li><code>conda config --add channels conda-forge</code> | conda-forge is one of many channel.</li>
+<li><code>conda config --set channel_priority strict</code> | set preference of channel (not sure!).</li>
+</ol></li>
+<li>Install a few packages: <code>conda install pandas scikit-learn matplotlib</code></li>
+</ol>
+<p>Once you install miniconda You have to use R-reticulate in Rstudio, it is REPL(Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.</p>
+<p>Reticulate package provides all the necessary functionalists to run and manage python commands, such as
+- packages like <code>conda_ create()</code> will create a new environment,
+- <code>use_condaenv()</code> used to select a newly created environment or existing python environment
+- two know the existing environments you might use <code>conda_list()</code> function,
+- once you select a environment now you are ready to install python packages so use <code>py_install("PackageName")</code>.</p>
+</div>
+<div id="how-use-sql-with-rmd-files." class="section level3">
+<h3>How use SQL with Rmd files.</h3>
+<p>To use SQL in Rstudio simply use <code>dplyr</code>, <code>dbplyr</code>, and <code>RSQLite</code> packages.</p>
+<ul>
+<li>Use Rmarkdown for everything</li>
+<li>Use SQL block to view the query output in ln-line mode.
+A blogpot to learn R and SQL in Rstudio
+<a href="https://irene.rbind.io/post/using-sql-in-rstudio/" class="uri">https://irene.rbind.io/post/using-sql-in-rstudio/</a></li>
+</ul>
+</div>
+<div id="example-of-r-python-and-sql-in-rmd-file-togather." class="section level3">
+<h3>Example of R, Python, and SQL in Rmd file togather.</h3>
+<pre class="r"><code>if(!require(dplyr)){install.packages(&quot;dplyr&quot;);library(dplyr)}
+if(!require(dbplyr)){install.packages(&quot;dbplyr&quot;);library(dbplyr)}
+if(!require(RSQLite)){install.packages(&quot;RSQLite&quot;);library(RSQLite)}
+
+conn &lt;- src_memdb() # create a SQLite database in memory
+
+con_iso &lt;- conn$con
+copy_to(conn, 
+        storms,     # this is a dataset built into dplyr
+        overwrite = TRUE)
+tbl(conn, sql(&quot;SELECT * FROM storms LIMIT 5&quot;))
+## # Source:   SQL [5 x 13]
+## # Database: sqlite 3.38.5 [:memory:]
+##   name   year month   day  hour   lat  long status       category  wind pressure
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;    &lt;int&gt;    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical de… -1          25     1013
+## 2 Amy    1975     6    27     6  28.5 -79   tropical de… -1          25     1013
+## 3 Amy    1975     6    27    12  29.5 -79   tropical de… -1          25     1013
+## 4 Amy    1975     6    27    18  30.5 -79   tropical de… -1          25     1013
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical de… -1          25     1012
+## # … with 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+## #   hurricane_force_diameter &lt;int&gt;</code></pre>
+<p>Run SQL queries in R.</p>
+<blockquote>
+<pre><code>{sql connection=con_iso}
+SELECT * FROM storms LIMIT 5;</code></pre>
+</blockquote>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>5 records</caption>
+<colgroup>
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="15%" />
+<col width="6%" />
+<col width="3%" />
+<col width="6%" />
+<col width="21%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="right">year</th>
+<th align="right">month</th>
+<th align="right">day</th>
+<th align="right">hour</th>
+<th align="right">lat</th>
+<th align="right">long</th>
+<th align="left">status</th>
+<th align="left">category</th>
+<th align="right">wind</th>
+<th align="right">pressure</th>
+<th align="right">tropicalstorm_force_diameter</th>
+<th align="right">hurricane_force_diameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">0</td>
+<td align="right">27.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">6</td>
+<td align="right">28.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">12</td>
+<td align="right">29.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">27</td>
+<td align="right">18</td>
+<td align="right">30.5</td>
+<td align="right">-79.0</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1013</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Amy</td>
+<td align="right">1975</td>
+<td align="right">6</td>
+<td align="right">28</td>
+<td align="right">0</td>
+<td align="right">31.5</td>
+<td align="right">-78.8</td>
+<td align="left">tropical depression</td>
+<td align="left">-1</td>
+<td align="right">25</td>
+<td align="right">1012</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<pre><code>{sql connection=con_iso, output.var=&quot;storm_preview&quot;}
+SELECT * FROM storms LIMIT 5;</code></pre>
+</blockquote>
+<pre class="r"><code>storm_preview # R code chunk
+##   name year month day hour  lat  long              status category wind
+## 1  Amy 1975     6  27    0 27.5 -79.0 tropical depression       -1   25
+## 2  Amy 1975     6  27    6 28.5 -79.0 tropical depression       -1   25
+## 3  Amy 1975     6  27   12 29.5 -79.0 tropical depression       -1   25
+## 4  Amy 1975     6  27   18 30.5 -79.0 tropical depression       -1   25
+## 5  Amy 1975     6  28    0 31.5 -78.8 tropical depression       -1   25
+##   pressure tropicalstorm_force_diameter hurricane_force_diameter
+## 1     1013                           NA                       NA
+## 2     1013                           NA                       NA
+## 3     1013                           NA                       NA
+## 4     1013                           NA                       NA
+## 5     1012                           NA                       NA</code></pre>
+<p>We need <code>reticulate</code> to run python codes.</p>
+<pre class="r"><code>if(!require(reticulate)){install.packages(&quot;reticulate&quot;);library(reticulate)}</code></pre>
+<pre class="python"><code># This is a python code chunk ```{python} 
+
+from matplotlib import pyplot as plt    
+# Importing Numpy Library    
+import numpy as np    
+plt.style.use(&#39;fivethirtyeight&#39;)    
+    
+mu = 50    
+sigma = 7    
+x = np.random.normal(mu, sigma, size=200)    
+fig, ax = plt.subplots()    
+    
+ax.hist(x, 20)    
+## (array([ 2.,  2.,  3.,  0.,  5.,  8., 17., 17., 14., 12., 28., 26., 13.,
+##        14., 13.,  8.,  5.,  7.,  3.,  3.]), array([32.7522371 , 34.46475027, 36.17726344, 37.88977661, 39.60228978,
+##        41.31480295, 43.02731612, 44.73982928, 46.45234245, 48.16485562,
+##        49.87736879, 51.58988196, 53.30239513, 55.0149083 , 56.72742146,
+##        58.43993463, 60.1524478 , 61.86496097, 63.57747414, 65.28998731,
+##        67.00250048]), &lt;BarContainer object of 20 artists&gt;)
+ax.set_title(&#39;Historgram&#39;)    
+ax.set_xlabel(&#39;bin range&#39;)    
+ax.set_ylabel(&#39;frequency&#39;)    
+    
+fig.tight_layout()    
+# plt.show()    </code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="Figure_1.png" alt="An python output" width="600" />
+<p class="caption">
+Figure 2: An python output
+</p>
+</div>
+</div>

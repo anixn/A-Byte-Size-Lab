@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jul 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>plot</title>
+      <link>https://a-byte-size-blog.netlify.app/tags/plot/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/tags/plot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://a-byte-size-blog.netlify.app/tags/setup/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/tags/setup/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Concept</title>
       <link>https://a-byte-size-blog.netlify.app/tags/concept/</link>
@@ -26,15 +44,6 @@
       <pubDate>Sat, 02 Jul 2022 11:25:39 +0000</pubDate>
       
       <guid>https://a-byte-size-blog.netlify.app/tags/the-basics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>plot</title>
-      <link>https://a-byte-size-blog.netlify.app/tags/plot/</link>
-      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
-      
-      <guid>https://a-byte-size-blog.netlify.app/tags/plot/</guid>
       <description></description>
     </item>
     
@@ -89,15 +98,6 @@
       <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
       
       <guid>https://a-byte-size-blog.netlify.app/tags/coding/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Setup</title>
-      <link>https://a-byte-size-blog.netlify.app/tags/setup/</link>
-      <pubDate>Tue, 21 Sep 2021 11:25:39 +0000</pubDate>
-      
-      <guid>https://a-byte-size-blog.netlify.app/tags/setup/</guid>
       <description></description>
     </item>
     

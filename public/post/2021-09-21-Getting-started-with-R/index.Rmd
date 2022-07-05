@@ -10,8 +10,7 @@ tags: ["Setup", "plot"]
 knitr::opts_chunk$set(
 	message = FALSE,
 	warning = FALSE,
-	collapse = TRUE,
-	fig.width = 20
+	collapse = TRUE
 )
 ```
 
@@ -69,8 +68,8 @@ Download and FiraCode font from [Here](https://github.com/tonsky/FiraCode/releas
 The snippet is a re-usable piece of code or text. Ordinarily, these are formally defined operative units to incorporate into larger programming modules. To repeat a few operations and formats you can use snippets in R. To edit or add snippets in RStudio go to `Tools > Global Option > Code > Editing`, now enable Snippets and click edit snippets.
 
 
-```{r, echo=FALSE,  include=TRUE, fig.cap="R Snippets for quick code chunks.}
-knitr::include_graphics("Code-Snippets.png", error = FALSE)
+```{r, echo=FALSE, include=TRUE, fig.cap="R Snippets for quick code chunks."}
+knitr::include_graphics("Snippets.png", error = FALSE)
 ```
 
 From the edit snippets window you can manage snippets of R. Mostly I use R and R markdown snippets in my daily use. Few useful snippets are:
@@ -84,12 +83,20 @@ snippet rqr
   library(${1:packageName})}
 
 snippet fmt
-  ## Title :: ${1:Title}
-  # Author :: Ankit Deshmukh
-  # DOC :: 2018${2:created}
-  # DOLE :: 2018${3:lastEdited}
-  setwd(${4:work directory})
-  ## Main code ------------------------------------------------------
+	# Title       :: ${1:File Title}------------------------------------------------
+	# Author      :: Ankit Deshmukh
+	# DOC         :: `r eval(Sys.Date())`
+	# DOLE        :: `r eval(Sys.time())`
+	# Description :: ${2:File Description}
+	
+	# setup ------------------------------------------------------------------------
+	graphics.off(); cat("\014")
+	setwd("`r eval(getwd())`")
+	
+	# libraries --------------------------------------------------------------------
+	library(tidyverse)
+
+	# code -------------------------------------------------------------------------
 
 snippet pp
   "`r gsub("\\\\", "/", readClipboard())`"

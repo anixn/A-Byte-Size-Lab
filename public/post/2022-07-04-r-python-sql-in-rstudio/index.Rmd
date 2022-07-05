@@ -1,0 +1,72 @@
+---
+title: "Setting up R, Python, and SQL in RStudio1"
+author: "Dr. Ankit Deshmukh"
+date: 2022-07-04T20:32:05Z
+categories: ["R"]
+tags: ["Setup", "plot"]
+cover:
+    image: "Cover.png"
+    alt: "Image contains R, Python, and DB logo" # alt text
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
+```
+
+### Setup Python in Rstudio
+To set up R Python And SQL in the Rstudio you have two in first installed miniconda. Miniconda helps to create python virtual environments and let organize it. 
+For data cleaning you might use a data cleaning environment for web cleaning or web scraping you will use web scraping environment and so on.
+
+```{r, include=TRUE, out.width = 300, echo=FALSE, fig.cap="Data science uses R-Python-SQL in tandom."}
+knitr::include_graphics("Image.png", error = FALSE)
+```
+
+###  Use conda prompt
+I tried to use the conda prompt to create environment but some how those environment doesn't work with my R-reticulate.
+
+Commands to manage conda prompt: 
+1. `conda help` for help.
+2. `conda create --name your_environment` to create a conda environment.
+3. `conda env list` to list all the environment in conda.
+4. `conda activate your_environment` to activate an specific conda environment.
+5. To all some other chanel to download you can add package providers. But I tried `pip` and it worked just fine.
+    1. `conda config --add channels conda-forge` | conda-forge is one of many channel.
+    2. `conda config --set channel_priority strict` | set preference of channel (not sure!).
+6. Install a few packages: `conda install pandas scikit-learn matplotlib`
+
+
+Once you install miniconda You have to use R reticulate in  Rstudio, it is REPL(Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.
+
+Reticulate package provides all the necessary functionalists to run and manage python commands, such as 
+- packages like `conda_ create()` will create a new environment,
+- `use_condaenv()` used to select a newly created environment or existing python environment 
+- two know the existing environments you might use `conda_list()` function,
+- once you select a environment now you are ready to install python packages so use `py_install("PackageName")`.
+
+### How use SQL with Rmd files. 
+To use SQL in Rstudio simply use `dplyr`, `dbplyr`, and `RSQLite` packages. 
+
+- Use Rmarkdown for everything
+- Use SQL block to view the query output in ln-line mode.
+A blogpot to learn R and SQL in Rstudio
+<https://irene.rbind.io/post/using-sql-in-rstudio/>
+
+
+### Example of R, Python, and SQL in Rmd file togather. 
+
+```{r}
+if(!require(dplyr)){install.packages("dplyr");library(dplyr)}
+if(!require(dbplyr)){install.packages("dbplyr");library(dbplyr)}
+if(!require(RSQLite)){install.packages("RSQLite");library(RSQLite)}
+
+conn <- src_memdb() # create a SQLite database in memory
+
+con_iso <- conn$con
+copy_to(conn, 
+        storms,     # this is a dataset built into dplyr
+        overwrite = TRUE)
+tbl(conn, sql("SELECT * FROM storms LIMIT 5"))
+
+```
+
+Run SQL queries in R.

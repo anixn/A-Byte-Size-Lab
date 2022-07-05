@@ -3,10 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://a-byte-size-blog.netlify.app/</loc>
-    <lastmod>2022-07-02T11:25:39+00:00</lastmod>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/categories/</loc>
-    <lastmod>2022-07-02T11:25:39+00:00</lastmod>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/tags/plot/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/post/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/categories/r/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/tags/setup/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/tags/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/post/2022-07-02-computational-hydrology/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
@@ -17,19 +35,10 @@
     <loc>https://a-byte-size-blog.netlify.app/categories/hydrology/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/</loc>
-    <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/</loc>
-    <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
     <loc>https://a-byte-size-blog.netlify.app/tags/the-basics/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/categories/ml/</loc>
-    <lastmod>2022-06-26T11:25:39+00:00</lastmod>
-  </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/plot/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/tags/random-forest/</loc>
@@ -56,9 +65,6 @@
     <loc>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/r/</loc>
-    <lastmod>2021-12-01T21:13:14-05:00</lastmod>
-  </url><url>
     <loc>https://a-byte-size-blog.netlify.app/tags/r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
@@ -69,9 +75,6 @@
     <lastmod>2021-09-25T22:40:24+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</loc>
-    <lastmod>2021-09-21T11:25:39+00:00</lastmod>
-  </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/setup/</loc>
     <lastmod>2021-09-21T11:25:39+00:00</lastmod>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/archives/</loc>

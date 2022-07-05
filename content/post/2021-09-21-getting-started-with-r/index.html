@@ -76,12 +76,20 @@ snippet rqr
   library(${1:packageName})}
 
 snippet fmt
-  ## Title :: ${1:Title}
-  # Author :: Ankit Deshmukh
-  # DOC :: 2018${2:created}
-  # DOLE :: 2018${3:lastEdited}
-  setwd(${4:work directory})
-  ## Main code ------------------------------------------------------
+    # Title       :: ${1:File Title}------------------------------------------------
+    # Author      :: Ankit Deshmukh
+    # DOC         :: `r eval(Sys.Date())`
+    # DOLE        :: `r eval(Sys.time())`
+    # Description :: ${2:File Description}
+    
+    # setup ------------------------------------------------------------------------
+    graphics.off(); cat(&quot;\014&quot;)
+    setwd(&quot;`r eval(getwd())`&quot;)
+    
+    # libraries --------------------------------------------------------------------
+    library(tidyverse)
+
+    # code -------------------------------------------------------------------------
 
 snippet pp
   &quot;`r gsub(&quot;\\\\&quot;, &quot;/&quot;, readClipboard())`&quot;

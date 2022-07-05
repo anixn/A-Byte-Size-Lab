@@ -140,8 +140,8 @@ Step 02: Install RStudio IDE from RStudio
   "keywords": [
     "Setup", "plot"
   ],
-  "articleBody": "\rR is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.\n1. Installing R\rStep 01: Install R-Binaries from R-Project\nStep 02: Install RStudio IDE from RStudio\n2. Customizing RStudio\rA lot of ways you can make RStudio more useful for your personal use. Like updating your ‘.RProfile’, adding an awesome theme, and fonts that support ligatures.\n2.1 Customize R startup with “.Rprofile”\rIf you are using a Windows machine you can find the location of your ‘.Rprofile’ at ‘C:/Users/UserName/Documents’. The code block is shown below. This is what my ‘.Rprofile’ looks like. Several costume functions can be added here and they will load with R startup every time.\ncat(\"\\014\")\rcat(\"Hi Ankit! What are we doing today?\\n\")\rFigure 1: A RStudio window\r2.2 Adding a theme\rI personally like the dark theme for my R studio. I particularly like to use the ‘Gruvbox’ theme that is not available in RStudio but can be downloaded from here. Download the file and paste it to 'C:\\Users\\UserName\\AppData\\Roaming\\RStudio\\themes'. To apply the theme in R studio go to Tools \u003e Global Option \u003e Appearance and select editor theme as gruvbox.\nFigure 2: RSudio configuration windows\r2.3 Adding fonts that support ligature\rThis helps to read and understand code faster and efficiently, mostly the merged common occurring 2 characters to one for easy reading but this is just a font rendering feature it means the underlying code remains ASCII-compatible [Source].\nFigure 3: Font Ligature makes code more asthetic pleasing and readable\rFira Code is a free monospaced font containing ligatures for common programming multi-character combinations.\nFigure 4: Fira Font with different themes\rDownload and FiraCode font from Here, and Install on your machine for all users. To apply the theme in R studio go to Tools \u003e Global Option \u003e Appearance and select editor font as Fira Code.\n3. Customize R with code snippets\rThe snippet is a re-usable piece of code or text. Ordinarily, these are formally defined operative units to incorporate into larger programming modules. To repeat a few operations and formats you can use snippets in R. To edit or add snippets in RStudio go to Tools \u003e Global Option \u003e Code \u003e Editing, now enable Snippets and click edit snippets.\nFigure 5: R Snippets for quick code chunks\rFrom the edit snippets window you can manage snippets of R. Mostly I use R and R markdown snippets in my daily use. Few useful snippets are:\nsnippet cls\rgraphics.off(); rm(list = ls()); cat(\"\\014\")\rsnippet rqr\rif(!require(${1:packageName})){install.packages(\"${1:packageName}\");\rlibrary(${1:packageName})}\rsnippet fmt\r## Title :: ${1:Title}\r# Author :: Ankit Deshmukh\r# DOC :: 2018${2:created}\r# DOLE :: 2018${3:lastEdited}\rsetwd(${4:work directory})\r## Main code ------------------------------------------------------\rsnippet pp\r\"`r gsub(\"\\\\\\\\\", \"/\", readClipboard())`\"\rsnippet clear\rrm(list = ls()); graphics.off();cat(\"\\014\")\rTo use the snippet use the keywords such as clear and press Shift + Tab to auto complete the snippet text.\n",
-  "wordCount" : "513",
+  "articleBody": "\rR is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.\n1. Installing R\rStep 01: Install R-Binaries from R-Project\nStep 02: Install RStudio IDE from RStudio\n2. Customizing RStudio\rA lot of ways you can make RStudio more useful for your personal use. Like updating your ‘.RProfile’, adding an awesome theme, and fonts that support ligatures.\n2.1 Customize R startup with “.Rprofile”\rIf you are using a Windows machine you can find the location of your ‘.Rprofile’ at ‘C:/Users/UserName/Documents’. The code block is shown below. This is what my ‘.Rprofile’ looks like. Several costume functions can be added here and they will load with R startup every time.\ncat(\"\\014\")\rcat(\"Hi Ankit! What are we doing today?\\n\")\rFigure 1: A RStudio window\r2.2 Adding a theme\rI personally like the dark theme for my R studio. I particularly like to use the ‘Gruvbox’ theme that is not available in RStudio but can be downloaded from here. Download the file and paste it to 'C:\\Users\\UserName\\AppData\\Roaming\\RStudio\\themes'. To apply the theme in R studio go to Tools \u003e Global Option \u003e Appearance and select editor theme as gruvbox.\nFigure 2: RSudio configuration windows\r2.3 Adding fonts that support ligature\rThis helps to read and understand code faster and efficiently, mostly the merged common occurring 2 characters to one for easy reading but this is just a font rendering feature it means the underlying code remains ASCII-compatible [Source].\nFigure 3: Font Ligature makes code more asthetic pleasing and readable\rFira Code is a free monospaced font containing ligatures for common programming multi-character combinations.\nFigure 4: Fira Font with different themes\rDownload and FiraCode font from Here, and Install on your machine for all users. To apply the theme in R studio go to Tools \u003e Global Option \u003e Appearance and select editor font as Fira Code.\n3. Customize R with code snippets\rThe snippet is a re-usable piece of code or text. Ordinarily, these are formally defined operative units to incorporate into larger programming modules. To repeat a few operations and formats you can use snippets in R. To edit or add snippets in RStudio go to Tools \u003e Global Option \u003e Code \u003e Editing, now enable Snippets and click edit snippets.\nFigure 5: R Snippets for quick code chunks.\rFrom the edit snippets window you can manage snippets of R. Mostly I use R and R markdown snippets in my daily use. Few useful snippets are:\nsnippet cls\rgraphics.off(); rm(list = ls()); cat(\"\\014\")\rsnippet rqr\rif(!require(${1:packageName})){install.packages(\"${1:packageName}\");\rlibrary(${1:packageName})}\rsnippet fmt\r# Title :: ${1:File Title}------------------------------------------------\r# Author :: Ankit Deshmukh\r# DOC :: `r eval(Sys.Date())`\r# DOLE :: `r eval(Sys.time())`\r# Description :: ${2:File Description}\r# setup ------------------------------------------------------------------------\rgraphics.off(); cat(\"\\014\")\rsetwd(\"`r eval(getwd())`\")\r# libraries --------------------------------------------------------------------\rlibrary(tidyverse)\r# code -------------------------------------------------------------------------\rsnippet pp\r\"`r gsub(\"\\\\\\\\\", \"/\", readClipboard())`\"\rsnippet clear\rrm(list = ls()); graphics.off();cat(\"\\014\")\rTo use the snippet use the keywords such as clear and press Shift + Tab to auto complete the snippet text.\n",
+  "wordCount" : "529",
   "inLanguage": "en",
   "datePublished": "2021-09-21T11:25:39.307Z",
   "dateModified": "2021-09-21T11:25:39.307Z",
@@ -323,9 +323,9 @@ Figure 4: Fira Font with different themes
 <h2>3. Customize R with code snippets</h2>
 <p>The snippet is a re-usable piece of code or text. Ordinarily, these are formally defined operative units to incorporate into larger programming modules. To repeat a few operations and formats you can use snippets in R. To edit or add snippets in RStudio go to <code>Tools &gt; Global Option &gt; Code &gt; Editing</code>, now enable Snippets and click edit snippets.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="Snippets.png" alt="R Snippets for quick code chunks" width="274" />
+<img src="Snippets.png" alt="R Snippets for quick code chunks." width="618" />
 <p class="caption">
-Figure 5: R Snippets for quick code chunks
+Figure 5: R Snippets for quick code chunks.
 </p>
 </div>
 <p>From the edit snippets window you can manage snippets of R. Mostly I use R and R markdown snippets in my daily use. Few useful snippets are:</p>
@@ -337,12 +337,20 @@ snippet rqr
   library(${1:packageName})}
 
 snippet fmt
-  ## Title :: ${1:Title}
-  # Author :: Ankit Deshmukh
-  # DOC :: 2018${2:created}
-  # DOLE :: 2018${3:lastEdited}
-  setwd(${4:work directory})
-  ## Main code ------------------------------------------------------
+    # Title       :: ${1:File Title}------------------------------------------------
+    # Author      :: Ankit Deshmukh
+    # DOC         :: `r eval(Sys.Date())`
+    # DOLE        :: `r eval(Sys.time())`
+    # Description :: ${2:File Description}
+    
+    # setup ------------------------------------------------------------------------
+    graphics.off(); cat(&quot;\014&quot;)
+    setwd(&quot;`r eval(getwd())`&quot;)
+    
+    # libraries --------------------------------------------------------------------
+    library(tidyverse)
+
+    # code -------------------------------------------------------------------------
 
 snippet pp
   &quot;`r gsub(&quot;\\\\&quot;, &quot;/&quot;, readClipboard())`&quot;

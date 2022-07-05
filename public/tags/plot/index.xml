@@ -10,7 +10,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Jun 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/tags/plot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/tags/plot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with R-Python-SQL in RStudio</title>
+      <link>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</guid>
+      <description>Data science uses R-Python-SQL in tandom.Figure 1: R-Studio IDE have many pans.</description>
+    </item>
+    
     <item>
       <title>Random forest with easy way</title>
       <link>https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/</link>
