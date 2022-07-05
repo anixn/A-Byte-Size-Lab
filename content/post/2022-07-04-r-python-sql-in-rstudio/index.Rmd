@@ -1,5 +1,5 @@
 ---
-title: "Setting up R, Python, and SQL in RStudio1"
+title: "Setting up R, Python, and SQL in RStudio"
 author: "Dr. Ankit Deshmukh"
 date: 2022-07-04T20:32:05Z
 categories: ["R"]
@@ -13,18 +13,16 @@ cover:
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
-### Setup Python in Rstudio
-To set up R Python And SQL in the Rstudio you have two in first installed miniconda. Miniconda helps to create python virtual environments and let organize it. 
-For data cleaning you might use a data cleaning environment for web cleaning or web scraping you will use web scraping environment and so on.
+The main aim of this blog to show how you can configure R, Python and SQL in a single Rmarkdown file. 
 
-```{r, include=TRUE, out.width = 300, echo=FALSE, fig.cap="Data science uses R-Python-SQL in tandom."}
-knitr::include_graphics("Image.png", error = FALSE)
-```
+### Setup Python in Rstudio
+To set up R Python And SQL in the Rstudio you have to first installed [miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda helps to create python virtual environments and let you organize it. 
+Such as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.
 
 ###  Use conda prompt
-I tried to use the conda prompt to create environment but some how those environment doesn't work with my R-reticulate.
+I use conda prompt to create environment but some how those environment doesn't work with my R-reticulate, but if you are simply using python only them you can configure conda with the following commands.
 
-Commands to manage conda prompt: 
+#### Commands to manage conda prompt: 
 
 1. `conda help` for help.
 2. `conda create --name your_environment` to create a conda environment.
@@ -35,16 +33,18 @@ Commands to manage conda prompt:
     2. `conda config --set channel_priority strict` | set preference of channel (not sure!).
 6. Install a few packages: `conda install pandas scikit-learn matplotlib`
 
+#### Commands to manage conda prompt inside RStudio:
+Once you install [miniconda](https://docs.conda.io/en/latest/miniconda.html) You have to use [R-reticulate](https://rstudio.github.io/reticulate/) in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is **recommended** to create and select environment from Rstudio itself.
 
-Once you install miniconda You have to use R-reticulate in  Rstudio, it is REPL(Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.
+Reticulate package provides all the necessary functionalities to run and manage python commands, such as 
 
-Reticulate package provides all the necessary functionalists to run and manage python commands, such as 
-- packages like `conda_ create()` will create a new environment,
-- `use_condaenv()` used to select a newly created environment or existing python environment 
-- two know the existing environments you might use `conda_list()` function,
+- load reticulate package with `install.packages(reticulate)` command in R console. 
+- command `conda_ create()` will create a new python environment.
+- `use_condaenv(condaenv = "ENVNAME")` to select a newly created environment or existing python environment 
+- to know the existing environments you might use `conda_list()` function.
 - once you select a environment now you are ready to install python packages so use `py_install("PackageName")`.
 
-### How use SQL with Rmd files. 
+### How to use SQL with Rmd files.
 To use SQL in Rstudio simply use `dplyr`, `dbplyr`, and `RSQLite` packages. 
 
 - Use Rmarkdown for everything
@@ -62,6 +62,7 @@ if(!require(RSQLite)){install.packages("RSQLite");library(RSQLite)}
 
 conn <- src_memdb() # create a SQLite database in memory
 
+# Similar way you can add other database connections see `?dbplyr`
 con_iso <- conn$con
 copy_to(conn, 
         storms,     # this is a dataset built into dplyr
@@ -70,40 +71,77 @@ tbl(conn, sql("SELECT * FROM storms LIMIT 5"))
 
 ```
 
-Run SQL queries in R.
+Run SQL queries in R you have to create a SLQ code chunk.
 
-> ```
-> {sql connection=con_iso}
-> SELECT * FROM storms LIMIT 5;
-> ```
-
+````{verbatim, lang="sql"}
+```{sql connection=con_iso}
+SELECT * FROM storms LIMIT 5;
+```
+````
 
 ```{sql connection=con_iso, echo=FALSE}
 SELECT * FROM storms LIMIT 5;
 ```
 
-> ```
-> {sql connection=con_iso, output.var="storm_preview"}
-> SELECT * FROM storms LIMIT 5;
-> ```
+SQL code chunk can ouput the data as r-environment variable i.e. `storm_preview` below.
+
+````{verbatim, lang="sql"}
+```{sql connection=con_iso, output.var="storm_preview"}
+SELECT * FROM storms LIMIT 5;
+```
+````
 
 ```{sql connection=con_iso, output.var="storm_preview", echo=FALSE}
 SELECT * FROM storms LIMIT 5;
 ```
 
-```{r, echo=TRUE}
+````{verbatim, lang="R"}
+```{r}
+storm_preview 
+```
+````
+
+```{r, echo=FALSE}
 storm_preview # R code chunk
 ```
 
-We need `reticulate` to run python codes. 
+Now, load `reticulate` to run python codes. 
 
+````{verbatim, lang="R"}
 ```{r}
 if(!require(reticulate)){install.packages("reticulate");library(reticulate)}
 ```
+````
 
+```{r, echo = FALSE}
+if(!require(reticulate)){install.packages("reticulate");library(reticulate)}
+```
+
+A example of Python code inside R markdown. 
+
+````{verbatim, lang="R"}
 ```{python}
-# This is a python code chunk ```{python} 
+from matplotlib import pyplot as plt    
+# Importing Numpy Library    
+import numpy as np    
+plt.style.use('fivethirtyeight')    
+    
+mu = 50    
+sigma = 7    
+x = np.random.normal(mu, sigma, size=200)    
+fig, ax = plt.subplots()    
+    
+ax.hist(x, 20)    
+ax.set_title('Historgram')    
+ax.set_xlabel('bin range')    
+ax.set_ylabel('frequency')    
+    
+fig.tight_layout()    
+plt.show() # Comment out if you are using blogdown-sites to render the site. 
+```
+````
 
+```{python, echo = FALSE}
 from matplotlib import pyplot as plt    
 # Importing Numpy Library    
 import numpy as np    
@@ -123,7 +161,7 @@ fig.tight_layout()
 # plt.show()    
 ```
 
-```{r, include=TRUE, echo=FALSE, out.width=600, fig.cap="An python output"}
+```{r, include=TRUE, echo=FALSE, out.width=600, fig.cap="A figure python output of Histogram plot."}
 knitr::include_graphics("Figure_1.png", error = FALSE)
 ```
 

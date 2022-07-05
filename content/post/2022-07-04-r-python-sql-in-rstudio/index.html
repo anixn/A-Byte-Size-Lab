@@ -1,5 +1,5 @@
 ---
-title: "Setting up R, Python, and SQL in RStudio1"
+title: "Setting up R, Python, and SQL in RStudio"
 author: "Dr. Ankit Deshmukh"
 date: 2022-07-04T20:32:05Z
 categories: ["R"]
@@ -11,21 +11,17 @@ cover:
 
 
 
+<p>The main aim of this blog to show how you can configure R, Python and SQL in a single Rmarkdown file.</p>
 <div id="setup-python-in-rstudio" class="section level3">
 <h3>Setup Python in Rstudio</h3>
-<p>To set up R Python And SQL in the Rstudio you have two in first installed miniconda. Miniconda helps to create python virtual environments and let organize it.
-For data cleaning you might use a data cleaning environment for web cleaning or web scraping you will use web scraping environment and so on.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="Image.png" alt="Data science uses R-Python-SQL in tandom." width="300" />
-<p class="caption">
-Figure 1: Data science uses R-Python-SQL in tandom.
-</p>
-</div>
+<p>To set up R Python And SQL in the Rstudio you have to first installed <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>. Miniconda helps to create python virtual environments and let you organize it.
+Such as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.</p>
 </div>
 <div id="use-conda-prompt" class="section level3">
 <h3>Use conda prompt</h3>
-<p>I tried to use the conda prompt to create environment but some how those environment doesn’t work with my R-reticulate.</p>
-<p>Commands to manage conda prompt:</p>
+<p>I use conda prompt to create environment but some how those environment doesn’t work with my R-reticulate, but if you are simply using python only them you can configure conda with the following commands.</p>
+<div id="commands-to-manage-conda-prompt" class="section level4">
+<h4>Commands to manage conda prompt:</h4>
 <ol style="list-style-type: decimal">
 <li><code>conda help</code> for help.</li>
 <li><code>conda create --name your_environment</code> to create a conda environment.</li>
@@ -38,15 +34,22 @@ Figure 1: Data science uses R-Python-SQL in tandom.
 </ol></li>
 <li>Install a few packages: <code>conda install pandas scikit-learn matplotlib</code></li>
 </ol>
-<p>Once you install miniconda You have to use R-reticulate in Rstudio, it is REPL(Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.</p>
-<p>Reticulate package provides all the necessary functionalists to run and manage python commands, such as
-- packages like <code>conda_ create()</code> will create a new environment,
-- <code>use_condaenv()</code> used to select a newly created environment or existing python environment
-- two know the existing environments you might use <code>conda_list()</code> function,
-- once you select a environment now you are ready to install python packages so use <code>py_install("PackageName")</code>.</p>
 </div>
-<div id="how-use-sql-with-rmd-files." class="section level3">
-<h3>How use SQL with Rmd files.</h3>
+<div id="commands-to-manage-conda-prompt-inside-rstudio" class="section level4">
+<h4>Commands to manage conda prompt inside RStudio:</h4>
+<p>Once you install <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> You have to use <a href="https://rstudio.github.io/reticulate/">R-reticulate</a> in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is <strong>recommended</strong> to create and select environment from Rstudio itself.</p>
+<p>Reticulate package provides all the necessary functionalities to run and manage python commands, such as</p>
+<ul>
+<li>load reticulate package with <code>install.packages(reticulate)</code> command in R console.</li>
+<li>command <code>conda_ create()</code> will create a new python environment.</li>
+<li><code>use_condaenv(condaenv = "ENVNAME")</code> to select a newly created environment or existing python environment</li>
+<li>to know the existing environments you might use <code>conda_list()</code> function.</li>
+<li>once you select a environment now you are ready to install python packages so use <code>py_install("PackageName")</code>.</li>
+</ul>
+</div>
+</div>
+<div id="how-to-use-sql-with-rmd-files." class="section level3">
+<h3>How to use SQL with Rmd files.</h3>
 <p>To use SQL in Rstudio simply use <code>dplyr</code>, <code>dbplyr</code>, and <code>RSQLite</code> packages.</p>
 <ul>
 <li>Use Rmarkdown for everything</li>
@@ -63,6 +66,7 @@ if(!require(RSQLite)){install.packages(&quot;RSQLite&quot;);library(RSQLite)}
 
 conn &lt;- src_memdb() # create a SQLite database in memory
 
+# Similar way you can add other database connections see `?dbplyr`
 con_iso &lt;- conn$con
 copy_to(conn, 
         storms,     # this is a dataset built into dplyr
@@ -79,11 +83,10 @@ tbl(conn, sql(&quot;SELECT * FROM storms LIMIT 5&quot;))
 ## 5 Amy    1975     6    28     0  31.5 -78.8 tropical de… -1          25     1012
 ## # … with 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
 ## #   hurricane_force_diameter &lt;int&gt;</code></pre>
-<p>Run SQL queries in R.</p>
-<blockquote>
-<pre><code>{sql connection=con_iso}
-SELECT * FROM storms LIMIT 5;</code></pre>
-</blockquote>
+<p>Run SQL queries in R you have to create a SLQ code chunk.</p>
+<pre class="sql"><code>```{sql connection=con_iso}
+SELECT * FROM storms LIMIT 5;
+```</code></pre>
 <div class="knitsql-table">
 <table>
 <caption><span id="tab:unnamed-chunk-3">Table 1: </span>5 records</caption>
@@ -198,12 +201,14 @@ SELECT * FROM storms LIMIT 5;</code></pre>
 </tbody>
 </table>
 </div>
-<blockquote>
-<pre><code>{sql connection=con_iso, output.var=&quot;storm_preview&quot;}
-SELECT * FROM storms LIMIT 5;</code></pre>
-</blockquote>
-<pre class="r"><code>storm_preview # R code chunk
-##   name year month day hour  lat  long              status category wind
+<p>SQL code chunk can ouput the data as r-environment variable i.e. <code>storm_preview</code> below.</p>
+<pre class="sql"><code>```{sql connection=con_iso, output.var=&quot;storm_preview&quot;}
+SELECT * FROM storms LIMIT 5;
+```</code></pre>
+<pre class="r"><code>```{r}
+storm_preview 
+```</code></pre>
+<pre><code>##   name year month day hour  lat  long              status category wind
 ## 1  Amy 1975     6  27    0 27.5 -79.0 tropical depression       -1   25
 ## 2  Amy 1975     6  27    6 28.5 -79.0 tropical depression       -1   25
 ## 3  Amy 1975     6  27   12 29.5 -79.0 tropical depression       -1   25
@@ -215,10 +220,12 @@ SELECT * FROM storms LIMIT 5;</code></pre>
 ## 3     1013                           NA                       NA
 ## 4     1013                           NA                       NA
 ## 5     1012                           NA                       NA</code></pre>
-<p>We need <code>reticulate</code> to run python codes.</p>
-<pre class="r"><code>if(!require(reticulate)){install.packages(&quot;reticulate&quot;);library(reticulate)}</code></pre>
-<pre class="python"><code># This is a python code chunk ```{python} 
-
+<p>Now, load <code>reticulate</code> to run python codes.</p>
+<pre class="r"><code>```{r}
+if(!require(reticulate)){install.packages(&quot;reticulate&quot;);library(reticulate)}
+```</code></pre>
+<p>A example of Python code inside R markdown.</p>
+<pre class="r"><code>```{python}
 from matplotlib import pyplot as plt    
 # Importing Numpy Library    
 import numpy as np    
@@ -230,22 +237,23 @@ x = np.random.normal(mu, sigma, size=200)
 fig, ax = plt.subplots()    
     
 ax.hist(x, 20)    
-## (array([ 2.,  2.,  3.,  0.,  5.,  8., 17., 17., 14., 12., 28., 26., 13.,
-##        14., 13.,  8.,  5.,  7.,  3.,  3.]), array([32.7522371 , 34.46475027, 36.17726344, 37.88977661, 39.60228978,
-##        41.31480295, 43.02731612, 44.73982928, 46.45234245, 48.16485562,
-##        49.87736879, 51.58988196, 53.30239513, 55.0149083 , 56.72742146,
-##        58.43993463, 60.1524478 , 61.86496097, 63.57747414, 65.28998731,
-##        67.00250048]), &lt;BarContainer object of 20 artists&gt;)
 ax.set_title(&#39;Historgram&#39;)    
 ax.set_xlabel(&#39;bin range&#39;)    
 ax.set_ylabel(&#39;frequency&#39;)    
     
 fig.tight_layout()    
-# plt.show()    </code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="Figure_1.png" alt="An python output" width="600" />
+plt.show() # Comment out if you are using blogdown-sites to render the site. 
+```</code></pre>
+<pre><code>## (array([ 2.,  0.,  2.,  4.,  8.,  6.,  7., 17., 19., 28., 26., 15., 20.,
+##        20.,  9.,  5.,  7.,  2.,  2.,  1.]), array([28.22597688, 30.36880582, 32.51163476, 34.6544637 , 36.79729263,
+##        38.94012157, 41.08295051, 43.22577945, 45.36860839, 47.51143733,
+##        49.65426627, 51.79709521, 53.93992415, 56.08275309, 58.22558202,
+##        60.36841096, 62.5112399 , 64.65406884, 66.79689778, 68.93972672,
+##        71.08255566]), &lt;BarContainer object of 20 artists&gt;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="Figure_1.png" alt="A figure python output of Histogram plot." width="600" />
 <p class="caption">
-Figure 2: An python output
+Figure 1: A figure python output of Histogram plot.
 </p>
 </div>
 </div>
