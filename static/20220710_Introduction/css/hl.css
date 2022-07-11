@@ -1,0 +1,71 @@
+.title-slide {
+   background-image: url(Background.jpg);
+   background-position: top right;
+   /* background-size: 110px 120px; */
+   background-size: cover;
+
+}
+
+.title-slide h2 {
+  font-size: 2em;
+  font-weight: 100;
+  color: #A89984;
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+
+.title-slide h3 {
+  line-height: 0.6em;
+  margin-top: -10px;
+  padding: -1px;
+}
+
+.inline-c, remark-inline-code {
+   background: #e5e5e5;
+   border-radius: 3px;
+   padding: 4px;
+   font-family: 'FiraCode NF', 'FiraCode NF', Monaco, monospace;
+}
+
+
+.yellow-h{
+   background: #ffff88;
+}
+
+.out-t, remark-inline-code {
+   background: #9fff9f;
+   border-radius: 3px;
+   padding: 4px;
+
+}
+
+.remark-code, .remark-inline-code {
+   font-family: var(--code-font-family), FiraCode NF, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+ }
+
+
+.medium {
+   font-size: 75%
+}
+
+.small {
+   font-size: 65%
+}
+
+.action {
+   background-color: #f2eecb;
+}
+
+.inverse {
+  background-color: #282828;
+  color: #D5C4A1;
+  /* text-shadow: 0 0 20px #FBF1C7; */
+}
+
+.footnote {
+  position: absolute;
+  bottom: 1em;
+  margin-bottom: -0.29em;
+  font-size: 90%;
+  color: #EB6841aa;
+}

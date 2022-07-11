@@ -1,5 +1,5 @@
 ---
-title: "Random forest with easy way"
+title: "Navigating through 'Random Forest' with R-Programming"
 author: "Dr. Ankit Deshmukh"
 date: 2022-06-26T11:25:39.307Z 
 categories: ["ML"]
@@ -13,8 +13,15 @@ knitr::opts_chunk$set(
 	collapse = TRUE
 )
 ```
-
+<!-- David Keellings, Professor & Researcher -->
 The following packages are required for the random forest 
+
+This analysis for discrete variable of creditability.
+
+<!-- Random Forest grows multiple decision trees which are merged together for a more accurate prediction. -->
+
+<!-- The logic behind the Random Forest model is that multiple uncorrelated models (the individual decision trees) perform much better as a group than they do alone. When using Random Forest for classification, each tree gives a classification or a “vote.” The forest chooses the classification with the majority of the “votes.” When using Random Forest for regression, the forest picks the average of the outputs of all trees. -->
+
 
 ```{r}
 if(!require(tidyverse)){install.packages("tidyverse");library(tidyverse)}
@@ -25,14 +32,14 @@ if(!require(caret)){install.packages("caret");library(caret)} # for `confustionM
 
 ```
 
-## A Random forest is made of Random Trees.
+## A Random forest is made of Random Trees
 
 ```{r, include=FALSE, fig.cap="A random forest is the collection of my decistion trees."}
 knitr::include_graphics("forest.jpg", error = FALSE)
 ```
 
 ```{r message=FALSE, warning=FALSE}
-Data <- read_csv(file = here::here("content/post/2022-26-02-random-forest", "german_credit.csv"))
+Data <- read_csv(file = here::here("content/post/2022-06-26-random-forest", "german_credit.csv"))
 ```
 
 ## Exploring the dataset 
@@ -64,7 +71,6 @@ test <- Data[partitioning == 2, ]
 table(test$creditability)
 ```
 
-
 ## Train the Random forest model
 ```{r}
 
@@ -74,8 +80,17 @@ predict_train <- predict(rf_model, train)
 confusionMatrix(predict_train, train$creditability)
 ```
 
+## Visulizing one of the tree from Random forest. 
+A sample tree can we generate via 
 
-# Testing the model `rf_model` on test data
+```{r}
+if(!require(party)){install.packages("party");library(party)}
+rf_tree <- ctree(creditability ~ ., data=train)
+plot(rf_tree, type="simple")
+
+```
+
+## Testing the model `rf_model` on test data
 ```{r}
 predict_test <- predict(rf_model, test)
 confusionMatrix(predict_test, test$creditability)
@@ -89,7 +104,7 @@ confusionMatrix(predict_test, test$creditability)
 varImpPlot(rf_model)
 ```
 
-# Optimize the performance of randomforest.
+## Optimize the performance of randomforest.
 
 ```{r}
 plot(rf_model) # black line is out of bag error.
@@ -115,7 +130,7 @@ rf_optim <- randomForest(formula = creditability ~ ., data = train, mtry = opti_
 confusionMatrix(predict(rf_optim, test), test$creditability)
 ```
 
-# Exploring useful variables
+## Exploring useful variables
 ```{r}
 train <- as.data.frame(train)
 varImpPlot(rf_model)
@@ -126,4 +141,4 @@ partialPlot(rf_model, train, account_balance, "1")
 partialPlot(rf_model, train, age_years, "1")
 ```
 
-This analysis for discrete variable of creditability.
+

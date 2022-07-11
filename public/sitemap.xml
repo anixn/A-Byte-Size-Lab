@@ -67,8 +67,16 @@
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/archives/</loc>
   </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/tags/presentation/</loc>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/tags/rmd/</loc>
+  </url><url>
     <loc>https://a-byte-size-blog.netlify.app/search/</loc>
   </url><url>
     <loc>https://a-byte-size-blog.netlify.app/series/</loc>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/post/11-july-2022-test/</loc>
+  </url><url>
+    <loc>https://a-byte-size-blog.netlify.app/categories/xaringan/</loc>
   </url>
 </urlset>

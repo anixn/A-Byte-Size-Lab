@@ -17,8 +17,8 @@
       <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
       
       <guid>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</guid>
-      <description>The main aim of this blog to show, how you can configure R, Python, and SQL in a single Rmarkdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
-Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first installed miniconda.</description>
+      <description>The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
+Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda.</description>
     </item>
     
     <item>

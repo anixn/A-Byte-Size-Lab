@@ -1,0 +1,237 @@
+---
+title: "Geospatial Techniques"
+subtitle: "This is my subtitle"
+author: ".f2[.gold[Dr. Ankit Deshmukh]] <br /> <br /> <br /> "
+institute: "Pandit Deendayal Energy University, Gandhinagar"
+date: ".f3[07 July 2022 (updated: `r format(Sys.Date(), '%d %B %Y')`)]"
+output:
+  xaringan::moon_reader:
+    css: ["css/xaringan-themer.css", "css/hl.css", "css/tachyons.min.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE,
+  results= "asis" 
+)
+
+# Bibliography and Citation  
+library(RefManageR)
+library(bibtex)
+BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "text", first.inits = FALSE)
+bib <- ReadBib("~/adx/Bibliography.bib")
+```
+
+
+```{r, echo=FALSE, include=TRUE}
+library(xaringanExtra)
+use_logo(image_url = "./Files/Blog-Logo.png", link_url = "https://www.ankitdeshmukh.com/", width = "60px", height = "60px")
+
+use_progress_bar(color = "#282828",location = "top", height = "0.25em")
+```
+
+<!-- ------------------------- START SLIDES HERE --------------------------- -->
+
+## Bibliography and citation
+
+Use `RefManageR` and `bibtex` package to generate citation with xaringan slide.
+
+```{r, eval=FALSE}
+BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "text", first.inits = FALSE)
+bib <- ReadBib("~/adx/Bibliography.bib")
+A <- 10 #<<
+B <- "Something string" #<<
+C <- TRUE #<<
+
+```
+
+Use `Cite(bib, "key")` to site an article 
+````{verbatim} 
+1. This is a test `r Citet(bib, "2020AGUFMH184...06K")` after text
+2. This is a test `r Citep(bib, "2020AGUFMH184...06K")` after text
+````
+> This is a test `r Citet(bib, "2020AGUFMH184...06K")` after text<br /> 
+> This is a test `r Citep(bib, "2020AGUFMH184...06K")` after text 
+
+----
+Use footnote with `.footnote[footnote text]`
+
+e.g.: Some text<sup>1</sup>
+
+.footnote[1: This is a footnote]
+---
+
+## Add table with `kable`
+
+```{r}
+knitr::kable(head(iris), format = 'html')
+```
+
+---
+
+## Two column view
+Nihil natus molestias tenetur error saepe repellendus tempore. Expedita eos est culpa est maxime. Molestiae ut fuga aut est doloribus. Deleniti ut nisi corrupti. Autem laborum earum id nihil. Laudantium sit quaerat dolorum mollitia eos.
+
+.pull-left[
+`.pull-left[Your text on left]`
+
+```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans.", out.width=400}
+knitr::include_graphics("./Images/Img01.jpg")
+```
+
+]
+
+.pull-right[
+`.pull-rigth[Your text on left]`
+
+And some Xaringan logo
+```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans.", out.width=150}
+knitr::include_graphics("./Images/Img.jpg")
+```
+]
+
+Nihil natus molestias tenetur error saepe repellendus tempore. Expedita eos est culpa est maxime. Molestiae ut fuga aut est doloribus. Deleniti ut nisi corrupti. Autem laborum earum id nihil. Laudantium sit quaerat dolorum mollitia eos.
+
+---
+class: inverse middle left
+# This is an inverse slide 
+
+Use `class:` just after `---` 
+
+> class: [class_name] | inverse, top, center, bottom, left, right etc.
+
+> `.center[] .left[] .rigth[]` classes in between slides
+
+.center[This text is centered]
+.left[This text is on left]
+.right[This text in on right]
+
+[Ankit Deshmukh](www.ankitdeshmukh.com)
+
+---
+
+# Mermaid plot for graphs in R markdown 
+This is my diagram with mermaid plot [Ankit Deshmukh](www.ankitdeshmukh.com)
+
+.pull_left[
+```{r, eval=FALSE}
+DiagrammeR::mermaid("
+graph LR
+  A --> B
+  A --> C
+  C --> E
+  B --> D
+")
+```
+]
+
+.pull_right[
+```{r, echo=FALSE}
+DiagrammeR::mermaid("
+graph LR
+  A --> B
+  A --> C
+  C --> E
+  B --> D
+")
+```
+]
+---
+
+## Special CSS tricks with `tachyons.min.css`
+<https://tachyons.io/>
+
+- `.gold[gold font]` --> .gold[gold font] [| Link for color names](http://tachyons.io/docs/themes/skins/)
+- `.b[bold font]` --> .b[bold font]
+- `.underline[Underlined font]` --> .underline[Underlined font]
+- `.i[italic font]` --> .i[italic fonts]
+
+### Adjust font size
+
+`.f1[f1 font]` | .f1[f1 font] <br /> 
+`.f2[f2 font]` | .f2[f2 font] <br /> 
+`.f3[f3 font]` | .f3[f3 font] <br /> 
+`.f4[f4 font]` | .f4[f4 font] <br /> 
+`.f5[f5 font]` | .f5[f5 font] <br /> 
+
+---
+## Panal set in Slides
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+.panelset[
+.panel[.panel-name[app.R]
+
+```{r}
+hist(runif(100))
+```
+]
+
+.panel[.panel-name[About]
+
+Take a look at the R code in that other panel.
+]
+]
+
+---
+
+## My text panal set
+
+.panelset[
+.panel[.panel-name[Code]
+
+```{r, echo=FALSE}
+DT::datatable(
+  iris, extensions = 'Buttons', options = list(
+    lengthMenu = list(c(5,10,30, 50, -1), 
+                      c('5','10', '30', '50', 'All')),
+    paging = T)
+)
+```
+]
+
+.panel[.panel-name[Output]
+Ankit Deshmukh
+
+```{r}
+knitr::kable(head(iris))
+```
+]
+]
+
+---
+## Adding countdown in Slides
+Solve this random question :: blab blab its
+
+```{r, echo=FALSE}
+# install.packages("devtools")
+# devtools::install_github("gadenbuie/countdown")
+countdown::countdown(20, style = "z-index:100")
+```
+
+---
+# Reference 
+
+```{r, echo=TRUE, eval=FALSE}
+# Use `PrintBibliography` to print all the used Reference.
+PrintBibliography(bib, .opts = list(bib.style = "alphabetic"))
+```
+
+```{r, echo=FALSE}
+PrintBibliography(bib, .opts = list(bib.style = "alphabetic"))
+```
+
