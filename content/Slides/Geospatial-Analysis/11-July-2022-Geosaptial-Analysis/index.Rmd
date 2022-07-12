@@ -1,0 +1,17 @@
+---
+title: Test
+author: 'Dr. Ankit Deshmukh'
+date: 11-July-2022
+slug: []
+categories: ["Class"]
+tags: ["Rmd", "Presentation"]
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
+```
+
+This is my Blog site with study material.
+
+[slides/xaringan.html](../../../20220710_Introduction/Presentation.html)
