@@ -1,10 +1,10 @@
 ---
-title: Test
+title: Introduction - Geospatial Techniques
 author: 'Dr. Ankit Deshmukh'
 date: 11-July-2022
 slug: []
 categories: ["Class"]
-tags: ["Rmd", "Presentation"]
+tags: ["Analysis", "GIS"]
 ---
 
 

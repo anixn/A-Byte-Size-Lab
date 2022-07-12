@@ -1,5 +1,5 @@
 ---
-title: "Geospatial Analysis"
+title: "Geospatial Techniques"
 layout: "main"
 #url: /default/
 ---
