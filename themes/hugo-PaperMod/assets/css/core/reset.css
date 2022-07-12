@@ -118,5 +118,7 @@ img {
     max-width: 100%;
 }
 
-
-code, pre{font-family: 'Fira Code', monospace;}
+code,
+pre {
+    font-family: 'Fira Code', monospace;
+}
