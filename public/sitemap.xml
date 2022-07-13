@@ -2,85 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://a-byte-size-blog.netlify.app/</loc>
+    <loc>https://bytesize-blog.netlify.app/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/</loc>
+    <loc>https://bytesize-blog.netlify.app/categories/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/plot/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/plot/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/r/</loc>
+    <loc>https://bytesize-blog.netlify.app/categories/r/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/setup/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/setup/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/ml/</loc>
+    <loc>https://bytesize-blog.netlify.app/categories/ml/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/random-forest/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/regression/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/regression/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/boxplot/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/boxplot/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/r/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/r/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/visulization/</loc>
+    <loc>https://bytesize-blog.netlify.app/categories/visulization/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2021-12-01-r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/r-markdown/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</loc>
     <lastmod>2021-09-25T22:40:24+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/coding/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/coding/</loc>
     <lastmod>2021-09-25T22:40:24+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</loc>
+    <loc>https://bytesize-blog.netlify.app/post/2021-09-21-getting-started-with-r/</loc>
     <lastmod>2021-09-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/archives/</loc>
+    <loc>https://bytesize-blog.netlify.app/slides/gis-and-rs/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/categories/class/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/analysis/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/presentation/</loc>
+    <loc>https://bytesize-blog.netlify.app/archives/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/tags/rmd/</loc>
+    <loc>https://bytesize-blog.netlify.app/categories/class/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/search/</loc>
+    <loc>https://bytesize-blog.netlify.app/slides/geospatial-techniques/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/series/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/gis/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/slides/</loc>
+    <loc>https://bytesize-blog.netlify.app/slides/geospatial-techniques/20220712-geospatial-techniques/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/post/11-july-2022-test/</loc>
+    <loc>https://bytesize-blog.netlify.app/slides/gis-and-rs/20220712-gis-and-remote-sensing/</loc>
   </url><url>
-    <loc>https://a-byte-size-blog.netlify.app/slides/11-july-2022-test/</loc>
+    <loc>https://bytesize-blog.netlify.app/tags/qgis/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/tags/rs/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/search/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/series/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/slides/</loc>
   </url>
 </urlset>

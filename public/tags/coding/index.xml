@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Coding on A Byte Size Blog!</title>
-    <link>https://a-byte-size-blog.netlify.app/tags/coding/</link>
-    <description>Recent content in Coding on A Byte Size Blog!</description>
+    <title>Coding on Bytesize Blog</title>
+    <link>https://bytesize-blog.netlify.app/tags/coding/</link>
+    <description>Recent content in Coding on Bytesize Blog</description>
     <image>
-      <url>https://a-byte-size-blog.netlify.app/papermod-cover.png</url>
-      <link>https://a-byte-size-blog.netlify.app/papermod-cover.png</link>
+      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
+      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Sep 2021 22:40:24 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Sep 2021 22:40:24 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basics of R Programming</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</link>
+      <link>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</link>
       <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</guid>
       <description>Using R studio as R-IDER studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
 Figure 1: R-Studio IDE have many pans.Code editorYou will write your code in this window. R used # as the comment character. To assign a variable to a value we use ← (lowercase followed by a dash).
 Do’s and Don’t while writing codes in RCasesUse of ← and =</description>

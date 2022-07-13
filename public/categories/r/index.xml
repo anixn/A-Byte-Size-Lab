@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>R on A Byte Size Blog!</title>
-    <link>https://a-byte-size-blog.netlify.app/categories/r/</link>
-    <description>Recent content in R on A Byte Size Blog!</description>
+    <title>R on Bytesize Blog</title>
+    <link>https://bytesize-blog.netlify.app/categories/r/</link>
+    <description>Recent content in R on Bytesize Blog</description>
     <image>
-      <url>https://a-byte-size-blog.netlify.app/papermod-cover.png</url>
-      <link>https://a-byte-size-blog.netlify.app/papermod-cover.png</link>
+      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
+      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 20:32:05 +0000</lastBuildDate><atom:link href="https://a-byte-size-blog.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 20:32:05 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up R, Python, and SQL in RStudio</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</link>
+      <link>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</link>
       <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</guid>
       <description>The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda.</description>
     </item>
     
     <item>
       <title>Hello R Markdown!</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</link>
+      <link>https://bytesize-blog.netlify.app/post/2021-12-01-r-markdown/</link>
       <pubDate>Wed, 01 Dec 2021 21:13:14 -0500</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2021-12-01-r-markdown/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2021-12-01-r-markdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 A few useful syntax are shown below in the post:
 1. You can embed an R code chunk like this:summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.</description>
@@ -34,10 +34,10 @@ A few useful syntax are shown below in the post:
     
     <item>
       <title>Basics of R Programming</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</link>
+      <link>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</link>
       <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</guid>
       <description>Using R studio as R-IDER studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
 Figure 1: R-Studio IDE have many pans.Code editorYou will write your code in this window. R used # as the comment character. To assign a variable to a value we use ← (lowercase followed by a dash).
 Do’s and Don’t while writing codes in RCasesUse of ← and =</description>
@@ -45,10 +45,10 @@ Do’s and Don’t while writing codes in RCasesUse of ← and =</description
     
     <item>
       <title>Getting started with R</title>
-      <link>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</link>
+      <link>https://bytesize-blog.netlify.app/post/2021-09-21-getting-started-with-r/</link>
       <pubDate>Tue, 21 Sep 2021 11:25:39 +0000</pubDate>
       
-      <guid>https://a-byte-size-blog.netlify.app/post/2021-09-21-getting-started-with-r/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2021-09-21-getting-started-with-r/</guid>
       <description>R is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.
 1. Installing RStep 01: Install R-Binaries from R-Project
 Step 02: Install RStudio IDE from RStudio

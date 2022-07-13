@@ -5,21 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Setting up R, Python, and SQL in RStudio | A Byte Size Blog!</title>
+<title>Setting up R, Python, and SQL in RStudio | Bytesize Blog</title>
 <meta name="keywords" content="Setup, plot">
 <meta name="description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda.">
 <meta name="author" content="Dr. Ankit Deshmukh">
-<link rel="canonical" href="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/">
+<link rel="canonical" href="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.20a25f3d892997bfd64f02646423524040bfad4b8e33674c7c9fba02674f3a61.css" integrity="sha256-IKJfPYkpl7/WTwJkZCNSQEC/rUuOM2dMfJ&#43;6AmdPOmE=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.85cae1844b22a549aad3452f577211b80956d906aee6bde5973d492401d181d8.css" integrity="sha256-hcrhhEsipUmq00UvV3IRuAlW2Qau5r3llz1JJAHRgdg=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://a-byte-size-blog.netlify.app/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://a-byte-size-blog.netlify.app/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://a-byte-size-blog.netlify.app/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://a-byte-size-blog.netlify.app/apple-touch-icon.png">
-<link rel="mask-icon" href="https://a-byte-size-blog.netlify.app/safari-pinned-tab.svg">
+<link rel="icon" href="https://bytesize-blog.netlify.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bytesize-blog.netlify.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bytesize-blog.netlify.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://bytesize-blog.netlify.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://bytesize-blog.netlify.app/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -59,6 +59,7 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
 
     </style>
 </noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<link rel="stylesheet" href="/fonts/font-family.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
 <script>
@@ -92,13 +93,13 @@ if (!doNotTrack) {
 <meta property="og:description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/" />
-<meta property="og:image" content="https://a-byte-size-blog.netlify.app/Cover.png" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/" />
+<meta property="og:image" content="https://bytesize-blog.netlify.app/Cover.png" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-07-04T20:32:05&#43;00:00" />
 <meta property="article:modified_time" content="2022-07-04T20:32:05&#43;00:00" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://a-byte-size-blog.netlify.app/Cover.png" />
+<meta name="twitter:image" content="https://bytesize-blog.netlify.app/Cover.png" />
 <meta name="twitter:title" content="Setting up R, Python, and SQL in RStudio"/>
 <meta name="twitter:description" content="The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda."/>
@@ -113,13 +114,13 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://a-byte-size-blog.netlify.app/post/"
+      "item": "https://bytesize-blog.netlify.app/post/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Setting up R, Python, and SQL in RStudio",
-      "item": "https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/"
+      "item": "https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/"
     }
   ]
 }
@@ -137,7 +138,7 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
   "articleBody": "\rThe main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.\nSetup Python in Rstudio\rTo set up R Python And SQL in the Rstudio you have to first install miniconda. Miniconda helps to create python virtual environments and let you organize it.\rSuch as for, data cleaning you might use a data cleaning environment for web scraping you will use a web scraping environment and so on.\nCommands to manage conda environment inside RStudio:\rOnce you install miniconda You have to use R-reticulate in Rstudio, it is REPL (Read-eval-print loop) for Python in R, and helps to run Python code inside Rstudio. You can add miniconda into your windows terminal, but to use in Rstudio it is recommended to create and select environment from Rstudio itself.\nReticulate package provides all the necessary functionalities to run and manage python commands, such as\nload reticulate package with install.packages(reticulate) command in R console.\rcommand conda_ create() will create a new python environment.\ruse_condaenv(condaenv = \"ENVNAME\") to select a newly created environment or existing python environment\rto know the existing environments that you have created earlier, use conda_list() function.\ronce you select a environment now you are ready to install python packages with py_install(\"PackageName\").\rUse conda prompt\rI use conda prompt to create environment but some how those environment doesn’t work with my R-reticulate. But if you are using python only then you can configure conda with the following commands (run in system terminal):\nconda help for help.\rconda create --name your_environment to create a conda environment.\rconda env list to list all the environment in conda.\rconda activate your_environment to activate an specific conda environment.\rUse conda config to add other channels for package providers, but I tried pip and it worked just fine.\rconda config --add channels conda-forge (conda-forge is one of many channel)\rconda config --set channel_priority strict (set preference of channel)\rInstall a few packages: conda install pandas scikit-learn matplotlib\rHow to use SQL with R markdown\rUse dplyr, dbplyr, and RSQLite packages\nUse SQL block to view the query output in ln-line mode.\rA blogpot to learn R and SQL in Rstudio https://irene.rbind.io/post/using-sql-in-rstudio/\rExample of R, Python, and SQL with Rmarkdonw (*.Rmd)\rif(!require(dplyr)){install.packages(\"dplyr\");library(dplyr)}\rif(!require(dbplyr)){install.packages(\"dbplyr\");library(dbplyr)}\rif(!require(RSQLite)){install.packages(\"RSQLite\");library(RSQLite)}\rconn \u003c- src_memdb() # create a SQLite database in memory\r# Similar way you can add other database connections see `?dbplyr`\rcon_iso \u003c- conn$con\rcopy_to(conn, storms, # this is a dataset built into dplyr\roverwrite = TRUE)\rtbl(conn, sql(\"SELECT * FROM storms LIMIT 5\"))\r## # Source: SQL [5 x 13]\r## # Database: sqlite 3.38.5 [:memory:]\r## name year month day hour lat long status category wind pressure\r## ## 1 Amy 1975 6 27 0 27.5 -79 tropical de… -1 25 1013\r## 2 Amy 1975 6 27 6 28.5 -79 tropical de… -1 25 1013\r## 3 Amy 1975 6 27 12 29.5 -79 tropical de… -1 25 1013\r## 4 Amy 1975 6 27 18 30.5 -79 tropical de… -1 25 1013\r## 5 Amy 1975 6 28 0 31.5 -78.8 tropical de… -1 25 1012\r## # … with 2 more variables: tropicalstorm_force_diameter ,\r## # hurricane_force_diameter Now create SLQ code chunk to directly run SQL queries from R.\n```{sql connection=con_iso}\rSELECT * FROM storms LIMIT 5;\r```\rThis will print 5 entire form database table storms\nTable 1: 5 records\rname\ryear\rmonth\rday\rhour\rlat\rlong\rstatus\rcategory\rwind\rpressure\rtropicalstorm_force_diameter\rhurricane_force_diameter\rAmy\r1975\r6\r27\r0\r27.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r6\r28.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r12\r29.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r27\r18\r30.5\r-79.0\rtropical depression\r-1\r25\r1013\rNA\rNA\rAmy\r1975\r6\r28\r0\r31.5\r-78.8\rtropical depression\r-1\r25\r1012\rNA\rNA\rSQL code chunk can ouput the data as r-variable i.e. storm_preview\n```{sql connection=con_iso, output.var=\"storm_preview\"}\rSELECT * FROM storms LIMIT 5;\r```\r```{r}\rclass(storm_preview)\rstorm_preview ```\r## [1] \"data.frame\"\r## name year month day hour lat long status category wind\r## 1 Amy 1975 6 27 0 27.5 -79.0 tropical depression -1 25\r## 2 Amy 1975 6 27 6 28.5 -79.0 tropical depression -1 25\r## 3 Amy 1975 6 27 12 29.5 -79.0 tropical depression -1 25\r## 4 Amy 1975 6 27 18 30.5 -79.0 tropical depression -1 25\r## 5 Amy 1975 6 28 0 31.5 -78.8 tropical depression -1 25\r## pressure tropicalstorm_force_diameter hurricane_force_diameter\r## 1 1013 NA NA\r## 2 1013 NA NA\r## 3 1013 NA NA\r## 4 1013 NA NA\r## 5 1012 NA NA\rNow, load reticulate to run python codes\n```{r}\r# Below code will check if `reticulate` is installed or not, if not then it will install and load in the R-session. if(!require(reticulate)){install.packages(\"reticulate\");library(reticulate)}\r```\rA example of Python code inside R markdown.\n```{python}\rfrom matplotlib import pyplot as plt # Importing Numpy Library import numpy as np plt.style.use('fivethirtyeight') mu = 50 sigma = 7 x = np.random.normal(mu, sigma, size=200) fig, ax = plt.subplots() ax.hist(x, 20) ax.set_title('Historgram') ax.set_xlabel('bin range') ax.set_ylabel('frequency') fig.tight_layout() plt.show() # Comment out if you are using blogdown-sites to render the site. ```\r## (array([ 2., 1., 2., 8., 9., 12., 22., 25., 31., 24., 15., 15., 13.,\r## 9., 7., 2., 1., 0., 1., 1.]), array([31.4398407 , 33.56751485, 35.695189 , 37.82286315, 39.95053731,\r## 42.07821146, 44.20588561, 46.33355976, 48.46123392, 50.58890807,\r## 52.71658222, 54.84425638, 56.97193053, 59.09960468, 61.22727883,\r## 63.35495299, 65.48262714, 67.61030129, 69.73797544, 71.8656496 ,\r## 73.99332375]), )\rFigure 1: A figure python output of Histogram plot.\r",
   "wordCount" : "982",
   "inLanguage": "en",
-  "image":"https://a-byte-size-blog.netlify.app/Cover.png","datePublished": "2022-07-04T20:32:05Z",
+  "image":"https://bytesize-blog.netlify.app/Cover.png","datePublished": "2022-07-04T20:32:05Z",
   "dateModified": "2022-07-04T20:32:05Z",
   "author":{
     "@type": "Person",
@@ -145,14 +146,14 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/"
+    "@id": "https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "A Byte Size Blog!",
+    "name": "Bytesize Blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://a-byte-size-blog.netlify.app/favicon.ico"
+      "url": "https://bytesize-blog.netlify.app/favicon.ico"
     }
   }
 }
@@ -174,7 +175,7 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://a-byte-size-blog.netlify.app/" accesskey="h" title="A Byte Size Blog! (Alt + H)">A Byte Size Blog!</a>
+            <a href="https://bytesize-blog.netlify.app/" accesskey="h" title="Bytesize Blog (Alt + H)">Bytesize Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -200,27 +201,27 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
         </div>
         <ul id="menu">
             <li>
-                <a href="https://a-byte-size-blog.netlify.app/slides/" title="Slides">
+                <a href="https://bytesize-blog.netlify.app/slides/" title="Slides">
                     <span>Slides</span>
                 </a>
             </li>
             <li>
-                <a href="https://a-byte-size-blog.netlify.app/categories/" title="Categories">
+                <a href="https://bytesize-blog.netlify.app/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://a-byte-size-blog.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://bytesize-blog.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://a-byte-size-blog.netlify.app/archives" title="Archive">
+                <a href="https://bytesize-blog.netlify.app/archives" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="https://a-byte-size-blog.netlify.app/tags/" title="Tags">
+                <a href="https://bytesize-blog.netlify.app/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -231,7 +232,7 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://a-byte-size-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://a-byte-size-blog.netlify.app/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://bytesize-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://bytesize-blog.netlify.app/post/">Posts</a></div>
     <h1 class="post-title">
       Setting up R, Python, and SQL in RStudio
     </h1>
@@ -240,8 +241,8 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
 </div>
   </header> 
 <figure class="entry-cover">
-        <img loading="lazy" srcset="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_360x0_resize_box_3.png 360w ,https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_480x0_resize_box_3.png 480w ,https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_720x0_resize_box_3.png 720w ,https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_1080x0_resize_box_3.png 1080w ,https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_1500x0_resize_box_3.png 1500w ,https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover.png 4000w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://a-byte-size-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover.png" alt="Image contains R, Python, and DB logo" 
+        <img loading="lazy" srcset="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_360x0_resize_box_3.png 360w ,https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_480x0_resize_box_3.png 480w ,https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_720x0_resize_box_3.png 720w ,https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_1080x0_resize_box_3.png 1080w ,https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover_hub2b0796e850403cc6409ce70b448ccc6_270160_1500x0_resize_box_3.png 1500w ,https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover.png 4000w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/Cover.png" alt="Image contains R, Python, and DB logo" 
             width="4000" height="985">
         
 </figure><div class="toc">
@@ -523,11 +524,11 @@ Figure 1: A figure python output of Histogram plot.
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://a-byte-size-blog.netlify.app/tags/setup/">Setup</a></li>
-      <li><a href="https://a-byte-size-blog.netlify.app/tags/plot/">plot</a></li>
+      <li><a href="https://bytesize-blog.netlify.app/tags/setup/">Setup</a></li>
+      <li><a href="https://bytesize-blog.netlify.app/tags/plot/">plot</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://a-byte-size-blog.netlify.app/post/2022-06-26-random-forest/">
+  <a class="next" href="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/">
     <span class="title">Next »</span>
     <br>
     <span>Random Forest with R-Programming</span>
@@ -537,14 +538,14 @@ Figure 1: A figure python output of Histogram plot.
 
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share Setting up R, Python, and SQL in RStudio on twitter"
-        href="https://twitter.com/intent/tweet/?text=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;hashtags=Setup%2cplot">
+        href="https://twitter.com/intent/tweet/?text=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;hashtags=Setup%2cplot">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share Setting up R, Python, and SQL in RStudio on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;title=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;summary=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;source=https%3a%2f%2fa-byte-size-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f">
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f&amp;title=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;summary=Setting%20up%20R%2c%20Python%2c%20and%20SQL%20in%20RStudio&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-07-04-r-python-sql-in-rstudio%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
