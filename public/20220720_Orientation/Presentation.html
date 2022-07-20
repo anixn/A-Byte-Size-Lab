@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>An Introdcution of Geographical Information System</title>
+    <title>An Introduction of   Geospatial Analysis Techniques</title>
     <meta charset="utf-8" />
-    <meta name="author" content=".f2[.gold[Dr. Ankit Deshmukh]]      " />
+    <meta name="author" content=".f3[.gold[Dr. Ankit Deshmukh]]    " />
     <script src="Presentation_files/header-attrs/header-attrs.js"></script>
     <script src="Presentation_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <script src="Presentation_files/htmlwidgets/htmlwidgets.js"></script>
@@ -24,13 +24,13 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# An Introdcution of Geographical Information System
+# An Introduction of <br /> Geospatial Analysis Techniques
 ]
 .subtitle[
-## Geospatial Techniques [20CV201T]
+## <br /> .f3[Geospatial Techniques [20CV201T]]
 ]
 .author[
-### .f2[.gold[Dr. Ankit Deshmukh]] <br /> <br /> <br />
+### .f3[.gold[Dr. Ankit Deshmukh]] <br /> <br />
 ]
 .institute[
 ### Pandit Deendayal Energy University, Gandhinagar <br /><br />
@@ -98,63 +98,129 @@ top:1em;right:1em;
   100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
 }</style>
 
-&lt;!-- ------------------------- START SLIDES HERE --------------------------- --&gt;
-
-## Today we are going to learn:
-
-&lt;div class="boxed" style="--width-var: 600px;"&gt;
-.f4[CO1: Understand the basic concept of Remote Sensing and GIS techniques.]
-&lt;/div&gt;
-
-Outline: 
-- What is GIS
-- Layers in GIS
-- Projection system
-- Compute distance on a earth. 
-
----
-
-## Is Greenland Larger Than Australia?
+## Is Greenland larger than Australia?
 
 &lt;img src="Images/Worldmap.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 .footnote[Image source: http://getwallpapers.com/]
 
 ---
-## Is Greenland Larger Than Australia?
+## Is Greenland larger than Australia?
 
 .pull-left[
 &lt;img src="Images/G-A.png" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
-.footnote[Source: https://www.wikipedia.org/]
-
 --
 .pull-right[.middle[
-.f3[According to size, Australia’s land is approximated to be 7,741,220 square kilometers dwarfing Greenland’s cover of merely 2,166,086 square kilometers. Considering the land area, .red[Australia] is **almost four times** bigger than .green[Greenland.]]]
+.f4[ Considering the land area, Australia (7,741,220 km&lt;sup&gt;2&lt;/sup&gt;) is **almost four times** bigger than Greenland (2,166,086 &lt;sup&gt;2&lt;/sup&gt;).]]
 
 ]
+.footnote[Source: https://www.wikipedia.org/]
+---
+
+## Today we are going to learn:
+
+- What is Geospatial analysis.
+
+- 3D-Earth and 2D maps
+
+- Shape of earth
+
+- Approximate shape of earth
+
+- Map projections
+
+--
+
+&lt;br /&gt; &lt;br /&gt; &lt;br /&gt; .center[.light-red[.f3[CO1: Understand the basic concept of Geospatial techniques.]]]
 
 ---
 
-# Geographic Information Systems (GIS)
-GIS in simple terms: A computer system capable of holding and using data describing places on the earth's surface.
+## Importance of map
 
-.light-red.f4[.b[G] -&gt; geographic (spatial) reference] | .light-red.f4[.b[IS] -&gt; Information system] 
+<div id="htmlwidget-0b8f61b6f5e2541fc1d9" style="width:100%;height:504px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b8f61b6f5e2541fc1d9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[23.15462,72.66689,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Welcome to PDEU!",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[23.154,72.666],15,[]],"limits":{"lat":[23.15462,23.15462],"lng":[72.66689,72.66689]}},"evals":[],"jsHooks":[]}</script>
+---
+
+## Map help us to identify the relative position of different features.
 
 
-&lt;img src="images/GIS_layers.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/OldMap.jpg" alt="Frederik De Wit’s 1654 Dutch Sea Atlas. Image courtesy of the Harvard Map Collection" width="550" /&gt;
+&lt;p class="caption"&gt;Frederik De Wit’s 1654 Dutch Sea Atlas. Image courtesy of the Harvard Map Collection&lt;/p&gt;
+&lt;/div&gt;
+
+--
+
+.light-red[.f4[To identify features we need a suitable *co-ordinate reference system (CRS)*]]
 
 ---
 
-##Google map is an example of GIS
-<div id="htmlwidget-97490bb7df78a6bf6d9e" style="width:100%;height:504px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-97490bb7df78a6bf6d9e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[23.15462,72.66689,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Welcome to PDEU!",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[23.154,72.666],15,[]],"limits":{"lat":[23.15462,23.15462],"lng":[72.66689,72.66689]}},"evals":[],"jsHooks":[]}</script>
+## Shape of earth not a perfect sphere!
+&lt;img src="images/Geoid.gif" width="570" style="display: block; margin: auto;" /&gt;
+--
+It's a .b[.red[Geoid]], this is defined as the equipotential surface that most closely corresponds to mean sea level (pear-shaped).
+
 ---
 
-## Summary of todays presentation
+## An approximate shape for earth
 
-GIS is a computer system capable of holding and using data describing places on the earth's surface.
+&lt;img src="images/Elliposide.gif" width="700" style="display: block; margin: auto;" /&gt;
+
+- A Reference Ellipsoid is a mathematically-defined surface that approximates the Geoid. 
+- The most popular reference ellipsoid is WGS 1984.
+
+.footnote[Source: https://kartoweb.itc.nl/]
+
+---
+
+## Projections are used to transform 3D spherical surface to 2D on a plane sheet of paper
+
+&lt;img src="images/ProjectionSys.png" width="800" style="display: block; margin: auto;" /&gt;
+
+--
+
+It is not possible to represent a 3D object to a single 2D map without loosing information.
+
+---
+## Depending on the agreeable tradeoffs with respect to distortions, a specific projection form is chosen.
+
+&lt;img src="images/Proj.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Summary
+
+- The shape of earth is irregular, and called `Geoid`
+
+- Different ellipsoids are use to approximate different region of the earth. 
+
+- Conversion from 3D to 2D map is not possible without loosing information. 
+
+- This conversion process is called map projection.
+
+---
+
+## Which map is correct?
+
+&lt;img src="images/USmap.jpg" width="860" style="display: block; margin: auto;" /&gt;
+
+.footnote[Source: https://knowwhereconsulting.co.uk/  ]
+---
+
+class: inverse middle
+
+.b[.f3[.center[Thank you!&lt;br /&gt;Questions?]]]
+&lt;br /&gt;
+
+----
+
+&lt;br /&gt; 
+
+- D-Block, 2nd floor, C8. &lt;br /&gt; 
+- ankit.deshmukh@sot.pdpu.ac.in
+- ankitdeshmukh.com
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

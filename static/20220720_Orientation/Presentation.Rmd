@@ -108,7 +108,7 @@ knitr::include_graphics("images/OldMap.jpg", error = FALSE)
 
 --
 
-.light-red[.f3[To identify features we need a suitable *co-ordinate reference system (CRS)*]]
+.light-red[.f4[To identify features we need a suitable *co-ordinate reference system (CRS)*]]
 
 ---
 
@@ -152,17 +152,8 @@ knitr::include_graphics("images/Proj.png", error = FALSE)
 ```
 
 ---
-## Which map is correct?
 
-```{r, include=TRUE, echo=FALSE, out.width=860, fig.align='center'}
-knitr::include_graphics("images/USmap.jpg", error = FALSE)
-```
-
-.footnote[Source: https://knowwhereconsulting.co.uk/  ]
-
----
-
-## Summary of todays presentation
+## Summary
 
 - The shape of earth is irregular, and called `Geoid`
 
@@ -171,6 +162,16 @@ knitr::include_graphics("images/USmap.jpg", error = FALSE)
 - Conversion from 3D to 2D map is not possible without loosing information. 
 
 - This conversion process is called map projection.
+
+---
+
+## Which map is correct?
+
+```{r, include=TRUE, echo=FALSE, out.width=860, fig.align='center'}
+knitr::include_graphics("images/USmap.jpg", error = FALSE)
+```
+
+.footnote[Source: https://knowwhereconsulting.co.uk/  ]
 ---
 
 class: inverse middle
