@@ -1,0 +1,115 @@
+---
+title: "An Introdcution of Geographical Information System"
+subtitle: "Geospatial Techniques [20CV201T]"
+author: ".f2[.gold[Dr. Ankit Deshmukh]] <br /> <br /> <br /> "
+institute: "Pandit Deendayal Energy University, Gandhinagar <br /><br />"
+date: ".f4[21 July 2022]"
+output:
+  xaringan::moon_reader:
+    css: ["css/xaringan-themer.css", "css/hl.css", "css/tachyons.min.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE,
+  results= "asis" 
+)
+
+# Bibliography and Citation  
+library(RefManageR)
+library(bibtex)
+BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "text", first.inits = FALSE)
+bib <- ReadBib("~/adx/Bibliography.bib")
+```
+
+
+```{r, echo=FALSE, include=TRUE}
+library(xaringanExtra)
+use_logo(image_url = "./css/Blog-Logo.png", link_url = "https://www.ankitdeshmukh.com/", width = "60px", height = "60px")
+
+use_progress_bar(color = "#282828",location = "top", height = "0.20em")
+```
+
+<!-- ------------------------- START SLIDES HERE --------------------------- -->
+
+## Today we are going to learn:
+
+<div class="boxed" style="--width-var: 600px;">
+.f4[CO1: Understand the basic concept of Remote Sensing and GIS techniques.]
+</div>
+
+Outline: 
+- What is GIS
+- Layers in GIS
+- Projection system
+- Compute distance on a earth. 
+
+---
+
+## Is Greenland Larger Than Australia?
+
+```{r, include=TRUE, echo=FALSE, out.width='70%', fig.align = 'center'}
+knitr::include_graphics("Images/Worldmap.jpg", error = FALSE)
+```
+
+.footnote[Image source: http://getwallpapers.com/]
+
+---
+## Is Greenland Larger Than Australia?
+
+.pull-left[
+```{r, include=TRUE, echo=FALSE, out.width='100%', fig.align = 'center'}
+knitr::include_graphics("Images/G-A.png", error = FALSE)
+```
+]
+
+.footnote[Source: https://www.wikipedia.org/]
+
+--
+.pull-right[.middle[
+.f3[According to size, Australia’s land is approximated to be 7,741,220 square kilometers dwarfing Greenland’s cover of merely 2,166,086 square kilometers. Considering the land area, .red[Australia] is **almost four times** bigger than .green[Greenland.]]]
+
+]
+
+---
+
+# Geographic Information Systems (GIS)
+GIS in simple terms: A computer system capable of holding and using data describing places on the earth's surface.
+
+.light-red.f4[.b[G] -> geographic (spatial) reference] | .light-red.f4[.b[IS] -> Information system] 
+
+
+```{r, include=TRUE, echo=FALSE, out.width=600, fig.align='center'}
+knitr::include_graphics("images/GIS_layers.png", error = FALSE)
+```
+
+---
+
+##Google map is an example of GIS
+```{r, echo=FALSE, fig.height=7}
+if(!require(leaflet)){install.packages("leaflet");library(leaflet)}
+
+m <- leaflet() %>%
+  addTiles() %>%  
+  setView(lng = 72.666, lat = 23.154, zoom = 15) %>%
+  addMarkers(lng=72.66689, lat=23.15462, popup="Welcome to PDEU!")
+m
+```
+---
+
+## Summary of todays presentation
+
+GIS is a computer system capable of holding and using data describing places on the earth's surface.

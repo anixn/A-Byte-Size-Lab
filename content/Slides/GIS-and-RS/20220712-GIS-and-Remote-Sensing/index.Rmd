@@ -11,6 +11,6 @@ tags: ["RS", "GIS", "QGIS"]
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
 
-This is my Blog site with study material.
+Click to open slides
 
-[slides/xaringan.html](../../../20220710_Introduction/Presentation.html)
+[Presentation Slide](../../../20220720_Orientation\Presentation.html)
