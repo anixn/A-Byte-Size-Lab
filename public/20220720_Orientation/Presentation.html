@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>An Introdcution of Geographical Information System</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=".f2[.gold[Dr. Ankit Deshmukh]]      " />
+    <script src="Presentation_files/header-attrs/header-attrs.js"></script>
+    <script src="Presentation_files/xaringanExtra-progressBar/progress-bar.js"></script>
+    <script src="Presentation_files/htmlwidgets/htmlwidgets.js"></script>
+    <script src="Presentation_files/jquery/jquery.min.js"></script>
+    <link href="Presentation_files/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="Presentation_files/leaflet/leaflet.js"></script>
+    <link href="Presentation_files/leafletfix/leafletfix.css" rel="stylesheet" />
+    <script src="Presentation_files/proj4/proj4.min.js"></script>
+    <script src="Presentation_files/Proj4Leaflet/proj4leaflet.js"></script>
+    <link href="Presentation_files/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="Presentation_files/leaflet-binding/leaflet.js"></script>
+    <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/hl.css" type="text/css" />
+    <link rel="stylesheet" href="css/tachyons.min.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# An Introdcution of Geographical Information System
+]
+.subtitle[
+## Geospatial Techniques [20CV201T]
+]
+.author[
+### .f2[.gold[Dr. Ankit Deshmukh]] <br /> <br /> <br />
+]
+.institute[
+### Pandit Deendayal Energy University, Gandhinagar <br /><br />
+]
+.date[
+### .f4[21 July 2022]
+]
+
+---
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 60px;
+z-index: 0;
+background-image: url(./css/Blog-Logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.ankitdeshmukh.com/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div><style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.20em;
+  background-color: #282828;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;!-- ------------------------- START SLIDES HERE --------------------------- --&gt;
+
+## Today we are going to learn:
+
+&lt;div class="boxed" style="--width-var: 600px;"&gt;
+.f4[CO1: Understand the basic concept of Remote Sensing and GIS techniques.]
+&lt;/div&gt;
+
+Outline: 
+- What is GIS
+- Layers in GIS
+- Projection system
+- Compute distance on a earth. 
+
+---
+
+## Is Greenland Larger Than Australia?
+
+&lt;img src="Images/Worldmap.jpg" width="70%" style="display: block; margin: auto;" /&gt;
+
+.footnote[Image source: http://getwallpapers.com/]
+
+---
+## Is Greenland Larger Than Australia?
+
+.pull-left[
+&lt;img src="Images/G-A.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.footnote[Source: https://www.wikipedia.org/]
+
+--
+.pull-right[.middle[
+.f3[According to size, Australia’s land is approximated to be 7,741,220 square kilometers dwarfing Greenland’s cover of merely 2,166,086 square kilometers. Considering the land area, .red[Australia] is **almost four times** bigger than .green[Greenland.]]]
+
+]
+
+---
+
+# Geographic Information Systems (GIS)
+GIS in simple terms: A computer system capable of holding and using data describing places on the earth's surface.
+
+.light-red.f4[.b[G] -&gt; geographic (spatial) reference] | .light-red.f4[.b[IS] -&gt; Information system] 
+
+
+&lt;img src="images/GIS_layers.png" width="600" style="display: block; margin: auto;" /&gt;
+
+---
+
+##Google map is an example of GIS
+<div id="htmlwidget-97490bb7df78a6bf6d9e" style="width:100%;height:504px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-97490bb7df78a6bf6d9e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[23.15462,72.66689,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Welcome to PDEU!",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[23.154,72.666],15,[]],"limits":{"lat":[23.15462,23.15462],"lng":[72.66689,72.66689]}},"evals":[],"jsHooks":[]}</script>
+---
+
+## Summary of todays presentation
+
+GIS is a computer system capable of holding and using data describing places on the earth's surface.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
