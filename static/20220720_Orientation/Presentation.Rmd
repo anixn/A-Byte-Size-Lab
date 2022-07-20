@@ -62,7 +62,7 @@ knitr::include_graphics("Images/G-A.png", error = FALSE)
 
 --
 .pull-right[.middle[
-.f4[ Considering the land area, .red[Australia] (7,741,220 km<sup>2</sup>) is **almost four times** bigger than .green[Greenland] (2,166,086 <sup>2</sup>).]]
+.f4[ Considering the land area, Australia (7,741,220 km<sup>2</sup>) is **almost four times** bigger than Greenland (2,166,086 <sup>2</sup>).]]
 
 ]
 .footnote[Source: https://www.wikipedia.org/]
@@ -70,12 +70,15 @@ knitr::include_graphics("Images/G-A.png", error = FALSE)
 
 ## Today we are going to learn:
 
-- 2D-Maps and 3D-Earth
+- What is Geospatial analysis.
 
-- Geospatial analysis 
+- 3D-Earth and 2D maps
 
-- Map projection 
+- Shape of earth
 
+- Approximate shape of earth
+
+- Map projections
 
 --
 
@@ -83,17 +86,8 @@ knitr::include_graphics("Images/G-A.png", error = FALSE)
 
 ---
 
-## Measurement of distance is crucial for human surviaval
+## Importance of map
 
-- Geosapatial analysis in a branch of surveying
-
-- Surveying: identify relative position of different features
-
-- Then prepare a maps of important features.
-
----
-
-##Google map is an example of GIS
 ```{r, echo=FALSE, fig.height=7}
 if(!require(leaflet)){install.packages("leaflet");library(leaflet)}
 
@@ -105,14 +99,25 @@ m
 ```
 ---
 
-## The Geoid
+## Map help us to identify the relative position of different features.
 
-```{r, include=TRUE, echo=FALSE, out.width=600, fig.align='center'}
-knitr::include_graphics("images/Geoid.gif", error = FALSE)
+
+```{r, include=TRUE, echo=FALSE, fig.cap="Frederik De Wit’s 1654 Dutch Sea Atlas. Image courtesy of the Harvard Map Collection", out.width=550, fig.align='center'}
+knitr::include_graphics("images/OldMap.jpg", error = FALSE)
 ```
 
 --
-This is defined as the ‘equipotential surface that most closely corresponds to mean sea level’ ('pear-shaped.')
+
+.light-red[.f3[To identify features we need a suitable *co-ordinate reference system (CRS)*]]
+
+---
+
+## Shape of earth not a perfect sphere!
+```{r, include=TRUE, echo=FALSE, out.width=570, fig.align='center'}
+knitr::include_graphics("images/Geoid.gif", error = FALSE)
+```
+--
+It's a .b[.red[Geoid]], this is defined as the equipotential surface that most closely corresponds to mean sea level (pear-shaped).
 
 ---
 
@@ -122,28 +127,32 @@ This is defined as the ‘equipotential surface that most closely corresponds to
 knitr::include_graphics("images/Elliposide.gif", error = FALSE)
 ```
 
+- A Reference Ellipsoid is a mathematically-defined surface that approximates the Geoid. 
+- The most popular reference ellipsoid is WGS 1984.
+
 .footnote[Source: https://kartoweb.itc.nl/]
 
 ---
 
-## But we need a 2D maps
+## Projections are used to transform 3D spherical surface to 2D on a plane sheet of paper
 
 ```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=800}
 knitr::include_graphics("images/ProjectionSys.png", error = FALSE)
 ```
 
 --
-It is not possible to represent a 3D object to a single 2D map without loosing information. 
+
+It is not possible to represent a 3D object to a single 2D map without loosing information.
 
 ---
-## Depending on the scale and the agreeable tradeoffs with respect to distortions, a specific projection form is chosen.
+## Depending on the agreeable tradeoffs with respect to distortions, a specific projection form is chosen.
 
 ```{r, include=TRUE, echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/Proj.png", error = FALSE)
 ```
 
 ---
-## Distortions of map 
+## Which map is correct?
 
 ```{r, include=TRUE, echo=FALSE, out.width=860, fig.align='center'}
 knitr::include_graphics("images/USmap.jpg", error = FALSE)
@@ -157,6 +166,22 @@ knitr::include_graphics("images/USmap.jpg", error = FALSE)
 
 - The shape of earth is irregular, and called `Geoid`
 
-- Different ellipsoids are use to approximate earth. 
+- Different ellipsoids are use to approximate different region of the earth. 
 
 - Conversion from 3D to 2D map is not possible without loosing information. 
+
+- This conversion process is called map projection.
+---
+
+class: inverse middle
+
+.b[.f3[.center[Thank you!<br />Questions?]]]
+<br />
+
+----
+
+<br /> 
+
+- D-Block, 2nd floor, C8. <br /> 
+- ankit.deshmukh@sot.pdpu.ac.in
+- ankitdeshmukh.com
