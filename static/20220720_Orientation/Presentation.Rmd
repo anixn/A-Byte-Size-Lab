@@ -1,7 +1,7 @@
 ---
-title: "An Introdcution of Geographical Information System"
-subtitle: "Geospatial Techniques [20CV201T]"
-author: ".f2[.gold[Dr. Ankit Deshmukh]] <br /> <br /> <br /> "
+title: "An Introduction of <br /> Geospatial Analysis Techniques"
+subtitle: "<br /> .f3[Geospatial Techniques [20CV201T]]"
+author: ".f3[.gold[Dr. Ankit Deshmukh]] <br /> <br /> "
 institute: "Pandit Deendayal Energy University, Gandhinagar <br /><br />"
 date: ".f4[21 July 2022]"
 output:
@@ -43,23 +43,7 @@ use_logo(image_url = "./css/Blog-Logo.png", link_url = "https://www.ankitdeshmuk
 use_progress_bar(color = "#282828",location = "top", height = "0.20em")
 ```
 
-<!-- ------------------------- START SLIDES HERE --------------------------- -->
-
-## Today we are going to learn:
-
-<div class="boxed" style="--width-var: 600px;">
-.f4[CO1: Understand the basic concept of Remote Sensing and GIS techniques.]
-</div>
-
-Outline: 
-- What is GIS
-- Layers in GIS
-- Projection system
-- Compute distance on a earth. 
-
----
-
-## Is Greenland Larger Than Australia?
+## Is Greenland larger than Australia?
 
 ```{r, include=TRUE, echo=FALSE, out.width='70%', fig.align = 'center'}
 knitr::include_graphics("Images/Worldmap.jpg", error = FALSE)
@@ -68,7 +52,7 @@ knitr::include_graphics("Images/Worldmap.jpg", error = FALSE)
 .footnote[Image source: http://getwallpapers.com/]
 
 ---
-## Is Greenland Larger Than Australia?
+## Is Greenland larger than Australia?
 
 .pull-left[
 ```{r, include=TRUE, echo=FALSE, out.width='100%', fig.align = 'center'}
@@ -76,25 +60,36 @@ knitr::include_graphics("Images/G-A.png", error = FALSE)
 ```
 ]
 
-.footnote[Source: https://www.wikipedia.org/]
-
 --
 .pull-right[.middle[
-.f3[According to size, Australia’s land is approximated to be 7,741,220 square kilometers dwarfing Greenland’s cover of merely 2,166,086 square kilometers. Considering the land area, .red[Australia] is **almost four times** bigger than .green[Greenland.]]]
+.f4[ Considering the land area, .red[Australia] (7,741,220 km<sup>2</sup>) is **almost four times** bigger than .green[Greenland] (2,166,086 <sup>2</sup>).]]
 
 ]
+.footnote[Source: https://www.wikipedia.org/]
+---
+
+## Today we are going to learn:
+
+- 2D-Maps and 3D-Earth
+
+- Geospatial analysis 
+
+- Map projection 
+
+
+--
+
+<br /> <br /> <br /> .center[.light-red[.f3[CO1: Understand the basic concept of Geospatial techniques.]]]
 
 ---
 
-# Geographic Information Systems (GIS)
-GIS in simple terms: A computer system capable of holding and using data describing places on the earth's surface.
+## Measurement of distance is crucial for human surviaval
 
-.light-red.f4[.b[G] -> geographic (spatial) reference] | .light-red.f4[.b[IS] -> Information system] 
+- Geosapatial analysis in a branch of surveying
 
+- Surveying: identify relative position of different features
 
-```{r, include=TRUE, echo=FALSE, out.width=600, fig.align='center'}
-knitr::include_graphics("images/GIS_layers.png", error = FALSE)
-```
+- Then prepare a maps of important features.
 
 ---
 
@@ -110,6 +105,58 @@ m
 ```
 ---
 
+## The Geoid
+
+```{r, include=TRUE, echo=FALSE, out.width=600, fig.align='center'}
+knitr::include_graphics("images/Geoid.gif", error = FALSE)
+```
+
+--
+This is defined as the ‘equipotential surface that most closely corresponds to mean sea level’ ('pear-shaped.')
+
+---
+
+## An approximate shape for earth
+
+```{r, include=TRUE, echo=FALSE, out.width=700, fig.align='center'}
+knitr::include_graphics("images/Elliposide.gif", error = FALSE)
+```
+
+.footnote[Source: https://kartoweb.itc.nl/]
+
+---
+
+## But we need a 2D maps
+
+```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=800}
+knitr::include_graphics("images/ProjectionSys.png", error = FALSE)
+```
+
+--
+It is not possible to represent a 3D object to a single 2D map without loosing information. 
+
+---
+## Depending on the scale and the agreeable tradeoffs with respect to distortions, a specific projection form is chosen.
+
+```{r, include=TRUE, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/Proj.png", error = FALSE)
+```
+
+---
+## Distortions of map 
+
+```{r, include=TRUE, echo=FALSE, out.width=860, fig.align='center'}
+knitr::include_graphics("images/USmap.jpg", error = FALSE)
+```
+
+.footnote[Source: https://knowwhereconsulting.co.uk/  ]
+
+---
+
 ## Summary of todays presentation
 
-GIS is a computer system capable of holding and using data describing places on the earth's surface.
+- The shape of earth is irregular, and called `Geoid`
+
+- Different ellipsoids are use to approximate earth. 
+
+- Conversion from 3D to 2D map is not possible without loosing information. 
