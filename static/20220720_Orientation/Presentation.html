@@ -119,15 +119,13 @@ top:1em;right:1em;
 .footnote[Source: https://www.wikipedia.org/]
 ---
 
-## Today we are going to learn:
-
-- What is Geospatial analysis.
+## Today, we are going to learn:
 
 - 3D-Earth and 2D maps
 
-- Shape of earth
+- Shape of the earth
 
-- Approximate shape of earth
+- Ellipsoid - an approximate shape of the earth
 
 - Map projections
 
@@ -139,11 +137,11 @@ top:1em;right:1em;
 
 ## Importance of map
 
-<div id="htmlwidget-0b8f61b6f5e2541fc1d9" style="width:100%;height:504px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0b8f61b6f5e2541fc1d9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[23.15462,72.66689,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Welcome to PDEU!",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[23.154,72.666],15,[]],"limits":{"lat":[23.15462,23.15462],"lng":[72.66689,72.66689]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-93884b64266400058637" style="width:100%;height:504px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-93884b64266400058637">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[23.15462,72.66689,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Welcome to PDEU!",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[23.154,72.666],15,[]],"limits":{"lat":[23.15462,23.15462],"lng":[72.66689,72.66689]}},"evals":[],"jsHooks":[]}</script>
 ---
 
-## Map help us to identify the relative position of different features.
+## Map helps us to identify the relative position of different features.
 
 
 &lt;div class="figure" style="text-align: center"&gt;
@@ -157,34 +155,34 @@ top:1em;right:1em;
 
 ---
 
-## Shape of earth not a perfect sphere!
+## Shape of the earth is not a perfect sphere!
 &lt;img src="images/Geoid.gif" width="570" style="display: block; margin: auto;" /&gt;
 --
 It's a .b[.red[Geoid]], this is defined as the equipotential surface that most closely corresponds to mean sea level (pear-shaped).
 
 ---
 
-## An approximate shape for earth
+## An approximate shape of the earth
 
 &lt;img src="images/Elliposide.gif" width="700" style="display: block; margin: auto;" /&gt;
 
-- A Reference Ellipsoid is a mathematically-defined surface that approximates the Geoid. 
-- The most popular reference ellipsoid is WGS 1984.
+- A Reference Ellipsoid is a mathematically defined surface that approximates the Geoid. 
+- The most popular reference ellipsoid is **WGS 1984**.
 
 .footnote[Source: https://kartoweb.itc.nl/]
 
 ---
 
-## Projections are used to transform 3D spherical surface to 2D on a plane sheet of paper
+## Projections are used to transform 3D spherical surface to 2D on a plane
 
 &lt;img src="images/ProjectionSys.png" width="800" style="display: block; margin: auto;" /&gt;
 
 --
 
-It is not possible to represent a 3D object to a single 2D map without loosing information.
+It is impossible to represent a 3D object on a single 2D map without losing information.
 
 ---
-## Depending on the agreeable tradeoffs with respect to distortions, a specific projection form is chosen.
+## Depending on the agreeable tradeoffs for distortions, a specific projection form is chosen.
 
 &lt;img src="images/Proj.png" width="100%" style="display: block; margin: auto;" /&gt;
 
@@ -192,11 +190,11 @@ It is not possible to represent a 3D object to a single 2D map without loosing i
 
 ## Summary
 
-- The shape of earth is irregular, and called `Geoid`
+- The shape of the earth is irregular and called `Geoid.`
 
-- Different ellipsoids are use to approximate different region of the earth. 
+- Different ellipsoids are used to approximate different regions of the earth. 
 
-- Conversion from 3D to 2D map is not possible without loosing information. 
+- Conversion from 3D to 2D map is impossible without losing information.
 
 - This conversion process is called map projection.
 
@@ -218,9 +216,9 @@ class: inverse middle
 
 &lt;br /&gt; 
 
-- D-Block, 2nd floor, C8. &lt;br /&gt; 
-- ankit.deshmukh@sot.pdpu.ac.in
-- ankitdeshmukh.com
+&gt; D-Block, 2nd floor, C8. &lt;br /&gt; 
+&gt; ankit.deshmukh@sot.pdpu.ac.in &lt;br /&gt; 
+&gt; [ankitdeshmukh.com](www.ankitdeshmukh.com)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
