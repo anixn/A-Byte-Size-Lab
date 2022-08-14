@@ -5,8 +5,8 @@ layout: "main"
 ---
 ![header](../../../Headers/Geo-Ans.jpg)
 
-Slides of `Geospatial Techniques`
+### Slides of `Geospatial Techniques`
 
-[Week 01](../../../GA-W-01/Slides.html)
-[Week 02](../../../GA-W-02/Slides.html)
-[Week 03](../../../GA-W-03/Slides.html)
+1. [Week 01: Handout](../../../GA-W-01/Slides.html)
+1. [Week 02: Introduction of RS and GIS](../../../GA-W-02/Slides.html)
+1. [Week 03: Digital Image processing](../../../GA-W-03/Slides.html)
