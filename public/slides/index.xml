@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Slides on Bytesize Blog</title>
+    <title>Bytesize Blog</title>
     <link>https://bytesize-blog.netlify.app/slides/</link>
-    <description>Recent content in Slides on Bytesize Blog</description>
+    <description>Recent content on Bytesize Blog</description>
     <image>
       <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
       <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>

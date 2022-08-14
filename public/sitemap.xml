@@ -65,6 +65,8 @@
     <loc>https://bytesize-blog.netlify.app/post/2021-09-21-getting-started-with-r/</loc>
     <lastmod>2021-09-21T11:25:39+00:00</lastmod>
   </url><url>
+    <loc>https://bytesize-blog.netlify.app/slides/</loc>
+  </url><url>
     <loc>https://bytesize-blog.netlify.app/slides/gis-and-rs/</loc>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/tags/analysis/</loc>
@@ -88,7 +90,5 @@
     <loc>https://bytesize-blog.netlify.app/search/</loc>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/series/</loc>
-  </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/</loc>
   </url>
 </urlset>
