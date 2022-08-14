@@ -10,15 +10,5 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://bytesize-blog.netlify.app/slides/geospatial-techniques/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Introduction - Geospatial Techniques</title>
-      <link>https://bytesize-blog.netlify.app/slides/geospatial-techniques/20220712-geospatial-techniques/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/slides/geospatial-techniques/20220712-geospatial-techniques/</guid>
-      <description>This is my Blog site with study material.
-slides/xaringan.html</description>
-    </item>
-    
   </channel>
 </rss>
