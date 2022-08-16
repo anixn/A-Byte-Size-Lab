@@ -10,15 +10,5 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://bytesize-blog.netlify.app/slides/gis-and-rs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Introduction - Remote Sensing and GIS</title>
-      <link>https://bytesize-blog.netlify.app/slides/gis-and-rs/20220712-gis-and-remote-sensing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/slides/gis-and-rs/20220712-gis-and-remote-sensing/</guid>
-      <description>Click to open slides
-Presentation Slide</description>
-    </item>
-    
   </channel>
 </rss>
