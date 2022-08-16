@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 20:32:05 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slides</title>
+      <link>https://bytesize-blog.netlify.app/tags/slides/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/tags/slides/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xaringan</title>
+      <link>https://bytesize-blog.netlify.app/tags/xaringan/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/tags/xaringan/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>plot</title>
       <link>https://bytesize-blog.netlify.app/tags/plot/</link>

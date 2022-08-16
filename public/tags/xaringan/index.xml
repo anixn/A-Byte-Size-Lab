@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Xaringan on Bytesize Blog</title>
+    <link>https://bytesize-blog.netlify.app/tags/xaringan/</link>
+    <description>Recent content in Xaringan on Bytesize Blog</description>
+    <image>
+      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
+      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/xaringan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create Awesome slides with Xaringan</title>
+      <link>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</guid>
+      <description>This is my blogWeek 01: Handout</description>
+    </item>
+    
+  </channel>
+</rss>

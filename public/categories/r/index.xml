@@ -10,7 +10,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 20:32:05 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create Awesome slides with Xaringan</title>
+      <link>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</guid>
+      <description>This is my blogWeek 01: Handout</description>
+    </item>
+    
     <item>
       <title>Setting up R, Python, and SQL in RStudio</title>
       <link>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</link>

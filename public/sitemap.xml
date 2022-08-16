@@ -3,27 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bytesize-blog.netlify.app/</loc>
-    <lastmod>2022-07-04T20:32:05+00:00</lastmod>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/categories/</loc>
-    <lastmod>2022-07-04T20:32:05+00:00</lastmod>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/plot/</loc>
-    <lastmod>2022-07-04T20:32:05+00:00</lastmod>
+    <loc>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/post/</loc>
-    <lastmod>2022-07-04T20:32:05+00:00</lastmod>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/categories/r/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/categories/rmd/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/tags/slides/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/tags/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/tags/xaringan/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/tags/plot/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/tags/setup/</loc>
-    <lastmod>2022-07-04T20:32:05+00:00</lastmod>
-  </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/categories/ml/</loc>
