@@ -110,7 +110,7 @@ Atmospheric window are significant for remote sensing, because energy within the
 ---
 # Classification of Remote Sensing Sensors
 <img src="images/Classification.jpg" class="w-50 br4 dib center">
-.gray.center[Remote sensing sensors classification.  `r Citep(bib, "joseph2005fundamentals")`]
+.gray.center[Remote sensing sensors classification.  `r Citep(bib, "joseph2020fundamentals")`]
 
 The sensors classified based on their working principles and recording methodology:
 1. Photographic camera
@@ -172,6 +172,39 @@ The sensors classified based on their working principles and recording methodolo
 .blue.center[A land cover map of the big island of Hawaii uses 1999-2001 data from Landsat 7, showing black lava flows from Mauna Loa, grayish dormant Mauna Kea, a plume of smoke from active Kilauea, dark green tropical forests, and light green agricultural areas.]
 
 ]
+
+---
+# False Color Images
+Images have colors which were recorded in the visible or non-visible parts of the electromagnetic spectrum. 
+
+--
+
+**Our four most common false-color band combinations are:**
+
+- Near infrared (red), green (blue), red (green). *This is a traditional band combination useful in seeing changes in plant health.*
+
+--
+
+- Shortwave infrared (red), near infrared (green), and green (blue). *Often used to show floods or newly burned land.*
+
+--
+
+- Blue (red), two different shortwave infrared bands (green and blue). *We use this to differentiate between snow, ice, and clouds.*
+
+--
+
+- Thermal infrared. *Usually shown in tones of gray to illustrate temperature.*
+
+.footnote[For more details read: https://earthobservatory.nasa.gov/features/FalseColor/page6.php]
+
+---
+<img src="images/1st.jpg" class="w-70 br4 dib center">
+
+Near infrared, red, and green light were used to create this false-color image of Algeria. Red, plant-covered land dominates the scene. *(NASA image by Robert Simmon with Landsat 8 data from the USGS Earth Explorer.)*
+
+---
+<img src="images/2nd.jpg" class="w-70 br4 dib center">
+The shortwave infrared, near infrared, and green light version of the Algeria scene highlights the presence of water and wet soil in an otherwise dry landscape. *(NASA image by Robert Simmon with Landsat 8 data from the USGS Earth Explorer.)*
 
 ---
 # Landsat sensors 
