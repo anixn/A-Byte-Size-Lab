@@ -9,4 +9,4 @@ layout: "main"
 
 1. [Week 01: Handout](../../../GA-W-01/Slides.html)
 1. [Week 02: Introduction of RS and GIS](../../../GA-W-02/Slides.html)
-1. [Week 03: Digital Image processing](../../../GA-W-03/Slides.html)
+1. [Week 03 & 4: Remote Sensing Resolutions](../../../GA-W-03/Slides.html)

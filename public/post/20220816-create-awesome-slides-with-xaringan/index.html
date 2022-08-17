@@ -7,7 +7,9 @@
 <meta name="robots" content="index, follow">
 <title>Create Awesome slides with Xaringan | Bytesize Blog</title>
 <meta name="keywords" content="Slides, Xaringan">
-<meta name="description" content="This is my blogWeek 01: Handout">
+<meta name="description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -89,7 +91,9 @@ if (!doNotTrack) {
 }
 </script>
 <meta property="og:title" content="Create Awesome slides with Xaringan" />
-<meta property="og:description" content="This is my blogWeek 01: Handout" />
+<meta property="og:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/" />
 <meta property="og:image" content="https://bytesize-blog.netlify.app/Cover.png" /><meta property="article:section" content="post" />
@@ -99,7 +103,9 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://bytesize-blog.netlify.app/Cover.png" />
 <meta name="twitter:title" content="Create Awesome slides with Xaringan"/>
-<meta name="twitter:description" content="This is my blogWeek 01: Handout"/>
+<meta name="twitter:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan."/>
 
 
 <script type="application/ld+json">
@@ -128,12 +134,12 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "Create Awesome slides with Xaringan",
   "name": "Create Awesome slides with Xaringan",
-  "description": "This is my blog\rWeek 01: Handout",
+  "description": "HTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.",
   "keywords": [
     "Slides", "Xaringan"
   ],
-  "articleBody": "\rThis is my blog\rWeek 01: Handout\n",
-  "wordCount" : "7",
+  "articleBody": "\rHTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.\nInstalling Xaringan\rInstall the xaringan with CRAN or Github\ninstall.packages('xaringan')\r# or for latest version\rremotes::install_github('yihui/xaringan')\rSetting up the xaringan slides\r---\rtitle: \"Title of my presentation\"\rsubtitle: \"Your subtitle\"\rauthor: \"**Dr. Ankit Deshmukh**\"\rinstitute: \"Affiliation\"\rdate: \"Week #: `r format(Sys.time(), '%d %B %Y')`\"\routput:\rxaringan::moon_reader:\rcss: [\"css/default.css\", \"css/metropolis.css\", \"css/tachyons.min.css\"]\rself_contained: false lib_dir: libs\rnature:\rhighlightStyle: solarized-light\rhighlightLines: true\rcountIncrementalSlides: false\rratio: 16:9\r---\rGlobal Setting for figures and code chunk\rSetting up for Bibliography and Citation\r```{r setup, include=FALSE}\rlibrary(RefManageR)\rlibrary(bibtex)\rBibOptions(check.entries = FALSE, bib.style = \"authoryear\", style = \"text\", first.inits = FALSE)\rbib \u003c- ReadBib(\"~/adx/Bibliography.bib\") # A bibtex bibliography file. Use zotoro for this. ```\rUse xaringanExtra to enhance slide feature\ruse_logo for adding the logo in your slide.\ruse_progress_bar for progress bar.\ruse_extra_styles for code hover effect.\ruse_xaringan_extra(\"tile_view\") for see the preview of slides a once, it helps to jump on slides.\ruse_xaringan_extra(\"tachyons\") for an awesome miniature css with your slides. Find more here https://tachyons.io/#features\r```{r, echo=FALSE, include=TRUE}\rlibrary(xaringanExtra)\ruse_logo(image_url = \"./css/Anix-Logo.png\", link_url = \"https://www.ankitdeshmukh.com/\", width = \"60px\", height = \"60px\")\ruse_progress_bar(color = \"#28282888\",location = \"top\", height = \"0.25em\")\ruse_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)\ruse_xaringan_extra(c(\"tile_view\", \"tachyons\", \"use_logo\", \"use_progress_bar\"))\r```\rOrganize all the image in images folder\ruse knitr of html+tachyons to add image\n```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=\"60%\"}\rknitr::include_graphics(\"images/YourImage.xyz\", error = FALSE)\r```\ror Checkout the slides with Xaringan\r",
+  "wordCount" : "300",
   "inLanguage": "en",
   "image":"https://bytesize-blog.netlify.app/Cover.png","datePublished": "2022-08-16T00:00:00Z",
   "dateModified": "2022-08-16T00:00:00Z",
@@ -233,7 +239,7 @@ if (!doNotTrack) {
     <h1 class="post-title">
       Create Awesome slides with Xaringan
     </h1>
-    <div class="post-meta"><span title='2022-08-16 00:00:00 +0000 UTC'>August 16, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
+    <div class="post-meta"><span title='2022-08-16 00:00:00 +0000 UTC'>August 16, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
 </div>
   </header> 
@@ -250,7 +256,19 @@ if (!doNotTrack) {
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#" aria-label="This is my blog">This is my blog</a>
+                    <a href="#" aria-label="HTML slides with Xaringan.">HTML slides with Xaringan.</a></li>
+                <li>
+                    <a href="#" aria-label="Installing Xaringan">Installing Xaringan</a></li>
+                <li>
+                    <a href="#" aria-label="Setting up the xaringan slides">Setting up the xaringan slides</a></li>
+                <li>
+                    <a href="#" aria-label="Setting up for Bibliography and Citation">Setting up for Bibliography and Citation</a></li>
+                <li>
+                    <a href="#" aria-label="Use xaringanExtra to enhance slide feature">Use xaringanExtra to enhance slide feature</a></li>
+                <li>
+                    <a href="#" aria-label="Organize all the image in images folder">Organize all the image in images folder</a></li>
+                <li>
+                    <a href="#" aria-label="Checkout the slides with Xaringan">Checkout the slides with Xaringan</a>
                 </li>
             </ul>
         </div>
@@ -260,12 +278,102 @@ if (!doNotTrack) {
   <div class="post-content">
 
 
-<div id="this-is-my-blog" class="section level2">
-<h2>This is my blog</h2>
-<div class="figure">
-<embed src="../../../20220710_Introduction/Presentation.html" style="width:100.0%" height="400" />
-<p class="caption">Week 01: Handout</p>
+<div id="html-slides-with-xaringan." class="section level2">
+<h2>HTML slides with Xaringan.</h2>
+<p><code>Xaringan</code> is an R package for creating slideshows with <code>remark.js</code> through R Markdown.</p>
+<p>…from <code>https://github.com/yihui/xaringan</code></p>
+<blockquote>
+<p>The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.</p>
+</blockquote>
 </div>
+<div id="installing-xaringan" class="section level2">
+<h2>Installing Xaringan</h2>
+<p>Install the xaringan with CRAN or Github</p>
+<pre class="r"><code>install.packages(&#39;xaringan&#39;)
+
+# or for latest version
+remotes::install_github(&#39;yihui/xaringan&#39;)</code></pre>
+</div>
+<div id="setting-up-the-xaringan-slides" class="section level2">
+<h2>Setting up the xaringan slides</h2>
+<pre class="yaml"><code>---
+title: &quot;Title of my presentation&quot;
+subtitle: &quot;Your subtitle&quot;
+author: &quot;**Dr. Ankit Deshmukh**&quot;
+institute: &quot;Affiliation&quot;
+date: &quot;Week #: `r format(Sys.time(), &#39;%d %B %Y&#39;)`&quot;
+output:
+  xaringan::moon_reader:
+    css: [&quot;css/default.css&quot;, &quot;css/metropolis.css&quot;, &quot;css/tachyons.min.css&quot;]
+    self_contained: false 
+    lib_dir: libs
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---</code></pre>
+<p>Global Setting for figures and code chunk
+<!--
+
+````r
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  #out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE,
+  results= "asis" # Useful to show bibliography as normal text.
+)
+```
+````
+--></p>
+</div>
+<div id="setting-up-for-bibliography-and-citation" class="section level2">
+<h2>Setting up for Bibliography and Citation</h2>
+<pre class="r"><code>```{r setup, include=FALSE}
+library(RefManageR)
+library(bibtex)
+BibOptions(check.entries = FALSE, bib.style = &quot;authoryear&quot;, style = &quot;text&quot;, first.inits = FALSE)
+bib &lt;- ReadBib(&quot;~/adx/Bibliography.bib&quot;) # A bibtex bibliography file. Use zotoro for this. 
+```</code></pre>
+</div>
+<div id="use-xaringanextra-to-enhance-slide-feature" class="section level2">
+<h2>Use xaringanExtra to enhance slide feature</h2>
+<ul>
+<li><code>use_logo</code> for adding the logo in your slide.</li>
+<li><code>use_progress_bar</code> for progress bar.</li>
+<li><code>use_extra_styles</code> for code hover effect.</li>
+<li><code>use_xaringan_extra("tile_view")</code> for see the preview of slides a once, it helps to jump on slides.</li>
+<li><code>use_xaringan_extra("tachyons")</code> for an awesome miniature css with your slides. Find more here <a href="https://tachyons.io/#features" class="uri">https://tachyons.io/#features</a></li>
+</ul>
+<pre class="r"><code>```{r, echo=FALSE, include=TRUE}
+library(xaringanExtra)
+use_logo(image_url = &quot;./css/Anix-Logo.png&quot;, link_url = &quot;https://www.ankitdeshmukh.com/&quot;, width = &quot;60px&quot;, height = &quot;60px&quot;)
+use_progress_bar(color = &quot;#28282888&quot;,location = &quot;top&quot;, height = &quot;0.25em&quot;)
+use_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)
+use_xaringan_extra(c(&quot;tile_view&quot;, &quot;tachyons&quot;, &quot;use_logo&quot;, &quot;use_progress_bar&quot;))
+```</code></pre>
+</div>
+<div id="organize-all-the-image-in-images-folder" class="section level2">
+<h2>Organize all the image in images folder</h2>
+<p><img src="Folder.png" width="256" style="display: block; margin: auto;" /></p>
+<p>use <code>knitr</code> of <code>html+tachyons</code> to add image</p>
+<pre class="r"><code>```{r, include=TRUE, echo=FALSE, fig.align=&#39;center&#39;, out.width=&quot;60%&quot;}
+knitr::include_graphics(&quot;images/YourImage.xyz&quot;, error = FALSE)
+```
+
+or 
+
+&lt;img src=&quot;images/YourImage.xyz&quot; class=&quot;w-60 br4 dib center&quot;&gt;</code></pre>
+</div>
+<div id="checkout-the-slides-with-xaringan" class="section level2">
+<h2>Checkout the slides with Xaringan</h2>
+<p><embed src="../../../20220710_Introduction/Presentation.html" style="width:100.0%" height="400" /></p>
 </div>
 
 

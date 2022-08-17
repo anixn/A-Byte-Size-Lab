@@ -1,9 +1,9 @@
 ---
-title: "Digital Image processing"
-subtitle: "🗺️<br>.i[~/Geospatial Techniques/Remote Sensing]"
+title: "Remote sensing resolutions"
+subtitle: ".f3[🗺️<br>.i[~/Geospatial Techniques/Remote Sensing]]"
 author: "**Dr. Ankit Deshmukh**"
 institute: "Pandit Deendayal Energy University, Gandhinagar"
-date: "Week 03: 08-10 August 2022"
+date: "Week 03 & 04: 08-10 & 15-17 August 2022"
 output:
   xaringan::moon_reader:
     css: ["css/default.css", "css/metropolis.css", "css/tachyons.min.css"]
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.show = TRUE,
   hiline = TRUE,
-  results= "asis" 
+  results = "asis" 
 )
 
 # Bibliography and Citation  
@@ -318,3 +318,101 @@ more precisely identified
 ```{r, echo=FALSE}
 PrintBibliography(bib, .opts = list(bib.style = "alphabetic"))
 ```
+
+---
+# Spectral resolution of a sensor
+
+.pull-left[
+Spectral resolution is: 
+- Ability of a sensor to define fine wavelength intervals
+- Ability of a sensor to resolve the energy received in a spectral bandwidth.
+
+Spectral resolution depends on
+- Spectral band width of the filter
+- Sensitiveness of the detector
+
+The finer the spectral resolution, the narrower the wavelength range for a particular channel or band.
+
+]
+
+.pull-right[
+<img src="images/specrese.gif" class="w-100 br4 dib center">
+]
+
+---
+# RGB Band Composite
+<img src="images/SP-Band.png" class="w-50 br4 dib center">
+
+.footnote[Source: Wilfredo M. Rada]
+
+---
+## Finer the spectral resolution, the narrower the wavelength range for a particular channel or band.
+.pull-left[
+Most of the remote sensing systems are multi spectral, using more than one spectral band.
+
+- Spectral resolution of some of the remote sensing systems IRS LISS-III uses 4 bands: (green), (red), (near IR) and 1.55-1.70.
+
+- The Aqua/Terra MODIS instruments use 36 spectral bands, including three in the visible spectrum.
+
+- Recent development is the hyper-spectral sensors, which detect hundreds of very narrow spectral bands.
+]
+
+.pull-right[
+<img src="images/Layers.png" class="w-100 br4 dib center">
+]
+
+---
+# Spectral Resolution Bands
+.pull-left[
+- Number of spectral bands (red, green, blue, NIR, Mid-IR, thermal, etc.)
+- Width of each band
+- Certain spectral bands (or combinations) are good for identifying specific ground features
+
+- Panchromatic – 1 band (B&W)
+- Color – 3 bands (RGB)
+- Multispectral – 4+ bands (e.g. RGBNIR)
+- Hyperspectral – hundreds of bands
+
+]
+
+.pull-right[
+<img src="images/Band1.png" class="w-100 br4 dib center">
+]
+
+---
+## Different features are identified from the image by comparing their responses over different distinct spectral bands
+<img src="images/Band2.jpg" class="w-60 br4 dib center">
+
+---
+# Images in different bands
+<img src="images/Band3.png" class="w-60 br1 dib center">
+
+---
+# Temporal (time of day/season/year) resolution 	
+.left-column[
+**Time of day/season image acquisition**
+- Leaf on/leaf off
+- Tidal stage
+- Seasonal differences
+- Shadows
+- Phenological differences
+- Relationship to field sampling
+- Seasonal Considerations
+
+]
+
+.right-column[
+<img src="images/Temp.png" class="w-80 br4 dib center">
+]
+
+---
+## Animation shows deforestation and river course change in Assam in the last 3 decades.
+.footnote[Source: Raj Bhagat Palanichamy]
+
+<img src="images/Deforestation.gif" class="w-100 br4 dib center">
+
+---
+# River path change with time
+<img src="images/River.gif" class="w-80 br4 dib center">
+
+.footnote[Image source: https://sploid.gizmodo.com/]
