@@ -463,6 +463,58 @@ Most of the remote sensing systems are multi spectral, using more than one spect
 &lt;img src="images/River.gif" class="w-80 br4 dib center"&gt;
 
 .footnote[Image source: https://sploid.gizmodo.com/]
+
+---
+# Radiometric Resolution 
+While the arrangement of pixels describes the spatial structure of an image, the radiometric characteristics describe the actual information content in an image.
+
+- Every time an image is acquired by a sensor, its sensitivity to the magnitude of the electromagnetic energy determines the
+**radiometric resolution**. 
+
+- The finer the radiometric resolution of a sensor, the more sensitive it is to detecting small differences in reflected or emitted energy.
+
+---
+# Radiometric Resolution 
+- Imagery data are represented by positive digital numbers which vary from 0 to a selected power of 2.
+
+- Each bit records an exponent of power 2.
+
+- The maximum number of brightness levels available depends on the number of bits used in representing the energy recorded.
+
+- Thus, if a sensor used 8 bits to record the data, there would be 2&lt;sub&gt;8&lt;/sub&gt; = 256 digital values available, ranging from 0 to 255.
+
+
+&lt;img src="images/table-bit.png" class="w-80 br4 dib center"&gt;
+
+.footnote[Data volume will increase as the radiometric resolution increases?]
+
+---
+# Gray Scale Image
+.pull-left[
+
+- Most raw unprocessed satellite imagery is stored in a gray scale format.
+
+- A gray scale is a color scale that ranges from black to white, with varying intermediate shades of gray.
+
+- A commonly used gray scale for remote sensing image processing is a 256 shade gray scale.
+]
+.pull-right[
+&lt;img src="images/Gray-Grid.png" class="w-100 br4 dib center"&gt;
+.center[256 level gray scale]
+]
+
+---
+# Gray Scale image
+Each pixel has an **intensity value** (represented by a digital number)
+
+&lt;img src="images/Gray-Image.png" class="w-100 br4 dib center"&gt;
+
+
+---
+# A sample grayscale image
+&lt;img src="images/tree-pic.jpg" class="w-40 br4 dib center"&gt;
+
+.footnote[https://learnlearn.uk/binary/wp-content/uploads/sites/11/2017/01/tree-pciture-grayscale.jpg]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Create Awesome slides with Xaringan | Bytesize Blog</title>
+<title>Create awesome slides with Xaringan | Bytesize Blog</title>
 <meta name="keywords" content="Slides, Xaringan">
 <meta name="description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
 …from https://github.com/yihui/xaringan
@@ -90,7 +90,7 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Create Awesome slides with Xaringan" />
+<meta property="og:title" content="Create awesome slides with Xaringan" />
 <meta property="og:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
 …from https://github.com/yihui/xaringan
 The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan." />
@@ -102,7 +102,7 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://bytesize-blog.netlify.app/Cover.png" />
-<meta name="twitter:title" content="Create Awesome slides with Xaringan"/>
+<meta name="twitter:title" content="Create awesome slides with Xaringan"/>
 <meta name="twitter:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
 …from https://github.com/yihui/xaringan
 The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan."/>
@@ -122,7 +122,7 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Create Awesome slides with Xaringan",
+      "name": "Create awesome slides with Xaringan",
       "item": "https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/"
     }
   ]
@@ -132,14 +132,14 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Create Awesome slides with Xaringan",
-  "name": "Create Awesome slides with Xaringan",
+  "headline": "Create awesome slides with Xaringan",
+  "name": "Create awesome slides with Xaringan",
   "description": "HTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.",
   "keywords": [
     "Slides", "Xaringan"
   ],
-  "articleBody": "\rHTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.\nInstalling Xaringan\rInstall the xaringan with CRAN or Github\ninstall.packages('xaringan')\r# or for latest version\rremotes::install_github('yihui/xaringan')\rSetting up the xaringan slides\r---\rtitle: \"Title of my presentation\"\rsubtitle: \"Your subtitle\"\rauthor: \"**Dr. Ankit Deshmukh**\"\rinstitute: \"Affiliation\"\rdate: \"Week #: `r format(Sys.time(), '%d %B %Y')`\"\routput:\rxaringan::moon_reader:\rcss: [\"css/default.css\", \"css/metropolis.css\", \"css/tachyons.min.css\"]\rself_contained: false lib_dir: libs\rnature:\rhighlightStyle: solarized-light\rhighlightLines: true\rcountIncrementalSlides: false\rratio: 16:9\r---\rGlobal Setting for figures and code chunk\rSetting up for Bibliography and Citation\r```{r setup, include=FALSE}\rlibrary(RefManageR)\rlibrary(bibtex)\rBibOptions(check.entries = FALSE, bib.style = \"authoryear\", style = \"text\", first.inits = FALSE)\rbib \u003c- ReadBib(\"~/adx/Bibliography.bib\") # A bibtex bibliography file. Use zotoro for this. ```\rUse xaringanExtra to enhance slide feature\ruse_logo for adding the logo in your slide.\ruse_progress_bar for progress bar.\ruse_extra_styles for code hover effect.\ruse_xaringan_extra(\"tile_view\") for see the preview of slides a once, it helps to jump on slides.\ruse_xaringan_extra(\"tachyons\") for an awesome miniature css with your slides. Find more here https://tachyons.io/#features\r```{r, echo=FALSE, include=TRUE}\rlibrary(xaringanExtra)\ruse_logo(image_url = \"./css/Anix-Logo.png\", link_url = \"https://www.ankitdeshmukh.com/\", width = \"60px\", height = \"60px\")\ruse_progress_bar(color = \"#28282888\",location = \"top\", height = \"0.25em\")\ruse_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)\ruse_xaringan_extra(c(\"tile_view\", \"tachyons\", \"use_logo\", \"use_progress_bar\"))\r```\rOrganize all the image in images folder\ruse knitr of html+tachyons to add image\n```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=\"60%\"}\rknitr::include_graphics(\"images/YourImage.xyz\", error = FALSE)\r```\ror Checkout the slides with Xaringan\r",
-  "wordCount" : "300",
+  "articleBody": "\rHTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.\nInstalling Xaringan\rInstall the xaringan with CRAN or Github\ninstall.packages('xaringan')\r# or for latest version\rremotes::install_github('yihui/xaringan')\rSetting up the xaringan slides\r---\rtitle: \"Title of my presentation\"\rsubtitle: \"Your subtitle\"\rauthor: \"**Dr. Ankit Deshmukh**\"\rinstitute: \"Affiliation\"\rdate: \"Week #: `r format(Sys.time(), '%d %B %Y')`\"\routput:\rxaringan::moon_reader:\rcss: [\"css/default.css\", \"css/metropolis.css\", \"css/tachyons.min.css\"]\rself_contained: false lib_dir: libs\rnature:\rhighlightStyle: solarized-light\rhighlightLines: true\rcountIncrementalSlides: false\rratio: 16:9\r---\rGlobal Setting for figures and code chunk\n```{r setup, include=FALSE}\roptions(htmltools.dir.version = FALSE)\rknitr::opts_chunk$set(\r#out.width = \"100%\",\rcache = FALSE,\recho = TRUE,\rmessage = FALSE, warning = FALSE,\rfig.show = TRUE,\rhiline = TRUE,\rresults= \"asis\" # Useful to show bibliography as normal text.\r)\r```\rSetting up for Bibliography and Citation\r```{r setup, include=FALSE}\rlibrary(RefManageR)\rlibrary(bibtex)\rBibOptions(check.entries = FALSE, bib.style = \"authoryear\", style = \"text\", first.inits = FALSE)\rbib \u003c- ReadBib(\"~/adx/Bibliography.bib\") # A bibtex bibliography file. Use zotoro for this. ```\rUse xaringanExtra to enhance slide feature\ruse_logo for adding the logo in your slide.\ruse_progress_bar for progress bar.\ruse_extra_styles for code hover effect.\ruse_xaringan_extra(\"tile_view\") for see the preview of slides a once, it helps to jump on slides.\ruse_xaringan_extra(\"tachyons\") for an awesome miniature css with your slides. Find more here https://tachyons.io/#features\r```{r, echo=FALSE, include=TRUE}\rlibrary(xaringanExtra)\ruse_logo(image_url = \"./css/Anix-Logo.png\", link_url = \"https://www.ankitdeshmukh.com/\", width = \"60px\", height = \"60px\")\ruse_progress_bar(color = \"#28282888\",location = \"top\", height = \"0.25em\")\ruse_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)\ruse_xaringan_extra(c(\"tile_view\", \"tachyons\", \"use_logo\", \"use_progress_bar\"))\r```\rOrganize all the image in images folder\ruse knitr of html+tachyons to add image\n```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=\"60%\"}\rknitr::include_graphics(\"images/YourImage.xyz\", error = FALSE)\r```\ror use html tags\rCheckout the slides with Xaringan\rClick here to view in full screen\n",
+  "wordCount" : "350",
   "inLanguage": "en",
   "image":"https://bytesize-blog.netlify.app/Cover.png","datePublished": "2022-08-16T00:00:00Z",
   "dateModified": "2022-08-16T00:00:00Z",
@@ -237,7 +237,7 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://bytesize-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://bytesize-blog.netlify.app/post/">Posts</a></div>
     <h1 class="post-title">
-      Create Awesome slides with Xaringan
+      Create awesome slides with Xaringan
     </h1>
     <div class="post-meta"><span title='2022-08-16 00:00:00 +0000 UTC'>August 16, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
@@ -266,7 +266,7 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
                 <li>
                     <a href="#" aria-label="Use xaringanExtra to enhance slide feature">Use xaringanExtra to enhance slide feature</a></li>
                 <li>
-                    <a href="#" aria-label="Organize all the image in images folder">Organize all the image in images folder</a></li>
+                    <a href="#" aria-label="Organize all the image in images folder">Organize all the image in <code>images</code> folder</a></li>
                 <li>
                     <a href="#" aria-label="Checkout the slides with Xaringan">Checkout the slides with Xaringan</a>
                 </li>
@@ -313,25 +313,20 @@ output:
       countIncrementalSlides: false
       ratio: 16:9
 ---</code></pre>
-<p>Global Setting for figures and code chunk
-<!--
-
-````r
-```{r setup, include=FALSE}
+<p>Global Setting for figures and code chunk</p>
+<pre class="r"><code>```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(
-  #out.width = "100%",
+  #out.width = &quot;100%&quot;,
   cache = FALSE,
   echo = TRUE,
   message = FALSE, 
   warning = FALSE,
   fig.show = TRUE,
   hiline = TRUE,
-  results= "asis" # Useful to show bibliography as normal text.
+  results= &quot;asis&quot; # Useful to show bibliography as normal text.
 )
-```
-````
---></p>
+```</code></pre>
 </div>
 <div id="setting-up-for-bibliography-and-citation" class="section level2">
 <h2>Setting up for Bibliography and Citation</h2>
@@ -360,19 +355,18 @@ use_xaringan_extra(c(&quot;tile_view&quot;, &quot;tachyons&quot;, &quot;use_logo
 ```</code></pre>
 </div>
 <div id="organize-all-the-image-in-images-folder" class="section level2">
-<h2>Organize all the image in images folder</h2>
-<p><img src="Folder.png" width="256" style="display: block; margin: auto;" /></p>
+<h2>Organize all the image in <code>images</code> folder</h2>
+<p><img src="Folder.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>use <code>knitr</code> of <code>html+tachyons</code> to add image</p>
 <pre class="r"><code>```{r, include=TRUE, echo=FALSE, fig.align=&#39;center&#39;, out.width=&quot;60%&quot;}
 knitr::include_graphics(&quot;images/YourImage.xyz&quot;, error = FALSE)
 ```
-
-or 
-
+or use html tags
 &lt;img src=&quot;images/YourImage.xyz&quot; class=&quot;w-60 br4 dib center&quot;&gt;</code></pre>
 </div>
 <div id="checkout-the-slides-with-xaringan" class="section level2">
 <h2>Checkout the slides with Xaringan</h2>
+<p><a href="../../../20220710_Introduction/Presentation.html">Click here to view in full screen</a></p>
 <p><embed src="../../../20220710_Introduction/Presentation.html" style="width:100.0%" height="400" /></p>
 </div>
 
@@ -394,15 +388,15 @@ or
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Create Awesome slides with Xaringan on twitter"
-        href="https://twitter.com/intent/tweet/?text=Create%20Awesome%20slides%20with%20Xaringan&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f&amp;hashtags=Slides%2cXaringan">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Create awesome slides with Xaringan on twitter"
+        href="https://twitter.com/intent/tweet/?text=Create%20awesome%20slides%20with%20Xaringan&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f&amp;hashtags=Slides%2cXaringan">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Create Awesome slides with Xaringan on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f&amp;title=Create%20Awesome%20slides%20with%20Xaringan&amp;summary=Create%20Awesome%20slides%20with%20Xaringan&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Create awesome slides with Xaringan on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f&amp;title=Create%20awesome%20slides%20with%20Xaringan&amp;summary=Create%20awesome%20slides%20with%20Xaringan&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f20220816-create-awesome-slides-with-xaringan%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />

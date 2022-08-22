@@ -1,5 +1,5 @@
 ---
-title: Create Awesome slides with Xaringan
+title: Create awesome slides with Xaringan
 author: 'Dr. Ankit Deshmukh'
 date: 2022-08-16
 categories: ["R", "Rmd"]
@@ -46,25 +46,20 @@ output:
       countIncrementalSlides: false
       ratio: 16:9
 ---</code></pre>
-<p>Global Setting for figures and code chunk
-<!--
-
-````r
-```{r setup, include=FALSE}
+<p>Global Setting for figures and code chunk</p>
+<pre class="r"><code>```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(
-  #out.width = "100%",
+  #out.width = &quot;100%&quot;,
   cache = FALSE,
   echo = TRUE,
   message = FALSE, 
   warning = FALSE,
   fig.show = TRUE,
   hiline = TRUE,
-  results= "asis" # Useful to show bibliography as normal text.
+  results= &quot;asis&quot; # Useful to show bibliography as normal text.
 )
-```
-````
---></p>
+```</code></pre>
 </div>
 <div id="setting-up-for-bibliography-and-citation" class="section level2">
 <h2>Setting up for Bibliography and Citation</h2>
@@ -93,18 +88,17 @@ use_xaringan_extra(c(&quot;tile_view&quot;, &quot;tachyons&quot;, &quot;use_logo
 ```</code></pre>
 </div>
 <div id="organize-all-the-image-in-images-folder" class="section level2">
-<h2>Organize all the image in images folder</h2>
-<p><img src="Folder.png" width="256" style="display: block; margin: auto;" /></p>
+<h2>Organize all the image in <code>images</code> folder</h2>
+<p><img src="Folder.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>use <code>knitr</code> of <code>html+tachyons</code> to add image</p>
 <pre class="r"><code>```{r, include=TRUE, echo=FALSE, fig.align=&#39;center&#39;, out.width=&quot;60%&quot;}
 knitr::include_graphics(&quot;images/YourImage.xyz&quot;, error = FALSE)
 ```
-
-or 
-
+or use html tags
 &lt;img src=&quot;images/YourImage.xyz&quot; class=&quot;w-60 br4 dib center&quot;&gt;</code></pre>
 </div>
 <div id="checkout-the-slides-with-xaringan" class="section level2">
 <h2>Checkout the slides with Xaringan</h2>
+<p><a href="../../../20220710_Introduction/Presentation.html">Click here to view in full screen</a></p>
 <p><embed src="../../../20220710_Introduction/Presentation.html" style="width:100.0%" height="400" /></p>
 </div>

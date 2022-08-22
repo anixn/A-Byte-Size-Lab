@@ -1,5 +1,5 @@
 ---
-title: Create Awesome slides with Xaringan
+title: Create awesome slides with Xaringan
 author: 'Dr. Ankit Deshmukh'
 date: 2022-08-16
 categories: ["R", "Rmd"]
@@ -48,7 +48,7 @@ output:
 ```
 
 Global Setting for figures and code chunk
-<!--
+
 ````{verbatim, lang = "r"}
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -64,7 +64,6 @@ knitr::opts_chunk$set(
 )
 ```
 ````
--->
 
 ## Setting up for Bibliography and Citation  
 ````{verbatim, lang = "r"}
@@ -95,9 +94,9 @@ use_xaringan_extra(c("tile_view", "tachyons", "use_logo", "use_progress_bar"))
 ```
 ````
 
-## Organize all the image in images folder
+## Organize all the image in `images` folder
 
-```{r, include=TRUE, echo=FALSE, fig.align='center'}
+```{r, include=TRUE, echo=FALSE, fig.align='center', out.width="60%"}
 knitr::include_graphics("Folder.png", error = FALSE)
 ```
 
@@ -107,10 +106,14 @@ use `knitr` of `html+tachyons` to add image
 ```{r, include=TRUE, echo=FALSE, fig.align='center', out.width="60%"}
 knitr::include_graphics("images/YourImage.xyz", error = FALSE)
 ```
-
-or 
-
+or use html tags
 <img src="images/YourImage.xyz" class="w-60 br4 dib center">
 ````
+
 ## Checkout the slides with Xaringan 
+
+[Click here to view in full screen](../../../20220710_Introduction/Presentation.html) 
+
 ![](../../../20220710_Introduction/Presentation.html){width="100%" height="400px"}
+
+
