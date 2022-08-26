@@ -4,7 +4,7 @@ layout: "main"
 #url: /default/
 ---
 
-## Presenation slide of my teaching
+## Presentation slide of my teaching
 I teach Remote Sensing(RS), Geographical Information System(GIS), and Geospatial techniques(GST).
 
 
