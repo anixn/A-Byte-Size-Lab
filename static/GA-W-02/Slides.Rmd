@@ -1,10 +1,9 @@
 ---
-title: "Geospatial Techniques: Remote Sensing"
-subtitle: "🗺️<br/>Lecture - 03"
+title: "Basics of Remote Sensing"
+subtitle: "🗺"
 author: "**Dr. Ankit Deshmukh**"
 institute: "Pandit Deendayal Energy University, Gandhinagar"
-date: "Week 02: 01-03 August 2022"
-layout: true
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ["css/default.css", "css/metropolis.css", "css/tachyons.min.css"]

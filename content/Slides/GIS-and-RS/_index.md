@@ -8,4 +8,5 @@ layout: "main"
 
 ### Slides of `Remote Sensing and GIS`
 
-1. [Week 01: Handout](../../../RG-W-01/Slides.html)
+1. [Introduction and Handout](../../../RG-W-01/Slides.html)
+1. [Basics of Remote Sensing](../../../GA-W-02/Slides.html)
