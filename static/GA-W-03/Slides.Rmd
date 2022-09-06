@@ -3,7 +3,7 @@ title: "Remote sensing resolutions"
 subtitle: ".f3[🗺️<br>.i[~/Geospatial Techniques/Remote Sensing]]"
 author: "**Dr. Ankit Deshmukh**"
 institute: "Pandit Deendayal Energy University, Gandhinagar"
-date: "Week 03 & 04: 08-10 & 15-17 August 2022"
+date: "August 2022"
 output:
   xaringan::moon_reader:
     css: ["css/default.css", "css/metropolis.css", "css/tachyons.min.css"]
