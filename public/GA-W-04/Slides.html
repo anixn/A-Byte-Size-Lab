@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Digital Image processing</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Ankit Deshmukh" />
+    <meta name="date" content="2022-09-06" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Digital Image processing
+]
+.subtitle[
+## 🗺 <br /> .f3[~/Geospatial Techniques/Remote Sensing]
+]
+.author[
+### <strong>Dr. Ankit Deshmukh</strong>
+]
+.institute[
+### Pandit Deendayal Energy University, Gandhinagar
+]
+.date[
+### 06 September 2022
+]
+
+---
+
+class: center middle inverse
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 60px;
+z-index: 0;
+background-image: url(./css/Anix-Logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.ankitdeshmukh.com/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div><style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #28282888;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;!-- ------------------------- Start your slides ------------------------- --&gt;
+
+# .white[Sooner or later all things are numbers, yes?] 
+.b.center[~ Terry Pratchett ~]
+
+---
+# Topics to be covered for .blue["Digital Image processing"]
+
+- Characteristics of a digital image
+
+- Image enhancement
+
+- Contrast manipulation
+
+- Image registration 
+
+- Digital image interpretation techniques.
+
+---
+# Types of data products in remote sensing 
+
+- Depending on  correction applied  &amp; level of processing
+&lt;img src="images/product.png" class="w-50 br4 dib center"&gt;
+
+---
+# Image interpretation strategy and elements of image interpretation
+.pull-left[
+
+- Visual image interpretation: Process of identifying what we see on the images and communicate the information obtained from these images to others for evaluating its significance.
+
+- Includes relative locations and extents
+
+]
+
+.pull-right[
+&lt;img src="images/element.png" class="w-100 br4 dib center"&gt;
+]
+
+---
+# Gray Scale
+.pull-left[
+- Most raw unprocessed satellite imagery is stored in a gray scale format.
+
+- A gray scale is a color scale that ranges from black to white, with varying intermediate shades of gray.
+
+- A commonly used gray scale for remote sensing image processing is a 256 shade gray scale.
+
+- A value of 0 represents a pure black color, the value of 255 represents pure white, and each value in between represents a progressively darker shade of gray.
+
+]
+
+.pull-right[
+&lt;img src="images/Gray-Grid.png" class="w-100 br4 dib center"&gt;
+]
+
+---
+# Multilayer Image
+- Multilayer image is formed by "stacking“ images from the same area together.
+- Each component image is a layer in the multilayer image and carry some specific information about the area.
+- **Multilayer images can also be formed by combining images obtained from different sensors, and other subsidiary data.**
+
+&lt;img src="images/multispectral.jpg" class="w-100 br4 dib center"&gt;
+
+.footnote[https://semiautomaticclassificationmanual.readthedocs.io/en/latest/remote_sensing.html]
+
+---
+# One images with 3 Bands 
+&lt;img src="images/apple.png" class="w-100 br4 dib center"&gt;
+
+---
+# Three Broad Categories of Image Processing
+.pull-left[
+- Image Restoration (Pre-processing)
+- Image Enhancement
+- Classification and Information Extraction
+]
+
+.pull-right[
+&lt;img src="images/flow.png" class="w-80 br4 dib center"&gt;
+]
+
+
+---
+# Image Restoration (Pre-processing)
+
+- Radiometric and geometric corrections are required
+
+- Atmospheric correction
+
+- Sun illumination geometry
+
+- Surface-induced geometric distortions
+
+- Spacecraft velocity and attitude variations (roll, pitch, and yaw)
+
+- Effects of Earth rotation, elevation, curvature (including skew effects),
+
+- Abnormalities of instrument performance
+
+- Loss of specific scan lines, etc.
+
+---
+# Image Enhancement
+- **Contrast Enhancement**
+&lt;img src="images/Contrast.png" class="w-80 br4 dib center"&gt;
+
+---
+# A Histogram
+- A histogram is an approximate representation of the distribution of numerical data. The term was first introduced by Karl Pearson. 
+
+- To assess the probability distribution of a given variable by depicting the frequencies of observations occurring in certain ranges of values.
+
+&lt;img src="images/Hist.png" class="w-40 br4 dib center"&gt;
+
+
+.footnote[https://en.wikipedia.org/wiki/Histogram]
+
+---
+# Create a histogram with ramdom data
+.pull-left[
+
+```r
+# How a create a histogram
+sample &lt;- c(2,3,1,4,2,2,4,4,4,2,2,1,4,5,3,2,1,6,3,3,3,1,1,1,1,2,2)
+sort(sample)
+```
+
+```
+##  [1] 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4 5 6
+```
+
+```r
+table(sample)
+```
+
+```
+## sample
+## 1 2 3 4 5 6 
+## 7 8 5 5 1 1
+```
+]
+.pull-right[
+
+```r
+barplot(table(sample))
+```
+
+&lt;img src="Slides_files/figure-html/unnamed-chunk-3-1.png" width="90%" /&gt;
+
+```r
+# Use inbuilt function in `r`
+# hist(sample, n = length(table(sample)) + 1)
+```
+]
+
+---
+# Sampe image: An apple
+.pull-left[
+&lt;img src="images/Apple-1.jpg" class="w-70 br4 dib center"&gt;
+]
+.pull-right[
+&lt;img src="images/Apple-2.jpg" class="w-70 br4 dib center"&gt;
+]
+
+---
+# Plotting the bands
+&lt;img src="images/Hist3.png" class="w-70 br4 dib center"&gt;
+
+---
+# Plotting the bands
+
+```r
+if(!require(raster)){install.packages("raster");library(raster)}
+png(filename = "images/Hist3.png", width = 1200, height = 850, res = 150)
+Data &lt;- brick("./images/Apple-1.jpg")
+par(mfrow = c(2,3))
+Band1 &lt;- as.vector(Data$Apple.1.1)
+hist(Band1[Band1 &lt; 225], 50, main = "Red Band", col = "red")
+
+Band2 &lt;- as.vector(Data$Apple.1.2)
+hist(Band2[Band2 &lt; 255], 50, main = "Green Band", col = "green")
+
+Band3 &lt;- as.vector(Data$Apple.1.3)
+hist(Band2[Band2 &lt; 150], 50, main = "Blue Band", col = "blue")
+
+Data &lt;- brick("./images/Apple-2.jpg")
+Band1 &lt;- as.vector(Data$Apple.2.1)
+hist(Band1[Band1 &lt; 225], 50, main = NULL, col = "red")
+
+Band2 &lt;- as.vector(Data$Apple.2.2)
+hist(Band2[Band2 &lt; 255], 50, main = NULL, col = "green")
+
+Band3 &lt;- as.vector(Data$Apple.2.3)
+hist(Band2[Band2 &lt; 150], 50, main = NULL, col = "blue")
+dev.off()
+```
+
+---
+# Linear Contrast Enhancement
+&lt;img src="images/Li-1.png" class="w-40 br1 dib center"&gt;
+Displayed in an 8-bit system. DN values range from 60-158. DN values from 0-59 and 159-255 are not utilized.
+
+&lt;img src="images/Li-2.png" class="w-40 br1 dib center"&gt;
+DN values are stretched to 0-255, Contrast is improved, Light tones appear lighter, Dark tones appear darker.
+
+---
+# Non-linear Contrast Stretching
+DN values are not stretched linearly to uniformly occupy the entire display range, example of this is **"Histogram-equalized stretch"**
+
+&lt;img src="images/NU.png" class="w-1000 br4 dib center"&gt;
+
+---
+# Histogram-equalized stretch
+DN values are enhanced based on their frequency in the original image.
+Example: Enhancement in an 8-bit display system
+
+### `$$DN_{st} = \sum_{j=1}^k \frac{n_j}{N}$$`
+
+&gt; DN&lt;sub&gt;st&lt;/sub&gt; = Enhanced DN value &lt;br /&gt; 
+&gt; N&lt;sub&gt;j&lt;/sub&gt; = Number of pixels having DN values in the j&lt;sup&gt;th&lt;/sup&gt; range, in the input image &lt;br /&gt; 
+&gt; K = Maximum number of DN ranges in the input image &lt;br /&gt; 
+&gt; N = Total number of pixels in the input image
+
+---
+# Code for Equalized histogram contrast enhancement 
+
+```r
+# Title    :: Compute Histogram from local image
+#  Author  :: Ankit Deshmukh
+#  DOC     :: 2022-08-30 10:46:37
+#  DOLE    :: 2022-08-30
+
+# https://rdrr.io/bioc/EBImage/man/equalize.html
+# install.packages("BiocManager")
+# BiocManager::install("EBImage")
+library(EBImage)
+
+# Sample - 01
+x = readImage(system.file('images', 'cells.tif', package = 'EBImage'))
+hist(x)
+y = equalize(x)
+hist(y)
+display(y, title = 'Equalized Grayscale Image')
+```
+
+---
+## Cont...
+
+```r
+# Sample - 02
+x = readImage(system.file('images', 'sample-color.png', package = 'EBImage'))
+hist(x)
+y = equalize(x)
+hist(y)
+display(y, title = 'Equalized Grayscale Image')
+
+par(mfrow = c(1,2))
+plot(x)
+plot(y)
+
+par(mfrow = c(1,2))
+hist(x)
+hist(y)
+```
+
+---
+## Cont...
+
+```r
+# Sample - 03: Import local images
+x = readImage('./images/image-1.jpg')
+hist(x)
+y = equalize(x)
+hist(y)
+display(y, title = 'Equalized Grayscale Image')
+
+par(mfrow = c(1,2))
+plot(x)
+plot(y)
+```
+
+---
+# Refrence  
+- https://rdrr.io/bioc/EBImage/man/equalize.html
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
