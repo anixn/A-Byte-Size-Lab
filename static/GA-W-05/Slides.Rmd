@@ -392,3 +392,9 @@ The most common vector datatype used in GIS are .dark-red.b[Shapefiles]
 </div> <div class="w-70 pa2 mr1">
 <img src="images/Att.png" class="w-100 br3 dib center">
 </div> </div>
+
+---
+# Shapefiles for India  [`r fontawesome::fa("download", fill = "green")`](https://1drv.ms/u/s!AhkMSf-s9DI5k4tsmwsWjpuzJiZsDg?e=tSlcct)
+
+<img src="images/ind-shp.jpg" class="w-50 br4 dib center">
+
