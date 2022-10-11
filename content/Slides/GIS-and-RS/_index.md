@@ -13,4 +13,5 @@ layout: "main"
 1. [Remote Sensing Resolutions](../../../GA-W-03/Slides.html)
 1. [Digital Image Processing](../../../GA-W-04/Slides.html)
 
-
+### Geographical Information Systems
+1. [Introduction- Geographical Information Systems](../../../GA-W-05/Slides.html)
