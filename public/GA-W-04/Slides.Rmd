@@ -251,6 +251,10 @@ Example: Enhancement in an 8-bit display system
 > K = Maximum number of DN ranges in the input image <br /> 
 > N = Total number of pixels in the input image
 
+### Links: 
+- https://en.wikipedia.org/wiki/Histogram_equalization
+- https://theailearner.com/2019/04/01/histogram-equalization/
+
 ---
 # Code for Equalized histogram contrast enhancement 
 ```{r, eval=FALSE}

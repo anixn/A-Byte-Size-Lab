@@ -443,7 +443,22 @@ Decadal Land Use and Land Cover Classifications across India, 1985, 1995, 2005
 <img src="images/LULC.png" class="w-30 br2 dib center">
 
 ---
-# Add map themes with ``
+
+# Download SRTM data with .b.blue[SRTM Downloader]
+.pull-left[
+1. Install Plugin from Plug-in menu.
+2. Open SRTM by clicking the SRTM logo.
+3. Use OSM map for guide and set the zoom accordingly 
+4. Click .red[Set canvas extent] to select area
+5. Click download, it will prompt a log in dialogue.
+6. Go to https://urs.earthdata.nasa.gov//users/new to create USGS account. 
+]
+.pull-right[
+<img src="images/SRTM.png" class="w-90 br2 dib center">
+]
+
+---
+# Add map themes with `QuickMapService`
 
 <img src="images/quickmap.png" class="w-30 br2 dib center">
 
@@ -451,3 +466,16 @@ QuickMapServices: Easy to add basemaps
 
 Easy to use list of services and search for finding datasets and basemaps. Please contribute new services via http://qms.nextgis.com! Developed by NextGIS.
 
+---
+# Reprojecting a raster 
+
+<img src="images/R-RP.png" class="w-40 br2 dib center">
+
+---
+# Reprojecting a Vector
+
+<img src="images/V-RP.png" class="w-40 br2 dib center">
+
+---
+# Extracting OSM maps with `QuickOSM` plugin
+<img src="images/QuickOSM.png" class="w-80 br2 dib center">

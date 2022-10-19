@@ -4,7 +4,7 @@
     <title>Introduction  Geographical information systems</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Ankit Deshmukh" />
-    <meta name="date" content="2022-10-03" />
+    <meta name="date" content="2022-10-19" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
@@ -31,7 +31,7 @@ class: center, middle, inverse, title-slide
 ### Pandit Deendayal Energy University, Gandhinagar
 ]
 .date[
-### 03 October 2022
+### 19 October 2022
 ]
 
 ---
@@ -481,8 +481,51 @@ Shuttle Radar Topography Mission (SRTM)SRTM
 Link: https://www.earthdata.nasa.gov/sensors/srtm
 
 
-
 ![](https://www2.jpl.nasa.gov/srtm/images/SRTM_2-24-2016.gif)
+
+---
+# Land use and Land cover data
+Decadal Land Use and Land Cover Classifications across India, 1985, 1995, 2005
+
+&lt;img src="images/LULC.png" class="w-30 br2 dib center"&gt;
+
+---
+
+# Download SRTM data with .b.blue[SRTM Downloader]
+.pull-left[
+1. Install Plugin from Plug-in menu.
+2. Open SRTM by clicking the SRTM logo.
+3. Use OSM map for guide and set the zoom accordingly 
+4. Click .red[Set canvas extent] to select area
+5. Click download, it will prompt a log in dialogue.
+6. Go to https://urs.earthdata.nasa.gov//users/new to create USGS account. 
+]
+.pull-right[
+&lt;img src="images/SRTM.png" class="w-90 br2 dib center"&gt;
+]
+
+---
+# Add map themes with `QuickMapService`
+
+&lt;img src="images/quickmap.png" class="w-30 br2 dib center"&gt;
+
+QuickMapServices: Easy to add basemaps
+
+Easy to use list of services and search for finding datasets and basemaps. Please contribute new services via http://qms.nextgis.com! Developed by NextGIS.
+
+---
+# Reprojecting a raster 
+
+&lt;img src="images/R-RP.png" class="w-40 br2 dib center"&gt;
+
+---
+# Reprojecting a Vector
+
+&lt;img src="images/V-RP.png" class="w-40 br2 dib center"&gt;
+
+---
+# Extracting OSM maps with `QuickOSM` plugin
+&lt;img src="images/QuickOSM.png" class="w-80 br2 dib center"&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
