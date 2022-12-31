@@ -17,3 +17,4 @@ layout: "main"
 ### Geographical Information Systems
 - [Introduction- Geographical Information Systems](../../../GA-W-05/Slides.html)
 
+Slide for GST
