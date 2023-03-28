@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Ankit Deshmukh" />
     <script src="libs/header-attrs/header-attrs.js"></script>
-    <link href="libs/panelset/panelset.css" rel="stylesheet" />
-    <script src="libs/panelset/panelset.js"></script>
     <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
@@ -514,8 +512,46 @@ Each pixel has an **intensity value** (represented by a digital number)
 .footnote[https://learnlearn.uk/binary/wp-content/uploads/sites/11/2017/01/tree-pciture-grayscale.jpg]
 
 ---
-# Reference 
-NULL
+# Sample images 
+&lt;div class="flex"&gt; &lt;div class="w-50 pa2 mr1"&gt;
+&lt;img src="images/Sample.jpg" class="w-100 br4 dib center"&gt;
+
+&lt;/div&gt; &lt;div class="w-50 pa2 mr1"&gt;
+&lt;img src="images/Sample1.jpg" class="w-100 br4 dib center"&gt;
+&lt;/div&gt; &lt;/div&gt;
+
+---
+
+## Testn
+---
+
+## Output Images with indivisual bands 
+![](Slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+# Extract the pixel values
+
+
+```r
+if(!require(raster)){install.packages("raster");library(raster)}
+
+ing_in &lt;- "Sample1.jpg"
+
+Red &lt;- raster(x = ing_in, band = 1)
+Green &lt;- raster(x = ing_in, band = 2)
+Blue &lt;- raster(x = ing_in, band = 3)
+
+par(mfrow = c(1,3))
+num_col = 256
+image(Red, col = cm.colors (num_col), main = "Red Color Band")
+image(Green, col = cm.colors(num_col), main ="Green Color Band")
+image(Blue, col = cm.colors(num_col), main ="Blue Color Band")
+
+write.csv(x = as.matrix(Green), 
+          file = "Green.csv", 
+          row.names = FALSE)
+```
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
