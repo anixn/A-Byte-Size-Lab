@@ -6,7 +6,6 @@ layout: "main"
 ![header](../../../Headers/Geo-Ans.jpg)
 
 ## Slides for Geospatial Techniques
-
 - [Introduction and Handout](../../../GA-W-01/Slides.html)
 
 ### Remote Sensing
@@ -17,4 +16,3 @@ layout: "main"
 ### Geographical Information Systems
 - [Introduction- Geographical Information Systems](../../../GA-W-05/Slides.html)
 
-Slide for GST

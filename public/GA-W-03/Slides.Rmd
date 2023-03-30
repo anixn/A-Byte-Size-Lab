@@ -478,11 +478,8 @@ Each pixel has an **intensity value** (represented by a digital number)
 
 ---
 
-## Testn
----
-
 ## Output Images with indivisual bands 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=10}
 if(!require(raster)){install.packages("raster");library(raster)}
 
 ing_in <- "./images/Sample1.jpg"
