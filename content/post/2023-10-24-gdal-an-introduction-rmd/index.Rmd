@@ -1,0 +1,10 @@
+---
+title: GDAL-An Introduction.Rmd
+author: 'Dr. Ankit Deshmukh'
+date: '2023-10-24'
+slug: []
+categories: []
+tags: ["GIS"]
+---
+
+This is my first post! 
