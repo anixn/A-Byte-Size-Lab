@@ -1,10 +1,20 @@
 ---
-title: "GDAL-An Introduction.Rmd"
+title: "GDAL-An Introduction"
 author: 'Dr. Ankit Deshmukh'
 date: '2023-10-24'
 slug: []
 categories: ["GIS"]
-tags: ["GIS"]
+tags: ["GIS", "gdal"]
 ---
 
-This is my first post! 
+## Getting started with `gdal`
+
+GDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.
+
+GDAL is used by many GIS software packages, such as QGIS, ArcGIS, and GRASS GIS. It is also used in many scientific applications that require geospatial data processing, such as remote sensing, hydrology, and geology.
+
+```{r , eval=FALSE}
+install.packages("rgdal", dependencies = TRUE)
+```
+
+
