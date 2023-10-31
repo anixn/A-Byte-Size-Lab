@@ -35,4 +35,8 @@ The GDAL library consists of a set of command line programs, each with a large l
 6. **Geospatial Image Processing:** Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.
 
 
-
+## Things I you will learn in this tutorial
+1. Basics of `GDAL`
+2. Raster manipulation 
+3. Vector processing 
+4. Vector to Raster conversion 
