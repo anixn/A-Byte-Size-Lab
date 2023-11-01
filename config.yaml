@@ -30,19 +30,22 @@ languages:
             main:
                 - name: Blogs
                   url: /post/
-                  weight: 1
+                  weight: 10
+                - name: Research
+                  url: /Research/
+                  weight: 11
                 - name: Slides
                   url: /Slides/
-                  weight: 2
+                  weight: 20
                 - name: Archive
                   url: archives
-                  weight: 3
+                  weight: 30
                 - name: Tags
                   url: tags/
-                  weight: 4
+                  weight: 40
                 - name: 🔎
                   url: search/
-                  weight: 5
+                  weight: 50
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -68,7 +71,7 @@ params:
     profileMode:
         enabled: true
         title: "Dr. Ankit Deshmukh"
-        subtitle: "Welcome! I post blogs and tutorials of my learning Data Analysis, Machine Learning, R, Hydrology, and Water Resources. Use [**Tags**](https://bytesize-blog.netlify.app/tagss/) tab to filter out blog posts of your liking. Reach out to me on [**Twitter**](https://twitter.com/anix7n) or [**LinkedIn**](https://www.linkedin.com/in/anixn/) for colebration and seminars."
+        subtitle: "Welcome! I post blogs and tutorials of my learning Data Analysis, Machine Learning, R, Hydrology, and Water Resources. Use [**Tags**](https://bytesize-blog.netlify.app/tags/) tab to filter out blog posts of your liking. Reach out to me on [**Twitter**](https://twitter.com/anix7n) or [**LinkedIn**](https://www.linkedin.com/in/anixn/) for colebration and seminars."
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160
