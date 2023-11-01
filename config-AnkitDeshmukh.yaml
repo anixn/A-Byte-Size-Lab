@@ -1,0 +1,119 @@
+theme: "hugo-PaperMod"
+baseURL: https://bytesize-blog.netlify.app/
+languageCode: en-us
+title: Bytesize Blog
+
+paginate: 5
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+googleAnalytics: 'G-R5FJKDQD1M'
+
+minify:
+    disableXML: true
+
+languages:
+    en:
+        languageName: "English"
+        weight: 1
+        taxonomies:
+          category: categories
+          tag: tags
+          series: series
+        menu:
+            main:
+                - name: Blogs
+                  url: /post/
+                  weight: 1
+                - name: Slides
+                  url: /Slides/
+                  weight: 2
+                - name: Archive
+                  url: archives
+                  weight: 7
+                - name: Search
+                  url: search/
+                  weight: 9
+                - name: Tags
+                  url: tags/
+                  weight: 8
+#                - name: Categories
+#                  url: categories/
+#                  weight: 3
+
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    description: "Ankit Deshmukh - https://www.ankitdeshmukh.com"
+    author: Dr. Ankit Deshmukh
+    # author: ["Me", "You"] # multiple authors
+
+    defaultTheme: auto
+    # disableThemeToggle: true
+    ShowShareButtons: true
+    ShareButtons: ["linkedin", "twitter"] # To customize which share buttons to be enabled on page
+    ShowReadingTime: true
+    # disableSpecial1stPost: true
+    displayFullLangName: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    ShowRssButtonInSectionTermList: true
+    ShowToc: true
+    TocOpen: true
+    comments: false
+    images: ["papermod-cover.png"]
+
+    profileMode:
+        enabled: true
+        title: anixn
+        imageUrl: "#"
+        imageTitle: my image
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+            - name: Archives
+              url: archives
+            - name: Tags
+              url: tags
+
+    homeInfoParams:
+        Title: "Dr. Ankit Deshmukh"
+        Content: >
+            Welcome to my blog, I will be posting the blogs of my learnings in the field of Data Visulization, R-Programming, Machine Learning, and Hydrology. Use [Categories](https://bytesize-blog.netlify.app/categories/) tab to filter out post for aformensioned categories. Do give a 🌟 on [Github](https://github.com/anixn)! For colebration and webinar reach out to me on [Twitter](https://twitter.com/anix7n).
+
+    socialIcons:
+        - name: github
+          url: "https://github.com/anixn"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/anixn/"
+        - name: twitter
+          url: "https://twitter.com/anix7n"
+        - name: website
+          url: "https://www.ankitdeshmukh.com/"
+
+    analytics:
+        google:
+            SiteVerificationTag: "G-R5FJKDQD1M"
+
+    hideFooter: true
+
+    assets:
+        # disableHLJS: true # to disable highlight.js
+        # disableFingerprinting: true
+        # favicon: "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
+        favicon: "favicon.ico"
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
+

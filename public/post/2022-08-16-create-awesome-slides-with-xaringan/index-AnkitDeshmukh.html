@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Create awesome slides with Xaringan | Bytesize Blog</title>
+<meta name="keywords" content="Slides, Xaringan">
+<meta name="description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.">
+<meta name="author" content="Dr. Ankit Deshmukh">
+<link rel="canonical" href="https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/">
+<meta name="google-site-verification" content="G-R5FJKDQD1M">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.85cae1844b22a549aad3452f577211b80956d906aee6bde5973d492401d181d8.css" integrity="sha256-hcrhhEsipUmq00UvV3IRuAlW2Qau5r3llz1JJAHRgdg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://bytesize-blog.netlify.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bytesize-blog.netlify.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bytesize-blog.netlify.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://bytesize-blog.netlify.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://bytesize-blog.netlify.app/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<link rel="stylesheet" href="/fonts/font-family.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Create awesome slides with Xaringan" />
+<meta property="og:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/" />
+<meta property="og:image" content="https://bytesize-blog.netlify.app/Cover.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-16T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-08-16T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://bytesize-blog.netlify.app/Cover.png" />
+<meta name="twitter:title" content="Create awesome slides with Xaringan"/>
+<meta name="twitter:description" content="HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
+…from https://github.com/yihui/xaringan
+The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://bytesize-blog.netlify.app/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Create awesome slides with Xaringan",
+      "item": "https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Create awesome slides with Xaringan",
+  "name": "Create awesome slides with Xaringan",
+  "description": "HTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.",
+  "keywords": [
+    "Slides", "Xaringan"
+  ],
+  "articleBody": "\rHTML slides with Xaringan.\rXaringan is an R package for creating slideshows with remark.js through R Markdown.\n…from https://github.com/yihui/xaringan\nThe package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.\nInstalling Xaringan\rInstall the xaringan with CRAN or Github\ninstall.packages('xaringan')\r# or for latest version\rremotes::install_github('yihui/xaringan')\rSetting up the xaringan slides\r---\rtitle: \"Title of my presentation\"\rsubtitle: \"Your subtitle\"\rauthor: \"**Dr. Ankit Deshmukh**\"\rinstitute: \"Affiliation\"\rdate: \"Week #: `r format(Sys.time(), '%d %B %Y')`\"\routput:\rxaringan::moon_reader:\rcss: [\"css/default.css\", \"css/metropolis.css\", \"css/tachyons.min.css\"]\rself_contained: false lib_dir: libs\rnature:\rhighlightStyle: solarized-light\rhighlightLines: true\rcountIncrementalSlides: false\rratio: 16:9\r---\rGlobal Setting for figures and code chunk\n```{r setup, include=FALSE}\roptions(htmltools.dir.version = FALSE)\rknitr::opts_chunk$set(\r#out.width = \"100%\",\rcache = FALSE,\recho = TRUE,\rmessage = FALSE, warning = FALSE,\rfig.show = TRUE,\rhiline = TRUE,\rresults= \"asis\" # Useful to show bibliography as normal text.\r)\r```\rSetting up for Bibliography and Citation\r```{r setup, include=FALSE}\rlibrary(RefManageR)\rlibrary(bibtex)\rBibOptions(check.entries = FALSE, bib.style = \"authoryear\", style = \"text\", first.inits = FALSE)\rbib \u003c- ReadBib(\"~/adx/Bibliography.bib\") # A bibtex bibliography file. Use zotoro for this. ```\rUse xaringanExtra to enhance slide feature\ruse_logo for adding the logo in your slide.\ruse_progress_bar for progress bar.\ruse_extra_styles for code hover effect.\ruse_xaringan_extra(\"tile_view\") for see the preview of slides a once, it helps to jump on slides.\ruse_xaringan_extra(\"tachyons\") for an awesome miniature css with your slides. Find more here https://tachyons.io/#features\r```{r, echo=FALSE, include=TRUE}\rlibrary(xaringanExtra)\ruse_logo(image_url = \"./css/Anix-Logo.png\", link_url = \"https://www.ankitdeshmukh.com/\", width = \"60px\", height = \"60px\")\ruse_progress_bar(color = \"#28282888\",location = \"top\", height = \"0.25em\")\ruse_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)\ruse_xaringan_extra(c(\"tile_view\", \"tachyons\", \"use_logo\", \"use_progress_bar\"))\r```\rOrganize all the image in images folder\ruse knitr of html+tachyons to add image\n```{r, include=TRUE, echo=FALSE, fig.align='center', out.width=\"60%\"}\rknitr::include_graphics(\"images/YourImage.xyz\", error = FALSE)\r```\ror use html tags\rCheckout the slides with Xaringan\rClick here to view in full screen\n",
+  "wordCount" : "350",
+  "inLanguage": "en",
+  "image":"https://bytesize-blog.netlify.app/Cover.png","datePublished": "2022-08-16T00:00:00Z",
+  "dateModified": "2022-08-16T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Dr. Ankit Deshmukh"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bytesize Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bytesize-blog.netlify.app/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://bytesize-blog.netlify.app/" accesskey="h" title="Bytesize Blog (Alt + H)">Bytesize Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://bytesize-blog.netlify.app/post/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/slides/" title="Slides">
+                    <span>Slides</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://bytesize-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://bytesize-blog.netlify.app/post/">Blogs</a></div>
+    <h1 class="post-title">
+      Create awesome slides with Xaringan
+    </h1>
+    <div class="post-meta"><span title='2022-08-16 00:00:00 +0000 UTC'>August 16, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover_hu0e00ed206f296b6a91ffa0115f7df321_186320_360x0_resize_box_3.png 360w ,https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover_hu0e00ed206f296b6a91ffa0115f7df321_186320_480x0_resize_box_3.png 480w ,https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover_hu0e00ed206f296b6a91ffa0115f7df321_186320_720x0_resize_box_3.png 720w ,https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover_hu0e00ed206f296b6a91ffa0115f7df321_186320_1080x0_resize_box_3.png 1080w ,https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover.png 1123w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/Cover.png" alt="Image of Sharingan, a dōjutsu in Naruto with two abilities: the &#39;Eye of Insight&#39; and the &#39;Eye of Hypnotism&#39;" 
+            width="1123" height="266">
+        
+</figure><div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#" aria-label="HTML slides with Xaringan.">HTML slides with Xaringan.</a></li>
+                <li>
+                    <a href="#" aria-label="Installing Xaringan">Installing Xaringan</a></li>
+                <li>
+                    <a href="#" aria-label="Setting up the xaringan slides">Setting up the xaringan slides</a></li>
+                <li>
+                    <a href="#" aria-label="Setting up for Bibliography and Citation">Setting up for Bibliography and Citation</a></li>
+                <li>
+                    <a href="#" aria-label="Use xaringanExtra to enhance slide feature">Use xaringanExtra to enhance slide feature</a></li>
+                <li>
+                    <a href="#" aria-label="Organize all the image in images folder">Organize all the image in <code>images</code> folder</a></li>
+                <li>
+                    <a href="#" aria-label="Checkout the slides with Xaringan">Checkout the slides with Xaringan</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content">
+
+
+<div id="html-slides-with-xaringan." class="section level2">
+<h2>HTML slides with Xaringan.</h2>
+<p><code>Xaringan</code> is an R package for creating slideshows with <code>remark.js</code> through R Markdown.</p>
+<p>…from <code>https://github.com/yihui/xaringan</code></p>
+<blockquote>
+<p>The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.</p>
+</blockquote>
+</div>
+<div id="installing-xaringan" class="section level2">
+<h2>Installing Xaringan</h2>
+<p>Install the xaringan with CRAN or Github</p>
+<pre class="r"><code>install.packages(&#39;xaringan&#39;)
+
+# or for latest version
+remotes::install_github(&#39;yihui/xaringan&#39;)</code></pre>
+</div>
+<div id="setting-up-the-xaringan-slides" class="section level2">
+<h2>Setting up the xaringan slides</h2>
+<pre class="yaml"><code>---
+title: &quot;Title of my presentation&quot;
+subtitle: &quot;Your subtitle&quot;
+author: &quot;**Dr. Ankit Deshmukh**&quot;
+institute: &quot;Affiliation&quot;
+date: &quot;Week #: `r format(Sys.time(), &#39;%d %B %Y&#39;)`&quot;
+output:
+  xaringan::moon_reader:
+    css: [&quot;css/default.css&quot;, &quot;css/metropolis.css&quot;, &quot;css/tachyons.min.css&quot;]
+    self_contained: false 
+    lib_dir: libs
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---</code></pre>
+<p>Global Setting for figures and code chunk</p>
+<pre class="r"><code>```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  #out.width = &quot;100%&quot;,
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE,
+  results= &quot;asis&quot; # Useful to show bibliography as normal text.
+)
+```</code></pre>
+</div>
+<div id="setting-up-for-bibliography-and-citation" class="section level2">
+<h2>Setting up for Bibliography and Citation</h2>
+<pre class="r"><code>```{r setup, include=FALSE}
+library(RefManageR)
+library(bibtex)
+BibOptions(check.entries = FALSE, bib.style = &quot;authoryear&quot;, style = &quot;text&quot;, first.inits = FALSE)
+bib &lt;- ReadBib(&quot;~/adx/Bibliography.bib&quot;) # A bibtex bibliography file. Use zotoro for this. 
+```</code></pre>
+</div>
+<div id="use-xaringanextra-to-enhance-slide-feature" class="section level2">
+<h2>Use xaringanExtra to enhance slide feature</h2>
+<ul>
+<li><code>use_logo</code> for adding the logo in your slide.</li>
+<li><code>use_progress_bar</code> for progress bar.</li>
+<li><code>use_extra_styles</code> for code hover effect.</li>
+<li><code>use_xaringan_extra("tile_view")</code> for see the preview of slides a once, it helps to jump on slides.</li>
+<li><code>use_xaringan_extra("tachyons")</code> for an awesome miniature css with your slides. Find more here <a href="https://tachyons.io/#features" class="uri">https://tachyons.io/#features</a></li>
+</ul>
+<pre class="r"><code>```{r, echo=FALSE, include=TRUE}
+library(xaringanExtra)
+use_logo(image_url = &quot;./css/Anix-Logo.png&quot;, link_url = &quot;https://www.ankitdeshmukh.com/&quot;, width = &quot;60px&quot;, height = &quot;60px&quot;)
+use_progress_bar(color = &quot;#28282888&quot;,location = &quot;top&quot;, height = &quot;0.25em&quot;)
+use_extra_styles(hover_code_line = TRUE, mute_unhighlighted_code = FALSE)
+use_xaringan_extra(c(&quot;tile_view&quot;, &quot;tachyons&quot;, &quot;use_logo&quot;, &quot;use_progress_bar&quot;))
+```</code></pre>
+</div>
+<div id="organize-all-the-image-in-images-folder" class="section level2">
+<h2>Organize all the image in <code>images</code> folder</h2>
+<p><img src="Folder.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>use <code>knitr</code> of <code>html+tachyons</code> to add image</p>
+<pre class="r"><code>```{r, include=TRUE, echo=FALSE, fig.align=&#39;center&#39;, out.width=&quot;60%&quot;}
+knitr::include_graphics(&quot;images/YourImage.xyz&quot;, error = FALSE)
+```
+or use html tags
+&lt;img src=&quot;images/YourImage.xyz&quot; class=&quot;w-60 br4 dib center&quot;&gt;</code></pre>
+</div>
+<div id="checkout-the-slides-with-xaringan" class="section level2">
+<h2>Checkout the slides with Xaringan</h2>
+<p><a href="../../../20220710_Introduction/Presentation.html">Click here to view in full screen</a></p>
+<p><embed src="../../../20220710_Introduction/Presentation.html" style="width:100.0%" height="400" /></p>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://bytesize-blog.netlify.app/tags/slides/">Slides</a></li>
+      <li><a href="https://bytesize-blog.netlify.app/tags/xaringan/">Xaringan</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>GDAL-An Introduction</span>
+  </a>
+  <a class="next" href="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Setting up R, Python, and SQL in RStudio</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Create awesome slides with Xaringan on twitter"
+        href="https://twitter.com/intent/tweet/?text=Create%20awesome%20slides%20with%20Xaringan&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-08-16-create-awesome-slides-with-xaringan%2f&amp;hashtags=Slides%2cXaringan">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Create awesome slides with Xaringan on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-08-16-create-awesome-slides-with-xaringan%2f&amp;title=Create%20awesome%20slides%20with%20Xaringan&amp;summary=Create%20awesome%20slides%20with%20Xaringan&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-08-16-create-awesome-slides-with-xaringan%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

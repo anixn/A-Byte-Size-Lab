@@ -36,17 +36,13 @@ languages:
                   weight: 2
                 - name: Archive
                   url: archives
-                  weight: 7
-                - name: Search
-                  url: search/
-                  weight: 9
+                  weight: 3
                 - name: Tags
                   url: tags/
-                  weight: 8
-#                - name: Categories
-#                  url: categories/
-#                  weight: 3
-
+                  weight: 4
+                - name: 🔎
+                  url: search/
+                  weight: 5
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -66,22 +62,24 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: true
-    TocOpen: true
+    TocOpen: false
     comments: false
     images: ["papermod-cover.png"]
 
     profileMode:
         enabled: true
-        title: anixn
-        imageUrl: "#"
+        title: "Dr. Ankit Deshmukh"
+        imageUrl: "Avatar.jpg"
         imageTitle: my image
-        imageWidth: 120
-        imageHeight: 120
+        imageWidth: 160
+        imageHeight: 160
         buttons:
+            - name: Blogs
+              url: /post
             - name: Archives
-              url: archives
-            - name: Tags
-              url: tags
+              url: /archives
+            - name: About me
+              url: /About
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
@@ -107,7 +105,6 @@ params:
     assets:
         # disableHLJS: true # to disable highlight.js
         # disableFingerprinting: true
-        # favicon: "https://lh6.googleusercontent.com/uCrGcse4qhXoevmzEWYQ-MwuUg3dYN2yFUvivtFWyS-UMcK81lhXOGsvEEoqISV1EpozcA=w16383"
         favicon: "favicon.ico"
 
 outputs:
