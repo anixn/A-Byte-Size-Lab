@@ -28,21 +28,24 @@ languages:
           series: series
         menu:
             main:
+                - name: Blogs
+                  url: /post/
+                  weight: 1
                 - name: Slides
                   url: /Slides/
                   weight: 2
                 - name: Archive
                   url: archives
-                  weight: 9
+                  weight: 7
                 - name: Search
                   url: search/
-                  weight: 8
+                  weight: 9
                 - name: Tags
                   url: tags/
-                  weight: 10
-                - name: Categories
-                  url: categories/
-                  weight: 3
+                  weight: 8
+#                - name: Categories
+#                  url: categories/
+#                  weight: 3
 
 
 params:
@@ -63,17 +66,17 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: true
-    TocOpen: false
+    TocOpen: true
     comments: false
     images: ["papermod-cover.png"]
 
     profileMode:
-        enabled: false
+        enabled: true
         title: anixn
         imageUrl: "#"
         imageTitle: my image
-        # imageWidth: 120
-        # imageHeight: 120
+        imageWidth: 120
+        imageHeight: 120
         buttons:
             - name: Archives
               url: archives

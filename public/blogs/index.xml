@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Bytesize Blog</title>
+    <link>https://bytesize-blog.netlify.app/blogs/</link>
+    <description>Recent content on Bytesize Blog</description>
+    <image>
+      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
+      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Sep 2021 11:25:39 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting started with R</title>
+      <link>https://bytesize-blog.netlify.app/blogs/2021-09-21-getting-started-with-r/</link>
+      <pubDate>Tue, 21 Sep 2021 11:25:39 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/blogs/2021-09-21-getting-started-with-r/</guid>
+      <description>R is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.
+1. Installing RStep 01: Install R-Binaries from R-Project
+Step 02: Install RStudio IDE from RStudio
+2. Customizing RStudioA lot of ways you can make RStudio more useful for your personal use.</description>
+    </item>
+    
+  </channel>
+</rss>

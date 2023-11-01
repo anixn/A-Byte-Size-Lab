@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Bytesize Blog</title>
+    <title>Blogs on Bytesize Blog</title>
     <link>https://bytesize-blog.netlify.app/post/</link>
-    <description>Recent content in Posts on Bytesize Blog</description>
+    <description>Recent content in Blogs on Bytesize Blog</description>
     <image>
       <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
       <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDAL-An Introduction</title>
+      <link>https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/</guid>
+      <description>Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.</description>
+    </item>
+    
     <item>
       <title>Create awesome slides with Xaringan</title>
-      <link>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</link>
+      <link>https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/</link>
       <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/post/20220816-create-awesome-slides-with-xaringan/</guid>
+      <guid>https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/</guid>
       <description>HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
 …from https://github.com/yihui/xaringan
 The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.</description>

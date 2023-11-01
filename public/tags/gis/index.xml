@@ -9,15 +9,15 @@
       <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://bytesize-blog.netlify.app/tags/gis/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/gis/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction - Remote Sensing and GIS</title>
-      <link>https://bytesize-blog.netlify.app/slides/gis-and-rs/20220712-gis-and-remote-sensing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>GDAL-An Introduction</title>
+      <link>https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/slides/gis-and-rs/20220712-gis-and-remote-sensing/</guid>
-      <description>Click to open slides
-Presentation Slide</description>
+      <guid>https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/</guid>
+      <description>Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.</description>
     </item>
     
   </channel>
