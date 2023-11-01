@@ -48,7 +48,6 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Ankit Deshmukh - https://www.ankitdeshmukh.com"
     author: Dr. Ankit Deshmukh
-    # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
     # disableThemeToggle: true
@@ -69,6 +68,8 @@ params:
     profileMode:
         enabled: true
         title: "Dr. Ankit Deshmukh"
+        subtitle: Welcome! I post the blog and tutorial of my learning `Data Visulization`, `Data Analysis`, `Machine Learning`, `R`, `Hydrology`, and `Water Resource`. Use [**Tags**](https://bytesize-blog.netlify.app/tagss/) tab to filter out blog post as your liking. Reach out to me on [**Twitter**](https://twitter.com/anix7n)/[**LinkedIn**](https://www.linkedin.com/in/anixn/) For colebration and seminar talks.
+
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160
