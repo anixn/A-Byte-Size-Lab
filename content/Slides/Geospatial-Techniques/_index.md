@@ -5,7 +5,7 @@ layout: "main"
 ---
 ![header](../../../Headers/Geo-Ans.jpg)
 
-## Slides for Geospatial Techniques
+### Geospatial Techniques Introduction
 - [Introduction and Handout](../../../GA-W-01/Slides.html)
 
 ### Remote Sensing
