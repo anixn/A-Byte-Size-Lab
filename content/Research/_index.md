@@ -8,9 +8,11 @@ layout: "main"
 ### 1. Physio-climatic controls on vulnerability of watersheds to climate and land use change across the United States.
 > Understanding how a watershed’s physio-climatic characteristics affect its vulnerability to environmental (climatic and land use) change is crucial for managing these complex systems. In this study, we combine the strengths of recently developed exploratory modeling frameworks and comparative hydrology to quantify the relationship between watershed’s vulnerability and its physio-climatic characteristics. We propose a definition of vulnerability that can be used by a diverse range of water system managers and is useful in the presence of large uncertainties in drivers of environmental change. This definition is related to adverse climate change and land use thresholds that are quantified using a recently developed exploratory modeling approach. In this way, we estimate the vulnerability of 69 watersheds in the United States to climate and land use change. We explore definitions of vulnerability that describe average or extreme flow conditions, as well as others that are relevant from the point of view of instream organisms. In order to understand the dominant controls on vulnerability, we correlate these indices with watershed’s characteristics describing its topography, geology, drainage, climate, and land use. We find that mean annual flow is more vulnerable to reductions in precipitation in watersheds with lower average soil permeability, lower baseflow index, lower forest cover, higher topographical wetness index, and vice-versa. Our results also indicate a potential mediation of climate change impacts by regional groundwater systems. By developing such relationships across a large range of watersheds, such information can potentially be used to assess the vulnerability of ungauged watersheds to uncertain environmental change.
 
-![Research 01](../Research01.png){:height="36px" width="36px"}.
+![Research01](Research01x.png"=350x")
 
-[smile]: smile.png
+![alt](Research01.png "=50x")
+
+![alt](Research01.png "{width='50'}")
 
 ### 2. A Whittaker-Biome based framework to account for the impact of climate change on catchment behavior
 

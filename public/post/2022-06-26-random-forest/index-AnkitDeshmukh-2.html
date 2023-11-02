@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Random Forest with R-Programming | Bytesize Blog</title>
+<meta name="keywords" content="Random Forest, plot, regression">
+<meta name="description" content="The following packages are required for the random forest
+if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)}if(!require(janitor)){install.packages(&quot;janitor&quot;);library(janitor)} # for renameif(!require(randomForest)){install.packages(&quot;randomForest&quot;);library(randomForest)}if(!require(caret)){install.packages(&quot;caret&quot;);library(caret)} # for `confustionMatrix`A Random forest is made of Random TreesData &lt;- read_csv(file = here::here(&quot;content/post/2022-06-26-random-forest&quot;, &quot;german_credit.csv&quot;))Exploring the datasetData &lt;- clean_names(Data)Data$creditability &lt;- as.factor(Data$creditability)glimpse(Data)## Rows: 1,000## Columns: 21## $ creditability &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ account_balance &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …## $ duration_of_credit_month &lt;dbl&gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…## $ payment_status_of_previous_credit &lt;dbl&gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …## $ purpose &lt;dbl&gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …## $ credit_amount &lt;dbl&gt; 1049, 2799, 841, 2122, 2171, 2241, 3…## $ value_savings_stocks &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …## $ length_of_current_employment &lt;dbl&gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …## $ instalment_per_cent &lt;dbl&gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …## $ sex_marital_status &lt;dbl&gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …## $ guarantors &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ duration_in_current_address &lt;dbl&gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …## $ most_valuable_available_asset &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …## $ age_years &lt;dbl&gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …## $ concurrent_credits &lt;dbl&gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …## $ type_of_apartment &lt;dbl&gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …## $ no_of_credits_at_this_bank &lt;dbl&gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …## $ occupation &lt;dbl&gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …## $ no_of_dependents &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …## $ telephone &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ foreign_worker &lt;dbl&gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …Assess the creditabiliy with the help of other variables# code -------------------------------------------------------------------------ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) &#43;geom_histogram(binwidth = 5, position = &quot;identity&quot;, alpha = 0.">
+<meta name="author" content="Dr. Ankit Deshmukh">
+<link rel="canonical" href="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/">
+<meta name="google-site-verification" content="G-R5FJKDQD1M">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.85cae1844b22a549aad3452f577211b80956d906aee6bde5973d492401d181d8.css" integrity="sha256-hcrhhEsipUmq00UvV3IRuAlW2Qau5r3llz1JJAHRgdg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://bytesize-blog.netlify.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bytesize-blog.netlify.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bytesize-blog.netlify.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://bytesize-blog.netlify.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://bytesize-blog.netlify.app/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<link rel="stylesheet" href="/fonts/font-family.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Random Forest with R-Programming" />
+<meta property="og:description" content="The following packages are required for the random forest
+if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)}if(!require(janitor)){install.packages(&quot;janitor&quot;);library(janitor)} # for renameif(!require(randomForest)){install.packages(&quot;randomForest&quot;);library(randomForest)}if(!require(caret)){install.packages(&quot;caret&quot;);library(caret)} # for `confustionMatrix`A Random forest is made of Random TreesData &lt;- read_csv(file = here::here(&quot;content/post/2022-06-26-random-forest&quot;, &quot;german_credit.csv&quot;))Exploring the datasetData &lt;- clean_names(Data)Data$creditability &lt;- as.factor(Data$creditability)glimpse(Data)## Rows: 1,000## Columns: 21## $ creditability &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ account_balance &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …## $ duration_of_credit_month &lt;dbl&gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…## $ payment_status_of_previous_credit &lt;dbl&gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …## $ purpose &lt;dbl&gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …## $ credit_amount &lt;dbl&gt; 1049, 2799, 841, 2122, 2171, 2241, 3…## $ value_savings_stocks &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …## $ length_of_current_employment &lt;dbl&gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …## $ instalment_per_cent &lt;dbl&gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …## $ sex_marital_status &lt;dbl&gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …## $ guarantors &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ duration_in_current_address &lt;dbl&gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …## $ most_valuable_available_asset &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …## $ age_years &lt;dbl&gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …## $ concurrent_credits &lt;dbl&gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …## $ type_of_apartment &lt;dbl&gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …## $ no_of_credits_at_this_bank &lt;dbl&gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …## $ occupation &lt;dbl&gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …## $ no_of_dependents &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …## $ telephone &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ foreign_worker &lt;dbl&gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …Assess the creditabiliy with the help of other variables# code -------------------------------------------------------------------------ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) &#43;geom_histogram(binwidth = 5, position = &quot;identity&quot;, alpha = 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/" /><meta property="og:image" content="https://bytesize-blog.netlify.app/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-26T11:25:39&#43;00:00" />
+<meta property="article:modified_time" content="2022-06-26T11:25:39&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://bytesize-blog.netlify.app/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Random Forest with R-Programming"/>
+<meta name="twitter:description" content="The following packages are required for the random forest
+if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)}if(!require(janitor)){install.packages(&quot;janitor&quot;);library(janitor)} # for renameif(!require(randomForest)){install.packages(&quot;randomForest&quot;);library(randomForest)}if(!require(caret)){install.packages(&quot;caret&quot;);library(caret)} # for `confustionMatrix`A Random forest is made of Random TreesData &lt;- read_csv(file = here::here(&quot;content/post/2022-06-26-random-forest&quot;, &quot;german_credit.csv&quot;))Exploring the datasetData &lt;- clean_names(Data)Data$creditability &lt;- as.factor(Data$creditability)glimpse(Data)## Rows: 1,000## Columns: 21## $ creditability &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ account_balance &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …## $ duration_of_credit_month &lt;dbl&gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…## $ payment_status_of_previous_credit &lt;dbl&gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …## $ purpose &lt;dbl&gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …## $ credit_amount &lt;dbl&gt; 1049, 2799, 841, 2122, 2171, 2241, 3…## $ value_savings_stocks &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …## $ length_of_current_employment &lt;dbl&gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …## $ instalment_per_cent &lt;dbl&gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …## $ sex_marital_status &lt;dbl&gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …## $ guarantors &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ duration_in_current_address &lt;dbl&gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …## $ most_valuable_available_asset &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …## $ age_years &lt;dbl&gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …## $ concurrent_credits &lt;dbl&gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …## $ type_of_apartment &lt;dbl&gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …## $ no_of_credits_at_this_bank &lt;dbl&gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …## $ occupation &lt;dbl&gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …## $ no_of_dependents &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …## $ telephone &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …## $ foreign_worker &lt;dbl&gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …Assess the creditabiliy with the help of other variables# code -------------------------------------------------------------------------ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) &#43;geom_histogram(binwidth = 5, position = &quot;identity&quot;, alpha = 0."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://bytesize-blog.netlify.app/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Random Forest with R-Programming",
+      "item": "https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Random Forest with R-Programming",
+  "name": "Random Forest with R-Programming",
+  "description": "The following packages are required for the random forest\nif(!require(tidyverse)){install.packages(\u0026quot;tidyverse\u0026quot;);library(tidyverse)}\rif(!require(janitor)){install.packages(\u0026quot;janitor\u0026quot;);library(janitor)} # for rename\rif(!require(randomForest)){install.packages(\u0026quot;randomForest\u0026quot;);library(randomForest)}\rif(!require(caret)){install.packages(\u0026quot;caret\u0026quot;);library(caret)} # for `confustionMatrix`\rA Random forest is made of Random Trees\rData \u0026lt;- read_csv(file = here::here(\u0026quot;content/post/2022-06-26-random-forest\u0026quot;, \u0026quot;german_credit.csv\u0026quot;))\rExploring the dataset\rData \u0026lt;- clean_names(Data)\rData$creditability \u0026lt;- as.factor(Data$creditability)\rglimpse(Data)\r## Rows: 1,000\r## Columns: 21\r## $ creditability \u0026lt;fct\u0026gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ account_balance \u0026lt;dbl\u0026gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …\r## $ duration_of_credit_month \u0026lt;dbl\u0026gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…\r## $ payment_status_of_previous_credit \u0026lt;dbl\u0026gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …\r## $ purpose \u0026lt;dbl\u0026gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …\r## $ credit_amount \u0026lt;dbl\u0026gt; 1049, 2799, 841, 2122, 2171, 2241, 3…\r## $ value_savings_stocks \u0026lt;dbl\u0026gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …\r## $ length_of_current_employment \u0026lt;dbl\u0026gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …\r## $ instalment_per_cent \u0026lt;dbl\u0026gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …\r## $ sex_marital_status \u0026lt;dbl\u0026gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …\r## $ guarantors \u0026lt;dbl\u0026gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ duration_in_current_address \u0026lt;dbl\u0026gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …\r## $ most_valuable_available_asset \u0026lt;dbl\u0026gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …\r## $ age_years \u0026lt;dbl\u0026gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …\r## $ concurrent_credits \u0026lt;dbl\u0026gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …\r## $ type_of_apartment \u0026lt;dbl\u0026gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …\r## $ no_of_credits_at_this_bank \u0026lt;dbl\u0026gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …\r## $ occupation \u0026lt;dbl\u0026gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …\r## $ no_of_dependents \u0026lt;dbl\u0026gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …\r## $ telephone \u0026lt;dbl\u0026gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ foreign_worker \u0026lt;dbl\u0026gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …\rAssess the creditabiliy with the help of other variables\r# code -------------------------------------------------------------------------\rggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) +\rgeom_histogram(binwidth = 5, position = \u0026quot;identity\u0026quot;, alpha = 0.",
+  "keywords": [
+    "Random Forest", "plot", "regression"
+  ],
+  "articleBody": "\rThe following packages are required for the random forest\nif(!require(tidyverse)){install.packages(\"tidyverse\");library(tidyverse)}\rif(!require(janitor)){install.packages(\"janitor\");library(janitor)} # for rename\rif(!require(randomForest)){install.packages(\"randomForest\");library(randomForest)}\rif(!require(caret)){install.packages(\"caret\");library(caret)} # for `confustionMatrix`\rA Random forest is made of Random Trees\rData \u003c- read_csv(file = here::here(\"content/post/2022-06-26-random-forest\", \"german_credit.csv\"))\rExploring the dataset\rData \u003c- clean_names(Data)\rData$creditability \u003c- as.factor(Data$creditability)\rglimpse(Data)\r## Rows: 1,000\r## Columns: 21\r## $ creditability 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ account_balance 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …\r## $ duration_of_credit_month 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…\r## $ payment_status_of_previous_credit 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …\r## $ purpose 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …\r## $ credit_amount 1049, 2799, 841, 2122, 2171, 2241, 3…\r## $ value_savings_stocks 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …\r## $ length_of_current_employment 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …\r## $ instalment_per_cent 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …\r## $ sex_marital_status 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …\r## $ guarantors 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ duration_in_current_address 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …\r## $ most_valuable_available_asset 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …\r## $ age_years 21, 36, 23, 39, 38, 48, 39, 40, 65, …\r## $ concurrent_credits 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …\r## $ type_of_apartment 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …\r## $ no_of_credits_at_this_bank 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …\r## $ occupation 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …\r## $ no_of_dependents 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …\r## $ telephone 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\r## $ foreign_worker 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …\rAssess the creditabiliy with the help of other variables\r# code -------------------------------------------------------------------------\rggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) +\rgeom_histogram(binwidth = 5, position = \"identity\", alpha = 0.4) +\rscale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +\rscale_y_continuous(breaks = scales::pretty_breaks(n = 6)) + theme_minimal()\r# Create a training and testing data\rset.seed(7791)\rpartitioning \u003c- sample(2, nrow(Data), replace = TRUE, prob = c(0.8, 0.2))\rtable(partitioning)\r## partitioning\r## 1 2 ## 797 203\rtrain \u003c- Data[partitioning == 1, ]\rtable(train$creditability)\r## ## 0 1 ## 244 553\rtest \u003c- Data[partitioning == 2, ]\rtable(test$creditability)\r## ## 0 1 ## 56 147\rTrain the Random forest model\r# Generate random forest with train data\rrf_model \u003c- randomForest(formula = creditability ~ ., data = train)\rpredict_train \u003c- predict(rf_model, train)\rconfusionMatrix(predict_train, train$creditability)\r## Confusion Matrix and Statistics\r## ## Reference\r## Prediction 0 1\r## 0 244 0\r## 1 0 553\r## ## Accuracy : 1 ## 95% CI : (0.9954, 1)\r## No Information Rate : 0.6939 ## P-Value [Acc \u003e NIR] : \u003c 2.2e-16 ## ## Kappa : 1 ## ## Mcnemar's Test P-Value : NA ## ## Sensitivity : 1.0000 ## Specificity : 1.0000 ## Pos Pred Value : 1.0000 ## Neg Pred Value : 1.0000 ## Prevalence : 0.3061 ## Detection Rate : 0.3061 ## Detection Prevalence : 0.3061 ## Balanced Accuracy : 1.0000 ## ## 'Positive' Class : 0 ## Testing the model rf_model on test data\rpredict_test \u003c- predict(rf_model, test)\rconfusionMatrix(predict_test, test$creditability)\r## Confusion Matrix and Statistics\r## ## Reference\r## Prediction 0 1\r## 0 28 12\r## 1 28 135\r## ## Accuracy : 0.803 ## 95% CI : (0.7415, 0.8553)\r## No Information Rate : 0.7241 ## P-Value [Acc \u003e NIR] : 0.006157 ## ## Kappa : 0.459 ## ## Mcnemar's Test P-Value : 0.017706 ## ## Sensitivity : 0.5000 ## Specificity : 0.9184 ## Pos Pred Value : 0.7000 ## Neg Pred Value : 0.8282 ## Prevalence : 0.2759 ## Detection Rate : 0.1379 ## Detection Prevalence : 0.1970 ## Balanced Accuracy : 0.7092 ## ## 'Positive' Class : 0 ## # Reference\r# Prediction 0 1\r# 0 29 14\r# 1 27 133\rvarImpPlot(rf_model)\rOptimize the performance of randomforest.\rplot(rf_model) # black line is out of bag error.\roob_error \u003c- double(20)\rfor (mtry in 1:20) {\rrf \u003c- randomForest(formula = creditability ~ ., data = train, mtry = mtry, ntree = 166)\roob_error[mtry] \u003c- rf$err.rate[166]\r}\rplot(1:20, oob_error, type = \"b\", xlab = \"Number of variable considered\", ylab = \"Out of bag erro [-]\", xaxt = \"n\")\raxis(1, at = 1:20, labels = 1:20, cex = 0.8)\ropti_num_var = which.min(oob_error)\rRe running the random forest with optimum number of variables\rrf_optim \u003c- randomForest(formula = creditability ~ ., data = train, mtry = opti_num_var, ntree = 166)\r# Testing the model `rf_model` on test data\rconfusionMatrix(predict(rf_optim, test), test$creditability)\r## Confusion Matrix and Statistics\r## ## Reference\r## Prediction 0 1\r## 0 33 20\r## 1 23 127\r## ## Accuracy : 0.7882 ## 95% CI : (0.7255, 0.8423)\r## No Information Rate : 0.7241 ## P-Value [Acc \u003e NIR] : 0.02266 ## ## Kappa : 0.4609 ## ## Mcnemar's Test P-Value : 0.76037 ## ## Sensitivity : 0.5893 ## Specificity : 0.8639 ## Pos Pred Value : 0.6226 ## Neg Pred Value : 0.8467 ## Prevalence : 0.2759 ## Detection Rate : 0.1626 ## Detection Prevalence : 0.2611 ## Balanced Accuracy : 0.7266 ## ## 'Positive' Class : 0 ## Exploring useful variables\rtrain \u003c- as.data.frame(train)\rvarImpPlot(rf_model)\rimportance(rf_model)\r## MeanDecreaseGini\r## account_balance 36.543019\r## duration_of_credit_month 34.072986\r## payment_status_of_previous_credit 18.303982\r## purpose 20.837156\r## credit_amount 46.208519\r## value_savings_stocks 18.564843\r## length_of_current_employment 18.296281\r## instalment_per_cent 13.122638\r## sex_marital_status 12.781397\r## guarantors 7.055415\r## duration_in_current_address 13.666627\r## most_valuable_available_asset 14.340330\r## age_years 33.451374\r## concurrent_credits 8.064289\r## type_of_apartment 8.821601\r## no_of_credits_at_this_bank 7.306201\r## occupation 10.567355\r## no_of_dependents 4.325819\r## telephone 6.359517\r## foreign_worker 1.666973\r# How variable affect the chance of getting loan.\rpartialPlot(rf_model, train, account_balance, \"1\")\rpartialPlot(rf_model, train, age_years, \"1\")\rThis analysis for discrete variable of creditability.\n",
+  "wordCount" : "1071",
+  "inLanguage": "en",
+  "datePublished": "2022-06-26T11:25:39.307Z",
+  "dateModified": "2022-06-26T11:25:39.307Z",
+  "author":{
+    "@type": "Person",
+    "name": "Dr. Ankit Deshmukh"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bytesize Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bytesize-blog.netlify.app/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://bytesize-blog.netlify.app/" accesskey="h" title="Bytesize Blog (Alt + H)">Bytesize Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://bytesize-blog.netlify.app/post/" title="Blog Post">
+                    <span>Blog Post</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/slides/" title="Slides">
+                    <span>Slides</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/search/" title="🔎">
+                    <span>🔎</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bytesize-blog.netlify.app/about/" title="About me">
+                    <span>About me</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://bytesize-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://bytesize-blog.netlify.app/post/">Posts</a></div>
+    <h1 class="post-title">
+      Random Forest with R-Programming
+    </h1>
+    <div class="post-meta"><span title='2022-06-26 11:25:39.307 +0000 UTC'>June 26, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul><ul>
+                <li>
+                    <a href="#" aria-label="A Random forest is made of Random Trees">A Random forest is made of Random Trees</a></li>
+                <li>
+                    <a href="#" aria-label="Exploring the dataset">Exploring the dataset</a></li>
+                <li>
+                    <a href="#" aria-label="Assess the creditabiliy with the help of other variables">Assess the creditabiliy with the help of other variables</a></li>
+                <li>
+                    <a href="#" aria-label="Train the Random forest model">Train the Random forest model</a></li></ul>
+                    
+                <li>
+                    <a href="#" aria-label="Testing the model rf_model on test data">Testing the model <code>rf_model</code> on test data</a></li>
+                <li>
+                    <a href="#" aria-label="Optimize the performance of randomforest.">Optimize the performance of randomforest.</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="Re running the random forest with optimum number of variables">Re running the random forest with optimum number of variables</a></li></ul>
+                </li>
+                <li>
+                    <a href="#" aria-label="Exploring useful variables">Exploring useful variables</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content">
+
+
+<p>The following packages are required for the random forest</p>
+<pre class="r"><code>if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;);library(tidyverse)}
+if(!require(janitor)){install.packages(&quot;janitor&quot;);library(janitor)} # for rename
+
+if(!require(randomForest)){install.packages(&quot;randomForest&quot;);library(randomForest)}
+if(!require(caret)){install.packages(&quot;caret&quot;);library(caret)} # for `confustionMatrix`</code></pre>
+<div id="a-random-forest-is-made-of-random-trees" class="section level2">
+<h2>A Random forest is made of Random Trees</h2>
+<pre class="r"><code>Data &lt;- read_csv(file = here::here(&quot;content/post/2022-06-26-random-forest&quot;, &quot;german_credit.csv&quot;))</code></pre>
+</div>
+<div id="exploring-the-dataset" class="section level2">
+<h2>Exploring the dataset</h2>
+<pre class="r"><code>Data &lt;- clean_names(Data)
+Data$creditability &lt;- as.factor(Data$creditability)
+glimpse(Data)
+## Rows: 1,000
+## Columns: 21
+## $ creditability                     &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ account_balance                   &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 4, 2, 1, 1, …
+## $ duration_of_credit_month          &lt;dbl&gt; 18, 9, 12, 12, 12, 10, 8, 6, 18, 24,…
+## $ payment_status_of_previous_credit &lt;dbl&gt; 4, 4, 2, 4, 4, 4, 4, 4, 4, 2, 4, 4, …
+## $ purpose                           &lt;dbl&gt; 2, 0, 9, 0, 0, 0, 0, 0, 3, 3, 0, 1, …
+## $ credit_amount                     &lt;dbl&gt; 1049, 2799, 841, 2122, 2171, 2241, 3…
+## $ value_savings_stocks              &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 2, …
+## $ length_of_current_employment      &lt;dbl&gt; 2, 3, 4, 3, 3, 2, 4, 2, 1, 1, 3, 4, …
+## $ instalment_per_cent               &lt;dbl&gt; 4, 2, 2, 3, 4, 1, 1, 2, 4, 1, 2, 1, …
+## $ sex_marital_status                &lt;dbl&gt; 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 4, …
+## $ guarantors                        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ duration_in_current_address       &lt;dbl&gt; 4, 2, 4, 2, 4, 3, 4, 4, 4, 4, 2, 4, …
+## $ most_valuable_available_asset     &lt;dbl&gt; 2, 1, 1, 1, 2, 1, 1, 1, 3, 4, 1, 3, …
+## $ age_years                         &lt;dbl&gt; 21, 36, 23, 39, 38, 48, 39, 40, 65, …
+## $ concurrent_credits                &lt;dbl&gt; 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, …
+## $ type_of_apartment                 &lt;dbl&gt; 1, 1, 1, 1, 2, 1, 2, 2, 2, 1, 1, 1, …
+## $ no_of_credits_at_this_bank        &lt;dbl&gt; 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, …
+## $ occupation                        &lt;dbl&gt; 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 3, …
+## $ no_of_dependents                  &lt;dbl&gt; 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, …
+## $ telephone                         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ foreign_worker                    &lt;dbl&gt; 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, …</code></pre>
+</div>
+<div id="assess-the-creditabiliy-with-the-help-of-other-variables" class="section level2">
+<h2>Assess the creditabiliy with the help of other variables</h2>
+<pre class="r"><code># code -------------------------------------------------------------------------
+
+ggplot(data = Data, aes(x = age_years, color = creditability, fill = creditability)) +
+    geom_histogram(binwidth = 5, position = &quot;identity&quot;, alpha = 0.4) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
+    scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) + theme_minimal()</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>
+
+# Create a training and testing data
+set.seed(7791)
+partitioning &lt;- sample(2, nrow(Data), replace = TRUE, prob = c(0.8, 0.2))
+table(partitioning)
+## partitioning
+##   1   2 
+## 797 203
+
+train &lt;- Data[partitioning == 1, ]
+table(train$creditability)
+## 
+##   0   1 
+## 244 553
+test &lt;- Data[partitioning == 2, ]
+table(test$creditability)
+## 
+##   0   1 
+##  56 147</code></pre>
+</div>
+<div id="train-the-random-forest-model" class="section level2">
+<h2>Train the Random forest model</h2>
+<pre class="r"><code>
+# Generate random forest with train data
+rf_model &lt;- randomForest(formula = creditability ~ ., data = train)
+predict_train &lt;- predict(rf_model, train)
+confusionMatrix(predict_train, train$creditability)
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0 244   0
+##          1   0 553
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.9954, 1)
+##     No Information Rate : 0.6939     
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16  
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar&#39;s Test P-Value : NA         
+##                                      
+##             Sensitivity : 1.0000     
+##             Specificity : 1.0000     
+##          Pos Pred Value : 1.0000     
+##          Neg Pred Value : 1.0000     
+##              Prevalence : 0.3061     
+##          Detection Rate : 0.3061     
+##    Detection Prevalence : 0.3061     
+##       Balanced Accuracy : 1.0000     
+##                                      
+##        &#39;Positive&#39; Class : 0          
+## </code></pre>
+</div>
+<div id="testing-the-model-rf_model-on-test-data" class="section level1">
+<h1>Testing the model <code>rf_model</code> on test data</h1>
+<pre class="r"><code>predict_test &lt;- predict(rf_model, test)
+confusionMatrix(predict_test, test$creditability)
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  28  12
+##          1  28 135
+##                                           
+##                Accuracy : 0.803           
+##                  95% CI : (0.7415, 0.8553)
+##     No Information Rate : 0.7241          
+##     P-Value [Acc &gt; NIR] : 0.006157        
+##                                           
+##                   Kappa : 0.459           
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.017706        
+##                                           
+##             Sensitivity : 0.5000          
+##             Specificity : 0.9184          
+##          Pos Pred Value : 0.7000          
+##          Neg Pred Value : 0.8282          
+##              Prevalence : 0.2759          
+##          Detection Rate : 0.1379          
+##    Detection Prevalence : 0.1970          
+##       Balanced Accuracy : 0.7092          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## 
+
+
+#            Reference
+# Prediction   0   1
+#         0   29  14
+#         1   27 133
+
+varImpPlot(rf_model)</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="optimize-the-performance-of-randomforest." class="section level1">
+<h1>Optimize the performance of randomforest.</h1>
+<pre class="r"><code>plot(rf_model) # black line is out of bag error.</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>
+oob_error &lt;- double(20)
+
+for (mtry in 1:20) {
+    rf &lt;- randomForest(formula = creditability ~ ., data = train, mtry = mtry, ntree = 166)
+    oob_error[mtry] &lt;- rf$err.rate[166]
+}
+
+plot(1:20, oob_error, type  = &quot;b&quot;, xlab = &quot;Number of variable considered&quot;, ylab = &quot;Out of bag erro [-]&quot;, xaxt = &quot;n&quot;)
+axis(1, at = 1:20, labels = 1:20, cex = 0.8)</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<pre class="r"><code>
+opti_num_var = which.min(oob_error)</code></pre>
+<div id="re-running-the-random-forest-with-optimum-number-of-variables" class="section level2">
+<h2>Re running the random forest with optimum number of variables</h2>
+<pre class="r"><code>rf_optim &lt;- randomForest(formula = creditability ~ ., data = train, mtry = opti_num_var, ntree = 166)
+
+# Testing the model `rf_model` on test data
+confusionMatrix(predict(rf_optim, test), test$creditability)
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  33  20
+##          1  23 127
+##                                           
+##                Accuracy : 0.7882          
+##                  95% CI : (0.7255, 0.8423)
+##     No Information Rate : 0.7241          
+##     P-Value [Acc &gt; NIR] : 0.02266         
+##                                           
+##                   Kappa : 0.4609          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.76037         
+##                                           
+##             Sensitivity : 0.5893          
+##             Specificity : 0.8639          
+##          Pos Pred Value : 0.6226          
+##          Neg Pred Value : 0.8467          
+##              Prevalence : 0.2759          
+##          Detection Rate : 0.1626          
+##    Detection Prevalence : 0.2611          
+##       Balanced Accuracy : 0.7266          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+</div>
+</div>
+<div id="exploring-useful-variables" class="section level1">
+<h1>Exploring useful variables</h1>
+<pre class="r"><code>train &lt;- as.data.frame(train)
+varImpPlot(rf_model)</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>importance(rf_model)
+##                                   MeanDecreaseGini
+## account_balance                          36.543019
+## duration_of_credit_month                 34.072986
+## payment_status_of_previous_credit        18.303982
+## purpose                                  20.837156
+## credit_amount                            46.208519
+## value_savings_stocks                     18.564843
+## length_of_current_employment             18.296281
+## instalment_per_cent                      13.122638
+## sex_marital_status                       12.781397
+## guarantors                                7.055415
+## duration_in_current_address              13.666627
+## most_valuable_available_asset            14.340330
+## age_years                                33.451374
+## concurrent_credits                        8.064289
+## type_of_apartment                         8.821601
+## no_of_credits_at_this_bank                7.306201
+## occupation                               10.567355
+## no_of_dependents                          4.325819
+## telephone                                 6.359517
+## foreign_worker                            1.666973
+
+# How variable affect the chance of getting loan.
+partialPlot(rf_model, train, account_balance, &quot;1&quot;)</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<pre class="r"><code>partialPlot(rf_model, train, age_years, &quot;1&quot;)</code></pre>
+<p><img src="https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/index_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<p>This analysis for discrete variable of creditability.</p>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://bytesize-blog.netlify.app/tags/random-forest/">Random Forest</a></li>
+      <li><a href="https://bytesize-blog.netlify.app/tags/plot/">plot</a></li>
+      <li><a href="https://bytesize-blog.netlify.app/tags/regression/">regression</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Setting up R, Python, and SQL in RStudio</span>
+  </a>
+  <a class="next" href="https://bytesize-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/">
+    <span class="title">Next »</span>
+    <br>
+    <span>How to create a pretty facet-boxplot with custom fonts</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Random Forest with R-Programming on twitter"
+        href="https://twitter.com/intent/tweet/?text=Random%20Forest%20with%20R-Programming&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-06-26-random-forest%2f&amp;hashtags=RandomForest%2cplot%2cregression">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Random Forest with R-Programming on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-06-26-random-forest%2f&amp;title=Random%20Forest%20with%20R-Programming&amp;summary=Random%20Forest%20with%20R-Programming&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2022-06-26-random-forest%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
