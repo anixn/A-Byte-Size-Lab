@@ -117,3 +117,7 @@ outputs:
         - JSON # is necessary
 
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
