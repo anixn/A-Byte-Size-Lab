@@ -6,9 +6,9 @@ weight: 1
 ---
 
 ### Blogs
->  <font color="#A43E40"> 02 November 2023 | GDAL - Introduction </font>
+> <a href="https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/">02 November 2023 | GDAL - Introduction</a>
 
-[02 November 2023 | GDAL - Introduction](../../../../public/post/2023-10-24-gdal-an-introduction-rmd/index.html)
+
 
 ---
 ### Presentation and Talks

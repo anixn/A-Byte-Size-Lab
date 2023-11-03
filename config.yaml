@@ -43,7 +43,7 @@ languages:
                 - name: Tags
                   url: tags/
                   weight: 40
-                - name: "[⦿]"
+                - name: "  🔎︎  "
                   url: search/
                   weight: 50
 
@@ -79,10 +79,11 @@ params:
         buttons:
             - name: About me
               url: /About
-            - name: Archive
-              url: /archives
             - name: Updates
               url: /Research/Updates/
+            - name: Archive
+              url: /archives
+
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"

@@ -6,19 +6,15 @@ layout: "main"
 
 In my leisure time I want work on 
 - Storytelling with Data
-- Visualization and coding.
+- Data visualization and coding.
 - Playing Guitar.
 
-Apart from my research work, I like to make fancy visualization and infographics, mostly I use open source tools and software for graphics creation. I prefer Inkscape and GIMP for graphics editing, R for data processing and plotting, Processing and, P5js for live graphics. 
+To visualization and create info-graphics, I use open source tools such as Inkscape, GIMP and R. Some example of my work. 
 
-<button style = "padding: 1px 10px">
-<a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
-  <img src="Image (1).png"  width="150" alt="ResearchGate">
-  </a>
-</button>
-
-<button style = "padding: 1px 10px">
-<a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
-  <img src="Image (2).png"  width="150" alt="ResearchGate">
-  </a>
-</button>
+<button style = "padding: 1px 10px"><img src="Image (1).png"  width="150"></button>
+<button style = "padding: 1px 10px"><img src="Image (2).png"  width="150"></button>
+<button style = "padding: 1px 10px"><img src="Image (3).png"  width="150"></button>
+<button style = "padding: 1px 10px"><img src="Image (4).png"  width="150"></button>
+<button style = "padding: 1px 10px"><img src="Image (5).png"  width="325"></button>
+<button style = "padding: 1px 10px"><img src="Image (6).jpg"  width="325" height="216"></button>
+_<center>Word cloud, Hexagon grid, generative art, etc... </center>_

@@ -7,31 +7,31 @@ layout: "main"
 ## About my research 
 <button style = "padding: 1px 10px">
 <a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
-  <img src="RG.png"  width="30" alt="ResearchGate">
+  <img src="RG.png"  width="30" alt="Research Gate">
   </a>
 </button>
 
 <button style = "padding: 1px 10px">
-<a href="https://twitter.com/anix7n">
-  <img src="https://cdn-icons-png.flaticon.com/128/2168/2168336.png"  width="30" alt="ResearchGate">
-  </a>
-</button>
-
-<button style = "padding: 1px 10px">
-<a href="https://github.com/anixn">
-  <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
-  </a>
-</button>
-
-<button style = "padding: 1px 10px">
-<a href="https://www.linkedin.com/in/anixn/">
-  <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
+<a href="https://scholar.google.com/citations?user=tmzuq8QAAAAJ">
+  <img src="GS.png"  width="30" alt="Google Scholar">
   </a>
 </button>
 
 <button style = "padding: 1px 10px">
 <a href="https://orcid.org/0000-0002-1433-3872">
-  <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
+  <img src="ID.png"  width="30" alt="OrcID">
+  </a>
+</button>
+
+<button style = "padding: 1px 10px">
+<a href="https://www.linkedin.com/in/anixn/">
+  <img src="IN.png"  width="30" alt="LinkedIn">
+  </a>
+</button>
+
+<button style = "padding: 1px 10px">
+<a href="https://twitter.com/anix7n">
+  <img src="TW.png"  width="30" alt="Twitter">
   </a>
 </button>
 
