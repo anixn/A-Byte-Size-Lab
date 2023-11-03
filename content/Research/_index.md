@@ -12,13 +12,25 @@ layout: "main"
 </button>
 
 <button style = "padding: 1px 10px">
-<a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
+<a href="https://twitter.com/anix7n">
   <img src="https://cdn-icons-png.flaticon.com/128/2168/2168336.png"  width="30" alt="ResearchGate">
   </a>
 </button>
 
 <button style = "padding: 1px 10px">
-<a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
+<a href="https://github.com/anixn">
+  <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
+  </a>
+</button>
+
+<button style = "padding: 1px 10px">
+<a href="https://www.linkedin.com/in/anixn/">
+  <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
+  </a>
+</button>
+
+<button style = "padding: 1px 10px">
+<a href="https://orcid.org/0000-0002-1433-3872">
   <img src="https://cdn-icons-png.flaticon.com/128/4942/4942174.png"  width="30" alt="ResearchGate">
   </a>
 </button>

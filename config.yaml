@@ -37,6 +37,9 @@ languages:
                 - name: Slides
                   url: /Slides/
                   weight: 20
+                - name: Storytelling
+                  url: /Storytelling/
+                  weight: 25
                 - name: Archive
                   url: archives
                   weight: 30
