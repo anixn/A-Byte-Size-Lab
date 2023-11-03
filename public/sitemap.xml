@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://bytesize-blog.netlify.app/research/1-updates/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/research/2-research-summary/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/research/3-publications/</loc>
+  </url><url>
     <loc>https://bytesize-blog.netlify.app/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -93,14 +99,18 @@
   </url><url>
     <loc>https://bytesize-blog.netlify.app/research/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/</loc>
-  </url><url>
     <loc>https://bytesize-blog.netlify.app/archives/</loc>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/slides/geospatial-techniques/</loc>
   </url><url>
+    <loc>https://bytesize-blog.netlify.app/slides/how-to-make-a-scientific-presentation/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/slides/latex-tutorial/</loc>
+  </url><url>
     <loc>https://bytesize-blog.netlify.app/search/</loc>
   </url><url>
     <loc>https://bytesize-blog.netlify.app/series/</loc>
+  </url><url>
+    <loc>https://bytesize-blog.netlify.app/slides/</loc>
   </url>
 </urlset>

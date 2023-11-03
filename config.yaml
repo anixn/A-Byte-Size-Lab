@@ -43,7 +43,7 @@ languages:
                 - name: Tags
                   url: tags/
                   weight: 40
-                - name: 🔎
+                - name: "  🔍  "
                   url: search/
                   weight: 50
 
@@ -77,12 +77,13 @@ params:
         imageWidth: 160
         imageHeight: 160
         buttons:
-            - name: Blogs
-              url: /post
-            - name: Archives
-              url: /archives
             - name: About me
               url: /About
+            - name: Blogs
+              url: /post
+            - name: Research
+              url: /Research
+
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
