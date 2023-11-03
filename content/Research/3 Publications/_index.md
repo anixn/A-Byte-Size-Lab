@@ -2,6 +2,7 @@
 title: "Publications"
 layout: "main"
 #url: /default/
+weight: 3
 ---
 
 ### Peer Reviewed Journals

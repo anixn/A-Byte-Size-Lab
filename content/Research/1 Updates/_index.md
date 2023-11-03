@@ -2,6 +2,7 @@
 title: "Updates..."
 layout: "main"
 #url: /default/
+weight: 1
 ---
 
 ### Blogs
