@@ -71,7 +71,7 @@ params:
     profileMode:
         enabled: true
         title: "Dr. Ankit Deshmukh"
-        subtitle: "Welcome! I post blogs and tutorials of my learning Data Analysis, Machine Learning, R, Hydrology, and Water Resources. Use [**Tags**](https://bytesize-blog.netlify.app/tags/) tab to filter out blog posts of your liking. Reach out to me on [**Twitter**](https://twitter.com/anix7n) or [**LinkedIn**](https://www.linkedin.com/in/anixn/) for colebration and seminars."
+        subtitle: ⟨●⟩ <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160

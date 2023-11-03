@@ -5,7 +5,8 @@ layout: "main"
 weight: 2
 ---
 
-## Summary of my work presented in the following studies
+Summary of my work presented in the following studies
+
 ### 1. Physio-climatic controls on vulnerability of watersheds to climate and land use change across the United States.
 > - We combine the strengths of recently developed exploratory modeling frameworks and comparative hydrology to quantify the relationship between watershed’s vulnerability and its physio-climatic characteristics.
 > - We propose a definition of vulnerability that can be used by a diverse range of water system managers and is useful in the presence of large uncertainties in drivers of environmental change.
@@ -40,28 +41,3 @@ weight: 2
   <img src="Research03.png" width="450">
 </p>
 
----
-
-
-
-
-## My current research is the best 
-1. Drought monitoring 
-2. Land use classification 
-
-## Updates
-> 23 July 2022 13:04
-
-## Talks and Conference
-01 November 2023
-ICIWRM Conference Coimbatore
-1. Updating ...
-
-2. Updating ...
-
-> 24 August 2022
-
-- Mr. Vishal Rakhecha presented at the Innovation in Smart and Sustainable Infrastructure conference organized by Pandit Deendayal Energy University, Gandhinagar, from 23 to 25th August 2022. 
-
-
-- Title of the talk: An enhanced bottom-up approach to assess the catchments' vulnerability to climate change.
