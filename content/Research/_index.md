@@ -7,7 +7,7 @@ layout: "main"
 ## About my research 
 <button style = "padding: 1px 10px">
 <a href="https://www.researchgate.net/profile/Ankit-Deshmukh-2">
-  <img src="https://cdn-icons-png.flaticon.com/128/49/49394.png"  width="30" alt="ResearchGate">
+  <img src="RG.png"  width="30" alt="ResearchGate">
   </a>
 </button>
 

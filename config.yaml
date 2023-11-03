@@ -40,13 +40,10 @@ languages:
                 - name: Storytelling
                   url: /Storytelling/
                   weight: 25
-                - name: Archive
-                  url: archives
-                  weight: 30
                 - name: Tags
                   url: tags/
                   weight: 40
-                - name: "  🔍  "
+                - name: "[⦿]"
                   url: search/
                   weight: 50
 
@@ -74,7 +71,7 @@ params:
     profileMode:
         enabled: true
         title: "Dr. Ankit Deshmukh"
-        subtitle: ⟨∫⟩ <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
+        subtitle: = ☯ = <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160
@@ -82,10 +79,8 @@ params:
         buttons:
             - name: About me
               url: /About
-            - name: Blogs
-              url: /post
-            - name: Research
-              url: /Research
+            - name: Archive
+              url: /archives
             - name: Updates
               url: /Research/Updates/
 
