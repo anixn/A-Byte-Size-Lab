@@ -74,7 +74,7 @@ params:
     profileMode:
         enabled: true
         title: "Dr. Ankit Deshmukh"
-        subtitle: ⟨●⟩ <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
+        subtitle: ⟨∫⟩ <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160
@@ -86,7 +86,8 @@ params:
               url: /post
             - name: Research
               url: /Research
-
+            - name: Updates
+              url: /Research/Updates/
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
