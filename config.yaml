@@ -1,7 +1,7 @@
 theme: "hugo-PaperMod"
 baseURL: https://bytesize-blog.netlify.app/
 languageCode: en-us
-title: Bytesize Blog
+title: ankitdeshmukh.com
 
 paginate: 5
 
@@ -70,7 +70,7 @@ params:
 
     profileMode:
         enabled: true
-        title: "Dr. Ankit Deshmukh"
+        title: "Hi, I'm Ankit Deshmukh"
         subtitle: = ☯ = <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: my image
