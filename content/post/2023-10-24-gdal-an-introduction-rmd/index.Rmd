@@ -1,10 +1,12 @@
 ---
-title: "GDAL-An Introduction"
+title: "Introduction of GDAL with R programming"
 author: 'Dr. Ankit Deshmukh'
-date: '2023-10-24'
+date: 2023-10-24
 slug: []
-categories: ["GIS"]
-tags: ["GIS", "gdal"]
+tags: ["gdal", "r", "Tutorial", "gis"]
+cover:
+    image: "Cover.png"
+    alt: "Image of GDAL and OSGeo"
 ---
 
 ## Getting started with `gdal`
