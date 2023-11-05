@@ -71,7 +71,7 @@ params:
     profileMode:
         enabled: true
         title: "Hi, I'm Ankit Deshmukh"
-        subtitle: = ☯ = <br /><br /> `Academician | Water Resource | Hydrologic Modeling | GIS Enthusiast | Data Analysis | Freelance` <br /> <br />
+        subtitle: = ☯ = <br /><br />  `Academician | Water Resource | Hydrologic Modeling ` <br /> `Geospatial Analysis | Data Analysis | Freelancing` <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: my image
         imageWidth: 160
