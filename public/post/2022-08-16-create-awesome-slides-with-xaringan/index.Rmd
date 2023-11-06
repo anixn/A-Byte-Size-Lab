@@ -112,8 +112,7 @@ or use html tags
 
 ## Checkout the slides with Xaringan 
 
-[Click here to view in full screen](../../../20220710_Introduction/Presentation.html) 
+[Click here to view in full screen](/post/2022-08-16-create-awesome-slides-with-xaringan/20220710_Introduction/Presentation.html) 
 
-![](../../../20220710_Introduction/Presentation.html){width="100%" height="400px"}
-
+![](/post/2022-08-16-create-awesome-slides-with-xaringan/20220710_Introduction/Presentation.html){width="100%" height="400px"}
 

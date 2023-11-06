@@ -2,115 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://bytesize-blog.netlify.app/research/1-updates/</loc>
+    <loc>https://ankitdeshmukh.com/research/updates/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/research/2-research-summary/</loc>
+    <loc>https://ankitdeshmukh.com/research/research-summary/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/research/3-publications/</loc>
+    <loc>https://ankitdeshmukh.com/research/publications/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/</loc>
+    <loc>https://ankitdeshmukh.com/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/</loc>
+    <loc>https://ankitdeshmukh.com/tags/gdal/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/gdal/</loc>
+    <loc>https://ankitdeshmukh.com/tags/gis/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/</loc>
+    <loc>https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/gis/</loc>
+    <loc>https://ankitdeshmukh.com/post/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/gis/</loc>
+    <loc>https://ankitdeshmukh.com/tags/r/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/</loc>
+    <loc>https://ankitdeshmukh.com/tags/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/</loc>
+    <loc>https://ankitdeshmukh.com/tags/tutorial/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/</loc>
+    <loc>https://ankitdeshmukh.com/categories/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/r/</loc>
+    <loc>https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/rmd/</loc>
+    <loc>https://ankitdeshmukh.com/categories/r/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/slides/</loc>
+    <loc>https://ankitdeshmukh.com/categories/rmd/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/xaringan/</loc>
+    <loc>https://ankitdeshmukh.com/tags/slides/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/plot/</loc>
+    <loc>https://ankitdeshmukh.com/tags/xaringan/</loc>
+    <lastmod>2022-08-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ankitdeshmukh.com/tags/plot/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2022-07-04-r-python-sql-in-rstudio/</loc>
+    <loc>https://ankitdeshmukh.com/post/2022-07-04-r-python-sql-in-rstudio/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/setup/</loc>
+    <loc>https://ankitdeshmukh.com/tags/setup/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/ml/</loc>
+    <loc>https://ankitdeshmukh.com/categories/ml/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/random-forest/</loc>
+    <loc>https://ankitdeshmukh.com/tags/random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2022-06-26-random-forest/</loc>
+    <loc>https://ankitdeshmukh.com/post/2022-06-26-random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/regression/</loc>
+    <loc>https://ankitdeshmukh.com/tags/regression/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/boxplot/</loc>
+    <loc>https://ankitdeshmukh.com/tags/boxplot/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/</loc>
+    <loc>https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/r/</loc>
+    <loc>https://ankitdeshmukh.com/categories/visulization/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/categories/visulization/</loc>
-    <lastmod>2022-01-21T11:25:39+00:00</lastmod>
-  </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2021-12-01-r-markdown/</loc>
+    <loc>https://ankitdeshmukh.com/post/2021-12-01-r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/r-markdown/</loc>
+    <loc>https://ankitdeshmukh.com/tags/r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2021-09-25-basics-of-r-programming/</loc>
+    <loc>https://ankitdeshmukh.com/post/2021-09-25-basics-of-r-programming/</loc>
     <lastmod>2021-09-25T22:40:24+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/tags/coding/</loc>
+    <loc>https://ankitdeshmukh.com/tags/coding/</loc>
     <lastmod>2021-09-25T22:40:24+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/post/2021-09-21-getting-started-with-r/</loc>
+    <loc>https://ankitdeshmukh.com/post/2021-09-21-getting-started-with-r/</loc>
     <lastmod>2021-09-21T11:25:39+00:00</lastmod>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/about/</loc>
+    <loc>https://ankitdeshmukh.com/about/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/research/</loc>
+    <loc>https://ankitdeshmukh.com/research/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/archives/</loc>
+    <loc>https://ankitdeshmukh.com/archives/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/geospatial-techniques/</loc>
+    <loc>https://ankitdeshmukh.com/slides/geospatial-techniques/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/how-to-make-a-scientific-presentation/</loc>
+    <loc>https://ankitdeshmukh.com/slides/how-to-make-a-scientific-presentation/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/latex-tutorial/</loc>
+    <loc>https://ankitdeshmukh.com/slides/latex-tutorial/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/search/</loc>
+    <loc>https://ankitdeshmukh.com/search/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/series/</loc>
+    <loc>https://ankitdeshmukh.com/series/</loc>
   </url><url>
-    <loc>https://bytesize-blog.netlify.app/slides/</loc>
+    <loc>https://ankitdeshmukh.com/storytelling/</loc>
+  </url><url>
+    <loc>https://ankitdeshmukh.com/slides/</loc>
   </url>
 </urlset>

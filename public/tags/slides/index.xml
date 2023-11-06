@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Slides on Bytesize Blog</title>
-    <link>https://bytesize-blog.netlify.app/tags/slides/</link>
-    <description>Recent content in Slides on Bytesize Blog</description>
+    <title>Slides on ankitdeshmukh.com</title>
+    <link>https://ankitdeshmukh.com/tags/slides/</link>
+    <description>Recent content in Slides on ankitdeshmukh.com</description>
     <image>
-      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
-      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
+      <url>https://ankitdeshmukh.com/papermod-cover.png</url>
+      <link>https://ankitdeshmukh.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/slides/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/slides/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create awesome slides with Xaringan</title>
-      <link>https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/</link>
+      <link>https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/</link>
       <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/</guid>
+      <guid>https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/</guid>
       <description>HTML slides with Xaringan.Xaringan is an R package for creating slideshows with remark.js through R Markdown.
 …from https://github.com/yihui/xaringan
 The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two abilities: the “Eye of Insight” and the “Eye of Hypnotism”. A presentation ninja should have these basic abilities, and I think remark.js may help you acquire these abilities, even if you are not a member of the Uchiha clan.</description>

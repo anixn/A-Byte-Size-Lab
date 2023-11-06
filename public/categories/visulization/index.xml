@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Visulization on Bytesize Blog</title>
-    <link>https://bytesize-blog.netlify.app/categories/visulization/</link>
-    <description>Recent content in Visulization on Bytesize Blog</description>
+    <title>Visulization on ankitdeshmukh.com</title>
+    <link>https://ankitdeshmukh.com/categories/visulization/</link>
+    <description>Recent content in Visulization on ankitdeshmukh.com</description>
     <image>
-      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
-      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
+      <url>https://ankitdeshmukh.com/papermod-cover.png</url>
+      <link>https://ankitdeshmukh.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Jan 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/categories/visulization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jan 2022 11:25:39 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/categories/visulization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to create a pretty facet-boxplot with custom fonts</title>
-      <link>https://bytesize-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/</link>
+      <link>https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/</link>
       <pubDate>Fri, 21 Jan 2022 11:25:39 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/post/2022-01-21-pretty-boxplot-with-focet/</guid>
+      <guid>https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/</guid>
       <description>How to make a better boxplot with custom fonts, let’s explore this in this post, it can be used for the standard template for boxplot with facet and user defined fonts.
 Required R libraries:if(!require(tidyverse)){install.packages(&amp;quot;tidyverse&amp;quot;);library(tidyverse)} # for ggplot2 functionif(!require(gapminder)){install.packages(&amp;quot;gapminder&amp;quot;);library(gapminder)} # for sample dataif(!require(showtext)){install.packages(&amp;quot;showtext&amp;quot;);library(showtext)} # to import fontsAdd fonts in R sessionfont_add_google(&amp;quot;Karla&amp;quot;, &amp;quot;Karla&amp;quot;) # adding local fontfont_add(family = &amp;quot;Helvetica&amp;quot;, regular = &amp;quot;C:/Windows/Fonts/Helvetica 400.ttf&amp;quot;)# Adding from Google fontsfont_add_google(&amp;quot;Roboto Slab&amp;quot;, &amp;quot;Roboto Slab&amp;quot;) # adding font from the web/google fontfont_families()## [1] &amp;quot;sans&amp;quot; &amp;quot;serif&amp;quot; &amp;quot;mono&amp;quot; &amp;quot;wqy-microhei&amp;quot; &amp;quot;Karla&amp;quot; ## [6] &amp;quot;Helvetica&amp;quot; &amp;quot;Roboto Slab&amp;quot;Define theme for Boxplot and fontsthemeBox &amp;lt;- function(base_family = &amp;quot;sans&amp;quot;, exFont, .</description>
     </item>

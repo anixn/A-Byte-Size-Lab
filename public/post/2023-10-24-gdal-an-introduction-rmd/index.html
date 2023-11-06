@@ -5,20 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>GDAL-An Introduction | Bytesize Blog</title>
-<meta name="keywords" content="GIS, gdal">
+<title>Introduction of GDAL with R programming | ankitdeshmukh.com</title>
+<meta name="keywords" content="gdal, r, Tutorial, gis">
 <meta name="description" content="Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.">
 <meta name="author" content="Dr. Ankit Deshmukh">
-<link rel="canonical" href="https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/">
+<link rel="canonical" href="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.85cae1844b22a549aad3452f577211b80956d906aee6bde5973d492401d181d8.css" integrity="sha256-hcrhhEsipUmq00UvV3IRuAlW2Qau5r3llz1JJAHRgdg=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+<link crossorigin="anonymous" href="/assets/css/stylesheet.1d6a75b25c9d8980210b303c4589d54fb58ed7bb206abd0f59ed53c46a3c14e0.css" integrity="sha256-HWp1slydiYAhCzA8RYnVT7WO17sgar0PWe1TxGo8FOA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.acb54fd32bbc1982428b8850317e45d076b95012730a5936667e6bc21777692a.js" integrity="sha256-rLVP0yu8GYJCi4hQMX5F0Ha5UBJzClk2Zn5rwhd3aSo="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://bytesize-blog.netlify.app/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://bytesize-blog.netlify.app/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://bytesize-blog.netlify.app/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://bytesize-blog.netlify.app/apple-touch-icon.png">
-<link rel="mask-icon" href="https://bytesize-blog.netlify.app/safari-pinned-tab.svg">
+<link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ankitdeshmukh.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -88,17 +88,17 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="GDAL-An Introduction" />
+<meta property="og:title" content="Introduction of GDAL with R programming" />
 <meta property="og:description" content="Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/" /><meta property="og:image" content="https://bytesize-blog.netlify.app/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/" />
+<meta property="og:image" content="https://ankitdeshmukh.com/Cover.png" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-10-24T00:00:00&#43;00:00" />
 <meta property="article:modified_time" content="2023-10-24T00:00:00&#43;00:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://bytesize-blog.netlify.app/papermod-cover.png"/>
-
-<meta name="twitter:title" content="GDAL-An Introduction"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ankitdeshmukh.com/Cover.png" />
+<meta name="twitter:title" content="Introduction of GDAL with R programming"/>
 <meta name="twitter:description" content="Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1."/>
 
 
@@ -111,13 +111,13 @@ if (!doNotTrack) {
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://bytesize-blog.netlify.app/post/"
+      "item": "https://ankitdeshmukh.com/post/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "GDAL-An Introduction",
-      "item": "https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/"
+      "name": "Introduction of GDAL with R programming",
+      "item": "https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/"
     }
   ]
 }
@@ -126,16 +126,16 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "GDAL-An Introduction",
-  "name": "GDAL-An Introduction",
+  "headline": "Introduction of GDAL with R programming",
+  "name": "Introduction of GDAL with R programming",
   "description": "Getting started with gdal\rGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.",
   "keywords": [
-    "GIS", "gdal"
+    "gdal", "r", "Tutorial", "gis"
   ],
   "articleBody": "\rGetting started with gdal\rGDAL (Geospatial Data Abstraction Library) is a translator library for raster and vector geospatial data formats. It is released under an MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing 1.\nGDAL is used by many GIS software packages, such as QGIS, ArcGIS, and GRASS GIS. It is also used in many scientific applications that require geospatial data processing, such as remote sensing, hydrology, and geology.\ninstall.packages(\"rgdal\", dependencies = TRUE)\rGDAL in QGIS\rThe GDAL library consists of a set of command line programs, each with a large list of options. Users comfortable with running commands from a terminal may prefer the command line, with access to the full set of options. The GDAL Tools plugin offers an easy interface to the tools, exposing only the most popular options.\nExtensive Format Support: GDAL supports an extensive list of geospatial data formats, including GeoTIFF, NetCDF, shapefiles, and more. This diversity simplifies data access and manipulation.\nData Extraction: GDAL enables the extraction of specific data layers or subsets from geospatial datasets, which is particularly useful for researchers focused on specific regions or parameters within a dataset.\nReprojection and Transformation: Researchers often work with data in different projections. GDAL can reproject and transform data, ensuring it aligns spatially, which is vital in geospatial analysis.\nCommand-Line and GUI: GDAL offers both command-line and graphical user interfaces (such as QGIS), making it suitable for researchers with various preferences for interacting with geospatial data.\nPython and R Integration: GDAL provides bindings for popular programming languages like Python and R. This allows geospatial analysts to incorporate GDAL’s capabilities into their data analysis and modeling workflows, aligning with your preference for using R.\nGeospatial Image Processing: Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.\nThings I you will learn in this tutorial\rBasics of GDAL\rRaster manipulation\rVector processing\rVector to Raster conversion\r",
   "wordCount" : "369",
   "inLanguage": "en",
-  "datePublished": "2023-10-24T00:00:00Z",
+  "image":"https://ankitdeshmukh.com/Cover.png","datePublished": "2023-10-24T00:00:00Z",
   "dateModified": "2023-10-24T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -143,14 +143,14 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/"
+    "@id": "https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Bytesize Blog",
+    "name": "ankitdeshmukh.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://bytesize-blog.netlify.app/favicon.ico"
+      "url": "https://ankitdeshmukh.com/favicon.ico"
     }
   }
 }
@@ -172,7 +172,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://bytesize-blog.netlify.app/" accesskey="h" title="Bytesize Blog (Alt + H)">Bytesize Blog</a>
+            <a href="https://ankitdeshmukh.com/" accesskey="h" title="ankitdeshmukh.com (Alt + H)">ankitdeshmukh.com</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -198,33 +198,33 @@ if (!doNotTrack) {
         </div>
         <ul id="menu">
             <li>
-                <a href="https://bytesize-blog.netlify.app/post/" title="Blogs">
+                <a href="https://ankitdeshmukh.com/post/" title="Blogs">
                     <span>Blogs</span>
                 </a>
             </li>
             <li>
-                <a href="https://bytesize-blog.netlify.app/research/" title="Research">
+                <a href="https://ankitdeshmukh.com/research/" title="Research">
                     <span>Research</span>
                 </a>
             </li>
             <li>
-                <a href="https://bytesize-blog.netlify.app/slides/" title="Slides">
+                <a href="https://ankitdeshmukh.com/slides/" title="Slides">
                     <span>Slides</span>
                 </a>
             </li>
             <li>
-                <a href="https://bytesize-blog.netlify.app/archives" title="Archive">
-                    <span>Archive</span>
+                <a href="https://ankitdeshmukh.com/storytelling/" title="Storytelling">
+                    <span>Storytelling</span>
                 </a>
             </li>
             <li>
-                <a href="https://bytesize-blog.netlify.app/tags/" title="Tags">
+                <a href="https://ankitdeshmukh.com/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://bytesize-blog.netlify.app/search/" title="  🔍  ">
-                    <span>  🔍  </span>
+                <a href="https://ankitdeshmukh.com/search/" title="  🔎︎  ">
+                    <span>  🔎︎  </span>
                 </a>
             </li>
         </ul>
@@ -234,14 +234,20 @@ if (!doNotTrack) {
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://bytesize-blog.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://bytesize-blog.netlify.app/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/post/">Posts</a></div>
     <h1 class="post-title">
-      GDAL-An Introduction
+      Introduction of GDAL with R programming
     </h1>
     <div class="post-meta"><span title='2023-10-24 00:00:00 +0000 UTC'>October 24, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
 </div>
-  </header> <div class="toc">
+  </header> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/Cover_hub02195d0d94e2f9664a3aac97fc16472_176628_360x0_resize_box_3.png 360w ,https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/Cover_hub02195d0d94e2f9664a3aac97fc16472_176628_480x0_resize_box_3.png 480w ,https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/Cover_hub02195d0d94e2f9664a3aac97fc16472_176628_720x0_resize_box_3.png 720w ,https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/Cover.png 900w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/Cover.png" alt="Image of GDAL and OSGeo" 
+            width="900" height="200">
+        
+</figure><div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>
@@ -296,11 +302,13 @@ if (!doNotTrack) {
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://bytesize-blog.netlify.app/tags/gis/">GIS</a></li>
-      <li><a href="https://bytesize-blog.netlify.app/tags/gdal/">gdal</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/gdal/">gdal</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/r/">R</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/tutorial/">Tutorial</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/gis/">gis</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://bytesize-blog.netlify.app/post/2022-08-16-create-awesome-slides-with-xaringan/">
+  <a class="next" href="https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/">
     <span class="title">Next »</span>
     <br>
     <span>Create awesome slides with Xaringan</span>
@@ -309,15 +317,15 @@ if (!doNotTrack) {
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GDAL-An Introduction on twitter"
-        href="https://twitter.com/intent/tweet/?text=GDAL-An%20Introduction&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f&amp;hashtags=GIS%2cgdal">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction of GDAL with R programming on twitter"
+        href="https://twitter.com/intent/tweet/?text=Introduction%20of%20GDAL%20with%20R%20programming&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f&amp;hashtags=gdal%2cr%2cTutorial%2cgis">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share GDAL-An Introduction on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f&amp;title=GDAL-An%20Introduction&amp;summary=GDAL-An%20Introduction&amp;source=https%3a%2f%2fbytesize-blog.netlify.app%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Introduction of GDAL with R programming on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f&amp;title=Introduction%20of%20GDAL%20with%20R%20programming&amp;summary=Introduction%20of%20GDAL%20with%20R%20programming&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2023-10-24-gdal-an-introduction-rmd%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />

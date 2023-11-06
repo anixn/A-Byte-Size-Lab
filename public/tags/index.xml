@@ -1,121 +1,130 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Bytesize Blog</title>
-    <link>https://bytesize-blog.netlify.app/tags/</link>
-    <description>Recent content in Tags on Bytesize Blog</description>
+    <title>Tags on ankitdeshmukh.com</title>
+    <link>https://ankitdeshmukh.com/tags/</link>
+    <description>Recent content in Tags on ankitdeshmukh.com</description>
     <image>
-      <url>https://bytesize-blog.netlify.app/papermod-cover.png</url>
-      <link>https://bytesize-blog.netlify.app/papermod-cover.png</link>
+      <url>https://ankitdeshmukh.com/papermod-cover.png</url>
+      <link>https://ankitdeshmukh.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bytesize-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gdal</title>
-      <link>https://bytesize-blog.netlify.app/tags/gdal/</link>
+      <link>https://ankitdeshmukh.com/tags/gdal/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/tags/gdal/</guid>
+      <guid>https://ankitdeshmukh.com/tags/gdal/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>GIS</title>
-      <link>https://bytesize-blog.netlify.app/tags/gis/</link>
+      <title>gis</title>
+      <link>https://ankitdeshmukh.com/tags/gis/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/tags/gis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Slides</title>
-      <link>https://bytesize-blog.netlify.app/tags/slides/</link>
-      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/slides/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Xaringan</title>
-      <link>https://bytesize-blog.netlify.app/tags/xaringan/</link>
-      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/xaringan/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>plot</title>
-      <link>https://bytesize-blog.netlify.app/tags/plot/</link>
-      <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/plot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Setup</title>
-      <link>https://bytesize-blog.netlify.app/tags/setup/</link>
-      <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/setup/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Random Forest</title>
-      <link>https://bytesize-blog.netlify.app/tags/random-forest/</link>
-      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/random-forest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>regression</title>
-      <link>https://bytesize-blog.netlify.app/tags/regression/</link>
-      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>boxplot</title>
-      <link>https://bytesize-blog.netlify.app/tags/boxplot/</link>
-      <pubDate>Fri, 21 Jan 2022 11:25:39 +0000</pubDate>
-      
-      <guid>https://bytesize-blog.netlify.app/tags/boxplot/</guid>
+      <guid>https://ankitdeshmukh.com/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://bytesize-blog.netlify.app/tags/r/</link>
+      <link>https://ankitdeshmukh.com/tags/r/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://ankitdeshmukh.com/tags/tutorial/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slides</title>
+      <link>https://ankitdeshmukh.com/tags/slides/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/slides/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xaringan</title>
+      <link>https://ankitdeshmukh.com/tags/xaringan/</link>
+      <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/xaringan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plot</title>
+      <link>https://ankitdeshmukh.com/tags/plot/</link>
+      <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/plot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://ankitdeshmukh.com/tags/setup/</link>
+      <pubDate>Mon, 04 Jul 2022 20:32:05 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/setup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Random Forest</title>
+      <link>https://ankitdeshmukh.com/tags/random-forest/</link>
+      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/random-forest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regression</title>
+      <link>https://ankitdeshmukh.com/tags/regression/</link>
+      <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boxplot</title>
+      <link>https://ankitdeshmukh.com/tags/boxplot/</link>
       <pubDate>Fri, 21 Jan 2022 11:25:39 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/tags/r/</guid>
+      <guid>https://ankitdeshmukh.com/tags/boxplot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Markdown</title>
-      <link>https://bytesize-blog.netlify.app/tags/r-markdown/</link>
+      <link>https://ankitdeshmukh.com/tags/r-markdown/</link>
       <pubDate>Wed, 01 Dec 2021 21:13:14 -0500</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/tags/r-markdown/</guid>
+      <guid>https://ankitdeshmukh.com/tags/r-markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Coding</title>
-      <link>https://bytesize-blog.netlify.app/tags/coding/</link>
+      <link>https://ankitdeshmukh.com/tags/coding/</link>
       <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
       
-      <guid>https://bytesize-blog.netlify.app/tags/coding/</guid>
+      <guid>https://ankitdeshmukh.com/tags/coding/</guid>
       <description></description>
     </item>
     

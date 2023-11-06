@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Remote sensing resolutions</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Ankit Deshmukh" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis.css" type="text/css" />
+    <link rel="stylesheet" href="css/tachyons.min.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Remote sensing resolutions
+]
+.subtitle[
+## .f3[🗺️<br>.i[~/Geospatial Techniques/Remote Sensing]]
+]
+.author[
+### <strong>Dr. Ankit Deshmukh</strong>
+]
+.institute[
+### Pandit Deendayal Energy University, Gandhinagar
+]
+.date[
+### August 2022
+]
+
+---
+
+class: center middle inverse
+
+&lt;!-- knitr and citation setting --&gt;
+
+
+&lt;!-- Xaringan Extra Setting  --&gt;
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 60px;
+height: 60px;
+z-index: 0;
+background-image: url(./css/Blog-Logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.ankitdeshmukh.com/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div><style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #282828;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+.f2.gold[❝80 percent of the final exam will be based on the one lecture you missed and the one book you didn't read.❞]&lt;br /&gt; 
+~ Unknown ~
+
+---
+# Atmospheric window
+- The Earth's atmosphere selectively transmits the energy of specific wavelengths. 
+- The wavelength easily transmitted through the atmosphere can be called atmospheric windows.
+- Only radiation in these wavelengths can be transmitted through the atmosphere.
+- Atmospheric windows are mainly due to absorption within the atmosphere. 
+
+&lt;img src="images/Atm-win.jpg" class="w-50 br4 dib center"&gt;
+
+Atmospheric windows are significant for remote sensing because energy within the windows conveys information about the radiometric properties of the objects and thus helps produce satellite images.
+
+.footnote[Image Source: https://earthobservatory.nasa.gov]
+
+---
+# Remote sensing data acquisition is limited through these atmospheric windows]
+
+1. .b.blue[Wavelengths shorter than 0.1 μm:] Absorbed by Nitrogen and other gaseous components.
+2. .b.blue[Wavelengths shorter than 0.3μm (X- rays, Gamma rays, and part of ultraviolet rays):] Mostly absorbed by the ozone (O&lt;sub&gt;3&lt;/sub&gt;).
+3. .b.blue[Visible part of the spectrum:] Little absorption occurs.
+4. .b.blue[Oxygen in the atmosphere causes absorption centered at 6.3μm]
+5. .b.blue[Infrared (IR) radiation:] Mainly absorbed by water vapor and carbon dioxide molecules.
+6. .b.blue[Far infrared region]: Mostly absorbed by the atmosphere.
+7. .b.blue[Microwave region:] Absorption is almost nil.
+
+&lt;img src="images/Atm-win-1.jpg" class="w-55 br4 dib center"&gt;
+
+.footnote[Image Source: &lt;br /&gt;  https://www.zina-studio.com/]
+
+---
+# Platforms and sensors
+- A platform is the vehicle or carrier for remote sensors for which they are borne.
+
+- Platforms mount sensors that obtain data for remote sensing purposes.
+
+- Platforms are classified according to their heights and events to be monitored.
+
+--
+
+- Platforms used for remote sensing:
+  - Ground-based
+  - Airborne 
+  - Spaceborne
+&lt;img src="images/Sensor.png" class="w-70 br4 dib center"&gt;
+
+---
+# Remote Sensing Sensors
+- Sensor is an electronic circuit that can record the electromagnetic radiation incident upon it
+- It senses a variation in input energy to produce a variation in another form of energy.
+- Sensor comprises of several components such as: 
+  - System to receive radiation from the pixel and a telescope (objective),
+  - Calibration source and spectrometer,
+  - Amplifier and recording system.
+&lt;img src="images/Act-pas.png" class="w-60 br4 dib center"&gt;
+
+.footnote[Source: http://ecoursesonline.iasri.res.in/mod/page/view.php?id=124941]
+
+---
+# Classification of Remote Sensing Sensors
+&lt;img src="images/Classification.jpg" class="w-50 br4 dib center"&gt;
+.gray.center[Remote sensing sensors classification.  ]
+
+The sensors are classified based on their working principles and recording methodology:
+1. Photographic camera
+1. The vidicon using detecting media as a television camera
+1. The optical scanner
+1. Microwave radiometer
+1. Microwave radar
+
+---
+# Ground Resolution versus Repeatability
+.pull-left[
+- The choice of a remote sensing system with its achievable resolution and repeatability to obtain data.
+
+- Geostationary meteorological satellites such as Meteosat permit the imaging of the entire hemisphere with 5 km pixels. This can be achieved every 30 minutes.
+
+]
+
+.pull-right[
+&lt;img src="images/Repeat.jpg" class="w-100 br4 dib center"&gt;
+
+.footnote[credit: [Gottfried Konecny](https://www.researchgate.net/profile/Gottfried-Konecny) ]
+]
+
+---
+# Sensors Parameters and Resolution
+#### In remote sensing, resolution means the resolving power: 
+
+- Capability to identify the presence of two objects
+- Capability to identify the properties of the two objects
+
+--
+
+#### 4 types of resolutions are defined for the remote sensing systems
+1. Spatial resolution (what area and how detailed)
+1. Spectral resolution (what colors – bands)
+1. Temporal resolution (time of day/season/year)
+1. Radiometric resolution (sensitivity of a remote sensor)
+
+--
+&lt;img src="images/sp-res.png" class="w-80 br4 dib center"&gt;
+
+.footnote[Source: https://www.jbarisk.com/]
+
+---
+# Landsat program
+.pull-left[
+- The Landsat program is the longest-running enterprise for the acquisition of satellite imagery of Earth. 
+
+- On 23 July 1972, the Earth Resources Technology Satellite (was renamed to Landsat-1 in 1975). 
+
+- The most recent, Landsat 9, was launched on 27 September 2021.
+
+- Read more https://en.wikipedia.org/wiki/Landsat_program
+]
+
+.pull-right[
+&lt;img src="images/Landsat.jpg" class="w-70 br4 dib center"&gt;
+
+.blue.center[A land cover map of the big island of Hawaii uses 1999-2001 data from Landsat 7, showing black lava flows from Mauna Loa, grayish dormant Mauna Kea, a plume of smoke from active Kilauea, dark green tropical forests, and light green agricultural areas.]
+
+]
+
+---
+# False Color Images
+Images have colors recorded in the visible or non-visible parts of the electromagnetic spectrum. 
+
+--
+
+**Our four most common false-color band combinations are:**
+
+- Near-infrared (red), green (blue), red (green). *This is a traditional band combination helpful in seeing changes in plant health.*
+
+--
+
+- Shortwave infrared (red), near-infrared (green), and green (blue). *Often used to show floods or newly burned land.*
+
+--
+
+- Blue (red), two different shortwave infrared bands (green and blue). *We use this to differentiate between snow, ice, and clouds.*
+
+--
+
+- Thermal infrared. *Usually shown in tones of gray to illustrate temperature.*
+
+.footnote[For more details, read: https://earthobservatory.nasa.gov/features/FalseColor/page6.php]
+
+---
+&lt;img src="images/1st.jpg" class="w-70 br4 dib center"&gt;
+
+Near-infrared, red, and green light were used to create this false-color image of Algeria. Red, plant-covered land dominates the scene. *(NASA image by Robert Simmon with Landsat 8 data from the USGS Earth Explorer.)*
+
+---
+&lt;img src="images/2nd.jpg" class="w-70 br4 dib center"&gt;
+The shortwave, near-infrared, and green light version of the Algeria scene highlights the presence of water and wet soil in an otherwise dry landscape. *(NASA image by Robert Simmon with Landsat 8 data from the USGS Earth Explorer.)*
+
+---
+# Landsat sensors 
+- .red.b[Landsat 1 through 5 carried the Landsat Multispectral Scanner (MSS).]
+
+- Landsat 4 and 5 carried both the MSS and Thematic Mapper (TM) instruments.
+
+- Landsat 7 uses the Enhanced Thematic Mapper Plus (ETM+) scanner. 
+
+&lt;img src="images/Landsat-1-5.png" class="w-70 br4 dib center"&gt;
+
+---
+# Landsat sensors 
+- Landsat 1 through 5 carried the Landsat Multispectral Scanner (MSS).
+
+- .red.b[Landsat 4 and 5 carried both the MSS and Thematic Mapper (TM) instruments.]
+
+- Landsat 7 uses the Enhanced Thematic Mapper Plus (ETM+) scanner. 
+
+&lt;img src="images/Landsat-4-5.png" class="w-70 br4 dib center"&gt;
+
+---
+# Landsat sensors 
+- Landsat 1 through 5 carried the Landsat Multispectral Scanner (MSS).
+- Landsat 4 and 5 carried both the MSS and Thematic Mapper (TM) instruments.
+- .red.b[Landsat 7 uses the Enhanced Thematic Mapper Plus (ETM+) scanner.]
+
+&lt;img src="images/Landsat-ETM.png" class="w-70 br4 dib center"&gt;
+
+---
+# Landsat-9
+&lt;img src="images/Landsat-8.png" class="w-70 br4 dib center"&gt;
+.footnote[Source: https://en.wikipedia.org/wiki/Landsat_program]
+
+---
+# Comparision of Landsat sensors
+&lt;img src="images/Comp-ls.png" class="w-100 br4 dib center"&gt;
+
+---
+# Spatial Resolution
+Size of the smallest dimension on the Earth's surface over which an independent measurement can be made by the sensor.
+
+- Expressed by the size of the pixel on the ground in meters
+
+- Controlled by the Instantaneous Field of View (IFOV)
+
+&lt;img src="images/SP-Exp.jpg" class="w-100 br4 dib center"&gt;
+
+&lt;div class="flex"&gt; &lt;div class="w-30 pa2 mr1 center"&gt;
+.f2.orange[200cm]
+&lt;/div&gt; &lt;div class="w-40 pa2 mr1"&gt;
+.center.f2.orange[50cm]
+&lt;/div&gt; &lt;div class="w-30 pa2 mr1"&gt;
+.center.f2.orange[5cm] &lt;/div&gt; &lt;/div&gt;
+
+---
+# Spatial Resolution and Feature Identification
+.pull-left[
+&lt;img src="images/Sp-Res-1.png" class="w-80 br4 dib center"&gt;
+]
+
+.pull-right[
+.center.b[Example]
+&lt;br /&gt; &lt;br /&gt; 
+Signature from the "house" dominates
+for the cell and hence the entire cell is
+classified as "house".
+
+&lt;br /&gt; &lt;br /&gt; 
+The shape and spatial extent of the feature is better
+captured. However, some discrepancy is
+present along the boundary.
+
+&lt;br /&gt; &lt;br /&gt; 
+Feature shape and the spatial extent is
+more precisely identified
+
+]
+
+.footnote[Image source: https://www.satimagingcorp.com/]
+
+---
+# Classes of Spatial Resolution
+
+1. Low-resolution systems
+  - Spatial resolution &gt; 1km
+  - MODIS, AVHRR
+
+--
+  
+1. Medium resolution systems
+  - Spatial resolution is 100m – 1km
+  - IRS WiFS (188m), Landsat TM–Band 6 (120m), MODIS–Bands 1-7 (250-500m)
+
+--
+
+1. High-resolution systems
+  - Spatial resolution is approximately in the range of 5-100m
+  - Landsat ETM+ (30m), IRS LISS-III (23m MSS, 6m Panchromatic), IRS AWiFS (56-
+70m), SPOT 5(2.5-5m Panchromatic)
+
+--
+
+1. Very high-resolution systems
+  - Spatial resolution less than 5m
+  - GeoEye (0.45m for Panchromatic, 1.65m for MSS), IKONOS (0.8-1m Panchromatic),
+  - Quickbird (2.4-2.8 m)
+
+
+
+---
+# Spectral resolution of a sensor
+
+.pull-left[
+The spectral resolution is: 
+- Ability of a sensor to define fine wavelength intervals
+- Ability of a sensor to resolve the energy received in spectral bandwidth.
+
+Spectral resolution depends on
+- Spectral bandwidth of the filter
+- Sensitiveness of the detector
+
+The finer the spectral resolution, the narrower the wavelength range for a particular channel or band.
+
+]
+
+.pull-right[
+&lt;img src="images/specrese.gif" class="w-100 br4 dib center"&gt;
+]
+
+---
+# RGB Band Composite
+&lt;img src="images/SP-Band.png" class="w-50 br4 dib center"&gt;
+
+.footnote[Source: Wilfredo M. Rada]
+
+---
+## Finer the spectral resolution, the narrower the wavelength range for a particular channel or band.
+.pull-left[
+Most remote sensing systems are multi-spectral, using more than one spectral band.
+
+- Spectral resolution of some of the remote sensing systems IRS LISS-III uses four bands: (green), (red), (near IR), and 1.55-1.70.
+
+- The Aqua/Terra MODIS instruments use 36 spectral bands, including three in the visible spectrum.
+
+- Recent development is the hyper-spectral sensors, which detect hundreds of very narrow spectral bands.
+]
+
+.pull-right[
+&lt;img src="images/Layers.png" class="w-100 br4 dib center"&gt;
+]
+
+---
+# Spectral Resolution Bands
+.pull-left[
+- Number of spectral bands (red, green, blue, NIR, Mid-IR, thermal, etc.)
+- Width of each band
+- Certain spectral bands (or combinations) are good for identifying specific ground features
+
+- Panchromatic – 1 band (B&amp;W)
+- Color – 3 bands (RGB)
+- Multispectral – 4+ bands (e.g. RGBNIR)
+- Hyperspectral – hundreds of bands
+
+]
+
+.pull-right[
+&lt;img src="images/Band1.png" class="w-100 br4 dib center"&gt;
+]
+
+---
+## Different features are identified from the image by comparing their responses over different distinct spectral bands
+&lt;img src="images/Band2.jpg" class="w-60 br4 dib center"&gt;
+
+---
+# Images in different bands
+&lt;img src="images/Band3.png" class="w-60 br1 dib center"&gt;
+
+---
+# Temporal (time of day/season/year) resolution 	
+.left-column[
+**Time of day/season image acquisition**
+- Leaf on/leaf off
+- Tidal stage
+- Seasonal differences
+- Shadows
+- Phenological differences
+- Relationship to field sampling
+- Seasonal Considerations
+
+]
+
+.right-column[
+&lt;img src="images/Temp.png" class="w-80 br4 dib center"&gt;
+]
+
+---
+## Animation shows deforestation and river course change in Assam in the last three decades.
+.footnote[Source: Raj Bhagat Palanichamy]
+
+&lt;img src="images/Deforestation.gif" class="w-100 br4 dib center"&gt;
+
+---
+# River path change with time
+&lt;img src="images/River.gif" class="w-80 br4 dib center"&gt;
+
+.footnote[Image source: https://sploid.gizmodo.com/]
+
+---
+# Radiometric Resolution 
+While the arrangement of pixels describes the spatial structure of an image, the radiometric characteristics describe the actual information content in an image.
+
+- Every time an image is acquired by a sensor, its sensitivity to the magnitude of the electromagnetic energy determines the
+**radiometric resolution**. 
+
+- The more refined the radiometric resolution of a sensor, the more sensitive it is to detecting minor differences in reflected or emitted energy.
+
+---
+# Radiometric Resolution 
+- Imagery data are represented by positive digital numbers, which vary from 0 to a selected power of 2.
+
+- Each bit records an exponent of power 2.
+
+- The maximum number of brightness levels available depends on the number of bits used in representing the energy recorded.
+
+- Thus, if a sensor used 8 bits to record the data, there would be 2&lt;sub&gt;8&lt;/sub&gt; = 256 digital values available, ranging from 0 to 255.
+
+
+&lt;img src="images/table-bit.png" class="w-80 br4 dib center"&gt;
+
+.footnote[Data volume will increase as the radiometric resolution increases?]
+
+---
+# Gray Scale Image
+.pull-left[
+
+- Most raw unprocessed satellite imagery is stored in a grayscale format.
+
+- A gray scale is a color scale that ranges from black to white, with varying intermediate shades of gray.
+
+- A commonly used grayscale for remote sensing image processing is a 256-shade grayscale.
+]
+.pull-right[
+&lt;img src="images/Gray-Grid.png" class="w-100 br4 dib center"&gt;
+.center[256 level gray scale]
+]
+
+---
+# Gray Scale image
+Each pixel has an **intensity value** (represented by a digital number)
+
+&lt;img src="images/Gray-Image.png" class="w-100 br4 dib center"&gt;
+
+
+---
+# A sample grayscale image
+&lt;img src="images/tree-pic.jpg" class="w-40 br4 dib center"&gt;
+
+.footnote[https://learnlearn.uk/binary/wp-content/uploads/sites/11/2017/01/tree-pciture-grayscale.jpg]
+
+---
+# Sample images 
+&lt;div class="flex"&gt; &lt;div class="w-50 pa2 mr1"&gt;
+&lt;img src="images/Sample.jpg" class="w-100 br4 dib center"&gt;
+
+&lt;/div&gt; &lt;div class="w-50 pa2 mr1"&gt;
+&lt;img src="images/Sample1.jpg" class="w-100 br4 dib center"&gt;
+&lt;/div&gt; &lt;/div&gt;
+
+---
+
+## Output Images with indivisual bands 
+![](Slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+# Extract the pixel values
+
+
+```r
+if(!require(raster)){install.packages("raster");library(raster)}
+
+ing_in &lt;- "Sample1.jpg"
+
+Red &lt;- raster(x = ing_in, band = 1)
+Green &lt;- raster(x = ing_in, band = 2)
+Blue &lt;- raster(x = ing_in, band = 3)
+
+par(mfrow = c(1,3))
+num_col = 256
+image(Red, col = cm.colors (num_col), main = "Red Color Band")
+image(Green, col = cm.colors(num_col), main ="Green Color Band")
+image(Blue, col = cm.colors(num_col), main ="Blue Color Band")
+
+write.csv(x = as.matrix(Green), 
+          file = "Green.csv", 
+          row.names = FALSE)
+```
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
