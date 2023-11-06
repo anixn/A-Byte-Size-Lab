@@ -3,7 +3,7 @@ title: "Geospatial Techniques"
 layout: "main"
 #url: /default/
 ---
-![header](../../../Headers/Geo-Ans.jpg)
+![header](Geo-Ans.jpg)
 
 ### Geospatial Techniques Introduction
 - [Introduction and Handout](../../../GA-W-01/Slides.html)

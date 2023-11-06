@@ -38,7 +38,6 @@ A summary of GDAL library capabilities
 
 6. **Geospatial Image Processing:** Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.
 
-
 GDAL algorithm provider has major categories of operation in vector and raster analysis: 
 1. Raster analysis
 2. Raster conversion
@@ -52,8 +51,6 @@ GDAL algorithm provider has major categories of operation in vector and raster a
 We will try to understand how we can use GDAL in R for most commonly used operation in geospatial analysis
 
 1. **Data Format Conversion:** GDAL can convert data between various geospatial file formats. You can use the `gdal_translate` command to convert data from one format to another. For example, converting from GeoTIFF to Shapefile or vice versa.
-
-
 
 2. **Data Subset and Clipping:** You can extract a specific region of interest from a larger dataset using the `gdalwarp` command. This is particularly useful for working with large raster datasets.
 
