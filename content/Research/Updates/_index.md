@@ -6,9 +6,7 @@ weight: 1
 ---
 
 ### Blogs
-> <a href="https://bytesize-blog.netlify.app/post/2023-10-24-gdal-an-introduction-rmd/">02 November 2023 | GDAL - Introduction</a>
-
-
+> [02 November 2023 | GDAL - Introduction]({{< ref "2023-10-24-gdal-an-introduction-rmd" >}})
 
 ---
 ### Presentation and Talks
