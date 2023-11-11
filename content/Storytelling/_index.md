@@ -18,3 +18,4 @@ To visualization and create info-graphics, I use open source tools such as Inksc
 <button style = "padding: 1px 10px"><img src="Image (5).png"  width="325"></button>
 <button style = "padding: 1px 10px"><img src="Image (6).jpg"  width="325" height="216"></button>
 _<center>Word cloud, Hexagon grid, generative art, etc... </center>_
+
