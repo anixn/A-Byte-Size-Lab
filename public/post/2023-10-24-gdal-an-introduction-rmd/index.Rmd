@@ -15,11 +15,13 @@ GDAL [(Geospatial Data Abstraction Library)](http://gdal.osgeo.org) is a free an
 
 GDAL is used by many GIS software packages, such as QGIS, ArcGIS, and GRASS GIS and R. It is also used in many scientific applications that require geospatial data processing, such as remote sensing, hydrology, and geology.
 
-In `R` you can use GDAL with `rgdal` package.
+In `R` you can use GDAL with `rgdal` package. Several Packages are retiring for R See (<https://r-spatial.org/r/2022/04/12/evolution.html>)
 
 ```{r , eval=FALSE}
 install.packages("rgdal", dependencies = TRUE)
 ```
+
+
 
 ## `GDAL` in QGIS 
 The GDAL library consists of a set of command line programs, each with a large list of options. Users comfortable with running commands from a terminal may prefer the command line, with access to the full set of options. The GDAL Tools plugin offers an easy interface to the tools, exposing only the most popular options.
@@ -38,7 +40,7 @@ A summary of GDAL library capabilities
 
 6. **Geospatial Image Processing:** Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.
 
-GDAL algorithm provider has major categories of operation in vector and raster analysis: 
+GDAL algorithm provider has major categories of operation in vector and raster analysis:
 1. Raster analysis
 2. Raster conversion
 3. Raster extraction
