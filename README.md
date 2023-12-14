@@ -1,2 +1,5 @@
 # A-Byte-Size-Lab
-Blogs of Dr. Ankit Deshmukh with R-Blogdown
+
+A repository for my blogdown site <http://ankitdeshmukh.com/>
+This is my portfolio site and blogs of Dr. Ankit Deshmukh with R-Blogdown.
+
