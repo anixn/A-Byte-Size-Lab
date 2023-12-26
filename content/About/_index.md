@@ -22,13 +22,16 @@ My current research focuses on the development of a Physio-climatic catchment ch
 
 ## Contact me!
 --------------------------------------------
-Dr. Ankit Deshmukh
-
-> Personal email: deshmukh.acad@gmail.com
-
-> Work email: ankit.deshmukh@sot.pdpu.ac.in
-
-> Site: www.ankitdeshmukh.com/
+**Dr. Ankit Deshmukh**
+```
+Assistant Professor<br /> 
+Department of Civil Engineering<br /> 
+School of Technology<br /> 
+Pandit Deendayal Energy University<br /> 
+```
+> - Personal: deshmukh.acad@gmail.com
+> - Work: ankit.deshmukh@sot.pdpu.ac.in
+> - Site: www.ankitdeshmukh.com/
 --------------------------------------------
 
 ## Resume 
