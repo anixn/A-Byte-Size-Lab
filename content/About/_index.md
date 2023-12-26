@@ -14,7 +14,18 @@ My current research focuses on the development of a Physio-climatic catchment ch
 > - Understanding how climate change and socio-economics characteristics affected catchments' streamflow response.
 
 ## Skills
-> **R**| Python| Water Resource | Hydrological Modeling | Data analysis and scripting.
+
+| Research Topics       | Tools  |
+| --------------------- | ------ |
+| Water Resource        | R      |
+| Hydrological Modeling | Python |
+| Flood Modeling        | GDAL   |
+| Drought Prediction    | GEE    |
+| Data analysis         | QGIS   |
+| Climate Sensitivity   | [terra](https://cran.r-project.org/web/packages/terra/index.html)  | 
+
+
+
 
 --------------------------------------------
 ## Contact me!
