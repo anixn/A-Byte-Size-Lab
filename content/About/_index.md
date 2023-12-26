@@ -20,18 +20,19 @@ My current research focuses on the development of a Physio-climatic catchment ch
 > - Procuring catchment characteristics dataset for Indian catchments. 
 > - Understanding how climate change and socio-economics characteristics affected catchments' streamflow response.
 
-## Contact me!
 --------------------------------------------
+## Contact me!
+```md
 **Dr. Ankit Deshmukh**
+Assistant Professor
+Department of Civil Engineering 
+School of Technology
+Pandit Deendayal Energy University
+
+- Personal: deshmukh.acad@gmail.com
+- Work: ankit.deshmukh@sot.pdpu.ac.in
+- Site: www.ankitdeshmukh.com/
 ```
-Assistant Professor<br /> 
-Department of Civil Engineering<br /> 
-School of Technology<br /> 
-Pandit Deendayal Energy University<br /> 
-```
-> - Personal: deshmukh.acad@gmail.com
-> - Work: ankit.deshmukh@sot.pdpu.ac.in
-> - Site: www.ankitdeshmukh.com/
 --------------------------------------------
 
 ## Resume 
