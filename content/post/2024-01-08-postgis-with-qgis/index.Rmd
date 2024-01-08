@@ -1,0 +1,33 @@
+---
+title: PostGIS with QGIS
+author: 'Dr. Ankit Deshmukh'
+date: '2024-01-08'
+slug: []
+tags: ["GIS", "SQL"]
+draft: true
+cover:
+    image: "Cover.png"
+    alt: "PostGIS logo with QGIS logo"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
+```
+
+## What is PostGIS
+
+## Quick installation
+- Install with default setting
+- Youtube link
+
+## Connect PostGIS with QGIS
+Flowchart and snapshots
+
+## Basic of SQL 
+- Links and basic tutorials 
+
+## Why PostGIS is useful then tredtional approach 
+- A hook
+
+## Scripting and automation 
+- Workflows with SQL 
