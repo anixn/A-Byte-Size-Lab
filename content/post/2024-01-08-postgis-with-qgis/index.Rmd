@@ -4,7 +4,7 @@ author: 'Dr. Ankit Deshmukh'
 date: '2024-01-08'
 slug: []
 tags: ["GIS", "SQL"]
-draft: true
+draft: false
 cover:
     image: "Cover.jpg"
     alt: "PostGIS logo with QGIS logo"
@@ -82,7 +82,7 @@ Install the PostgreSQL from the link [🔗](https://www.enterprisedb.com/downloa
 <img src="SQL-Sample-Database-Schema.png" class="w-20 br4 dib center">
 
 - This database has 7 tables, row numbers are shown in the table below
-```{txt}
+```
    | Table       | Rows |
    ----------------------
    | employees   | 40   |
