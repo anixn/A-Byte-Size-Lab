@@ -6,41 +6,140 @@ slug: []
 tags: ["GIS", "SQL"]
 draft: true
 cover:
-    image: "Cover.png"
+    image: "Cover.jpg"
     alt: "PostGIS logo with QGIS logo"
 ---
 
 
 
-<div id="what-is-postgis" class="section level2">
-<h2>What is PostGIS</h2>
+<div id="what-is-postgis-and-why-postgis-is-benificial-over-tredtional-analysis-approaches." class="section level2">
+<h2>What is PostGIS and why PostGIS is benificial over tredtional analysis approaches.</h2>
+<p>PostGIS is a spatial database extension for PostgreSQL that allows users to store and manipulate geospatial data. PostGIS has several advantages over the traditional approach of geospatial analysis, such as:</p>
+<ul>
+<li>PostGIS supports a wide range of spatial data types, functions, and operators, enabling complex spatial queries and operations.</li>
+<li>PostGIS integrates well with other GIS tools and frameworks, such as QGIS, GeoServer, and Leaflet, allowing users to visualize and analyze their data in different ways.</li>
+<li>PostGIS leverages the power and scalability of PostgreSQL, which is a robust, open-source, and widely used relational database management system.</li>
+<li>PostGIS enables spatial data analysis on large datasets, as it can handle millions of features and perform spatial joins and aggregations efficiently.</li>
+<li>PostGIS facilitates data sharing and collaboration, as it allows multiple users to access and modify the same spatial data concurrently.</li>
+</ul>
+</div>
+<div id="postgis-for-professionals" class="section level2">
+<h2>PostGIS for Professionals</h2>
+<p>The PostGIS roadmap is crucial for professionals in the field of GIS, Water resources, and Hydrology. To grow in the field of GIS expert you must to the certain taks on regular basis:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Master Core PostGIS Functions:</strong>
+<ul>
+<li>Ensure a solid understanding of fundamental PostGIS functions for spatial data handling.</li>
+<li>Proficiency in spatial queries, geometric operations, and indexing techniques is essential.</li>
+</ul></li>
+<li><strong>Deepen Geospatial Database Skills:</strong>
+<ul>
+<li>Expand your expertise in geospatial database management, including performance tuning and optimization strategies.</li>
+<li>Familiarize yourself with advanced database concepts relevant to spatial data storage.</li>
+</ul></li>
+<li><strong>Integration with GIS Software:</strong>
+<ul>
+<li>Explore integration possibilities with popular GIS software like QGIS and ArcGIS to enhance your interoperability skills.</li>
+<li>Stay informed about evolving standards and best practices in the GIS industry.</li>
+</ul></li>
+<li><strong>Advanced Spatial Analytics:</strong>
+<ul>
+<li>Focus on advanced spatial analytics using PostGIS, such as spatial regression analysis, network analysis, and 3D spatial operations.</li>
+<li>Incorporate machine learning algorithms into spatial analysis to address contemporary challenges in water resources and hydrology.</li>
+</ul></li>
+<li><strong>Open Source Contributions:</strong>
+<ul>
+<li>Consider contributing to the PostGIS project or related open-source GIS projects. This enhances your visibility in the community and deepens your understanding of the system.</li>
+</ul></li>
+<li><strong>Networking and Professional Development:</strong>
+<ul>
+<li>Attend conferences, workshops, and webinars focused on geospatial technologies and PostGIS.</li>
+<li>Engage with professionals in your field, both online and offline, to build a strong professional network.</li>
+</ul></li>
+<li><strong>Certifications and Academic Collaborations:</strong>
+<ul>
+<li>Pursue relevant certifications in GIS and spatial databases to validate your expertise.</li>
+<li>Collaborate with academic institutions on research projects to stay at the forefront of advancements in hydrology, remote sensing, and GIS.</li>
+</ul></li>
+</ol>
+<p>By systematically progressing through these steps, you’ll be a highly skilled professional in PostGIS, well-equipped to tackle complex challenges in water resources and hydrology, and ultimately increase your attractiveness for high-paying job opportunities.</p>
+<p>Now we will understand how to setup PostGIS with QGIS in a Windows machine.</p>
 </div>
 <div id="quick-installation" class="section level2">
 <h2>Quick installation</h2>
+<p>Install the PostgreSQL from the link <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">🔗</a></p>
 <ul>
-<li>Install with default setting</li>
-<li>Youtube link</li>
+<li>Install with default setting. Default port is 5432, change to something else if you have another version of PostgreSQL installed.</li>
+<li>YouTube link <a href="https://www.youtube.com/watch?v=IYHx0ovvxPs" class="uri">https://www.youtube.com/watch?v=IYHx0ovvxPs</a></li>
+</ul>
+<div id="connect-a-database-with-qgis" class="section level3">
+<h3>Connect a database with QGIS</h3>
+<p><img src="Pasted%20image%2020231202235428.png" class="w-20 br4 dib center">
+<img src="Pasted%20image%2020231202235807.png" class="w-20 br4 dib center">
+<img src="Pasted%20image%2020231203000755.png" class="w-20 br4 dib center"></p>
+</div>
+</div>
+<div id="basic-of-structured-query-language-sql" class="section level2">
+<h2>Basic of Structured Query Language (SQL)</h2>
+<blockquote>
+<p>SQL stands for Structured Query Language and is a domain-specific language for managing data in relational databases. SQL was originally developed by IBM in the 1970s and later standardized by ANSI and ISO. SQL allows users to query, manipulate, and control data using keywords, clauses, expressions, and statements that resemble natural language.</p>
+</blockquote>
+<div id="learning-the-basics-of-sql" class="section level3">
+<h3>Learning the basics of SQL</h3>
+<ul>
+<li><p>Use tutorial and data from: <a href="https://www.sqltutorial.org/sql-sample-database/" class="uri">https://www.sqltutorial.org/sql-sample-database/</a></p></li>
+<li><p>Creating <a href="https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql-data.txt">a SQL Sample Database</a></p></li>
+<li><p>The following database diagram illustrates the HR sample database
+<img src="SQL-Sample-Database-Schema.png" class="w-20 br4 dib center"></p></li>
+<li><p>This database has 7 tables, row numbers are shown in the table below</p></li>
+</ul>
+<pre class="txt"><code>   | Table       | Rows |
+   ----------------------
+   | employees   | 40   |
+   | dependents  | 30   |
+   | departments | 11   |
+   | jobs        | 11   |
+   | locations   | 07   |
+   | countries   | 25   |
+   | regions     | 04   |</code></pre>
+<ul>
+<li>The following script creates the HR sample <a href="https://www.sqltutorial.org/wp-content/uploads/2020/04/postgresql.txt">Database Structure in PostgreSQL</a></li>
 </ul>
 </div>
-<div id="connect-postgis-with-qgis" class="section level2">
-<h2>Connect PostGIS with QGIS</h2>
-<p>Flowchart and snapshots</p>
+<div id="creating-a-database" class="section level3">
+<h3>Creating a Database:</h3>
+<pre class="sql"><code>CREATE DATABASE test_db
+    WITH
+    OWNER = postgres
+    ENCODING = &#39;UTF8&#39;
+    LOCALE_PROVIDER = &#39;libc&#39;
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;</code></pre>
 </div>
-<div id="basic-of-sql" class="section level2">
-<h2>Basic of SQL</h2>
-<ul>
-<li>Links and basic tutorials</li>
-</ul>
+<div id="list-all-the-database-and-select-the-one" class="section level3">
+<h3>List all the database and select the one</h3>
+<pre class="cmd"><code>postgres=# \l
+
+postgres=# \c DATABASE_NAME</code></pre>
 </div>
-<div id="why-postgis-is-useful-then-tredtional-approach" class="section level2">
-<h2>Why PostGIS is useful then tredtional approach</h2>
-<ul>
-<li>A hook</li>
-</ul>
+<div id="run-the-following-to-add-postgis-extension-to-postgres" class="section level3">
+<h3>Run the following to add PostGIS extension to Postgres</h3>
+<pre class="cmd"><code>CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_raster;</code></pre>
 </div>
-<div id="scripting-and-automation" class="section level2">
-<h2>Scripting and automation</h2>
-<ul>
-<li>Workflows with SQL</li>
-</ul>
+<div id="import-shapefile-in-postgis" class="section level3">
+<h3>Import shapefile in PostGIS</h3>
+<p>Use DB manager form QGIS</p>
+</div>
+<div id="import-raster-in-a-database" class="section level3">
+<h3>Import raster in a database</h3>
+<pre class="cmd"><code>raster2pgsql -s [SRID] -I -M [raster data source] -F [schema.table_name] | psql -U [username] -d [database name] -p [port] -h [host]</code></pre>
+<p>Example:</p>
+<pre class="cmd"><code>raster2pgsql -s 4326 -I -M Your_file.tif -F | psql -U postgres -d post_gis_v1 -p 5432 -h localhost</code></pre>
+<pre class="sql"><code>
+SELECT ST_X(ST_Centroid(geom)) AS long, ST_Y(ST_Centroid(geom)) AS lat FROM &quot;ST_India-Dist&quot;;</code></pre>
+<pre class="sql"><code>SELECT ST_Centroid(geom) AS geom, gid, st_nm FROM &quot;ST_India-Dist&quot;;</code></pre>
+<p><img src="Pasted%20image%2020231203172453.png" class="w-20 br4 dib center"></p>
+<p><img src="Pasted%20image%2020231203174400.png" class="w-20 br4 dib center"></p>
+</div>
 </div>
