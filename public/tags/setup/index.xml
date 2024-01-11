@@ -21,17 +21,5 @@
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda.</description>
     </item>
     
-    <item>
-      <title>Getting started with R Programming</title>
-      <link>https://ankitdeshmukh.com/post/2021-09-21-getting-started-with-r/</link>
-      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ankitdeshmukh.com/post/2021-09-21-getting-started-with-r/</guid>
-      <description>R is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.
-1. Installing RStep 01: Install R-Binaries from R-Project
-Step 02: Install RStudio IDE from RStudio
-2. Customizing RStudioA lot of ways you can make RStudio more useful for your personal use.</description>
-    </item>
-    
   </channel>
 </rss>

@@ -84,22 +84,11 @@ A few useful syntax are shown below in the post:
     </item>
     
     <item>
-      <title>Basics of R Programming - Tips and Setup</title>
-      <link>https://ankitdeshmukh.com/post/2021-09-25-basics-of-r-programming/</link>
-      <pubDate>Sat, 25 Sep 2021 22:40:24 +0000</pubDate>
+      <title>Getting Started with R Programming</title>
+      <link>https://ankitdeshmukh.com/post/2021-09-20-getting-started-with-r/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://ankitdeshmukh.com/post/2021-09-25-basics-of-r-programming/</guid>
-      <description>Using R studio as R-IDER studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
-Figure 1: R-Studio IDE have many pans.Code editorYou will write your code in this window. R used # as the comment character. To assign a variable to a value we use ← (lowercase followed by a dash).
-Do’s and Don’t while writing codes in RCases are important in RUse of ← and = carefully</description>
-    </item>
-    
-    <item>
-      <title>Getting started with R Programming</title>
-      <link>https://ankitdeshmukh.com/post/2021-09-21-getting-started-with-r/</link>
-      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://ankitdeshmukh.com/post/2021-09-21-getting-started-with-r/</guid>
+      <guid>https://ankitdeshmukh.com/post/2021-09-20-getting-started-with-r/</guid>
       <description>R is a very versatile statistical tool and programming language. It’s my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider RStudio as a more sophisticated GUI than the Base R once.
 1. Installing RStep 01: Install R-Binaries from R-Project
 Step 02: Install RStudio IDE from RStudio
