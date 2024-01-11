@@ -10,7 +10,17 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostGIS with QGIS</title>
+      <link>https://ankitdeshmukh.com/post/2024-01-08-postgis-with-qgis/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2024-01-08-postgis-with-qgis/</guid>
+      <description>What is PostGIS and why PostGIS is benificial over tredtional analysis approaches.PostGIS is a spatial database extension for PostgreSQL that allows users to store and manipulate geospatial data. PostGIS has several advantages over the traditional approach of geospatial analysis, such as:
+PostGIS supports a wide range of spatial data types, functions, and operators, enabling complex spatial queries and operations.PostGIS integrates well with other GIS tools and frameworks, such as QGIS, GeoServer, and Leaflet, allowing users to visualize and analyze their data in different ways.</description>
+    </item>
+    
     <item>
       <title>Introduction of GDAL with R programming</title>
       <link>https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/</link>
