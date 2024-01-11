@@ -36,8 +36,8 @@ knitr::include_graphics("Figures.png", error = FALSE)
 ## Do's and Don't while writing codes in R
 
 
-1. Cases 
-2. Use of  ← and = 
+1. Cases are important in R
+2. Use of  ← and = carefully
 
 
 

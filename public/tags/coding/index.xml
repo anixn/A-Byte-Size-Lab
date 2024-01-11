@@ -19,7 +19,7 @@
       <guid>https://ankitdeshmukh.com/post/2021-09-25-basics-of-r-programming/</guid>
       <description>Using R studio as R-IDER studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
 Figure 1: R-Studio IDE have many pans.Code editorYou will write your code in this window. R used # as the comment character. To assign a variable to a value we use ← (lowercase followed by a dash).
-Do’s and Don’t while writing codes in RCasesUse of ← and =</description>
+Do’s and Don’t while writing codes in RCases are important in RUse of ← and = carefully</description>
     </item>
     
   </channel>
