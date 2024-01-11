@@ -1,17 +1,17 @@
 ---
-title: "Getting started with R Programming"
+title: "Getting Started with R Programming"
 author: "Dr. Ankit Deshmukh"
-date: 2021-09-21
-tags: ["Setup", "R"]
+date: 2021-09-20
+tags: ["R", "Coding"]
+cover:
+    image: "Cover.png"
+    alt: "Image of R and Quote"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	message = FALSE,
-	warning = FALSE,
-	collapse = TRUE
-)
+knitr::opts_chunk$set(message=FALSE, warning = FALSE, collapse = TRUE)
 ```
+
 
 [R](https://www.r-project.org/) is a very versatile statistical tool and programming language. It's my all-time good-to-go data analysis tool. It is fast, reliable and nifty. It provides great flexibility for my daily work and analysis tasks. If one uses R, they could consider [RStudio](https://www.rstudio.com/) as a more sophisticated GUI than the Base R once.
 

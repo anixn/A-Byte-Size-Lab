@@ -1,11 +1,8 @@
 ---
-title: "Basics of R Programming - Tips and Setup"
+title: "Basics of R Programming"
 author: "Dr. Ankit Deshmukh"
-date: 2021-09-25T22:40:24Z
-categories: ["R"]
+date: 2021-09-24
 tags: ["R", "Coding"]
-draft: false
-local: true
 cover:
     image: "cover.jpg"
     alt: "An image of R coder" # alt text
@@ -13,7 +10,9 @@ cover:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, warning = FALSE,	collapse = TRUE
+knitr::opts_chunk$set(message = FALSE, 
+                      warning = FALSE,    
+                      collapse = TRUE
 )
 ```
 
@@ -23,7 +22,6 @@ R studio has multiple windows but the most important are Code editor, console, E
 ```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans.", out.width=600}
 knitr::include_graphics("Layout.png", error = FALSE)
 ```
-
 
 ## Code editor
 You will write your code in this window. R used `#` as the comment character.  To assign a variable to a value we use `←` (lowercase followed by a dash).
