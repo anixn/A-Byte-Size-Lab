@@ -1,14 +1,12 @@
 ---
-title: "Creating with Inkscape"
+title: "Creation with Inkscape"
 layout: "main"
 #url: /default/
-weight: 12
+weight: 1
 
 ---
 
-### Collection of my data story telling and visulization <a href="https://www.youtube.com/@edgeospatial"><font color="#ffbb00"> @edgeospatial</font> </a>
-
-To visualization and create info-graphics, I use open source tools such as Inkscape, GIMP and R. Some example of my work showing Wordcloud, Hexagon grid, generative art, etc.
+I use open source tools such as `Inkscape`, `GIMP` and `R` to create info-graphics and visualize the data. Some example of my work showing Wordcloud, Hexagon grid, generative art, etc.
 
 <button style = "padding: 1px 10px"><img src="Image (1).png"  width="150"></button>
 <button style = "padding: 1px 10px"><img src="Image (2).png"  width="150"></button>
