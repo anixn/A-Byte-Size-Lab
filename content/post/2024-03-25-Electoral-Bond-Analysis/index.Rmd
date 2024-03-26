@@ -1,5 +1,5 @@
 ---
-title: "Data Cleaning with R using *PDFtools* and *stringr*"
+title: "Data Cleaning with R using 'PDFtools' and 'stringr'"
 author: "Dr. Ankit Deshmukh"
 date: 2024-03-25
 categories: ["Visulization", "R"]
@@ -23,9 +23,8 @@ SBI Submits all the data to ECI and ECI publish it on `Thursday 21 Mar 2024, 6:3
 
 To know the background of the case read this: [SBI submits all electoral bond details, including unique numbers, to ECI](https://www.business-standard.com/india-news/submitted-details-of-electoral-bonds-including-unique-code-to-ec-sbi-124032100933_1.html)
 
-### A shrot note on regex`regex`
+### A short note on regex`regex`
 **regex**, short for Regular Expressions, are essentially sequences of characters that form a search pattern, which is then used to match strings or parts of strings in a text. Think of them as sophisticated search queries that allow you to find specific patterns within a larger body of text. regex can be used for simple patterns like a specific word or phrase, or you can create complex patterns to match more intricate structures such as email addresses, URLs, dates, and more.
-
 
 For example, if you wanted to find all email addresses in a text document, you could use a regular expression pattern like `[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\\\.[a-zA-Z0-9-.]+`. This pattern breaks down as follows:
 
@@ -36,7 +35,6 @@ em2 <- "example*1_Random$gmail.com" # this is an invalid email.
 
 # Detect email addresses
 stringr::str_detect(c(em1, em2), "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+")
-## [1]  TRUE FALSE
 ```
 
 **a-zA-Z0-9_.+-]+** matches one or more alphanumeric characters, dots, underscores, percent signs, plus signs, or hyphens, representing the username portion of an email address.
@@ -52,7 +50,7 @@ $\textbf{@}$ matches the “@” symbol, separating the username from the domain
 Regular expressions can be used in various programming languages, here we are using it with R programming with `stringr` package.
 
 
-### Required R libraries:
+### Required R libraries for this analysis
 ```{r}
 # To process the PDF document 
 if(!require(lubridate)){install.packages("lubridate");library(lubridate)}
@@ -182,29 +180,25 @@ datatable(agg_data_df, options = list(
                                           digits = 0)
 ```
 
-## Cleaning the Doners data
+## Cleaning the Donner data
 
-Similar to the Party data, explore the donners data from the pdf "Company.pdf" in the folder `Data/Raw Data`. Similar processing methodology is use as Party.pdf with one change this time total number of columns are 12.
+Similar to the Party data, explore the Donner data from the pdf "Company.pdf" in the folder `Data/Raw Data`. Similar processing methodology is use as Party.pdf with one change this time total number of columns are 12.
 
-```{r, eval=FALSE}
+```{r}
 Comp <- pdf_text("./Data/Raw Data/Company.pdf")
 Comp <- unlist(str_split(Comp, "[\\r\\n]+"))
 Comp <- str_trim(gsub(",","",Comp))
-
 ```
+
 Based on the data format, I found breaking it from as digit followed by space `(?<=\\d )` is more useful.
 
-```{r,eval=FALSE}
+```{r}
 Comp = as.data.frame(str_split_fixed(Comp, "(?<=\\d )", n = 12))
-```
-Now processing the first column which has the structure of 
-```{r,eval=FALSE}
-Comp$V1[1:4]
 ```
 
 This will break the string the string in 2 columns, "SN", and "Reference No URN"
 
-```{r,eval=FALSE}
+```{r}
 a <- gsub("\\s+", " ", Comp$V1, perl = TRUE)
 
 Index = a %in% c(a[1:3])
@@ -214,15 +208,25 @@ Index2 = is.na(str_extract(Comp$V1, "Page."))
 Comp <- Comp[Index2,]
 Comp <- Comp[!apply(Comp == "", 1, all),]
 
-rm(Index, Index2,a,b,c)
+rm(Index, Index2, a)
+```
+Now we will break down column V6 that has structure of  
 
+"A B C INDIA LIMITED   TL       11448 " <br />
+
+First we will crop Bond numbers using `str_sub` with 1 to -6 (6th character from the last) save in `c`. After that `Name`s are extracted using `c` removing last to charcter that are Prefix of the Unitq bond number. At last `Prefix` are extraced using `str_sub(c, -2, -1)`.
+
+```{r}
 BondN <- as.numeric(str_sub(str_trim(Comp$V6), -6,-1))
 
-# you cans simply choose last 4 disit of the V6
+# you cans simply choose last 4 digit of the V6
 c = str_trim(str_sub(str_trim(Comp$V6),1,-6))
 Name <- str_trim(str_sub(c,1,-3))
 Prefix <- str_sub(c, -2, -1)
+```
+Now we will assemble the data in the total 12 column. 
 
+```{r}
 Comp_Data <- data.frame("SN" = as.numeric(Comp$V1),
                         "Reference No URN" = str_trim(Comp$V2),
                         "Journal Date" = dmy(Comp$V3),
@@ -236,9 +240,12 @@ Comp_Data <- data.frame("SN" = as.numeric(Comp$V1),
                         "Issue Teller" = as.numeric(str_trim(Comp$V9)),
                         "Status" = str_trim(Comp$V10))
 
-write.xlsx(Comp_Data, file="Comp_Cleaned.xlsx", row.names = FALSE)
+# write.xlsx(Comp_Data, file="Comp_Cleaned.xlsx", row.names = FALSE)
+```
 
-# For L7
+We temporarily saved the files with "Comp_Cleaned.xlsx" and found there are some error in the columns, modify them here for one Donner. 
+
+```{r, eval=FALSE}
 Index = Comp_Data$Reference.No.URN %in% c("00300202310100000003344",
                                           "00300202310120000003422",
                                           "00300202310130000003470")
@@ -254,13 +261,17 @@ Comp_Data$Bond.No[Index] <- c(16524, 16531, 16521, 16535, 16529, 16527, 16523, 1
 write.xlsx(Comp_Data, file="Comp_Cleaned.xlsx", row.names = FALSE)
 
 print(paste0("No of NAs: ", sum(is.na(Comp_Data))))
-## Upon inspection  row have incorrect information, it's because the parser
-#Cleaning it manually
+```
 
-# NOTE: NA values are cleaned manually and renamed it to "Comp_Cleaned_Man.xlsx"
+Upon inspection around 16 row have incorrect information, it's because the parser function you used and they cleaning manually.
+ 
+> NOTE: NA values are cleaned manually and renamed it to "Comp_Cleaned_Man.xlsx"
 
+Now we will load the cleaned data for tabular representation
+
+```{r}
 if(!require(readxl)){install.packages("readxl");library(readxl)}
-Comp_Data <- read_xlsx(path = "Comp_Cleaned_man.xlsx", sheet = "Sheet1")
+Comp_Data <- read_xlsx(path = "./Data/Processed xlsx/Comp_Cleaned_man.xlsx", sheet = "Sheet1")
 fx_name <- function(x) {c(length(x), median(x), round(mean(x),0), sum(x))}
 agg_data = aggregate(Comp_Data, Denominations ~ Purchaser, FUN = fx_name)
 
@@ -284,7 +295,7 @@ datatable(agg_data_df, options = list(
 ```
 
 ## Processing the pdf in an easy way: 
-Using `tabulizer` can extract pdf tables, I find it's show but works simple table data. 
+Using `tabulizer`  package that can extract pdf tables, I find it's slow but works well for table data. Similar to `PDFtools` it also required `rJava`.
 
 ```{r, eval=FALSE}
 # remotes::install_github(c("ropensci/tabulizerjars", "ropensci/tabulizer"))
@@ -301,4 +312,4 @@ for (ii in 2:length(out_tables)) {
 }
 ```
 
-## Insights from the data
+## Combining Party and Donner data using `UN_ID`
