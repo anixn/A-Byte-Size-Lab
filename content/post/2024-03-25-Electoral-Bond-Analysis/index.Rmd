@@ -155,7 +155,6 @@ Now to time to generate some table data, I am aggregation Party and Denomination
 
 
 ```{r}
-
 Party_Data <- read_xlsx(path = "./Data/Processed xlsx/Party_Cleaned.xlsx")
 
 fx_name <- function(x) {c(length(x), median(x), round(mean(x),0), sum(x))}
@@ -272,6 +271,9 @@ Now we will load the cleaned data for tabular representation
 ```{r}
 if(!require(readxl)){install.packages("readxl");library(readxl)}
 Comp_Data <- read_xlsx(path = "./Data/Processed xlsx/Comp_Cleaned_man.xlsx", sheet = "Sheet1")
+Comp_Data$unique_ID <-  paste0(Comp_Data$Prefix,
+              str_pad(Comp_Data$Bond.No, width = 5,pad = "0"))
+
 fx_name <- function(x) {c(length(x), median(x), round(mean(x),0), sum(x))}
 agg_data = aggregate(Comp_Data, Denominations ~ Purchaser, FUN = fx_name)
 
@@ -313,3 +315,10 @@ for (ii in 2:length(out_tables)) {
 ```
 
 ## Combining Party and Donner data using `UN_ID`
+```{r}
+p_uid <- Party_Data$unique_ID # Unique ID for Party
+c_uid <- Comp_Data$unique_ID  # Unique ID for Donner
+sum(p_uid %in% c_uid)
+
+```
+
