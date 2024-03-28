@@ -370,8 +370,3 @@ datatable(as.data.frame(Comp_table),  class = 'cell-border stripe', options = li
         "$(this.api().table().body()).css({'background-color': '#fff', 'color': '#111'});",
         "}"))) 
 ```
-
-```{r}
-#write.csv(x = Comp_table, file = "Agg_Data.csv")
-```
-
