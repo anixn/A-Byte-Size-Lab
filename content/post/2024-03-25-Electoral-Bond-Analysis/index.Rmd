@@ -57,7 +57,6 @@ if(!require(lubridate)){install.packages("lubridate");library(lubridate)}
 if(!require(pdftools)){install.packages("pdftools");library(pdftools)}
 if(!require(stringr)){install.packages("stringr");library(stringr)}
 if(!require(readxl)){install.packages("readxl");library(readxl)}
-#if(!require(xlsx)){install.packages("xlsx");library(xlsx)}
 if(!require(DT)){install.packages("DT");library(DT)}
 ```
 
@@ -173,10 +172,10 @@ datatable(agg_data_df, options = list(
         "$(this.api().table().container()).css({'background-color': '#fff', 'color': '#111'});",
         "$(this.api().table().body()).css({'background-color': '#fff', 'color': '#111'});",
         "}")))%>% formatCurrency(c('Median', 'Mean', 'Sum'),
-                                          currency = "₹",
-                                          interval = 3,
-                                          mark = ",",
-                                          digits = 0)
+                                 currency = "₹",
+                                 interval = 3,
+                                 mark = ",",
+                                 digits = 0)
 ```
 
 ## Cleaning the Donner data
@@ -263,16 +262,15 @@ print(paste0("No of NAs: ", sum(is.na(Comp_Data))))
 ```
 
 Upon inspection around 16 row have incorrect information, it's because the parser function you used and they cleaning manually.
- 
+
 > NOTE: NA values are cleaned manually and renamed it to "Comp_Cleaned_Man.xlsx"
 
 Now we will load the cleaned data for tabular representation
 
 ```{r}
-if(!require(readxl)){install.packages("readxl");library(readxl)}
 Comp_Data <- read_xlsx(path = "./Data/Processed xlsx/Comp_Cleaned_man.xlsx", sheet = "Sheet1")
 Comp_Data$unique_ID <-  paste0(Comp_Data$Prefix,
-              str_pad(Comp_Data$Bond.No, width = 5,pad = "0"))
+                               str_pad(Comp_Data$Bond.No, width = 5,pad = "0"))
 
 fx_name <- function(x) {c(length(x), median(x), round(mean(x),0), sum(x))}
 agg_data = aggregate(Comp_Data, Denominations ~ Purchaser, FUN = fx_name)
@@ -290,10 +288,10 @@ datatable(agg_data_df, options = list(
         "$(this.api().table().container()).css({'background-color': '#fff', 'color': '#111'});",
         "$(this.api().table().body()).css({'background-color': '#fff', 'color': '#111'});",
         "}")))%>% formatCurrency(c('Median', 'Mean', 'Sum'),
-                                          currency = "₹",
-                                          interval = 3,
-                                          mark = ",",
-                                          digits = 0)
+                                 currency = "₹",
+                                 interval = 3,
+                                 mark = ",",
+                                 digits = 0)
 ```
 
 ## Processing the pdf in an easy way: 
@@ -318,7 +316,62 @@ for (ii in 2:length(out_tables)) {
 ```{r}
 p_uid <- Party_Data$unique_ID # Unique ID for Party
 c_uid <- Comp_Data$unique_ID  # Unique ID for Donner
-sum(p_uid %in% c_uid)
 
+## Finding how many UID don't match in both the dataset
+
+missing_record_p_name = Party_Data$Party.Name[!p_uid %in% c_uid]
+table(missing_record_p_name)
+```
+
+Now, the total mission record by comparing Unique ID from Party and Company data/Donner data: `r (v = sum(!p_uid %in% c_uid))`
+
+Mismatch in our analysis `r sum(!p_uid %in% c_uid) - (dim(Party_Data)[1] - dim(Comp_Data)[1])`. Remaining `r (dim(Party_Data)[1] - dim(Comp_Data)[1])` are not provided by SBI list. 
+
+### Now computing number of bonds are given to each party. 
+Based on our analysis there are total `r length(unique(Party_Data$Party.Name))` parties and `r length(unique(Comp_Data$Purchaser))` Donner in the list. 
+
+
+
+```{r}
+if(!require(janitor)){install.packages("janiter");library(janiter)}
+p_name <- unique(Party_Data$Party.Name)
+c_name <- unique(Comp_Data$Purchaser)
+
+Comp_table <- matrix(NA, nrow = length(c_name), ncol = length(p_name))
+
+rownames(Comp_table) <- c_name 
+colnames(Comp_table) <- p_name
+
+
+for(ii in seq_along(p_name)){
+    p_Ind <- Party_Data$unique_ID[Party_Data$Party.Name %in% p_name[ii]]
+    c_Ind <- which(Comp_Data$unique_ID %in% p_Ind)
+    donner <- table(Comp_Data$Purchaser[c_Ind])
+    for (jj in seq_along(donner)) {
+        inx <- which(c_name %in% names(donner)[jj])
+        Comp_table[inx,ii] <- as.numeric(donner[jj])
+    }
+}
+```
+Now the table:
+
+```{r,eval=FALSE}
+
+DT::datatable(as.data.frame(Comp_table), options = list(
+  pageLength=25, scrollX='400px'), filter = 'top')
+```
+
+```{r}
+datatable(as.data.frame(Comp_table),  class = 'cell-border stripe', options = list(pageLength=5, scrollX='400px',
+    initComplete = JS(
+        "function(settings, json) {",
+        "$(this.api().table().header()).css({'background-color': '#fff', 'color': '#111'});",
+        "$(this.api().table().container()).css({'background-color': '#fff', 'color': '#111'});",
+        "$(this.api().table().body()).css({'background-color': '#fff', 'color': '#111'});",
+        "}"))) 
+```
+
+```{r}
+#write.csv(x = Comp_table, file = "Agg_Data.csv")
 ```
 
