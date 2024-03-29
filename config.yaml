@@ -1,7 +1,7 @@
 theme: "hugo-PaperMod"
 baseURL: https://ankitdeshmukh.com/
 languageCode: en-us
-title: ankitdeshmukh.com
+title: "Ankit's DataVerse!"
 
 paginate: 5
 
@@ -49,7 +49,7 @@ languages:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Ankit Deshmukh - https://www.ankitdeshmukh.com"
+    description: "Welcome to my vibrant corner of the internet! Here, I'll be sharing the exhilarating journey of my discoveries in the dynamic realms of Data Visualization, R-Programming, Machine Learning, and Hydrology. Get ready to embark on an electrifying ride through cutting-edge insights and innovative techniques. Don't forget to shower some love by starring my repositories on Github—it fuels my passion for continuous improvement. And for those special moments worth celebrating or diving deeper into with a webinar, reach out to me on Twitter. Let's ignite the spark of knowledge together and pave the way for groundbreaking discoveries!"
     author: Dr. Ankit Deshmukh
 
     defaultTheme: auto
@@ -71,9 +71,9 @@ params:
     profileMode:
         enabled: true
         title: "Hi, I'm Ankit Deshmukh"
-        subtitle: = ☯ = <br /><br />  Academician | Water Resource | Hydrologic Modeling <br /> Geospatial Analysis | Data Analysis | Freelancing <br /> <br />
+        subtitle: Academician | Water Resource | Hydrologic Modeling<br />Geospatial Analysis | Data Analysis | Freelancing <br /> <br />
         imageUrl: "Avatar.jpg"
-        imageTitle: my image
+        imageTitle: Profile picture of Dr. Ankit Deshmukh
         imageWidth: 160
         imageHeight: 160
         buttons:
@@ -97,8 +97,8 @@ params:
           url: "https://www.linkedin.com/in/anixn/"
         - name: twitter
           url: "https://twitter.com/anix7n"
-        - name: website
-          url: "https://www.ankitdeshmukh.com/"
+#        - name: website
+#          url: "https://www.ankitdeshmukh.com/"
 
     analytics:
         google:

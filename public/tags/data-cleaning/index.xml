@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data Cleaning on Ankit&#39;s DataVerse!</title>
+    <link>https://ankitdeshmukh.com/tags/data-cleaning/</link>
+    <description>Recent content in Data Cleaning on Ankit&#39;s DataVerse!</description>
+    <image>
+      <url>https://ankitdeshmukh.com/papermod-cover.png</url>
+      <link>https://ankitdeshmukh.com/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/data-cleaning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;</title>
+      <link>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</guid>
+      <description>SBI Submits all the data to ECI and ECI publish it on Thursday 21 Mar 2024, 6:32 PM Links of 2 files are provided here:
+Disclosure of Electoral Bonds
+Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Redemption_Details)
+Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Purchase_Details)
+To know the background of the case read this: SBI submits all electoral bond details, including unique numbers, to ECI</description>
+    </item>
+    
+  </channel>
+</rss>
