@@ -22,10 +22,7 @@ My current research focuses on the development of a Physio-climatic catchment ch
 | Flood Modeling        | GDAL   |
 | Drought Prediction    | GEE    |
 | Data analysis         | QGIS   |
-| Climate Sensitivity   | [terra](https://cran.r-project.org/web/packages/terra/index.html)  | 
-
-
-
+| Geospatial Analysis   | `terra`, `TMAP` | 
 
 --------------------------------------------
 ## Contact me!
