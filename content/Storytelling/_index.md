@@ -4,4 +4,4 @@ layout: "main"
 #url: /default/
 ---
 
-My Projects
+My projects, storytelling and crafts!
