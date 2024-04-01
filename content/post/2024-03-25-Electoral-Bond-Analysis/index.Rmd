@@ -364,3 +364,6 @@ datatable(as.data.frame(Comp_table),  class = 'cell-border stripe', options = li
         "}"))) 
 ```
 
+
+[![Party-Donner patterns](Images/Party_Comp_Small.jpg)](Images/Party_Comp_Big.jpg)
+Also to see all the party data use this [link🔗](Agg_Data.csv) 
