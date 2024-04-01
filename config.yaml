@@ -49,7 +49,7 @@ languages:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Welcome to my vibrant corner of the internet! Here, I'll be sharing the exhilarating journey of my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, Hydrology, and R-programming."
+    description: "Welcome to my vibrant corner of the internet! Here, I'll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, & R-programming."
     author: Dr. Ankit Deshmukh
 
     defaultTheme: auto
@@ -78,9 +78,9 @@ params:
         imageHeight: 160
         buttons:
             - name: About me
-              url: /About
+              url: /about
             - name: Updates
-              url: /Research/Updates/
+              url: /research/updates/
             - name: Archive
               url: /archives
 
