@@ -364,6 +364,18 @@ datatable(as.data.frame(Comp_table),  class = 'cell-border stripe', options = li
         "}"))) 
 ```
 
+[![Party-Donner patterns](Images/Circos_plot_Small.jpg)](Images/Circos_plot_Large)
 
-[![Party-Donner patterns](Images/Party_Comp_Small.jpg)](Images/Party_Comp_Big.jpg)
+
+
 Also to see all the party data use this [link🔗](Agg_Data.csv) 
+```{r}
+Data <- read.csv(file = "Data/Agg_Data_Sorted.csv")
+datatable(Data,  class = 'cell-border stripe', options = list(pageLength=5, scrollX='400px',
+    initComplete = JS(
+        "function(settings, json) {",
+        "$(this.api().table().header()).css({'background-color': '#fff', 'color': '#111'});",
+        "$(this.api().table().container()).css({'background-color': '#fff', 'color': '#111'});",
+        "$(this.api().table().body()).css({'background-color': '#fff', 'color': '#111'});",
+        "}"))) 
+```
