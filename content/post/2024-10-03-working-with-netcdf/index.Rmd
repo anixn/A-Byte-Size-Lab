@@ -1,0 +1,18 @@
+---
+title: Working with netcdf
+author: 'Dr.Ankit Deshmukh'
+date: '2024-10-03'
+slug: []
+categories: ["Tutorial", "R"]
+tags: ["Data Cleaning"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
+```
+Imd provides the climatic data (daily precipitation and timeperature data).
+
+The data is provided in the `.nc` or `netCDF` format. It might be little difficult to understand with new uses. I am presenting the tutorial to work with basic netcdf file in R.
+
+
+![NC Files for year 2015-2023](Images/Files.png){fig-align='center'}
