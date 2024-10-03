@@ -11,7 +11,138 @@ tags: ["Data Cleaning"]
 
 <p>Imd provides the climatic data (daily precipitation and timeperature data).</p>
 <p>The data is provided in the <code>.nc</code> or <code>netCDF</code> format. It might be little difficult to understand with new uses. I am presenting the tutorial to work with basic netcdf file in R.</p>
-<div class="float">
-<img src="Images/Files.png" fig-align="center" alt="NC Files for year 2015-2023" />
-<div class="figcaption">NC Files for year 2015-2023</div>
+<p><img src="Images/Files.png" fig-align="center" /></p>
+<p>Loading <code>ncdf4</code> library to process netcdf file. Geospatial analysis is perform by <code>terra</code> package.</p>
+<pre class="r"><code>if (!require(ncdf4)) { install.packages(&#39;ncdf4&#39;); library(ncdf4)}
+if (!require(terra)) { install.packages(&#39;terra&#39;); library(terra)}
+if (!require(tidyverse)) { install.packages(&#39;tidyverse&#39;); library(tidyverse)}</code></pre>
+<p>Read shapefile with multiple polygons in it.</p>
+<pre class="r"><code>shp &lt;- vect(&quot;./Shapefile/Krishna_subbasins.shp&quot;)
+shp &lt;- project(x = shp, y = &quot;+proj=longlat +datum=WGS84 +no_defs&quot;)
+plot(shp, bg = &quot;gray&quot;)
+sbar(d = 1000, type = &quot;bar&quot;, divs = 4, below = &quot;km&quot;) # Scale
+north() # for north arrow.</code></pre>
+<pre class="r"><code>rotate_clockwise &lt;- function(x) {t(apply(x, 2, rev))}
+rotate_counter_clockwise &lt;- function(x) {apply(t(x),2, rev)}</code></pre>
+<div id="select-the-year-line" class="section level2">
+<h2>select the year line</h2>
+<pre class="r"><code>yr &lt;- 2015:2023
+rainfall_mat &lt;- timestamp &lt;- c()
+
+for (yr_i in yr) {
+    nc_file &lt;- nc_open(paste0(&quot;./RF25_ind&quot;,yr_i,&quot;_rfp25.nc&quot;))
+    # print(nc_file)                        # get info about the file
+    names(nc_file$var)                    # Variable i.e. Rainfall
+    names(nc_file$dim)                    # Dimenstions (Lat, Lon, time)
+    latitude &lt;- nc_file$dim[[1]]$vals
+    longitude &lt;- nc_file$dim[[2]]$vals
+    time &lt;- nc_file$dim[[3]]$vals
+    time_as_date &lt;- as.Date(time, origin = &quot;1900-12-31&quot;)
+    rainfall &lt;- ncvar_get(nc_file, varid = &quot;RAINFALL&quot;)
+    r_mat &lt;- matrix(NA, nrow = length(time), ncol = length(shp$OBJECTID))
+
+    for(d_i in seq_along(time)){
+        precip_day &lt;- rainfall[, , d_i] %&gt;% rotate_counter_clockwise() %&gt;% rast()
+        ext(precip_day) &lt;- c(min(latitude), max(latitude), min(longitude), max(longitude))
+        crs(precip_day) &lt;- &quot;+proj=longlat +datum=WGS84 +no_defs&quot;
+        r_day &lt;- terra::extract(x = precip_day, y = shp, fun = mean)
+        r_mat[d_i, ] &lt;- r_day$lyr.1
+        print(paste(d_i, yr_i))
+    }
+    rainfall_mat &lt;- rbind(rainfall_mat, r_mat)
+    timestamp &lt;- append(timestamp, time_as_date)
+}</code></pre>
+</div>
+<div id="process-the-otuput" class="section level2">
+<h2>Process the otuput</h2>
+<pre class="r"><code>rainfall_df &lt;-  as.data.frame(rainfall_mat)
+rainfall_df &lt;- cbind(timestamp, rainfall_df)
+write_csv(rainfall_df, file = &quot;Rainfall.csv&quot;)</code></pre>
+<p>Text:</p>
+<p>NetCDF (Network Common Data Form) is a widely-used data format designed for storing and sharing scientific data in a structured, self-describing, and platform-independent manner. Developed by Unidata, NetCDF is primarily used in geosciences, such as atmospheric science, hydrology, oceanography, and climate modeling, but can be applied to various other fields requiring efficient storage of multidimensional data.</p>
+</div>
+<div id="key-features-of-netcdf" class="section level2">
+<h2>Key Features of NetCDF:</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Self-describing</strong>: Each NetCDF file contains metadata that describes the structure of the data, including variable names, dimensions, units, and attributes. This allows users to understand the data without external documentation.</li>
+<li><strong>Portable</strong>: NetCDF files can be used across different platforms and programming languages (e.g., R, Python, MATLAB, C, Fortran), making them highly flexible.</li>
+<li><strong>Efficient</strong>: NetCDF is optimized for storing large, multi-dimensional datasets efficiently, with support for efficient compression and random access to subsets of data.</li>
+<li><strong>Scalable</strong>: It can store small and large datasets, including data with complex hierarchies.</li>
+<li><strong>Extensible</strong>: New variables and metadata can be added to an existing NetCDF file without rewriting the entire file.</li>
+</ol>
+</div>
+<div id="structure-of-a-netcdf-file" class="section level2">
+<h2>Structure of a NetCDF File:</h2>
+<p>NetCDF files follow a simple yet powerful structure, consisting of three main components:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Dimensions</strong>: These define the shape of the data, such as time, latitude, longitude, or vertical levels. A dimension can be used to describe how many values a variable contains in a specific direction or category.
+<ul>
+<li>Example: If you have daily temperature data at different locations, the dimensions could be time (number of days), latitude, and longitude.</li>
+</ul></li>
+<li><strong>Variables</strong>: These store the actual data. Variables can be scalar or multi-dimensional arrays (e.g., temperature, rainfall, or elevation data). Each variable is defined along one or more dimensions and can have associated metadata (attributes).
+<ul>
+<li>Example: A variable could represent temperature (<code>temp</code>), with dimensions <code>time</code>, <code>latitude</code>, and <code>longitude</code>.</li>
+</ul></li>
+<li><strong>Attributes</strong>: These provide additional information about the file or variables, such as units, missing data values, or descriptive text. They are used to describe global properties (applied to the whole dataset) or specific variables.
+<ul>
+<li>Example: An attribute might define the units of temperature as “degrees Celsius” or mark missing values with a specific value like <code>-9999</code>.</li>
+</ul></li>
+</ol>
+<div id="example-of-a-netcdf-file" class="section level3">
+<h3>Example of a NetCDF File:</h3>
+<p>Let’s say we are working with a NetCDF file containing rainfall data over a geographic area. Here’s a hypothetical structure for such a file:</p>
+<pre class="txt"><code>File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
+
+     1 variables (excluding dimension variables):
+        double RAINFALL[LONGITUDE,LATITUDE,TIME]
+            missing_value: -999
+            _FillValue: -999
+            long_name: Rainfall
+            units: mm
+            history: From ind2023_rfp25.grd
+
+     2 dimensions:
+        LONGITUDE  Size:135
+            units: degrees_east
+            point_spacing: even
+            axis: X
+            modulo: 360
+            standard_name: longitude
+        LATITUDE  Size:129
+            units: degrees_north
+            point_spacing: even
+            axis: Y
+            standard_name: latitude
+        TIME  Size:365   *** is unlimited ***
+            units: days since 1900-12-31
+            axis: T
+            calendar: GREGORIAN
+            time_origin: 31-DEC-1900
+            standard_name: time
+
+    3 global attributes:
+        history: FERRET V7.5 (optimized)  6-Feb-24
+        Conventions: CF-1.6</code></pre>
+</div>
+<div id="breakdown-of-the-example" class="section level3">
+<h3>Breakdown of the Example:</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Dimensions</strong>:
+<ul>
+<li><code>time</code>: Unlimited, indicating that more time steps can be added without rewriting the file.</li>
+<li><code>latitude</code>: 180 values, representing geographic locations from the southern to the northern hemisphere.</li>
+<li><code>longitude</code>: 360 values, representing locations from west to east around the globe.</li>
+</ul></li>
+<li><strong>Variables</strong>:
+<ul>
+<li><code>rainfall</code>: A 3D variable that depends on <code>time</code>, <code>latitude</code>, and <code>longitude</code>. It stores daily rainfall values and includes metadata (<code>units = mm</code>, <code>long_name = Daily Rainfall</code>) to describe the data.</li>
+<li><code>latitude</code> and <code>longitude</code>: 1D variables with values representing geographic coordinates in degrees.</li>
+<li><code>time</code>: A 1D variable containing time values since a reference date (2000-01-01). The <code>calendar</code> attribute specifies the type of calendar system.</li>
+</ul></li>
+<li><strong>Global Attributes</strong>:
+<ul>
+<li>Metadata about the dataset, such as the title, institution, and data source, which provide context and provenance information.</li>
+</ul></li>
+</ol>
+</div>
 </div>
