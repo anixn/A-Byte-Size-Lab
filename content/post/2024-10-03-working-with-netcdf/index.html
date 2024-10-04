@@ -1,5 +1,5 @@
 ---
-title: Working with netcdf
+title: Working with `netcdf` file and extracting values in R
 author: 'Dr.Ankit Deshmukh'
 date: '2024-10-03'
 slug: []
@@ -12,58 +12,7 @@ cover:
 
 
 
-<p>Imd provides the climatic data (daily precipitation and timeperature data).</p>
-<p>The data is provided in the <code>.nc</code> or <code>netCDF</code> format. It might be little difficult to understand with new uses. I am presenting the tutorial to work with basic netcdf file in R.</p>
-<p><img src="Images/Files.png" fig-align="center" /></p>
-<p>Loading <code>ncdf4</code> library to process netcdf file. Geospatial analysis is perform by <code>terra</code> package.</p>
-<pre class="r"><code>if (!require(ncdf4)) { install.packages(&#39;ncdf4&#39;); library(ncdf4)}
-if (!require(terra)) { install.packages(&#39;terra&#39;); library(terra)}
-if (!require(tidyverse)) { install.packages(&#39;tidyverse&#39;); library(tidyverse)}</code></pre>
-<p>Read shapefile with multiple polygons in it.</p>
-<pre class="r"><code>shp &lt;- vect(&quot;./Shapefile/Krishna_subbasins.shp&quot;)
-shp &lt;- project(x = shp, y = &quot;+proj=longlat +datum=WGS84 +no_defs&quot;)
-plot(shp, bg = &quot;gray&quot;)
-sbar(d = 1000, type = &quot;bar&quot;, divs = 4, below = &quot;km&quot;) # Scale
-north() # for north arrow.</code></pre>
-<pre class="r"><code>rotate_clockwise &lt;- function(x) {t(apply(x, 2, rev))}
-rotate_counter_clockwise &lt;- function(x) {apply(t(x),2, rev)}</code></pre>
-<div id="select-the-year-line" class="section level2">
-<h2>select the year line</h2>
-<pre class="r"><code>yr &lt;- 2015:2023
-rainfall_mat &lt;- timestamp &lt;- c()
-
-for (yr_i in yr) {
-    nc_file &lt;- nc_open(paste0(&quot;./RF25_ind&quot;,yr_i,&quot;_rfp25.nc&quot;))
-    # print(nc_file)                        # get info about the file
-    names(nc_file$var)                    # Variable i.e. Rainfall
-    names(nc_file$dim)                    # Dimenstions (Lat, Lon, time)
-    latitude &lt;- nc_file$dim[[1]]$vals
-    longitude &lt;- nc_file$dim[[2]]$vals
-    time &lt;- nc_file$dim[[3]]$vals
-    time_as_date &lt;- as.Date(time, origin = &quot;1900-12-31&quot;)
-    rainfall &lt;- ncvar_get(nc_file, varid = &quot;RAINFALL&quot;)
-    r_mat &lt;- matrix(NA, nrow = length(time), ncol = length(shp$OBJECTID))
-
-    for(d_i in seq_along(time)){
-        precip_day &lt;- rainfall[, , d_i] %&gt;% rotate_counter_clockwise() %&gt;% rast()
-        ext(precip_day) &lt;- c(min(latitude), max(latitude), min(longitude), max(longitude))
-        crs(precip_day) &lt;- &quot;+proj=longlat +datum=WGS84 +no_defs&quot;
-        r_day &lt;- terra::extract(x = precip_day, y = shp, fun = mean)
-        r_mat[d_i, ] &lt;- r_day$lyr.1
-        print(paste(d_i, yr_i))
-    }
-    rainfall_mat &lt;- rbind(rainfall_mat, r_mat)
-    timestamp &lt;- append(timestamp, time_as_date)
-}</code></pre>
-</div>
-<div id="process-the-otuput" class="section level2">
-<h2>Process the otuput</h2>
-<pre class="r"><code>rainfall_df &lt;-  as.data.frame(rainfall_mat)
-rainfall_df &lt;- cbind(timestamp, rainfall_df)
-write_csv(rainfall_df, file = &quot;Rainfall.csv&quot;)</code></pre>
-<p>Text:</p>
 <p>NetCDF (Network Common Data Form) is a widely-used data format designed for storing and sharing scientific data in a structured, self-describing, and platform-independent manner. Developed by Unidata, NetCDF is primarily used in geosciences, such as atmospheric science, hydrology, oceanography, and climate modeling, but can be applied to various other fields requiring efficient storage of multidimensional data.</p>
-</div>
 <div id="key-features-of-netcdf" class="section level2">
 <h2>Key Features of NetCDF:</h2>
 <ol style="list-style-type: decimal">
@@ -147,5 +96,110 @@ write_csv(rainfall_df, file = &quot;Rainfall.csv&quot;)</code></pre>
 <li>Metadata about the dataset, such as the title, institution, and data source, which provide context and provenance information.</li>
 </ul></li>
 </ol>
+<p>For hydrological analysis historical precipation and temperature data is essenstial. Usually these data can be obtained from Indian Meterolgocal Department (भारतीय मौसम विज्ञान विभाग:IMD) free of cost.</p>
 </div>
+</div>
+<div id="rainfall-data" class="section level2">
+<h2>Rainfall Data:</h2>
+<p>Yearly Gridded Rainfall (0.25 x 0.25) data NetCDF File</p>
+<p>Rainfall data product is resolution daily gridded rainfall data (0.25 x 0.25 degree). The unit of rainfall is in millimeter (mm). Data available for 122 years, 1901 to 2023. Data is arranged in 135x129 grid points. The first data in the record is at 6.5N &amp; 66.5E, the second is at 6.5N &amp; 66.75E, and so on. The last data record corresponds to 38.5N &amp; 100.0E. The yearly data file consists of 365/366 records corresponding to non leap/ leap years. You can download it from <a href="https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html" class="uri">https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html</a></p>
+<p>Imd provides the climatic data (daily precipitation and timeperature data).</p>
+<p>The data is provided in the <code>.nc</code> or <code>netCDF</code> format. It might be little difficult to understand with new uses. I am presenting the tutorial to work with basic netcdf file in R.</p>
+<p><img src="Images/Files.png" fig-align="center" /></p>
+<p>Loading <code>ncdf4</code> library to process netcdf file. Geospatial analysis is perform by <code>terra</code> package.</p>
+<pre class="r"><code>if (!require(ncdf4)) { install.packages(&#39;ncdf4&#39;); library(ncdf4)}
+if (!require(terra)) { install.packages(&#39;terra&#39;); library(terra)}
+if (!require(tidyverse)) { install.packages(&#39;tidyverse&#39;); library(tidyverse)}</code></pre>
+<p>Read shapefile with multiple polygons in it.</p>
+<pre class="r"><code>shp &lt;- vect(&quot;./Shapefile/Krishna_subbasins.shp&quot;)
+shp &lt;- project(x = shp, y = &quot;+proj=longlat +datum=WGS84 +no_defs&quot;)
+plot(shp, bg = &quot;gray&quot;)
+sbar(d = 1000, type = &quot;bar&quot;, divs = 4, below = &quot;km&quot;) # Scale
+north() # for north arrow.</code></pre>
+<pre class="r"><code>rotate_clockwise &lt;- function(x) {t(apply(x, 2, rev))}
+rotate_counter_clockwise &lt;- function(x) {apply(t(x),2, rev)}</code></pre>
+</div>
+<div id="select-the-year-line" class="section level2">
+<h2>select the year line</h2>
+<pre class="r"><code>yr &lt;- 2015:2023
+rainfall_mat &lt;- timestamp &lt;- c()
+
+for (yr_i in yr) {
+    nc_file &lt;- nc_open(paste0(&quot;./RF25_ind&quot;,yr_i,&quot;_rfp25.nc&quot;))
+    # print(nc_file)                        # get info about the file
+    names(nc_file$var)                    # Variable i.e. Rainfall
+    names(nc_file$dim)                    # Dimenstions (Lat, Lon, time)
+    latitude &lt;- nc_file$dim[[1]]$vals
+    longitude &lt;- nc_file$dim[[2]]$vals
+    time &lt;- nc_file$dim[[3]]$vals
+    time_as_date &lt;- as.Date(time, origin = &quot;1900-12-31&quot;)
+    rainfall &lt;- ncvar_get(nc_file, varid = &quot;RAINFALL&quot;)
+    r_mat &lt;- matrix(NA, nrow = length(time), ncol = length(shp$OBJECTID))
+
+    for(d_i in seq_along(time)){
+        precip_day &lt;- rainfall[, , d_i] %&gt;% rotate_counter_clockwise() %&gt;% rast()
+        ext(precip_day) &lt;- c(min(latitude), max(latitude), min(longitude), max(longitude))
+        crs(precip_day) &lt;- &quot;+proj=longlat +datum=WGS84 +no_defs&quot;
+        r_day &lt;- terra::extract(x = precip_day, y = shp, fun = mean)
+        r_mat[d_i, ] &lt;- r_day$lyr.1
+        print(paste(d_i, yr_i))
+    }
+    rainfall_mat &lt;- rbind(rainfall_mat, r_mat)
+    timestamp &lt;- append(timestamp, time_as_date)
+}</code></pre>
+</div>
+<div id="process-the-otuput" class="section level2">
+<h2>Process the otuput</h2>
+<pre class="r"><code>rainfall_df &lt;-  as.data.frame(rainfall_mat)
+rainfall_df &lt;- cbind(timestamp, rainfall_df)
+write_csv(rainfall_df, file = &quot;Rainfall.csv&quot;)</code></pre>
+</div>
+<div id="working-the-binary-data" class="section level2">
+<h2>Working the “Binary Data”</h2>
+<p>The grd file are provided by IMD and reading it a little bit different. The following code demostrate the working with <code>.grd</code>.</p>
+<pre class="r"><code># Working with R blog.
+
+if (!require(terra)) { install.packages(&#39;terra&#39;); library(terra)}
+f &lt;- &quot;Maxtemp_MaxT_2022.GRD&quot;
+
+#################################################
+# Latitude: 7.5:37.5
+# Longitude:67.5:97.5
+# Resolution : 1 degree
+# Temperature units : Celcius
+# Missing data : 99.9
+#################################################
+
+# https://imdpune.gov.in/cmpg/Griddata/Max_1_Bin.html#
+# Get the metadata of the file the previous link
+lat &lt;- 31
+lon &lt;- 31
+nspatial &lt;- lat * lon
+
+leap_year &lt;- function(year) {return(ifelse((year %%4 == 0 &amp; year %%100 != 0) | year %%400 == 0, 366, 365)) }
+days = leap_year(as.numeric(substr(f, 14, 17)))
+
+# read all the data
+m_data &lt;- readBin(f, what = &quot;numeric&quot;, size = 4,  n = lat * lon * days)
+
+temp_list &lt;- list()
+
+for(day in 1:days){
+    nday = m_data[1+(day*nspatial):(nspatial*(day+1) - 1)]
+    m = matrix(nday, lat, lon, byrow=TRUE)
+    m[m &gt; 99]=NA
+    m = m[nrow(m):1,] # Invert the matrix
+    r = rast(m)
+    ext(r) = c(67.5, 97.5, 7.5, 37.5)
+    crs(r) = &quot;+init=epsg:4326&quot;
+    temp_list[[day]] &lt;- r
+    rm(r, m)
+    print(day)
+}
+
+temp_raster &lt;- rast(temp_list)
+plot(temp_raster[[122]])
+writeRaster(x = temp_raster, filename = paste0(&quot;IMD_Temp_&quot;, substr(f, 14, 17), &quot;.tif&quot;))
+
+Test &lt;- rast(&quot;./IMD_Temp_2022.tif&quot;)</code></pre>
 </div>
