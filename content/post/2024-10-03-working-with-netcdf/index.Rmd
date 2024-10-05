@@ -1,10 +1,10 @@
 ---
-title: Working with `netcdf` file and extracting values in R
+title: Working with NetCDF and Binary climatic data in R
 author: 'Dr.Ankit Deshmukh'
 date: '2024-10-03'
 slug: []
 categories: ["Tutorial", "R"]
-tags: ["Data Cleaning"]
+tags: ["Data Cleaning", "R", "IMD"]
 cover:
     image: "Cover.png"
     alt: "Image of netcdf downscalling"
@@ -14,6 +14,17 @@ cover:
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 if (!require(blogdown)) { install.packages('blogdown'); library(blogdown)}
 ```
+
+# Climatic Data in Hydrologcal analysis
+# Challanges in obtaining the data and data source
+# Data source, specifications, and metadata.
+# Processing 'NetCDF'
+# Processing 'GRD'
+# Extracting the daily data with `extract`
+# Conclustion
+
+
+
 
 NetCDF (Network Common Data Form) is a widely-used data format designed for storing and sharing scientific data in a structured, self-describing, and platform-independent manner. Developed by Unidata, NetCDF is primarily used in geosciences, such as atmospheric science, hydrology, oceanography, and climate modeling, but can be applied to various other fields requiring efficient storage of multidimensional data.
 
@@ -40,7 +51,7 @@ NetCDF files follow a simple yet powerful structure, consisting of three main co
 
 Let’s say we are working with a NetCDF file containing rainfall data over a geographic area. Here's a hypothetical structure for such a file:
 
-```{txt}
+```{md}
 File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
 
      1 variables (excluding dimension variables):
@@ -181,6 +192,7 @@ f <- "Maxtemp_MaxT_2022.GRD"
 
 # https://imdpune.gov.in/cmpg/Griddata/Max_1_Bin.html#
 # Get the metadata of the file the previous link
+
 lat <- 31
 lon <- 31
 nspatial <- lat * lon

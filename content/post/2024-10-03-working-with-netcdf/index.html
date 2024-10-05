@@ -1,10 +1,10 @@
 ---
-title: Working with `netcdf` file and extracting values in R
+title: Working with NetCDF and Binary climatic data in R
 author: 'Dr.Ankit Deshmukh'
 date: '2024-10-03'
 slug: []
 categories: ["Tutorial", "R"]
-tags: ["Data Cleaning"]
+tags: ["Data Cleaning", "R", "IMD"]
 cover:
     image: "Cover.png"
     alt: "Image of netcdf downscalling"
@@ -12,6 +12,26 @@ cover:
 
 
 
+<div id="climatic-data-in-hydrologcal-analysis" class="section level1">
+<h1>Climatic Data in Hydrologcal analysis</h1>
+</div>
+<div id="challanges-in-obtaining-the-data-and-data-source" class="section level1">
+<h1>Challanges in obtaining the data and data source</h1>
+</div>
+<div id="data-source-specifications-and-metadata." class="section level1">
+<h1>Data source, specifications, and metadata.</h1>
+</div>
+<div id="processing-netcdf" class="section level1">
+<h1>Processing ‘NetCDF’</h1>
+</div>
+<div id="processing-grd" class="section level1">
+<h1>Processing ‘GRD’</h1>
+</div>
+<div id="extracting-the-daily-data-with-extract" class="section level1">
+<h1>Extracting the daily data with <code>extract</code></h1>
+</div>
+<div id="conclustion" class="section level1">
+<h1>Conclustion</h1>
 <p>NetCDF (Network Common Data Form) is a widely-used data format designed for storing and sharing scientific data in a structured, self-describing, and platform-independent manner. Developed by Unidata, NetCDF is primarily used in geosciences, such as atmospheric science, hydrology, oceanography, and climate modeling, but can be applied to various other fields requiring efficient storage of multidimensional data.</p>
 <div id="key-features-of-netcdf" class="section level2">
 <h2>Key Features of NetCDF:</h2>
@@ -43,7 +63,7 @@ cover:
 <div id="example-of-a-netcdf-file" class="section level3">
 <h3>Example of a NetCDF File:</h3>
 <p>Let’s say we are working with a NetCDF file containing rainfall data over a geographic area. Here’s a hypothetical structure for such a file:</p>
-<pre class="txt"><code>File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
+<pre class="md"><code>File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
 
      1 variables (excluding dimension variables):
         double RAINFALL[LONGITUDE,LATITUDE,TIME]
@@ -172,6 +192,7 @@ f &lt;- &quot;Maxtemp_MaxT_2022.GRD&quot;
 
 # https://imdpune.gov.in/cmpg/Griddata/Max_1_Bin.html#
 # Get the metadata of the file the previous link
+
 lat &lt;- 31
 lon &lt;- 31
 nspatial &lt;- lat * lon
@@ -202,4 +223,5 @@ plot(temp_raster[[122]])
 writeRaster(x = temp_raster, filename = paste0(&quot;IMD_Temp_&quot;, substr(f, 14, 17), &quot;.tif&quot;))
 
 Test &lt;- rast(&quot;./IMD_Temp_2022.tif&quot;)</code></pre>
+</div>
 </div>
