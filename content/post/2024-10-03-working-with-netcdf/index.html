@@ -12,58 +12,38 @@ cover:
 
 
 
-<div id="climatic-data-in-hydrologcal-analysis" class="section level1">
-<h1>Climatic Data in Hydrologcal analysis</h1>
+<div id="climatic-data-in-hydrologcal-analysis" class="section level2">
+<h2>Climatic Data in Hydrologcal analysis</h2>
+<p>Climatic data such as temperature and precipation is essenstial for any hydrological analysis. Most of time several year of data is required to do any type of hydrological analysis. The climatic data is obtained from either the settlite based observation or insitu observation.</p>
+<p>For hydrological analysis historical precipation and temperature data is essenstial. Usually these data can be obtained from Indian Meterolgocal Department (भारतीय मौसम विज्ञान विभाग:IMD) free of cost.</p>
+<p>IMD pune provide the gridded precipitation and Temperature data since 1901. Most of time I find students are struggling to process the data that this either in NetCDF (ext: “.nc”), or Binary data (ext: “.grd”). The processign of both the data is a little different.</p>
 </div>
-<div id="challanges-in-obtaining-the-data-and-data-source" class="section level1">
-<h1>Challanges in obtaining the data and data source</h1>
+<div id="data-source-specifications-and-metadata." class="section level2">
+<h2>Data source, specifications, and metadata.</h2>
+<p>To proceess any data the most important step is metadata. A metdata for temperature and precipation shown:</p>
+<div id="rainfall-data" class="section level3">
+<h3>Rainfall Data:</h3>
+<p>Rainfall data product is resolution daily gridded rainfall data (0.25 x 0.25 degree). The unit of rainfall is in millimeter (mm). Data available for 122 years, 1901 to 2023. Data is arranged in 135x129 grid points. The first data in the record is at 6.5N &amp; 66.5E, the second is at 6.5N &amp; 66.75E, and so on. The last data record corresponds to 38.5N &amp; 100.0E. The yearly data file consists of 365/366 records corresponding to non leap/ leap years. You can download it from <a href="https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html" class="uri">https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html</a></p>
 </div>
-<div id="data-source-specifications-and-metadata." class="section level1">
-<h1>Data source, specifications, and metadata.</h1>
+<div id="temperature-data-minmax" class="section level3">
+<h3>Temperature data (min/max)</h3>
+<p>IMD High resolution <span class="math inline">\(1\times1\)</span> degree gridded daily temperature data (1951-2018)<em>. This data is arranged in 31x31 grid points. Lat 7.5N, 8.5N … 36.5, 37.5 (31 Values). Long 67.5E, 68.5E … 96.5, 97.5 (31 Values). For leap years, data for 366 days are included. The unit of tempereture is in Celcious.
+</em> Gridded data for the year 2008 and onwards are based on relatively less number of stations (around 180) for which data were received operationaly on real time basis.</p>
 </div>
-<div id="processing-netcdf" class="section level1">
-<h1>Processing ‘NetCDF’</h1>
+<div id="reference-paper-for-more-detail" class="section level3">
+<h3>Reference paper for more detail</h3>
+<pre><code>Pai et al. (2014). Pai D.S., Latha Sridhar, Rajeevan M., Sreejith O.P., Satbhai N.S. and Mukhopadhyay B., 2014:
+Development of a new high spatial resolution (0.25° X 0.25°)Long period (1901-2010) daily gridded rainfall data set over
+India and its comparison with existing data sets over the region; MAUSAM, 65, 1(January 2014), pp1-18.</code></pre>
 </div>
-<div id="processing-grd" class="section level1">
-<h1>Processing ‘GRD’</h1>
 </div>
-<div id="extracting-the-daily-data-with-extract" class="section level1">
-<h1>Extracting the daily data with <code>extract</code></h1>
-</div>
-<div id="conclustion" class="section level1">
-<h1>Conclustion</h1>
+<div id="processing-netcdf" class="section level2">
+<h2>Processing ‘NetCDF’</h2>
 <p>NetCDF (Network Common Data Form) is a widely-used data format designed for storing and sharing scientific data in a structured, self-describing, and platform-independent manner. Developed by Unidata, NetCDF is primarily used in geosciences, such as atmospheric science, hydrology, oceanography, and climate modeling, but can be applied to various other fields requiring efficient storage of multidimensional data.</p>
-<div id="key-features-of-netcdf" class="section level2">
-<h2>Key Features of NetCDF:</h2>
-<ol style="list-style-type: decimal">
-<li><strong>Self-describing</strong>: Each NetCDF file contains metadata that describes the structure of the data, including variable names, dimensions, units, and attributes. This allows users to understand the data without external documentation.</li>
-<li><strong>Portable</strong>: NetCDF files can be used across different platforms and programming languages (e.g., R, Python, MATLAB, C, Fortran), making them highly flexible.</li>
-<li><strong>Efficient</strong>: NetCDF is optimized for storing large, multi-dimensional datasets efficiently, with support for efficient compression and random access to subsets of data.</li>
-<li><strong>Scalable</strong>: It can store small and large datasets, including data with complex hierarchies.</li>
-<li><strong>Extensible</strong>: New variables and metadata can be added to an existing NetCDF file without rewriting the entire file.</li>
-</ol>
-</div>
-<div id="structure-of-a-netcdf-file" class="section level2">
-<h2>Structure of a NetCDF File:</h2>
-<p>NetCDF files follow a simple yet powerful structure, consisting of three main components:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Dimensions</strong>: These define the shape of the data, such as time, latitude, longitude, or vertical levels. A dimension can be used to describe how many values a variable contains in a specific direction or category.
-<ul>
-<li>Example: If you have daily temperature data at different locations, the dimensions could be time (number of days), latitude, and longitude.</li>
-</ul></li>
-<li><strong>Variables</strong>: These store the actual data. Variables can be scalar or multi-dimensional arrays (e.g., temperature, rainfall, or elevation data). Each variable is defined along one or more dimensions and can have associated metadata (attributes).
-<ul>
-<li>Example: A variable could represent temperature (<code>temp</code>), with dimensions <code>time</code>, <code>latitude</code>, and <code>longitude</code>.</li>
-</ul></li>
-<li><strong>Attributes</strong>: These provide additional information about the file or variables, such as units, missing data values, or descriptive text. They are used to describe global properties (applied to the whole dataset) or specific variables.
-<ul>
-<li>Example: An attribute might define the units of temperature as “degrees Celsius” or mark missing values with a specific value like <code>-9999</code>.</li>
-</ul></li>
-</ol>
-<div id="example-of-a-netcdf-file" class="section level3">
-<h3>Example of a NetCDF File:</h3>
-<p>Let’s say we are working with a NetCDF file containing rainfall data over a geographic area. Here’s a hypothetical structure for such a file:</p>
-<pre class="md"><code>File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
+<div id="structure-of-a-netcdf-file" class="section level3">
+<h3>Structure of a NetCDF File:</h3>
+<p>As an example I am showing the metadata of IMD precipation file.</p>
+<pre class="txt"><code>File ./RF25_ind2023_rfp25.nc (NC_FORMAT_CLASSIC):
 
      1 variables (excluding dimension variables):
         double RAINFALL[LONGITUDE,LATITUDE,TIME]
@@ -95,36 +75,32 @@ cover:
     3 global attributes:
         history: FERRET V7.5 (optimized)  6-Feb-24
         Conventions: CF-1.6</code></pre>
-</div>
-<div id="breakdown-of-the-example" class="section level3">
-<h3>Breakdown of the Example:</h3>
+<p>Based on the aformensioned NetCDF metadata, it consist of three main components:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Dimensions</strong>:
+<li><strong>Dimensions</strong>: These define the shape of the data, such as time, latitude, longitude, or vertical levels. A dimension can be used to describe how many values a variable contains in a specific direction or category.
 <ul>
+<li>Example: If you have daily temperature data at different locations, the dimensions could be time (number of days), latitude, and longitude.</li>
 <li><code>time</code>: Unlimited, indicating that more time steps can be added without rewriting the file.</li>
 <li><code>latitude</code>: 180 values, representing geographic locations from the southern to the northern hemisphere.</li>
 <li><code>longitude</code>: 360 values, representing locations from west to east around the globe.</li>
 </ul></li>
-<li><strong>Variables</strong>:
+<li><strong>Variables</strong>: These store the actual data. Variables can be scalar or multi-dimensional arrays (e.g., temperature, rainfall, or elevation data). Each variable is defined along one or more dimensions and can have associated metadata (attributes).
 <ul>
+<li>Example: A variable could represent temperature (<code>temp</code>), with dimensions <code>time</code>, <code>latitude</code>, and <code>longitude</code>.</li>
 <li><code>rainfall</code>: A 3D variable that depends on <code>time</code>, <code>latitude</code>, and <code>longitude</code>. It stores daily rainfall values and includes metadata (<code>units = mm</code>, <code>long_name = Daily Rainfall</code>) to describe the data.</li>
 <li><code>latitude</code> and <code>longitude</code>: 1D variables with values representing geographic coordinates in degrees.</li>
 <li><code>time</code>: A 1D variable containing time values since a reference date (2000-01-01). The <code>calendar</code> attribute specifies the type of calendar system.</li>
 </ul></li>
-<li><strong>Global Attributes</strong>:
+<li><strong>Attributes</strong>: These provide additional information about the file or variables, such as units, missing data values, or descriptive text. They are used to describe global properties (applied to the whole dataset) or specific variables.
 <ul>
+<li>Example: An attribute might define the units of temperature as “degrees Celsius” or mark missing values with a specific value like <code>-9999</code>.</li>
 <li>Metadata about the dataset, such as the title, institution, and data source, which provide context and provenance information.</li>
 </ul></li>
 </ol>
-<p>For hydrological analysis historical precipation and temperature data is essenstial. Usually these data can be obtained from Indian Meterolgocal Department (भारतीय मौसम विज्ञान विभाग:IMD) free of cost.</p>
 </div>
-</div>
-<div id="rainfall-data" class="section level2">
-<h2>Rainfall Data:</h2>
-<p>Yearly Gridded Rainfall (0.25 x 0.25) data NetCDF File</p>
-<p>Rainfall data product is resolution daily gridded rainfall data (0.25 x 0.25 degree). The unit of rainfall is in millimeter (mm). Data available for 122 years, 1901 to 2023. Data is arranged in 135x129 grid points. The first data in the record is at 6.5N &amp; 66.5E, the second is at 6.5N &amp; 66.75E, and so on. The last data record corresponds to 38.5N &amp; 100.0E. The yearly data file consists of 365/366 records corresponding to non leap/ leap years. You can download it from <a href="https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html" class="uri">https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html</a></p>
-<p>Imd provides the climatic data (daily precipitation and timeperature data).</p>
-<p>The data is provided in the <code>.nc</code> or <code>netCDF</code> format. It might be little difficult to understand with new uses. I am presenting the tutorial to work with basic netcdf file in R.</p>
+<div id="processing-netcdf-file" class="section level3">
+<h3>Processing NetCDF file</h3>
+<p>NetCDF file have 3 dimension <code>lat</code>, <code>lon</code>, and <code>time (day)</code></p>
 <p><img src="Images/Files.png" fig-align="center" /></p>
 <p>Loading <code>ncdf4</code> library to process netcdf file. Geospatial analysis is perform by <code>terra</code> package.</p>
 <pre class="r"><code>if (!require(ncdf4)) { install.packages(&#39;ncdf4&#39;); library(ncdf4)}
@@ -138,9 +114,8 @@ sbar(d = 1000, type = &quot;bar&quot;, divs = 4, below = &quot;km&quot;) # Scale
 north() # for north arrow.</code></pre>
 <pre class="r"><code>rotate_clockwise &lt;- function(x) {t(apply(x, 2, rev))}
 rotate_counter_clockwise &lt;- function(x) {apply(t(x),2, rev)}</code></pre>
-</div>
-<div id="select-the-year-line" class="section level2">
-<h2>select the year line</h2>
+<div id="select-the-year-line" class="section level4">
+<h4>select the year line</h4>
 <pre class="r"><code>yr &lt;- 2015:2023
 rainfall_mat &lt;- timestamp &lt;- c()
 
@@ -168,35 +143,42 @@ for (yr_i in yr) {
     timestamp &lt;- append(timestamp, time_as_date)
 }</code></pre>
 </div>
-<div id="process-the-otuput" class="section level2">
-<h2>Process the otuput</h2>
+<div id="process-the-otuput" class="section level4">
+<h4>Process the otuput</h4>
 <pre class="r"><code>rainfall_df &lt;-  as.data.frame(rainfall_mat)
 rainfall_df &lt;- cbind(timestamp, rainfall_df)
 write_csv(rainfall_df, file = &quot;Rainfall.csv&quot;)</code></pre>
 </div>
-<div id="working-the-binary-data" class="section level2">
-<h2>Working the “Binary Data”</h2>
+</div>
+</div>
+<div id="processing-binary-data-grd-files" class="section level2">
+<h2>Processing Binary Data ‘GRD’ files</h2>
 <p>The grd file are provided by IMD and reading it a little bit different. The following code demostrate the working with <code>.grd</code>.</p>
+<div id="reading-files-and-metadata" class="section level3">
+<h3>Reading files and metadata</h3>
 <pre class="r"><code># Working with R blog.
 
 if (!require(terra)) { install.packages(&#39;terra&#39;); library(terra)}
 f &lt;- &quot;Maxtemp_MaxT_2022.GRD&quot;
 
-#################################################
+# -------------------------------------------------
 # Latitude: 7.5:37.5
 # Longitude:67.5:97.5
 # Resolution : 1 degree
 # Temperature units : Celcius
 # Missing data : 99.9
-#################################################
+# --------------------------------------------------
 
 # https://imdpune.gov.in/cmpg/Griddata/Max_1_Bin.html#
 # Get the metadata of the file the previous link
 
 lat &lt;- 31
 lon &lt;- 31
-nspatial &lt;- lat * lon
-
+nspatial &lt;- lat * lon</code></pre>
+</div>
+<div id="setting-up-for-loop-through-the-daily-data" class="section level3">
+<h3>Setting up for loop through the daily data</h3>
+<pre class="r"><code>
 leap_year &lt;- function(year) {return(ifelse((year %%4 == 0 &amp; year %%100 != 0) | year %%400 == 0, 366, 365)) }
 days = leap_year(as.numeric(substr(f, 14, 17)))
 
@@ -224,4 +206,11 @@ writeRaster(x = temp_raster, filename = paste0(&quot;IMD_Temp_&quot;, substr(f, 
 
 Test &lt;- rast(&quot;./IMD_Temp_2022.tif&quot;)</code></pre>
 </div>
+</div>
+<div id="extracting-the-daily-data-with-extract" class="section level2">
+<h2>Extracting the daily data with <code>extract</code></h2>
+<p>We use <code>terra</code> r-package to do geoprocessing.</p>
+</div>
+<div id="concluding-remarks" class="section level2">
+<h2>Concluding remarks</h2>
 </div>
