@@ -3,7 +3,7 @@ baseURL: https://ankitdeshmukh.com/
 languageCode: en-us
 title: "Ankit's Hydro-Geo Insights"
 
-paginate: 5
+paginate: 8
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -43,7 +43,7 @@ languages:
                 - name: Tags
                   url: tags/
                   weight: 40
-                - name: "  🔎︎  "
+                - name: " ⌈ 🔎︎ ⌋ "
                   url: search/
                   weight: 50
 
@@ -71,7 +71,7 @@ params:
     profileMode:
         enabled: true
         title: "Hi, I'm Ankit Deshmukh"
-        subtitle: Academician | Water Resources | Hydrological Modeling<br />Geospatial Analysis | Data Analysis | Freelancing <br /> <br />
+        subtitle: Academia | Water Resources | Hydrological Modeling<br />Geospatial Analysis | Data Analysis | Freelancing <br /> <br />
         imageUrl: "Avatar.jpg"
         imageTitle: Profile picture of Dr. Ankit Deshmukh
         imageWidth: 160

@@ -10,7 +10,17 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with NetCDF and Binary climatic data in R</title>
+      <link>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</link>
+      <pubDate>Thu, 03 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</guid>
+      <description>Climatic Data in Hydrological AnalysisClimatic data such as temperature and precipitation are essential for any hydrological analysis. Usually, several years of data are required to do any type of hydrological analysis. The climatic data is obtained from either satellite-based observation or in situ observation.
+For hydrological analysis historical precipitation and temperature data is essential. Usually these data can be obtained from Indian Meterolgocal Department (भारतीय मौसम विज्ञान विभाग:IMD) free of cost.</description>
+    </item>
+    
     <item>
       <title>Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;</title>
       <link>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</link>
