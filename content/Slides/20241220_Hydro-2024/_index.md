@@ -2,9 +2,10 @@
 title: "Talk at HYDRO 2024 International at CWPRS Pune"
 layout: "main"
 #url: /default/
-weight: 20
+#weight: 20
+date: 2024-12-20
 ---
-![header](Outline.jpg)
+![header](Outline.png)
 
 ### Talk on "Large-Sample Hydrology to Improve Prediction in Ungauged Basins using Information Theory Techniques"
 - The venue was CWPRS Pune

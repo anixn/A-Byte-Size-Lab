@@ -3,12 +3,11 @@ title: "Computational Hydrology"
 author: "Dr. Ankit Deshmukh"
 date: 2022-07-02T11:25:39.307Z
 categories: ["Hydrology"]
-tags: ["The Basics", "Concept"]
-draft: true
-
+tags: ["The Basics", "Hydrology", "Course"]
+draft: false
 cover:
     image: "Hydrology.jpg"
-    alt: "Image of mountains vally and river" # alt text
+    alt: "Image of mountains vally, river, and dryland" # alt text
     caption: "" # this will appear below the image
 
 bibliography: [../Bibliography/Bibliography.bib]
@@ -18,9 +17,9 @@ link-citations: true
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
 ```
+Course I teach for graduate student and Ph.D.
 
 ## R For Hydrology and Water Resources
-
 - tools available for Hydrology
     - TauDEM
     - QGIS
@@ -28,15 +27,13 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, collapse = TRUE)
     - R (Geo-spatial analysis)
     - Land use/ Land cover classification
     - SWAT
-- basic hydrologic concept and methods 
+- basic hydrologic concept and methods
 - guidelines for the stream network analysis
 
-## Computational Hydrology 
+## Computational Hydrology
 
-Hydrology is the study of water across the earth system. I will tell you some interesting phenomenon of hydrology in this blog post(s). The main goal of writing post is to summarize the knowledge of Water resource and Hydrology. 
+Hydrology is the study of water across the earth system. I will tell you some interesting phenomenon of hydrology in this blog post(s). The main goal of writing post is to summarize the knowledge of Water resource and Hydrology.
 
-Mostly I will refer two books of hydrology _Applied Hydrology_ [@chow1988Applied] and _Rainfall-Runoff Modelling: The Primer_ [@beven2012Rainfallrunoff] 
-
+Mostly I will refer two books of hydrology _Applied Hydrology_ [@chow1988Applied] and _Rainfall-Runoff Modelling: The Primer_ [@beven2012Rainfallrunoff]
 
 ## Reference
-

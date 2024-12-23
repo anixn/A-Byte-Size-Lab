@@ -1,21 +1,20 @@
 ---
-title: "Talk at HYDRO 2023 International"
+title: "Talk at HYDRO 2023 International at NIT Warangal"
 layout: "main"
 #url: /default/
-weight: 20
+date: 2023-12-21
 ---
 ![header](Outline.jpg)
 
 ### Talk on "Prediction of hydrological drought patterns in data scarce regions using catchments’ physio-climatic attributes"
 
-### I talked about 
+### I talked about
 - Climate change and water scarcity
 - Current drought scenarios
 - Relationship between Meteorological and hydrological drought
 - Catchment characteristic to generalization drought pattern
 
-### Key points 
-fd
+### Key points
 
 - We compute the relation between Hydrological and meteorological drought.
 - Proposed the way to compute the lag between hydrological and meteorological drought.

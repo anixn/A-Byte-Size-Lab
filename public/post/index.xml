@@ -76,6 +76,16 @@ Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to fi
     </item>
     
     <item>
+      <title>Computational Hydrology</title>
+      <link>https://ankitdeshmukh.com/post/2022-07-02-computational-hydrology/</link>
+      <pubDate>Sat, 02 Jul 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2022-07-02-computational-hydrology/</guid>
+      <description>Course I teach for graduate student and Ph.D.
+R For Hydrology and Water Resourcestools available for HydrologyTauDEMQGISGrass GISR (Geo-spatial analysis)Land use/ Land cover classificationSWATbasic hydrologic concept and methodsguidelines for the stream network analysisComputational HydrologyHydrology is the study of water across the earth system. I will tell you some interesting phenomenon of hydrology in this blog post(s). The main goal of writing post is to summarize the knowledge of Water resource and Hydrology.</description>
+    </item>
+    
+    <item>
       <title>Random Forest with R-Programming</title>
       <link>https://ankitdeshmukh.com/post/2022-06-26-random-forest/</link>
       <pubDate>Sun, 26 Jun 2022 11:25:39 +0000</pubDate>

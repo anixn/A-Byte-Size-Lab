@@ -2,11 +2,11 @@
 title: "Introduction of Drone Based Survey"
 layout: "main"
 #url: /default/
-weight: 10
+date: 2023-12-11
 ---
 ![header](Outline.jpg)
 
-PDEU has successfully conducted one Day Skill development program on “High-Resolution UAV (Drone) and Hydrodynamic Modeling for Disaster Risk Reduction and Damage Assessment” for newly recruited more than 60 participants of Narmada Water Resources, Water Supply and Kalpsar Department (NWRWS&KP). 
+PDEU has successfully conducted one Day Skill development program on “High-Resolution UAV (Drone) and Hydrodynamic Modeling for Disaster Risk Reduction and Damage Assessment” for newly recruited more than 60 participants of Narmada Water Resources, Water Supply and Kalpsar Department (NWRWS&KP).
 
 [LinkedIn post by HoD Civil PDEU](https://www.linkedin.com/posts/dr-dhruvesh-patel-33973551_pleasure-to-share-that-civil-engineering-activity-7136593572442611712-xdtQ?utm_source=share&utm_medium=member_desktop)
 

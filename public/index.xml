@@ -10,7 +10,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Working with NetCDF and Binary climatic data in R</title>
       <link>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</link>
@@ -73,6 +73,16 @@ The package name xaringan comes from Sharingan, a dōjutsu in Naruto with two ab
       <guid>https://ankitdeshmukh.com/post/2022-07-04-r-python-sql-in-rstudio/</guid>
       <description>The main aim of this blog to show, how you can configure R, Python, and SQL in a single R-markdown file. Most of time we have to use data from databases and python code along with R functions, and having a setup that bring goodness of all the tool in one place comes really handy.
 Setup Python in RstudioTo set up R Python And SQL in the Rstudio you have to first install miniconda.</description>
+    </item>
+    
+    <item>
+      <title>Computational Hydrology</title>
+      <link>https://ankitdeshmukh.com/post/2022-07-02-computational-hydrology/</link>
+      <pubDate>Sat, 02 Jul 2022 11:25:39 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2022-07-02-computational-hydrology/</guid>
+      <description>Course I teach for graduate student and Ph.D.
+R For Hydrology and Water Resourcestools available for HydrologyTauDEMQGISGrass GISR (Geo-spatial analysis)Land use/ Land cover classificationSWATbasic hydrologic concept and methodsguidelines for the stream network analysisComputational HydrologyHydrology is the study of water across the earth system. I will tell you some interesting phenomenon of hydrology in this blog post(s). The main goal of writing post is to summarize the knowledge of Water resource and Hydrology.</description>
     </item>
     
     <item>
