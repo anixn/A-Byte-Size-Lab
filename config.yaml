@@ -97,8 +97,8 @@ params:
           url: "https://www.linkedin.com/in/anixn/"
         - name: twitter
           url: "https://twitter.com/anix7n"
-#        - name: website
-#          url: "https://www.ankitdeshmukh.com/"
+        - name: youtube
+          url: "https://www.youtube.com/@edgeospatial"
 
     analytics:
         google:
