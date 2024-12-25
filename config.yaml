@@ -79,7 +79,7 @@ params:
         buttons:
             - name: About me
               url: /about
-            - name: Updates
+            - name: Updates⁺
               url: /research/updates/
             - name: Archive
               url: /archives
