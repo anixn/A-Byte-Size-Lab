@@ -37,8 +37,8 @@ languages:
                 - name: Slides
                   url: /Slides/
                   weight: 20
-                - name: Storytelling
-                  url: /Storytelling/
+                - name: Avocation
+                  url: /Avocation/
                   weight: 25
                 - name: Tags
                   url: tags/
@@ -65,7 +65,7 @@ params:
     ShowRssButtonInSectionTermList: true
     ShowToc: true
     TocOpen: false
-    comments: false
+    comments: true
     images: ["papermod-cover.png"]
 
     profileMode:
