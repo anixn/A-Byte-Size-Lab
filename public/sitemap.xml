@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ankitdeshmukh.com/avocation/creating-with-inkscape/</loc>
+    <loc>https://ankitdeshmukh.com/avocation/creative/</loc>
   </url><url>
     <loc>https://ankitdeshmukh.com/research/updates/</loc>
   </url><url>
@@ -49,12 +49,6 @@
   </url><url>
     <loc>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</loc>
     <lastmod>2024-10-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</loc>
-    <lastmod>2024-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ankitdeshmukh.com/categories/visulization/</loc>
-    <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ankitdeshmukh.com/slides/20240313_geospatial_analysis_with_r/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
@@ -138,6 +132,9 @@
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
     <loc>https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/</loc>
+    <lastmod>2022-01-21T11:25:39+00:00</lastmod>
+  </url><url>
+    <loc>https://ankitdeshmukh.com/categories/visulization/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
   </url><url>
     <loc>https://ankitdeshmukh.com/post/2021-12-01-r-markdown/</loc>

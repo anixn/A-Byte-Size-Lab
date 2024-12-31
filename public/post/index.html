@@ -90,10 +90,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="Posts" />
 <meta property="og:description" content="Welcome to my vibrant corner of the internet! Here, I&#39;ll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, &amp; R-programming." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ankitdeshmukh.com/post/" /><meta property="og:image" content="https://ankitdeshmukh.com/papermod-cover.png"/>
+<meta property="og:url" content="https://ankitdeshmukh.com/post/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ankitdeshmukh.com/papermod-cover.png"/>
+<meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Welcome to my vibrant corner of the internet! Here, I&#39;ll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, &amp; R-programming."/>
@@ -130,7 +130,9 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://ankitdeshmukh.com/" accesskey="h" title="Ankit&#39;s Hydro-Geo Insights (Alt + H)">Ankit&#39;s Hydro-Geo Insights</a>
+            <a href="https://ankitdeshmukh.com/" accesskey="h" title="Ankit&#39;s Hydro-Geo Insight! (Alt + H)">
+                <img src="https://ankitdeshmukh.com/Logo.png" alt="logo" aria-label="logo"
+                    height="35">Ankit&#39;s Hydro-Geo Insight!</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -219,27 +221,6 @@ For hydrological analysis historical precipitation and temperature data is essen
   </div>
   <footer class="entry-footer"><span title='2024-10-03 00:00:00 +0000 UTC'>October 3, 2024</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Dr.Ankit Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Working with NetCDF and Binary climatic data in R" href="https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" srcset="https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover_hua2f71556c2f90eeb103841a28ac47b01_544502_360x0_resize_box_3.png 360w ,https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover_hua2f71556c2f90eeb103841a28ac47b01_544502_480x0_resize_box_3.png 480w ,https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover_hua2f71556c2f90eeb103841a28ac47b01_544502_720x0_resize_box_3.png 720w ,https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover_hua2f71556c2f90eeb103841a28ac47b01_544502_1080x0_resize_box_3.png 1080w ,https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover_hua2f71556c2f90eeb103841a28ac47b01_544502_1500x0_resize_box_3.png 1500w ,https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover.png 2795w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/Cover.png" alt="Image of Data and Stringr logo" 
-            width="2795" height="614">
-</figure>
-  <header class="entry-header">
-    <h2>Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>SBI Submits all the data to ECI and ECI publish it on Thursday 21 Mar 2024, 6:32 PM Links of 2 files are provided here:
-Disclosure of Electoral Bonds
-Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Redemption_Details)
-Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Purchase_Details)
-To know the background of the case read this: SBI submits all electoral bond details, including unique numbers, to ECI...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-25 00:00:00 +0000 UTC'>March 25, 2024</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;" href="https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -344,6 +325,19 @@ if(!require(tidyverse)){install.packages(&#34;tidyverse&#34;);library(tidyverse)
   </div>
   <footer class="entry-footer"><span title='2022-06-26 11:25:39.307 +0000 UTC'>June 26, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Random Forest with R-Programming" href="https://ankitdeshmukh.com/post/2022-06-26-random-forest/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>How to create a pretty facet-boxplot with custom fonts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>How to make a better boxplot with custom fonts, let’s explore this in this post, it can be used for the standard template for boxplot with facet and user defined fonts.
+Required R libraries:if(!require(tidyverse)){install.packages(&#34;tidyverse&#34;);library(tidyverse)} # for ggplot2 functionif(!require(gapminder)){install.packages(&#34;gapminder&#34;);library(gapminder)} # for sample dataif(!require(showtext)){install.packages(&#34;showtext&#34;);library(showtext)} # to import fontsAdd fonts in R sessionfont_add_google(&#34;Karla&#34;, &#34;Karla&#34;) # adding local fontfont_add(family = &#34;Helvetica&#34;, regular = &#34;C:/Windows/Fonts/Helvetica 400.ttf&#34;)# Adding from Google fontsfont_add_google(&#34;Roboto Slab&#34;, &#34;Roboto Slab&#34;) # adding font from the web/google fontfont_families()## [1] &#34;sans&#34; &#34;serif&#34; &#34;mono&#34; &#34;wqy-microhei&#34; &#34;Karla&#34; ## [6] &#34;Helvetica&#34; &#34;Roboto Slab&#34;Define theme for Boxplot and fontsthemeBox &lt;- function(base_family = &#34;sans&#34;, exFont, ....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-01-21 11:25:39.307 +0000 UTC'>January 21, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to How to create a pretty facet-boxplot with custom fonts" href="https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
