@@ -1,5 +1,5 @@
 ---
-title: "Introduction of GDAL with R programming"
+title: "Introduction of GDAL, Terra and SF for geospatial analysis with R programming"
 author: 'Dr. Ankit Deshmukh'
 date: 2023-10-24
 slug: []
@@ -13,44 +13,33 @@ cover:
 
 <div id="getting-started-with-gdal" class="section level2">
 <h2>Getting started with <code>gdal</code></h2>
-<p>GDAL <a href="http://gdal.osgeo.org">(Geospatial Data Abstraction Library)</a> is a free and open source translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.</p>
-<p>GDAL is used by many GIS software packages, such as QGIS, ArcGIS, and GRASS GIS and R. It is also used in many scientific applications that require geospatial data processing, such as remote sensing, hydrology, and geology.</p>
-<p>In <code>R</code> you can use GDAL with <code>rgdal</code> package. Several Packages are retiring for R See (<a href="https://r-spatial.org/r/2022/04/12/evolution.html" class="uri">https://r-spatial.org/r/2022/04/12/evolution.html</a>)</p>
-<pre class="r"><code>install.packages(&quot;rgdal&quot;, dependencies = TRUE)</code></pre>
+<p>GDAL <a href="http://gdal.osgeo.org">(Geospatial Data Abstraction Library)</a> is a free and open source translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing. It is used by many GIS software i.e. QGIS, ArcGIS, and GRASS GIS and R.</p>
+<p>As a core R use, working in climate change and hydrology, I need to process spatia-tempral data daily on daily basis. GDAL provide various functions for make life easy for daily GIS users, at the same time I wish, I never have to leave the R enviornment and <code>rgdal</code> was a good alternative but it is retired and removed from CRAN
+(See <a href="https://r-spatial.org/r/2022/04/12/evolution.html" class="uri">https://r-spatial.org/r/2022/04/12/evolution.html</a>)</p>
+<p>You can use GDAL in R with</p>
+<ul>
+<li>Use <code>sf</code> for vector data: It’s modern, efficient, and integrates seamlessly with GDAL.</li>
+<li>Use <code>terra</code> for raster data: It supports larger datasets and provides better performance than raster.</li>
+<li>Use <code>system()</code> for niche GDAL commands: When you need advanced features not directly exposed by R packages.</li>
+</ul>
+<p>Now we’ll explore the gdal command line utility to started with basic geospatial operations and later in the blog discuss how just usng <code>terra</code> and <code>sf</code> sufficient for most of regular geospatial needs.</p>
+<div id="gdal-library-capabilities" class="section level3">
+<h3>GDAL library capabilities</h3>
+<ul>
+<li>GDAL offers both command-line and graphical user interfaces (such as QGIS), making it suitable for researchers with various preferences for interacting with geospatial data.</li>
+<li>GDAL provides bindings for popular programming languages like Python and R. This allows geospatial analysts to incorporate GDAL’s capabilities into their data analysis and modeling workflows, aligning with your preference for using R.</li>
+<li>Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.</li>
+</ul>
+<p>GDAL algorithm provider has major categories of operation in vector and raster analysis:</p>
+<ol style="list-style-type: decimal">
+<li>Raster analysis</li>
+<li>Raster conversion</li>
+<li>Raster extraction</li>
+<li>Raster miscellaneous (merge, raster calculator, etc.)</li>
+<li>Raster projections</li>
+<li>Vector conversion</li>
+<li>Vector geoprocessing</li>
+<li>Vector miscellaneous (build virtual vector, SQL, etc.)</li>
+</ol>
 </div>
-<div id="gdal-in-qgis" class="section level2">
-<h2><code>GDAL</code> in QGIS</h2>
-<p>The GDAL library consists of a set of command line programs, each with a large list of options. Users comfortable with running commands from a terminal may prefer the command line, with access to the full set of options. The GDAL Tools plugin offers an easy interface to the tools, exposing only the most popular options.</p>
-<p>A summary of GDAL library capabilities</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Extensive Format Support:</strong> GDAL supports an extensive list of geospatial data formats, including GeoTIFF, NetCDF, shapefiles, and more. This diversity simplifies data access and manipulation.</p></li>
-<li><p><strong>Data Extraction:</strong> GDAL enables the extraction of specific data layers or subsets from geospatial datasets, which is particularly useful for researchers focused on specific regions or parameters within a dataset.</p></li>
-<li><p><strong>Reprojection and Transformation:</strong> Researchers often work with data in different projections. GDAL can reproject and transform data, ensuring it aligns spatially, which is vital in geospatial analysis.</p></li>
-<li><p><strong>Command-Line and GUI:</strong> GDAL offers both command-line and graphical user interfaces (such as QGIS), making it suitable for researchers with various preferences for interacting with geospatial data.</p></li>
-<li><p><strong>Python and R Integration:</strong> GDAL provides bindings for popular programming languages like Python and R. This allows geospatial analysts to incorporate GDAL’s capabilities into their data analysis and modeling workflows, aligning with your preference for using R.</p></li>
-<li><p><strong>Geospatial Image Processing:</strong> Beyond data conversion, GDAL provides capabilities for basic image processing, such as resampling, cropping, and filtering, which are essential for preparing data for further analysis.</p></li>
-</ol>
-<p>GDAL algorithm provider has major categories of operation in vector and raster analysis:
-1. Raster analysis
-2. Raster conversion
-3. Raster extraction
-4. Raster miscellaneous (merge, raster calculator, etc.)
-5. Raster projections
-6. Vector conversion
-7. Vector geoprocessing
-8. Vector miscellaneous (build virtual vector, SQL, etc.)</p>
-<p>We will try to understand how we can use GDAL in R for most commonly used operation in geospatial analysis</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Data Format Conversion:</strong> GDAL can convert data between various geospatial file formats. You can use the <code>gdal_translate</code> command to convert data from one format to another. For example, converting from GeoTIFF to Shapefile or vice versa.</p></li>
-<li><p><strong>Data Subset and Clipping:</strong> You can extract a specific region of interest from a larger dataset using the <code>gdalwarp</code> command. This is particularly useful for working with large raster datasets.</p></li>
-<li><p><strong>Resampling:</strong> GDAL allows you to change the resolution of raster data using the <code>gdalwarp</code> command. This can be helpful when merging or aligning datasets with different resolutions.</p></li>
-<li><p><strong>Mosaicking:</strong> You can merge multiple raster datasets into a single file using the <code>gdal_merge.py</code> utility. This is useful when you have data spread across multiple tiles or images.</p></li>
-<li><p><strong>Reprojection:</strong> Changing the coordinate system of a dataset is a common operation in geospatial analysis. GDAL’s <code>gdalwarp</code> allows you to reproject data to a different coordinate system.</p></li>
-<li><p><strong>Creation of Virtual Raster (VRT):</strong> VRT files allow you to work with large datasets without actually copying or resampling the data. The <code>gdalbuildvrt</code> command can create VRT files, which are essentially virtual catalogs of your data.</p></li>
-<li><p><strong>Metadata Extraction:</strong> You can extract metadata information from a geospatial dataset using the <code>gdalinfo</code> command. This includes information about the dataset’s spatial reference, geotransform, and more.</p></li>
-<li><p><strong>Raster Calculator:</strong> The <code>gdal_calc.py</code> utility allows you to perform mathematical operations on raster datasets, enabling you to create derived products like difference maps or vegetation indices.</p></li>
-<li><p><strong>Data Warping and Reprojection:</strong> The <code>gdalwarp</code> utility can also be used to reproject and warp datasets, which is essential for ensuring that data aligns properly when conducting geospatial analyses.</p></li>
-<li><p><strong>Histogram Analysis:</strong> GDAL provides tools for generating histograms of raster data, which can be valuable for understanding the distribution of values within a dataset. The <code>gdal_hist</code> utility can help with this.</p></li>
-</ol>
-<p>These operations are fundamental to geospatial analysis and can be used in your research in the field of hydrology, remote sensing, and GIS. GDAL’s versatility and extensive command-line tools make it a valuable resource for working with geospatial data, especially when integrated with modern machine learning algorithms for drought analysis and geospatial data analysis using R.</p>
 </div>
