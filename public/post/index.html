@@ -206,6 +206,22 @@ if (!doNotTrack) {
 </header>
 
 <article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Adding callouts and collapsable secation in &#39;Hugo&#39;
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature
+Shortcodes are written using Hugo’s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project.
+Create a Shortcode File
+Save this as layouts/shortcodes/your_shortcode.html A sample shortcode is here:
+&lt;details style=&#34;border: 1px solid #666; border-radius: 4px; padding: 10px; margin: 10px 0; box-shadow: 3px 3px 5px #8989e420;&#34;&gt; &lt;summary style=&#34;font-weight: normal; cursor: pointer; margin-bottom: 5px;&#34;&gt; {{ ....</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-04 00:00:00 +0000 UTC'>January 4, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Adding callouts and collapsable secation in &#39;Hugo&#39;" href="https://ankitdeshmukh.com/post/2025-01-04-test-md/"></a>
+</article>
+
+<article class="post-entry"> 
 <figure class="entry-cover">
         <img loading="lazy" srcset="https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover_hu9fc6d32b47ca03bf1a915001bf66d85f_333462_360x0_resize_box_3.png 360w ,https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover_hu9fc6d32b47ca03bf1a915001bf66d85f_333462_480x0_resize_box_3.png 480w ,https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover_hu9fc6d32b47ca03bf1a915001bf66d85f_333462_720x0_resize_box_3.png 720w ,https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover_hu9fc6d32b47ca03bf1a915001bf66d85f_333462_1080x0_resize_box_3.png 1080w ,https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover.png 1205w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/Cover.png" alt="Image of NetCDF downscaling" 
@@ -248,15 +264,15 @@ PostGIS supports a wide range of spatial data types, functions, and operators, e
             width="900" height="200">
 </figure>
   <header class="entry-header">
-    <h2>Introduction of GDAL with R programming
+    <h2>Introduction of GDAL, Terra and SF for geospatial analysis with R programming
     </h2>
   </header>
   <div class="entry-content">
-    <p>Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a free and open source translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
-GDAL is used by many GIS software packages, such as QGIS, ArcGIS, and GRASS GIS and R. It is also used in many scientific applications that require geospatial data processing, such as remote sensing, hydrology, and geology....</p>
+    <p>Getting started with gdalGDAL (Geospatial Data Abstraction Library) is a free and open source translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing. It is used by many GIS software i.e. QGIS, ArcGIS, and GRASS GIS and R.
+As a core R use, working in climate change and hydrology, I need to process spatia-tempral data daily on daily basis....</p>
   </div>
-  <footer class="entry-footer"><span title='2023-10-24 00:00:00 +0000 UTC'>October 24, 2023</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Introduction of GDAL with R programming" href="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/"></a>
+  <footer class="entry-footer"><span title='2023-10-24 00:00:00 +0000 UTC'>October 24, 2023</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Introduction of GDAL, Terra and SF for geospatial analysis with R programming" href="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -325,19 +341,6 @@ if(!require(tidyverse)){install.packages(&#34;tidyverse&#34;);library(tidyverse)
   </div>
   <footer class="entry-footer"><span title='2022-06-26 11:25:39.307 +0000 UTC'>June 26, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Random Forest with R-Programming" href="https://ankitdeshmukh.com/post/2022-06-26-random-forest/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>How to create a pretty facet-boxplot with custom fonts
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>How to make a better boxplot with custom fonts, let’s explore this in this post, it can be used for the standard template for boxplot with facet and user defined fonts.
-Required R libraries:if(!require(tidyverse)){install.packages(&#34;tidyverse&#34;);library(tidyverse)} # for ggplot2 functionif(!require(gapminder)){install.packages(&#34;gapminder&#34;);library(gapminder)} # for sample dataif(!require(showtext)){install.packages(&#34;showtext&#34;);library(showtext)} # to import fontsAdd fonts in R sessionfont_add_google(&#34;Karla&#34;, &#34;Karla&#34;) # adding local fontfont_add(family = &#34;Helvetica&#34;, regular = &#34;C:/Windows/Fonts/Helvetica 400.ttf&#34;)# Adding from Google fontsfont_add_google(&#34;Roboto Slab&#34;, &#34;Roboto Slab&#34;) # adding font from the web/google fontfont_families()## [1] &#34;sans&#34; &#34;serif&#34; &#34;mono&#34; &#34;wqy-microhei&#34; &#34;Karla&#34; ## [6] &#34;Helvetica&#34; &#34;Roboto Slab&#34;Define theme for Boxplot and fontsthemeBox &lt;- function(base_family = &#34;sans&#34;, exFont, ....</p>
-  </div>
-  <footer class="entry-footer"><span title='2022-01-21 11:25:39.307 +0000 UTC'>January 21, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to How to create a pretty facet-boxplot with custom fonts" href="https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

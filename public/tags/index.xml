@@ -10,7 +10,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>config</title>
+      <link>https://ankitdeshmukh.com/tags/config/</link>
+      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/config/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Data Cleaning</title>
       <link>https://ankitdeshmukh.com/tags/data-cleaning/</link>

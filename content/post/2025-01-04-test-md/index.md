@@ -6,10 +6,10 @@ slug: []
 categories: ["edit"]
 tags: ["config"]
 toc: true
-draft: true
+draft: false
 ---
 
-What is Hugo shortcode?
+### What is Hugo shortcode?
 - A Hugo shortcode is a reusable and customizable template-like feature
 - Shortcodes are written using Hugo's templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project.
 - Create a Shortcode File
@@ -27,17 +27,39 @@ What is Hugo shortcode?
 </details>
 
 ```
-{{< details title="Sample Text *Learn 4 More...*" >}}
+Now let's use the shortcode `details`
+
+```txt
+{{</* details title="Sample Text *Learn More...*" */>}}
+> Collapsed text
+{{</* /details */>}}
+```
+will produce the collapsable field
+
+{{< details title="Sample Text *Learn More...*" >}}
 > Collapsed text
 {{< /details >}}
 
+### Callouts in my site
 
+I also, found out and edited the [osbidian](https://obsidian.md/) style callout. Currently it supports only `important`, `tip`, `warning`, and `info`.
 
+```txt
+{{</* box important  */>}}
+**This is a bold line**
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam...
+{{</* /box */>}}
+```
+
+this is the output you will get:
 {{< box important  >}}
 **This is a bold line**
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam...
 {{< /box >}}
+
+Similarly, you can create for others.
 
 {{< box tip  >}}
 **This is a bold line**
@@ -58,6 +80,4 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam...
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam...
 {{< /box >}}
 
-{{< details title="Sample Text *Learn More...*" >}}
-> Collapsed text
-{{< /details >}}
+I will update other usefull tips soon...
