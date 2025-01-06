@@ -1,10 +1,10 @@
 ---
-title: Adding callouts and collapsable secation in 'Hugo'
+title: Adding callouts and collapsable sections in 'Hugo'
 author: 'Dr. Ankit Deshmukh'
 date: '2025-01-04'
 slug: []
-categories: ["edit"]
-tags: ["config"]
+categories: ["hugo"]
+tags: ["config", "utility"]
 toc: true
 draft: false
 ---
@@ -13,7 +13,23 @@ draft: false
 - A Hugo shortcode is a reusable and customizable template-like feature
 - Shortcodes are written using Hugo's templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project.
 - Create a Shortcode File
-    - Save this as layouts/shortcodes/your_shortcode.html
+    - Save this as `layouts/shortcodes/your_shortcode.html`
+
+```
+my-site/
+├── archetypes/
+│   └── default.md
+├── assets/
+├── content/
+├── data/
+├── i18n/
+├── layouts/
+├── └── shortcodes/    <-- your_shortcode.html
+├── static/
+├── themes/
+└── hugo.yaml
+```
+
 
 - A sample shortcode is here:
 ```html
