@@ -5,8 +5,20 @@ layout: "main"
 weight: 1
 ---
 
-### Latest Blog
+{{< box tip  >}}
+**Latest Blog!**
+
 > [October 3, 2024 | Working with NetCDF and Binary climatic data in R]({{< ref "2024-10-03-working-with-netcdf" >}})
+
+{{< /box >}}
+
+
+{{< box info  >}}
+**Latest Event!**
+
+23rd Dec 2024
+> I attended the HYDRO 2024 Conference, which was hosted at Central Water and Power Research Station (CWPRS) in Pune. It was a fantastic opportunity to network with other field experts and researchers.
+{{< /box >}}
 
 ---
 ### Presentation and Talks
