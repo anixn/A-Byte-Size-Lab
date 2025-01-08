@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Adding callouts and collapsable sections in &#39;Hugo&#39; | Ankit&#39;s Hydro-Geo Insights</title>
+<title>Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="config, utility">
-<meta name="description" content="What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/├── archetypes/│ └── default.md├── assets/├── content/├── data/├── i18n/├── layouts/├── └── shortcodes/ &lt;-- your_shortcode.html├── static/├── themes/└── hugo.">
+<meta name="description" content="What is Hugo&rsquo;s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ &lt;-- your_shortcode.html ├── static/ ├── themes/ └── hugo.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -87,8 +87,8 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Adding callouts and collapsable sections in &#39;Hugo&#39;" />
-<meta property="og:description" content="What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/├── archetypes/│ └── default.md├── assets/├── content/├── data/├── i18n/├── layouts/├── └── shortcodes/ &lt;-- your_shortcode.html├── static/├── themes/└── hugo." />
+<meta property="og:title" content="Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more" />
+<meta property="og:description" content="What is Hugo&rsquo;s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ &lt;-- your_shortcode.html ├── static/ ├── themes/ └── hugo." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2025-01-04T00:00:00&#43;00:00" />
@@ -97,8 +97,8 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
-<meta name="twitter:title" content="Adding callouts and collapsable sections in &#39;Hugo&#39;"/>
-<meta name="twitter:description" content="What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/├── archetypes/│ └── default.md├── assets/├── content/├── data/├── i18n/├── layouts/├── └── shortcodes/ &lt;-- your_shortcode.html├── static/├── themes/└── hugo."/>
+<meta name="twitter:title" content="Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more"/>
+<meta name="twitter:description" content="What is Hugo&rsquo;s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ &lt;-- your_shortcode.html ├── static/ ├── themes/ └── hugo."/>
 
 
 <script type="application/ld+json">
@@ -115,7 +115,7 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Adding callouts and collapsable sections in 'Hugo'",
+      "name": "Customizing 'Hugo' site with shortcodes - callouts, collapsable, and more",
       "item": "https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/"
     }
   ]
@@ -125,14 +125,14 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Adding callouts and collapsable sections in 'Hugo'",
-  "name": "Adding callouts and collapsable sections in \u0027Hugo\u0027",
-  "description": "What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo\u0026rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/\r├── archetypes/\r│ └── default.md\r├── assets/\r├── content/\r├── data/\r├── i18n/\r├── layouts/\r├── └── shortcodes/ \u0026lt;-- your_shortcode.html\r├── static/\r├── themes/\r└── hugo.",
+  "headline": "Customizing 'Hugo' site with shortcodes - callouts, collapsable, and more",
+  "name": "Customizing \u0027Hugo\u0027 site with shortcodes - callouts, collapsable, and more",
+  "description": "What is Hugo\u0026rsquo;s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo\u0026rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ \u0026lt;-- your_shortcode.html ├── static/ ├── themes/ └── hugo.",
   "keywords": [
     "config", "utility"
   ],
-  "articleBody": "What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo’s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/\r├── archetypes/\r│ └── default.md\r├── assets/\r├── content/\r├── data/\r├── i18n/\r├── layouts/\r├── └── shortcodes/ \u003c-- your_shortcode.html\r├── static/\r├── themes/\r└── hugo.yaml A sample shortcode is here: \u003cdetails style=\"border: 1px solid #666; border-radius: 4px; padding: 10px; margin: 10px 0; box-shadow: 3px 3px 5px #8989e420;\"\u003e \u003csummary style=\"font-weight: normal; cursor: pointer; margin-bottom: 5px;\"\u003e {{ .Get \"title\" | default \"Click to expand\" | markdownify }} \u003c/summary\u003e \u003cdiv style=\"margin-top: 10px;\"\u003e {{ .Inner | markdownify }} \u003c/div\u003e \u003c/details\u003e Now let’s use the shortcode details\n{{\u003c details title=\"Sample Text *Learn More...*\" \u003e}} \u003e Collapsed text {{\u003c /details \u003e}} will produce the collapsable field\nSample Text Learn More…\rCollapsed text\nCallouts in my site I also, found out and edited the osbidian style callout. Currently it supports only important, tip, warning, and info.\n{{\u003c box important \u003e}} **This is a bold line** Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam... {{\u003c /box \u003e}} this is the output you will get: This is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nSimilarly, you can create for others.\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nI will update other usefull tips soon…\n",
-  "wordCount" : "282",
+  "articleBody": "What is Hugo’s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo’s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ \u003c-- your_shortcode.html ├── static/ ├── themes/ └── hugo.yaml A sample shortcode is here: \u003cdetails style=\"border: 1px solid #666; border-radius: 4px; padding: 10px; margin: 10px 0; box-shadow: 3px 3px 5px #8989e420;\"\u003e \u003csummary style=\"font-weight: normal; cursor: pointer; margin-bottom: 5px;\"\u003e {{ .Get \"title\" | default \"Click to expand\" | markdownify }} \u003c/summary\u003e \u003cdiv style=\"margin-top: 10px;\"\u003e {{ .Inner | markdownify }} \u003c/div\u003e \u003c/details\u003e Shortcode for collapse section Now let’s use the shortcode details\n{{\u003c details title=\"Sample Text *Learn More...*\" \u003e}} \u003e Collapsed text {{\u003c /details \u003e}} will produce the collapsable field\nSample Text Learn More…\rCollapsed text\nCallouts on my site I also, found out and edited the osbidian style callout. Currently it supports only important, tip, warning, and info.\n{{\u003c box important \u003e}} **This is a bold line** Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam... {{\u003c /box \u003e}} This is the output you will get: This is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nSimilarly, you can create for others.\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nThis is a bold line\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam…\nYouTube shortcode We can embed YouTube videos with the inbuilt YouTube shortcode\n{{\u003c youtube video_id \u003e}}\nThe YouTube Video ID is the string of characters that appears after v= in the URL. See the video ID from the following URL\nhttps://www.youtube.com/watch?v=pp6NX5lyx54\r{{\u003c youtube pp6NX5lyx54 \u003e}} Add quotes with Hugo \u003cblockquote class=\"custom-quote\"\u003e \u003cp\u003e{{ .Inner }}\u003c/p\u003e {{ if .Get \"author\" }} \u003cfooter\u003e— {{ .Get \"author\" }}\u003c/footer\u003e {{ end }} \u003c/blockquote\u003e \u003cstyle\u003e .custom-quote { font-style: italic; border-left: 4px solid #ccc; padding-left: 1em; margin: 1.5em 0; color: #555; } .custom-quote footer { margin-top: 0.5em; font-size: 0.9em; color: #888; } \u003c/style\u003e To use the quote shortcode do the following.\n{{\u003c quote author=\"Albert Einstein\" \u003e}} Imagination is more important than knowledge. {{\u003c /quote \u003e}} Imagination is more important than knowledge.\r— Albert Einstein\rI will keep updating new shortcodes and tips …\n",
+  "wordCount" : "415",
   "inLanguage": "en",
   "datePublished": "2025-01-04T00:00:00Z",
   "dateModified": "2025-01-04T00:00:00Z",
@@ -237,7 +237,7 @@ if (!doNotTrack) {
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/post/">Posts</a></div>
     <h1 class="post-title">
-      Adding callouts and collapsable sections in &#39;Hugo&#39;
+      Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more
     </h1>
     <div class="post-meta"><span title='2025-01-04 00:00:00 +0000 UTC'>January 4, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
@@ -250,16 +250,22 @@ if (!doNotTrack) {
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#what-is-hugo-shortcode" aria-label="What is Hugo shortcode?">What is Hugo shortcode?</a></li>
+                    <a href="#what-is-hugos-shortcode" aria-label="What is Hugo&amp;rsquo;s shortcode?">What is Hugo&rsquo;s shortcode?</a></li>
                 <li>
-                    <a href="#callouts-in-my-site" aria-label="Callouts in my site">Callouts in my site</a>
+                    <a href="#shortcode-for-collapse-section" aria-label="Shortcode for collapse section">Shortcode for collapse section</a></li>
+                <li>
+                    <a href="#callouts-on-my-site" aria-label="Callouts on my site">Callouts on my site</a></li>
+                <li>
+                    <a href="#youtube-shortcode" aria-label="YouTube shortcode">YouTube shortcode</a></li>
+                <li>
+                    <a href="#add-quotes-with-hugo" aria-label="Add quotes with Hugo">Add quotes with Hugo</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h3 id="what-is-hugo-shortcode">What is Hugo shortcode?<a hidden class="anchor" aria-hidden="true" href="#what-is-hugo-shortcode">#</a></h3>
+  <div class="post-content"><h3 id="what-is-hugos-shortcode">What is Hugo&rsquo;s shortcode?<a hidden class="anchor" aria-hidden="true" href="#what-is-hugos-shortcode">#</a></h3>
 <ul>
 <li>A Hugo shortcode is a reusable and customizable template-like feature</li>
 <li>Shortcodes are written using Hugo&rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project.</li>
@@ -269,19 +275,19 @@ if (!doNotTrack) {
 </ul>
 </li>
 </ul>
-<pre tabindex="0"><code>my-site/
-├── archetypes/
-│   └── default.md
-├── assets/
-├── content/
-├── data/
-├── i18n/
-├── layouts/
-├── └── shortcodes/    &lt;-- your_shortcode.html
-├── static/
-├── themes/
-└── hugo.yaml
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">your-site/
+</span></span><span class="line"><span class="cl">├── archetypes/
+</span></span><span class="line"><span class="cl">│   └── default.md
+</span></span><span class="line"><span class="cl">├── assets/
+</span></span><span class="line"><span class="cl">├── content/
+</span></span><span class="line"><span class="cl">├── data/
+</span></span><span class="line"><span class="cl">├── i18n/
+</span></span><span class="line"><span class="cl">├── layouts/
+</span></span><span class="line"><span class="cl">├── └── shortcodes/    &lt;-- your_shortcode.html
+</span></span><span class="line"><span class="cl">├── static/
+</span></span><span class="line"><span class="cl">├── themes/
+</span></span><span class="line"><span class="cl">└── hugo.yaml
+</span></span></code></pre></div><ul>
 <li>A sample shortcode is here:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">details</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;border: 1px solid #666; border-radius: 4px; padding: 10px; margin: 10px 0; box-shadow: 3px 3px 5px #8989e420;&#34;</span><span class="p">&gt;</span>
@@ -292,7 +298,8 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">        {{ .Inner | markdownify }}
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
-</span></span></code></pre></div><p>Now let&rsquo;s use the shortcode <code>details</code></p>
+</span></span></code></pre></div><h3 id="shortcode-for-collapse-section">Shortcode for collapse section<a hidden class="anchor" aria-hidden="true" href="#shortcode-for-collapse-section">#</a></h3>
+<p>Now let&rsquo;s use the shortcode <code>details</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">{{&lt; details title=&#34;Sample Text *Learn More...*&#34; &gt;}}
 </span></span><span class="line"><span class="cl">&gt; Collapsed text
 </span></span><span class="line"><span class="cl">{{&lt; /details &gt;}}
@@ -309,14 +316,14 @@ if (!doNotTrack) {
     </div>
 </details>
 
-<h3 id="callouts-in-my-site">Callouts in my site<a hidden class="anchor" aria-hidden="true" href="#callouts-in-my-site">#</a></h3>
+<h3 id="callouts-on-my-site">Callouts on my site<a hidden class="anchor" aria-hidden="true" href="#callouts-on-my-site">#</a></h3>
 <p>I also, found out and edited the <a href="https://obsidian.md/">osbidian</a> style callout. Currently it supports only <code>important</code>, <code>tip</code>, <code>warning</code>, and <code>info</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">{{&lt; box important  &gt;}}
 </span></span><span class="line"><span class="cl">**This is a bold line**
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam...
 </span></span><span class="line"><span class="cl">{{&lt; /box &gt;}}
-</span></span></code></pre></div><p>this is the output you will get:
+</span></span></code></pre></div><p>This is the output you will get:
 
 
 <style type="text/css">
@@ -440,7 +447,69 @@ if (!doNotTrack) {
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, omnis aliquam&hellip;</p>
   </div>
 
-<p>I will update other usefull tips soon&hellip;</p>
+<h3 id="youtube-shortcode">YouTube shortcode<a hidden class="anchor" aria-hidden="true" href="#youtube-shortcode">#</a></h3>
+<p>We can embed YouTube videos with the inbuilt YouTube shortcode</p>
+<p>{{&lt; youtube video_id &gt;}}</p>
+<p>The YouTube Video ID is the string of characters that appears after <code>v=</code> in the URL. See the video ID from the following URL</p>
+<pre tabindex="0"><code>  https://www.youtube.com/watch?v=pp6NX5lyx54
+  {{&lt; youtube pp6NX5lyx54 &gt;}}
+</code></pre>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/pp6NX5lyx54" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="add-quotes-with-hugo">Add quotes with Hugo<a hidden class="anchor" aria-hidden="true" href="#add-quotes-with-hugo">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;custom-quote&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ .Inner }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ if .Get &#34;author&#34; }}
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>— {{ .Get &#34;author&#34; }}<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ end }}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nc">custom-quote</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">font-style</span><span class="p">:</span> <span class="kc">italic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">border-left</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ccc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">padding-left</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">margin</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">em</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="mh">#555</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nc">custom-quote</span> <span class="nt">footer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">margin-top</span><span class="p">:</span> <span class="mf">0.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.9</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="mh">#888</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>To use the <code>quote</code> shortcode do the following.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">{{&lt; quote author=&#34;Albert Einstein&#34; &gt;}}
+</span></span><span class="line"><span class="cl">Imagination is more important than knowledge.
+</span></span><span class="line"><span class="cl">{{&lt; /quote &gt;}}
+</span></span></code></pre></div><blockquote class="custom-quote">
+    <p>
+Imagination is more important than knowledge.
+</p>
+    
+        <footer>— Albert Einstein</footer>
+    
+</blockquote>
+
+<style>
+    .custom-quote {
+        font-style: italic;
+        border-left: 4px solid #ccc;
+        padding-left: 1em;
+        margin: 1.5em 0;
+        color: #555;
+    }
+    .custom-quote footer {
+        margin-top: 0.5em;
+        font-size: 0.9em;
+        color: #888;
+    }
+</style>
+
+<hr>
+<p>I will keep updating new shortcodes and tips &hellip;</p>
 
 
   </div>
@@ -460,15 +529,15 @@ if (!doNotTrack) {
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Adding callouts and collapsable sections in &#39;Hugo&#39; on twitter"
-        href="https://twitter.com/intent/tweet/?text=Adding%20callouts%20and%20collapsable%20sections%20in%20%27Hugo%27&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f&amp;hashtags=config%2cutility">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more on twitter"
+        href="https://twitter.com/intent/tweet/?text=Customizing%20%27Hugo%27%20site%20with%20shortcodes%20-%20callouts%2c%20collapsable%2c%20and%20more&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f&amp;hashtags=config%2cutility">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Adding callouts and collapsable sections in &#39;Hugo&#39; on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f&amp;title=Adding%20callouts%20and%20collapsable%20sections%20in%20%27Hugo%27&amp;summary=Adding%20callouts%20and%20collapsable%20sections%20in%20%27Hugo%27&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f&amp;title=Customizing%20%27Hugo%27%20site%20with%20shortcodes%20-%20callouts%2c%20collapsable%2c%20and%20more&amp;summary=Customizing%20%27Hugo%27%20site%20with%20shortcodes%20-%20callouts%2c%20collapsable%2c%20and%20more&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-04-use-hugo-shortcodes%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />

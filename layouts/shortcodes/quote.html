@@ -1,0 +1,21 @@
+<blockquote class="custom-quote">
+    <p>{{ .Inner }}</p>
+    {{ if .Get "author" }}
+        <footer>— {{ .Get "author" }}</footer>
+    {{ end }}
+</blockquote>
+
+<style>
+    .custom-quote {
+        font-style: italic;
+        border-left: 4px solid #ccc;
+        padding-left: 1em;
+        margin: 1.5em 0;
+        color: #555;
+    }
+    .custom-quote footer {
+        margin-top: 0.5em;
+        font-size: 0.9em;
+        color: #888;
+    }
+</style>

@@ -12,12 +12,12 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Adding callouts and collapsable sections in &#39;Hugo&#39;</title>
+      <title>Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more</title>
       <link>https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/</link>
       <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
       
       <guid>https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/</guid>
-      <description>What is Hugo shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&amp;rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html my-site/├── archetypes/│ └── default.md├── assets/├── content/├── data/├── i18n/├── layouts/├── └── shortcodes/ &amp;lt;-- your_shortcode.html├── static/├── themes/└── hugo.</description>
+      <description>What is Hugo&amp;rsquo;s shortcode? A Hugo shortcode is a reusable and customizable template-like feature Shortcodes are written using Hugo&amp;rsquo;s templating language (based on Go templates). They are placed in the layouts/shortcodes directory of your Hugo project. Create a Shortcode File Save this as layouts/shortcodes/your_shortcode.html your-site/ ├── archetypes/ │ └── default.md ├── assets/ ├── content/ ├── data/ ├── i18n/ ├── layouts/ ├── └── shortcodes/ &amp;lt;-- your_shortcode.html ├── static/ ├── themes/ └── hugo.</description>
     </item>
     
   </channel>
