@@ -4,7 +4,7 @@ layout: "main"
 # url: /list/
 weight: 100
 date: 2024-12-27
-draft: true
+draft: false
 ---
 
 Water around us in many forms, a really nice depction of water cycle I found written in Sanskrit.
