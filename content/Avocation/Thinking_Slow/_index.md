@@ -9,6 +9,8 @@ draft: false
 {{< figure src="ThinkingPlace.webp" title="Sit in the tranquility beside the river and concentrate on your breath." width="100%" alt="A Bench and Books around River" >}}
 {{< audio "Muse.opus" >}}
 
+{{< countdown 600 >}}
+
 ---
 
 ### Thinking in the attention hungry world
