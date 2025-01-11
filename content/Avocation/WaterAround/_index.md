@@ -30,8 +30,6 @@ Water is around us in many forms! I found a nice Sanskrit depiction of the hydro
 [1] _Singh, P. K., Dey, P., Jain, S. K., and Mujumdar, P. P.: Hydrology and water resources management in ancient India, Hydrol. Earth Syst. Sci., 24, 4691–4707, https://doi.org/10.5194/hess-24-4691-2020, 2020_
 
 
-
-
 <!-- Hidden links
 - https://www.vardhmanenvirotech.com/blog/rainwater-harvesting-in-ancient-india/
 - https://www.vardhmanenvirotech.com/blog/the-history-of-rainwater-harvesting/

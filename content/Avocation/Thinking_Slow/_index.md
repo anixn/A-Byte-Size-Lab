@@ -22,3 +22,6 @@ Meditation on Silence: The observation of Silence by restraining speech is one o
 सम्प्रेक्ष्य नासिकाग्रं स्वं दिशश्चानवलोकयन् || 13 ||
 
 Seated firmly on it, the yogi should strive to purify the mind by focusing it in meditation with one-pointed concentration, controlling all thoughts and activities. He must hold the body, neck, and head firmly in a straight line, and gaze at the tip of the nose, without allowing the eyes to wander.
+
+## Meditation 25min
+{{< audio "Muse.opus" >}}
