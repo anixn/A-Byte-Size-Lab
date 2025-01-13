@@ -52,7 +52,7 @@ params:
     description: "Welcome to my vibrant corner of the internet! Here, I'll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, & R-programming."
     author: Dr. Ankit Deshmukh
 
-    defaultTheme: auto
+    defaultTheme: dark
     # disableThemeToggle: true
     ShowShareButtons: true
     ShareButtons: ["linkedin", "twitter"] # To customize which share buttons to be enabled on page

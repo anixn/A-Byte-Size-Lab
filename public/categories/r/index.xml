@@ -22,6 +22,19 @@ For hydrological analysis historical precipitation and temperature data is essen
     </item>
     
     <item>
+      <title>Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;</title>
+      <link>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</guid>
+      <description>SBI Submits all the data to ECI and ECI publish it on Thursday 21 Mar 2024, 6:32 PM Links of 2 files are provided here:
+Disclosure of Electoral Bonds
+Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Redemption_Details)
+Details of Electoral Bonds submitted by SBI on 21st March 2024 (EB_Purchase_Details)
+To know the background of the case read this: SBI submits all electoral bond details, including unique numbers, to ECI</description>
+    </item>
+    
+    <item>
       <title>Create awesome slides with Xaringan</title>
       <link>https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/</link>
       <pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate>

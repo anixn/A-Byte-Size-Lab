@@ -143,7 +143,7 @@ for(ii in seq_along(n)){
 Now, we have table similar to pdf, but I want to create unique id `un_id` by merging Perfiex with Bond No., so that I can match Parties to Donner, after that I save the data into `Party_Cleaned.xlsx` file.
 
 ```{r, eval=FALSE}
-un_id= paste0(Party_Data$Prefix,
+un_id <- paste0(Party_Data$Prefix,
               str_pad(Party_Data$Bond.No, width = 5,pad = "0"))
 Party_Data$unique_ID <- un_id
 write.xlsx(Party_Data, file="./Data/Processed xlsx/Party_Cleaned.xlsx", row.names = FALSE)

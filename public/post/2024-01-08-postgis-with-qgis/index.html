@@ -29,34 +29,6 @@ PostGIS supports a wide range of spatial data types, functions, and operators, e
         }
 
     </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
 </noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
 <link rel="stylesheet" href="/fonts/font-family.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
@@ -159,14 +131,10 @@ PostGIS supports a wide range of spatial data types, functions, and operators, e
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -435,10 +403,10 @@ SELECT ST_X(ST_Centroid(geom)) AS long, ST_Y(ST_Centroid(geom)) AS lat FROM &quo
       <li><a href="https://ankitdeshmukh.com/tags/sql/">SQL</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/">
+  <a class="prev" href="https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/">
     <span class="title">« Prev</span>
     <br>
-    <span>Working with NetCDF and Binary climatic data in R</span>
+    <span>Data Cleaning with R using &#39;PDFtools&#39; and &#39;stringr&#39;</span>
   </a>
   <a class="next" href="https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/">
     <span class="title">Next »</span>
