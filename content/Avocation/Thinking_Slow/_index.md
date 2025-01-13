@@ -6,10 +6,10 @@ date: 2025-01-10
 draft: false
 ---
 
-{{< figure src="ThinkingPlace.webp" title="Sit in the tranquility beside the river and concentrate on your breath." width="100%" alt="A Bench and Books around River" >}}
+{{< figure src="ThinkingPlace.webp" width="100%" alt="A Bench and Books around River" >}}
+{{< CT 600 >}}
+<br />
 {{< audio "Muse.opus" >}}
-
-{{< countdown 600 >}}
 
 ---
 

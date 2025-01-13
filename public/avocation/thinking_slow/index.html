@@ -7,7 +7,8 @@
 <meta name="robots" content="index, follow">
 <title>Tranquil Thinking | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="">
-<meta name="description" content="Sit in the tranquility beside the river and concentrate on your breath.Start!00hours00minutes00seconds⯅⯆Thinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.
+<meta name="description" content="“Let&#39;s learn to be calm and you will always be happy!“
+Sit in the tranquility beside the river and concentrate on your breath. Start!00hours00minutes00seconds&#9650;&#9660;Thinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.
 “Among all the secrets, I am the Silence.”— Geeta Geeta describe the way of meditation: Seated firmly on it, the yogi should strive to purify the mind by focusing it in meditation with one-pointed concentration, controlling all thoughts and activities.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/avocation/thinking_slow/">
@@ -213,13 +214,139 @@ if (!doNotTrack) {
 </header>
 <div class="post-content"><p><figure>
     <img loading="lazy" src="ThinkingPlace.webp"
-         alt="A Bench and Books around River" width="100%"/> <figcaption>
-            Sit in the tranquility beside the river and concentrate on your breath.
-        </figcaption>
+         alt="A Bench and Books around River" width="100%"/> 
 </figure>
 
+
+<div class="container" style="text-align: center; width: 100%">
+    <h4 id="headline">“Let's learn to be calm and you will always be happy!“<br />Sit in the tranquility beside the river and concentrate on your breath. <a hidden class="anchor" aria-hidden="true" href="#headline">#</a></h4>
+    <div id="countdown"
+        style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0; border: 0px solid #ccc; border-radius: 5px;">
+        <meta name="duration" content="600">
+        </meta>
+        <meta charset="UTF-8">
+
+        <button id="toggle-countdown"
+            style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; font-weight: bold; border-radius: 5px; cursor: pointer;">
+            Start!
+        </button>
+
+        <ul style="list-style: none; display: flex; padding: 0; margin: 0; gap: 10px;">
+            <li-timer style="text-align: center;">
+                <span id="hours" style="font-weight: bold; font-size: 1.5rem;">00</span>
+                <div style="font-size: 0.8rem;">hours</div>
+            </li-timer>
+            <li-timer style="text-align: center;">
+                <span id="minutes" style="font-weight: bold; font-size: 1.5rem;">00</span>
+                <div style="font-size: 0.8rem;">minutes</div>
+            </li-timer>
+            <li-timer style="text-align: center;">
+                <span id="seconds" style="font-weight: bold; font-size: 1.5rem;">00</span>
+                <div style="font-size: 0.8rem;">seconds</div>
+            </li-timer>
+        </ul>
+
+        <button id="increase-time"
+            style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; border-radius: 5px; cursor: pointer;">
+            &#9650;
+        </button>
+        <button id="decrease-time"
+            style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; border-radius: 5px; cursor: pointer;">
+            &#9660;
+        </button>
+    </div>
+
+    
+    <audio id="chime-audio" src="chime.mp3"></audio>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const metaDuration = document.querySelector('meta[name="duration"]');
+            let initialDuration = parseInt(metaDuration?.content || "0", 10);
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+            const toggleButton = document.getElementById("toggle-countdown");
+            const increaseButton = document.getElementById("increase-time");
+            const decreaseButton = document.getElementById("decrease-time");
+            const chimeAudio = document.getElementById("chime-audio");
+
+            let countdownTime = initialDuration * 1000; 
+            let isPaused = true; 
+            let interval;
+
+            function updateCountdown() {
+                const hours = Math.floor((countdownTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((countdownTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((countdownTime % (1000 * 60)) / 1000);
+
+                hoursEl.textContent = hours.toString().padStart(2, '0');
+                minutesEl.textContent = minutes.toString().padStart(2, '0');
+                secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+                if (countdownTime <= 0) {
+                    clearInterval(interval);
+                    const headline = document.getElementById("headline");
+                    if (headline) {
+                        headline.textContent = "Time's Up!";
+                    }
+                    chimeAudio.play().catch((error) => {
+                        console.error("Error playing audio: ", error);
+                    });
+                    resetCountdown(); 
+                } else if (!isPaused) {
+                    countdownTime -= 1000;
+                }
+            }
+
+            function startCountdown() {
+                interval = setInterval(updateCountdown, 1000);
+            }
+
+            function resetCountdown() {
+                clearInterval(interval); 
+                countdownTime = initialDuration * 1000; 
+                isPaused = true; 
+                toggleButton.textContent = "Start!"; 
+                toggleButton.style.display = "inline-block"; 
+                updateCountdown(); 
+            }
+
+            toggleButton.addEventListener("click", () => {
+                isPaused = !isPaused;
+                if (!isPaused) {
+                    startCountdown();
+                }
+                toggleButton.textContent = isPaused ? "Resume" : "Pause";
+            });
+
+            
+            increaseButton.addEventListener("click", () => {
+                countdownTime += 60000; 
+                updateCountdown();
+            });
+
+            
+            decreaseButton.addEventListener("click", () => {
+                if (countdownTime > 60000) { 
+                    countdownTime -= 60000; 
+                    updateCountdown();
+                }
+            });
+
+            updateCountdown(); 
+        });
+
+
+
+    </script>
+
+</div>
+
+<br />
 <p>
-  <audio class="player" controls style="width: 100%; height: 2.5em; filter: invert(0%);" preload="none">
+  <audio class="player" controls style="width: 100%; height: 2.5em; filter: invert(20%) " preload="none">
     <source src="/audio/Muse.opus" type="audio/ogg" codecs="opus">
   </audio>
 </p>
@@ -229,109 +356,9 @@ if (!doNotTrack) {
   const audioPlayer = document.querySelector('.player');
 
   
-  audioPlayer.volume = 0.2; 
+  audioPlayer.volume = 0.45; 
 </script>
 </p>
-
-<div class="container" style="text-align: center; width: 100%">
-   
-   <div id="countdown" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0; border: 0px solid #ccc; border-radius: 5px;">
-      <meta name="duration" content="600"></meta>
-
-        <button id="toggle-countdown" style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; font-weight: bold; border-radius: 5px; cursor: pointer;">
-            Start!
-        </button>
-
-      <ul style="list-style: none; display: flex; padding: 0; margin: 0; gap: 10px;">
-         <li-timer style="text-align: center;">
-            <span id="hours" style="font-weight: bold; font-size: 1.5rem;">00</span>
-            <div style="font-size: 0.8rem;">hours</div>
-         </li-timer>
-         <li-timer style="text-align: center;">
-            <span id="minutes" style="font-weight: bold; font-size: 1.5rem;">00</span>
-            <div style="font-size: 0.8rem;">minutes</div>
-         </li-timer>
-         <li-timer style="text-align: center;">
-            <span id="seconds" style="font-weight: bold; font-size: 1.5rem;">00</span>
-            <div style="font-size: 0.8rem;">seconds</div>
-         </li-timer>
-      </ul>
-
-      <button id="increase-time" style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; border-radius: 5px; cursor: pointer;">
-         ⯅
-      </button>
-      <button id="decrease-time" style="padding: 12px 10px; border: 2px solid #5b5b5b; font-size: 1.2rem; border-radius: 5px; cursor: pointer;">
-         ⯆
-      </button>
-
-
-   </div>
-
-   
-
-
-   <script>
-      document.addEventListener("DOMContentLoaded", () => {
-          const metaDuration = document.querySelector('meta[name="duration"]');
-          let duration = parseInt(metaDuration?.content || "0", 10);
-          const hoursEl = document.getElementById("hours");
-          const minutesEl = document.getElementById("minutes");
-          const secondsEl = document.getElementById("seconds");
-          const toggleButton = document.getElementById("toggle-countdown");
-          const increaseButton = document.getElementById("increase-time");
-          const decreaseButton = document.getElementById("decrease-time");
-
-          let countdownTime = duration * 1000; 
-          let isPaused = true; 
-          let interval;
-
-          function updateCountdown() {
-              const hours = Math.floor((countdownTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-              const minutes = Math.floor((countdownTime % (1000 * 60 * 60)) / (1000 * 60));
-              const seconds = Math.floor((countdownTime % (1000 * 60)) / 1000);
-
-              hoursEl.textContent = hours.toString().padStart(2, '0');
-              minutesEl.textContent = minutes.toString().padStart(2, '0');
-              secondsEl.textContent = seconds.toString().padStart(2, '0');
-
-              if (countdownTime <= 0) {
-                  clearInterval(interval);
-                  document.getElementById("headline").textContent = "Time's Up!";
-                  toggleButton.style.display = "none"; 
-              } else if (!isPaused) {
-                  countdownTime -= 1000;
-              }
-          }
-
-          function startCountdown() {
-              interval = setInterval(updateCountdown, 1000);
-          }
-
-          toggleButton.addEventListener("click", () => {
-              isPaused = !isPaused;
-              toggleButton.textContent = isPaused ? "Resume" : "Pause";
-          });
-
-          
-          increaseButton.addEventListener("click", () => {
-              countdownTime += 60000; 
-              updateCountdown();
-          });
-
-          
-          decreaseButton.addEventListener("click", () => {
-              if (countdownTime > 60000) { 
-                  countdownTime -= 60000; 
-                  updateCountdown();
-              }
-          });
-
-          updateCountdown();
-          startCountdown();
-      });
-   </script>
-</div>
-
 <hr>
 <h3 id="thinking-in-the-attention-hungry-world">Thinking in the attention hungry world<a hidden class="anchor" aria-hidden="true" href="#thinking-in-the-attention-hungry-world">#</a></h3>
 <p>Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.</p>
