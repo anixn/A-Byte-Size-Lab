@@ -1,15 +1,25 @@
 <p>
-  <audio class="player" controls style="width: 100%; height: 2.5em; filter: invert(0.85) brightness(0.8) contrast(1.2); " preload="none">
+  <audio
+    class="player"
+    controls
+    loop
+    style="width: 100%; height: 2.5em; filter: invert(0.85) brightness(0.8) contrast(1.2);"
+    preload="none"
+  >
     <source src="/audio/{{ index .Params 0 }}" type="audio/ogg" codecs="opus">
   </audio>
 </p>
 
 <script>
-  // Select the audio player using its class
-  const audioPlayer = document.querySelector('.player');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select the audio player using its class
+    const audioPlayer = document.querySelector('.player');
 
-  // Set the default volume (0.0 to 1.0, where 1.0 is 100%)
-  if (audioPlayer) {
-    audioPlayer.volume = 0.40; // Set volume to 45%
-  }
+    if (audioPlayer) {
+      // Set the default volume (0.0 to 1.0, where 1.0 is 100%)
+      audioPlayer.volume = 0.40; // Set volume to 40%
+      // Ensure loop behavior is set
+      audioPlayer.loop = true;
+    }
+  });
 </script>

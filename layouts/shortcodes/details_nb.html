@@ -1,0 +1,8 @@
+<details>
+    <summary style="font-weight: normal; cursor: pointer; margin-bottom: 5px; color: #a19f95; ">
+        {{ .Get "title" | default "Click to expand" | markdownify }}
+    </summary>
+    <div style="margin-top: 1px;">
+        {{ .Inner | markdownify }}
+    </div>
+</details>
