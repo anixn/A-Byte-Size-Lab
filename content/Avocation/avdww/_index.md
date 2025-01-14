@@ -1,5 +1,5 @@
 ---
-title: "AVD Wood Working"
+title: "AVD wood working"
 layout: "main"
 #url: /default/
 weight: 11
