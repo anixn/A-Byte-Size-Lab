@@ -8,8 +8,7 @@
 <title>Tranquil Thinking | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="">
 <meta name="description" content="“Let&#39;s learn to be calm and you will always be happy!“
-Sit in the tranquility beside the river and concentrate on your breath. Start!00hours00minutes00seconds&#9650;&#9660;Meditation Harmonies &hellip;Muse Relaxing Rain Cosmic Hymn Thinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.
-“Among all the secrets, I am the Silence.">
+Sit in the tranquility beside the river and concentrate on your breath. Start!00hours00minutes00seconds&#9650;&#9660;Select a Harmony!Cosmic HymnMuse RisingRelaxing RainYour browser does not support the audio element.Thinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/avocation/thinking_slow/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -313,95 +312,88 @@ if (!doNotTrack) {
 </div>
 
 <br /></p>
-<details>
-    <summary style="font-weight: normal; cursor: pointer; margin-bottom: 5px; color: #a19f95; ">
-        <em>Meditation Harmonies &hellip;</em>
-    </summary>
-    <div style="margin-top: 1px;">
-        <ol>
-<li>Muse</li>
-</ol>
-<p>
-  <audio
-    class="player"
-    controls
-    loop
-    style="width: 100%; height: 2.5em; filter: invert(0.85) brightness(0.8) contrast(1.2);"
-    preload="none"
-  >
-    <source src="/audio/Muse.opus" type="audio/ogg" codecs="opus">
-  </audio>
-</p>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    const audioPlayer = document.querySelector('.player');
+<div id="audio-dropdown-container">
+  <style>
 
-    if (audioPlayer) {
-      
-      audioPlayer.volume = 0.40; 
-      
-      audioPlayer.loop = true;
+    #audio-dropdown {
+      margin-bottom: 10px;
     }
-  });
-</script>
-<ol start="2">
-<li>Relaxing Rain</li>
-</ol>
-<p>
-  <audio
-    class="player"
-    controls
-    loop
-    style="width: 100%; height: 2.5em; filter: invert(0.85) brightness(0.8) contrast(1.2);"
-    preload="none"
-  >
-    <source src="/audio/Rain1.opus" type="audio/ogg" codecs="opus">
-  </audio>
-</p>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    const audioPlayer = document.querySelector('.player');
 
-    if (audioPlayer) {
-      
-      audioPlayer.volume = 0.40; 
-      
-      audioPlayer.loop = true;
+     
+    #audio-select {
+      padding: 5px;
+      font-size: 16px;
+      background-color: #1d1e20;  
+      color: #b9b9b9;  
+      border: 1px solid #555;  
+      border-radius: 15px;
+       
+       
+       
+      width: 100%;
+      max-width: 180px;
+      cursor: pointer;
     }
-  });
-</script>
-<ol start="3">
-<li>Cosmic Hymn</li>
-</ol>
-<p>
-  <audio
-    class="player"
-    controls
-    loop
-    style="width: 100%; height: 2.5em; filter: invert(0.85) brightness(0.8) contrast(1.2);"
-    preload="none"
-  >
-    <source src="/audio/Cosmic.opus" type="audio/ogg" codecs="opus">
-  </audio>
-</p>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    const audioPlayer = document.querySelector('.player');
 
-    if (audioPlayer) {
-      
-      audioPlayer.volume = 0.40; 
-      
-      audioPlayer.loop = true;
+     
+    #audio-select:hover,
+    #audio-select:focus {
+      background-color: #1d1e20;  
+      border-color: #555;  
     }
-  });
-</script>
 
-    </div>
-</details>
+
+    #audio-player {
+      margin-top: 10px;
+    }
+
+    audio {
+      width: 100%;
+       
+      height: 2.5em;
+    filter: invert(0.85) brightness(0.8) contrast(1.2);
+
+    }
+  </style>
+
+  <div id="audio-dropdown">
+    
+    <select id="audio-select" onchange="playAudio(this)">
+      <option value="" selected disabled>Select a Harmony!</option>
+      
+        <option value="/audio/Cosmic Hymn.opus">
+        Cosmic Hymn
+        </option>
+      
+        <option value="/audio/Muse Rising.opus">
+        Muse Rising
+        </option>
+      
+        <option value="/audio/Relaxing Rain.opus">
+        Relaxing Rain
+        </option>
+      
+    </select>
+  </div>
+
+  <div id="audio-player">
+    <audio id="audio" controls preload="none" loop>
+      <source src="" type="audio/ogg" codes="opus">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    function playAudio(select) {
+      const audioElement = document.getElementById('audio');
+      const sourceElement = audioElement.querySelector('source');
+      sourceElement.src = select.value;
+      audioElement.load();
+      audioElement.play();
+
+    }
+  </script>
+</div>
 
 <hr>
 <h3 id="thinking-in-the-attention-hungry-world">Thinking in the attention hungry world<a hidden class="anchor" aria-hidden="true" href="#thinking-in-the-attention-hungry-world">#</a></h3>

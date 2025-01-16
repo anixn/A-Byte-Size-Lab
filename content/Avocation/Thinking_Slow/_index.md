@@ -11,18 +11,7 @@ draft: false
 {{< CT 600 >}}
 <br />
 
-{{< details_nb title="*Meditation Harmonies ...*" >}}
-1. Muse
-{{< audio "Muse.opus" >}}
-
-2. Relaxing Rain
-{{< audio "Rain1.opus" >}}
-
-3. Cosmic Hymn
-{{< audio "Cosmic.opus" >}}
-
-{{< /details_nb >}}
-
+{{< audio-dropdown audioFiles="/audio/Cosmic Hymn.opus,/audio/Muse Rising.opus,/audio/Relaxing Rain.opus" >}}
 
 ---
 

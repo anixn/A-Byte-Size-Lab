@@ -1,0 +1,74 @@
+<div id="audio-dropdown-container">
+  <style>
+
+    #audio-dropdown {
+      margin-bottom: 10px;
+    }
+
+    /* Dropdown Styling */
+    #audio-select {
+      padding: 5px;
+      font-size: 16px;
+      background-color: #1d1e20; /* Dark background */
+      color: #b9b9b9; /* White text */
+      border: 1px solid #555; /* Slightly lighter border for contrast */
+      border-radius: 15px;
+      /*appearance: none;  Removes default OS styles for consistency */
+      /*-webkit-appearance: none; /* Safari-specific reset */
+      /*-moz-appearance: none; /* Firefox-specific reset */
+      width: 100%;
+      max-width: 180px;
+      cursor: pointer;
+    }
+
+    /* Dropdown Hover and Focus Effects */
+    #audio-select:hover,
+    #audio-select:focus {
+      background-color: #1d1e20; /* Slightly lighter for hover/focus */
+      border-color: #555; /* Highlight border */
+    }
+
+
+    #audio-player {
+      margin-top: 10px;
+    }
+
+    audio {
+      width: 100%;
+      /* max-width: 480px; */
+      height: 2.5em;
+    filter: invert(0.85) brightness(0.8) contrast(1.2);
+
+    }
+  </style>
+
+  <div id="audio-dropdown">
+    <!-- <label for="audio-select">Choose an audio file:</label> -->
+    <select id="audio-select" onchange="playAudio(this)">
+      <option value="" selected disabled>Select a Harmony!</option>
+      {{ range (split .Params.audioFiles ",") }}
+        <option value="{{ . }}">
+        {{ . | replaceRE "^.*/" "" | replaceRE "\\.[^.]+$" "" }}
+        </option>
+      {{ end }}
+    </select>
+  </div>
+
+  <div id="audio-player">
+    <audio id="audio" controls preload="none" loop>
+      <source src="" type="audio/ogg" codes="opus">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    function playAudio(select) {
+      const audioElement = document.getElementById('audio');
+      const sourceElement = audioElement.querySelector('source');
+      sourceElement.src = select.value;
+      audioElement.load();
+      audioElement.play();
+
+    }
+  </script>
+</div>
