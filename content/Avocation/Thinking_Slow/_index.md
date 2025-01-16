@@ -20,7 +20,7 @@ draft: false
 Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.
 
 {{< quote author= "Geeta " >}}
-“Among all the secrets, I am the Silence.”
+“Among all the secrets, I am the Silence!”
 {{< /quote >}}
 
 ### Geeta describe the way of meditation:
