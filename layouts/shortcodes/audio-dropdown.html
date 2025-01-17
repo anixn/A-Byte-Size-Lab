@@ -1,49 +1,48 @@
 <div id="audio-dropdown-container">
   <style>
+    #audio-dropdown-container {
+      display: flex; /* Use flexbox layout */
+      align-items: center; /* Align items vertically centered */
+      gap: 10px; /* Space between dropdown and audio player */
+      flex-wrap: wrap; /* Allow wrapping if needed for smaller screens */
+    }
 
     #audio-dropdown {
-      margin-bottom: 10px;
+      flex: 0 0 auto; /* Prevent dropdown from stretching */
+      padding-bottom: 8px;
+    }
+
+    #audio-player {
+      flex: 1 1 auto; /* Allow audio player to expand */
     }
 
     /* Dropdown Styling */
     #audio-select {
       padding: 5px;
-      font-size: 16px;
+      font-size: 15px;
       background-color: #1d1e20; /* Dark background */
       color: #b9b9b9; /* White text */
-      border: 1px solid #555; /* Slightly lighter border for contrast */
-      border-radius: 15px;
-      /*appearance: none;  Removes default OS styles for consistency */
-      /*-webkit-appearance: none; /* Safari-specific reset */
-      /*-moz-appearance: none; /* Firefox-specific reset */
-      width: 100%;
+      border: 2px solid #a3a0a056; /* Slightly lighter border for contrast */
+      border-radius: 20px;
       max-width: 180px;
       cursor: pointer;
+      height: 2.8em;
     }
 
-    /* Dropdown Hover and Focus Effects */
     #audio-select:hover,
     #audio-select:focus {
       background-color: #1d1e20; /* Slightly lighter for hover/focus */
       border-color: #555; /* Highlight border */
     }
 
-
-    #audio-player {
-      margin-top: 10px;
-    }
-
     audio {
-      width: 100%;
-      /* max-width: 480px; */
+      width: 100%; /* Ensure the audio player adapts to available space */
       height: 2.5em;
-    filter: invert(0.85) brightness(0.8) contrast(1.2);
-
+      filter: invert(0.80) brightness(0.80) contrast(1.3);
     }
   </style>
 
   <div id="audio-dropdown">
-    <!-- <label for="audio-select">Choose an audio file:</label> -->
     <select id="audio-select" onchange="playAudio(this)">
       <option value="" selected disabled>Select a Harmony!</option>
       {{ range (split .Params.audioFiles ",") }}
@@ -68,7 +67,6 @@
       sourceElement.src = select.value;
       audioElement.load();
       audioElement.play();
-
     }
   </script>
 </div>

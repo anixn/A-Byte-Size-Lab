@@ -314,50 +314,49 @@ if (!doNotTrack) {
 <br /></p>
 <div id="audio-dropdown-container">
   <style>
+    #audio-dropdown-container {
+      display: flex;  
+      align-items: center;  
+      gap: 10px;  
+      flex-wrap: wrap;  
+    }
 
     #audio-dropdown {
-      margin-bottom: 10px;
+      flex: 0 0 auto;  
+      padding-bottom: 8px;
+    }
+
+    #audio-player {
+      flex: 1 1 auto;  
     }
 
      
     #audio-select {
       padding: 5px;
-      font-size: 16px;
+      font-size: 15px;
       background-color: #1d1e20;  
       color: #b9b9b9;  
-      border: 1px solid #555;  
-      border-radius: 15px;
-       
-       
-       
-      width: 100%;
+      border: 2px solid #a3a0a056;  
+      border-radius: 20px;
       max-width: 180px;
       cursor: pointer;
+      height: 2.8em;
     }
 
-     
     #audio-select:hover,
     #audio-select:focus {
       background-color: #1d1e20;  
       border-color: #555;  
     }
 
-
-    #audio-player {
-      margin-top: 10px;
-    }
-
     audio {
-      width: 100%;
-       
+      width: 100%;  
       height: 2.5em;
-    filter: invert(0.85) brightness(0.8) contrast(1.2);
-
+      filter: invert(0.80) brightness(0.80) contrast(1.3);
     }
   </style>
 
   <div id="audio-dropdown">
-    
     <select id="audio-select" onchange="playAudio(this)">
       <option value="" selected disabled>Select a Harmony!</option>
       
@@ -390,7 +389,6 @@ if (!doNotTrack) {
       sourceElement.src = select.value;
       audioElement.load();
       audioElement.play();
-
     }
   </script>
 </div>
