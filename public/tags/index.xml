@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Geospatial</title>
+      <link>https://ankitdeshmukh.com/tags/geospatial/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/geospatial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://ankitdeshmukh.com/tags/r/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/tags/r/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>config</title>
       <link>https://ankitdeshmukh.com/tags/config/</link>
@@ -44,15 +62,6 @@
       <pubDate>Thu, 03 Oct 2024 00:00:00 +0000</pubDate>
       
       <guid>https://ankitdeshmukh.com/tags/imd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://ankitdeshmukh.com/tags/r/</link>
-      <pubDate>Thu, 03 Oct 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://ankitdeshmukh.com/tags/r/</guid>
       <description></description>
     </item>
     

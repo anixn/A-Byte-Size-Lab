@@ -10,7 +10,18 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding variogram in geospatial analysis</title>
+      <link>https://ankitdeshmukh.com/post/2025-01-17-variogram/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2025-01-17-variogram/</guid>
+      <description>In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).
+The First Law of Geography according to Waldo Tobler is:
+“Everything is related to everything else, but near things are more related than distant things.</description>
+    </item>
+    
     <item>
       <title>Customizing &#39;Hugo&#39; site with shortcodes - callouts, collapsable, and more</title>
       <link>https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/</link>

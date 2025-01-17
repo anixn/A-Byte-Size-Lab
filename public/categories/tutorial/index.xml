@@ -10,7 +10,18 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding variogram in geospatial analysis</title>
+      <link>https://ankitdeshmukh.com/post/2025-01-17-variogram/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2025-01-17-variogram/</guid>
+      <description>In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).
+The First Law of Geography according to Waldo Tobler is:
+“Everything is related to everything else, but near things are more related than distant things.</description>
+    </item>
+    
     <item>
       <title>Working with NetCDF and Binary climatic data in R</title>
       <link>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</link>

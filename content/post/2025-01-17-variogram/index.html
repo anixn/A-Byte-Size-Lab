@@ -1,0 +1,251 @@
+---
+title: Understanding variogram in geospatial analysis
+author: 'Dr. Ankit Deshmukh'
+date: '2025-01-17'
+slug: []
+categories: ["Concept", "tutorial"]
+tags: ["R", "Geospatial"]
+---
+
+
+
+<p>In this article we will try to understand the concept of <strong>Variogram</strong> and how it’s use in <strong>Kriging</strong> in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).</p>
+<blockquote>
+<p>The First Law of Geography according to Waldo Tobler is:</p>
+<p><em>“Everything is related to everything else, but near things are more related than distant things.”</em>
+<a href="https://csegrecorder.com/articles/view/the-variogram-basics-a-visual-intro-to-useful-geostatistical-concepts">Source</a></p>
+</blockquote>
+<div id="what-is-a-variogram" class="section level2">
+<h2>What is a Variogram?</h2>
+<p>A variogram is a plot or function that shows how the similarity (or difference) between measurements changes as the distance between them increases. It helps answer questions like:
+- If I measure rainfall at two locations, how similar are the readings likely to be based on how far apart they are?
+- How far apart do I need to go before the measurements become completely unrelated?</p>
+<p>A sample variogram is show in the figure below:
+<img src="Figures/Variogram.jpg" style="width:60.0%" fig-align="center" alt="Experimental Variogram and model variogram" /></p>
+</div>
+<div id="what-is-a-semivariogram" class="section level2">
+<h2>What is a Semivariogram?</h2>
+<p>A semivariogram is a specific part of the variogram that measures the average squared difference between measurements separated by a certain distance. It quantifies how variable the data is as a function of spatial separation. In other terms, at short distances, the semivariogram shows small differences because measurements are similar (e.g., rainfall in two nearby areas is likely similar). As the distance increases, the differences grow until they reach a maximum point where the measurements are no longer related. The semivariogram depicts the spatial [autocorrelation]^(Autocorrelation is the degree of similarity of a variable between two successive time intervals.) of the measured sample points. Once each pair of locations is plotted, a model is fit through them.</p>
+<div class="float">
+<img src="Figures/Samivariogram.png" style="width:80.0%" fig-align="center" alt="Semivariogram source" />
+<div class="figcaption">Semivariogram <a href="https://www.researchgate.net/figure/nugget-sill-and-range-in-the-variogram_fig1_350453399">source</a></div>
+</div>
+</div>
+<div id="steps-to-build-a-variogram" class="section level2">
+<h2>Steps to build a variogram</h2>
+<p>The variogram function in the <code>gstat</code> package calculates an experimental variogram to quantifies the spatial correlation in a dataset. To compute a experimental variogram first we generate a sample location and random groundwater data.</p>
+<pre class="r"><code># Load libraries
+if (!require(gstat)) { install.packages(&#39;gstat&#39;); library(gstat)}
+if (!require(sp)) { install.packages(&#39;sp&#39;); library(sp)}
+
+# Step 1: Prepare dataset
+set.seed(195)                      # For reproducibility
+n &lt;- 50                            # Number of sample points
+locations &lt;- data.frame(
+  x = runif(n, 0, 100),            # Random x-coordinates
+  y = runif(n, 0, 100),            # Random y-coordinates
+  groundwater = runif(n, 50, 100)  # Random groundwater levels
+)
+
+# Convert lat-lon to spatial object
+coordinates(locations) &lt;- ~x + y</code></pre>
+<p>Now we compute the experimental variogram</p>
+<pre class="r"><code># Step 2: Compute the experimental variogram
+variogram_exp &lt;- variogram(groundwater ~ 1, locations)  # Semivariogram of groundwater levels</code></pre>
+<ol style="list-style-type: decimal">
+<li><p>The formula can have format <code>independent_variable ~ 1</code> or <code>independent_variable ~ x+y</code>. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships.</p></li>
+<li><p>Formatting the data with Spatial coordinates latitude and longitude. Bind independent variable along with dependent (i.e groundwater level).</p></li>
+<li><p>Pairwise distance calculation between all points using spatial coordinates. This forms the foundation for grouping points into distance bins. Distance is calculated using the coordinate system’s specified projection. For geographic coordinates (latitude/longitude), great-circle distances may be used.</p></li>
+<li><p>Distances between points are grouped into bins based on the width (default lag size). This creates intervals such as 0–10 km, 10–20 km, and so on. The binning process ensures that variances are calculated for pairs of points within the same distance range.</p></li>
+</ol>
+<p>We fit <code>Sperical</code> model to the experimental variogram.</p>
+<pre class="r"><code># Step 3: Fit a variogram model
+variogram_model &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Sph&quot;))  # Fit a spherical model</code></pre>
+<p>The function returns a data frame with:</p>
+<ul>
+<li><code>dist</code>: Average distance for each bin.</li>
+<li><code>gamma</code>: Calculated semivariance for each bin.</li>
+<li><code>np</code>: Number of pairs of points in each bin.</li>
+</ul>
+<div id="fitting-a-model" class="section level3">
+<h3>Fitting a model</h3>
+<p>Variogram models are mathematical functions used to describe spatial autocorrelation in geostatistics. The four most common variogram models are Exponential, Spherical, Gaussian, and Matérn.</p>
+<div id="exponential-exp-model" class="section level4">
+<h4>1. Exponential (Exp) Model:</h4>
+<ul>
+<li><p>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - e^{-\frac{h}{a}}\right)\)</span></p></li>
+<li><p>Parameters:</p>
+<ul>
+<li><span class="math inline">\(c\)</span>: Sill (the plateau of the variogram, representing maximum variance).</li>
+<li><span class="math inline">\(a\)</span>: Range (the distance where spatial correlation becomes negligible).</li>
+<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+</ul></li>
+<li><p>Characteristics and use:</p>
+<ul>
+<li>The variogram increases rapidly at short distances and asymptotically approaches the sill.</li>
+<li>Suitable for modeling phenomena where correlations decrease gradually with distance.</li>
+<li>The phenomenon has a short-range correlation but gradually decreases over longer distances.</li>
+<li>There is no sharp cutoff for spatial correlation, but the effect diminishes rapidly.</li>
+<li>Common in phenomena with an exponential decay of correlation, such as temperature, humidity, or chemical concentrations.</li>
+<li>Rapid increase at short distances.</li>
+<li>Asymptotes to the sill but never reaches it exactly.</li>
+</ul></li>
+</ul>
+</div>
+<div id="spherical-sph" class="section level4">
+<h4>2. Spherical (Sph):</h4>
+<ul>
+<li><p>Equation:
+<span class="math display">\[
+   \gamma(h) =
+   \begin{cases}
+   c \cdot \left(\frac{3h}{2a} - \frac{h^3}{2a^3}\right) &amp; \text{if } h \leq a, \\
+   c &amp; \text{if } h &gt; a
+   \end{cases}
+   \]</span></p></li>
+<li><p>Parameters:</p>
+<ul>
+<li><span class="math inline">\(c\)</span>: Sill.</li>
+<li><span class="math inline">\(a\)</span>: Range.</li>
+<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+</ul></li>
+<li><p>Characteristics and use:</p>
+<ul>
+<li>The variogram increases initially in a curved manner and levels off abruptly at the range.</li>
+<li>Often used for data with a clear spatial structure and finite correlation ranges.</li>
+<li>The phenomenon has a clear spatial range where correlation becomes negligible.</li>
+<li>There is a sharp cutoff for spatial correlation (beyond which variance stabilizes).</li>
+<li>Suitable for geological and mining data, such as ore grade distribution or soil properties.</li>
+<li>Increases in a curved fashion initially.</li>
+<li>Levels off abruptly at the range.</li>
+</ul></li>
+</ul>
+</div>
+<div id="gaussian-gau" class="section level4">
+<h4>3. Gaussian (Gau):</h4>
+<ul>
+<li><p>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - e^{-\frac{h^2}{a^2}}\right)\)</span></p></li>
+<li><p>Parameters:</p>
+<ul>
+<li><span class="math inline">\(c\)</span>: Sill.</li>
+<li><span class="math inline">\(a\)</span>: Range.</li>
+<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+</ul></li>
+<li><p>Characteristics and use:</p>
+<ul>
+<li>The variogram starts very smoothly and increases gradually, approaching the sill at longer ranges.</li>
+<li>Suitable for phenomena with very smooth transitions.</li>
+<li>The phenomenon exhibits very smooth and gradual transitions over space.</li>
+<li>Suitable for modeling smoothly varying phenomena, such as groundwater levels, air pollution, or temperature gradients.</li>
+<li>Best for data that shows strong correlation at short distances with a gradual decay.</li>
+<li>Starts very smoothly (parabolic near the origin).</li>
+<li>Increases more gradually and approaches the sill asymptotically.</li>
+</ul></li>
+</ul>
+</div>
+<div id="matérn-mat" class="section level4">
+<h4>4. Matérn (Mat):</h4>
+<ul>
+<li>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - \frac{2^{1-\nu}}{\Gamma(\nu)} \cdot \left(\frac{h}{a}\right)^\nu \cdot K_\nu\left(\frac{h}{a}\right)\right)\)</span>
+<ul>
+<li><span class="math inline">\(K_\nu\)</span>: Modified Bessel function of the second kind.</li>
+<li><span class="math inline">\(\nu\)</span>: Smoothness parameter.</li>
+</ul></li>
+<li>Parameters:
+<ul>
+<li><span class="math inline">\(c\)</span>: Sill.</li>
+<li><span class="math inline">\(a\)</span>: Range.</li>
+<li><span class="math inline">\(\nu\)</span>: Smoothness parameter.</li>
+<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+</ul></li>
+<li>Characteristics:
+<ul>
+<li>A flexible model that encompasses a range of behaviors depending on the smoothness parameter (<span class="math inline">\(\nu\)</span>).</li>
+<li>Includes exponential (<span class="math inline">\(\nu = 0.5\)</span>) and Gaussian (<span class="math inline">\(\nu \to \infty\)</span>) as special cases.</li>
+<li>You need a flexible model that can capture a wide range of spatial behaviors, from rough to smooth.</li>
+<li>The Matérn model allows adjusting the smoothness parameter (<span class="math inline">\(\nu\)</span>) to fit phenomena with intermediate behaviors (between exponential and Gaussian).</li>
+<li>Commonly used in advanced geostatistics, environmental modeling, and when a more general variogram is needed.</li>
+<li>Versatile; smoothness depends on <span class="math inline">\(\nu\)</span>:</li>
+<li><span class="math inline">\(\nu = 0.5\)</span>: Similar to exponential model.</li>
+<li>Large <span class="math inline">\(\nu\)</span>: Approaches Gaussian model.</li>
+<li>Useful for tailoring the model to specific data characteristics.</li>
+</ul></li>
+</ul>
+<p>These models are used in geostatistical analyses to model spatial relationships, predict values at unmeasured locations, and inform kriging and other interpolation methods. Different variogram models are chosen based on the nature of the spatial relationship in your data, the smoothness of the phenomenon being modeled, and the expected correlation structure. The summary of selecting a variogram model presented below:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Condition</strong></th>
+<th><strong>Recommended Model</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sharp cutoff in spatial correlation</td>
+<td>Spherical (Sph)</td>
+</tr>
+<tr>
+<td>Rapid decay of correlation</td>
+<td>Exponential (Exp)</td>
+</tr>
+<tr>
+<td>Smooth transitions over space</td>
+<td>Gaussian (Gau)</td>
+</tr>
+<tr>
+<td>Flexible/Intermediate behavior</td>
+<td>Matérn (Mat)</td>
+</tr>
+<tr>
+<td>Short-range dominance</td>
+<td>Exponential or Matérn</td>
+</tr>
+<tr>
+<td>Long-range dominance</td>
+<td>Spherical or Gaussian</td>
+</tr>
+<tr>
+<td>Uncertainty about smoothness</td>
+<td>Matérn (adjust <span class="math inline">\(\nu\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="semivariance-calculation" class="section level2">
+<h2>Semivariance Calculation</h2>
+<p>The semivariance <span class="math inline">\(\gamma(h)\)</span> is computed for each distance bin <span class="math inline">\(h\)</span>. The formula is:</p>
+<p><span class="math display">\[
+\gamma(h) = \frac{1}{2N(h)} \sum_{i=1}^{N(h)} \left( z(x_i) - z(x_i + h) \right)^2
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(N(h)\)</span>: Number of point pairs in the distance bin <span class="math inline">\(h\)</span>.</li>
+<li><span class="math inline">\(z(x_i)\)</span>: Observed value at location <span class="math inline">\(x_i\)</span>.</li>
+<li><span class="math inline">\(z(x_i + h)\)</span>: Observed value at location <span class="math inline">\(x_i + h\)</span>.</li>
+</ul>
+<p>This gives the average squared difference of observed values separated by <span class="math inline">\(h\)</span>.</p>
+<p>The formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.</p>
+<p>Now plot experiment variogram and fitted model variogram</p>
+<pre class="r"><code># Step 4: Display variogram and fitted model
+plot(variogram_exp, variogram_model, main = &quot;Semivariogram and Fitted Sperical Model&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>variogram_model_exp &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Exp&quot;))  # Fit a spherical model
+plot(variogram_exp, variogram_model_exp, main = &quot;Semivariogram and Fitted Exponential Model&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Next, we use the fitted model variogram for kriging.</p>
+<pre class="r"><code># Step 5: Create a prediction grid for kriging
+x_range &lt;- seq(0, 100, by = 1)
+y_range &lt;- seq(0, 100, by = 1)
+grid &lt;- expand.grid(x = x_range, y = y_range)
+coordinates(grid) &lt;- ~x + y
+gridded(grid) &lt;- TRUE
+
+# Step 6: Perform ordinary kriging
+kriging_result &lt;- krige(groundwater ~ 1, locations, grid, model = variogram_model)</code></pre>
+<pre><code>## [using ordinary kriging]</code></pre>
+<pre class="r"><code># Step 7: Plot kriging results
+spplot(kriging_result[&quot;var1.pred&quot;], main = &quot;Kriging Predicted Groundwater Levels&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
