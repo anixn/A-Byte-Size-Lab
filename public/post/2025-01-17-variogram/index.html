@@ -5,11 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Understanding variogram in geospatial analysis | Ankit&#39;s Hydro-Geo Insights</title>
+<title>Understanding Variogram in Geospatial Analysis | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="R, Geospatial">
-<meta name="description" content="In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).
-The First Law of Geography according to Waldo Tobler is:
-“Everything is related to everything else, but near things are more related than distant things.">
+<meta name="description" content="IntroductionGeospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the variogram. In this article, we will explore what a variogram is, how it is used in Kriging, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.
+A Note on Spatial RelationshipsThe First Law of Geography, proposed by Waldo Tobler, states:">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/post/2025-01-17-variogram/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -61,22 +60,20 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Understanding variogram in geospatial analysis" />
-<meta property="og:description" content="In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).
-The First Law of Geography according to Waldo Tobler is:
-“Everything is related to everything else, but near things are more related than distant things." />
+<meta property="og:title" content="Understanding Variogram in Geospatial Analysis" />
+<meta property="og:description" content="IntroductionGeospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the variogram. In this article, we will explore what a variogram is, how it is used in Kriging, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.
+A Note on Spatial RelationshipsThe First Law of Geography, proposed by Waldo Tobler, states:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ankitdeshmukh.com/post/2025-01-17-variogram/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ankitdeshmukh.com/post/2025-01-17-variogram/" />
+<meta property="og:image" content="https://ankitdeshmukh.com/Cover.jpg" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2025-01-17T00:00:00&#43;00:00" />
 <meta property="article:modified_time" content="2025-01-17T00:00:00&#43;00:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
-
-<meta name="twitter:title" content="Understanding variogram in geospatial analysis"/>
-<meta name="twitter:description" content="In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).
-The First Law of Geography according to Waldo Tobler is:
-“Everything is related to everything else, but near things are more related than distant things."/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ankitdeshmukh.com/Cover.jpg" />
+<meta name="twitter:title" content="Understanding Variogram in Geospatial Analysis"/>
+<meta name="twitter:description" content="IntroductionGeospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the variogram. In this article, we will explore what a variogram is, how it is used in Kriging, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.
+A Note on Spatial RelationshipsThe First Law of Geography, proposed by Waldo Tobler, states:"/>
 
 
 <script type="application/ld+json">
@@ -93,7 +90,7 @@ The First Law of Geography according to Waldo Tobler is:
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Understanding variogram in geospatial analysis",
+      "name": "Understanding Variogram in Geospatial Analysis",
       "item": "https://ankitdeshmukh.com/post/2025-01-17-variogram/"
     }
   ]
@@ -103,16 +100,16 @@ The First Law of Geography according to Waldo Tobler is:
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Understanding variogram in geospatial analysis",
-  "name": "Understanding variogram in geospatial analysis",
-  "description": "In this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).\nThe First Law of Geography according to Waldo Tobler is:\n“Everything is related to everything else, but near things are more related than distant things.",
+  "headline": "Understanding Variogram in Geospatial Analysis",
+  "name": "Understanding Variogram in Geospatial Analysis",
+  "description": "Introduction\rGeospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the variogram. In this article, we will explore what a variogram is, how it is used in Kriging, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.\nA Note on Spatial Relationships\rThe First Law of Geography, proposed by Waldo Tobler, states:",
   "keywords": [
     "R", "Geospatial"
   ],
-  "articleBody": "\rIn this article we will try to understand the concept of Variogram and how it’s use in Kriging in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).\nThe First Law of Geography according to Waldo Tobler is:\n“Everything is related to everything else, but near things are more related than distant things.”\rSource\nWhat is a Variogram?\rA variogram is a plot or function that shows how the similarity (or difference) between measurements changes as the distance between them increases. It helps answer questions like:\r- If I measure rainfall at two locations, how similar are the readings likely to be based on how far apart they are?\r- How far apart do I need to go before the measurements become completely unrelated?\nA sample variogram is show in the figure below:\rWhat is a Semivariogram?\rA semivariogram is a specific part of the variogram that measures the average squared difference between measurements separated by a certain distance. It quantifies how variable the data is as a function of spatial separation. In other terms, at short distances, the semivariogram shows small differences because measurements are similar (e.g., rainfall in two nearby areas is likely similar). As the distance increases, the differences grow until they reach a maximum point where the measurements are no longer related. The semivariogram depicts the spatial [autocorrelation]^(Autocorrelation is the degree of similarity of a variable between two successive time intervals.) of the measured sample points. Once each pair of locations is plotted, a model is fit through them.\nSemivariogram source\rSteps to build a variogram\rThe variogram function in the gstat package calculates an experimental variogram to quantifies the spatial correlation in a dataset. To compute a experimental variogram first we generate a sample location and random groundwater data.\n# Load libraries\rif (!require(gstat)) { install.packages('gstat'); library(gstat)}\rif (!require(sp)) { install.packages('sp'); library(sp)}\r# Step 1: Prepare dataset\rset.seed(195) # For reproducibility\rn \u003c- 50 # Number of sample points\rlocations \u003c- data.frame(\rx = runif(n, 0, 100), # Random x-coordinates\ry = runif(n, 0, 100), # Random y-coordinates\rgroundwater = runif(n, 50, 100) # Random groundwater levels\r)\r# Convert lat-lon to spatial object\rcoordinates(locations) \u003c- ~x + y\rNow we compute the experimental variogram\n# Step 2: Compute the experimental variogram\rvariogram_exp \u003c- variogram(groundwater ~ 1, locations) # Semivariogram of groundwater levels\rThe formula can have format independent_variable ~ 1 or independent_variable ~ x+y. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships.\nFormatting the data with Spatial coordinates latitude and longitude. Bind independent variable along with dependent (i.e groundwater level).\nPairwise distance calculation between all points using spatial coordinates. This forms the foundation for grouping points into distance bins. Distance is calculated using the coordinate system’s specified projection. For geographic coordinates (latitude/longitude), great-circle distances may be used.\nDistances between points are grouped into bins based on the width (default lag size). This creates intervals such as 0–10 km, 10–20 km, and so on. The binning process ensures that variances are calculated for pairs of points within the same distance range.\nWe fit Sperical model to the experimental variogram.\n# Step 3: Fit a variogram model\rvariogram_model \u003c- fit.variogram(variogram_exp, model = vgm(\"Sph\")) # Fit a spherical model\rThe function returns a data frame with:\ndist: Average distance for each bin.\rgamma: Calculated semivariance for each bin.\rnp: Number of pairs of points in each bin.\rFitting a model\rVariogram models are mathematical functions used to describe spatial autocorrelation in geostatistics. The four most common variogram models are Exponential, Spherical, Gaussian, and Matérn.\n1. Exponential (Exp) Model:\rEquation: \\(\\gamma(h) = c \\cdot \\left(1 - e^{-\\frac{h}{a}}\\right)\\)\nParameters:\n\\(c\\): Sill (the plateau of the variogram, representing maximum variance).\r\\(a\\): Range (the distance where spatial correlation becomes negligible).\r\\(h\\): Lag distance.\rCharacteristics and use:\nThe variogram increases rapidly at short distances and asymptotically approaches the sill.\rSuitable for modeling phenomena where correlations decrease gradually with distance.\rThe phenomenon has a short-range correlation but gradually decreases over longer distances.\rThere is no sharp cutoff for spatial correlation, but the effect diminishes rapidly.\rCommon in phenomena with an exponential decay of correlation, such as temperature, humidity, or chemical concentrations.\rRapid increase at short distances.\rAsymptotes to the sill but never reaches it exactly.\r2. Spherical (Sph):\rEquation:\r\\[\r\\gamma(h) =\r\\begin{cases}\rc \\cdot \\left(\\frac{3h}{2a} - \\frac{h^3}{2a^3}\\right) \u0026 \\text{if } h \\leq a, \\\\\rc \u0026 \\text{if } h \u003e a\r\\end{cases}\r\\]\nParameters:\n\\(c\\): Sill.\r\\(a\\): Range.\r\\(h\\): Lag distance.\rCharacteristics and use:\nThe variogram increases initially in a curved manner and levels off abruptly at the range.\rOften used for data with a clear spatial structure and finite correlation ranges.\rThe phenomenon has a clear spatial range where correlation becomes negligible.\rThere is a sharp cutoff for spatial correlation (beyond which variance stabilizes).\rSuitable for geological and mining data, such as ore grade distribution or soil properties.\rIncreases in a curved fashion initially.\rLevels off abruptly at the range.\r3. Gaussian (Gau):\rEquation: \\(\\gamma(h) = c \\cdot \\left(1 - e^{-\\frac{h^2}{a^2}}\\right)\\)\nParameters:\n\\(c\\): Sill.\r\\(a\\): Range.\r\\(h\\): Lag distance.\rCharacteristics and use:\nThe variogram starts very smoothly and increases gradually, approaching the sill at longer ranges.\rSuitable for phenomena with very smooth transitions.\rThe phenomenon exhibits very smooth and gradual transitions over space.\rSuitable for modeling smoothly varying phenomena, such as groundwater levels, air pollution, or temperature gradients.\rBest for data that shows strong correlation at short distances with a gradual decay.\rStarts very smoothly (parabolic near the origin).\rIncreases more gradually and approaches the sill asymptotically.\r4. Matérn (Mat):\rEquation: \\(\\gamma(h) = c \\cdot \\left(1 - \\frac{2^{1-\\nu}}{\\Gamma(\\nu)} \\cdot \\left(\\frac{h}{a}\\right)^\\nu \\cdot K_\\nu\\left(\\frac{h}{a}\\right)\\right)\\)\r\\(K_\\nu\\): Modified Bessel function of the second kind.\r\\(\\nu\\): Smoothness parameter.\rParameters:\r\\(c\\): Sill.\r\\(a\\): Range.\r\\(\\nu\\): Smoothness parameter.\r\\(h\\): Lag distance.\rCharacteristics:\rA flexible model that encompasses a range of behaviors depending on the smoothness parameter (\\(\\nu\\)).\rIncludes exponential (\\(\\nu = 0.5\\)) and Gaussian (\\(\\nu \\to \\infty\\)) as special cases.\rYou need a flexible model that can capture a wide range of spatial behaviors, from rough to smooth.\rThe Matérn model allows adjusting the smoothness parameter (\\(\\nu\\)) to fit phenomena with intermediate behaviors (between exponential and Gaussian).\rCommonly used in advanced geostatistics, environmental modeling, and when a more general variogram is needed.\rVersatile; smoothness depends on \\(\\nu\\):\r\\(\\nu = 0.5\\): Similar to exponential model.\rLarge \\(\\nu\\): Approaches Gaussian model.\rUseful for tailoring the model to specific data characteristics.\rThese models are used in geostatistical analyses to model spatial relationships, predict values at unmeasured locations, and inform kriging and other interpolation methods. Different variogram models are chosen based on the nature of the spatial relationship in your data, the smoothness of the phenomenon being modeled, and the expected correlation structure. The summary of selecting a variogram model presented below:\nCondition\rRecommended Model\rSharp cutoff in spatial correlation\rSpherical (Sph)\rRapid decay of correlation\rExponential (Exp)\rSmooth transitions over space\rGaussian (Gau)\rFlexible/Intermediate behavior\rMatérn (Mat)\rShort-range dominance\rExponential or Matérn\rLong-range dominance\rSpherical or Gaussian\rUncertainty about smoothness\rMatérn (adjust \\(\\nu\\))\rSemivariance Calculation\rThe semivariance \\(\\gamma(h)\\) is computed for each distance bin \\(h\\). The formula is:\n\\[\r\\gamma(h) = \\frac{1}{2N(h)} \\sum_{i=1}^{N(h)} \\left( z(x_i) - z(x_i + h) \\right)^2\r\\]\nWhere:\n\\(N(h)\\): Number of point pairs in the distance bin \\(h\\).\r\\(z(x_i)\\): Observed value at location \\(x_i\\).\r\\(z(x_i + h)\\): Observed value at location \\(x_i + h\\).\rThis gives the average squared difference of observed values separated by \\(h\\).\nThe formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.\nNow plot experiment variogram and fitted model variogram\n# Step 4: Display variogram and fitted model\rplot(variogram_exp, variogram_model, main = \"Semivariogram and Fitted Sperical Model\")\rvariogram_model_exp \u003c- fit.variogram(variogram_exp, model = vgm(\"Exp\")) # Fit a spherical model\rplot(variogram_exp, variogram_model_exp, main = \"Semivariogram and Fitted Exponential Model\")\rNext, we use the fitted model variogram for kriging.\n# Step 5: Create a prediction grid for kriging\rx_range \u003c- seq(0, 100, by = 1)\ry_range \u003c- seq(0, 100, by = 1)\rgrid \u003c- expand.grid(x = x_range, y = y_range)\rcoordinates(grid) \u003c- ~x + y\rgridded(grid) \u003c- TRUE\r# Step 6: Perform ordinary kriging\rkriging_result \u003c- krige(groundwater ~ 1, locations, grid, model = variogram_model)\r## [using ordinary kriging]\r# Step 7: Plot kriging results\rspplot(kriging_result[\"var1.pred\"], main = \"Kriging Predicted Groundwater Levels\")\r",
-  "wordCount" : "1502",
+  "articleBody": "\rIntroduction\rGeospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the variogram. In this article, we will explore what a variogram is, how it is used in Kriging, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.\nA Note on Spatial Relationships\rThe First Law of Geography, proposed by Waldo Tobler, states:\n“Everything is related to everything else, but near things are more related than distant things.”\nThis principle forms the backbone of variogram analysis and Kriging.\nWhat is a Variogram?\rA variogram is a graphical representation or function that quantifies the spatial autocorrelation of a dataset. It demonstrates how similarity between measurements decreases with increasing distance.\nKey Components of a Variogram\rLag Distance (h): The separation distance between data points.\rSemivariance (γ(h)): A measure of the dissimilarity between data points separated by distance h.\rSill: The semivariance value where the variogram levels off, representing the data’s overall variance.\rRange: The distance at which the variogram reaches the sill, indicating the limit of spatial correlation.\rNugget: The y-intercept of the variogram, accounting for measurement errors or microscale variations.\rVariogram Models\rVariogram models are mathematical functions used to fit experimental variograms. These models capture the spatial dependence of the data and are essential for Kriging. Commonly used models include:\nSpherical Model:\rFormula:\r\\[\r\\gamma(h) =\r\\begin{cases}\rC_0 + C \\left[\\frac{3h}{2a} - \\frac{h^3}{2a^3}\\right], \u0026 0 \\leq h \\leq a \\\\\rC_0 + C, \u0026 h \u003e a\r\\end{cases}\r\\]\rCharacteristics:\rCommonly used in geosciences.\rLevels off at the range (a).\rRepresents a gradual transition of spatial correlation.\rExponential Model:\rFormula:\r\\[\r\\gamma(h) = C_0 + C \\left(1 - e^{-h/a}\\right)\r\\]\rCharacteristics:\rSuitable for phenomena with continuous but less abrupt changes.\rCorrelation decreases exponentially with distance.\rGaussian Model:\rFormula:\r\\[\r\\gamma(h) = C_0 + C \\left(1 - e^{-\\left(\\frac{h}{a}\\right)^2}\\right)\r\\]\rCharacteristics:\rSmooth transitions, often used in environmental studies.\rEffective for data with strong local correlations.\rLinear Model:\rFormula:\r\\[\r\\gamma(h) = C_0 + C h\r\\]\rCharacteristics:\rRepresents a direct, proportional increase in semivariance with distance.\rSimplistic but useful for certain datasets.\rPower Model:\rFormula:\r\\[\r\\gamma(h) = C_0 + C h^k, \\quad 0 \u003c k \u003c 2\r\\]\rCharacteristics:\rFlexible model for datasets with non-linear spatial relationships.\rEach model serves specific purposes based on the dataset and the spatial behavior being analyzed. Selecting the appropriate variogram model is crucial for accurate Kriging.\nThe summary of selecting a variogram model presented below:\nCondition\rRecommended Model\rSharp cutoff in spatial correlation\rSpherical (Sph)\rRapid decay of correlation\rExponential (Exp)\rSmooth transitions over space\rGaussian (Gau)\rFlexible/Intermediate behavior\rMatérn (Mat)\rShort-range dominance\rExponential or Matérn\rLong-range dominance\rSpherical or Gaussian\rUncertainty about smoothness\rMatérn (adjust \\(\\nu\\))\rComputing the Variogram in R\rHere, we demonstrate how to compute an experimental variogram and fit a theoretical model using hypothetical borehole data.\n# Generate hypothetical borehole data\rset.seed(123)\rlocation \u003c- data.frame(\rx = runif(20, 0, 100),\ry = runif(20, 0, 100)\r)\rlocation$water_level \u003c- 50 + rnorm(20, mean = 0, sd = 5)\r# View the data\rhead(location)\r## x y water_level\r## 1 28.75775 88.95393 44.66088\r## 2 78.83051 69.28034 48.91013\r## 3 40.89769 64.05068 44.86998\r## 4 88.30174 99.42698 46.35554\r## 5 94.04673 65.57058 46.87480\r## 6 4.55565 70.85305 41.56653\rExperimental Variogram\rif (!require(sp)) { install.packages('sp'); library(sp)}\rif (!require(gstat)) { install.packages('gstat'); library(gstat)}\r# Convert to spatial object\rcoordinates(location) \u003c- ~x + y\r# Compute experimental variogram\rvariogram_exp \u003c- variogram(water_level ~ 1, location)\rhead(variogram_exp)\r## np dist gamma dir.hor dir.ver id\r## 1 2 7.912548 12.129825 0 0 var1\r## 2 2 11.366795 9.534399 0 0 var1\r## 3 2 14.046246 17.299652 0 0 var1\r## 4 6 15.922439 23.613955 0 0 var1\r## 5 4 19.786952 31.321265 0 0 var1\r## 6 5 22.195585 18.261615 0 0 var1\rThe formula used above have format independent_variable ~ 1 or independent_variable ~ x+y. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships. The output of variogram_exp is has field such as np, dist, gamma etc…\nnp: the number of point pairs for this estimate; in case of a variogramCloud see below\rdist: the average distance of all point pairs considered for this estimate\rgamma: the actual sample variogram estimate\rdir.hor: the horizontal direction\rdir.ver: the vertical direction\rid: the combined id pair\rfor more information, read the help of gstat::variogram help page in R.\nSemivariance Calculation\rExperimental variogram will be created with Semivariance against distance. Process is explained is, first, the semivariance \\(\\gamma(h)\\) is computed for each distance bin \\(h\\). The formula is:\n\\[\r\\gamma(h) = \\frac{1}{2N(h)} \\sum_{i=1}^{N(h)} \\left( z(x_i) - z(x_i + h) \\right)^2\r\\]\nWhere:\n\\(N(h)\\): Number of point pairs in the distance bin \\(h\\).\r\\(z(x_i)\\): Observed value at location \\(x_i\\).\r\\(z(x_i + h)\\): Observed value at location \\(x_i + h\\).\rThis gives the average squared difference of observed values separated by \\(h\\).\nThe formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.\nThere is a very nice youtube video by YT@MiningGeologist explaing the computation semivariance using the above equation.\nplot(variogram_exp, main = \"Experimental Variogram\")\rFitting a Theoretical Model\rThis involves selecting a mathematical function (e.g., spherical, exponential, Gaussian) to approximate the experimental variogram. The goal is to create a theoretical variogram that can be used in kriging or other geostatistical methods. The output is a smooth, continuous variogram model that represents the spatial variability of the data.\n# Fit a variogram model\rvariogram_model \u003c- fit.variogram(variogram_exp, model = vgm(\"Sph\", range = 50, nugget = 2))\r# Plot the fitted model\rplot(variogram_exp, variogram_model, main = \"Fitted Variogram Model (Spherical)\")\rTrying Another Model\r# Fit a variogram model\rvariogram_model_exp \u003c- fit.variogram(variogram_exp, model = vgm(\"Exp\", nugget = 2))\r# Plot the fitted model\rplot(variogram_exp, variogram_model_exp, main = \"Fitted Variogram Model (Exponential)\")\rPerforming Kriging\rOnce we have a fitted variogram model, we can perform Kriging to interpolate water levels.\n# Generate a grid for interpolation\rgrid \u003c- expand.grid(\rx = seq(0, 100, by = 1),\ry = seq(0, 100, by = 1)\r)\rcoordinates(grid) \u003c- ~x + y\rgridded(grid) \u003c- TRUE\r# Perform Kriging\rkriging_result \u003c- krige(water_level ~ 1, location, grid, model = variogram_model)\r## [using ordinary kriging]\r# Visualize the results\rspplot(kriging_result[\"var1.pred\"], main = \"Kriging Interpolation\")\rConclusion\rVariograms are an essential tool in geospatial analysis, providing insights into spatial relationships and guiding interpolation techniques. By understanding and applying variogram concepts, we can make informed decisions in various fields, including hydrology, agriculture, and environmental monitoring.\nFeel free to experiment with your data and explore the powerful world of geostatistics using R!\n",
+  "wordCount" : "1212",
   "inLanguage": "en",
-  "datePublished": "2025-01-17T00:00:00Z",
+  "image":"https://ankitdeshmukh.com/Cover.jpg","datePublished": "2025-01-17T00:00:00Z",
   "dateModified": "2025-01-17T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -211,12 +208,18 @@ The First Law of Geography according to Waldo Tobler is:
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/post/">Posts</a></div>
     <h1 class="post-title">
-      Understanding variogram in geospatial analysis
+      Understanding Variogram in Geospatial Analysis
     </h1>
-    <div class="post-meta"><span title='2025-01-17 00:00:00 +0000 UTC'>January 17, 2025</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
+    <div class="post-meta"><span title='2025-01-17 00:00:00 +0000 UTC'>January 17, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Dr. Ankit Deshmukh
 
 </div>
-  </header> <div class="toc">
+  </header> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover_hu0a218f9377039d4c92611fb498fb4ebe_81059_360x0_resize_q75_box.jpg 360w ,https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover_hu0a218f9377039d4c92611fb498fb4ebe_81059_480x0_resize_q75_box.jpg 480w ,https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover_hu0a218f9377039d4c92611fb498fb4ebe_81059_720x0_resize_q75_box.jpg 720w ,https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover_hu0a218f9377039d4c92611fb498fb4ebe_81059_1080x0_resize_q75_box.jpg 1080w ,https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover.jpg 1414w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://ankitdeshmukh.com/post/2025-01-17-variogram/Cover.jpg" alt="Image of Variogram" 
+            width="1414" height="313">
+        
+</figure><div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>
@@ -224,27 +227,35 @@ The First Law of Geography according to Waldo Tobler is:
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#" aria-label="What is a Variogram?">What is a Variogram?</a></li>
-                <li>
-                    <a href="#" aria-label="What is a Semivariogram?">What is a Semivariogram?</a></li>
-                <li>
-                    <a href="#" aria-label="Steps to build a variogram">Steps to build a variogram</a><ul>
+                    <a href="#" aria-label="Introduction">Introduction</a><ul>
                         
                 <li>
-                    <a href="#" aria-label="Fitting a model">Fitting a model</a><ul>
-                        
-                <li>
-                    <a href="#" aria-label="1. Exponential (Exp) Model:">1. Exponential (Exp) Model:</a></li>
-                <li>
-                    <a href="#" aria-label="2. Spherical (Sph):">2. Spherical (Sph):</a></li>
-                <li>
-                    <a href="#" aria-label="3. Gaussian (Gau):">3. Gaussian (Gau):</a></li>
-                <li>
-                    <a href="#" aria-label="4. Matérn (Mat):">4. Matérn (Mat):</a></li></ul>
-                </li></ul>
+                    <a href="#" aria-label="A Note on Spatial Relationships">A Note on Spatial Relationships</a></li></ul>
                 </li>
                 <li>
-                    <a href="#" aria-label="Semivariance Calculation">Semivariance Calculation</a>
+                    <a href="#" aria-label="What is a Variogram?">What is a Variogram?</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="Key Components of a Variogram">Key Components of a Variogram</a></li>
+                <li>
+                    <a href="#" aria-label="Variogram Models">Variogram Models</a></li></ul>
+                </li>
+                <li>
+                    <a href="#" aria-label="Computing the Variogram in R">Computing the Variogram in R</a><ul>
+                        
+                <li>
+                    <a href="#" aria-label="Experimental Variogram">Experimental Variogram</a></li>
+                <li>
+                    <a href="#" aria-label="Semivariance Calculation">Semivariance Calculation</a></li>
+                <li>
+                    <a href="#" aria-label="Fitting a Theoretical Model">Fitting a Theoretical Model</a></li>
+                <li>
+                    <a href="#" aria-label="Trying Another Model">Trying Another Model</a></li></ul>
+                </li>
+                <li>
+                    <a href="#" aria-label="Performing Kriging">Performing Kriging</a></li>
+                <li>
+                    <a href="#" aria-label="Conclusion">Conclusion</a>
                 </li>
             </ul>
         </div>
@@ -254,169 +265,102 @@ The First Law of Geography according to Waldo Tobler is:
   <div class="post-content">
 
 
-<p>In this article we will try to understand the concept of <strong>Variogram</strong> and how it’s use in <strong>Kriging</strong> in geospatial analysis. We will compute experimental variogram and semivariogram for hypothetical bore hole data. Later we utilize the variogram to perform interpolate the water levels across all the datapoints (kriging).</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Geospatial analysis often involves understanding the spatial relationships between data points. One foundational concept in this domain is the <strong>variogram</strong>. In this article, we will explore what a variogram is, how it is used in <strong>Kriging</strong>, and how to compute experimental and semi-variograms for hypothetical borehole data. Finally, we will use these concepts to interpolate water levels across all data points using Kriging.</p>
+<div id="a-note-on-spatial-relationships" class="section level3">
+<h3>A Note on Spatial Relationships</h3>
+<p>The First Law of Geography, proposed by Waldo Tobler, states:</p>
 <blockquote>
-<p>The First Law of Geography according to Waldo Tobler is:</p>
-<p><em>“Everything is related to everything else, but near things are more related than distant things.”</em>
-<a href="https://csegrecorder.com/articles/view/the-variogram-basics-a-visual-intro-to-useful-geostatistical-concepts">Source</a></p>
+<p>“Everything is related to everything else, but near things are more related than distant things.”</p>
 </blockquote>
+<p>This principle forms the backbone of variogram analysis and Kriging.</p>
+</div>
+</div>
 <div id="what-is-a-variogram" class="section level2">
 <h2>What is a Variogram?</h2>
-<p>A variogram is a plot or function that shows how the similarity (or difference) between measurements changes as the distance between them increases. It helps answer questions like:
-- If I measure rainfall at two locations, how similar are the readings likely to be based on how far apart they are?
-- How far apart do I need to go before the measurements become completely unrelated?</p>
-<p>A sample variogram is show in the figure below:
-<img src="Figures/Variogram.jpg" style="width:60.0%" fig-align="center" alt="Experimental Variogram and model variogram" /></p>
-</div>
-<div id="what-is-a-semivariogram" class="section level2">
-<h2>What is a Semivariogram?</h2>
-<p>A semivariogram is a specific part of the variogram that measures the average squared difference between measurements separated by a certain distance. It quantifies how variable the data is as a function of spatial separation. In other terms, at short distances, the semivariogram shows small differences because measurements are similar (e.g., rainfall in two nearby areas is likely similar). As the distance increases, the differences grow until they reach a maximum point where the measurements are no longer related. The semivariogram depicts the spatial [autocorrelation]^(Autocorrelation is the degree of similarity of a variable between two successive time intervals.) of the measured sample points. Once each pair of locations is plotted, a model is fit through them.</p>
-<div class="float">
-<img src="Figures/Samivariogram.png" style="width:80.0%" fig-align="center" alt="Semivariogram source" />
-<div class="figcaption">Semivariogram <a href="https://www.researchgate.net/figure/nugget-sill-and-range-in-the-variogram_fig1_350453399">source</a></div>
-</div>
-</div>
-<div id="steps-to-build-a-variogram" class="section level2">
-<h2>Steps to build a variogram</h2>
-<p>The variogram function in the <code>gstat</code> package calculates an experimental variogram to quantifies the spatial correlation in a dataset. To compute a experimental variogram first we generate a sample location and random groundwater data.</p>
-<pre class="r"><code># Load libraries
-if (!require(gstat)) { install.packages(&#39;gstat&#39;); library(gstat)}
-if (!require(sp)) { install.packages(&#39;sp&#39;); library(sp)}
-
-# Step 1: Prepare dataset
-set.seed(195)                      # For reproducibility
-n &lt;- 50                            # Number of sample points
-locations &lt;- data.frame(
-  x = runif(n, 0, 100),            # Random x-coordinates
-  y = runif(n, 0, 100),            # Random y-coordinates
-  groundwater = runif(n, 50, 100)  # Random groundwater levels
-)
-
-# Convert lat-lon to spatial object
-coordinates(locations) &lt;- ~x + y</code></pre>
-<p>Now we compute the experimental variogram</p>
-<pre class="r"><code># Step 2: Compute the experimental variogram
-variogram_exp &lt;- variogram(groundwater ~ 1, locations)  # Semivariogram of groundwater levels</code></pre>
+<p>A variogram is a graphical representation or function that quantifies the spatial autocorrelation of a dataset. It demonstrates how similarity between measurements decreases with increasing distance.</p>
+<div id="key-components-of-a-variogram" class="section level3">
+<h3>Key Components of a Variogram</h3>
 <ol style="list-style-type: decimal">
-<li><p>The formula can have format <code>independent_variable ~ 1</code> or <code>independent_variable ~ x+y</code>. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships.</p></li>
-<li><p>Formatting the data with Spatial coordinates latitude and longitude. Bind independent variable along with dependent (i.e groundwater level).</p></li>
-<li><p>Pairwise distance calculation between all points using spatial coordinates. This forms the foundation for grouping points into distance bins. Distance is calculated using the coordinate system’s specified projection. For geographic coordinates (latitude/longitude), great-circle distances may be used.</p></li>
-<li><p>Distances between points are grouped into bins based on the width (default lag size). This creates intervals such as 0–10 km, 10–20 km, and so on. The binning process ensures that variances are calculated for pairs of points within the same distance range.</p></li>
+<li><strong>Lag Distance (h):</strong> The separation distance between data points.</li>
+<li><strong>Semivariance (γ(h)):</strong> A measure of the dissimilarity between data points separated by distance <code>h</code>.</li>
+<li><strong>Sill:</strong> The semivariance value where the variogram levels off, representing the data’s overall variance.</li>
+<li><strong>Range:</strong> The distance at which the variogram reaches the sill, indicating the limit of spatial correlation.</li>
+<li><strong>Nugget:</strong> The y-intercept of the variogram, accounting for measurement errors or microscale variations.</li>
 </ol>
-<p>We fit <code>Sperical</code> model to the experimental variogram.</p>
-<pre class="r"><code># Step 3: Fit a variogram model
-variogram_model &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Sph&quot;))  # Fit a spherical model</code></pre>
-<p>The function returns a data frame with:</p>
-<ul>
-<li><code>dist</code>: Average distance for each bin.</li>
-<li><code>gamma</code>: Calculated semivariance for each bin.</li>
-<li><code>np</code>: Number of pairs of points in each bin.</li>
-</ul>
-<div id="fitting-a-model" class="section level3">
-<h3>Fitting a model</h3>
-<p>Variogram models are mathematical functions used to describe spatial autocorrelation in geostatistics. The four most common variogram models are Exponential, Spherical, Gaussian, and Matérn.</p>
-<div id="exponential-exp-model" class="section level4">
-<h4>1. Exponential (Exp) Model:</h4>
-<ul>
-<li><p>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - e^{-\frac{h}{a}}\right)\)</span></p></li>
-<li><p>Parameters:</p>
-<ul>
-<li><span class="math inline">\(c\)</span>: Sill (the plateau of the variogram, representing maximum variance).</li>
-<li><span class="math inline">\(a\)</span>: Range (the distance where spatial correlation becomes negligible).</li>
-<li><span class="math inline">\(h\)</span>: Lag distance.</li>
-</ul></li>
-<li><p>Characteristics and use:</p>
-<ul>
-<li>The variogram increases rapidly at short distances and asymptotically approaches the sill.</li>
-<li>Suitable for modeling phenomena where correlations decrease gradually with distance.</li>
-<li>The phenomenon has a short-range correlation but gradually decreases over longer distances.</li>
-<li>There is no sharp cutoff for spatial correlation, but the effect diminishes rapidly.</li>
-<li>Common in phenomena with an exponential decay of correlation, such as temperature, humidity, or chemical concentrations.</li>
-<li>Rapid increase at short distances.</li>
-<li>Asymptotes to the sill but never reaches it exactly.</li>
-</ul></li>
-</ul>
 </div>
-<div id="spherical-sph" class="section level4">
-<h4>2. Spherical (Sph):</h4>
+<div id="variogram-models" class="section level3">
+<h3>Variogram Models</h3>
+<p>Variogram models are mathematical functions used to fit experimental variograms. These models capture the spatial dependence of the data and are essential for Kriging. Commonly used models include:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Spherical Model:</strong>
 <ul>
-<li><p>Equation:
+<li><strong>Formula:</strong>
 <span class="math display">\[
-   \gamma(h) =
-   \begin{cases}
-   c \cdot \left(\frac{3h}{2a} - \frac{h^3}{2a^3}\right) &amp; \text{if } h \leq a, \\
-   c &amp; \text{if } h &gt; a
-   \end{cases}
-   \]</span></p></li>
-<li><p>Parameters:</p>
+\gamma(h) =
+\begin{cases}
+C_0 + C \left[\frac{3h}{2a} - \frac{h^3}{2a^3}\right], &amp; 0 \leq h \leq a \\
+C_0 + C, &amp; h &gt; a
+\end{cases}
+\]</span></li>
+<li><strong>Characteristics:</strong>
 <ul>
-<li><span class="math inline">\(c\)</span>: Sill.</li>
-<li><span class="math inline">\(a\)</span>: Range.</li>
-<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+<li>Commonly used in geosciences.</li>
+<li>Levels off at the range (<code>a</code>).</li>
+<li>Represents a gradual transition of spatial correlation.</li>
 </ul></li>
-<li><p>Characteristics and use:</p>
-<ul>
-<li>The variogram increases initially in a curved manner and levels off abruptly at the range.</li>
-<li>Often used for data with a clear spatial structure and finite correlation ranges.</li>
-<li>The phenomenon has a clear spatial range where correlation becomes negligible.</li>
-<li>There is a sharp cutoff for spatial correlation (beyond which variance stabilizes).</li>
-<li>Suitable for geological and mining data, such as ore grade distribution or soil properties.</li>
-<li>Increases in a curved fashion initially.</li>
-<li>Levels off abruptly at the range.</li>
 </ul></li>
-</ul>
-</div>
-<div id="gaussian-gau" class="section level4">
-<h4>3. Gaussian (Gau):</h4>
+<li><strong>Exponential Model:</strong>
 <ul>
-<li><p>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - e^{-\frac{h^2}{a^2}}\right)\)</span></p></li>
-<li><p>Parameters:</p>
+<li><strong>Formula:</strong>
+<span class="math display">\[
+\gamma(h) = C_0 + C \left(1 - e^{-h/a}\right)
+\]</span></li>
+<li><strong>Characteristics:</strong>
 <ul>
-<li><span class="math inline">\(c\)</span>: Sill.</li>
-<li><span class="math inline">\(a\)</span>: Range.</li>
-<li><span class="math inline">\(h\)</span>: Lag distance.</li>
+<li>Suitable for phenomena with continuous but less abrupt changes.</li>
+<li>Correlation decreases exponentially with distance.</li>
 </ul></li>
-<li><p>Characteristics and use:</p>
-<ul>
-<li>The variogram starts very smoothly and increases gradually, approaching the sill at longer ranges.</li>
-<li>Suitable for phenomena with very smooth transitions.</li>
-<li>The phenomenon exhibits very smooth and gradual transitions over space.</li>
-<li>Suitable for modeling smoothly varying phenomena, such as groundwater levels, air pollution, or temperature gradients.</li>
-<li>Best for data that shows strong correlation at short distances with a gradual decay.</li>
-<li>Starts very smoothly (parabolic near the origin).</li>
-<li>Increases more gradually and approaches the sill asymptotically.</li>
 </ul></li>
-</ul>
-</div>
-<div id="matérn-mat" class="section level4">
-<h4>4. Matérn (Mat):</h4>
+<li><strong>Gaussian Model:</strong>
 <ul>
-<li>Equation: <span class="math inline">\(\gamma(h) = c \cdot \left(1 - \frac{2^{1-\nu}}{\Gamma(\nu)} \cdot \left(\frac{h}{a}\right)^\nu \cdot K_\nu\left(\frac{h}{a}\right)\right)\)</span>
+<li><strong>Formula:</strong>
+<span class="math display">\[
+\gamma(h) = C_0 + C \left(1 - e^{-\left(\frac{h}{a}\right)^2}\right)
+\]</span></li>
+<li><strong>Characteristics:</strong>
 <ul>
-<li><span class="math inline">\(K_\nu\)</span>: Modified Bessel function of the second kind.</li>
-<li><span class="math inline">\(\nu\)</span>: Smoothness parameter.</li>
+<li>Smooth transitions, often used in environmental studies.</li>
+<li>Effective for data with strong local correlations.</li>
 </ul></li>
-<li>Parameters:
-<ul>
-<li><span class="math inline">\(c\)</span>: Sill.</li>
-<li><span class="math inline">\(a\)</span>: Range.</li>
-<li><span class="math inline">\(\nu\)</span>: Smoothness parameter.</li>
-<li><span class="math inline">\(h\)</span>: Lag distance.</li>
 </ul></li>
-<li>Characteristics:
+<li><strong>Linear Model:</strong>
 <ul>
-<li>A flexible model that encompasses a range of behaviors depending on the smoothness parameter (<span class="math inline">\(\nu\)</span>).</li>
-<li>Includes exponential (<span class="math inline">\(\nu = 0.5\)</span>) and Gaussian (<span class="math inline">\(\nu \to \infty\)</span>) as special cases.</li>
-<li>You need a flexible model that can capture a wide range of spatial behaviors, from rough to smooth.</li>
-<li>The Matérn model allows adjusting the smoothness parameter (<span class="math inline">\(\nu\)</span>) to fit phenomena with intermediate behaviors (between exponential and Gaussian).</li>
-<li>Commonly used in advanced geostatistics, environmental modeling, and when a more general variogram is needed.</li>
-<li>Versatile; smoothness depends on <span class="math inline">\(\nu\)</span>:</li>
-<li><span class="math inline">\(\nu = 0.5\)</span>: Similar to exponential model.</li>
-<li>Large <span class="math inline">\(\nu\)</span>: Approaches Gaussian model.</li>
-<li>Useful for tailoring the model to specific data characteristics.</li>
+<li><strong>Formula:</strong>
+<span class="math display">\[
+\gamma(h) = C_0 + C h
+\]</span></li>
+<li><strong>Characteristics:</strong>
+<ul>
+<li>Represents a direct, proportional increase in semivariance with distance.</li>
+<li>Simplistic but useful for certain datasets.</li>
 </ul></li>
-</ul>
-<p>These models are used in geostatistical analyses to model spatial relationships, predict values at unmeasured locations, and inform kriging and other interpolation methods. Different variogram models are chosen based on the nature of the spatial relationship in your data, the smoothness of the phenomenon being modeled, and the expected correlation structure. The summary of selecting a variogram model presented below:</p>
+</ul></li>
+<li><strong>Power Model:</strong>
+<ul>
+<li><strong>Formula:</strong>
+<span class="math display">\[
+\gamma(h) = C_0 + C h^k, \quad 0 &lt; k &lt; 2
+\]</span></li>
+<li><strong>Characteristics:</strong>
+<ul>
+<li>Flexible model for datasets with non-linear spatial relationships.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>Each model serves specific purposes based on the dataset and the spatial behavior being analyzed. Selecting the appropriate variogram model is crucial for accurate Kriging.</p>
+<p>The summary of selecting a variogram model presented below:</p>
 <table>
 <thead>
 <tr>
@@ -457,10 +401,58 @@ variogram_model &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Sph&quot;))
 </table>
 </div>
 </div>
+<div id="computing-the-variogram-in-r" class="section level2">
+<h2>Computing the Variogram in R</h2>
+<p>Here, we demonstrate how to compute an experimental variogram and fit a theoretical model using hypothetical borehole data.</p>
+<pre class="r"><code># Generate hypothetical borehole data
+set.seed(123)
+location &lt;- data.frame(
+  x = runif(20, 0, 100),
+  y = runif(20, 0, 100)
+)
+location$water_level &lt;- 50 + rnorm(20, mean = 0, sd = 5)
+
+# View the data
+head(location)</code></pre>
+<pre><code>##          x        y water_level
+## 1 28.75775 88.95393    44.66088
+## 2 78.83051 69.28034    48.91013
+## 3 40.89769 64.05068    44.86998
+## 4 88.30174 99.42698    46.35554
+## 5 94.04673 65.57058    46.87480
+## 6  4.55565 70.85305    41.56653</code></pre>
+<div id="experimental-variogram" class="section level3">
+<h3>Experimental Variogram</h3>
+<pre class="r"><code>if (!require(sp)) { install.packages(&#39;sp&#39;); library(sp)}
+if (!require(gstat)) { install.packages(&#39;gstat&#39;); library(gstat)}
+
+# Convert to spatial object
+coordinates(location) &lt;- ~x + y
+
+# Compute experimental variogram
+variogram_exp &lt;- variogram(water_level ~ 1, location)
+head(variogram_exp)</code></pre>
+<pre><code>##   np      dist     gamma dir.hor dir.ver   id
+## 1  2  7.912548 12.129825       0       0 var1
+## 2  2 11.366795  9.534399       0       0 var1
+## 3  2 14.046246 17.299652       0       0 var1
+## 4  6 15.922439 23.613955       0       0 var1
+## 5  4 19.786952 31.321265       0       0 var1
+## 6  5 22.195585 18.261615       0       0 var1</code></pre>
+<p>The formula used above have format <code>independent_variable ~ 1</code> or <code>independent_variable ~ x+y</code>. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships. The output of <code>variogram_exp</code> is has field such as np, dist, gamma etc…</p>
+<ul>
+<li>np: the number of point pairs for this estimate; in case of a variogramCloud see below</li>
+<li>dist: the average distance of all point pairs considered for this estimate</li>
+<li>gamma: the actual sample variogram estimate</li>
+<li>dir.hor: the horizontal direction</li>
+<li>dir.ver: the vertical direction</li>
+<li>id: the combined id pair</li>
+</ul>
+<p>for more information, read the help of <code>gstat::variogram</code> help page in R.</p>
 </div>
-<div id="semivariance-calculation" class="section level2">
-<h2>Semivariance Calculation</h2>
-<p>The semivariance <span class="math inline">\(\gamma(h)\)</span> is computed for each distance bin <span class="math inline">\(h\)</span>. The formula is:</p>
+<div id="semivariance-calculation" class="section level3">
+<h3>Semivariance Calculation</h3>
+<p>Experimental variogram will be created with Semivariance against distance. Process is explained is, first, the semivariance <span class="math inline">\(\gamma(h)\)</span> is computed for each distance bin <span class="math inline">\(h\)</span>. The formula is:</p>
 <p><span class="math display">\[
 \gamma(h) = \frac{1}{2N(h)} \sum_{i=1}^{N(h)} \left( z(x_i) - z(x_i + h) \right)^2
 \]</span></p>
@@ -472,27 +464,58 @@ variogram_model &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Sph&quot;))
 </ul>
 <p>This gives the average squared difference of observed values separated by <span class="math inline">\(h\)</span>.</p>
 <p>The formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.</p>
-<p>Now plot experiment variogram and fitted model variogram</p>
-<pre class="r"><code># Step 4: Display variogram and fitted model
-plot(variogram_exp, variogram_model, main = &quot;Semivariogram and Fitted Sperical Model&quot;)</code></pre>
-<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<pre class="r"><code>variogram_model_exp &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Exp&quot;))  # Fit a spherical model
-plot(variogram_exp, variogram_model_exp, main = &quot;Semivariogram and Fitted Exponential Model&quot;)</code></pre>
-<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Next, we use the fitted model variogram for kriging.</p>
-<pre class="r"><code># Step 5: Create a prediction grid for kriging
-x_range &lt;- seq(0, 100, by = 1)
-y_range &lt;- seq(0, 100, by = 1)
-grid &lt;- expand.grid(x = x_range, y = y_range)
+<p>There is a very nice youtube video by <a href="https://www.youtube.com/@MiningGeologist">YT@MiningGeologist</a> explaing the computation semivariance using the above equation.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/hxkgL6VA_Nw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<pre class="r"><code>plot(variogram_exp, main = &quot;Experimental Variogram&quot;)</code></pre>
+<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="fitting-a-theoretical-model" class="section level3">
+<h3>Fitting a Theoretical Model</h3>
+<p>This involves selecting a mathematical function (e.g., spherical, exponential, Gaussian) to approximate the experimental variogram. The goal is to create a theoretical variogram that can be used in kriging or other geostatistical methods. The output is a smooth, continuous variogram model that represents the spatial variability of the data.</p>
+<pre class="r"><code># Fit a variogram model
+variogram_model &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Sph&quot;, range = 50, nugget = 2))
+
+# Plot the fitted model
+plot(variogram_exp, variogram_model, main = &quot;Fitted Variogram Model (Spherical)&quot;)</code></pre>
+<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/variogram-modeling-1.png" width="672" /></p>
+</div>
+<div id="trying-another-model" class="section level3">
+<h3>Trying Another Model</h3>
+<pre class="r"><code># Fit a variogram model
+variogram_model_exp &lt;- fit.variogram(variogram_exp, model = vgm(&quot;Exp&quot;, nugget = 2))
+
+# Plot the fitted model
+plot(variogram_exp, variogram_model_exp, main = &quot;Fitted Variogram Model (Exponential)&quot;)</code></pre>
+<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/variogram-modeling_exp-1.png" width="672" /></p>
+</div>
+</div>
+<div id="performing-kriging" class="section level2">
+<h2>Performing Kriging</h2>
+<p>Once we have a fitted variogram model, we can perform Kriging to interpolate water levels.</p>
+<pre class="r"><code># Generate a grid for interpolation
+grid &lt;- expand.grid(
+  x = seq(0, 100, by = 1),
+  y = seq(0, 100, by = 1)
+)
 coordinates(grid) &lt;- ~x + y
+
 gridded(grid) &lt;- TRUE
 
-# Step 6: Perform ordinary kriging
-kriging_result &lt;- krige(groundwater ~ 1, locations, grid, model = variogram_model)</code></pre>
+# Perform Kriging
+kriging_result &lt;- krige(water_level ~ 1, location, grid, model = variogram_model)</code></pre>
 <pre><code>## [using ordinary kriging]</code></pre>
-<pre class="r"><code># Step 7: Plot kriging results
-spplot(kriging_result[&quot;var1.pred&quot;], main = &quot;Kriging Predicted Groundwater Levels&quot;)</code></pre>
-<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code># Visualize the results
+spplot(kriging_result[&quot;var1.pred&quot;], main = &quot;Kriging Interpolation&quot;)</code></pre>
+<p><img src="https://ankitdeshmukh.com/post/2025-01-17-variogram/index_files/figure-html/kriging-1.png" width="672" /></p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Variograms are an essential tool in geospatial analysis, providing insights into spatial relationships and guiding interpolation techniques. By understanding and applying variogram concepts, we can make informed decisions in various fields, including hydrology, agriculture, and environmental monitoring.</p>
+<p>Feel free to experiment with your data and explore the powerful world of geostatistics using R!</p>
 </div>
 
 
@@ -513,15 +536,15 @@ spplot(kriging_result[&quot;var1.pred&quot;], main = &quot;Kriging Predicted Gro
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Understanding variogram in geospatial analysis on twitter"
-        href="https://twitter.com/intent/tweet/?text=Understanding%20variogram%20in%20geospatial%20analysis&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f&amp;hashtags=R%2cGeospatial">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Understanding Variogram in Geospatial Analysis on twitter"
+        href="https://twitter.com/intent/tweet/?text=Understanding%20Variogram%20in%20Geospatial%20Analysis&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f&amp;hashtags=R%2cGeospatial">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Understanding variogram in geospatial analysis on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f&amp;title=Understanding%20variogram%20in%20geospatial%20analysis&amp;summary=Understanding%20variogram%20in%20geospatial%20analysis&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Understanding Variogram in Geospatial Analysis on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f&amp;title=Understanding%20Variogram%20in%20Geospatial%20Analysis&amp;summary=Understanding%20Variogram%20in%20Geospatial%20Analysis&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-01-17-variogram%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />

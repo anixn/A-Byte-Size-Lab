@@ -4,6 +4,9 @@ author: 'Dr. Ankit Deshmukh'
 date: '2025-01-17'
 categories: ['Concept', 'Tutorial']
 tags: ['R', 'Geospatial']
+cover:
+    image: "Cover.jpg"
+    alt: "Image of Variogram"
 ---
 
 
@@ -174,9 +177,24 @@ coordinates(location) &lt;- ~x + y
 
 # Compute experimental variogram
 variogram_exp &lt;- variogram(water_level ~ 1, location)
-plot(variogram_exp, main = &quot;Experimental Variogram&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/variogram-computation-1.png" width="672" />
-The formula used above have format <code>independent_variable ~ 1</code> or <code>independent_variable ~ x+y</code>. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships.</p>
+head(variogram_exp)</code></pre>
+<pre><code>##   np      dist     gamma dir.hor dir.ver   id
+## 1  2  7.912548 12.129825       0       0 var1
+## 2  2 11.366795  9.534399       0       0 var1
+## 3  2 14.046246 17.299652       0       0 var1
+## 4  6 15.922439 23.613955       0       0 var1
+## 5  4 19.786952 31.321265       0       0 var1
+## 6  5 22.195585 18.261615       0       0 var1</code></pre>
+<p>The formula used above have format <code>independent_variable ~ 1</code> or <code>independent_variable ~ x+y</code>. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships. The output of <code>variogram_exp</code> is has field such as np, dist, gamma etc…</p>
+<ul>
+<li>np: the number of point pairs for this estimate; in case of a variogramCloud see below</li>
+<li>dist: the average distance of all point pairs considered for this estimate</li>
+<li>gamma: the actual sample variogram estimate</li>
+<li>dir.hor: the horizontal direction</li>
+<li>dir.ver: the vertical direction</li>
+<li>id: the combined id pair</li>
+</ul>
+<p>for more information, read the help of <code>gstat::variogram</code> help page in R.</p>
 </div>
 <div id="semivariance-calculation" class="section level3">
 <h3>Semivariance Calculation</h3>
@@ -192,6 +210,10 @@ The formula used above have format <code>independent_variable ~ 1</code> or <cod
 </ul>
 <p>This gives the average squared difference of observed values separated by <span class="math inline">\(h\)</span>.</p>
 <p>The formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.</p>
+<p>There is a very nice youtube video by <a href="https://www.youtube.com/@MiningGeologist">YT@MiningGeologist</a> explaing the computation semivariance using the above equation.</p>
+<p>{{< youtube hxkgL6VA_Nw >}}</p>
+<pre class="r"><code>plot(variogram_exp, main = &quot;Experimental Variogram&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 <div id="fitting-a-theoretical-model" class="section level3">
 <h3>Fitting a Theoretical Model</h3>

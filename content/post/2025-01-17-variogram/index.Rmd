@@ -4,6 +4,9 @@ author: 'Dr. Ankit Deshmukh'
 date: '2025-01-17'
 categories: ['Concept', 'Tutorial']
 tags: ['R', 'Geospatial']
+cover:
+    image: "Cover.jpg"
+    alt: "Image of Variogram"
 ---
 
 ```{r setup, include=FALSE}
@@ -122,9 +125,19 @@ coordinates(location) <- ~x + y
 
 # Compute experimental variogram
 variogram_exp <- variogram(water_level ~ 1, location)
-plot(variogram_exp, main = "Experimental Variogram")
+head(variogram_exp)
 ```
-The formula used above have format `independent_variable ~ 1` or `independent_variable ~ x+y`. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships.
+The formula used above have format `independent_variable ~ 1` or `independent_variable ~ x+y`. X or/and Y, any independent variables or covariates (if applicable). If the formula is ~ 1, it means there are no covariates, and the variogram will be calculated solely based on spatial relationships. The output of `variogram_exp` is has field such as np, dist, gamma etc...
+
+- np: the number of point pairs for this estimate; in case of a variogramCloud see below
+- dist: the average distance of all point pairs considered for this estimate
+- gamma: the actual sample variogram estimate
+- dir.hor: the horizontal direction
+- dir.ver: the vertical direction
+- id: the combined id pair
+
+for more information, read the help of `gstat::variogram` help page in R.
+
 
 ### Semivariance Calculation
 Experimental variogram will be created with Semivariance against distance. Process is explained is, first, the semivariance \( \gamma(h) \) is computed for each distance bin \( h \). The formula is:
@@ -142,6 +155,14 @@ Where:
 This gives the average squared difference of observed values separated by \( h \).
 
 The formula shown is for computing semivariance for a given lag or distance ℎ, but it is not directly tied to a specific variogram model such as spherical, exponential, or Gaussian. This formula is a general expression used to calculate experimental semivariance, which is then plotted as an experimental variogram Once the experimental variogram is computed, you can fit it with a specific theoretical variogram model, such as Spherical, Exponential, Gaussian, etc. To identify the specific model, you would calculate the semivariances using the given formula, plot them against distance h, and then choose the model that best fits the curve.
+
+There is a very nice youtube video by [ YT@MiningGeologist](https://www.youtube.com/@MiningGeologist) explaing the computation semivariance using the above equation.
+
+`r htmltools::HTML("{{< youtube hxkgL6VA_Nw >}}")`
+
+```{r}
+plot(variogram_exp, main = "Experimental Variogram")
+```
 
 ### Fitting a Theoretical Model
 This involves selecting a mathematical function (e.g., spherical, exponential, Gaussian) to approximate the experimental variogram. The goal is to create a theoretical variogram that can be used in kriging or other geostatistical methods. The output is a smooth, continuous variogram model that represents the spatial variability of the data.
