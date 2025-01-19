@@ -8,7 +8,9 @@ weight: 1
 {{< box tip  >}}
 **Latest Blog!**
 
-> [October 3, 2024 | Working with NetCDF and Binary climatic data in R]({{< ref "2024-10-03-working-with-netcdf" >}})
+> [January 17, 2025 | Understanding Variogram in Geospatial Analysis]({{< ref "2025-01-04-Use-hugo-shortcodes" >}})
+
+> [January 04, 2025 | Customizing 'Hugo' site with shortcodes - callouts, collapsable, and more]({{< ref "2025-01-17-variogram" >}})
 
 {{< /box >}}
 
