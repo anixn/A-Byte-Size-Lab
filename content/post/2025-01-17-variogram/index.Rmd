@@ -206,5 +206,3 @@ spplot(kriging_result["var1.pred"], main = "Kriging Interpolation")
 
 ## Conclusion
 Variograms are an essential tool in geospatial analysis, providing insights into spatial relationships and guiding interpolation techniques. By understanding and applying variogram concepts, we can make informed decisions in various fields, including hydrology, agriculture, and environmental monitoring.
-
-Feel free to experiment with your data and explore the powerful world of geostatistics using R!
