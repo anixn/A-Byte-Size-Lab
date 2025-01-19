@@ -8,17 +8,18 @@ weight: 1
 {{< box tip  >}}
 **Latest Blog!**
 
-> [January 17, 2025 | Understanding Variogram in Geospatial Analysis]({{< ref "2025-01-04-Use-hugo-shortcodes" >}})
+> **January 17, 2025** <br />
+> [ Understanding Variogram in Geospatial Analysis]({{< ref "2025-01-17-variogram" >}})
 
-> [January 04, 2025 | Customizing 'Hugo' site with shortcodes - callouts, collapsable, and more]({{< ref "2025-01-17-variogram" >}})
-
+> **January 04, 2025** <br />
+> [Customizing 'Hugo' site with shortcodes - callouts, collapsable, and more]({{< ref "2025-01-04-Use-hugo-shortcodes" >}})
 {{< /box >}}
 
 
 {{< box info  >}}
 **Latest Event!**
 
-23rd Dec 2024
+> **December 23 2024** <br />
 > I attended the HYDRO 2024 Conference, which was hosted at Central Water and Power Research Station (CWPRS) in Pune. It was a fantastic opportunity to network with other field experts and researchers.
 {{< /box >}}
 
