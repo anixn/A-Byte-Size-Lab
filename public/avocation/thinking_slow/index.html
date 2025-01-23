@@ -7,8 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Tranquil Thinking | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="">
-<meta name="description" content="“Let&#39;s learn to be calm and you will always be happy!“ Sit in the tranquility beside the river and concentrate on your breath.Pomodoro Timer |25:00&#9654;&#10073;&#10073;&#x27F3;PomodoroShort BreakLong BreakSelect a HarmonyCosmic HymnMuse RisingRelaxing RainThinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.
-“Among all the secrets, I am the Silence!">
+<meta name="description" content="“Let&#39;s learn to be calm and you will always be happy!“ Sit in the tranquility beside the river and concentrate on your breath.Pomodoro Timer |25:00&#9654;&#10073;&#10073;&#11118;PomodoroShort BreakLong BreakSelect a Harmony &#x1D11E;Cosmic HymnMuse RisingRelaxing RainThinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.">
 <meta name="author" content="Dr. Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/avocation/thinking_slow/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -186,69 +185,96 @@ if (!doNotTrack) {
 
 <div id="pomodoro-timer">
 <style>
+   
   #controls button,
   #mode-switcher button {
-    padding: 6px 12px;  
-    font-size: 0.9rem;  
-    font-weight: 600;  
-    border-radius: 18px;  
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 18px;
     cursor: pointer;
-    background-color: #f4f4f4;  
-    color: #333;  
-    transition: all 0.2s ease;  
-    border: 2px solid #ccc;  
+    background-color: #f4f4f4;
+    color: #333;
+    transition: all 0.2s ease;
+    border: 2px solid #ccc;
   }
 
+   
   #controls button:hover,
   #mode-switcher button:hover {
-    background-color: #ddd;  
+    background-color: #ddd;
   }
 
   #controls button:active,
   #mode-switcher button:active {
-    background-color: #bbb;  
+    background-color: #bbb;
   }
 
   #mode-switcher .active {
     background-color: #429b46;
-    color: white;  
+    color: white;
   }
 
+   
   #controls {
     display: flex;
     justify-content: center;
-    gap: 8px;  
+    gap: 8px;
+    flex-wrap: wrap;  
   }
 
   #mode-switcher {
-     
     display: flex;
     justify-content: center;
-    gap: 8px;  
+    gap: 8px;
+    flex-wrap: wrap;  
   }
 
+   
   select#audio-select {
-    padding: 8px 12px;  
-    font-size: 0.9rem;  
-    border: 2px solid #ccc;  
-    border-radius: 18px;  
-    background-color: #f4f4f4;  
-    font-weight: 600;  
-    color: #429b46;  
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border: 2px solid #ccc;
+    border-radius: 18px;
+    background-color: #f4f4f4;
+    font-weight: 600;
+    color: #5a5a5a;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
   }
 
+   
   #header-container {
     display: flex;
-    align-items: center;  
-    justify-content: flex-start;  
-    gap: 18px;  
+    align-items: center;
     justify-content: center;
+    gap: 18px;
   }
 
   #time-display {
-    font-size: 2rem;  
-    font-weight: bold;  
+    font-size: 2rem;
+    font-weight: bold;
     color: rgb(33, 84, 161);
+  }
+
+   
+  @media (max-width: 600px) {
+    #controls button,
+    #mode-switcher button {
+      font-size: 0.8rem;
+      padding: 5px 10px;  
+    }
+
+    #controls,
+    #mode-switcher {
+      flex-direction: column;  
+      gap: 6px;  
+    }
+
+    #time-display {
+      font-size: 1.5rem;  
+    }
   }
 </style>
 
@@ -262,151 +288,150 @@ Sit in the tranquility beside the river and concentrate on your breath.</h4>
   <div id="time-display">25:00</div>
 </div>
 
-  <div id="controls">
-    <button id="start-timer">&#9654;</button>
-    <button id="pause-timer" disabled>&#10073;&#10073;</button>
-    <button id="reset-timer">&#x27F3;</button>
+<div id="controls">
+  <button id="start-timer">&#9654;</button>
+  <button id="pause-timer" disabled>&#10073;&#10073;</button>
+  <button id="reset-timer">&#11118;</button>
 
-    <div id="mode-switcher">
-        <button id="pomodoro-mode" class="active">Pomodoro</button>
-        <button id="short-break-mode">Short Break</button>
-        <button id="long-break-mode">Long Break</button>
-
-    </div>
-    <div id="audio-controls">
-        <select id="audio-select">
-            <option value="" selected disabled>Select a Harmony</option>
-            
-            <option value="/audio/Cosmic Hymn.opus">Cosmic Hymn</option>
-            
-            <option value="/audio/Muse Rising.opus">Muse Rising</option>
-            
-            <option value="/audio/Relaxing Rain.opus">Relaxing Rain</option>
-            
-        </select>
-    </div>
+  <div id="mode-switcher">
+    <button id="pomodoro-mode" class="active">Pomodoro</button>
+    <button id="short-break-mode">Short Break</button>
+    <button id="long-break-mode">Long Break</button>
   </div>
-
-  <audio id="audio" loop preload="none"></audio>
-  <audio id="chime" src="chime.mp3" preload="auto"></audio>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const timeDisplay = document.getElementById("time-display");
-      const startButton = document.getElementById("start-timer");
-      const pauseButton = document.getElementById("pause-timer");
-      const resetButton = document.getElementById("reset-timer");
-      const modeButtons = {
-        pomodoro: document.getElementById("pomodoro-mode"),
-        shortBreak: document.getElementById("short-break-mode"),
-        longBreak: document.getElementById("long-break-mode"),
-      };
-      const audioSelect = document.getElementById("audio-select");
-      const audioPlayer = document.getElementById("audio");
-      const chimeAudio = document.getElementById("chime");
-
-      const times = {
-        pomodoro: 1 * 60, 
-        shortBreak: 5 * 60, 
-        longBreak: 10 * 60, 
-      };
-      let currentMode = "pomodoro";
-      let timeRemaining = times[currentMode];
-      let timerInterval = null;
-      let isPlaying = false;
-
-      function updateDisplay() {
-        const minutes = Math.floor(timeRemaining / 60);
-        const seconds = timeRemaining % 60;
-        timeDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-      }
-
-      function switchMode(mode) {
-        currentMode = mode;
-        timeRemaining = times[mode];
-        updateDisplay();
-        for (const button of Object.values(modeButtons)) {
-          button.classList.remove("active");
-        }
-        modeButtons[mode].classList.add("active");
-        resetTimer();
-      }
-
-      function startTimer() {
-        if (!audioPlayer.src && currentMode === "pomodoro") {
-          alert("Please select an audio file to play while the timer runs.");
-          return;
-        }
-        if (timerInterval) return;
-
-        if (currentMode === "pomodoro") {
-          isPlaying = true;
-          audioPlayer.play();
-        }
-
-        timerInterval = setInterval(() => {
-          if (timeRemaining > 0) {
-            timeRemaining--;
-            updateDisplay();
-          } else {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            isPlaying = false;
-            audioPlayer.pause();
-            chimeAudio.play(); 
-            alert(`${currentMode === "pomodoro" ? "Pomodoro" : "Break"} complete!`);
-          }
-        }, 1000);
-
-        startButton.disabled = true;
-        pauseButton.disabled = false;
-      }
-
-      function pauseTimer() {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        if (currentMode === "pomodoro" && isPlaying) {
-          audioPlayer.pause();
-        }
-        isPlaying = false;
-        startButton.disabled = false;
-        pauseButton.disabled = true;
-      }
-
-      function resetTimer() {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        timeRemaining = times[currentMode];
-        updateDisplay();
-        if (currentMode === "pomodoro" && isPlaying) {
-          audioPlayer.pause();
-        }
-        isPlaying = false;
-        startButton.disabled = false;
-        pauseButton.disabled = true;
-      }
-
-      function updateAudioSource() {
-        const selectedAudio = audioSelect.value;
-        if (selectedAudio) {
-          audioPlayer.src = selectedAudio;
-          audioPlayer.load();
-        }
-      }
-
+  <div id="audio-controls">
+    <select id="audio-select">
+      <option value="" selected disabled>Select a Harmony &#x1D11E;</option>
       
-      startButton.addEventListener("click", startTimer);
-      pauseButton.addEventListener("click", pauseTimer);
-      resetButton.addEventListener("click", resetTimer);
-      audioSelect.addEventListener("change", updateAudioSource);
-      modeButtons.pomodoro.addEventListener("click", () => switchMode("pomodoro"));
-      modeButtons.shortBreak.addEventListener("click", () => switchMode("shortBreak"));
-      modeButtons.longBreak.addEventListener("click", () => switchMode("longBreak"));
-
+      <option value="/audio/Cosmic Hymn.opus">Cosmic Hymn</option>
       
+      <option value="/audio/Muse Rising.opus">Muse Rising</option>
+      
+      <option value="/audio/Relaxing Rain.opus">Relaxing Rain</option>
+      
+    </select>
+  </div>
+</div>
+
+<audio id="audio" loop preload="none"></audio>
+<audio id="chime" src="chime.mp3" preload="auto"></audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const timeDisplay = document.getElementById("time-display");
+    const startButton = document.getElementById("start-timer");
+    const pauseButton = document.getElementById("pause-timer");
+    const resetButton = document.getElementById("reset-timer");
+    const modeButtons = {
+      pomodoro: document.getElementById("pomodoro-mode"),
+      shortBreak: document.getElementById("short-break-mode"),
+      longBreak: document.getElementById("long-break-mode"),
+    };
+    const audioSelect = document.getElementById("audio-select");
+    const audioPlayer = document.getElementById("audio");
+    const chimeAudio = document.getElementById("chime");
+
+    const times = {
+      pomodoro: 25 * 60, 
+      shortBreak: 5 * 60, 
+      longBreak: 10 * 60, 
+    };
+    let currentMode = "pomodoro";
+    let timeRemaining = times[currentMode];
+    let timerInterval = null;
+    let isPlaying = false;
+
+    function updateDisplay() {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining % 60;
+      timeDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      timeRemaining = times[mode];
       updateDisplay();
-    });
-  </script>
+      for (const button of Object.values(modeButtons)) {
+        button.classList.remove("active");
+      }
+      modeButtons[mode].classList.add("active");
+      resetTimer();
+    }
+
+    function startTimer() {
+      if (!audioPlayer.src && currentMode === "pomodoro") {
+        alert("Please select an audio file to play while the timer runs.");
+        return;
+      }
+      if (timerInterval) return;
+
+      if (currentMode === "pomodoro") {
+        isPlaying = true;
+        audioPlayer.play();
+      }
+
+      timerInterval = setInterval(() => {
+        if (timeRemaining > 0) {
+          timeRemaining--;
+          updateDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          isPlaying = false;
+          audioPlayer.pause();
+          chimeAudio.play(); 
+          alert(`${currentMode === "pomodoro" ? "Pomodoro" : "Break"} complete!`);
+        }
+      }, 1000);
+
+      startButton.disabled = true;
+      pauseButton.disabled = false;
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      if (currentMode === "pomodoro" && isPlaying) {
+        audioPlayer.pause();
+      }
+      isPlaying = false;
+      startButton.disabled = false;
+      pauseButton.disabled = true;
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timeRemaining = times[currentMode];
+      updateDisplay();
+      if (currentMode === "pomodoro" && isPlaying) {
+        audioPlayer.pause();
+      }
+      isPlaying = false;
+      startButton.disabled = false;
+      pauseButton.disabled = true;
+    }
+
+    function updateAudioSource() {
+      const selectedAudio = audioSelect.value;
+      if (selectedAudio) {
+        audioPlayer.src = selectedAudio;
+        audioPlayer.load();
+      }
+    }
+
+    
+    startButton.addEventListener("click", startTimer);
+    pauseButton.addEventListener("click", pauseTimer);
+    resetButton.addEventListener("click", resetTimer);
+    audioSelect.addEventListener("change", updateAudioSource);
+    modeButtons.pomodoro.addEventListener("click", () => switchMode("pomodoro"));
+    modeButtons.shortBreak.addEventListener("click", () => switchMode("shortBreak"));
+    modeButtons.longBreak.addEventListener("click", () => switchMode("longBreak"));
+
+    
+    updateDisplay();
+  });
+</script>
 </div>
 
 <hr>
