@@ -8,10 +8,7 @@ draft: false
 
 {{< figure src="ThinkingPlace.webp" width="100%" alt="A Bench and Books around River" >}}
 
-{{< CT 600 >}}
-<br />
-
-{{< audio-dropdown audioFiles="/audio/Cosmic Hymn.opus,/audio/Muse Rising.opus,/audio/Relaxing Rain.opus" >}}
+{{< pomodoro audioFiles="/audio/Cosmic Hymn.opus,/audio/Muse Rising.opus,/audio/Relaxing Rain.opus" >}}
 
 ---
 
