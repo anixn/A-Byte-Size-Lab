@@ -26,8 +26,9 @@
         }
 
         #mode-switcher .active {
-            background-color: #8bec8f;
+            background-color: #f4f4f4;
             color: rgb(62, 60, 60);
+            border: 2px solid #df6262;
         }
 
         /* Flexbox Layout */
@@ -66,13 +67,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 18px;
+            gap: 10px;
         }
 
         #time-display {
             font-size: 2rem;
             font-weight: bold;
-            color: rgb(46, 112, 210);
+            color: #2e70d2;
         }
 
         /* Responsive Design */
@@ -106,10 +107,15 @@
     </center>
 
     <div id="header-container">
-        <h3>Pomodoro Timer |</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" style="margin-top: 6px;">
+            <g fill="none" stroke="#2e70d2" stroke-width="2">
+                <circle cx="12" cy="12" r="7" />
+                <path stroke-linecap="round"
+                    d="M5.965 3.136a4 4 0 0 0-2.829 2.829m14.899-2.829a4 4 0 0 1 2.829 2.829M12 8v3.75c0 .138.112.25.25.25H15" />
+            </g>
+        </svg> |
         <div id="time-display">25:00</div>
     </div>
-
     <div id="controls">
         <button id="start-timer" title="Play" style="width: 3em;">&#9654;</button>
         <button id="pause-timer" disabled title="Pause" style="width: 3em;">&#10073;&#10073;</button>
