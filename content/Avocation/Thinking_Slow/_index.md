@@ -10,6 +10,11 @@ draft: false
 
 {{< pomodoro audioFiles="/audio/Cosmic Hymn.opus,/audio/Muse Rising.opus,/audio/Relaxing Rain.opus" >}}
 
+<br /> <br /> <center><a href="/pomodoro/index.html">**Open Pomodoro Timer**</a></center>
+
+<iframe src="/pomodoro/index.html" width="100%" height="600" frameborder="0"></iframe>
+
+
 ---
 
 ### Thinking in the attention hungry world
