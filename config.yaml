@@ -88,7 +88,7 @@ params:
               url: /about
             - name: Updates⁺
               url: /research/updates/
-            - name: "Focus Timer"
+            - name: "Timer App ⮭"
               url: Pomodoro/
 
 
