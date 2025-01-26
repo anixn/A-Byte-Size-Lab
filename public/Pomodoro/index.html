@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,8 @@
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="alternate icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://ankitdeshmukh.com/">
+    <meta name="google-site-verification" content="G-R5FJKDQD1M">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -67,7 +70,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height:34px;
+            height: 34px;
         }
 
         li:hover {
@@ -147,9 +150,11 @@
             align-items: center;
             flex-grow: 1;
         }
+
         .task-number {
             min-width: 20px;
         }
+
         .task-time {
             font-size: 0.8em;
             opacity: 0.7;
@@ -198,10 +203,13 @@
         }
     </style>
 </head>
+
 <body>
     <div id="app">
-        <div style="font-size: 0.8em; color: #665c54;text-align: left;" > <a style="color: #928374;" href="https://www.ankitdeshmukh.com"> ⇱ ankitdeshmukh.com</a></div> <br />
-        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f "> Pomodoro Timer</h1>
+        <div style="font-size: 0.8em; color: #665c54;text-align: left;"> <a style="color: #928374;"
+                href="https://www.ankitdeshmukh.com"> ⇱ ankitdeshmukh.com</a></div> <br />
+        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f "> Pomodoro
+            Timer</h1>
         <div id="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
@@ -247,6 +255,7 @@
         const toggleMusicButton = document.getElementById('toggle-music');
         const currentTaskElement = document.getElementById('current-task');
         const pomodoroCountElement = document.getElementById('pomodoro-count');
+
 
         window.addEventListener('beforeunload', (e) => {
             if (isTimerRunning) {
@@ -385,7 +394,7 @@
 
         // Collapsible functionality
         document.querySelectorAll('.collapsible-header').forEach(header => {
-            header.addEventListener('click', function() {
+            header.addEventListener('click', function () {
                 const section = this.closest('.collapsible-section');
                 section.classList.toggle('collapsed');
             });
@@ -402,5 +411,16 @@
         resetButton.addEventListener('click', resetTimer);
         toggleMusicButton.addEventListener('click', toggleMusic);
     </script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+    <script>
+        var doNotTrack = false;
+        if (!doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+        }
+    </script>
 </body>
+
 </html>
