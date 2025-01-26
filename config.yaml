@@ -40,6 +40,9 @@ languages:
                 - name: Avocation
                   url: /Avocation/
                   weight: 25
+                - name: Archive
+                  url: /archives
+                  weight: 30
                 - name: Tags
                   url: tags/
                   weight: 40
@@ -85,8 +88,8 @@ params:
               url: /about
             - name: Updates⁺
               url: /research/updates/
-            - name: Archive
-              url: /archives
+            - name: "Focus Timer"
+              url: Pomodoro/
 
 
     homeInfoParams:

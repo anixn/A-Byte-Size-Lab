@@ -10,10 +10,12 @@ draft: false
 
 {{< pomodoro audioFiles="/audio/Cosmic Hymn.opus,/audio/Muse Rising.opus,/audio/Relaxing Rain.opus" >}}
 
-<br /> <br /> <center><a href="/pomodoro/index.html">**Open Pomodoro Timer**</a></center>
+<br />
+<a href="/pomodoro/index.html">Open Pomodoro Timer <svg width="14" height="14" viewBox="0 0 0.42 0.42" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.315.189a.02.02 0 0 0-.018.018v.126a.02.02 0 0 1-.018.018H.088A.02.02 0 0 1 .07.333V.14A.02.02 0 0 1 .088.122h.126a.018.018 0 0 0 0-.035H.088A.053.053 0 0 0 .035.14v.193a.053.053 0 0 0 .053.053h.193A.053.053 0 0 0 .334.333V.207A.02.02 0 0 0 .316.189M.385.046A.02.02 0 0 0 .376.037L.368.035H.263a.018.018 0 0 0 0 .035h.063L.145.25a.02.02 0 0 0 0 .025.02.02 0 0 0 .025 0l.18-.18v.063a.018.018 0 0 0 .035 0V.053L.384.046"/>
+</svg>
 
-<iframe src="/pomodoro/index.html" width="100%" height="600" frameborder="0"></iframe>
-
+</a>
 
 ---
 
