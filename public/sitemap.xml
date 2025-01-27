@@ -3,202 +3,279 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ankitdeshmukh.com/avocation/creative/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/updates/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/research-summary/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/publications/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/avocation/edgeospatial/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/avocation/avdww/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/avocation/wateraround/</loc>
     <lastmod>2024-12-27T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/concept/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/geospatial/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/r/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/tutorial/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2025-01-17-variogram/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/avocation/</loc>
     <lastmod>2025-01-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/avocation/thinking_slow/</loc>
     <lastmod>2025-01-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2025-01-06-lst-lulc-computation-with-landsat/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/config/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2025-01-04-use-hugo-shortcodes/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/hugo/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/utility/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20241220_hydro-2024/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/data-cleaning/</loc>
     <lastmod>2024-10-03T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/imd/</loc>
     <lastmod>2024-10-03T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/r/</loc>
     <lastmod>2024-10-03T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2024-10-03-working-with-netcdf/</loc>
     <lastmod>2024-10-03T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2024-03-25-electoral-bond-analysis/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/visulization/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20240313_geospatial_analysis_with_r/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/gis/</loc>
     <lastmod>2024-01-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2024-01-08-postgis-with-qgis/</loc>
     <lastmod>2024-01-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/sql/</loc>
     <lastmod>2024-01-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20231221_hydro-2023/</loc>
     <lastmod>2023-12-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20231211_introduction-of-drone-based-survey/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/gdal/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2023-10-24-gdal-an-introduction-rmd/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/tutorial/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2022-08-16-create-awesome-slides-with-xaringan/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/rmd/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/slides/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/xaringan/</loc>
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20220722_geospatial-techniques/</loc>
     <lastmod>2022-07-22T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/plot/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2022-07-04-r-python-sql-in-rstudio/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/setup/</loc>
     <lastmod>2022-07-04T20:32:05+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2022-07-02-computational-hydrology/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/course/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/hydrology/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/hydrology/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/the-basics/</loc>
     <lastmod>2022-07-02T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/categories/ml/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2022-06-26-random-forest/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/regression/</loc>
     <lastmod>2022-06-26T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/boxplot/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2022-01-21-pretty-boxplot-with-focet/</loc>
     <lastmod>2022-01-21T11:25:39+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2021-12-01-r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/r-markdown/</loc>
     <lastmod>2021-12-01T21:13:14-05:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tags/coding/</loc>
     <lastmod>2021-09-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/post/2021-09-20-getting-started-with-r/</loc>
     <lastmod>2021-09-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20200604_how-to-make-a-scientific-presentation/</loc>
     <lastmod>2020-06-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/slides/20191031_latex-tutorial/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/about/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/archives/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/search/</loc>
-  </url><url>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/series/</loc>
+  </url>
+
+  
+  <url>
+    <loc>https://ankitdeshmukh.com//pomodoro/index.html</loc>
+    <lastmod>2025-01-27T22:24:51+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
