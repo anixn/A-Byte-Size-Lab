@@ -3,25 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+
+<meta name="robots" content="index, follow">
+<title>Zen Pomodoro Timer | Ankit's Hydro-Geo Insights</title>
+<meta name="keywords" content="">
+<meta name="description" content="“Let&#39;s learn to be calm and you will always be happy!“ Sit in the tranquility beside the river and concentrate on your breath. | 25:00 ▶ ❙❙ Pomodoro Short Break Long Break Select a Harmony 𝄞 Cosmic Hymn Muse Rising Relaxing Rain Open Pomodoro Timer Thinking in the attention hungry world Meditation on Silence: The observation of Silence by restraining speech is one of the most powerful meditation technique.">
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+}
+</script>
+
+
+<meta property="og:title" content="Zen Pomodoro Timer">
+
+<meta name="author" content="Dr. Ankit Deshmukh">
+<link rel="canonical" href="https://ankitdeshmukh.com/pomodoro/">
+<meta name="google-site-verification" content="G-R5FJKDQD1M">
+
+    <!-- <title>Pomodoro Timer</title> -->
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="alternate icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="canonical" href="https://ankitdeshmukh.com/Pomodoro/">
-    <meta name="google-site-verification" content="G-R5FJKDQD1M">
-
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
-    <script>
-        var doNotTrack = false;
-        if (!doNotTrack) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
-        }
-    </script>
-
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -29,25 +42,47 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
+            /* Use min-height to allow the body to grow if needed */
             background-color: #282828;
             color: #ebdbb2;
             margin: 0;
+            background-image: url('ThinkingPlace.webp');
+            background-size: cover;
+            /* Ensures the image covers the entire background */
+            background-position: center;
+            /* Centers the image */
+            background-attachment: fixed;
+            /* Keeps the background fixed while scrolling */
+            overflow: hidden;
+            /* Prevent body from scrolling */
         }
 
         #app {
             text-align: center;
-            background-color: #3c3836;
+            background-color: #3c3836dd;
             border-radius: 12px;
             padding: 30px;
-            padding-top: 10px;
+            padding-top: 14px;
+            padding-bottom: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             width: 90%;
             max-width: 400px;
+            max-height: 60vh;
+            /* Set a maximum height for the app div */
+            /* overflow-y: hidden; */
+            overflow-y: scroll;
+            scrollbar-width: none; /* Hide scrollbar in Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+            /* Enable vertical scrolling */
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+            /* margin: 20px 0; */
+            /* Add some margin for better spacing */
         }
 
         button {
-            margin: 10px 5px;
+            margin: 5px 5px;
             padding: 10px 20px;
             background-color: #bdae93;
             color: #282828;
@@ -91,10 +126,10 @@
 
         #new-task {
             width: calc(100% - 24px);
-            padding: 10px;
+            padding: 8px;
             border: 2px solid #a89984;
             border-radius: 8px;
-            background-color: #32302f;
+            background-color: #32302f3b;
             color: #ebdbb2;
             margin: 2px 0;
             font-family: 'Roboto', sans-serif;
@@ -102,19 +137,20 @@
 
         #timer {
             font-size: 48px;
-            margin: 20px 0;
+            margin: 10px 0;
             font-weight: 700;
+            color: #fbf1c7;
         }
 
         .current-task {
             font-weight: normal;
             margin: 2px 0;
-            background-color: #fabd2f00;
-            color: #d5c4a1;
-            padding: 10px;
-            border-radius: 8px;
+            background-color: #a89984bb;
+            color: #282828;
+            padding: 4px;
+            border-radius: 20px;
             text-align: left;
-            border: 2px solid #a89984;
+            /* border: 2px solid #a89984aa; */
             width: 80% auto;
         }
 
@@ -134,9 +170,9 @@
             gap: 10px;
         }
 
-
         h4 {
             margin: 1px;
+            padding: 2px;
         }
 
         .delete-task {
@@ -189,7 +225,7 @@
             font-size: 18px;
             font-weight: 500;
             text-align: left;
-            padding: 8px 0;
+            padding: 2px 0;
         }
 
         .collapsible-header::before {
@@ -213,14 +249,34 @@
             max-height: 0;
             opacity: 0;
         }
+
+        /* Dropdown Styling */
+        #audio-select {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #50494577;
+            color: #ebdbb2;
+            border: 2px solid #a89984;
+            border-radius: 18px;
+            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #audio-select:hover {
+            background-color: #665c54;
+        }
+
+        #audio-select:focus {
+            outline: none;
+            border-color: #d79921;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div style="font-size: 0.8em; color: #665c54;text-align: left;"> <a style="color: #928374;"
-                href="https://www.ankitdeshmukh.com"> ⇱ ankitdeshmukh.com</a></div> <br />
-        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f "> Pomodoro
+        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f ">Zen Pomodoro
             Timer</h1>
         <div id="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
@@ -228,13 +284,23 @@
         <button id="toggle-timer">Start</button>
         <button id="reset">Reset</button>
         <button id="toggle-music">Play Music</button>
-        <audio id="background-audio" src="background.mp3" loop></audio>
-        <div id="alerts"></div>
 
+        <!-- Dropdown for audio selection -->
+        <select id="audio-select">
+            <option value="background.opus">Track 1</option>
+            <option value="background2.opus">Track 2</option>
+            <option value="background3.opus">Track 3</option>
+        </select>
+
+        <audio id="background-audio" src="background.opus"  type="audio/ogg" loop></audio>
+        <audio id="background-audio" src="background2.opus" type="audio/ogg" loop></audio>
+        <audio id="background-audio" src="background3.opus" type="audio/ogg" loop></audio>
+        <div id="alerts"></div>
+        <div id="pomodoro-count">Pomodoros Completed: 0</div>
         <div class="collapsible-section">
             <h4 class="collapsible-header">Current Task</h4>
             <div class="collapsible-content">
-                <div class="current-task" id="current-task">Click to select a task from the tasklist.</div>
+                <div class="current-task" id="current-task">Select a task from tasklist!</div>
             </div>
         </div>
 
@@ -246,9 +312,15 @@
                 <ol id="to-do-list"></ol>
             </div>
         </div>
-
-        <div id="pomodoro-count">Pomodoros Completed: 0</div>
     </div>
+    <br />
+    <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px;">
+        <h3 style="margin-top: 10px; margin-bottom: 4px;">A way of meditation: </h3>
+        <blockquote style="margin-top: 4px; margin-bottom: 4px;">“Among all the secrets, I am the Silence!”<br />— Geeta </blockquote>
+        <p> The observation of Silence by restraining speech is one of the most powerful meditation technique. </p>
+    </div>
+    <br />
+
     <script>
         let minutes = 25;
         let seconds = 0;
@@ -267,7 +339,7 @@
         const toggleMusicButton = document.getElementById('toggle-music');
         const currentTaskElement = document.getElementById('current-task');
         const pomodoroCountElement = document.getElementById('pomodoro-count');
-
+        const audioSelect = document.getElementById('audio-select');
 
         window.addEventListener('beforeunload', (e) => {
             if (isTimerRunning) {
@@ -403,6 +475,23 @@
                 toggleMusicButton.textContent = 'Play Music';
             }
         }
+
+        // Function to change the audio source
+        function changeAudio() {
+            const selectedAudio = audioSelect.value;
+            backgroundAudio.src = selectedAudio;
+
+            // If the audio is already playing, play the new track immediately
+            if (!backgroundAudio.paused) {
+                backgroundAudio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    alert('Error playing audio. Please interact with the page first.');
+                });
+            }
+        }
+
+        // Event listener for the dropdown change
+        audioSelect.addEventListener('change', changeAudio);
 
         // Collapsible functionality
         document.querySelectorAll('.collapsible-header').forEach(header => {

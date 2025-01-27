@@ -7,6 +7,11 @@ cover:
     image: "Cover.png"
     alt: "Image of R and Quote"
     caption: "How to write well with Rstudio"
+
+output:
+  blogdown::html_page:
+    keep_md: yes
+
 ---
 
 ```{r setup, include=FALSE}
@@ -25,14 +30,14 @@ Step 02: Install RStudio IDE from RStudio
 ## 2. Customizing RStudio
 A lot of ways you can make RStudio more useful for your personal use. Like updating your '.RProfile', adding an awesome theme, and fonts that support ligatures.
 
-- **Using Rstudio as R-IDE:** R studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane. 
+- **Using Rstudio as R-IDE:** R studio has multiple windows but the most important are Code editor, console, Environment variable pane, and plot output pane.
 
 ```{r, include=TRUE, echo=FALSE, fig.cap="R-Studio IDE have many pans.", out.width=600}
 knitr::include_graphics("Layout.png", error = FALSE)
 ```
 
 - **Code editor:** You will write your code in this window. R used `#` as the comment character.  To assign a variable to a value we use `←` (lowercase followed by a dash).
- 
+
 ```{r, include=TRUE, echo=FALSE, out.width=600}
 knitr::include_graphics("Figures.png", error = FALSE)
 ```
@@ -100,11 +105,11 @@ snippet fmt
 	# DOC         :: `r eval(Sys.Date())`
 	# DOLE        :: `r eval(Sys.time())`
 	# Description :: ${2:File Description}
-	
+
 	# setup ------------------------------------------------------------------------
 	graphics.off(); cat("\014")
 	setwd("`r eval(getwd())`")
-	
+
 	# libraries --------------------------------------------------------------------
 	library(tidyverse)
 
@@ -117,5 +122,3 @@ snippet clear
   rm(list = ls()); graphics.off();cat("\014")
 ```
 To use the snippet use the keywords such as **clear** and press `Shift + Tab` to auto complete the snippet text.
-
-
