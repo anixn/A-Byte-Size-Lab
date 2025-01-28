@@ -40,15 +40,15 @@ languages:
                 - name: Avocation
                   url: /Avocation/
                   weight: 25
-                - name: Tags
-                  url: tags/
-                  weight: 40
-                - name: " ⌈ 🔎︎ ⌋ "
+                - name: "Timer"
+                  url: Pomodoro/
+                  weight: 30
+                # - name: 🏷️
+                #   url: tags/
+                #   weight: 40
+                - name: "🔎︎"
                   url: search/
                   weight: 50
-                - name: "🪷"
-                  url: Pomodoro/
-                  weight: 60
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
