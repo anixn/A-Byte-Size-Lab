@@ -61,7 +61,7 @@
 
         #app {
             text-align: center;
-            background-color: #3c3836dd;
+            background-color: #3c3836ee;
             border-radius: 12px;
             padding: 30px;
             padding-top: 14px;
@@ -296,9 +296,7 @@
             <option value="background3.opus">Track 3</option>
         </select>
 
-        <audio id="background-audio" src="background.opus" type="audio/ogg" loop></audio>
-        <audio id="background-audio" src="background2.opus" type="audio/ogg" loop></audio>
-        <audio id="background-audio" src="background3.opus" type="audio/ogg" loop></audio>
+        <audio id="background-audio" src="background.opus" type="audio/ogg; codecs=opus" loop></audio>
         <div id="alerts"></div>
         <div id="pomodoro-count">Pomodoros Completed: 0</div>
         <div class="collapsible-section">
@@ -317,19 +315,29 @@
             </div>
         </div>
     </div>
+
     <br />
+
     <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px;">
         <h3 style="margin-top: 10px; margin-bottom: 4px;">A way of meditation: </h3>
-        <blockquote style="margin-top: 4px; margin-bottom: 4px;">“Among all the secrets, I am the Silence!”<br />— Geeta
+
+        <blockquote style="margin-top: 8px; margin-bottom: 4px; color: #8ec07c;">
+            “Among all the secrets, I am the Silence!”<br />
+            <cite>— Geeta</cite>
         </blockquote>
-        <p> The observation of Silence by restraining speech is one of the most powerful meditation technique. </p>
+        <p style="margin-top: 8px;"> The observation of Silence by restraining speech is one of the most powerful meditation technique. </p>
     </div>
+
     <br />
+
     <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px">
-        <p style="margin-top: 4px; margin-bottom: 4px; font-size: 0.8em;text-align: center;" > Follow me on,
-            <a style="color: #fabd2f;" href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer"> Twitter</a> |
-            <a style="color: #fabd2f;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener noreferrer">Website</a> |
-            <a style="color: #fabd2f;" href="https://www.youtube.com/@edgeospatial" target="_blank" rel="noopener noreferrer">YouTube</a> for
+        <p style="margin-top: 4px; margin-bottom: 4px; font-size: 0.8em;text-align: center;color: #bdaebd;"> Follow me on,
+            <a style="color: #d79921;" href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer">
+                Twitter</a> |
+            <a style="color: #d79921;" href="https://www.ankitdeshmukh.com" target="_blank"
+                rel="noopener noreferrer">Website</a> |
+            <a style="color: #d79921;" href="https://www.youtube.com/@edgeospatial" target="_blank"
+                rel="noopener noreferrer">YouTube</a> for
             mindfulness tutorials.
         </p>
     </div>
