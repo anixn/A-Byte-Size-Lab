@@ -10,7 +10,7 @@ draft: false
 
 With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc...) and other you can access via APIs with some cost (OpneAI's chatGPT, Anthropic’s Claude, Google’s Bard, etc...). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally [(for more details)](https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025)
 
-Based on some research I choose Ollama
+Based on some research I choose Ollama:
 
 {{< figure
   src="Ollama.png"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OpenSourceAI on Ankit&#39;s Hydro-Geo Insights</title>
+    <link>https://ankitdeshmukh.com/tags/opensourceai/</link>
+    <description>Recent content in OpenSourceAI on Ankit&#39;s Hydro-Geo Insights</description>
+    <image>
+      <url>https://ankitdeshmukh.com/Site-Cover.jpg</url>
+      <link>https://ankitdeshmukh.com/Site-Cover.jpg</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/tags/opensourceai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui</title>
+      <link>https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/</link>
+      <pubDate>Fri, 07 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/</guid>
+      <description>With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&amp;hellip;) and other you can access via APIs with some cost (OpneAI&amp;rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&amp;hellip;).</description>
+    </item>
+    
+  </channel>
+</rss>

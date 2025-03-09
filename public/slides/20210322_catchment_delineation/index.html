@@ -5,11 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Tags | Ankit&#39;s Hydro-Geo Insights</title>
+<title>Catchment Delineation with QGIS - A Guide | Ankit&#39;s Hydro-Geo Insights</title>
 <meta name="keywords" content="">
-<meta name="description" content="Welcome to my vibrant corner of the internet! Here, I&#39;ll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, &amp; R-programming.">
+<meta name="description" content="Catchment Delineation: A Step-by-Step Guide for Effective Water Resource Management
+Understanding and managing water resources starts with analyzing catchments—the areas where rainfall collects and drains into a common outlet. In this blog, we break down the process of catchment delineation, a critical technique for hydrologists and environmental planners, using open-source tools like QGIS.
+What is a Catchment? A catchment, or watershed, is a land area where all surface runoff converges to a single point, such as a river or lake.">
 <meta name="author" content="Dr. Ankit Deshmukh">
-<link rel="canonical" href="https://ankitdeshmukh.com/tags/">
+<link rel="canonical" href="https://ankitdeshmukh.com/slides/20210322_catchment_delineation/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
@@ -19,7 +21,7 @@
 <link rel="mask-icon" href="https://ankitdeshmukh.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://ankitdeshmukh.com/tags/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://ankitdeshmukh.com/slides/20210322_catchment_delineation/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,17 +61,38 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Tags" />
+<meta property="og:title" content="Catchment Delineation with QGIS - A Guide" />
 <meta property="og:description" content="Welcome to my vibrant corner of the internet! Here, I&#39;ll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, &amp; R-programming." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ankitdeshmukh.com/tags/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
+<meta property="og:url" content="https://ankitdeshmukh.com/slides/20210322_catchment_delineation/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
-<meta name="twitter:title" content="Tags"/>
+<meta name="twitter:title" content="Catchment Delineation with QGIS - A Guide"/>
 <meta name="twitter:description" content="Welcome to my vibrant corner of the internet! Here, I&#39;ll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, &amp; R-programming."/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Teaching, Tutorials, \u0026 Talks",
+      "item": "https://ankitdeshmukh.com/slides/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Catchment Delineation with QGIS - A Guide",
+      "item": "https://ankitdeshmukh.com/slides/20210322_catchment_delineation/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list dark" id="top">
@@ -143,94 +166,79 @@ if (!doNotTrack) {
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/slides/">Teaching, Tutorials, &amp; Talks</a></div>
+  <h1>
+    Catchment Delineation with QGIS - A Guide
+    <a href="index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
 </header>
-
-<ul class="terms-tags">
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/boxplot/">boxplot <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/chatgpt/">ChatGPT <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/coding/">Coding <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/config/">config <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/course/">Course <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/data-cleaning/">Data Cleaning <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/deepseekr1/">DeepseekR1 <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/gdal/">gdal <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/geospatial/">Geospatial <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/gis/">gis <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/hydrology/">Hydrology <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/imd/">IMD <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/llm/">LLM <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/opensourceai/">OpenSourceAI <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/plot/">plot <sup><strong><sup>4</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/r/">R <sup><strong><sup>6</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/r-markdown/">R Markdown <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/rag/">RAG <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/random-forest/">Random Forest <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/regression/">regression <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/setup/">Setup <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/slides/">Slides <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/sql/">SQL <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/the-basics/">The Basics <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/tutorial/">Tutorial <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/utility/">utility <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://ankitdeshmukh.com/tags/xaringan/">Xaringan <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
+<div class="post-content"><p><img loading="lazy" src="Outline.jpg" alt="header"  />
+</p>
+<p><strong>Catchment Delineation: A Step-by-Step Guide for Effective Water Resource Management</strong></p>
+<p>Understanding and managing water resources starts with analyzing catchments—the areas where rainfall collects and drains into a common outlet. In this blog, we break down the process of <strong>catchment delineation</strong>, a critical technique for hydrologists and environmental planners, using open-source tools like QGIS.</p>
+<h3 id="what-is-a-catchment"><strong>What is a Catchment?</strong><a hidden class="anchor" aria-hidden="true" href="#what-is-a-catchment">#</a></h3>
+<p>A catchment, or watershed, is a land area where all surface runoff converges to a single point, such as a river or lake. It serves as the fundamental unit for hydrological studies, helping predict water availability, flood risks, and ecosystem health.</p>
+<h3 id="tools-youll-need"><strong>Tools You’ll Need</strong><a hidden class="anchor" aria-hidden="true" href="#tools-youll-need">#</a></h3>
+<ul>
+<li><strong>QGIS</strong>: A free, open-source GIS software for spatial analysis.</li>
+<li><strong>DEM Data</strong>: Digital Elevation Models (e.g., SRTM, ASTER GDEM) to map terrain.</li>
+<li><strong>Plugins</strong>: SRTM-Downloader for fetching elevation data.</li>
 </ul>
+<h3 id="step-by-step-catchment-delineation-process"><strong>Step-by-Step Catchment Delineation Process</strong><a hidden class="anchor" aria-hidden="true" href="#step-by-step-catchment-delineation-process">#</a></h3>
+<h4 id="1-acquire-dem-data"><strong>1. Acquire DEM Data</strong><a hidden class="anchor" aria-hidden="true" href="#1-acquire-dem-data">#</a></h4>
+<ul>
+<li><strong>Sources</strong>: Use global datasets like NASA’s <strong>30m SRTM</strong> or JAXA’s <strong>ALOS World 3D</strong>.</li>
+<li><strong>Download</strong>: Access tiles via <a href="https://dwtkns.com/srtm30m">dwtkns.com/srtm30m</a> or QGIS plugins.</li>
+</ul>
+<h4 id="2-preprocess-dem"><strong>2. Preprocess DEM</strong><a hidden class="anchor" aria-hidden="true" href="#2-preprocess-dem">#</a></h4>
+<ul>
+<li><strong>Merge Tiles</strong>: Combine multiple DEM tiles into a seamless raster (<em>Raster → Miscellaneous → Merge</em>).</li>
+<li><strong>Reproject</strong>: Convert to a local coordinate system (e.g., UTM) for accurate area calculations (<em>Raster → Projections → Warp</em>).</li>
+<li><strong>Fill Sinks</strong>: Correct depressions in the DEM to ensure proper flow modeling (<em>SAGA Terrain Analysis → Fill</em>).</li>
+</ul>
+<h4 id="3-derive-hydrological-features"><strong>3. Derive Hydrological Features</strong><a hidden class="anchor" aria-hidden="true" href="#3-derive-hydrological-features">#</a></h4>
+<ul>
+<li><strong>Flow Direction</strong>: Calculate water movement using the <strong>D8 algorithm</strong>, which identifies the steepest downhill path for each cell.</li>
+<li><strong>Flow Accumulation</strong>: Determine areas where water accumulates, forming streams. Apply thresholds (e.g., &gt;3 cells) to define river networks.</li>
+<li><strong>Strahler Stream Order</strong>: Classify streams hierarchically to prioritize major channels.</li>
+</ul>
+<h4 id="4-define-outflow--delineate-catchment"><strong>4. Define Outflow &amp; Delineate Catchment</strong><a hidden class="anchor" aria-hidden="true" href="#4-define-outflow--delineate-catchment">#</a></h4>
+<ul>
+<li><strong>Set Outlet</strong>: Mark the catchment’s drainage point on the stream network.</li>
+<li><strong>Upslope Area</strong>: Use QGIS tools to automatically delineate the catchment boundary based on flow direction and accumulation.</li>
+</ul>
+<h4 id="5-analyze--visualize"><strong>5. Analyze &amp; Visualize</strong><a hidden class="anchor" aria-hidden="true" href="#5-analyze--visualize">#</a></h4>
+<ul>
+<li><strong>Calculate Metrics</strong>: Determine catchment area, perimeter, and stream length using QGIS’ <em>Field Calculator</em>.</li>
+<li><strong>Stylize Maps</strong>: Apply colors, labels, and scales to create professional outputs for reports.</li>
+</ul>
+<h3 id="why-qgis"><strong>Why QGIS?</strong><a hidden class="anchor" aria-hidden="true" href="#why-qgis">#</a></h3>
+<ul>
+<li><strong>Cost-Effective</strong>: Free and open-source.</li>
+<li><strong>Cross-Platform</strong>: Works on Windows, macOS, and Linux.</li>
+<li><strong>Community Support</strong>: Extensive tutorials and plugins.</li>
+</ul>
+<h3 id="key-takeaways"><strong>Key Takeaways</strong><a hidden class="anchor" aria-hidden="true" href="#key-takeaways">#</a></h3>
+<ol>
+<li>Catchment delineation is foundational for flood modeling, drought assessment, and land-use planning.</li>
+<li>Open-source tools like QGIS democratize access to advanced hydrological analysis.</li>
+<li>Proper DEM preprocessing ensures accurate results—don’t skip sink-filling or reprojection!</li>
+</ol>
+<p><strong>Ready to Start?</strong>
+Download QGIS, grab SRTM data, and follow the steps above to map your first catchment. For more resources, visit <a href="www.ankitdeshmukh.com">Dr. Ankit Deshmukh’s website</a> or explore QGIS documentation.</p>
+<p><em>#QGIS #DEM #SRTM #CatchmentDelineation</em></p>
+<embed src= "AMTWRE_AnkitDeshmukh.pdf" width= "100%" height= "600px" type="application/pdf" >
+
+
+</div>
     </main>
     
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">

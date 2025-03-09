@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui | Ankit&#39;s Hydro-Geo Insights</title>
+<meta name="keywords" content="LLM, RAG, DeepseekR1, ChatGPT, OpenSourceAI">
+<meta name="description" content="With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&hellip;) and other you can access via APIs with some cost (OpneAI&rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&hellip;).">
+<meta name="author" content="Dr. Ankit Deshmukh &amp; Deepseek R1">
+<link rel="canonical" href="https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/">
+<meta name="google-site-verification" content="G-R5FJKDQD1M">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ankitdeshmukh.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<link rel="stylesheet" href="/fonts/font-family.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui" />
+<meta property="og:description" content="With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&hellip;) and other you can access via APIs with some cost (OpneAI&rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&hellip;)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-02-07T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2025-02-07T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
+
+<meta name="twitter:title" content="Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui"/>
+<meta name="twitter:description" content="With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&hellip;) and other you can access via APIs with some cost (OpneAI&rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&hellip;)."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://ankitdeshmukh.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui",
+      "item": "https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui",
+  "name": "Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui",
+  "description": "With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc\u0026hellip;) and other you can access via APIs with some cost (OpneAI\u0026rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc\u0026hellip;).",
+  "keywords": [
+    "LLM", "RAG", "DeepseekR1", "ChatGPT", "OpenSourceAI"
+  ],
+  "articleBody": "With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc…) and other you can access via APIs with some cost (OpneAI’s chatGPT, Anthropic’s Claude, Google’s Bard, etc…). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally (for more details)\nBased on some research I choose Ollama:\nScreenshot of the Ollama website, showcasing its support for running large language models like Llama 3.3, DeepSeek-R1, Phi-4, Mistral, and Gemma 2 locally on macOS, Linux, and Windows.\nCommand Description ollama run Runs the specified model interactively. ollama pull Downloads a model from the repository. ollama list Lists all available models on the system. ollama create Creates a new model from a Modelfile. ollama show Displays details about a specific model. ollama push Uploads a locally created model to a repository. ollama rm Removes a specific model from the system. ollama serve Starts an API server for using models programmatically. ollama run --system Runs a model with a system-level instruction. ollama help Displays help information for ollama commands. ollama version Display the installed Ollama version. ollama ps Show last running model memory usage (CPU/GPU). ██████╗ ██████╗ ███████╗███╗ ██╗ ██╗ ██╗███████╗██████╗ ██╗ ██╗██╗\r██╔═══██╗██╔══██╗██╔════╝████╗ ██║ ██║ ██║██╔════╝██╔══██╗██║ ██║██║\r██║ ██║██████╔╝█████╗ ██╔██╗ ██║ ██║ █╗ ██║█████╗ ██████╔╝██║ ██║██║\r██║ ██║██╔═══╝ ██╔══╝ ██║╚██╗██║ ██║███╗██║██╔══╝ ██╔══██╗██║ ██║██║\r╚██████╔╝██║ ███████╗██║ ╚████║ ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║\r╚═════╝ ╚═╝ ╚══════╝╚═╝ ╚═══╝ ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═════╝ ╚═╝ This my learnings of LLMs and setting up LLMs in my local machine.\nWelcome to the definitive guide for Windows users looking to harness the power of Deepseek-R1 14B Q6 on a high-end PC. Whether you’re an AI researcher, developer, or hobbyist, this guide will transform your Intel i9-13900K, 64GB DDR5, and RTX 3060 12GB into a local LLM powerhouse. We’ll dive into Windows-specific setups, technical deep dives, and a head-to-head comparison with OpenAI’s models. Let’s get started!\nConfiguration of my machine, running RTX 3060 (12 GB vRAM) and Intel i9 13900k CPU with 64GB RAM.\nWhy Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI Before we dive into setup, let’s address the elephant in the room: How does Deepseek-R1 stack up against OpenAI’s GPT-4 or GPT-3.5? Here’s a detailed breakdown:\nFeature Deepseek-R1 14B Q6 OpenAI GPT-4 Winner Model Size 14B parameters (6-bit quantized) ~1.8T parameters (proprietary) OpenAI (scale) Quantization Support Yes (4-bit, 6-bit, 8-bit) No (cloud-only, full precision) Deepseek Cost Free (open-weight) $0.03–$0.12 per 1k tokens Deepseek Customization Fully customizable (fine-tuning possible) Zero access to weights Deepseek Privacy Fully local (no data leaks) Cloud-based (API logging risks) Deepseek Hardware Requirements Runs on consumer GPUs (e.g., RTX 3060 12GB) Requires API access (no local) Deepseek RAG Support Native integration with tools like AnythingLLM Limited to API-based workarounds Deepseek Performance (MT-Bench) 8.32 (outperforms Llama2-13B and Mistral-7B) 8.99 (GPT-4) OpenAI (margin) Key Takeaway: Deepseek-R1 offers 95% of GPT-3.5’s performance at zero cost, with full control over privacy and customization. For advanced users, it’s a no-brainer.\nTechnical Deep Dive: What Makes Deepseek-R1 Tick? Model Architecture Layers: 40 transformer layers with grouped-query attention (GQA) for faster inference. Context Window: 32k tokens (supports long-form tasks). Training Data: 2 trillion tokens from diverse sources (books, code, scientific papers). Quantization: 6-bit (Q6) reduces VRAM usage by 40% vs. full precision (FP16) with minimal accuracy loss. Hardware Optimization CPU: Intel i9-13900K’s 24 cores (8P+16E) excel at parallelizing inference tasks. GPU: RTX 3060’s 12GB VRAM fits the entire 14B Q6 model (requires ~10GB VRAM). RAM: DDR5’s 5600MT/s bandwidth ensures rapid data loading. Step-by-Step Windows Setup 1. Installing Ollama (Windows Edition) Ollama simplifies local LLM management. Here’s how to set it up on Windows:\nDownload the Windows Build: Visit Ollama’s GitHub and download the latest .exe installer.\nInstall via PowerShell:\nwinget install Ollama.Ollama Start the Ollama Service:\nollama serve Keep this running in the background.\nPull Deepseek-R1 14B Q6:\nollama pull deepseek-r1-14b-q6 # you can use `huggingface` or `ollama` website to find model of your choice. Run the Model with Verbose Logging:\nollama run deepseek-r1-14b-q6 --verbose The --verbose flag shows token generation speed and GPU/CPU utilization.\n3. Open WebUI: ChatGPT-Style Interface Transform Ollama into a web-based chatbot with document upload support.\nInstall Docker Desktop: Enable WSL2 or Hyper-V in Windows Features. Download Docker Desktop. Run Open WebUI: docker run -d -p 3000:8080 --name open-webui --restart always openwebui/open-webui:latest Access at http://localhost:3000: In Settings, set Ollama Base URL to http://localhost:11434. Select deepseek-r1-14b-q6 and start chatting! Maximizing Performance on Windows GPU Acceleration with CUDA Force Ollama to use your RTX 3060:\nsetx OLLAMA_GPU \"True\" ollama run deepseek-r1-14b-q6 Advanced Quantization Run 4-bit quantized models for lower VRAM usage: ollama run deepseek-r1-14b-q4km Monitor Resources Use Task Manager (Performance tab) to track GPU/CPU usage. For detailed metrics, install GPU-Z. Best Practices for Advanced Users Prompt Engineering: Use chain-of-thought prompts: \"Let’s think step-by-step. [Your question]\" Adjust temperature (--temperature 0.7) for creativity vs. accuracy. Fine-Tuning: Use PyTorch on Windows Subsystem for Linux (WSL2): pip install transformers datasets Layer Offloading: Split model layers between GPU and CPU for larger models: ollama run deepseek-r1-14b-q6 --num-gpu-layers 30 Conclusion With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a privacy-first, cost-free alternative to OpenAI. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀\nReferences \u0026 Tools Ollama Windows Installation Deepseek-R1 Model Card Open WebUI Docker Guide NVIDIA CUDA Toolkit ",
+  "wordCount" : "975",
+  "inLanguage": "en",
+  "datePublished": "2025-02-07T00:00:00Z",
+  "dateModified": "2025-02-07T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Dr. Ankit Deshmukh \u0026 Deepseek R1"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ankit's Hydro-Geo Insights",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ankitdeshmukh.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://ankitdeshmukh.com/" accesskey="h" title="Ankit&#39;s Hydro-Geo Insight! (Alt + H)">
+                <img src="https://ankitdeshmukh.com/Logo.png" alt="logo" aria-label="logo"
+                    height="35">Ankit&#39;s Hydro-Geo Insight!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://ankitdeshmukh.com/post/" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ankitdeshmukh.com/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ankitdeshmukh.com/slides/" title="Slides">
+                    <span>Slides</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ankitdeshmukh.com/avocation/" title="Avocation">
+                    <span>Avocation</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ankitdeshmukh.com/Pomodoro/" title="Timer">
+                    <span>Timer</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ankitdeshmukh.com/search/" title="🔎︎">
+                    <span>🔎︎</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/post/">Posts</a></div>
+    <h1 class="post-title">
+      Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui
+    </h1>
+    <div class="post-meta"><span title='2025-02-07 00:00:00 +0000 UTC'>February 7, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Dr. Ankit Deshmukh &amp; Deepseek R1
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#why-deepseek-r1-14b-q6-a-technical-showdown-vs-openai" aria-label="Why Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI"><strong>Why Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI</strong></a></li>
+                <li>
+                    <a href="#technical-deep-dive-what-makes-deepseek-r1-tick" aria-label="Technical Deep Dive: What Makes Deepseek-R1 Tick?"><strong>Technical Deep Dive: What Makes Deepseek-R1 Tick?</strong></a><ul>
+                        
+                <li>
+                    <a href="#model-architecture" aria-label="Model Architecture"><strong>Model Architecture</strong></a></li>
+                <li>
+                    <a href="#hardware-optimization" aria-label="Hardware Optimization"><strong>Hardware Optimization</strong></a></li></ul>
+                </li>
+                <li>
+                    <a href="#step-by-step-windows-setup" aria-label="Step-by-Step Windows Setup"><strong>Step-by-Step Windows Setup</strong></a><ul>
+                        
+                <li>
+                    <a href="#1-installing-ollama-windows-edition" aria-label="1. Installing Ollama (Windows Edition)"><strong>1. Installing Ollama (Windows Edition)</strong></a></li>
+                <li>
+                    <a href="#3-open-webui-chatgpt-style-interface" aria-label="3. Open WebUI: ChatGPT-Style Interface"><strong>3. Open WebUI: ChatGPT-Style Interface</strong></a></li></ul>
+                </li>
+                <li>
+                    <a href="#maximizing-performance-on-windows" aria-label="Maximizing Performance on Windows"><strong>Maximizing Performance on Windows</strong></a><ul>
+                        
+                <li>
+                    <a href="#gpu-acceleration-with-cuda" aria-label="GPU Acceleration with CUDA"><strong>GPU Acceleration with CUDA</strong></a></li>
+                <li>
+                    <a href="#advanced-quantization" aria-label="Advanced Quantization"><strong>Advanced Quantization</strong></a></li>
+                <li>
+                    <a href="#monitor-resources" aria-label="Monitor Resources"><strong>Monitor Resources</strong></a></li></ul>
+                </li>
+                <li>
+                    <a href="#best-practices-for-advanced-users" aria-label="Best Practices for Advanced Users"><strong>Best Practices for Advanced Users</strong></a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion"><strong>Conclusion</strong></a></li>
+                <li>
+                    <a href="#references--tools" aria-label="References &amp;amp; Tools"><strong>References &amp; Tools</strong></a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&hellip;) and other you can access via APIs with some cost (OpneAI&rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&hellip;). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally <a href="https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025">(for more details)</a></p>
+<p>Based on some research I choose Ollama:</p>
+<figure class="ma0 w-75 center"><a href="https://ollama.com/">
+    <img loading="lazy" src="Ollama.png"
+         alt="Ollama Website screenshow."/> </a><figcaption>
+            <p>Screenshot of the Ollama website, showcasing its support for running large language models like Llama 3.3, DeepSeek-R1, Phi-4, Mistral, and Gemma 2 locally on macOS, Linux, and Windows.</p>
+        </figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ollama run &lt;model&gt;</code></td>
+<td>Runs the specified model interactively.</td>
+</tr>
+<tr>
+<td><code>ollama pull &lt;model&gt;</code></td>
+<td>Downloads a model from the repository.</td>
+</tr>
+<tr>
+<td><code>ollama list</code></td>
+<td>Lists all available models on the system.</td>
+</tr>
+<tr>
+<td><code>ollama create &lt;modelfile&gt;</code></td>
+<td>Creates a new model from a Modelfile.</td>
+</tr>
+<tr>
+<td><code>ollama show &lt;model&gt;</code></td>
+<td>Displays details about a specific model.</td>
+</tr>
+<tr>
+<td><code>ollama push &lt;model&gt;</code></td>
+<td>Uploads a locally created model to a repository.</td>
+</tr>
+<tr>
+<td><code>ollama rm &lt;model&gt;</code></td>
+<td>Removes a specific model from the system.</td>
+</tr>
+<tr>
+<td><code>ollama serve</code></td>
+<td>Starts an API server for using models programmatically.</td>
+</tr>
+<tr>
+<td><code>ollama run --system &lt;text&gt;</code></td>
+<td>Runs a model with a system-level instruction.</td>
+</tr>
+<tr>
+<td><code>ollama help</code></td>
+<td>Displays help information for <code>ollama</code> commands.</td>
+</tr>
+<tr>
+<td><code>ollama version</code></td>
+<td>Display the installed Ollama version.</td>
+</tr>
+<tr>
+<td><code>ollama ps</code></td>
+<td>Show last running model memory usage (CPU/GPU).</td>
+</tr>
+</tbody>
+</table>
+<pre tabindex="0"><code>  ██████╗ ██████╗ ███████╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██╗   ██╗██╗
+ ██╔═══██╗██╔══██╗██╔════╝████╗  ██║    ██║    ██║██╔════╝██╔══██╗██║   ██║██║
+ ██║   ██║██████╔╝█████╗  ██╔██╗ ██║    ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██║
+ ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║    ██║███╗██║██╔══╝  ██╔══██╗██║   ██║██║
+ ╚██████╔╝██║     ███████╗██║ ╚████║    ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║
+  ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝     ╚══╝╚══╝ ╚══════╝╚═════╝  ╚═════╝ ╚═╝
+</code></pre><blockquote>
+<p><em>This my learnings of LLMs and setting up LLMs in my local machine.</em></p>
+</blockquote>
+<p>Welcome to the <strong>definitive guide</strong> for Windows users looking to harness the power of <strong>Deepseek-R1 14B Q6</strong> on a high-end PC. Whether you&rsquo;re an AI researcher, developer, or hobbyist, this guide will transform your <strong>Intel i9-13900K, 64GB DDR5, and RTX 3060 12GB</strong> into a local LLM powerhouse. We’ll dive into <strong>Windows-specific setups</strong>, technical deep dives, and a head-to-head comparison with OpenAI’s models. Let’s get started!</p>
+<figure class="ma0 w-75"><a href="%20">
+    <img loading="lazy" src="Configuration.png"
+         alt="A photograph of my Task Manager."/> </a><figcaption>
+            <p>Configuration of my machine, running RTX 3060 (12 GB vRAM) and Intel i9 13900k CPU with 64GB RAM.</p>
+        </figcaption>
+</figure>
+
+<hr>
+<h2 id="why-deepseek-r1-14b-q6-a-technical-showdown-vs-openai"><strong>Why Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI</strong><a hidden class="anchor" aria-hidden="true" href="#why-deepseek-r1-14b-q6-a-technical-showdown-vs-openai">#</a></h2>
+<p>Before we dive into setup, let’s address the elephant in the room: <strong>How does Deepseek-R1 stack up against OpenAI’s GPT-4 or GPT-3.5?</strong> Here’s a detailed breakdown:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Deepseek-R1 14B Q6</strong></th>
+<th><strong>OpenAI GPT-4</strong></th>
+<th><strong>Winner</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model Size</strong></td>
+<td>14B parameters (6-bit quantized)</td>
+<td>~1.8T parameters (proprietary)</td>
+<td>OpenAI (scale)</td>
+</tr>
+<tr>
+<td><strong>Quantization Support</strong></td>
+<td>Yes (4-bit, 6-bit, 8-bit)</td>
+<td>No (cloud-only, full precision)</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free (open-weight)</td>
+<td>$0.03–$0.12 per 1k tokens</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>Customization</strong></td>
+<td>Fully customizable (fine-tuning possible)</td>
+<td>Zero access to weights</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>Privacy</strong></td>
+<td>Fully local (no data leaks)</td>
+<td>Cloud-based (API logging risks)</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>Hardware Requirements</strong></td>
+<td>Runs on consumer GPUs (e.g., RTX 3060 12GB)</td>
+<td>Requires API access (no local)</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>RAG Support</strong></td>
+<td>Native integration with tools like AnythingLLM</td>
+<td>Limited to API-based workarounds</td>
+<td>Deepseek</td>
+</tr>
+<tr>
+<td><strong>Performance (MT-Bench)</strong></td>
+<td>8.32 (outperforms Llama2-13B and Mistral-7B)</td>
+<td>8.99 (GPT-4)</td>
+<td>OpenAI (margin)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Takeaway</strong>: Deepseek-R1 offers <strong>95% of GPT-3.5’s performance</strong> at zero cost, with full control over privacy and customization. For advanced users, it’s a no-brainer.</p>
+<hr>
+<h2 id="technical-deep-dive-what-makes-deepseek-r1-tick"><strong>Technical Deep Dive: What Makes Deepseek-R1 Tick?</strong><a hidden class="anchor" aria-hidden="true" href="#technical-deep-dive-what-makes-deepseek-r1-tick">#</a></h2>
+<h3 id="model-architecture"><strong>Model Architecture</strong><a hidden class="anchor" aria-hidden="true" href="#model-architecture">#</a></h3>
+<ul>
+<li><strong>Layers</strong>: 40 transformer layers with grouped-query attention (GQA) for faster inference.</li>
+<li><strong>Context Window</strong>: 32k tokens (supports long-form tasks).</li>
+<li><strong>Training Data</strong>: 2 trillion tokens from diverse sources (books, code, scientific papers).</li>
+<li><strong>Quantization</strong>: 6-bit (Q6) reduces VRAM usage by 40% vs. full precision (FP16) with minimal accuracy loss.</li>
+</ul>
+<h3 id="hardware-optimization"><strong>Hardware Optimization</strong><a hidden class="anchor" aria-hidden="true" href="#hardware-optimization">#</a></h3>
+<ul>
+<li><strong>CPU</strong>: Intel i9-13900K’s 24 cores (8P+16E) excel at parallelizing inference tasks.</li>
+<li><strong>GPU</strong>: RTX 3060’s 12GB VRAM fits the entire 14B Q6 model (requires ~10GB VRAM).</li>
+<li><strong>RAM</strong>: DDR5’s 5600MT/s bandwidth ensures rapid data loading.</li>
+</ul>
+<hr>
+<h2 id="step-by-step-windows-setup"><strong>Step-by-Step Windows Setup</strong><a hidden class="anchor" aria-hidden="true" href="#step-by-step-windows-setup">#</a></h2>
+<h3 id="1-installing-ollama-windows-edition"><strong>1. Installing Ollama (Windows Edition)</strong><a hidden class="anchor" aria-hidden="true" href="#1-installing-ollama-windows-edition">#</a></h3>
+<p>Ollama simplifies local LLM management. Here’s how to set it up on Windows:</p>
+<ol>
+<li>
+<p><strong>Download the Windows Build</strong>:
+Visit <a href="https://github.com/ollama/ollama">Ollama’s GitHub</a> and download the latest <code>.exe</code> installer.</p>
+</li>
+<li>
+<p><strong>Install via PowerShell</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Ollama</span><span class="p">.</span><span class="n">Ollama</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Start the Ollama Service</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">serve</span>
+</span></span></code></pre></div><p>Keep this running in the background.</p>
+</li>
+<li>
+<p><strong>Pull Deepseek-R1 14B Q6</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">pull</span> <span class="nb">deepseek-r1</span><span class="p">-</span><span class="n">14b-q6</span>
+</span></span><span class="line"><span class="cl"><span class="c"># you can use `huggingface` or `ollama` website to find model of your choice.</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Run the Model with Verbose Logging</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">run</span> <span class="nb">deepseek-r1</span><span class="p">-</span><span class="n">14b-q6</span> <span class="p">-</span><span class="n">-verbose</span>
+</span></span></code></pre></div><p>The <code>--verbose</code> flag shows token generation speed and GPU/CPU utilization.</p>
+</li>
+</ol>
+<h3 id="3-open-webui-chatgpt-style-interface"><strong>3. Open WebUI: ChatGPT-Style Interface</strong><a hidden class="anchor" aria-hidden="true" href="#3-open-webui-chatgpt-style-interface">#</a></h3>
+<p>Transform Ollama into a web-based chatbot with document upload support.</p>
+<ol start="10">
+<li><strong>Install Docker Desktop</strong>:</li>
+</ol>
+<ul>
+<li>Enable WSL2 or Hyper-V in Windows Features.</li>
+<li>Download <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>.</li>
+</ul>
+<ol start="11">
+<li><strong>Run Open WebUI</strong>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">docker</span> <span class="n">run</span> <span class="n">-d</span> <span class="n">-p</span> <span class="n">3000</span><span class="err">:</span><span class="n">8080</span> <span class="p">-</span><span class="n">-name</span> <span class="nb">open-webui</span> <span class="p">-</span><span class="n">-restart</span> <span class="n">always</span> <span class="n">openwebui</span><span class="p">/</span><span class="nb">open-webui</span><span class="err">:</span><span class="n">latest</span>
+</span></span></code></pre></div><ol start="12">
+<li><strong>Access at <code>http://localhost:3000</code></strong>:</li>
+</ol>
+<ul>
+<li>In Settings, set <strong>Ollama Base URL</strong> to <code>http://localhost:11434</code>.</li>
+<li>Select <code>deepseek-r1-14b-q6</code> and start chatting!</li>
+</ul>
+<hr>
+<h2 id="maximizing-performance-on-windows"><strong>Maximizing Performance on Windows</strong><a hidden class="anchor" aria-hidden="true" href="#maximizing-performance-on-windows">#</a></h2>
+<h3 id="gpu-acceleration-with-cuda"><strong>GPU Acceleration with CUDA</strong><a hidden class="anchor" aria-hidden="true" href="#gpu-acceleration-with-cuda">#</a></h3>
+<p>Force Ollama to use your RTX 3060:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">setx</span> <span class="n">OLLAMA_GPU</span> <span class="s2">&#34;True&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">run</span> <span class="nb">deepseek-r1</span><span class="p">-</span><span class="n">14b-q6</span>
+</span></span></code></pre></div><h3 id="advanced-quantization"><strong>Advanced Quantization</strong><a hidden class="anchor" aria-hidden="true" href="#advanced-quantization">#</a></h3>
+<ul>
+<li>Run <strong>4-bit quantized models</strong> for lower VRAM usage:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">run</span> <span class="nb">deepseek-r1</span><span class="p">-</span><span class="n">14b-q4km</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="monitor-resources"><strong>Monitor Resources</strong><a hidden class="anchor" aria-hidden="true" href="#monitor-resources">#</a></h3>
+<ul>
+<li>Use <strong>Task Manager</strong> (Performance tab) to track GPU/CPU usage.</li>
+<li>For detailed metrics, install <a href="https://www.techpowerup.com/gpuz/">GPU-Z</a>.</li>
+</ul>
+<hr>
+<h2 id="best-practices-for-advanced-users"><strong>Best Practices for Advanced Users</strong><a hidden class="anchor" aria-hidden="true" href="#best-practices-for-advanced-users">#</a></h2>
+<ol start="16">
+<li><strong>Prompt Engineering</strong>:</li>
+</ol>
+<ul>
+<li>Use <strong>chain-of-thought</strong> prompts:
+<pre tabindex="0"><code>&#34;Let’s think step-by-step. [Your question]&#34;
+</code></pre></li>
+<li>Adjust temperature (<code>--temperature 0.7</code>) for creativity vs. accuracy.</li>
+</ul>
+<ol start="17">
+<li><strong>Fine-Tuning</strong>:
+Use PyTorch on Windows Subsystem for Linux (WSL2):</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install transformers datasets
+</span></span></code></pre></div><ol start="18">
+<li><strong>Layer Offloading</strong>:
+Split model layers between GPU and CPU for larger models:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">ollama</span> <span class="n">run</span> <span class="nb">deepseek-r1</span><span class="p">-</span><span class="n">14b-q6</span> <span class="p">-</span><span class="n">-num-gpu-layers</span> <span class="n">30</span>
+</span></span></code></pre></div><hr>
+<h2 id="conclusion"><strong>Conclusion</strong><a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a <strong>privacy-first, cost-free alternative to OpenAI</strong>. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀</p>
+<hr>
+<h2 id="references--tools"><strong>References &amp; Tools</strong><a hidden class="anchor" aria-hidden="true" href="#references--tools">#</a></h2>
+<ol>
+<li><a href="https://ollama.ai/download">Ollama Windows Installation</a></li>
+<li><a href="https://huggingface.co/deepseek-ai/deepseek-r1-14b">Deepseek-R1 Model Card</a></li>
+<li><a href="https://docs.openwebui.com/">Open WebUI Docker Guide</a></li>
+<li><a href="https://developer.nvidia.com/cuda-toolkit">NVIDIA CUDA Toolkit</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://ankitdeshmukh.com/tags/llm/">LLM</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/rag/">RAG</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/deepseekr1/">DeepseekR1</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/chatgpt/">ChatGPT</a></li>
+      <li><a href="https://ankitdeshmukh.com/tags/opensourceai/">OpenSourceAI</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://ankitdeshmukh.com/post/2025-01-17-variogram/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Understanding Variogram in Geospatial Analysis</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui on twitter"
+        href="https://twitter.com/intent/tweet/?text=Setting%20Up%20Local%20Large%20Language%20Models%20on%20Windows%3a%20Ollama%2c%20RAG%2c%20and%20Opne-webui&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-02-07-running-llm-locally-setting-up-deepseek-r1%2f&amp;hashtags=LLM%2cRAG%2cDeepseekR1%2cChatGPT%2cOpenSourceAI">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-02-07-running-llm-locally-setting-up-deepseek-r1%2f&amp;title=Setting%20Up%20Local%20Large%20Language%20Models%20on%20Windows%3a%20Ollama%2c%20RAG%2c%20and%20Opne-webui&amp;summary=Setting%20Up%20Local%20Large%20Language%20Models%20on%20Windows%3a%20Ollama%2c%20RAG%2c%20and%20Opne-webui&amp;source=https%3a%2f%2fankitdeshmukh.com%2fpost%2f2025-02-07-running-llm-locally-setting-up-deepseek-r1%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
