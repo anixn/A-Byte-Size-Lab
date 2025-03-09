@@ -5,7 +5,7 @@ date: '2025-02-07'
 slug: ["Running LLM Locally"]
 categories: ["tutorial"]
 tags: ["LLM","RAG", "DeepseekR1", "ChatGPT", "OpenSourceAI"]
-draft: true
+draft: false
 ---
 
 With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc...) and other you can access via APIs with some cost (OpneAI's chatGPT, Anthropic’s Claude, Google’s Bard, etc...). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally [(for more details)](https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025)
@@ -37,14 +37,12 @@ Based on some research I choose Ollama
 | `ollama ps`                  | Show last running model memory usage (CPU/GPU).|
 
 ```
-
   ██████╗ ██████╗ ███████╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██╗   ██╗██╗
  ██╔═══██╗██╔══██╗██╔════╝████╗  ██║    ██║    ██║██╔════╝██╔══██╗██║   ██║██║
  ██║   ██║██████╔╝█████╗  ██╔██╗ ██║    ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██║
  ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║    ██║███╗██║██╔══╝  ██╔══██╗██║   ██║██║
  ╚██████╔╝██║     ███████╗██║ ╚████║    ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║
   ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝     ╚══╝╚══╝ ╚══════╝╚═════╝  ╚═════╝ ╚═╝
-
 ```
 
 > _This my learnings of LLMs and setting up LLMs in my local machine._
@@ -124,111 +122,6 @@ Ollama simplifies local LLM management. Here’s how to set it up on Windows:
    ```
    The `--verbose` flag shows token generation speed and GPU/CPU utilization.
 
----
-
-### **2. Configuring Elia (Terminal Chat Agent)**
-
-Elia turns PowerShell into a ChatGPT-like interface. Perfect for coders who live in the terminal.
-
-6. **Install Python 3.11+**:
-   Use the [Windows Store](https://apps.microsoft.com/detail/python-311/9NRWMJP3717K) for a seamless setup.
-
-7. **Create a Conda Environment** (optional but recommended):
-   ```powershell
-   conda create -n llm python=3.11
-   conda activate llm
-   ```
-
-8. **Install Elia**:
-   ```powershell
-   pip install elia
-   ```
-
-9. **Start Chatting**:
-   ```powershell
-   elia chat --model deepseek-r1-14b-q6
-   ```
-----------------
-It looks like the **Elia** repository does not include a `requirements.txt` file. Instead, we need to install dependencies manually. Here's how you can fix the issue and install Elia properly with **Conda** on Windows 11.
-
----
-
-## **1. Create a Conda Environment for Elia**
-Open **Anaconda Prompt** (or Command Prompt if Conda is in your PATH) and run:
-
-```sh
-conda create -n elia_env python=3.10 -y
-conda activate elia_env
-```
-
----
-
-## **2. Clone Elia Repository**
-Make sure you have **Git installed** (`git --version` to check).
-If not, install it from: [Git for Windows](https://git-scm.com/download/win).
-
-Now, clone the **Elia** repository:
-
-```sh
-git clone https://github.com/darrenburns/elia.git
-cd elia
-```
-
----
-
-## **3. Install Elia’s Dependencies**
-Since there's no `requirements.txt`, install dependencies manually:
-
-```sh
-pip install poetry
-poetry install
-```
-
-If `poetry install` fails, try:
-
-```sh
-pip install -e .
-```
-
----
-
-## **4. Run Elia**
-Now, launch **Elia**:
-
-```sh
-python -m elia
-```
-
----
-
-## **5. Run Elia with Ollama (Optional)**
-If you want **Elia to work with a local LLM**, install **Ollama**:
-
-```sh
-winget install Ollama.Ollama
-```
-
-Download and run **DeepSeek-R1**:
-
-```sh
-ollama pull deepseek-r1
-ollama run deepseek-r1
-```
-
-Run Elia with Ollama:
-
-```sh
-python -m elia --ollama
-```
-
----
-
-## **🎯 Done!**
-Now **Elia** is running in your **Conda** environment on **Windows 11**. 🚀 Let me know if you run into issues!
-
-
----
-
 ### **3. Open WebUI: ChatGPT-Style Interface**
 
 Transform Ollama into a web-based chatbot with document upload support.
@@ -245,26 +138,6 @@ Transform Ollama into a web-based chatbot with document upload support.
 12. **Access at `http://localhost:3000`**:
    - In Settings, set **Ollama Base URL** to `http://localhost:11434`.
    - Select `deepseek-r1-14b-q6` and start chatting!
-
----
-
-### **4. Advanced RAG with AnythingLLM**
-
-For enterprise-grade document analysis, deploy AnythingLLM:
-
-13. **Install Node.js 18+**:
-   Use the [Windows installer](https://nodejs.org/).
-
-14. **Clone and Setup**:
-   ```powershell
-   git clone https://github.com/anythingllm/anythingllm.git
-   cd anythingllm
-   npm install
-   ```
-
-15. **Launch the Desktop App**:
-   - Open `AnythingLLM.exe` from the release page.
-   - Add documents (PDFs, TXT, etc.) and configure Deepseek-R1 as the LLM.
 
 ---
 
@@ -324,6 +197,3 @@ With this guide, you’ve unlocked the full potential of your Windows machine, t
 2. [Deepseek-R1 Model Card](https://huggingface.co/deepseek-ai/deepseek-r1-14b)
 3. [Open WebUI Docker Guide](https://docs.openwebui.com/)
 4. [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
-
----
-**Ready to join the local LLM revolution?** Share this guide with your network and tag #LocalLLMShowdown! 🌟
