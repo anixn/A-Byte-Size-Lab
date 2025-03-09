@@ -1,13 +1,53 @@
 ---
-title: "Ultimate Guide to Setting Up Deepseek-R1 14B Q6 on Windows: Ollama, RAG, and Battle-Tested Performance"
+title: "Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui"
 author: 'Dr. Ankit Deshmukh & Deepseek R1'
 date: '2025-02-07'
 slug: ["Running LLM Locally"]
 categories: ["tutorial"]
 tags: ["LLM","RAG", "DeepseekR1", "ChatGPT", "OpenSourceAI"]
+draft: true
 ---
 
-> _This my learnings of LLMs and setting up LLMs in my locan machine._
+With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc...) and other you can access via APIs with some cost (OpneAI's chatGPT, Anthropic’s Claude, Google’s Bard, etc...). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally [(for more details)](https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025)
+
+Based on some research I choose Ollama
+
+{{< figure
+  src="Ollama.png"
+  alt="Ollama Website screenshow."
+  link="https://ollama.com/"
+  caption="Screenshot of the Ollama website, showcasing its support for running large language models like Llama 3.3, DeepSeek-R1, Phi-4, Mistral, and Gemma 2 locally on macOS, Linux, and Windows."
+  class="ma0 w-75 center"
+>}}
+
+
+| Command                      | Description |
+|------------------------------|-------------|
+| `ollama run <model>`         | Runs the specified model interactively. |
+| `ollama pull <model>`        | Downloads a model from the repository. |
+| `ollama list`                | Lists all available models on the system. |
+| `ollama create <modelfile>`  | Creates a new model from a Modelfile. |
+| `ollama show <model>`        | Displays details about a specific model. |
+| `ollama push <model>`        | Uploads a locally created model to a repository. |
+| `ollama rm <model>`          | Removes a specific model from the system. |
+| `ollama serve`               | Starts an API server for using models programmatically. |
+| `ollama run --system <text>` | Runs a model with a system-level instruction. |
+| `ollama help`                | Displays help information for `ollama` commands. |
+| `ollama version`             | Display the installed Ollama version.|
+| `ollama ps`                  | Show last running model memory usage (CPU/GPU).|
+
+```
+
+  ██████╗ ██████╗ ███████╗███╗   ██╗    ██╗    ██╗███████╗██████╗ ██╗   ██╗██╗
+ ██╔═══██╗██╔══██╗██╔════╝████╗  ██║    ██║    ██║██╔════╝██╔══██╗██║   ██║██║
+ ██║   ██║██████╔╝█████╗  ██╔██╗ ██║    ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██║
+ ██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║    ██║███╗██║██╔══╝  ██╔══██╗██║   ██║██║
+ ╚██████╔╝██║     ███████╗██║ ╚████║    ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║
+  ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝     ╚══╝╚══╝ ╚══════╝╚═════╝  ╚═════╝ ╚═╝
+
+```
+
+> _This my learnings of LLMs and setting up LLMs in my local machine._
 
 Welcome to the **definitive guide** for Windows users looking to harness the power of **Deepseek-R1 14B Q6** on a high-end PC. Whether you're an AI researcher, developer, or hobbyist, this guide will transform your **Intel i9-13900K, 64GB DDR5, and RTX 3060 12GB** into a local LLM powerhouse. We’ll dive into **Windows-specific setups**, technical deep dives, and a head-to-head comparison with OpenAI’s models. Let’s get started!
 
@@ -15,7 +55,7 @@ Welcome to the **definitive guide** for Windows users looking to harness the pow
   src="Configuration.png"
   alt="A photograph of my Task Manager."
   link=" "
-  caption="Configuration of my machine, running RTX 3060 (12 GB vram) and Intel i9 13900k CPU."
+  caption="Configuration of my machine, running RTX 3060 (12 GB vRAM) and Intel i9 13900k CPU with 64GB RAM."
   class="ma0 w-75"
 >}}
 
@@ -75,6 +115,7 @@ Ollama simplifies local LLM management. Here’s how to set it up on Windows:
 4. **Pull Deepseek-R1 14B Q6**:
    ```powershell
    ollama pull deepseek-r1-14b-q6
+   # you can use `huggingface` or `ollama` website to find model of your choice.
    ```
 
 5. **Run the Model with Verbose Logging**:
@@ -107,6 +148,84 @@ Elia turns PowerShell into a ChatGPT-like interface. Perfect for coders who live
    ```powershell
    elia chat --model deepseek-r1-14b-q6
    ```
+----------------
+It looks like the **Elia** repository does not include a `requirements.txt` file. Instead, we need to install dependencies manually. Here's how you can fix the issue and install Elia properly with **Conda** on Windows 11.
+
+---
+
+## **1. Create a Conda Environment for Elia**
+Open **Anaconda Prompt** (or Command Prompt if Conda is in your PATH) and run:
+
+```sh
+conda create -n elia_env python=3.10 -y
+conda activate elia_env
+```
+
+---
+
+## **2. Clone Elia Repository**
+Make sure you have **Git installed** (`git --version` to check).
+If not, install it from: [Git for Windows](https://git-scm.com/download/win).
+
+Now, clone the **Elia** repository:
+
+```sh
+git clone https://github.com/darrenburns/elia.git
+cd elia
+```
+
+---
+
+## **3. Install Elia’s Dependencies**
+Since there's no `requirements.txt`, install dependencies manually:
+
+```sh
+pip install poetry
+poetry install
+```
+
+If `poetry install` fails, try:
+
+```sh
+pip install -e .
+```
+
+---
+
+## **4. Run Elia**
+Now, launch **Elia**:
+
+```sh
+python -m elia
+```
+
+---
+
+## **5. Run Elia with Ollama (Optional)**
+If you want **Elia to work with a local LLM**, install **Ollama**:
+
+```sh
+winget install Ollama.Ollama
+```
+
+Download and run **DeepSeek-R1**:
+
+```sh
+ollama pull deepseek-r1
+ollama run deepseek-r1
+```
+
+Run Elia with Ollama:
+
+```sh
+python -m elia --ollama
+```
+
+---
+
+## **🎯 Done!**
+Now **Elia** is running in your **Conda** environment on **Windows 11**. 🚀 Let me know if you run into issues!
+
 
 ---
 
