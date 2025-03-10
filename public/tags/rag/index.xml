@@ -17,7 +17,8 @@
       <pubDate>Fri, 07 Feb 2025 00:00:00 +0000</pubDate>
       
       <guid>https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/</guid>
-      <description>With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc&amp;hellip;) and other you can access via APIs with some cost (OpneAI&amp;rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&amp;hellip;).</description>
+      <description>This is draft version
+With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caveats. You are limited by cost, and privacy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can download many LLM that are open source (Llama, Deepseek, etc&amp;hellip;) and other you can access via APIs with some cost (OpneAI&amp;rsquo;s chatGPT, Anthropic’s Claude, Google’s Bard, etc&amp;hellip;).</description>
     </item>
     
   </channel>

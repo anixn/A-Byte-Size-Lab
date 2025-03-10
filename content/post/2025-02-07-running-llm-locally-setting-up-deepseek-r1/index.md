@@ -5,10 +5,15 @@ date: '2025-02-07'
 slug: ["Running LLM Locally"]
 categories: ["tutorial"]
 tags: ["LLM","RAG", "DeepseekR1", "ChatGPT", "OpenSourceAI"]
+cover:
+    image: "Cover.png"
+    alt: "Cover images consisting Lamma, Ollama"
 draft: false
 ---
 
-With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caviat. You are limited by cost, and privecy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can downlaod many LLM that are open source (Llama, Deepseek, etc...) and other you can access via APIs with some cost (OpneAI's chatGPT, Anthropic’s Claude, Google’s Bard, etc...). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally [(for more details)](https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025)
+> **This is draft version**
+
+With the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caveats. You are limited by cost, and privacy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can download many LLM that are open source (Llama, Deepseek, etc...) and other you can access via APIs with some cost (OpneAI's chatGPT, Anthropic’s Claude, Google’s Bard, etc...). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally [(for more details)](https://www.godofprompt.ai/blog/top-10-llm-tools-to-run-models-locally-in-2025)
 
 Based on some research I choose Ollama:
 
@@ -93,6 +98,8 @@ Before we dive into setup, let’s address the elephant in the room: **How does 
 
 ---
 
+
+
 ## **Step-by-Step Windows Setup**
 
 ### **1. Installing Ollama (Windows Edition)**
@@ -127,7 +134,7 @@ Ollama simplifies local LLM management. Here’s how to set it up on Windows:
 Transform Ollama into a web-based chatbot with document upload support.
 
 10. **Install Docker Desktop**:
-   - Enable WSL2 or Hyper-V in Windows Features.
+   - Enable WSL2 or Hyper-V in Windows Features (WSL2 recommended).
    - Download [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 11. **Run Open WebUI**:
@@ -135,55 +142,35 @@ Transform Ollama into a web-based chatbot with document upload support.
    docker run -d -p 3000:8080 --name open-webui --restart always openwebui/open-webui:latest
    ```
 
-12. **Access at `http://localhost:3000`**:
+{{< figure
+  src="Docker.png"
+  alt="An image of docker desktop homepage"
+  link="https://www.docker.com/"
+  caption="Screenshot of Docker Desktop showing a running container named 'open-webui' with minimal CPU and memory usage."
+  class="ma0 w-75"
+>}}
+
+1.  **Access at `http://localhost:3000`**:
    - In Settings, set **Ollama Base URL** to `http://localhost:11434`.
    - Select `deepseek-r1-14b-q6` and start chatting!
 
----
 
-## **Maximizing Performance on Windows**
+{{< figure
+  src="Open-webui.png"
+  alt="Open-webui application windows"
+  link="https://docs.openwebui.com/"
+  caption="Screenshot of Open WebUI running on localhost:3000, featuring the Qwen 2.5:14b model with web search and code interpreter options."
+  class="ma0 w-75"
+>}}
 
-### **GPU Acceleration with CUDA**
-Force Ollama to use your RTX 3060:
-```powershell
-setx OLLAMA_GPU "True"
-ollama run deepseek-r1-14b-q6
-```
 
-### **Advanced Quantization**
-- Run **4-bit quantized models** for lower VRAM usage:
-  ```powershell
-  ollama run deepseek-r1-14b-q4km
-  ```
-
-### **Monitor Resources**
-- Use **Task Manager** (Performance tab) to track GPU/CPU usage.
-- For detailed metrics, install [GPU-Z](https://www.techpowerup.com/gpuz/).
-
----
-
-## **Best Practices for Advanced Users**
-
-16. **Prompt Engineering**:
-   - Use **chain-of-thought** prompts:
-     ```
-     "Let’s think step-by-step. [Your question]"
-     ```
-   - Adjust temperature (`--temperature 0.7`) for creativity vs. accuracy.
-
-17. **Fine-Tuning**:
-   Use PyTorch on Windows Subsystem for Linux (WSL2):
-   ```bash
-   pip install transformers datasets
-   ```
-
-18. **Layer Offloading**:
-   Split model layers between GPU and CPU for larger models:
-   ```powershell
-   ollama run deepseek-r1-14b-q6 --num-gpu-layers 30
-   ```
-
----
+{{< figure
+  src="Open-webui-Eval.png"
+  alt="Open-webui application windows"
+  link="https://docs.openwebui.com/"
+  caption="A LLM running with 30+ token/second. Fairly good for a 14B parameter model model."
+  class="ma0 w-75"
+>}}
 
 ## **Conclusion**
 
