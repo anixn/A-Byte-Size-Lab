@@ -106,8 +106,8 @@ With the everyday new large language model (LLM) or reasoning model (LRL), it is
   "keywords": [
     "LLM", "RAG", "DeepseekR1", "ChatGPT", "OpenSourceAI"
   ],
-  "articleBody": " This is draft version\nWith the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caveats. You are limited by cost, and privacy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can download many LLM that are open source (Llama, Deepseek, etc…) and other you can access via APIs with some cost (OpneAI’s chatGPT, Anthropic’s Claude, Google’s Bard, etc…). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally (for more details)\nBased on some research I choose Ollama:\nScreenshot of the Ollama website, showcasing its support for running large language models like Llama 3.3, DeepSeek-R1, Phi-4, Mistral, and Gemma 2 locally on macOS, Linux, and Windows.\nCommand Description ollama run Runs the specified model interactively. ollama pull Downloads a model from the repository. ollama list Lists all available models on the system. ollama create Creates a new model from a Modelfile. ollama show Displays details about a specific model. ollama push Uploads a locally created model to a repository. ollama rm Removes a specific model from the system. ollama serve Starts an API server for using models programmatically. ollama run --system Runs a model with a system-level instruction. ollama help Displays help information for ollama commands. ollama version Display the installed Ollama version. ollama ps Show last running model memory usage (CPU/GPU). ██████╗ ██████╗ ███████╗███╗ ██╗ ██╗ ██╗███████╗██████╗ ██╗ ██╗██╗\r██╔═══██╗██╔══██╗██╔════╝████╗ ██║ ██║ ██║██╔════╝██╔══██╗██║ ██║██║\r██║ ██║██████╔╝█████╗ ██╔██╗ ██║ ██║ █╗ ██║█████╗ ██████╔╝██║ ██║██║\r██║ ██║██╔═══╝ ██╔══╝ ██║╚██╗██║ ██║███╗██║██╔══╝ ██╔══██╗██║ ██║██║\r╚██████╔╝██║ ███████╗██║ ╚████║ ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║\r╚═════╝ ╚═╝ ╚══════╝╚═╝ ╚═══╝ ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═════╝ ╚═╝ This my learnings of LLMs and setting up LLMs in my local machine.\nWelcome to the definitive guide for Windows users looking to harness the power of Deepseek-R1 14B Q6 on a high-end PC. Whether you’re an AI researcher, developer, or hobbyist, this guide will transform your Intel i9-13900K, 64GB DDR5, and RTX 3060 12GB into a local LLM powerhouse. We’ll dive into Windows-specific setups, technical deep dives, and a head-to-head comparison with OpenAI’s models. Let’s get started!\nConfiguration of my machine, running RTX 3060 (12 GB vRAM) and Intel i9 13900k CPU with 64GB RAM.\nWhy Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI Before we dive into setup, let’s address the elephant in the room: How does Deepseek-R1 stack up against OpenAI’s GPT-4 or GPT-3.5? Here’s a detailed breakdown:\nFeature Deepseek-R1 14B Q6 OpenAI GPT-4 Winner Model Size 14B parameters (6-bit quantized) ~1.8T parameters (proprietary) OpenAI (scale) Quantization Support Yes (4-bit, 6-bit, 8-bit) No (cloud-only, full precision) Deepseek Cost Free (open-weight) $0.03–$0.12 per 1k tokens Deepseek Customization Fully customizable (fine-tuning possible) Zero access to weights Deepseek Privacy Fully local (no data leaks) Cloud-based (API logging risks) Deepseek Hardware Requirements Runs on consumer GPUs (e.g., RTX 3060 12GB) Requires API access (no local) Deepseek RAG Support Native integration with tools like AnythingLLM Limited to API-based workarounds Deepseek Performance (MT-Bench) 8.32 (outperforms Llama2-13B and Mistral-7B) 8.99 (GPT-4) OpenAI (margin) Key Takeaway: Deepseek-R1 offers 95% of GPT-3.5’s performance at zero cost, with full control over privacy and customization. For advanced users, it’s a no-brainer.\nTechnical Deep Dive: What Makes Deepseek-R1 Tick? Model Architecture Layers: 40 transformer layers with grouped-query attention (GQA) for faster inference. Context Window: 32k tokens (supports long-form tasks). Training Data: 2 trillion tokens from diverse sources (books, code, scientific papers). Quantization: 6-bit (Q6) reduces VRAM usage by 40% vs. full precision (FP16) with minimal accuracy loss. Hardware Optimization CPU: Intel i9-13900K’s 24 cores (8P+16E) excel at parallelizing inference tasks. GPU: RTX 3060’s 12GB VRAM fits the entire 14B Q6 model (requires ~10GB VRAM). RAM: DDR5’s 5600MT/s bandwidth ensures rapid data loading. Step-by-Step Windows Setup 1. Installing Ollama (Windows Edition) Ollama simplifies local LLM management. Here’s how to set it up on Windows:\nDownload the Windows Build: Visit Ollama’s GitHub and download the latest .exe installer.\nInstall via PowerShell:\nwinget install Ollama.Ollama Start the Ollama Service:\nollama serve Keep this running in the background.\nPull Deepseek-R1 14B Q6:\nollama pull deepseek-r1-14b-q6 # you can use `huggingface` or `ollama` website to find model of your choice. Run the Model with Verbose Logging:\nollama run deepseek-r1-14b-q6 --verbose The --verbose flag shows token generation speed and GPU/CPU utilization.\n3. Open WebUI: ChatGPT-Style Interface Transform Ollama into a web-based chatbot with document upload support.\nInstall Docker Desktop: Enable WSL2 or Hyper-V in Windows Features (WSL2 recommended). Download Docker Desktop. Run Open WebUI: docker run -d -p 3000:8080 --name open-webui --restart always openwebui/open-webui:latest Screenshot of Docker Desktop showing a running container named ‘open-webui’ with minimal CPU and memory usage.\nAccess at http://localhost:3000: In Settings, set Ollama Base URL to http://localhost:11434. Select deepseek-r1-14b-q6 and start chatting! Screenshot of Open WebUI running on localhost:3000, featuring the Qwen 2.5:14b model with web search and code interpreter options.\nA LLM running with 30+ token/second. Fairly good for a 14B parameter model model.\nConclusion With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a privacy-first, cost-free alternative to OpenAI. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀\nReferences \u0026 Tools Ollama Windows Installation Deepseek-R1 Model Card Open WebUI Docker Guide NVIDIA CUDA Toolkit ",
-  "wordCount" : "927",
+  "articleBody": " This is draft version\nWith the everyday new large language model (LLM) or reasoning model (LRL), it is tedious to keep track of. As you can use chatgpt or deepseek chat online there are some caveats. You are limited by cost, and privacy. Thus, I thought of setting LLM locally in my windows machine. In this journey I learn a lot about nuance of LLM. First you can download many LLM that are open source (Llama, Deepseek, etc…) and other you can access via APIs with some cost (OpneAI’s chatGPT, Anthropic’s Claude, Google’s Bard, etc…). As I want to use only freely available models. Now, where do we start, we can use tools such as Ollama.cpp, Ollama, LMStudio for run LLM locally (for more details)\nBased on some research I choose Ollama:\nScreenshot of the Ollama website, showcasing its support for running large language models like Llama 3.3, DeepSeek-R1, Phi-4, Mistral, and Gemma 2 locally on macOS, Linux, and Windows.\nCommand Description ollama run Runs the specified model interactively. ollama pull Downloads a model from the repository. ollama list Lists all available models on the system. ollama create Creates a new model from a Modelfile. ollama show Displays details about a specific model. ollama push Uploads a locally created model to a repository. ollama rm Removes a specific model from the system. ollama serve Starts an API server for using models programmatically. ollama run --system Runs a model with a system-level instruction. ollama help Displays help information for ollama commands. ollama version Display the installed Ollama version. ollama ps Show last running model memory usage (CPU/GPU). ██████╗ ██████╗ ███████╗███╗ ██╗ ██╗ ██╗███████╗██████╗ ██╗ ██╗██╗\r██╔═══██╗██╔══██╗██╔════╝████╗ ██║ ██║ ██║██╔════╝██╔══██╗██║ ██║██║\r██║ ██║██████╔╝█████╗ ██╔██╗ ██║ ██║ █╗ ██║█████╗ ██████╔╝██║ ██║██║\r██║ ██║██╔═══╝ ██╔══╝ ██║╚██╗██║ ██║███╗██║██╔══╝ ██╔══██╗██║ ██║██║\r╚██████╔╝██║ ███████╗██║ ╚████║ ╚███╔███╔╝███████╗██████╔╝╚██████╔╝██║\r╚═════╝ ╚═╝ ╚══════╝╚═╝ ╚═══╝ ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═════╝ ╚═╝ This my learnings of LLMs and setting up LLMs in my local machine.\nWelcome to the definitive guide for Windows users looking to harness the power of Deepseek-R1 14B Q6 on a high-end PC. Whether you’re an AI researcher, developer, or hobbyist, this guide will transform your Intel i9-13900K, 64GB DDR5, and RTX 3060 12GB into a local LLM powerhouse. We’ll dive into Windows-specific setups, technical deep dives, and a head-to-head comparison with OpenAI’s models. Let’s get started!\nConfiguration of my machine, running RTX 3060 (12 GB vRAM) and Intel i9 13900k CPU with 64GB RAM.\nWhy Deepseek-R1 14B Q6? A Technical Showdown vs. OpenAI Before we dive into setup, let’s address the elephant in the room: How does Deepseek-R1 stack up against OpenAI’s GPT-4 or GPT-3.5? Here’s a detailed breakdown:\nFeature Deepseek-R1 14B Q6 OpenAI GPT-4 Winner Model Size 14B parameters (6-bit quantized) ~1.8T parameters (proprietary) OpenAI (scale) Quantization Support Yes (4-bit, 6-bit, 8-bit) No (cloud-only, full precision) Deepseek Cost Free (open-weight) $0.03–$0.12 per 1k tokens Deepseek Customization Fully customizable (fine-tuning possible) Zero access to weights Deepseek Privacy Fully local (no data leaks) Cloud-based (API logging risks) Deepseek Hardware Requirements Runs on consumer GPUs (e.g., RTX 3060 12GB) Requires API access (no local) Deepseek RAG Support Native integration with tools like AnythingLLM Limited to API-based workarounds Deepseek Performance (MT-Bench) 8.32 (outperforms Llama2-13B and Mistral-7B) 8.99 (GPT-4) OpenAI (margin) Key Takeaway: Deepseek-R1 offers 95% of GPT-3.5’s performance at zero cost, with full control over privacy and customization. For advanced users, it’s a no-brainer.\nTechnical Deep Dive: What Makes Deepseek-R1 Tick? Model Architecture Layers: 40 transformer layers with grouped-query attention (GQA) for faster inference. Context Window: 32k tokens (supports long-form tasks). Training Data: 2 trillion tokens from diverse sources (books, code, scientific papers). Quantization: 6-bit (Q6) reduces VRAM usage by 40% vs. full precision (FP16) with minimal accuracy loss. Hardware Optimization CPU: Intel i9-13900K’s 24 cores (8P+16E) excel at parallelizing inference tasks. GPU: RTX 3060’s 12GB VRAM fits the entire 14B Q6 model (requires ~10GB VRAM). RAM: DDR5’s 5600MT/s bandwidth ensures rapid data loading. Step-by-Step Windows Setup 1. Installing Ollama (Windows Edition) Ollama simplifies local LLM management. Here’s how to set it up on Windows:\nDownload the Windows Build: Visit Ollama’s GitHub and download the latest .exe installer.\nInstall via PowerShell:\nwinget install Ollama.Ollama Start the Ollama Service:\nollama serve Keep this running in the background.\nPull Deepseek-R1 14B Q6:\nollama pull deepseek-r1-14b-q6 # you can use `huggingface` or `ollama` website to find model of your choice. Run the Model with Verbose Logging:\nollama run deepseek-r1-14b-q6 --verbose The --verbose flag shows token generation speed and GPU/CPU utilization.\n3. Open WebUI: ChatGPT-Style Interface Transform Ollama into a web-based chatbot with document upload support.\nInstall Docker Desktop: Enable WSL2 or Hyper-V in Windows Features (WSL2 recommended). Download Docker Desktop. Run Open WebUI: docker run -d -p 3000:8080 --name open-webui --restart always openwebui/open-webui:latest Screenshot of Docker Desktop showing a running container named ‘open-webui’ with minimal CPU and memory usage.\nAccess at http://localhost:3000: In Settings, set Ollama Base URL to http://localhost:11434. Select deepseek-r1-14b-q6 and start chatting! Screenshot of Open WebUI running on localhost:3000, featuring the Qwen 2.5:14b model with web search and code interpreter options.\nA LLM running with 30+ token/second. Fairly good for a 14B parameter model model.\nSimple use of the opne-webui are plenty.\nConclusion With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a privacy-first, cost-free alternative to OpenAI. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀\nReferences \u0026 Tools Ollama Windows Installation Deepseek-R1 Model Card Open WebUI Docker Guide NVIDIA CUDA Toolkit ",
+  "wordCount" : "934",
   "inLanguage": "en",
   "image":"https://ankitdeshmukh.com/Cover.png","datePublished": "2025-02-07T00:00:00Z",
   "dateModified": "2025-02-07T00:00:00Z",
@@ -192,16 +192,6 @@ With the everyday new large language model (LLM) or reasoning model (LRL), it is
             <li>
                 <a href="https://ankitdeshmukh.com/search/" title="🔎︎">
                     <span>🔎︎</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/pomodoro/" title="🕰️">
-                    <span>🕰️</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/colorpicker/" title="🎨">
-                    <span>🎨</span>
                 </a>
             </li>
         </ul>
@@ -495,6 +485,7 @@ Visit <a href="https://github.com/ollama/ollama">Ollama’s GitHub</a> and downl
         </figcaption>
 </figure>
 
+<p>Simple use of the opne-webui are plenty.</p>
 <h2 id="conclusion"><strong>Conclusion</strong><a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a <strong>privacy-first, cost-free alternative to OpenAI</strong>. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀</p>
 <hr>
@@ -551,7 +542,74 @@ Visit <a href="https://github.com/ollama/ollama">Ollama’s GitHub</a> and downl
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
-</a>
+</a><style>
+  .update-box {
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: var(--entry);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .update-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+  }
+
+  .update-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+  }
+
+  .update-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .update-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--content);
+  }
+
+  .update-link {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    color: burlywood;
+  }
+
+  .update-link:hover {
+    text-decoration: underline;
+    color: rgb(82, 82, 221);
+  }
+</style>
+
+<div class="update-box">
+  <div class="update-header">
+    <svg class="update-icon" viewBox="0 0 24 24">
+      <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+    </svg>
+    <h2 class="update-title">Website Updates!</h2>
+  </div>
+  <div class="update-content">
+    <p>2025-03-26 | <br /> Published and online: A Sustainable Framework for Drought Modeling using Meteorological Drought Indicators as Proxies for Hydrological Drought</p>
+    <a href="https://doi.org/10.1109/SETCOM64758.2025.10932368" class="update-link">Learn more →</a>
+<br />  <br />
+    <p>2025-03-26 | <br /> Published and online: Sustainable Modeling Framework for the Prediction in Ungauged Catchments: Leveraging Large-Sample Hydrology Datasets with Machine Learning</p>
+    <a href="https://doi.org/10.1109/SETCOM64758.2025.10932500" class="update-link">Learn more →</a>
+  </div>
+</div>
+
 
 <script>
     let menu = document.getElementById('menu')

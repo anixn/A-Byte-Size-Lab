@@ -172,6 +172,8 @@ Transform Ollama into a web-based chatbot with document upload support.
   class="ma0 w-75"
 >}}
 
+Simple use of the opne-webui are plenty.
+
 ## **Conclusion**
 
 With this guide, you’ve unlocked the full potential of your Windows machine, turning it into a **privacy-first, cost-free alternative to OpenAI**. Deepseek-R1 14B Q6 isn’t just a model—it’s a statement against closed-source AI monopolies. Now go forth and build, innovate, and experiment. The future of open-weight AI is in your hands. 🚀

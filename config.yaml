@@ -40,15 +40,6 @@ languages:
                 - name: Avocation
                   url: /Avocation/
                   weight: 25
-                - name: "🕰️"
-                  url: pomodoro/
-                  weight: 30
-                - name: "🎨"
-                  url: colorpicker/
-                  weight: 35
-                # - name: 🏷️
-                #   url: tags/
-                #   weight: 40
                 - name: "🔎︎"
                   url: search/
                   weight: 30
@@ -93,6 +84,11 @@ params:
               url: /research/updates/
             - name: Archive
               url: /archives
+            - name: " 🕰️Timer"
+              url: /projects/pomodoro/
+            - name: "🎨 Color Picker"
+              url: /projects/colorpicker/
+
 
 
     homeInfoParams:
