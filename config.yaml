@@ -33,16 +33,22 @@ languages:
                   weight: 10
                 - name: Research
                   url: /Research/
-                  weight: 11
+                  weight: 12
                 - name: Slides
                   url: /Slides/
                   weight: 20
                 - name: Avocation
                   url: /Avocation/
-                  weight: 25
+                  weight: 30
+                - name: Archive
+                  url: /archives
+                  weight: 11
+                - name: "About me"
+                  url: about/
+                  weight: 50
                 - name: "🔎︎"
                   url: search/
-                  weight: 30
+                  weight: 60
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -78,18 +84,12 @@ params:
         imageWidth: 160
         imageHeight: 160
         buttons:
-            - name: About me
-              url: /about
-            - name: Updates⁺
+            - name: 🔄 Updates⁺
               url: /research/updates/
-            - name: Archive
-              url: /archives
-            - name: " 🕰️Timer"
+            - name: " 🕰️ Timer"
               url: /projects/pomodoro/
-            - name: "🎨 Color Picker"
+            - name: "🎨 Palette"
               url: /projects/colorpicker/
-
-
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
