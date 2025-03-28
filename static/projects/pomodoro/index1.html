@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="index, follow">
+    <title>Zen Pomodoro Timer | Ankit's Hydro-Geo Insights</title>
+    <meta name="keywords" content="Ankit Deshmukh, Timer, Zen, Pomodoro, Meditation, Buddha, Peace, Calm">
+    <meta name="description"
+        content="Discover calm and happiness with Ankit Deshmukh's Pomodoro Timer, a Zen-inspired tool for focus and peace. Enhance productivity, practice meditation, and enjoy soothing soundscapes like Cosmic Hymn and Relaxing Rain. Cultivate mindfulness and inner tranquility in an attention-hungry world.">
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+
+    <script>
+        var doNotTrack = false;
+        if (!doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+        }
+    </script>
+
+    <meta property="og:title" content="Zen Pomodoro Timer">
+    <meta name="author" content="Dr. Ankit Deshmukh">
+    <link rel="canonical" href="https://ankitdeshmukh.com/pomodoro/">
+    <meta name="google-site-verification" content="G-R5FJKDQD1M">
+
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Onest', 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            color: #f0e6d2;
+            margin: 0;
+            background-image: url('ThinkingPlace.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        #app {
+            text-align: center;
+            background-color: #2d2a28;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 380px;
+            max-height: 80vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            overflow-x: hidden;
+            margin: 10px 0;
+            border: 1px solid #3a3735;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 0;
+            padding: 10px 16px;
+            background-color: #d79921;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Onest';
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            min-width: 80px;
+        }
+
+        button:hover {
+            background-color: #fabd2f;
+            transform: translateY(-1px);
+        }
+
+        ol {
+            padding-left: 0;
+            text-align: left;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        li {
+            padding: 8px 12px;
+            background-color: #403c3a;
+            color: #f0e6d2;
+            margin: 6px 0;
+            border-radius: 8px;
+            list-style-position: inside;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            border: 1px solid #504945;
+        }
+
+        li:hover {
+            background-color: #504945;
+        }
+
+        #new-task {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 2px solid #665c54;
+            border-radius: 6px;
+            background-color: #403c3a;
+            color: #f0e6d2;
+            margin: 8px 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+
+        #timer {
+            font-size: 48px;
+            margin: 15px 0;
+            font-weight: 700;
+            color: #fabd2f;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .current-task {
+            font-weight: 500;
+            margin: 10px 0;
+            background-color: #504945;
+            color: #f0e6d2;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid #665c54;
+        }
+
+        #pomodoro-count {
+            margin: 15px 0 5px;
+            font-size: 16px;
+            color: #b8bb26;
+            font-weight: 600;
+        }
+
+        h1 {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fabd2f;
+        }
+
+        .delete-task {
+            background-color: #743638;
+            color: #f0e6d2;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 12px;
+        }
+
+        .delete-task:hover {
+            background-color: #8f4042;
+        }
+
+        .task-time {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-left: auto;
+            padding-right: 6px;
+        }
+
+        .collapsible-section {
+            width: 100%;
+            margin: 12px 0;
+        }
+
+        .collapsible-header {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #d79921;
+            padding: 6px 0;
+        }
+
+        #audio-select {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #403c3a;
+            color: #f0e6d2;
+            border: 2px solid #665c54;
+            border-radius: 6px;
+            font-family: 'Onest', 'Roboto', sans-serif;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        blockquote {
+            font-size: 16px;
+            color: #8ec07c;
+            border-left: 3px solid #8ec07c;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        a {
+            color: #fabd2f;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #d79921;
+            text-decoration: underline;
+        }
+
+        .app-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .app-footer p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #a89984;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 28px; height: auto;">Zen Pomodoro Timer</h1>
+        <div id="timer">
+            <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+
+        <div class="button-group">
+            <button id="toggle-timer">Start</button>
+            <button id="reset">Reset</button>
+            <button id="toggle-music">Play Music</button>
+        </div>
+
+        <select id="audio-select">
+            <option value="background.opus">Track 1</option>
+            <option value="background2.opus">Track 2</option>
+            <option value="background3.opus">Track 3</option>
+        </select>
+
+        <audio id="background-audio" src="background.opus" type="audio/ogg; codecs=opus" loop></audio>
+        <div id="alerts"></div>
+        <div id="pomodoro-count">Pomodoros: 0</div>
+
+        <div class="collapsible-section">
+            <h4 class="collapsible-header">Current Task</h4>
+            <div class="collapsible-content">
+                <div class="current-task" id="current-task">Select a task from tasklist!</div>
+            </div>
+        </div>
+
+        <div class="collapsible-section">
+            <h4 class="collapsible-header">To-Do List</h4>
+            <div class="collapsible-content">
+                <input type="text" id="new-task" placeholder="Add a new task...">
+                <div class="button-group">
+                    <button id="add-task">Add Task</button>
+                </div>
+                <ol id="to-do-list"></ol>
+            </div>
+        </div>
+    </div>
+
+    <div id="app" style="text-align: left;">
+        <h3 style="margin: 15px 0; color: #d79921; font-size: 18px;">A way of meditation ... </h3>
+        <blockquote>
+            "Among all the secrets, I am the Silence!"<br />
+            <cite>— Geeta</cite>
+        </blockquote>
+        <p style="margin: 15px 0; font-size: 14px;">The observation of Silence by restraining speech is one of the most powerful meditation techniques.</p>
+    </div>
+
+    <div class="app-footer">
+        <p>
+            Follow me on
+            <a href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer">Twitter</a> |
+            <a href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener noreferrer">Website</a> |
+            <a href="https://www.youtube.com/@edgeospatial" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </p>
+    </div>
+
+    <script>
+        let minutes = 25;
+        let seconds = 0;
+        let timerInterval;
+        let pomodoroCount = 0;
+        let isTimerRunning = false;
+
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        const toggleTimerButton = document.getElementById('toggle-timer');
+        const resetButton = document.getElementById('reset');
+        const toDoList = document.getElementById('to-do-list');
+        const addTaskButton = document.getElementById('add-task');
+        const newTaskInput = document.getElementById('new-task');
+        const backgroundAudio = document.getElementById('background-audio');
+        const toggleMusicButton = document.getElementById('toggle-music');
+        const currentTaskElement = document.getElementById('current-task');
+        const pomodoroCountElement = document.getElementById('pomodoro-count');
+        const audioSelect = document.getElementById('audio-select');
+
+        window.addEventListener('beforeunload', (e) => {
+            if (isTimerRunning) {
+                e.preventDefault();
+                e.returnValue = 'Your timer is still running! Are you sure you want to leave?';
+                return 'Your timer is still running! Are you sure you want to leave?';
+            }
+        });
+
+        function updateTaskNumbers() {
+            const tasks = toDoList.children;
+            for (let i = 0; i < tasks.length; i++) {
+                const taskNumber = tasks[i].querySelector('.task-number');
+                if (taskNumber) {
+                    taskNumber.textContent = `${i + 1}.`;
+                }
+            }
+        }
+
+        function addTask() {
+            const taskText = newTaskInput.value.trim();
+            if (!taskText) {
+                alert('Please enter a task name');
+                return;
+            }
+
+            try {
+                const taskItem = document.createElement('li');
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'task-content';
+
+                const numberSpan = document.createElement('span');
+                numberSpan.className = 'task-number';
+
+                const taskSpan = document.createElement('span');
+                taskSpan.textContent = taskText;
+
+                const timeSpan = document.createElement('span');
+                timeSpan.className = 'task-time';
+                const now = new Date();
+                timeSpan.textContent = now.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '×';
+                deleteButton.classList.add('delete-task');
+                deleteButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    taskItem.remove();
+                    updateTaskNumbers();
+                });
+
+                taskItem.addEventListener('click', () => {
+                    currentTaskElement.textContent = `⌛ ${taskText}`;
+                });
+
+                contentDiv.appendChild(numberSpan);
+                contentDiv.appendChild(taskSpan);
+                contentDiv.appendChild(timeSpan);
+                taskItem.appendChild(contentDiv);
+                taskItem.appendChild(deleteButton);
+                toDoList.appendChild(taskItem);
+
+                updateTaskNumbers();
+                newTaskInput.value = '';
+                newTaskInput.focus();
+
+            } catch (error) {
+                console.error('Error adding task:', error);
+                alert('Failed to add task. Please try again.');
+            }
+        }
+
+        function updateTimer() {
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+            }
+
+            if (minutes < 0) {
+                clearInterval(timerInterval);
+                alert('Pomodoro complete!');
+                pomodoroCount++;
+                pomodoroCountElement.textContent = `Pomodoros: ${pomodoroCount}`;
+                resetTimer();
+                return;
+            }
+
+            minutesElement.textContent = String(minutes).padStart(2, '0');
+            secondsElement.textContent = String(seconds).padStart(2, '0');
+        }
+
+        function toggleTimer() {
+            if (isTimerRunning) {
+                backgroundAudio.pause();
+                clearInterval(timerInterval);
+                toggleTimerButton.textContent = 'Start';
+            } else {
+                backgroundAudio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    alert('Error playing audio. Please interact with the page first.');
+                });
+                timerInterval = setInterval(updateTimer, 1000);
+                toggleTimerButton.textContent = 'Pause';
+            }
+            isTimerRunning = !isTimerRunning;
+        }
+
+        function resetTimer() {
+            backgroundAudio.pause();
+            clearInterval(timerInterval);
+            minutes = 25;
+            seconds = 0;
+            minutesElement.textContent = '25';
+            secondsElement.textContent = '00';
+            toggleTimerButton.textContent = 'Start';
+            isTimerRunning = false;
+        }
+
+        function toggleMusic() {
+            if (backgroundAudio.paused) {
+                backgroundAudio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    alert('Error playing audio. Please interact with the page first.');
+                });
+                toggleMusicButton.textContent = 'Pause Music';
+            } else {
+                backgroundAudio.pause();
+                toggleMusicButton.textContent = 'Play Music';
+            }
+        }
+
+        function changeAudio() {
+            const selectedAudio = audioSelect.value;
+            backgroundAudio.src = selectedAudio;
+
+            if (!backgroundAudio.paused) {
+                backgroundAudio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    alert('Error playing audio. Please interact with the page first.');
+                });
+            }
+        }
+
+        audioSelect.addEventListener('change', changeAudio);
+
+        document.querySelectorAll('.collapsible-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const section = this.closest('.collapsible-section');
+                section.classList.toggle('collapsed');
+            });
+        });
+
+        addTaskButton.addEventListener('click', addTask);
+        newTaskInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || (e.ctrlKey && e.key === 'Enter')) {
+                addTask();
+            }
+        });
+        toggleTimerButton.addEventListener('click', toggleTimer);
+        resetButton.addEventListener('click', resetTimer);
+        toggleMusicButton.addEventListener('click', toggleMusic);
+    </script>
+</body>
+
+</html>
