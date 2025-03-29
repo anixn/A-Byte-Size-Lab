@@ -9,6 +9,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <meta name="robots" content="index, follow">
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+
+    <script>
+        var doNotTrack = false;
+        if (!doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+        }
+    </script>
+
+
+    <meta name="keywords" content="Ankit Deshmukh, Color, palette, complementary, triadic, monochromatic, analogous,  generate Color Scheme, tools">
+    <meta name="description" content="Explore the ColorPicker project by Ankit Deshmukh, an interactive tool designed to help users select and experiment with colors effortlessly. Perfect for designers, developers, and creatives.">
+
+    <meta property="og:title" content="Scientific Color Palette Generator">
+
+    <meta name="author" content="Dr. Ankit Deshmukh">
+    <link rel="canonical" href="https://ankitdeshmukh.com/projects/colorpicker/">
+    <meta name="google-site-verification" content="G-R5FJKDQD1M">
+
+
     <style>
         :root {
             --primary: #2b65bd;
@@ -381,6 +405,7 @@ button:active {
         </header>
 
         <div class="slider-container">
+            <h3>1. Random color generater with opacity.</h3> <br />
             <div class="color-preview" id="colorPreview"></div>
             <div class="slider-row">
                 <span class="slider-label">Red</span>
@@ -410,7 +435,7 @@ button:active {
         </div>
 
         <div class="slider-container">
-
+            <h3>2. Generater scheme based color pallets.</h3> <br />
 <!-- SVG start -->
 <svg
    width="108.51066mm"
@@ -1669,9 +1694,8 @@ button:active {
 
 <!-- SVG end -->
 
-
-
             <div class="input-group">
+
                 <div>
                     <label for="colorCount">Colors</label>
                     <input type="number" id="colorCount" min="2" max="12" value="5" />
@@ -1692,6 +1716,7 @@ button:active {
 
 
         <div class="slider-container">
+            <h3>3. Select and export predefined color palettes</h3> <br />
             <div class="button-group">
                 <input type="text" class="search-box" placeholder="Search palettes...">
                 <button class="random-palette">✨ Random Palette</button>
