@@ -11,7 +11,7 @@
     <title>Zen Pomodoro Timer | Ankit's Hydro-Geo Insights</title>
     <meta name="keywords" content="Ankit Deshmukh, Timer, Zen, Pomodoro, Meditation, Buddha, Peace, Calm">
     <meta name="description"
-        content="Discover calm and happiness with Ankit Deshmukh's Pomodoro Timer, a Zen-inspired tool for focus and peace. Enhance productivity, practice meditation, and enjoy soothing soundscapes like Cosmic Hymn and Relaxing Rain. Cultivate mindfulness and inner tranquility in an attention-hungry world.">
+        content="Discover calm and happiness with Ankit Deshmukh’s Pomodoro Timer, a Zen-inspired tool for focus and peace. Enhance productivity, practice meditation, and enjoy soothing soundscapes like Cosmic Hymn and Relaxing Rain. Cultivate mindfulness and inner tranquility in an attention-hungry world.">
 
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
 
@@ -26,13 +26,16 @@
     </script>
 
     <meta property="og:title" content="Zen Pomodoro Timer">
+
     <meta name="author" content="Dr. Ankit Deshmukh">
-    <link rel="canonical" href="https://ankitdeshmukh.com/pomodoro/">
+    <link rel="canonical" href="https://ankitdeshmukh.com/projects/pomodoro/">
     <meta name="google-site-verification" content="G-R5FJKDQD1M">
 
+    <!-- <title>Pomodoro Timer</title> -->
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="alternate icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
@@ -45,167 +48,181 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #1a1a1a;
-            color: #f0e6d2;
+            /* Use min-height to allow the body to grow if needed */
+            background-color: #282828;
+            color: #ebdbb2;
             margin: 0;
             background-image: url('ThinkingPlace.webp');
             background-size: cover;
+            /* Ensures the image covers the entire background */
             background-position: center;
+            /* Centers the image */
             background-attachment: fixed;
+            /* Keeps the background fixed while scrolling */
             overflow: hidden;
-            line-height: 1.6;
-            font-size: 16px;
+            /* Prevent body from scrolling */
         }
 
         #app {
             text-align: center;
-            background-color: #2d2a28;
+            background-color: #3c3836ee;
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            padding-top: 14px;
+            padding-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             width: 90%;
-            max-width: 380px;
-            max-height: 80vh;
-            overflow-y: auto;
+            max-width: 400px;
+            max-height: 60vh;
+            /* Set a maximum height for the app div */
+            /* overflow-y: hidden; */
+            overflow-y: scroll;
             scrollbar-width: none;
+            /* Hide scrollbar in Firefox */
             -ms-overflow-style: none;
+            /* Hide scrollbar in IE/Edge */
+            /* Enable vertical scrolling */
             overflow-x: hidden;
-            margin: 10px 0;
-            border: 1px solid #3a3735;
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px 0;
+            /* Prevent horizontal scrolling */
+            /* margin: 20px 0; */
+            /* Add some margin for better spacing */
         }
 
         button {
-            margin: 0;
-            padding: 10px 16px;
-            background-color: #d79921;
-            color: #1a1a1a;
+            margin: 5px 5px;
+            padding: 10px 20px;
+            background-color: #bdae93;
+            color: #282828;
             border: none;
-            border-radius: 20px;
+            border-radius: 18px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
+            transition: background-color 0.3s;
+            font-weight: 500;
             font-family: 'Onest';
-            font-size: 14px;
-            letter-spacing: 0.3px;
-            min-width: 80px;
         }
 
         button:hover {
-            background-color: #fabd2f;
-            transform: translateY(-1px);
+            background-color: #d79921;
         }
 
         ol {
-            padding-left: 0;
+            padding-left: 20px;
             text-align: left;
             width: 100%;
             margin: 10px 0;
         }
 
         li {
-            padding: 8px 12px;
-            background-color: #403c3a;
-            color: #f0e6d2;
-            margin: 6px 0;
-            border-radius: 8px;
+            padding: 0px 10px;
+            background-color: #504945;
+            color: #ebdbb2;
+            margin: 8px 0;
+            border-radius: 18px;
             list-style-position: inside;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 100%;
+            width: 84%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-            border: 1px solid #504945;
+            height: 34px;
         }
 
         li:hover {
-            background-color: #504945;
+            background-color: #665c54;
         }
 
         #new-task {
             width: calc(100% - 24px);
-            padding: 10px;
-            border: 2px solid #665c54;
-            border-radius: 6px;
-            background-color: #403c3a;
-            color: #f0e6d2;
-            margin: 8px 0;
+            padding: 8px;
+            border: 2px solid #a89984;
+            border-radius: 8px;
+            background-color: #32302f3b;
+            color: #ebdbb2;
+            margin: 2px 0;
             font-family: 'Roboto', sans-serif;
-            font-size: 14px;
         }
 
         #timer {
             font-size: 48px;
-            margin: 15px 0;
+            margin: 10px 0;
             font-weight: 700;
-            color: #fabd2f;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
+            color: #fbf1c7;
         }
 
         .current-task {
-            font-weight: 500;
-            margin: 10px 0;
-            background-color: #504945;
-            color: #f0e6d2;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 14px;
-            border: 1px solid #665c54;
+            font-weight: normal;
+            margin: 2px 0;
+            background-color: #a89984bb;
+            color: #32302f;
+            padding: 4px;
+            border-radius: 20px;
+            text-align: left;
+            width: 80% auto;
+            font-size: 0.9em;
+            border: 2px solid #a89984;
         }
 
         #pomodoro-count {
-            margin: 15px 0 5px;
-            font-size: 16px;
+            margin-top: 20px;
+            font-size: 18px;
             color: #b8bb26;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         h1 {
-            margin: 0 0 15px 0;
+            margin: 0 0 20px 0;
             font-size: 24px;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #fabd2f;
+        }
+
+        h4 {
+            margin: 1px;
+            padding: 2px;
         }
 
         .delete-task {
-            background-color: #743638;
-            color: #f0e6d2;
+            background-color: #694f4e;
+            color: #ebdbb2;
             border: none;
-            padding: 4px 8px;
-            border-radius: 50%;
+            width: 10px;
+            height: 10px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 12px;
         }
 
         .delete-task:hover {
-            background-color: #8f4042;
+            background-color: #743638;
+        }
+
+        .task-content {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .task-number {
+            min-width: 20px;
         }
 
         .task-time {
-            font-size: 12px;
-            opacity: 0.8;
+            font-size: 0.8em;
+            opacity: 0.7;
             margin-left: auto;
-            padding-right: 6px;
+            padding-right: 8px;
         }
 
+        /* Collapsible Sections */
         .collapsible-section {
             width: 100%;
-            margin: 12px 0;
+            margin: 10px 0;
         }
 
         .collapsible-header {
@@ -213,70 +230,71 @@
             user-select: none;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #d79921;
-            padding: 6px 0;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+            padding: 2px 0;
         }
 
+        .collapsible-header::before {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.2s;
+        }
+
+        .collapsible-section.collapsed .collapsible-header::before {
+            content: '▶';
+        }
+
+        .collapsible-content {
+            overflow: hidden;
+            transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+            max-height: 1000px;
+            opacity: 1;
+        }
+
+        .collapsible-section.collapsed .collapsible-content {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* Dropdown Styling */
         #audio-select {
             margin: 10px 0;
-            padding: 10px;
-            background-color: #403c3a;
-            color: #f0e6d2;
-            border: 2px solid #665c54;
-            border-radius: 6px;
-            font-family: 'Onest', 'Roboto', sans-serif;
-            font-size: 14px;
-            width: 100%;
+            padding: 8px;
+            background-color: #50494577;
+            color: #ebdbb2;
+            border: 2px solid #a89984;
+            border-radius: 18px;
+            font-family: 'Onest','Roboto', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        blockquote {
-            font-size: 16px;
-            color: #8ec07c;
-            border-left: 3px solid #8ec07c;
-            padding-left: 15px;
-            margin: 15px 0;
+        #audio-select:hover {
+            background-color: #665c54;
         }
 
-        a {
-            color: #fabd2f;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #d79921;
-            text-decoration: underline;
-        }
-
-        .app-footer {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .app-footer p {
-            margin: 10px 0;
-            font-size: 14px;
-            color: #a89984;
+        #audio-select:focus {
+            outline: none;
+            border-color: #d79921;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 28px; height: auto;">Zen Pomodoro Timer</h1>
+        <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f ">Zen Pomodoro
+            Timer</h1>
         <div id="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
+        <button id="toggle-timer">Start</button>
+        <button id="reset">Reset</button>
+        <button id="toggle-music">Play Music</button>
 
-        <div class="button-group">
-            <button id="toggle-timer">Start</button>
-            <button id="reset">Reset</button>
-            <button id="toggle-music">Play Music</button>
-        </div>
-
+        <!-- Dropdown for audio selection -->
         <select id="audio-select">
             <option value="background.opus">Track 1</option>
             <option value="background2.opus">Track 2</option>
@@ -285,8 +303,7 @@
 
         <audio id="background-audio" src="background.opus" type="audio/ogg; codecs=opus" loop></audio>
         <div id="alerts"></div>
-        <div id="pomodoro-count">Pomodoros: 0</div>
-
+        <div id="pomodoro-count">Pomodoros Completed: 0</div>
         <div class="collapsible-section">
             <h4 class="collapsible-header">Current Task</h4>
             <div class="collapsible-content">
@@ -298,29 +315,34 @@
             <h4 class="collapsible-header">To-Do List</h4>
             <div class="collapsible-content">
                 <input type="text" id="new-task" placeholder="Add a new task...">
-                <div class="button-group">
-                    <button id="add-task">Add Task</button>
-                </div>
+                <button id="add-task">Add Task</button>
                 <ol id="to-do-list"></ol>
             </div>
         </div>
     </div>
 
-    <div id="app" style="text-align: left;">
-        <h3 style="margin: 15px 0; color: #d79921; font-size: 18px;">A way of meditation ... </h3>
-        <blockquote>
-            "Among all the secrets, I am the Silence!"<br />
+    <br />
+
+    <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px;">
+        <h3 style="margin-top: 10px; margin-bottom: 4px;">A way of meditation ... </h3>
+
+        <blockquote style="margin-top: 8px; margin-bottom: 4px; color: #8ec07c;">
+            “Among all the secrets, I am the Silence!”<br />
             <cite>— Geeta</cite>
         </blockquote>
-        <p style="margin: 15px 0; font-size: 14px;">The observation of Silence by restraining speech is one of the most powerful meditation techniques.</p>
+        <p style="margin-top: 8px;"> The observation of Silence by restraining speech is one of the most powerful meditation technique. </p>
     </div>
 
-    <div class="app-footer">
-        <p>
-            Follow me on
-            <a href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer">Twitter</a> |
-            <a href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener noreferrer">Website</a> |
-            <a href="https://www.youtube.com/@edgeospatial" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <br />
+
+    <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px">
+        <p style="margin-top: 4px; margin-bottom: 4px; font-size: 0.8em;text-align: center;color: #bdaebd;"> Follow me on,
+            <a style="color: #d79921;" href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer">
+                Twitter</a> |
+            <a style="color: #d79921;" href="https://www.ankitdeshmukh.com" target="_blank"
+                rel="noopener noreferrer">Website</a> |
+            <a style="color: #d79921;" href="https://www.youtube.com/@edgeospatial" target="_blank"
+                rel="noopener noreferrer">YouTube</a>.
         </p>
     </div>
 
@@ -399,7 +421,7 @@
                 });
 
                 taskItem.addEventListener('click', () => {
-                    currentTaskElement.textContent = `⌛ ${taskText}`;
+                    currentTaskElement.textContent = `⌛  ${taskText}`;
                 });
 
                 contentDiv.appendChild(numberSpan);
@@ -430,7 +452,7 @@
                 clearInterval(timerInterval);
                 alert('Pomodoro complete!');
                 pomodoroCount++;
-                pomodoroCountElement.textContent = `Pomodoros: ${pomodoroCount}`;
+                pomodoroCountElement.textContent = `Pomodoros Completed: ${pomodoroCount}`;
                 resetTimer();
                 return;
             }
@@ -479,10 +501,12 @@
             }
         }
 
+        // Function to change the audio source
         function changeAudio() {
             const selectedAudio = audioSelect.value;
             backgroundAudio.src = selectedAudio;
 
+            // If the audio is already playing, play the new track immediately
             if (!backgroundAudio.paused) {
                 backgroundAudio.play().catch(error => {
                     console.error('Audio playback failed:', error);
@@ -491,8 +515,10 @@
             }
         }
 
+        // Event listener for the dropdown change
         audioSelect.addEventListener('change', changeAudio);
 
+        // Collapsible functionality
         document.querySelectorAll('.collapsible-header').forEach(header => {
             header.addEventListener('click', function () {
                 const section = this.closest('.collapsible-section');
@@ -500,6 +526,7 @@
             });
         });
 
+        // Event Listeners
         addTaskButton.addEventListener('click', addTask);
         newTaskInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || (e.ctrlKey && e.key === 'Enter')) {
