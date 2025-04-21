@@ -481,6 +481,36 @@
             min-height: 420px;
         }
 
+        .palette-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .palette-card::after {
+            content: "Click to copy all colors";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .palette-card:hover::after {
+            opacity: 1;
+        }
+
+        .palette-card .palette-color {
+            position: relative; /* Ensure colors stay above the hover message */
+            z-index: 1;
+        }
+
 
     </style>
 </head>
@@ -648,6 +678,7 @@
                     </svg>
                     Color Scheme Generator
                 </h2>
+
 
 <svg
    width="108.51066mm"
@@ -1905,8 +1936,6 @@
 <br /> <br />
 <!-- SVG end -->
 
-
-
                 <div class="controls">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <label for="baseColor" style="font-size: 0.85rem;">Base:</label>
@@ -2436,39 +2465,51 @@
         const randomPaletteBtn = document.querySelector('.random-palette');
         const exportImageBtn = document.getElementById('exportImage');
 
-        function renderPalettes(palettesToRender) {
-            paletteContainer.innerHTML = '';
+    function renderPalettes(palettesToRender) {
+        paletteContainer.innerHTML = '';
 
-            palettesToRender.forEach(palette => {
-                const paletteCard = document.createElement('div');
-                paletteCard.className = 'palette-card';
+        palettesToRender.forEach(palette => {
+            const paletteCard = document.createElement('div');
+            paletteCard.className = 'palette-card';
 
-                paletteCard.innerHTML = `
-                    <h3 style="font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-light);">${palette.name}</h3>
-                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted);">${palette.description}</p>
-                    <div class="palette-colors">
-                        ${palette.colors.map(color => `
-                            <div class="palette-color" style="background-color: ${color};" title="${color}"></div>
-                        `).join('')}
-                    </div>
-                    <div class="palette-meta">
-                        <span>${palette.colors.length} colors</span>
-                        <span>${palette.citation}</span>
-                    </div>
-                `;
+            // Add click handler for the entire card
+            paletteCard.addEventListener('click', (event) => {
+                if (!event.target.closest('.palette-color')) {
+                    const colors = palette.colors.join('\n');
+                    navigator.clipboard.writeText(colors);
+                    showToast(`📋 Copied all ${palette.colors.length} colors from ${palette.name}`);
+                }
+            });
 
-                paletteContainer.appendChild(paletteCard);
+            paletteCard.innerHTML = `
+                <h3 style="font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-light);">${palette.name}</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted);">${palette.description}</p>
+                <div class="palette-colors">
+                    ${palette.colors.map(color => `
+                        <div class="palette-color" style="background-color: ${color};" title="${color}"></div>
+                    `).join('')}
+                </div>
+                <div class="palette-meta">
+                    <span>${palette.colors.length} colors</span>
+                    <span>${palette.citation}</span>
+                </div>
+            `;
 
-                // Add click event to each color
-                paletteCard.querySelectorAll('.palette-color').forEach((colorEl, index) => {
-                    colorEl.addEventListener('click', () => {
-                        const color = palette.colors[index];
-                        navigator.clipboard.writeText(color);
-                        showToast(`Copied ${color.toUpperCase()}`);
-                    });
+            paletteContainer.appendChild(paletteCard);
+
+            // Individual color click handlers
+            paletteCard.querySelectorAll('.palette-color').forEach((colorEl, index) => {
+                colorEl.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const color = palette.colors[index];
+                    navigator.clipboard.writeText(color);
+                    showToast(`🎨 Copied ${color.toUpperCase()}`);
                 });
             });
-        }
+        });
+    }
+
+
 
         searchBox.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
