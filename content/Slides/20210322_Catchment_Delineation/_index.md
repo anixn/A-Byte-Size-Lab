@@ -14,7 +14,6 @@ Understanding and managing water resources starts with analyzing catchments—th
 ### **What is a Catchment?**
 A catchment, or watershed, is a land area where all surface runoff converges to a single point, such as a river or lake. It serves as the fundamental unit for hydrological studies, helping predict water availability, flood risks, and ecosystem health.
 
-
 ### **Tools You’ll Need**
 - **QGIS**: A free, open-source GIS software for spatial analysis.
 - **DEM Data**: Digital Elevation Models (e.g., SRTM, ASTER GDEM) to map terrain.
@@ -59,4 +58,8 @@ Download QGIS, grab SRTM data, and follow the steps above to map your first catc
 
 *#QGIS #DEM #SRTM #CatchmentDelineation*
 
+### Slides of Tutorial
 <embed src= "AMTWRE_AnkitDeshmukh.pdf" width= "100%" height= "600px" type="application/pdf" >
+
+#### YouTube video
+{{< youtube pp6NX5lyx54 >}}
