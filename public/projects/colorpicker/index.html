@@ -481,6 +481,36 @@
             min-height: 420px;
         }
 
+        .palette-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .palette-card::after {
+            content: "Click to copy all colors";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .palette-card:hover::after {
+            opacity: 1;
+        }
+
+        .palette-card .palette-color {
+            position: relative; /* Ensure colors stay above the hover message */
+            z-index: 1;
+        }
+
 
     </style>
 </head>
@@ -648,6 +678,7 @@
                     </svg>
                     Color Scheme Generator
                 </h2>
+
 
 <svg
    width="108.51066mm"
@@ -1905,8 +1936,6 @@
 <br /> <br />
 <!-- SVG end -->
 
-
-
                 <div class="controls">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <label for="baseColor" style="font-size: 0.85rem;">Base:</label>
@@ -2355,7 +2384,80 @@
                 description: "Natural earth-inspired colors",
                 colors: ["#582f0e", "#7f4f24", "#936639", "#a68a64", "#b6ad90", "#c2c5aa", "#a4ac86", "#656d4a"],
                 citation: "Natural Palette"
-            }
+            },
+            {
+                "name": "Viridis",
+                "description": "A perceptually uniform color palette.",
+                "colors": ["#440154", "#482878", "#3e4989", "#31688e", "#26828e", "#1f9e89", "#35b779", "#6ece58", "#b5de2b", "#fde725"],
+                "citation": "viridis R package (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Magma",
+                "description": "Perceptually uniform, dark-friendly palette from black to white with purple-red tones",
+                "colors": ["#000004", "#180f3d", "#440f76", "#721f81", "#9e2f7f", "#cd4071", "#f1605d", "#fd9668", "#feca8d", "#fcfdbf"],
+                "citation": "viridis R package (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Plasma",
+                "description": "Perceptually uniform, vibrant palette from dark blue to yellow",
+                "colors": ["#0d0887", "#46039f", "#7201a8", "#9c179e", "#bd3786", "#d8576b", "#ed7953", "#fb9f3a", "#fdca26", "#f0f921"],
+                "citation": "viridis R package (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Inferno",
+                "description": "Perceptually uniform, high-contrast palette from black to yellow",
+                "colors": ["#000004", "#1b0c41", "#4a0c6b", "#781c6d", "#a52c60", "#cf4446", "#ed6925", "#fb9b06", "#f7d13d", "#fcffa4"],
+                "citation": "viridis R package (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Cividis",
+                "description": "Perceptually uniform, optimized for color vision deficiency (CVD)",
+                "colors": ["#00204d", "#123570", "#354f7e", "#4b6a8a", "#628394", "#7b9d8e", "#98b584", "#bace78", "#dbe36c", "#fdffa4"],
+                "citation": "viridis R package (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Outlier Highlight",
+                "description": "Diverging palette with a neutral mid-point and high-contrast extremes to emphasize outliers",
+                "colors": ["#053061", "#2166ac", "#4393c3", "#92c5de", "#d1e5f0", "#f7f7f7", "#fddbc7", "#f4a582", "#d6604d", "#b2182b", "#67001f"],
+                "citation": "Modified from 'RColorBrewer' diverging palette (RdYlBu reversed)"
+            },
+            {
+                "name": "Viridis-Outlier",
+                "description": "Viridis with a stark white mid-point to highlight deviations",
+                "colors": ["#440154", "#482878", "#3e4989", "#31688e", "#26828e", "#FFFFFF", "#35b779", "#6ece58", "#b5de2b", "#fde725"],
+                "citation": "Adapted from viridis (Simon Garnier, 2018)"
+            },
+            {
+                "name": "Terrain Elevation",
+                "description": "Natural gradient from water (dark blue) to lowlands (green) to mountains (brown/white)",
+                "colors": ["#00008b", "#1e90ff", "#00bfff", "#5f9ea0", "#8fbc8f", "#9acd32", "#ffff00", "#ffd700", "#daa520", "#b8860b", "#a52a2a", "#d2691e", "#f5f5f5"],
+                "citation": "Inspired by GMT 'etopo1' and QGIS terrain palettes"
+            },
+                {
+                "name": "RdBu",
+                "description": "Classic diverging palette for highlighting extremes",
+                "colors": ["#67001F", "#B2182B", "#D6604D", "#F4A582", "#FDDBC7", "#F7F7F7", "#D1E5F0", "#92C5DE", "#4393C3", "#2166AC", "#053061"],
+                "citation": "ColorBrewer"
+                },
+                {
+                "name": "Turbo",
+                "description": "Vibrant alternative to 'jet' without perceptual distortion",
+                "colors": ["#30123B", "#4662D7", "#36AAF9", "#1AE4B6", "#72FE5E", "#C7EF34", "#FABA39", "#F66B19", "#CB2A04", "#7A0403"],
+                "citation": "Google Research (Anton Mikhailov)"
+                },
+                {
+                "name": "Batlow",
+                "description": "Colorblind-friendly, perceptually uniform heatmap palette",
+                "colors": ["#001959", "#0D3A69", "#3A5270", "#6A6F78", "#9B8B7D", "#CBAA7F", "#FBCB7B", "#F7934A", "#E95D22", "#A90000"],
+                "citation": "Scientific colour maps (Crameri, 2020)"
+                },
+                {
+                "name": "Pastel 1",
+                "description": "Light, muted colors for subtle visualizations",
+                "colors": ["#FBB4AE", "#B3CDE3", "#CCEBC5", "#DECBE4", "#FED9A6", "#FFFFCC", "#E5D8BD", "#FDDAEC", "#F2F2F2"],
+                "citation": "ColorBrewer"
+                }
+
         ];
 
         const paletteContainer = document.getElementById('paletteContainer');
@@ -2363,39 +2465,51 @@
         const randomPaletteBtn = document.querySelector('.random-palette');
         const exportImageBtn = document.getElementById('exportImage');
 
-        function renderPalettes(palettesToRender) {
-            paletteContainer.innerHTML = '';
+    function renderPalettes(palettesToRender) {
+        paletteContainer.innerHTML = '';
 
-            palettesToRender.forEach(palette => {
-                const paletteCard = document.createElement('div');
-                paletteCard.className = 'palette-card';
+        palettesToRender.forEach(palette => {
+            const paletteCard = document.createElement('div');
+            paletteCard.className = 'palette-card';
 
-                paletteCard.innerHTML = `
-                    <h3 style="font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-light);">${palette.name}</h3>
-                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted);">${palette.description}</p>
-                    <div class="palette-colors">
-                        ${palette.colors.map(color => `
-                            <div class="palette-color" style="background-color: ${color};" title="${color}"></div>
-                        `).join('')}
-                    </div>
-                    <div class="palette-meta">
-                        <span>${palette.colors.length} colors</span>
-                        <span>${palette.citation}</span>
-                    </div>
-                `;
+            // Add click handler for the entire card
+            paletteCard.addEventListener('click', (event) => {
+                if (!event.target.closest('.palette-color')) {
+                    const colors = palette.colors.join('\n');
+                    navigator.clipboard.writeText(colors);
+                    showToast(`📋 Copied all ${palette.colors.length} colors from ${palette.name}`);
+                }
+            });
 
-                paletteContainer.appendChild(paletteCard);
+            paletteCard.innerHTML = `
+                <h3 style="font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-light);">${palette.name}</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted);">${palette.description}</p>
+                <div class="palette-colors">
+                    ${palette.colors.map(color => `
+                        <div class="palette-color" style="background-color: ${color};" title="${color}"></div>
+                    `).join('')}
+                </div>
+                <div class="palette-meta">
+                    <span>${palette.colors.length} colors</span>
+                    <span>${palette.citation}</span>
+                </div>
+            `;
 
-                // Add click event to each color
-                paletteCard.querySelectorAll('.palette-color').forEach((colorEl, index) => {
-                    colorEl.addEventListener('click', () => {
-                        const color = palette.colors[index];
-                        navigator.clipboard.writeText(color);
-                        showToast(`Copied ${color.toUpperCase()}`);
-                    });
+            paletteContainer.appendChild(paletteCard);
+
+            // Individual color click handlers
+            paletteCard.querySelectorAll('.palette-color').forEach((colorEl, index) => {
+                colorEl.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const color = palette.colors[index];
+                    navigator.clipboard.writeText(color);
+                    showToast(`🎨 Copied ${color.toUpperCase()}`);
                 });
             });
-        }
+        });
+    }
+
+
 
         searchBox.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
