@@ -84,11 +84,11 @@ params:
         imageWidth: 160
         imageHeight: 160
         buttons:
-            - name: "Mermaid"
+            - name: "❄︎ Mermaid"
               url: /projects/mermaid/
-            - name: "Timer"
+            - name: "☮︎ Timer"
               url: /projects/pomodoro/
-            - name: "Color"
+            - name: "☀︎ Color"
               url: /projects/colorpicker/
 
     homeInfoParams:
