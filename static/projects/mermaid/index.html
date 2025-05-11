@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Diagram Studio</title>
+
+    <!-- SEO & Open Graph Metadata -->
+    <meta name="description" content="Ankit’s interactive Mermaid diagram editor with theme & export settings, and Google Analytics.">
+    <meta property="og:title" content="Ankit’s Mermaid Diagram Studio">
+    <meta property="og:description" content="Ankit’s interactive Mermaid diagram editor with theme & export settings, and Google Analytics.">
+    <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png">
+    <meta property="og:url" content="https://www.ankitdeshmukh.com/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
+
+
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+
+    <script>
+        var doNotTrack = false;
+        if (!doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+        }
+    </script>
+
+    <meta property="og:title" content="Mermaid Diagram Studio">
+
+    <meta name="author" content="Dr. Ankit Deshmukh">
+    <link rel="canonical" href="https://ankitdeshmukh.com/projects/mermaid/">
+    <meta name="google-site-verification" content="G-R5FJKDQD1M">
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CodeMirror for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/selection/active-line.min.js"></script>
+
+    <!-- Mermaid JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js"></script>
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --background-light: #f3f3f3;
+            --background-dark: #1e1e1e;
+            --text-light: #2c3e50;
+            --text-dark: #ececec;
+        }
+        [data-theme="light"] { background: var(--background-light); color: var(--text-light); }
+        [data-theme="dark"] { background: var(--background-dark); color: var(--text-dark); }
+        body { margin: 0; padding: 20px; font-family: 'Roboto', sans-serif; font-size: 18px; transition: background 0.3s, color 0.3s; }
+        h2 { font-size: 1.75rem; }
+        .container { max-width: 1600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: calc(100vh - 100px); }
+        .section { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        .controls { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        button, select { padding: 10px 18px; border: none; border-radius: 16px; background: var(--secondary); color: white; cursor: pointer; font-size: 1rem; transition: all 0.2s; background-color: #231f38; }
+        select { background: white; color: var(--text-light); border: 2px solid #e0e0e0; }
+        button:hover, select:hover { transform: translateY(-1px); }
+        .CodeMirror { flex: 1; border: 2px solid #e0e0e0; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 16px; }
+        #preview { flex: 1; overflow: auto; padding: 20px; border: 2px solid #e0e0e0; border-radius: 8px; background: white; }
+        .mermaid { background: white; padding: 20px; border-radius: 8px; }
+        footer { margin-top: 20px; text-align: center; font-size: 0.9rem; color: #666; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; height: auto; } }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <div class="section editor-section">
+            <div class="controls">
+                <h2>Code Editor</h2>
+                <label for="theme-select">Mermaid Theme:</label>
+                <select id="theme-select" title="Select visual style for the diagram">
+                    <option value="neutral" title="Clean, neutral color palette">Neutral</option>
+                    <option value="forest" title="Earthy greens and natural tones">Forest</option>
+                    <option value="dark" title="Dark background with light lines">Dark</option>
+                    <option value="default" title="Mermaid's default styling">Default</option>
+                </select>
+                <button onclick="previewDiagram()" title="Render the Mermaid code in preview area">Preview</button>
+            </div>
+            <textarea id="editor" spellcheck="false">graph TD
+A[Start] --> B{Decision}
+B -->|Yes| C[Action 1]
+B -->|No| D[Action 2]
+C --> E[End]
+D --> E</textarea>
+        </div>
+
+        <div class="section preview-section">
+            <div class="controls">
+                <h2>Preview</h2>
+                <label for="res-factor-select">PNG Scale:</label>
+                <select id="res-factor-select" title="Choose image resolution multiplier">
+                    <option value="1" title="Standard resolution (1×)">1x</option>
+                    <option value="2" title="Double resolution (2×)">2x</option>
+                    <option value="3" selected title="Triple resolution (3×)">3x</option>
+                    <option value="4" title="Quadruple resolution (4×)">4x</option>
+                    <option value="5" title="5 times resolution">5x</option>
+                    <option value="6" title="6 times resolution">6x</option>
+                </select>
+                <button onclick="exportSVG()" title="Download diagram as SVG file">Export SVG</button>
+                <button onclick="exportPNG()" title="Download diagram as PNG file">Export PNG</button>
+            </div>
+            <div id="preview"></div>
+        </div>
+    </div>
+
+<footer style="font-size: 0.8em; font-family: Roboto, sans-serif; color: #666; padding: 0.8rem 0; text-align: center; background-color: #f8f9fa00; margin-top: 1rem;">
+    &copy; 2025 Ankit Deshmukh &mdash;
+    <a href="https://www.ankitdeshmukh.com"
+       target="_blank"
+       rel="noopener"
+       style="text-decoration: none; color: #444; transition: color 0.3s ease;"
+       onmouseover="this.style.color='#222'"
+       onmouseout="this.style.color='#444'">
+        www.ankitdeshmukh.com
+    </a>
+</footer>
+
+
+
+    <script>
+        // CodeMirror editor setup
+        const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+            mode: 'markdown', lineNumbers: true, styleActiveLine: true, matchBrackets: true, theme: 'default'
+        });
+        editor.setSize('100%', '100%');
+
+        // Initialize Mermaid
+        function initMermaid(theme) {
+            mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme, themeVariables: { primaryColor: '#3498db', lineColor: '#2c3e50', fontFamily: 'Roboto' } });
+        }
+        initMermaid('neutral');
+
+        // Preview diagram
+        async function previewDiagram() {
+            const code = editor.getValue();
+            const theme = document.getElementById('theme-select').value;
+            initMermaid(theme);
+            const preview = document.getElementById('preview');
+            try {
+                preview.innerHTML = '<div class="mermaid">' + code + '</div>';
+                await mermaid.run({ querySelector: '.mermaid', suppressErrors: false });
+            } catch (error) {
+                preview.innerHTML = `<div class="error">${error.message}</div>`;
+            }
+        }
+
+        // Export functions unchanged
+        function exportSVG() {
+            const svg = document.querySelector('#preview svg'); if (!svg) return;
+            const serializer = new XMLSerializer(); const source = serializer.serializeToString(svg);
+            const blob = new Blob([source], { type: 'image/svg+xml' }); const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'diagram.svg'; document.body.appendChild(a);
+            a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+        async function exportPNG() {
+            const svg = document.querySelector('#preview svg'); if (!svg) return;
+            const factor = parseInt(document.getElementById('res-factor-select').value, 10);
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image(); img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+            await new Promise(res => img.onload = res);
+            const dpr = window.devicePixelRatio || 1, scale = dpr * factor;
+            const canvas = document.createElement('canvas'); canvas.width = img.width * scale;
+            canvas.height = img.height * scale; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0);
+            canvas.toBlob(blob => { const link = document.createElement('a'); link.download = `diagram@${factor}x.png`; link.href = URL.createObjectURL(blob); link.click(); URL.revokeObjectURL(link.href); }, 'image/png');
+        }
+
+        // Initial preview
+        previewDiagram();
+    </script>
+</body>
+</html>
