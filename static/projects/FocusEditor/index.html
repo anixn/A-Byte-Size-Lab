@@ -6,19 +6,32 @@
   <title>Advanced Markdown Writer</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Merriweather:wght@400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
     :root {
       --bg-color: #1a1a1a;
       --container-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --accent-color: #9ec8d9;
+      --text-color: #d5c4a1;
+      --accent-color: #8ec07c;
+      --acc-color: #ebdbb2;
       --border-color: #5a5a5a;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --code-background: #3d3c3b;
     }
     [data-theme="light"] {
       --bg-color: #f5f5f5;
       --container-bg: #ffffff;
-      --text-color: #333333;
-      --accent-color: #4a90e2;
+      --text-color: #282828;
+      --accent-color: #427b58;
+      --acc-color: #3c3836;
       --border-color: #cccccc;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --code-background: #f0e7d7;
     }
 
     * {
@@ -42,7 +55,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
+      padding: 2rem 2rem 1rem; /* Reduced bottom padding */
       transition: background-color 0.3s ease;
     }
 
@@ -50,7 +63,7 @@
     .writing-container {
       width: 100%;
       max-width: 720px;
-      height: 85vh;
+      height: 93vh;
       background-color: var(--container-bg);
       border-radius: 8px;
       display: flex;
@@ -86,20 +99,45 @@
     }
 
     .toggle-btn {
-      padding: 0.4rem 1rem;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      border-radius: 15px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 1.1rem;
-      color: var(--accent-color);
-      transition: border-color 0.2s ease, color 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    /* added transform & box‑shadow to the transition list */
+    transition: border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
     }
-    .toggle-btn:hover {
-      border-color: var(--accent-color);
-      color: var(--text-color);
+
+    .toggle-btn:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--container-bg);
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    white-space: nowrap;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    /* Individual button tooltip content */
+    #themeToggle:hover::after { content: "Toggle Theme"; }
+    #spellCheckToggle:hover::after { content: "Toggle Spellcheck"; }
+    #modeToggle:hover::after { content: "Toggle Preview/Edit"; }
+    #saveBtn:hover::after { content: "Save Markdown File"; }
+    #openBtn:hover::after { content: "Open Markdown File"; }
 
     /* The scrollable area with editor/preview */
     .content {
@@ -114,7 +152,8 @@
       resize: none;
       border: none;
       outline: none;
-      font-family: 'Merriweather', Georgia, serif;
+      /* font-family: 'IBM Plex Mono', monospace; */
+      font-family: "Roboto", sans-serif;
       font-size: 1.6rem;
       line-height: 1.8;
       color: var(--text-color);
@@ -124,33 +163,101 @@
     }
 
     .preview {
-      display: none;
-      width: 100%;
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 1.6rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      /* white-space: pre-wrap; */
-      padding: 1rem 2rem 2rem;
-      overflow: auto;
+    display: none;
+    width: 100%;
+    max-width: 70ch; /* Optimal reading width */
+    margin: 0 auto; /* Center content */
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.6rem; /* Slightly larger base size */
+    line-height: 1.8; /* More breathing room */
+    color: var(--text-color);
+    padding: 2rem 2rem 3rem; /* More vertical padding */
+    overflow: auto;
+    hyphens: auto; /* Better word breaking */
+    text-rendering: optimizeLegibility; /* Better font rendering */
     }
+
+    /* Improved content spacing */
+    .preview p {
+    margin: 0 0 1.5rem 0;
+    }
+
+    .preview ul, .preview ol {
+    margin: 0 0 1.5rem 2rem;
+    padding-left: 1rem;
+    }
+
+    .preview li {
+    margin-bottom: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .preview {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+        max-width: 90%;
+        line-height: 1.7;
+    }
+    }
+
+    .preview img {
+    max-width: 100%; /* Ensure images never overflow container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove inline spacing */
+    margin: 1.5rem auto; /* Vertical spacing + horizontal centering */
+    border-radius: 4px; /* Soften edges */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    }
+
+    /* Optional: Add different size classes */
+    .preview img.medium {
+    max-width: 75%;
+    }
+    .preview img.small {
+    max-width: 50%;
+    }
+    .preview img.full-width {
+    width: 100%;
+    max-width: 100%;
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 768px) {
+    .preview img {
+        margin: 1rem auto;
+    }
+    }
+
+
 
     /* Tight heading spacing in preview */
     .preview h1 {
       font-size: 2rem;
       margin: 0.2rem 0 0.4rem;
+      color: var(--header1-color);
     }
     .preview h2 {
       font-size: 1.8rem;
       margin: 0.18rem 0 0.36rem;
+      color: var(--header2-color);
     }
     .preview h3 {
       font-size: 1.6rem;
       margin: 0.15rem 0 0.3rem;
+      color: var(--header3-color);
     }
-    .preview code {
-      background-color: #3a3a3a;
-      padding: 0.2rem 0.4rem;
+
+ .preview code {
+      display: block;
+      width: 100%;
+      font-family: 'IBM Plex Mono', monospace;
+      background-color: var(--code-background);
+      padding: 0.6rem;
+      white-space: pre-wrap;
+      box-sizing: border-box;
+      overflow-x: auto;
+      border-radius: 4px;
     }
 
     @media (max-width: 768px) {
@@ -184,7 +291,8 @@
     .footer {
       color: gray;
       font-size: 1.2rem;
-      margin-top: 1rem;
+      margin-top: 1rem; /* Reduced top margin */
+      padding-bottom: 0.5rem; /* Added a little padding at bottom */
       text-align: center;
     }
   </style>
@@ -202,12 +310,13 @@
         <span id="statsDisplay">Words: 0 · Readability: —</span>
       </div>
       <div class="controls">
-          <button style="color: #6d942b;" class="toggle-btn" id="saveBtn">Save .md</button>
-          <button style="color: #6d942b;" class="toggle-btn" id="openBtn">Open .md</button>
-          <input type="file" accept=".md" id="fileInput" style="display:none" />
-        <button class="toggle-btn" id="themeToggle">Light Mode</button>
-        <button class="toggle-btn" id="spellCheckToggle">Spell On</button>
-        <button class="toggle-btn" id="modeToggle">Preview</button>
+        <button style="color: var(--acc-color);" class="toggle-btn" id="saveBtn" data-tooltip="Save Markdown File">Save .md</button>
+        <button style="color: var(--acc-color);" class="toggle-btn" id="openBtn" data-tooltip="Open Markdown File">Open .md</button>
+        <input type="file" accept=".md" id="fileInput" style="display:none" />
+        <button class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
+        <button class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck">Spell On</button>
+        <button class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview/Edit">Preview</button>
+
       </div>
     </div>
 
@@ -225,7 +334,7 @@
 
   <!-- Footer -->
   <div class="footer">
-    © 2024 Ankit Deshmukh · <a style="color: #885b5b;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a>
+    © 2025 Ankit Deshmukh · <a style="color: gray;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a>
   </div>
 
   <!-- Dependencies: marked.js for Markdown rendering -->
@@ -280,16 +389,18 @@
     }
 
     function computeFleschKincaid(text) {
+      // Remove Markdown heading syntax (#) before analysis
+      const cleanText = text.replace(/(^|\n)#+\s?/g, '$1');
       // Split into sentences: use ., !, or ? as delimiters
-      const sentenceArray = text
-        .split(/[\\.\\!?]+/)
+      const sentenceArray = cleanText
+        .split(/[\.\!?]+/)
         .map((s) => s.trim())
         .filter((s) => s.length > 0);
       const sentences = sentenceArray.length || 1;
 
       // Split into words (simple whitespace split)
-      const wordsArray = text
-        .split(/\\s+/)
+      const wordsArray = cleanText
+        .split(/\s+/)
         .map((w) => w.replace(/[^A-Za-z]/g, '').trim())
         .filter((w) => w.length > 0);
       const words = wordsArray.length || 1;
@@ -315,7 +426,7 @@
     function updateStats() {
       const text = editor.value.trim();
       // Count words (split by whitespace, filter out empty)
-      const words = text ? text.split(/\\s+/).filter((w) => w.length > 0).length : 0;
+      const words = text ? text.split(/\s+/).filter((w) => w.length > 0).length : 0;
       let readability = '—';
 
       if (words > 0) {
@@ -425,10 +536,10 @@
      * 11. PREVENT ACCIDENTAL RELOAD IF THERE ARE UNSAVED CHANGES
      ******************************************************************/
     window.addEventListener('beforeunload', (e) => {
-      if (hasUnsavedChanges) {
+    if (hasUnsavedChanges) {
         e.preventDefault();
         e.returnValue = '';
-      }
+    }
     });
 
     /******************************************************************
@@ -454,6 +565,19 @@
 
     editor.focus();
     updateStats();
+
+    /******************************************************************
+    * 14. KEYBOARD SHORTCUT: CTRL+L TO TOGGLE THEME
+    ******************************************************************/
+    document.addEventListener('keydown', (e) => {
+    // Check for Ctrl + L (both Windows/Linux and macOS support)
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
+        e.preventDefault(); // Prevent browser default (e.g., address bar focus)
+        toggleMode();
+    }
+    });
+
+
   </script>
 </body>
 </html>
