@@ -20,6 +20,7 @@
       --header2-color: #458588;
       --header3-color: #b16286;
       --code-background: #3d3c3b;
+      --link-color: #83a598;
     }
     [data-theme="light"] {
       --bg-color: #f5f5f5;
@@ -32,6 +33,7 @@
       --header2-color: #458588;
       --header3-color: #b16286;
       --code-background: #f0e7d7;
+      --link-color: #006d77;
     }
 
     * {
@@ -221,6 +223,18 @@
     width: 100%;
     max-width: 100%;
     }
+
+    .preview a, .footer a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    }
+
+    .preview a:hover, .footer a:hover {
+    text-decoration: none;
+    opacity: 0.85;
+    }
+
 
     /* Mobile adjustment */
     @media (max-width: 768px) {
