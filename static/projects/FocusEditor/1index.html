@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Markdown Writer</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Merriweather:wght@400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    :root {
+      --bg-color: #1a1a1a;
+      --container-bg: #2d2d2d;
+      --text-color: #d5c4a1;
+      --accent-color: #8ec07c;
+      --acc-color: #ebdbb2;
+      --border-color: #5a5a5a;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --code-background: #3d3c3b;
+      --link-color: #83a598;
+    }
+    [data-theme="light"] {
+      --bg-color: #f5f5f5;
+      --container-bg: #ffffff;
+      --text-color: #282828;
+      --accent-color: #427b58;
+      --acc-color: #3c3836;
+      --border-color: #cccccc;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --code-background: #f0e7d7;
+      --link-color: #006d77;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 62.5%;
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 2rem 1rem; /* Reduced bottom padding */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Container that holds header + content */
+    .writing-container {
+      width: 100%;
+      max-width: 720px;
+      height: 93vh;
+      background-color: var(--container-bg);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    /* Top bar stays visible */
+    .header {
+      flex: 0 0 auto;
+      background-color: var(--container-bg);
+      padding: 1rem 2rem 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .stats {
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+    position: relative;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    /* added transform & box‑shadow to the transition list */
+    transition: border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+    }
+
+    .toggle-btn:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--container-bg);
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    white-space: nowrap;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Individual button tooltip content */
+    #themeToggle:hover::after { content: "Toggle Theme"; }
+    #spellCheckToggle:hover::after { content: "Toggle Spellcheck"; }
+    #modeToggle:hover::after { content: "Toggle Preview/Edit"; }
+    #saveBtn:hover::after { content: "Save Markdown File"; }
+    #openBtn:hover::after { content: "Open Markdown File"; }
+
+    /* The scrollable area with editor/preview */
+    .content {
+      flex: 1 1 auto;
+      display: flex;
+      overflow-y: auto;
+    }
+
+    .writing-area {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      border: none;
+      outline: none;
+      /* font-family: 'IBM Plex Mono', monospace; */
+      font-family: "Roboto", sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: var(--text-color);
+      background-color: transparent;
+      padding: 1rem 2rem 2rem;
+      overflow: auto;
+    }
+
+    .preview {
+    display: none;
+    width: 100%;
+    max-width: 70ch; /* Optimal reading width */
+    margin: 0 auto; /* Center content */
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: 1.6rem; /* Slightly larger base size */
+    line-height: 1.8; /* More breathing room */
+    color: var(--text-color);
+    padding: 2rem 2rem 3rem; /* More vertical padding */
+    overflow: auto;
+    hyphens: auto; /* Better word breaking */
+    text-rendering: optimizeLegibility; /* Better font rendering */
+    }
+
+    /* Improved content spacing */
+    .preview p {
+    margin: 0 0 1.5rem 0;
+    }
+
+    .preview ul, .preview ol {
+    margin: 0 0 1.5rem 2rem;
+    padding-left: 1rem;
+    }
+
+    .preview li {
+    margin-bottom: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+    .preview {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+        max-width: 90%;
+        line-height: 1.7;
+    }
+    }
+
+    .preview img {
+    max-width: 100%; /* Ensure images never overflow container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove inline spacing */
+    margin: 1.5rem auto; /* Vertical spacing + horizontal centering */
+    border-radius: 4px; /* Soften edges */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    }
+
+    /* Optional: Add different size classes */
+    .preview img.medium {
+    max-width: 75%;
+    }
+    .preview img.small {
+    max-width: 50%;
+    }
+    .preview img.full-width {
+    width: 100%;
+    max-width: 100%;
+    }
+
+    .preview a, .footer a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    }
+
+    .preview a:hover, .footer a:hover {
+    text-decoration: none;
+    opacity: 0.85;
+    }
+
+
+    /* Mobile adjustment */
+    @media (max-width: 768px) {
+    .preview img {
+        margin: 1rem auto;
+    }
+    }
+
+
+
+    /* Tight heading spacing in preview */
+    .preview h1 {
+      font-size: 2rem;
+      margin: 0.2rem 0 0.4rem;
+      color: var(--header1-color);
+    }
+    .preview h2 {
+      font-size: 1.8rem;
+      margin: 0.18rem 0 0.36rem;
+      color: var(--header2-color);
+    }
+    .preview h3 {
+      font-size: 1.6rem;
+      margin: 0.15rem 0 0.3rem;
+      color: var(--header3-color);
+    }
+
+ .preview code {
+      display: block;
+      width: 100%;
+      font-family: 'IBM Plex Mono', monospace;
+      background-color: var(--code-background);
+      padding: 0.6rem;
+      white-space: pre-wrap;
+      box-sizing: border-box;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .writing-area, .preview {
+        padding: 1rem 1.5rem 1.5rem;
+      }
+    }
+
+    /* Chrome, Edge, Safari */
+    .content::-webkit-scrollbar,
+    textarea::-webkit-scrollbar,
+    .preview::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Firefox */
+    .content,
+    textarea,
+    .preview {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    /* Footer styling */
+    .footer {
+      color: gray;
+      font-size: 1.2rem;
+      margin-top: 1rem; /* Reduced top margin */
+      padding-bottom: 0.5rem; /* Added a little padding at bottom */
+      text-align: center;
+    }
+  </style>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body data-theme="dark">
+  <div class="writing-container">
+    <!-- Header: word count, readability, and toggle/open/save buttons -->
+    <div class="header">
+      <div class="stats">
+        <span id="statsDisplay">Words: 0 · Readability: —</span>
+      </div>
+      <div class="controls">
+        <button style="color: var(--acc-color);" class="toggle-btn" id="saveBtn" data-tooltip="Save Markdown File">Save .md</button>
+        <button style="color: var(--acc-color);" class="toggle-btn" id="openBtn" data-tooltip="Open Markdown File">Open .md</button>
+        <input type="file" accept=".md" id="fileInput" style="display:none" />
+        <button class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
+        <button class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck">Spell On</button>
+        <button class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview/Edit">Preview</button>
+
+      </div>
+    </div>
+
+    <!-- Content: either the textarea or the rendered preview -->
+    <div class="content">
+      <textarea
+        class="writing-area"
+        placeholder="Begin writing..."
+        id="editor"
+        spellcheck="false"
+      ></textarea>
+      <div class="preview" id="preview"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 Ankit Deshmukh · <a style="color: gray;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a>
+  </div>
+
+  <!-- Dependencies: marked.js for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    /******************************************************************
+     * 1. ELEMENT REFERENCES
+     ******************************************************************/
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const statsDisplay = document.getElementById('statsDisplay');
+    const themeToggle = document.getElementById('themeToggle');
+    const spellToggle = document.getElementById('spellCheckToggle');
+    const modeToggle = document.getElementById('modeToggle');
+    const openBtn = document.getElementById('openBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const fileInput = document.getElementById('fileInput');
+
+    /******************************************************************
+     * 2. STATE FLAGS
+     ******************************************************************/
+    let isPreview = false;
+    let isDarkTheme = true;
+    let spellCheckEnabled = false;
+    let hasUnsavedChanges = false;
+
+    /******************************************************************
+     * 3. CONFIGURE MARKED.JS (GitHub‑Flavored Markdown)
+     ******************************************************************/
+    marked.setOptions({
+      breaks: true,
+      gfm: true
+    });
+
+    /******************************************************************
+     * 4. SYLLABLE COUNT & FLESCH–KINCaid IMPLEMENTATION
+     *
+     * We’ll implement a heuristic syllable counter that:
+     * - Lowercases the word
+     * - Removes trailing “es”, “ed” (common silent endings)
+     * - Counts vowel groupings as syllables
+     ******************************************************************/
+    function countSyllables(word) {
+      word = word.toLowerCase().trim();
+      if (word.length <= 3) return 1;
+      // Remove silent e-like endings
+      word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+      // Remove leading y
+      word = word.replace(/^y/, '');
+      const matches = word.match(/[aeiouy]{1,2}/g);
+      return matches ? matches.length : 1;
+    }
+
+    function computeFleschKincaid(text) {
+      // Remove Markdown heading syntax (#) before analysis
+      const cleanText = text.replace(/(^|\n)#+\s?/g, '$1');
+      // Split into sentences: use ., !, or ? as delimiters
+      const sentenceArray = cleanText
+        .split(/[\.\!?]+/)
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0);
+      const sentences = sentenceArray.length || 1;
+
+      // Split into words (simple whitespace split)
+      const wordsArray = cleanText
+        .split(/\s+/)
+        .map((w) => w.replace(/[^A-Za-z]/g, '').trim())
+        .filter((w) => w.length > 0);
+      const words = wordsArray.length || 1;
+
+      // Total syllables
+      let totalSyllables = 0;
+      for (const w of wordsArray) {
+        totalSyllables += countSyllables(w);
+      }
+
+      // Flesch–Kincaid grade formula:
+      //   0.39 * (words / sentences) + 11.8 * (syllables / words) – 15.59
+      const grade =
+        0.39 * (words / sentences) +
+        11.8 * (totalSyllables / words) -
+        15.59;
+      return Math.round(grade);
+    }
+
+    /******************************************************************
+     * 5. UPDATE STATS (WORD COUNT + READABILITY)
+     ******************************************************************/
+    function updateStats() {
+      const text = editor.value.trim();
+      // Count words (split by whitespace, filter out empty)
+      const words = text ? text.split(/\s+/).filter((w) => w.length > 0).length : 0;
+      let readability = '—';
+
+      if (words > 0) {
+        try {
+          const grade = computeFleschKincaid(text);
+          readability = 'Grade ' + grade;
+        } catch {
+          readability = '—';
+        }
+      }
+
+      statsDisplay.textContent = `Words: ${words} · Readability: ${readability}`;
+      hasUnsavedChanges = words > 0;
+    }
+
+    /******************************************************************
+     * 6. TOGGLE EDIT ↔ PREVIEW
+     ******************************************************************/
+    function toggleMode() {
+      isPreview = !isPreview;
+      if (isPreview) {
+        editor.style.display = 'none';
+        preview.style.display = 'block';
+        preview.innerHTML = marked.parse(editor.value);
+        modeToggle.textContent = 'Edit';
+      } else {
+        preview.style.display = 'none';
+        editor.style.display = 'block';
+        modeToggle.textContent = 'Preview';
+      }
+      updateStats();
+    }
+
+    /******************************************************************
+     * 7. TOGGLE DARK ↔ LIGHT THEME
+     ******************************************************************/
+    function toggleTheme() {
+      isDarkTheme = !isDarkTheme;
+      document.body.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
+      themeToggle.textContent = isDarkTheme ? 'Light Mode' : 'Dark Mode';
+    }
+
+    /******************************************************************
+     * 8. TOGGLE SPELLCHECK ON ↔ OFF
+     ******************************************************************/
+    function toggleSpellcheck() {
+      spellCheckEnabled = !spellCheckEnabled;
+      editor.spellcheck = spellCheckEnabled;
+      spellToggle.textContent = spellCheckEnabled ? 'Spell Off' : 'Spell On';
+    }
+
+    /******************************************************************
+     * 9. OPEN A .md FILE INTO THE EDITOR
+     ******************************************************************/
+    openBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        editor.value = evt.target.result;
+        updateStats();
+        if (isPreview) {
+          preview.innerHTML = marked.parse(editor.value);
+        }
+      };
+      reader.readAsText(file);
+      fileInput.value = '';
+    });
+
+    /******************************************************************
+     * 10. SAVE CURRENT EDITOR CONTENT AS A .md FILE
+     ******************************************************************/
+    saveBtn.addEventListener('click', async () => {
+      const text = editor.value;
+
+      try {
+        // Show system save dialog
+        const handle = await window.showSaveFilePicker({
+          suggestedName: 'document.md',
+          types: [{
+            description: 'Markdown Files',
+            accept: {'text/markdown': ['.md']},
+          }],
+        });
+
+        // Create writable stream
+        const writable = await handle.createWritable();
+
+        // Write content to file
+        await writable.write(text);
+        await writable.close();
+
+        hasUnsavedChanges = false;
+      } catch (err) {
+        // User canceled the save dialog
+        if (err.name !== 'AbortError') {
+          console.error('Save failed:', err);
+        }
+      }
+    });
+
+    /******************************************************************
+     * 11. PREVENT ACCIDENTAL RELOAD IF THERE ARE UNSAVED CHANGES
+     ******************************************************************/
+    window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+    });
+
+    /******************************************************************
+     * 12. AUTO‑RESIZE AND LIVE‑UPDATE ON INPUT
+     ******************************************************************/
+    editor.addEventListener('input', () => {
+      // Auto‑resize textarea vertically
+      editor.style.height = 'auto';
+      editor.style.height = editor.scrollHeight + 'px';
+
+      updateStats();
+      if (isPreview) {
+        preview.innerHTML = marked.parse(editor.value);
+      }
+    });
+
+    /******************************************************************
+     * 13. INITIALIZE ON PAGE LOAD
+     ******************************************************************/
+    themeToggle.addEventListener('click', toggleTheme);
+    spellToggle.addEventListener('click', toggleSpellcheck);
+    modeToggle.addEventListener('click', toggleMode);
+
+    editor.focus();
+    updateStats();
+
+    /******************************************************************
+    * 14. KEYBOARD SHORTCUT: CTRL+L TO TOGGLE THEME
+    ******************************************************************/
+    document.addEventListener('keydown', (e) => {
+    // Check for Ctrl + L (both Windows/Linux and macOS support)
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
+        e.preventDefault(); // Prevent browser default (e.g., address bar focus)
+        toggleMode();
+    }
+    });
+
+
+  </script>
+</body>
+</html>
