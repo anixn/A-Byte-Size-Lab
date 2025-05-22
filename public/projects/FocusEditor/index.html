@@ -2,65 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advanced Markdown Writer</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Markdown Writer with Pomodoro & Tasks</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono :wght@400;700&family=Merriweather:wght@400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto :ital,wght@0,100..900;1,100..900&display=swap');
     :root {
       --bg-color: #1a1a1a;
       --container-bg: #2d2d2d;
-      --text-color: #e0e0e0;
-      --accent-color: #9ec8d9;
+      --text-color: #d5c4a1;
+      --accent-color: #8ec07c;
+      --acc-color: #ebdbb2;
       --border-color: #5a5a5a;
+      --code-background: #3d3c3b;
+      --task-complete: #689d6a;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --link-color: #83a598;
     }
     [data-theme="light"] {
       --bg-color: #f5f5f5;
       --container-bg: #ffffff;
-      --text-color: #333333;
-      --accent-color: #4a90e2;
+      --text-color: #282828;
+      --accent-color: #427b58;
+      --acc-color: #3c3836;
       --border-color: #cccccc;
+      --code-background: #f0e7d7;
+      --task-complete: #98971a;
+      --header1-color: #d79921;
+      --header2-color: #458588;
+      --header3-color: #b16286;
+      --link-color: #006d77;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    html {
+    html, body {
       font-size: 62.5%;
       height: 100%;
-      scroll-behavior: smooth;
-    }
-    body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
       background-color: var(--bg-color);
       color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
       transition: background-color 0.3s ease;
+      scroll-behavior: smooth;
     }
-
-    /* Container that holds header + content */
     .writing-container {
       width: 100%;
       max-width: 720px;
-      height: 85vh;
+      height: 93vh;
       background-color: var(--container-bg);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin: 2rem auto;
       transition: background-color 0.3s ease;
     }
-
-    /* Top bar stays visible */
     .header {
       flex: 0 0 auto;
       background-color: var(--container-bg);
@@ -73,48 +76,58 @@
       top: 0;
       z-index: 10;
     }
-
     .stats {
       font-size: 1.1rem;
       color: var(--text-color);
     }
-
     .controls {
       display: flex;
       gap: 0.8rem;
       flex-wrap: wrap;
     }
-
     .toggle-btn {
+      position: relative;
+      cursor: pointer;
       padding: 0.4rem 1rem;
       background: transparent;
       border: 1px solid var(--border-color);
       border-radius: 15px;
-      cursor: pointer;
-      font-family: inherit;
       font-size: 1.1rem;
       color: var(--accent-color);
-      transition: border-color 0.2s ease, color 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .toggle-btn:hover {
-      border-color: var(--accent-color);
+    .toggle-btn:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--container-bg);
       color: var(--text-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 1rem;
+      white-space: nowrap;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-
-    /* The scrollable area with editor/preview */
+    #themeToggle:hover::after { content: "Toggle Theme"; }
+    #spellCheckToggle:hover::after { content: "Toggle Spellcheck"; }
+    #modeToggle:hover::after { content: "Toggle Preview/Edit"; }
+    #saveBtn:hover::after { content: "Save Markdown File"; }
+    #openBtn:hover::after { content: "Open Markdown File"; }
     .content {
       flex: 1 1 auto;
       display: flex;
       overflow-y: auto;
     }
-
     .writing-area {
       width: 100%;
       height: 100%;
       resize: none;
       border: none;
       outline: none;
-      font-family: 'Merriweather', Georgia, serif;
+      font-family: "Roboto", sans-serif;
       font-size: 1.6rem;
       line-height: 1.8;
       color: var(--text-color);
@@ -122,37 +135,91 @@
       padding: 1rem 2rem 2rem;
       overflow: auto;
     }
-
     .preview {
       display: none;
       width: 100%;
+      max-width: 70ch;
+      margin: 0 auto;
       font-family: 'Merriweather', Georgia, serif;
       font-size: 1.6rem;
-      line-height: 1.6;
+      line-height: 1.8;
       color: var(--text-color);
-      /* white-space: pre-wrap; */
-      padding: 1rem 2rem 2rem;
+      padding: 2rem 2rem 3rem;
       overflow: auto;
+      hyphens: auto;
+      text-rendering: optimizeLegibility;
     }
-
-    /* Tight heading spacing in preview */
+    .preview a, .footer a {
+      color: var(--link-color);
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    .preview a:hover, .footer a:hover {
+      text-decoration: none;
+      opacity: 0.85;
+    }
+    .preview p {
+      margin: 0 0 1.5rem 0;
+    }
+    .preview ul, .preview ol {
+      margin: 0 0 1.5rem 2rem;
+      padding-left: 1rem;
+    }
+    .preview li {
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .preview {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+        max-width: 90%;
+        line-height: 1.7;
+      }
+    }
+    .preview img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1.5rem auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .preview img.medium {
+      max-width: 75%;
+    }
+    .preview img.small {
+      max-width: 50%;
+    }
+    .preview img.full-width {
+      width: 100%;
+      max-width: 100%;
+    }
     .preview h1 {
       font-size: 2rem;
       margin: 0.2rem 0 0.4rem;
+      color: var(--header1-color);
     }
     .preview h2 {
       font-size: 1.8rem;
       margin: 0.18rem 0 0.36rem;
+      color: var(--header2-color);
     }
     .preview h3 {
       font-size: 1.6rem;
       margin: 0.15rem 0 0.3rem;
+      color: var(--header3-color);
     }
     .preview code {
-      background-color: #3a3a3a;
-      padding: 0.2rem 0.4rem;
+      display: block;
+      width: 100%;
+      font-family: 'IBM Plex Mono', monospace;
+      background-color: var(--code-background);
+      padding: 0.6rem;
+      white-space: pre-wrap;
+      box-sizing: border-box;
+      overflow-x: auto;
+      border-radius: 4px;
     }
-
     @media (max-width: 768px) {
       .header {
         flex-direction: column;
@@ -164,72 +231,258 @@
         padding: 1rem 1.5rem 1.5rem;
       }
     }
-
-    /* Chrome, Edge, Safari */
     .content::-webkit-scrollbar,
     textarea::-webkit-scrollbar,
     .preview::-webkit-scrollbar {
       display: none;
     }
-
-    /* Firefox */
-    .content,
-    textarea,
-    .preview {
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE/Edge */
-    }
-
-    /* Footer styling */
     .footer {
       color: gray;
       font-size: 1.2rem;
       margin-top: 1rem;
+      padding-bottom: 0.5rem;
       text-align: center;
     }
-  </style>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  />
+    /* --- Pomodoro Timer --- */
+    #pomodoro-timer {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--container-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      min-width: 220px;
+      transition: all 0.3s ease;
+    }
+
+    #pomodoro-timer:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Minimize Button */
+    #minimizeBtn {
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      background-color: transparent;
+      color: var(--text-color);
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.2s ease;
+    }
+
+    #minimizeBtn:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Minimized Timer Styles */
+    #pomodoro-timer.minimized {
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    #pomodoro-timer.minimized .timer-display,
+    #pomodoro-timer.minimized .timer-controls,
+    #pomodoro-timer.minimized #audio-controls,
+    #pomodoro-timer.minimized .task-controls,
+    #pomodoro-timer.minimized #pomodoro-count {
+      display: none;
+    }
+
+    #pomodoro-timer.minimized {
+      background-color: var(--border-color);
+    }
+
+    .timer-display {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: var(--header1-color);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-family: Roboto, Verdana, sans-serif;
+    }
+    .timer-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .timer-button {
+      padding: 0.4rem 1rem;
+      border-radius: 15px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--accent-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .timer-button:hover {
+      background-color: var(--code-background);
+    }
+    #audio-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    #audio-select {
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      background-color: var(--container-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+    #pomodoro-count {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      color: #b8bb26;
+      text-align: center;
+    }
+
+    /* --- Task Management --- */
+    .task-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .task-input {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .task-input input {
+      flex: 1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--container-bg);
+      color: var(--text-color);
+    }
+    .task-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+    }
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      transition: background-color 0.2s ease;
+    }
+    .task-item:hover {
+      background-color: var(--code-background);
+    }
+    .task-item.completed span {
+      text-decoration: line-through;
+      color: var(--task-complete);
+    }
+    .task-actions button {
+      margin-left: 0.4rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--accent-color);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .task-actions button:hover {
+      background-color: var(--code-background);
+    }
+    @media (max-width: 768px) {
+      #pomodoro-timer {
+        position: fixed;
+        top: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        width: 90%;
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body data-theme="dark">
+  <!-- Main Editor Container -->
   <div class="writing-container">
-    <!-- Header: word count, readability, and toggle/open/save buttons -->
     <div class="header">
-      <div class="stats">
+      <div class="stats" style="font-size: 1.3rem;">
         <span id="statsDisplay">Words: 0 · Readability: —</span>
       </div>
       <div class="controls">
-          <button style="color: #6d942b;" class="toggle-btn" id="saveBtn">Save .md</button>
-          <button style="color: #6d942b;" class="toggle-btn" id="openBtn">Open .md</button>
-          <input type="file" accept=".md" id="fileInput" style="display:none" />
+        <button style="color: var(--acc-color);" class="toggle-btn" id="saveBtn">Save .md</button>
+        <button style="color: var(--acc-color);" class="toggle-btn" id="openBtn">Open .md</button>
+        <input type="file" accept=".md" id="fileInput" style="display:none" />
         <button class="toggle-btn" id="themeToggle">Light Mode</button>
         <button class="toggle-btn" id="spellCheckToggle">Spell On</button>
         <button class="toggle-btn" id="modeToggle">Preview</button>
       </div>
     </div>
-
-    <!-- Content: either the textarea or the rendered preview -->
     <div class="content">
-      <textarea
-        class="writing-area"
-        placeholder="Begin writing..."
-        id="editor"
-        spellcheck="false"
-      ></textarea>
+      <textarea class="writing-area" placeholder="Begin writing..." id="editor" spellcheck="false"></textarea>
       <div class="preview" id="preview"></div>
     </div>
   </div>
-
   <!-- Footer -->
   <div class="footer">
-    © 2024 Ankit Deshmukh · <a style="color: #885b5b;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a>
+    © 2025 Ankit Deshmukh · <a style="color: gray;" href="https://www.ankitdeshmukh.com " target="_blank" rel="noopener">ankitdeshmukh.com</a>
   </div>
 
-  <!-- Dependencies: marked.js for Markdown rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Pomodoro Timer with Task Management -->
+  <div id="pomodoro-timer">
+    <button id="minimizeBtn" title="Minimize Timer">×</button>
+    <div class="timer-display" id="timer">
+      <span id="minutes">25</span>:<span id="seconds">00</span>
+    </div>
+    <div class="timer-controls">
+      <button id="toggle-timer" class="timer-button">Start</button>
+      <button id="reset" class="timer-button">Reset</button>
+      <!-- Audio Controls -->
+      <div id="audio-controls">
+        <button id="toggle-music" class="timer-button">Play Music</button>
+        <select id="audio-select">
+          <option value="background.opus">Cosmic</option>
+          <option value="background2.opus">Muse</option>
+          <option value="background3.opus">Burble</option>
+          <option value="background4.opus">Focus</option>
+        </select>
+      </div>
+      <!-- Task Management -->
+      <div class="task-controls">
+        <div class="task-input">
+          <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;">
+          <button class="timer-button" id="addTask">Add</button>
+        </div>
+        <ul id="taskList" class="task-list"></ul>
+      </div>
+      <!-- Pomodoro Count -->
+      <div id="pomodoro-count">Pomodoros: 0</div>
+    </div>
+  </div>
+
+  <!-- Hidden Audio Elements -->
+  <audio id="audio-unlocker" style="display:none;"></audio>
+  <audio id="background-audio" src="background.opus" loop></audio>
+
+  <!-- Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js "></script>
   <script>
     /******************************************************************
      * 1. ELEMENT REFERENCES
@@ -243,7 +496,19 @@
     const openBtn = document.getElementById('openBtn');
     const saveBtn = document.getElementById('saveBtn');
     const fileInput = document.getElementById('fileInput');
-
+    // Pomodoro references
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    const toggleTimerButton = document.getElementById('toggle-timer');
+    const resetButton = document.getElementById('reset');
+    const pomodoroCountElement = document.getElementById('pomodoro-count');
+    const audioSelect = document.getElementById('audio-select');
+    // Task references
+    const taskInput = document.getElementById('taskInput');
+    const addTaskButton = document.getElementById('addTask');
+    const taskList = document.getElementById('taskList');
+    // Minimize button
+    const minimizeBtn = document.getElementById('minimizeBtn');
     /******************************************************************
      * 2. STATE FLAGS
      ******************************************************************/
@@ -251,73 +516,57 @@
     let isDarkTheme = true;
     let spellCheckEnabled = false;
     let hasUnsavedChanges = false;
-
+    let audioUnlocked = false;
+    let tasks = [];
+    let pomodoroCount = 0;
+    let minutes = 25;
+    let seconds = 0;
+    let timerInterval;
+    let isTimerRunning = false;
     /******************************************************************
      * 3. CONFIGURE MARKED.JS (GitHub‑Flavored Markdown)
      ******************************************************************/
-    marked.setOptions({
-      breaks: true,
-      gfm: true
-    });
-
+    marked.setOptions({ breaks: true, gfm: true });
     /******************************************************************
-     * 4. SYLLABLE COUNT & FLESCH–KINCaid IMPLEMENTATION
-     *
-     * We’ll implement a heuristic syllable counter that:
-     * - Lowercases the word
-     * - Removes trailing “es”, “ed” (common silent endings)
-     * - Counts vowel groupings as syllables
+     * 4. SYLLABLE COUNT & FLESCH–KINCAID IMPLEMENTATION
      ******************************************************************/
     function countSyllables(word) {
       word = word.toLowerCase().trim();
-      if (word.length <= 3) return 1;
-      // Remove silent e-like endings
+      if (word.length <= 2) return 1;
       word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
-      // Remove leading y
       word = word.replace(/^y/, '');
-      const matches = word.match(/[aeiouy]{1,2}/g);
-      return matches ? matches.length : 1;
+      const matches = word.match(/[aeiouy]{1,2}/g) || [];
+      return Math.max(1, matches.length);
     }
-
     function computeFleschKincaid(text) {
-      // Split into sentences: use ., !, or ? as delimiters
-      const sentenceArray = text
-        .split(/[\\.\\!?]+/)
-        .map((s) => s.trim())
-        .filter((s) => s.length > 0);
+      const cleanText = text.replace(/^#+\s*/gm, '');
+      const sentenceArray = cleanText
+          .split(/[\.\!?]+/)
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0);
       const sentences = sentenceArray.length || 1;
-
-      // Split into words (simple whitespace split)
-      const wordsArray = text
-        .split(/\\s+/)
-        .map((w) => w.replace(/[^A-Za-z]/g, '').trim())
-        .filter((w) => w.length > 0);
+      const wordsArray = cleanText
+          .split(/\s+/)
+          .map((w) => w.replace(/[^A-Za-z]/g, '').trim())
+          .filter((w) => w.length > 0);
       const words = wordsArray.length || 1;
-
-      // Total syllables
       let totalSyllables = 0;
       for (const w of wordsArray) {
         totalSyllables += countSyllables(w);
       }
-
-      // Flesch–Kincaid grade formula:
-      //   0.39 * (words / sentences) + 11.8 * (syllables / words) – 15.59
       const grade =
-        0.39 * (words / sentences) +
-        11.8 * (totalSyllables / words) -
-        15.59;
+          0.39 * (words / sentences) +
+          11.8 * (totalSyllables / words) -
+          15.59;
       return Math.round(grade);
     }
-
     /******************************************************************
      * 5. UPDATE STATS (WORD COUNT + READABILITY)
      ******************************************************************/
     function updateStats() {
       const text = editor.value.trim();
-      // Count words (split by whitespace, filter out empty)
-      const words = text ? text.split(/\\s+/).filter((w) => w.length > 0).length : 0;
+      const words = text ? text.split(/\s+/).filter((w) => w.length > 0).length : 0;
       let readability = '—';
-
       if (words > 0) {
         try {
           const grade = computeFleschKincaid(text);
@@ -326,11 +575,9 @@
           readability = '—';
         }
       }
-
       statsDisplay.textContent = `Words: ${words} · Readability: ${readability}`;
       hasUnsavedChanges = words > 0;
     }
-
     /******************************************************************
      * 6. TOGGLE EDIT ↔ PREVIEW
      ******************************************************************/
@@ -348,7 +595,6 @@
       }
       updateStats();
     }
-
     /******************************************************************
      * 7. TOGGLE DARK ↔ LIGHT THEME
      ******************************************************************/
@@ -357,7 +603,6 @@
       document.body.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
       themeToggle.textContent = isDarkTheme ? 'Light Mode' : 'Dark Mode';
     }
-
     /******************************************************************
      * 8. TOGGLE SPELLCHECK ON ↔ OFF
      ******************************************************************/
@@ -366,14 +611,10 @@
       editor.spellcheck = spellCheckEnabled;
       spellToggle.textContent = spellCheckEnabled ? 'Spell Off' : 'Spell On';
     }
-
     /******************************************************************
      * 9. OPEN A .md FILE INTO THE EDITOR
      ******************************************************************/
-    openBtn.addEventListener('click', () => {
-      fileInput.click();
-    });
-
+    openBtn.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -381,46 +622,36 @@
       reader.onload = (evt) => {
         editor.value = evt.target.result;
         updateStats();
-        if (isPreview) {
-          preview.innerHTML = marked.parse(editor.value);
-        }
+        if (isPreview) preview.innerHTML = marked.parse(editor.value);
+      };
+      reader.onerror = () => {
+        alert('Failed to read the file. Please try again.');
       };
       reader.readAsText(file);
       fileInput.value = '';
     });
-
     /******************************************************************
      * 10. SAVE CURRENT EDITOR CONTENT AS A .md FILE
      ******************************************************************/
     saveBtn.addEventListener('click', async () => {
+      if (!window.showSaveFilePicker) {
+        alert('Save feature not supported in this browser.');
+        return;
+      }
       const text = editor.value;
-
       try {
-        // Show system save dialog
         const handle = await window.showSaveFilePicker({
           suggestedName: 'document.md',
-          types: [{
-            description: 'Markdown Files',
-            accept: {'text/markdown': ['.md']},
-          }],
+          types: [{ description: 'Markdown Files', accept: { 'text/markdown': ['.md'] } }],
         });
-
-        // Create writable stream
         const writable = await handle.createWritable();
-
-        // Write content to file
         await writable.write(text);
         await writable.close();
-
         hasUnsavedChanges = false;
       } catch (err) {
-        // User canceled the save dialog
-        if (err.name !== 'AbortError') {
-          console.error('Save failed:', err);
-        }
+        if (err.name !== 'AbortError') console.error('Save failed:', err);
       }
     });
-
     /******************************************************************
      * 11. PREVENT ACCIDENTAL RELOAD IF THERE ARE UNSAVED CHANGES
      ******************************************************************/
@@ -430,30 +661,253 @@
         e.returnValue = '';
       }
     });
-
     /******************************************************************
      * 12. AUTO‑RESIZE AND LIVE‑UPDATE ON INPUT
      ******************************************************************/
     editor.addEventListener('input', () => {
-      // Auto‑resize textarea vertically
       editor.style.height = 'auto';
       editor.style.height = editor.scrollHeight + 'px';
-
       updateStats();
-      if (isPreview) {
-        preview.innerHTML = marked.parse(editor.value);
-      }
+      if (isPreview) preview.innerHTML = marked.parse(editor.value);
     });
-
     /******************************************************************
      * 13. INITIALIZE ON PAGE LOAD
      ******************************************************************/
     themeToggle.addEventListener('click', toggleTheme);
     spellToggle.addEventListener('click', toggleSpellcheck);
     modeToggle.addEventListener('click', toggleMode);
-
     editor.focus();
     updateStats();
+    /******************************************************************
+     * 14. KEYBOARD SHORTCUT: CTRL+L TO TOGGLE PREVIEW MODE
+     ******************************************************************/
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        toggleMode();
+      }
+    });
+    /******************************************************************
+     * 15. POMODORO TIMER FUNCTIONALITY
+     ******************************************************************/
+    const backgroundAudio = document.getElementById('background-audio');
+    const toggleMusicButton = document.getElementById('toggle-music');
+    // Unlock audio on first interaction
+    function unlockAudio() {
+      if (audioUnlocked) return;
+      const unlockSound = new Audio();
+      unlockSound.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
+      unlockSound.play()
+        .then(() => {
+          unlockSound.pause();
+          audioUnlocked = true;
+          updateTimerControls();
+        })
+        .catch(() => {
+          console.warn('Audio unlock failed');
+        });
+    }
+    document.addEventListener('click', unlockAudio, { once: true });
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+    function updateTimerDisplay() {
+      minutesElement.textContent = String(minutes).padStart(2, '0');
+      secondsElement.textContent = String(seconds).padStart(2, '0');
+    }
+    function updatePomodoroCount() {
+      pomodoroCountElement.textContent = `Pomodoros: ${pomodoroCount}`;
+    }
+    function startTimer() {
+      if (!audioUnlocked) {
+        alert('Please interact with the page to unlock audio.');
+        return;
+      }
+      backgroundAudio.play().catch(() => alert('Audio failed to play.'));
+      timerInterval = setInterval(() => {
+        seconds--;
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+        }
+        if (minutes < 0) {
+          clearInterval(timerInterval);
+          alert('Pomodoro complete!');
+          pomodoroCount++;
+          resetTimer();
+          return;
+        }
+        updateTimerDisplay();
+      }, 1000);
+      isTimerRunning = true;
+      toggleTimerButton.textContent = 'Pause';
+    }
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      backgroundAudio.pause();
+      isTimerRunning = false;
+      toggleTimerButton.textContent = 'Start';
+    }
+    function toggleTimer() {
+      if (isTimerRunning) pauseTimer();
+      else startTimer();
+    }
+    function resetTimer() {
+      clearInterval(timerInterval);
+      backgroundAudio.pause();
+      backgroundAudio.currentTime = 0;
+      minutes = 25;
+      seconds = 0;
+      updateTimerDisplay();
+      isTimerRunning = false;
+      toggleTimerButton.textContent = 'Start';
+      updatePomodoroCount();
+    }
+    /******************************************************************
+     * 16. AUDIO CONTROLS
+     ******************************************************************/
+    function toggleMusic() {
+      if (!audioUnlocked) {
+        alert('Please interact with the page to unlock audio.');
+        return;
+      }
+      try {
+        if (backgroundAudio.paused) {
+          backgroundAudio.play();
+          toggleMusicButton.textContent = 'Pause Music';
+        } else {
+          backgroundAudio.pause();
+          toggleMusicButton.textContent = 'Play Music';
+        }
+      } catch (err) {
+        alert('Audio playback failed: ' + err.message);
+      }
+    }
+    function changeAudio() {
+      if (!audioUnlocked) return;
+      try {
+        backgroundAudio.pause();
+        backgroundAudio.currentTime = 0;
+        backgroundAudio.src = audioSelect.value;
+        backgroundAudio.play();
+        toggleMusicButton.textContent = 'Pause Music';
+      } catch (err) {
+        alert('Failed to load audio track: ' + err.message);
+      }
+    }
+    /******************************************************************
+     * 17. TASK MANAGEMENT
+     ******************************************************************/
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    function loadTasks() {
+      const saved = localStorage.getItem('tasks');
+      if (saved) {
+        try {
+          tasks = JSON.parse(saved);
+          renderTasks();
+        } catch (e) {
+          console.error('Failed to parse saved tasks', e);
+        }
+      }
+    }
+    function addTask(text) {
+      if (!text.trim()) return;
+      tasks.push({ text, completed: false });
+      saveTasks();
+      renderTasks();
+      taskInput.value = '';
+    }
+    function toggleTask(index) {
+      tasks[index].completed = !tasks[index].completed;
+      saveTasks();
+      renderTasks();
+    }
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+      renderTasks();
+    }
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.className = `task-item ${task.completed ? 'completed' : ''}`;
+        const span = document.createElement('span');
+        span.textContent = task.text;
+        const actions = document.createElement('div');
+        actions.className = 'task-actions';
+        const checkBtn = document.createElement('button');
+        checkBtn.textContent = task.completed ? '✓' : '☐';
+        checkBtn.title = 'Toggle completion';
+        checkBtn.addEventListener('click', () => toggleTask(index));
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '✕';
+        delBtn.title = 'Delete task';
+        delBtn.addEventListener('click', () => deleteTask(index));
+        actions.appendChild(checkBtn);
+        actions.appendChild(delBtn);
+        li.appendChild(span);
+        li.appendChild(actions);
+        taskList.appendChild(li);
+      });
+    }
+    /******************************************************************
+     * 18. UPDATE CONTROLS BASED ON AUDIO UNLOCK STATUS
+     ******************************************************************/
+    function updateTimerControls() {
+      toggleTimerButton.disabled = !audioUnlocked;
+      resetButton.disabled = !audioUnlocked;
+      toggleMusicButton.disabled = !audioUnlocked;
+      audioSelect.disabled = !audioUnlocked;
+      addTaskButton.disabled = !audioUnlocked;
+      taskInput.disabled = !audioUnlocked;
+    }
+    /******************************************************************
+     * 19. EVENT LISTENERS
+     ******************************************************************/
+    toggleTimerButton.addEventListener('click', toggleTimer);
+    resetButton.addEventListener('click', resetTimer);
+    toggleMusicButton.addEventListener('click', toggleMusic);
+    audioSelect.addEventListener('change', changeAudio);
+    updateTimerDisplay();
+    updatePomodoroCount();
+    // Task event listeners
+    addTaskButton.addEventListener('click', () => {
+      addTask(taskInput.value);
+    });
+    taskInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        addTask(taskInput.value);
+      }
+    });
+    /******************************************************************
+     * 20. MINIMIZE FUNCTIONALITY
+     ******************************************************************/
+    minimizeBtn.addEventListener('click', () => {
+      const timer = document.getElementById('pomodoro-timer');
+      timer.classList.toggle('minimized');
+    });
+    /******************************************************************
+     * 21. INITIALIZE ON PAGE LOAD
+     ******************************************************************/
+    document.addEventListener('DOMContentLoaded', () => {
+      updateStats();
+      loadTasks();
+      renderTasks();
+      updateTimerControls();
+      // Hide unsupported features
+      if (!window.showSaveFilePicker) {
+        saveBtn.style.display = 'none';
+      }
+      if (!window.File || !window.FileReader) {
+        openBtn.style.display = 'none';
+      }
+    });
+    // Handle audio errors
+    backgroundAudio.addEventListener('error', () => {
+      alert('Failed to load audio. Please try another track.');
+      toggleMusicButton.textContent = 'Play Music';
+    });
   </script>
 </body>
 </html>
