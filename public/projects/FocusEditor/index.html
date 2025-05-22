@@ -3,7 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced Markdown Writer with Pomodoro & Tasks</title>
+  <title>Writer with Pomodoro & Tasks</title>
+    <!-- SEO & Open Graph Metadata -->
+    <meta name="description" content="A Writer with Pomodoro & Tasks">
+    <meta property="og:title" content="Writer with Pomodoro & Tasks">
+    <meta property="og:description" content="A simple distraction free writer with Pomodoro timer and tasks capability">
+    <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png">
+    <meta property="og:url" content="https://www.ankitdeshmukh.com/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
+    <script>
+        var doNotTrack = false;
+        if (!doNotTrack) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+        }
+    </script>
+
+    <meta property="og:title" content="A Writer with Pomodoro & Tasks">
+
+    <meta name="author" content="Dr. Ankit Deshmukh">
+    <link rel="canonical" href="https://ankitdeshmukh.com/projects/FocusEditor/">
+    <meta name="google-site-verification" content="G-R5FJKDQD1M">
+
+
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono :wght@400;700&family=Merriweather:wght@400;500;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto :ital,wght@0,100..900;1,100..900&display=swap');
@@ -50,11 +81,19 @@
       color: var(--text-color);
       transition: background-color 0.3s ease;
       scroll-behavior: smooth;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;     /* Firefox */
+      overflow: auto;
     }
+
+    body::-webkit-scrollbar {
+    display: none;
+    }
+
     .writing-container {
       width: 100%;
       max-width: 720px;
-      height: 93vh;
+      height: 92vh;
       background-color: var(--container-bg);
       border-radius: 8px;
       display: flex;
@@ -247,8 +286,8 @@
     /* --- Pomodoro Timer --- */
     #pomodoro-timer {
       position: fixed;
-      top: 1rem;
-      right: 1rem;
+      top: 2rem;
+      right: 2rem;
       background-color: var(--container-bg);
       padding: 1rem 1.5rem;
       border-radius: 8px;
@@ -299,9 +338,6 @@
       display: none;
     }
 
-    #pomodoro-timer.minimized {
-      background-color: var(--border-color);
-    }
 
     .timer-display {
       font-size: 2.4rem;
