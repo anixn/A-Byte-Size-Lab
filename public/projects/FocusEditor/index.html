@@ -3,41 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Writer with Pomodoro & Tasks</title>
-    <!-- SEO & Open Graph Metadata -->
-    <meta name="description" content="A Writer with Pomodoro & Tasks">
-    <meta property="og:title" content="Writer with Pomodoro & Tasks">
-    <meta property="og:description" content="A simple distraction free writer with Pomodoro timer and tasks capability">
-    <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png">
-    <meta property="og:url" content="https://www.ankitdeshmukh.com/">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
-
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
-    <script>
-        var doNotTrack = false;
-        if (!doNotTrack) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
-        }
-    </script>
-
-    <meta property="og:title" content="A Writer with Pomodoro & Tasks">
-
-    <meta name="author" content="Dr. Ankit Deshmukh">
-    <link rel="canonical" href="https://ankitdeshmukh.com/projects/FocusEditor/">
-    <meta name="google-site-verification" content="G-R5FJKDQD1M">
-
-
-
+  <title>Pomodoro Writer</title>
+  <!-- SEO & Open Graph Metadata -->
+  <meta name="description" content="A Writer with Pomodoro & Tasks and Analytics">
+  <meta property="og:title" content="Writer with Pomodoro & Tasks">
+  <meta property="og:description" content="A simple distraction free writer with Pomodoro timer, tasks capability, and text-quality assessment tools">
+  <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png ">
+  <meta property="og:url" content="https://www.ankitdeshmukh.com/ ">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico ">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png ">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png ">
+  <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png ">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M "></script>
+  <script>
+    var doNotTrack = false;
+    if (!doNotTrack) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
+    }
+  </script>
+  <meta name="author" content="Dr. Ankit Deshmukh">
+  <link rel="canonical" href="https://ankitdeshmukh.com/projects/FocusEditor/">
+  <meta name="google-site-verification" content="G-R5FJKDQD1M">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono :wght@400;700&family=Merriweather:wght@400;500;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto :ital,wght@0,100..900;1,100..900&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
     :root {
       --bg-color: #1a1a1a;
       --container-bg: #2d2d2d;
@@ -50,7 +46,7 @@
       --header1-color: #d79921;
       --header2-color: #458588;
       --header3-color: #b16286;
-      --link-color: #83a598;
+      --link-color: #808080;
     }
     [data-theme="light"] {
       --bg-color: #f5f5f5;
@@ -64,7 +60,7 @@
       --header1-color: #d79921;
       --header2-color: #458588;
       --header3-color: #b16286;
-      --link-color: #006d77;
+      --link-color: #808080;
     }
     * {
       margin: 0;
@@ -81,15 +77,13 @@
       color: var(--text-color);
       transition: background-color 0.3s ease;
       scroll-behavior: smooth;
-      -ms-overflow-style: none;  /* Internet Explorer 10+ */
-      scrollbar-width: none;     /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
       overflow: auto;
     }
-
     body::-webkit-scrollbar {
-    display: none;
+      display: none;
     }
-
     .writing-container {
       width: 100%;
       max-width: 720px;
@@ -99,7 +93,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       margin: 2rem auto;
       transition: background-color 0.3s ease;
     }
@@ -148,7 +142,7 @@
       font-size: 1rem;
       white-space: nowrap;
       border: 1px solid var(--border-color);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     #themeToggle:hover::after { content: "Toggle Theme"; }
     #spellCheckToggle:hover::after { content: "Toggle Spellcheck"; }
@@ -221,7 +215,7 @@
       display: block;
       margin: 1.5rem auto;
       border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .preview img.medium {
       max-width: 75%;
@@ -248,10 +242,11 @@
       margin: 0.15rem 0 0.3rem;
       color: var(--header3-color);
     }
-    .preview code {
+    .preview code, pre {
       display: block;
       width: 100%;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: "IBM Plex Mono", monospace;
+      font-style: normal;
       background-color: var(--code-background);
       padding: 0.6rem;
       white-space: pre-wrap;
@@ -276,13 +271,12 @@
       display: none;
     }
     .footer {
-      color: gray;
+      color: #808080;
       font-size: 1.2rem;
       margin-top: 1rem;
       padding-bottom: 0.5rem;
       text-align: center;
     }
-
     /* --- Pomodoro Timer --- */
     #pomodoro-timer {
       position: fixed;
@@ -291,36 +285,66 @@
       background-color: var(--container-bg);
       padding: 1rem 1.5rem;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       z-index: 1000;
-      min-width: 220px;
+      /* min-width: 220px; */
       transition: all 0.3s ease;
     }
-
     #pomodoro-timer:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
-
     /* Minimize Button */
     #minimizeBtn {
       position: absolute;
-      top: 9px;
-      right: 12px;
+      top: 7px;
+      right: 10px;
       background-color: transparent;
-      color: var(--text-color);
+      color: var(--border-color);
       border: none;
       font-size: 1.8rem;
       cursor: pointer;
       z-index: 1001;
       transition: transform 0.2s ease;
     }
-
     #minimizeBtn:hover {
       transform: rotate(90deg);
     }
-
     /* Minimized Timer Styles */
     #pomodoro-timer.minimized {
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      padding: 0 !important;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    #pomodoro-timer.minimized .timer-display,
+    #pomodoro-timer.minimized .timer-controls,
+    #pomodoro-timer.minimized #audio-controls,
+    #pomodoro-timer.minimized .task-controls,
+    #pomodoro-timer.minimized #pomodoro-count,
+    #pomodoro-timer.minimized #assessment-panel1 {
+      display: none;
+    }
+    /* Assess-timer */
+    #assess-timer {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background-color: var(--container-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      min-width: 220px;
+      transition: all 0.3s ease;
+    }
+    #assess-timer:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    /* Minimized Timer Styles */
+    #assess-timer.minimized {
       width: 36px;
       min-width: 36px;
       height: 36px;
@@ -330,15 +354,11 @@
       transition: all 0.3s ease;
     }
 
-    #pomodoro-timer.minimized .timer-display,
-    #pomodoro-timer.minimized .timer-controls,
-    #pomodoro-timer.minimized #audio-controls,
-    #pomodoro-timer.minimized .task-controls,
-    #pomodoro-timer.minimized #pomodoro-count {
+    #assess-timer.minimized #assessment-content,
+    #assess-timer.minimized .assessment-metric
+    {
       display: none;
     }
-
-
     .timer-display {
       font-size: 2.4rem;
       font-weight: bold;
@@ -386,7 +406,6 @@
       color: #b8bb26;
       text-align: center;
     }
-
     /* --- Task Management --- */
     .task-controls {
       display: flex;
@@ -453,6 +472,53 @@
         padding: 1rem;
       }
     }
+    /* --- Assessment Panel --- */
+    #assessment-panel1 {
+      font-family: Roboto, sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+    #assessmentMinimizeBtn1 {
+      position: absolute;
+      top: 7px;
+      left: 10px;
+      background-color: transparent;
+      color: var(--border-color);
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.2s ease;
+    }
+    #assessmentMinimizeBtn1:hover {
+      transform: rotate(90deg);
+    }
+    #assessment-panel1.minimized {
+      width: 36px;
+      min-width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    #assessment-panel1.minimized .assessment-content {
+      display: none;
+    }
+    .assessment-content {
+      margin-top: 1.5rem;
+    }
+    .assessment-metric {
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .assessment-metric label {
+      font-weight: 500;
+    }
+    .assessment-metric span {
+      font-weight: 700;
+    }
   </style>
 </head>
 <body data-theme="dark">
@@ -478,12 +544,13 @@
   </div>
   <!-- Footer -->
   <div class="footer">
-    © 2025 Ankit Deshmukh · <a style="color: gray;" href="https://www.ankitdeshmukh.com " target="_blank" rel="noopener">ankitdeshmukh.com</a>
+    © 2025 Ankit Deshmukh · <a href="https://www.ankitdeshmukh.com " target="_blank" rel="noopener">ankitdeshmukh.com</a>
   </div>
-
   <!-- Pomodoro Timer with Task Management -->
   <div id="pomodoro-timer">
-    <button id="minimizeBtn" title="Minimize Timer">×</button>
+    <!-- <button id="minimizeBtn" title="Minimize Timer">×</button> -->
+    <button id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer">✕</button>
+
     <div class="timer-display" id="timer">
       <span id="minutes">25</span>:<span id="seconds">00</span>
     </div>
@@ -512,17 +579,51 @@
       <div id="pomodoro-count">Pomodoros: 0</div>
     </div>
   </div>
-
+  <div id="assess-timer">
+    <div id="assessment-panel1">
+      <button id="assessmentMinimizeBtn1" title="Minimize Assessment">✕</button>
+      <div class="assessment-content">
+        <div class="assessment-metric" style=" padding-top: 10px; " >
+          <label>Flesch–Kincaid Grade:</label>
+          <span id="fkGrade">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>Reading Ease:</label>
+          <span id="readingEase">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>Gunning Fog Index:</label>
+          <span id="gunningFog">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>Coleman–Liau Index:</label>
+          <span id="colemanLiau">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>Average Word Length:</label>
+          <span id="avgWordLength">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>Average Sentence Length:</label>
+          <span id="avgSentenceLength">—</span>
+        </div>
+        <div class="assessment-metric">
+          <label>AWL Matches:</label>
+          <span id="awlCount">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Hidden Audio Elements -->
   <audio id="audio-unlocker" style="display:none;"></audio>
   <audio id="background-audio" src="background.opus" loop></audio>
-
   <!-- Dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js "></script>
   <script>
     /******************************************************************
      * 1. ELEMENT REFERENCES
      ******************************************************************/
+    const assessTimer = document.getElementById('assess-timer');
     const editor = document.getElementById('editor');
     const preview = document.getElementById('preview');
     const statsDisplay = document.getElementById('statsDisplay');
@@ -543,11 +644,19 @@
     const taskInput = document.getElementById('taskInput');
     const addTaskButton = document.getElementById('addTask');
     const taskList = document.getElementById('taskList');
-    // Minimize button
+    // Minimize buttons
     const minimizeBtn = document.getElementById('minimizeBtn');
-    /******************************************************************
-     * 2. STATE FLAGS
-     ******************************************************************/
+    const assessmentMinimizeBtn1 = document.getElementById('assessmentMinimizeBtn1');
+    // Assessment references
+    const fkGradeSpan = document.getElementById('fkGrade');
+    const readingEaseSpan = document.getElementById('readingEase');
+    const gunningFogSpan = document.getElementById('gunningFog');
+    const colemanLiauSpan = document.getElementById('colemanLiau');
+    const avgWordLengthSpan = document.getElementById('avgWordLength');
+    const avgSentenceLengthSpan = document.getElementById('avgSentenceLength');
+    const awlCountSpan = document.getElementById('awlCount');
+    const assessmentPanel = document.getElementById('assessment-panel1');
+    // State Flags
     let isPreview = false;
     let isDarkTheme = true;
     let spellCheckEnabled = false;
@@ -560,11 +669,11 @@
     let timerInterval;
     let isTimerRunning = false;
     /******************************************************************
-     * 3. CONFIGURE MARKED.JS (GitHub‑Flavored Markdown)
+     * 2. CONFIGURE MARKED.JS (GitHub-Flavored Markdown)
      ******************************************************************/
     marked.setOptions({ breaks: true, gfm: true });
     /******************************************************************
-     * 4. SYLLABLE COUNT & FLESCH–KINCAID IMPLEMENTATION
+     * 3. SYLLABLE COUNT & READABILITY IMPLEMENTATIONS
      ******************************************************************/
     function countSyllables(word) {
       word = word.toLowerCase().trim();
@@ -594,28 +703,140 @@
           0.39 * (words / sentences) +
           11.8 * (totalSyllables / words) -
           15.59;
-      return Math.round(grade);
+      return grade;
     }
-    /******************************************************************
-     * 5. UPDATE STATS (WORD COUNT + READABILITY)
-     ******************************************************************/
-    function updateStats() {
-      const text = editor.value.trim();
-      const words = text ? text.split(/\s+/).filter((w) => w.length > 0).length : 0;
-      let readability = '—';
-      if (words > 0) {
-        try {
-          const grade = computeFleschKincaid(text);
-          readability = 'Grade ' + grade;
-        } catch {
-          readability = '—';
+    function computeReadingEase(text) {
+      const cleanText = text.replace(/^#+\s*/gm, '');
+      const sentenceArray = cleanText
+          .split(/[\.\!?]+/)
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0);
+      const sentences = sentenceArray.length || 1;
+      const wordsArray = cleanText
+          .split(/\s+/)
+          .map((w) => w.replace(/[^A-Za-z]/g, '').trim())
+          .filter((w) => w.length > 0);
+      const words = wordsArray.length || 1;
+      let totalSyllables = 0;
+      for (const w of wordsArray) {
+        totalSyllables += countSyllables(w);
+      }
+      const asl = words / sentences;
+      const asw = totalSyllables / words;
+      const score = 206.835 - 1.015 * asl - 84.6 * asw;
+      return score;
+    }
+    function countComplexWords(text) {
+      const cleanText = text.replace(/[^A-Za-z\s]/g, '');
+      const wordsArray = cleanText.split(/\s+/).filter((w) => w.length > 0);
+      let complexCount = 0;
+      for (const w of wordsArray) {
+        if (countSyllables(w) >= 3) {
+          complexCount++;
         }
       }
-      statsDisplay.textContent = `Words: ${words} · Readability: ${readability}`;
-      hasUnsavedChanges = words > 0;
+      return complexCount;
+    }
+    function computeGunningFog(text) {
+      const cleanText = text.replace(/[^A-Za-z\s\.!?]/g, '');
+      const sentenceArray = cleanText
+          .split(/[\.\!?]+/)
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0);
+      const sentences = sentenceArray.length || 1;
+      const wordsArray = cleanText
+          .split(/\s+/)
+          .map((w) => w.trim())
+          .filter((w) => w.length > 0);
+      const words = wordsArray.length || 1;
+      const complexWords = countComplexWords(text);
+      const fog = 0.4 * ((words / sentences) + (100 * (complexWords / words)));
+      return fog;
+    }
+    function computeColemanLiau(text) {
+      const cleanText = text.replace(/[^A-Za-z\s\.!?]/g, '');
+      const sentences = cleanText.split(/[\.\!?]+/).filter(s => s.trim().length > 0).length || 1;
+      const words = cleanText.split(/\s+/).filter(w => w.trim().length > 0).length || 1;
+      const letters = cleanText.replace(/[^A-Za-z]/g, '').length;
+      const L = (letters / words) * 100;
+      const S = (sentences / words) * 100;
+      const index = 0.0588 * L - 0.296 * S - 15.8;
+      return index;
     }
     /******************************************************************
-     * 6. TOGGLE EDIT ↔ PREVIEW
+     * 4. UPDATE TEXT ASSESSMENT
+     ******************************************************************/
+    const AWL = [
+      "analyze","approach","area","assess","assume","authority","available","benefit","concept","consistent",
+      "constitute","context","contract","create","data","define","derive","distribute","economic","environment",
+      "establish","estimate","evident","export","factor","finance","formula","function","identity","impact",
+      "indicate","individual","interpret","involve","issue","labor","legal","legislate","major","method",
+      "occur","percent","period","policy","principle","proceed","process","require","research","respond","role",
+      "section","sector","significant","similar","source","structure","theory","vary"
+    ];
+function updateAssessment() {
+  const text = editor.value.trim();
+
+  // If editor is empty, show dashes or zeros
+  if (text.length === 0) {
+    fkGradeSpan.textContent = '—';
+    readingEaseSpan.textContent = '—';
+    gunningFogSpan.textContent = '—';
+    colemanLiauSpan.textContent = '—';
+    avgWordLengthSpan.textContent = '0';
+    avgSentenceLengthSpan.textContent = '0';
+    awlCountSpan.textContent = '0';
+    return;
+  }
+
+  // Sentence split
+  const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0);
+  const words = text.split(/\s+/).filter(w => w.trim().length > 0);
+  const numSentences = sentences.length || 1;
+  const numWords = words.length || 1;
+
+  // Syllable and letter counts
+  let totalSyllables = 0;
+  let totalLetters = 0;
+  words.forEach(w => {
+    totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ""));
+    totalLetters += w.replace(/[^A-Za-z]/g, "").length;
+  });
+
+  const complexWords = countComplexWords(text);
+
+  // AWL matching
+  let awlMatches = 0;
+  words.forEach(w => {
+    if (AWL.includes(w.toLowerCase().replace(/[^A-Za-z]/g, ""))) {
+      awlMatches++;
+    }
+  });
+
+  // Averages
+  const avgWordLength = totalLetters / numWords;
+  const avgSentenceLength = numWords / numSentences;
+
+  // Readability formulas
+  const fk = 0.39 * (numWords / numSentences) + 11.8 * (totalSyllables / numWords) - 15.59;
+  const ease = 206.835 - 1.015 * (numWords / numSentences) - 84.6 * (totalSyllables / numWords);
+  const fog = 0.4 * ((numWords / numSentences) + 100 * (complexWords / numWords));
+  const cl = computeColemanLiau(text);
+
+  // Update DOM
+  fkGradeSpan.textContent = fk.toFixed(1);
+  readingEaseSpan.textContent = ease.toFixed(1);
+  gunningFogSpan.textContent = fog.toFixed(1);
+  colemanLiauSpan.textContent = cl.toFixed(1);
+  avgWordLengthSpan.textContent = avgWordLength.toFixed(2);
+  avgSentenceLengthSpan.textContent = avgSentenceLength.toFixed(2);
+  awlCountSpan.textContent = awlMatches;
+}
+
+
+
+    /******************************************************************
+     * 5. TOGGLE EDIT ↔ PREVIEW
      ******************************************************************/
     function toggleMode() {
       isPreview = !isPreview;
@@ -629,10 +850,11 @@
         editor.style.display = 'block';
         modeToggle.textContent = 'Preview';
       }
+      updateAssessment();
       updateStats();
     }
     /******************************************************************
-     * 7. TOGGLE DARK ↔ LIGHT THEME
+     * 6. TOGGLE DARK ↔ LIGHT THEME
      ******************************************************************/
     function toggleTheme() {
       isDarkTheme = !isDarkTheme;
@@ -640,7 +862,7 @@
       themeToggle.textContent = isDarkTheme ? 'Light Mode' : 'Dark Mode';
     }
     /******************************************************************
-     * 8. TOGGLE SPELLCHECK ON ↔ OFF
+     * 7. TOGGLE SPELLCHECK ON ↔ OFF
      ******************************************************************/
     function toggleSpellcheck() {
       spellCheckEnabled = !spellCheckEnabled;
@@ -648,7 +870,7 @@
       spellToggle.textContent = spellCheckEnabled ? 'Spell Off' : 'Spell On';
     }
     /******************************************************************
-     * 9. OPEN A .md FILE INTO THE EDITOR
+     * 8. OPEN A .md FILE INTO THE EDITOR
      ******************************************************************/
     openBtn.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', (e) => {
@@ -658,6 +880,7 @@
       reader.onload = (evt) => {
         editor.value = evt.target.result;
         updateStats();
+        updateAssessment();
         if (isPreview) preview.innerHTML = marked.parse(editor.value);
       };
       reader.onerror = () => {
@@ -667,7 +890,7 @@
       fileInput.value = '';
     });
     /******************************************************************
-     * 10. SAVE CURRENT EDITOR CONTENT AS A .md FILE
+     * 9. SAVE CURRENT EDITOR CONTENT AS A .md FILE
      ******************************************************************/
     saveBtn.addEventListener('click', async () => {
       if (!window.showSaveFilePicker) {
@@ -689,7 +912,7 @@
       }
     });
     /******************************************************************
-     * 11. PREVENT ACCIDENTAL RELOAD IF THERE ARE UNSAVED CHANGES
+     * 10. PREVENT ACCIDENTAL RELOAD IF THERE ARE UNSAVED CHANGES
      ******************************************************************/
     window.addEventListener('beforeunload', (e) => {
       if (hasUnsavedChanges) {
@@ -698,24 +921,17 @@
       }
     });
     /******************************************************************
-     * 12. AUTO‑RESIZE AND LIVE‑UPDATE ON INPUT
+     * 11. AUTO-RESIZE AND LIVE-UPDATE ON INPUT
      ******************************************************************/
     editor.addEventListener('input', () => {
       editor.style.height = 'auto';
       editor.style.height = editor.scrollHeight + 'px';
       updateStats();
+      updateAssessment();
       if (isPreview) preview.innerHTML = marked.parse(editor.value);
     });
     /******************************************************************
-     * 13. INITIALIZE ON PAGE LOAD
-     ******************************************************************/
-    themeToggle.addEventListener('click', toggleTheme);
-    spellToggle.addEventListener('click', toggleSpellcheck);
-    modeToggle.addEventListener('click', toggleMode);
-    editor.focus();
-    updateStats();
-    /******************************************************************
-     * 14. KEYBOARD SHORTCUT: CTRL+L TO TOGGLE PREVIEW MODE
+     * 12. KEYBOARD SHORTCUT: CTRL+L TO TOGGLE PREVIEW MODE
      ******************************************************************/
     document.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
@@ -724,7 +940,7 @@
       }
     });
     /******************************************************************
-     * 15. POMODORO TIMER FUNCTIONALITY
+     * 13. POMODORO TIMER FUNCTIONALITY
      ******************************************************************/
     const backgroundAudio = document.getElementById('background-audio');
     const toggleMusicButton = document.getElementById('toggle-music');
@@ -798,7 +1014,7 @@
       updatePomodoroCount();
     }
     /******************************************************************
-     * 16. AUDIO CONTROLS
+     * 14. AUDIO CONTROLS
      ******************************************************************/
     function toggleMusic() {
       if (!audioUnlocked) {
@@ -830,7 +1046,7 @@
       }
     }
     /******************************************************************
-     * 17. TASK MANAGEMENT
+     * 15. TASK MANAGEMENT
      ******************************************************************/
     function saveTasks() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -888,7 +1104,7 @@
       });
     }
     /******************************************************************
-     * 18. UPDATE CONTROLS BASED ON AUDIO UNLOCK STATUS
+     * 16. UPDATE CONTROLS BASED ON AUDIO UNLOCK STATUS
      ******************************************************************/
     function updateTimerControls() {
       toggleTimerButton.disabled = !audioUnlocked;
@@ -899,15 +1115,23 @@
       taskInput.disabled = !audioUnlocked;
     }
     /******************************************************************
-     * 19. EVENT LISTENERS
+     * 17. MINIMIZE FUNCTIONALITY FOR POMODORO AND ASSESSMENT
+     ******************************************************************/
+    minimizeBtn.addEventListener('click', () => {
+      const timer = document.getElementById('pomodoro-timer');
+      timer.classList.toggle('minimized');
+    });
+    assessmentMinimizeBtn1.addEventListener('click', () => {
+    //   assessmentPanel.classList.toggle('minimized');
+      assessTimer.classList.toggle('minimized');
+    });
+    /******************************************************************
+     * 18. EVENT LISTENERS
      ******************************************************************/
     toggleTimerButton.addEventListener('click', toggleTimer);
     resetButton.addEventListener('click', resetTimer);
     toggleMusicButton.addEventListener('click', toggleMusic);
     audioSelect.addEventListener('change', changeAudio);
-    updateTimerDisplay();
-    updatePomodoroCount();
-    // Task event listeners
     addTaskButton.addEventListener('click', () => {
       addTask(taskInput.value);
     });
@@ -916,18 +1140,13 @@
         addTask(taskInput.value);
       }
     });
-    /******************************************************************
-     * 20. MINIMIZE FUNCTIONALITY
-     ******************************************************************/
-    minimizeBtn.addEventListener('click', () => {
-      const timer = document.getElementById('pomodoro-timer');
-      timer.classList.toggle('minimized');
-    });
-    /******************************************************************
-     * 21. INITIALIZE ON PAGE LOAD
-     ******************************************************************/
+    themeToggle.addEventListener('click', toggleTheme);
+    spellToggle.addEventListener('click', toggleSpellcheck);
+    modeToggle.addEventListener('click', toggleMode);
+    editor.addEventListener('input', updateAssessment);
     document.addEventListener('DOMContentLoaded', () => {
       updateStats();
+      updateAssessment();
       loadTasks();
       renderTasks();
       updateTimerControls();
@@ -944,6 +1163,58 @@
       alert('Failed to load audio. Please try another track.');
       toggleMusicButton.textContent = 'Play Music';
     });
+
+function updateStats() {
+  // 1) Grab the raw text and “clean” it for counting
+  const rawText = editor.value.trim();
+  const cleanText = rawText
+    .replace(/^#+\s+/gm, '')           // remove Markdown headings
+    .replace(/(```[\s\S]*?```)/g, '')   // remove code blocks
+    .replace(/`[^`]+`/g, '')            // remove inline code
+    .replace(/\s+/g, ' ');              // collapse multiple spaces
+
+  // 2) Split into sentences and words
+  const sentences = cleanText
+    .split(/[\.\!?]+/)
+    .filter(s => s.trim().length > 0);
+  const words = cleanText
+    .split(/\s+/)
+    .filter(w => w.trim().length > 0);
+
+  // If there’s absolutely no text, show 0 for both and exit
+  if (words.length === 0) {
+    statsDisplay.textContent = 'Words: 0 • FK Grade: 0';
+    return;
+  }
+
+  const numSentences = sentences.length || 1;
+  const numWords     = words.length; // guaranteed ≥1 here
+
+  // 3) Count total syllables for Flesch–Kincaid
+  let totalSyllables = 0;
+  words.forEach(w => {
+    // Strip out any non‐letter characters
+    const cleanWord = w.replace(/[^A-Za-z]/g, "");
+    // Reuse your existing countSyllables() helper
+    totalSyllables += countSyllables(cleanWord);
+  });
+
+  // 4) Compute the Flesch–Kincaid Grade Level (floating-point)
+  //    Formula: 0.39 * (words / sentences) + 11.8 * (syllables / words) − 15.59
+  const fkFloat = 0.39 * (numWords / numSentences)
+                + 11.8 * (totalSyllables / numWords)
+                - 15.59;
+
+  // 5) Round FK to the nearest integer instead of one decimal place
+  const fkInteger = Math.round(fkFloat);
+
+  // 6) Finally, update the header’s statsDisplay with word count + FK grade (integer)
+  statsDisplay.textContent = `Words: ${numWords} • FK Grade: ${fkInteger}`;
+}
+
+
+
+
   </script>
 </body>
 </html>
