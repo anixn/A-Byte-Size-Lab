@@ -145,10 +145,10 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     #themeToggle:hover::after { content: "Toggle Theme"; }
-    #spellCheckToggle:hover::after { content: "Toggle Spellcheck"; }
-    #modeToggle:hover::after { content: "Toggle Preview/Edit"; }
-    #saveBtn:hover::after { content: "Save Markdown File"; }
-    #openBtn:hover::after { content: "Open Markdown File"; }
+    #spellCheckToggle:hover::after { content: "Toggle Spellcheck (Ctrl+K)"; }
+    #modeToggle:hover::after { content: "Toggle Preview (Ctrl+L)"; }
+    #saveBtn:hover::after { content: "Save Markdown File (Ctrl+S)"; }
+    #openBtn:hover::after { content: "Open Markdown File (Ctrl+O)"; }
     .content {
       flex: 1 1 auto;
       display: flex;
@@ -462,18 +462,6 @@
     .task-actions button:hover {
       background-color: var(--code-background);
     }
-    /* @media (max-width: 768px) {
-      #pomodoro-timer {
-        position: fixed;
-        top: 0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        width: 90%;
-        padding: 1rem;
-      }
-    } */
-
     /* --- Assessment Panel --- */
     #assessment-panel1 {
       font-family: Roboto, sans-serif;
@@ -555,7 +543,7 @@
   <!-- Pomodoro Timer with Task Management -->
   <div id="pomodoro-timer">
     <!-- <button id="minimizeBtn" title="Minimize Timer">×</button> -->
-    <button id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer">✕</button>
+    <button id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
 
     <div class="timer-display" id="timer">
       <span id="minutes">25</span>:<span id="seconds">00</span>
@@ -587,7 +575,7 @@
   </div>
   <div id="assess-timer">
     <div id="assessment-panel1">
-      <button id="assessmentMinimizeBtn1" title="Minimize Assessment">✕</button>
+      <button id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
       <div class="assessment-content">
         <div class="assessment-metric" title="US school grade level. Lower is easier to read." style=" padding-top: 10px;">
         <label>Flesch–Kincaid Grade:</label>
@@ -776,13 +764,53 @@
      * 4. UPDATE TEXT ASSESSMENT
      ******************************************************************/
     const AWL = [
-      "analyze","approach","area","assess","assume","authority","available","benefit","concept","consistent",
-      "constitute","context","contract","create","data","define","derive","distribute","economic","environment",
-      "establish","estimate","evident","export","factor","finance","formula","function","identity","impact",
-      "indicate","individual","interpret","involve","issue","labor","legal","legislate","major","method",
-      "occur","percent","period","policy","principle","proceed","process","require","research","respond","role",
-      "section","sector","significant","similar","source","structure","theory","vary"
+    "analyze","approach","area","assess","assume","authority","available","benefit","concept","consistent",
+    "constitute","context","contract","create","data","define","derive","distribute","economic","environment",
+    "establish","estimate","evident","export","factor","finance","formula","function","identify","impact",
+    "indicate","individual","interpret","involve","issue","labor","legal","legislate","major","method",
+    "occur","percent","period","policy","principle","proceed","process","require","research","respond","role",
+    "section","sector","significant","similar","source","structure","theory","vary","achieve","acquire",
+    "administrate","affect","appropriate","aspect","assist","category","chapter","commission","community",
+    "complex","compute","conclude","conduct","consequence","construct","consume","credit","culture","design",
+    "distinct","element","equate","evaluate","feature","final","focus","impact","injure","institute",
+    "invest","item","journal","maintain","normal","obtain","participate","perceive","positive","potential",
+    "previous","primary","purchase","range","region","regulate","relevant","reside","resource","restrict",
+    "secure","select","site","strategy","survey","text","tradition","transfer","alternative","circumstance",
+    "comment","compensate","component","consent","considerable","constant","constrain","contribute","convene",
+    "coordinate","core","corporate","correspond","criteria","deduce","demonstrate","document","dominate",
+    "emphasis","ensure","exclude","framework","fund","illustrate","immigrate","imply","initial","instance",
+    "interact","justify","layer","link","locate","maximise","minor","negate","outcome","partner","philosophy",
+    "proportion","publish","react","register","rely","remove","scheme","sequence","sex","shift","specify",
+    "sufficient","task","technical","technique","technology","valid","volume","access","adequate","annual",
+    "apparent","approximate","attitude","attribute","civil","code","commit","communicate","concentrate",
+    "conference","contrast","cycle","debate","despite","dimension","domestic","emerge","error","ethnic",
+    "goal","grant","hence","hypothesis","implement","implicate","impose","integrate","internal","investigate",
+    "job","label","mechanism","obvious","occupy","option","output","overall","parallel","parameter",
+    "phase","predict","principal","prior","professional","project","promote","resolve","retain","series",
+    "statistic","status","stress","substitute","sufficient","summary","undertake","academy","adjust",
+    "alter","amend","aware","capacity","challenge","clause","compound","conflict","consult","contact",
+    "decline","discrete","draft","enable","energy","enforce","entity","equivalent","evolve","expand",
+    "expose","external","facilitate","fundamental","generate","generation","image","liberal","licence",
+    "logic","marginal","medical","mental","modify","monitor","network","notion","objective","orient",
+    "output","overall","perspective","precise","prime","psychology","pursue","ratio","reject","revenue",
+    "stable","style","subsidy","substitute","symbol","target","transition","trend","version","welfare",
+    "whereas","abstract","accurate","acknowledge","aggregate","allocate","assign","attach","author",
+    "brief","capable","cite","cooperate","discriminate","display","diverse","domain","edit","enhance",
+    "estate","exceed","expert","explicit","federal","fee","flexible","ignore","incentive","incorporate",
+    "index","inhibit","initiate","input","instruction","intelligence","interval","lecture","migrate",
+    "minimum","minimum","nuclear","overseas","precede","presume","rational","recover","reveal","revenue",
+    "scope","subsidiary","tape","trace","transform","transport","underlie","utilize","adapt","adult",
+    "advocate","aid","channel","classic","comprehensive","comprise","confirm","contrary","convert",
+    "decade","definite","deny","differentiate","dispose","dynamic","eliminate","empirical","equip",
+    "extract","file","finite","foundation","grade","guarantee","hierarchy","highlight","identify",
+    "ignore","incentive","incorporate","index","inhibit","initiate","input","insert","intervene","isolate",
+    "manual","media","mode","paradigm","phenomenon","priority","protocol","publication","refine",
+    "reform","regime","relax","restrain","revolution","scenario","schedule","scheme","scope","simulate",
+    "sole","somewhat","submit","successor","survive","suspend","team","tense","terminate","theme",
+    "thereby","topic","transmit","ultimate","unique","visible","volunteer"
     ];
+
+
 function updateAssessment() {
   const text = editor.value.trim();
 
