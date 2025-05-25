@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/gruvbox-dark.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
 
     <!-- Custom Fonts & Root Colors -->
     <style>
@@ -111,7 +111,7 @@
             transition: background-color 0.2s ease;
         }
 
-        
+
         h1,
         h2,
         h3 {
@@ -451,7 +451,18 @@
             font-weight: bold;
         }
 
+        /* Ensure block equations are centered */
+        .katex-display {
+            margin: 1.2em 0;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
 
+        /* Prevent line breaks in equations */
+        .katex {
+            white-space: nowrap;
+        }
 
         .preview a,
         .footer a {
@@ -949,6 +960,8 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
     <script>
         /******************************************************************
@@ -1040,8 +1053,48 @@
          * 3. INITIALIZE APPLICATION
          ******************************************************************/
         function initializeApp() {
-            // Configure marked.js
-            marked.setOptions({ breaks: true, gfm: true });
+        const renderer = new marked.Renderer();
+
+        // renderer.paragraph = (text) => {
+        // let str = (typeof text === 'string')
+        //     ? text
+        //     : (text && typeof text.raw === 'string')
+        //     ? text.raw
+        //     : String(text);
+        // str = str.trim();
+        // if (str.startsWith('$$') && str.endsWith('$$')) {
+        //     const rawMath = str.slice(2, -2).trim();
+        //     return `<div class="katex-block">$$${rawMath}$$</div>`;
+        // }
+        // return `<p>${str}</p>`;
+        // };
+
+
+        renderer.paragraph = (text) => {
+        let str = (typeof text === 'string')
+            ? text
+            : (text && typeof text.raw === 'string')
+            ? text.raw
+            : String(text);
+
+        // Normalize the lines
+        const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
+        const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
+
+        if (isBlockMath) {
+            return `<div class="katex-block">$$${trimmed}$$</div>`;
+        }
+        return `<p>${str}</p>`;
+        };
+
+
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            mangle: false,
+            headerIds: false,
+            renderer
+        });
 
             // Add event listeners
             setupEventListeners();
@@ -1288,12 +1341,39 @@
         /******************************************************************
          * 7. TOGGLE EDIT ↔ PREVIEW
          ******************************************************************/
+
         function toggleMode() {
             isPreview = !isPreview;
             if (isPreview) {
                 codemirror.getWrapperElement().style.display = 'none';
                 preview.style.display = 'block';
-                preview.innerHTML = marked.parse(codemirror.getValue());
+
+                // First render Markdown
+                const html = marked.parse(codemirror.getValue());
+                preview.innerHTML = html;
+
+                // Then render KaTeX after slight delay
+                setTimeout(() => {
+                    if (typeof renderMathInElement !== 'undefined') {
+                    if (window.renderMathInElement) {
+                        renderMathInElement(preview, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '\\[', right: '\\]', display: true }
+                            ],
+                            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+                            ignoredClasses: ["cm-code"],
+                            throwOnError: false,
+                            strict: false
+                        });
+                    }else{
+                        console.error("KaTeX renderMathInElement is not available.");
+                    }
+                    }
+                }, 10);
+
                 modeToggle.textContent = 'Edit';
             } else {
                 preview.style.display = 'none';
@@ -1303,6 +1383,7 @@
             updateAssessment();
             updateStats();
         }
+
 
         /******************************************************************
          * 8. TOGGLE DARK ↔ LIGHT THEME
