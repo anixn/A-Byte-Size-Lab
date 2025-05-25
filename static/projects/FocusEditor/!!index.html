@@ -87,7 +87,6 @@
 
         html,
         body {
-            letter-spacing: 0.02em;
             font-size: 62.5%;
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -111,15 +110,7 @@
             transition: background-color 0.2s ease;
         }
 
-        
-        h1,
-        h2,
-        h3 {
-            margin: 1.5rem 0 0.75rem;
-            line-height: 1.3;
-            letter-spacing: 0.03em;
-        }
-.writing-container {
+        .writing-container {
             width: 100%;
             max-width: 720px;
             height: 92vh;
@@ -845,15 +836,15 @@
                 <span id="statsDisplay">Words: 0 · Readability: —</span>
             </div>
             <div class="controls">
-                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
+                <button style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
                     data-tooltip="Save Markdown File (Ctrl+S)">Save .md</button>
-                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
+                <button style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
                     data-tooltip="Open Markdown File (Ctrl+O)">Open .md</button>
                 <input type="file" accept=".md" id="fileInput" style="display:none" />
-                <button type="button" class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
-                <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
+                <button class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
+                <button class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
                     On</button>
-                <button type="button" class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
+                <button class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
             </div>
         </div>
         <div class="content">
@@ -871,16 +862,16 @@
 
     <!-- Pomodoro Timer with Task Management -->
     <div id="pomodoro-timer">
-        <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
+        <button id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
         <div class="timer-display" id="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
         <div class="timer-controls">
-            <button type="button" id="toggle-timer" class="timer-button">Start</button>
-            <button type="button" id="reset" class="timer-button">Reset</button>
+            <button id="toggle-timer" class="timer-button">Start</button>
+            <button id="reset" class="timer-button">Reset</button>
             <!-- Audio Controls -->
             <div id="audio-controls">
-                <button type="button" id="toggle-music" class="timer-button">Play Music</button>
+                <button id="toggle-music" class="timer-button">Play Music</button>
                 <select id="audio-select">
                     <option value="background.opus">Cosmic</option>
                     <option value="background2.opus">Muse</option>
@@ -892,7 +883,7 @@
             <div class="task-controls">
                 <div class="task-input">
                     <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;">
-                    <button type="button" class="timer-button" id="addTask">Add</button>
+                    <button class="timer-button" id="addTask">Add</button>
                 </div>
                 <ul id="taskList" class="task-list"></ul>
             </div>
@@ -903,7 +894,7 @@
 
     <div id="assess-timer">
         <div id="assessment-panel1">
-            <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
+            <button id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
             <div class="assessment-content">
                 <div class="assessment-metric" title="US school grade level. Lower is easier to read."
                     style=" padding-top: 10px;">
@@ -944,11 +935,11 @@
     <audio id="background-audio" src="background.opus" loop></audio>
 
     <!-- CodeMirror 5 and Dependencies (no integrity/crossorigin) -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/placeholder.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/placeholder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script>
         /******************************************************************
