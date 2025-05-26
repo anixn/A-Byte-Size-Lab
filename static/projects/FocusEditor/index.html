@@ -99,7 +99,19 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
             overflow: auto;
+            transition: background 0.6s ease-in-out;
+
         }
+
+        body[data-theme="dark"] {
+        background: linear-gradient(135deg,  #689d6a, #086279, #458588, #689d6a);
+        }
+        body[data-theme="light"] {
+        background: linear-gradient(135deg, #b8bb26, #f1da53, #d79921, #b8bb26);
+        }
+
+
+
 
         body::-webkit-scrollbar {
             display: none;
@@ -111,7 +123,6 @@
             transition: background-color 0.2s ease;
         }
 
-
         h1,
         h2,
         h3 {
@@ -119,7 +130,8 @@
             line-height: 1.3;
             letter-spacing: 0.03em;
         }
-.writing-container {
+
+        .writing-container {
             width: 100%;
             max-width: 720px;
             height: 92vh;
@@ -130,7 +142,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 2rem auto;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.4s ease, max-width 0.4s ease, height 0.4s ease;
         }
 
         .header {
@@ -205,6 +217,10 @@
             content: "Open Markdown File (Ctrl+O)";
         }
 
+        #zenToggle:hover::after {
+            content: attr(data-tooltip);
+        }
+
         .content {
             flex: 1 1 auto;
             display: flex;
@@ -261,7 +277,6 @@
             margin: 2rem 0;
         }
 
-
         .preview table {
             width: 100%;
             border-collapse: collapse;
@@ -292,7 +307,6 @@
             color: var(--link-color);
         }
 
-
         .CodeMirror {
             height: 100%;
             font-family: "Roboto", sans-serif;
@@ -300,6 +314,7 @@
             line-height: 1.8;
             color: var(--text-color);
             background-color: var(--container-bg);
+            transition: font-size 0.4s ease, padding 0.4s ease;
         }
 
         .CodeMirror-empty .CodeMirror-placeholder {
@@ -318,73 +333,51 @@
             display: none !important;
         }
 
-
-
         .CodeMirror-focused .CodeMirror-selected {
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .CodeMirror-gutters {
-            background-color: var(--container-bg);
-            border-right: 1px solid var(--border-color);
-        }
-
-        .CodeMirror-linenumbers {
-            color: var(--text-color);
-        }
-
-
-        /* Add this AFTER loading gruvbox-dark.min.css */
         .CodeMirror .cm-header-1 {
             color: #d79921 !important;
-            /* Yellow */
             font-size: 1.4em;
             line-height: 1.2;
         }
 
         .CodeMirror .cm-header-2 {
             color: #458588 !important;
-            /* Blue */
             font-size: 1.2em;
         }
 
         .CodeMirror .cm-header-3 {
             color: #b16286 !important;
-            /* Purple */
             font-size: 1.1em;
         }
 
         .CodeMirror .cm-quote {
             color: #928374 !important;
-            /* Gray */
             font-style: italic;
         }
 
         .CodeMirror .cm-link {
             color: #689d6a !important;
-            /* Green */
             text-decoration: underline;
         }
 
         .CodeMirror .cm-url {
             color: #d65d0e !important;
-            /* Orange */
         }
 
         .CodeMirror .cm-comment {
             color: #7c6f64 !important;
-            /* Dark gray */
         }
 
         .CodeMirror .cm-em {
             color: #a89984 !important;
-            /* Light gray */
             font-style: italic;
         }
 
         .CodeMirror .cm-strong {
             color: #d5c4a1 !important;
-            /* Beige */
             font-weight: bold;
         }
 
@@ -393,65 +386,47 @@
             text-decoration: line-through;
         }
 
-        /* Lists */
         .CodeMirror .cm-variable-2 {
-            /* Unordered list items */
             color: #98971a !important;
-            /* Green */
         }
 
         .CodeMirror .cm-variable-3 {
-            /* Ordered list numbers */
             color: #d79921 !important;
-            /* Yellow */
         }
 
-        /* Code blocks */
         .CodeMirror .cm-code {
             color: #8ec07c !important;
-            /* Teal */
             background-color: #3c3836 !important;
             padding: 2px 4px;
             border-radius: 3px;
         }
 
         .CodeMirror .cm-comment.cm-code {
-            /* Code block delimiters */
             color: #928374 !important;
-            /* Gray */
         }
 
-        /* Horizontal rules */
         .CodeMirror .cm-hr {
             color: #d3869b !important;
-            /* Pink */
             font-weight: bold;
         }
 
-        /* Images */
         .CodeMirror .cm-tag.cm-image {
             color: #d3869b !important;
-            /* Pink */
         }
 
         .CodeMirror .cm-string.cm-url.cm-image {
             color: #b8bb26 !important;
-            /* Light green */
         }
 
-        /* Tables */
         .CodeMirror .cm-table {
             color: #83a598 !important;
-            /* Blue-green */
         }
 
         .CodeMirror .cm-table-header {
             color: #fe8019 !important;
-            /* Orange */
             font-weight: bold;
         }
 
-        /* Ensure block equations are centered */
         .katex-display {
             margin: 1.2em 0;
             text-align: center;
@@ -459,7 +434,6 @@
             overflow-y: hidden;
         }
 
-        /* Prevent line breaks in equations */
         .katex {
             white-space: nowrap;
         }
@@ -598,7 +572,6 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        /* Minimize Button */
         #minimizeBtn {
             position: absolute;
             top: 7px;
@@ -616,7 +589,6 @@
             transform: rotate(90deg);
         }
 
-        /* Minimized Timer Styles */
         #pomodoro-timer.minimized {
             width: 36px;
             min-width: 36px;
@@ -636,7 +608,7 @@
             display: none;
         }
 
-        /* Assess-timer */
+        /* --- Assessment Panel --- */
         #assess-timer {
             position: fixed;
             top: 2rem;
@@ -654,7 +626,6 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        /* Minimized Timer Styles */
         #assess-timer.minimized {
             width: 36px;
             min-width: 36px;
@@ -724,7 +695,6 @@
             text-align: center;
         }
 
-        /* --- Task Management --- */
         .task-controls {
             display: flex;
             flex-direction: column;
@@ -788,7 +758,6 @@
             background-color: var(--code-background);
         }
 
-        /* --- Assessment Panel --- */
         #assessment-panel1 {
             font-family: Roboto, sans-serif;
             font-size: 1.2rem;
@@ -822,10 +791,6 @@
             transition: all 0.3s ease;
         }
 
-        #assessment-panel1.minimized .assessment-content {
-            display: none;
-        }
-
         .assessment-content {
             margin-top: 1.5rem;
         }
@@ -845,11 +810,62 @@
         .assessment-metric span {
             font-weight: 700;
         }
+
+        body.zen-mode .header,
+        body.zen-mode .footer,
+        body.zen-mode #pomodoro-timer,
+        body.zen-mode #assess-timer {
+            display: none !important;
+        }
+
+        body.zen-mode .writing-container {
+            max-width: 56vw;
+            height: 94vh;
+            /* margin: 2rem auto; */
+            box-shadow: none;
+            border-radius: 1.4rem;
+        }
+
+        body.zen-mode .CodeMirror {
+            font-size: 1.8rem;
+            /* line-height: 2.2; */
+            padding: 1rem 1rem;
+        }
+
+        body.zen-mode .preview {
+            font-size: 1.8rem;
+            padding: 3rem 4rem;
+        }
+
+        body.zen-mode {
+            background-color: var(--bg-color);
+            overflow: hidden; /* prevent the entire <body> from scrolling */
+        }
+
+
+        body.zen-mode .writing-container,
+        body.zen-mode .content,
+        body.zen-mode .CodeMirror-scroll,
+        body.zen-mode .CodeMirror,
+        body.zen-mode .CodeMirror-scrollbar-filler,
+        body.zen-mode .CodeMirror-gutter-filler,
+        body.zen-mode .CodeMirror-vscrollbar {
+        overflow: hidden !important;
+        }
+
+        body.zen-mode .CodeMirror-scroll {
+            overflow-y: auto !important;      /* allow scrolling up/down */
+            -ms-overflow-style: none;         /* hide scrollbar in IE/Edge */
+            scrollbar-width: none;            /* hide scrollbar in Firefox */
+        }
+
+        body.zen-mode .CodeMirror-scroll::-webkit-scrollbar {
+        display: none !important;
+        }
     </style>
 </head>
 
 <body data-theme="dark">
-    <!-- Main Editor Container -->
     <div class="writing-container">
         <div class="header">
             <div class="stats" style="font-size: 1.3rem;">
@@ -865,6 +881,7 @@
                 <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
                     On</button>
                 <button type="button" class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
+                <button type="button" class="toggle-btn" id="zenToggle" data-tooltip="Zen Mode (Ctrl+Z)">Zen</button>
             </div>
         </div>
         <div class="content">
@@ -976,6 +993,7 @@
         const openBtn = document.getElementById('openBtn');
         const saveBtn = document.getElementById('saveBtn');
         const fileInput = document.getElementById('fileInput');
+        const zenToggle = document.getElementById('zenToggle');
 
         // CodeMirror instance will be stored here
         let codemirror;
@@ -1042,6 +1060,9 @@
                 }
             });
 
+            // Disable default blink so our smooth blink can take over:
+            codemirror.setOption('cursorBlinkRate', 0);
+
             // Apply initial spellcheck state directly on the actual input field:
             codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
 
@@ -1053,48 +1074,32 @@
          * 3. INITIALIZE APPLICATION
          ******************************************************************/
         function initializeApp() {
-        const renderer = new marked.Renderer();
+            const renderer = new marked.Renderer();
 
-        // renderer.paragraph = (text) => {
-        // let str = (typeof text === 'string')
-        //     ? text
-        //     : (text && typeof text.raw === 'string')
-        //     ? text.raw
-        //     : String(text);
-        // str = str.trim();
-        // if (str.startsWith('$$') && str.endsWith('$$')) {
-        //     const rawMath = str.slice(2, -2).trim();
-        //     return `<div class="katex-block">$$${rawMath}$$</div>`;
-        // }
-        // return `<p>${str}</p>`;
-        // };
+            renderer.paragraph = (text) => {
+                let str = (typeof text === 'string')
+                    ? text
+                    : (text && typeof text.raw === 'string')
+                        ? text.raw
+                        : String(text);
 
+                // Normalize the lines
+                const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
+                const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
 
-        renderer.paragraph = (text) => {
-        let str = (typeof text === 'string')
-            ? text
-            : (text && typeof text.raw === 'string')
-            ? text.raw
-            : String(text);
+                if (isBlockMath) {
+                    return `<div class="katex-block">$$${trimmed}$$</div>`;
+                }
+                return `<p>${str}</p>`;
+            };
 
-        // Normalize the lines
-        const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
-        const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
-
-        if (isBlockMath) {
-            return `<div class="katex-block">$$${trimmed}$$</div>`;
-        }
-        return `<p>${str}</p>`;
-        };
-
-
-        marked.setOptions({
-            breaks: true,
-            gfm: true,
-            mangle: false,
-            headerIds: false,
-            renderer
-        });
+            marked.setOptions({
+                breaks: true,
+                gfm: true,
+                mangle: false,
+                headerIds: false,
+                renderer
+            });
 
             // Add event listeners
             setupEventListeners();
@@ -1126,6 +1131,14 @@
                 updateAssessment();
                 if (isPreview) preview.innerHTML = marked.parse(cm.getValue());
                 hasUnsavedChanges = true;
+            });
+
+            // Typewriter sound (optional):
+            const keySound = new Audio('https://assets.codepen.io/3/typewriter-key.mp3');
+            keySound.volume = 0.08;
+            codemirror.on('keypress', () => {
+                keySound.currentTime = 0;
+                keySound.play().catch(() => { });
             });
 
             // Keyboard shortcuts
@@ -1160,7 +1173,23 @@
                     e.preventDefault();
                     toggleSpellcheck();
                 }
+
+                // Toggle Zen Mode (Ctrl+Z)
+                if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+                    e.preventDefault();
+                    document.body.classList.toggle('zen-mode');
+                    zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+                }
+
+                if (e.key === 'Escape' && document.body.classList.contains('zen-mode')) {
+                    e.preventDefault();
+                    document.body.classList.remove('zen-mode');
+                    zenToggle.textContent = 'Zen';
+                }
+
             });
+
+
 
             // Button clicks
             modeToggle.addEventListener('click', toggleMode);
@@ -1169,6 +1198,15 @@
             openBtn.addEventListener('click', () => fileInput.click());
             fileInput.addEventListener('change', handleFileOpen);
             saveBtn.addEventListener('click', handleSave);
+            zenToggle.addEventListener('click', () => {
+                document.body.classList.toggle('zen-mode');
+                zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+                // Auto-pause music in Zen:
+                if (document.body.classList.contains('zen-mode')) {
+                    backgroundAudio.pause();
+                    toggleMusicButton.textContent = 'Play Music';
+                }
+            });
 
             window.addEventListener('beforeunload', (e) => {
                 if (hasUnsavedChanges) {
@@ -1355,22 +1393,22 @@
                 // Then render KaTeX after slight delay
                 setTimeout(() => {
                     if (typeof renderMathInElement !== 'undefined') {
-                    if (window.renderMathInElement) {
-                        renderMathInElement(preview, {
-                            delimiters: [
-                                { left: '$$', right: '$$', display: true },
-                                { left: '$', right: '$', display: false },
-                                { left: '\\(', right: '\\)', display: false },
-                                { left: '\\[', right: '\\]', display: true }
-                            ],
-                            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
-                            ignoredClasses: ["cm-code"],
-                            throwOnError: false,
-                            strict: false
-                        });
-                    }else{
-                        console.error("KaTeX renderMathInElement is not available.");
-                    }
+                        if (window.renderMathInElement) {
+                            renderMathInElement(preview, {
+                                delimiters: [
+                                    { left: '$$', right: '$$', display: true },
+                                    { left: '$', right: '$', display: false },
+                                    { left: '\\(', right: '\\)', display: false },
+                                    { left: '\\[', right: '\\]', display: true }
+                                ],
+                                ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+                                ignoredClasses: ["cm-code"],
+                                throwOnError: false,
+                                strict: false
+                            });
+                        } else {
+                            console.error("KaTeX renderMathInElement is not available.");
+                        }
                     }
                 }, 10);
 
@@ -1445,6 +1483,15 @@
                 await writable.write(text);
                 await writable.close();
                 hasUnsavedChanges = false;
+
+                // Pulse Save Button
+                saveBtn.classList.add('save-success');
+                setTimeout(() => saveBtn.classList.remove('save-success'), 1000);
+
+                // Gentle container glow
+                const container = document.querySelector('.writing-container');
+                container.classList.add('glow-confirm');
+                setTimeout(() => container.classList.remove('glow-confirm'), 1200);
             } catch (err) {
                 if (err.name !== 'AbortError') console.error('Save failed:', err);
             }
