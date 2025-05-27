@@ -5,18 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Writer</title>
-    <!-- SEO & Open Graph Metadata -->
-    <meta name="description" content="A Writer with Pomodoro & Tasks and Analytics">
-    <meta property="og:title" content="Writer with Pomodoro & Tasks">
-    <meta property="og:description"
-        content="A simple distraction free writer with Pomodoro timer, tasks capability, and text-quality assessment tools">
-    <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png">
-    <meta property="og:url" content="https://www.ankitdeshmukh.com/">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png">
+    <meta name="description" content="A Writer with Pomodoro & Tasks and Analytics" />
+    <meta property="og:title" content="Writer with Pomodoro & Tasks" />
+    <meta property="og:description" content="A simple distraction free writer with Pomodoro timer, tasks capability, and text-quality assessment tools" />
+    <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png" />
+    <meta property="og:url" content="https://www.ankitdeshmukh.com/" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="https://ankitdeshmukh.com/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
     <script>
         var doNotTrack = false;
@@ -27,19 +25,17 @@
             gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
         }
     </script>
-    <meta name="author" content="Dr. Ankit Deshmukh">
-    <link rel="canonical" href="https://ankitdeshmukh.com/projects/FocusEditor/">
-    <meta name="google-site-verification" content="G-R5FJKDQD1M">
+    <meta name="author" content="Dr. Ankit Deshmukh" />
+    <link rel="canonical" href="https://www.ankitdeshmukh.com/projects/FocusEditor/" />
+    <meta name="google-site-verification" content="G-R5FJKDQD1M" />
 
-    <!-- CodeMirror 5 CSS (no integrity/crossorigin) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/monokai.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/gruvbox-dark.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/monokai.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/gruvbox-dark.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous" />
 
-    <!-- Custom Fonts & Root Colors -->
+    <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
@@ -99,6 +95,15 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
             overflow: auto;
+            transition: background 0.6s ease-in-out;
+        }
+
+        body[data-theme="dark"] {
+            background: linear-gradient(135deg, #689d6a, #086279, #458588, #689d6a);
+        }
+
+        body[data-theme="light"] {
+            background: linear-gradient(135deg, #b8bb26, #f1da53, #d79921, #b8bb26);
         }
 
         body::-webkit-scrollbar {
@@ -111,7 +116,6 @@
             transition: background-color 0.2s ease;
         }
 
-
         h1,
         h2,
         h3 {
@@ -119,7 +123,8 @@
             line-height: 1.3;
             letter-spacing: 0.03em;
         }
-.writing-container {
+
+        .writing-container {
             width: 100%;
             max-width: 720px;
             height: 92vh;
@@ -130,7 +135,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 2rem auto;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.4s ease, max-width 0.4s ease, height 0.4s ease;
         }
 
         .header {
@@ -205,6 +210,15 @@
             content: "Open Markdown File (Ctrl+O)";
         }
 
+        #zenToggle:hover::after {
+            content: attr(data-tooltip);
+        }
+
+        /* Added tooltip for Export button */
+        #exportDiagramBtn:hover::after {
+            content: "Export Mermaid Diagram(s)";
+        }
+
         .content {
             flex: 1 1 auto;
             display: flex;
@@ -261,7 +275,6 @@
             margin: 2rem 0;
         }
 
-
         .preview table {
             width: 100%;
             border-collapse: collapse;
@@ -292,7 +305,6 @@
             color: var(--link-color);
         }
 
-
         .CodeMirror {
             height: 100%;
             font-family: "Roboto", sans-serif;
@@ -300,6 +312,7 @@
             line-height: 1.8;
             color: var(--text-color);
             background-color: var(--container-bg);
+            transition: font-size 0.4s ease, padding 0.4s ease;
         }
 
         .CodeMirror-empty .CodeMirror-placeholder {
@@ -318,73 +331,51 @@
             display: none !important;
         }
 
-
-
         .CodeMirror-focused .CodeMirror-selected {
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .CodeMirror-gutters {
-            background-color: var(--container-bg);
-            border-right: 1px solid var(--border-color);
-        }
-
-        .CodeMirror-linenumbers {
-            color: var(--text-color);
-        }
-
-
-        /* Add this AFTER loading gruvbox-dark.min.css */
         .CodeMirror .cm-header-1 {
             color: #d79921 !important;
-            /* Yellow */
             font-size: 1.4em;
             line-height: 1.2;
         }
 
         .CodeMirror .cm-header-2 {
             color: #458588 !important;
-            /* Blue */
             font-size: 1.2em;
         }
 
         .CodeMirror .cm-header-3 {
             color: #b16286 !important;
-            /* Purple */
             font-size: 1.1em;
         }
 
         .CodeMirror .cm-quote {
             color: #928374 !important;
-            /* Gray */
             font-style: italic;
         }
 
         .CodeMirror .cm-link {
             color: #689d6a !important;
-            /* Green */
             text-decoration: underline;
         }
 
         .CodeMirror .cm-url {
             color: #d65d0e !important;
-            /* Orange */
         }
 
         .CodeMirror .cm-comment {
             color: #7c6f64 !important;
-            /* Dark gray */
         }
 
         .CodeMirror .cm-em {
             color: #a89984 !important;
-            /* Light gray */
             font-style: italic;
         }
 
         .CodeMirror .cm-strong {
             color: #d5c4a1 !important;
-            /* Beige */
             font-weight: bold;
         }
 
@@ -393,65 +384,47 @@
             text-decoration: line-through;
         }
 
-        /* Lists */
         .CodeMirror .cm-variable-2 {
-            /* Unordered list items */
             color: #98971a !important;
-            /* Green */
         }
 
         .CodeMirror .cm-variable-3 {
-            /* Ordered list numbers */
             color: #d79921 !important;
-            /* Yellow */
         }
 
-        /* Code blocks */
         .CodeMirror .cm-code {
             color: #8ec07c !important;
-            /* Teal */
             background-color: #3c3836 !important;
             padding: 2px 4px;
             border-radius: 3px;
         }
 
         .CodeMirror .cm-comment.cm-code {
-            /* Code block delimiters */
             color: #928374 !important;
-            /* Gray */
         }
 
-        /* Horizontal rules */
         .CodeMirror .cm-hr {
             color: #d3869b !important;
-            /* Pink */
             font-weight: bold;
         }
 
-        /* Images */
         .CodeMirror .cm-tag.cm-image {
             color: #d3869b !important;
-            /* Pink */
         }
 
         .CodeMirror .cm-string.cm-url.cm-image {
             color: #b8bb26 !important;
-            /* Light green */
         }
 
-        /* Tables */
         .CodeMirror .cm-table {
             color: #83a598 !important;
-            /* Blue-green */
         }
 
         .CodeMirror .cm-table-header {
             color: #fe8019 !important;
-            /* Orange */
             font-weight: bold;
         }
 
-        /* Ensure block equations are centered */
         .katex-display {
             margin: 1.2em 0;
             text-align: center;
@@ -459,7 +432,6 @@
             overflow-y: hidden;
         }
 
-        /* Prevent line breaks in equations */
         .katex {
             white-space: nowrap;
         }
@@ -598,7 +570,6 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        /* Minimize Button */
         #minimizeBtn {
             position: absolute;
             top: 7px;
@@ -616,7 +587,6 @@
             transform: rotate(90deg);
         }
 
-        /* Minimized Timer Styles */
         #pomodoro-timer.minimized {
             width: 36px;
             min-width: 36px;
@@ -636,7 +606,7 @@
             display: none;
         }
 
-        /* Assess-timer */
+        /* --- Assessment Panel --- */
         #assess-timer {
             position: fixed;
             top: 2rem;
@@ -654,7 +624,6 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        /* Minimized Timer Styles */
         #assess-timer.minimized {
             width: 36px;
             min-width: 36px;
@@ -724,7 +693,6 @@
             text-align: center;
         }
 
-        /* --- Task Management --- */
         .task-controls {
             display: flex;
             flex-direction: column;
@@ -788,7 +756,6 @@
             background-color: var(--code-background);
         }
 
-        /* --- Assessment Panel --- */
         #assessment-panel1 {
             font-family: Roboto, sans-serif;
             font-size: 1.2rem;
@@ -822,10 +789,6 @@
             transition: all 0.3s ease;
         }
 
-        #assessment-panel1.minimized .assessment-content {
-            display: none;
-        }
-
         .assessment-content {
             margin-top: 1.5rem;
         }
@@ -845,42 +808,113 @@
         .assessment-metric span {
             font-weight: 700;
         }
+
+        body.zen-mode .header,
+        body.zen-mode .footer,
+        body.zen-mode #pomodoro-timer,
+        body.zen-mode #assess-timer {
+            display: none !important;
+        }
+
+        body.zen-mode .writing-container {
+            max-width: 56vw;
+            height: 94vh;
+            box-shadow: none;
+            border-radius: 1.4rem;
+        }
+
+        body.zen-mode .CodeMirror {
+            font-size: 1.8rem;
+            padding: 1rem 1rem;
+        }
+
+        body.zen-mode .preview {
+            font-size: 1.8rem;
+            padding: 3rem 4rem;
+        }
+
+        body.zen-mode {
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        body.zen-mode .writing-container,
+        body.zen-mode .content,
+        body.zen-mode .CodeMirror-scroll,
+        body.zen-mode .CodeMirror,
+        body.zen-mode .CodeMirror-scrollbar-filler,
+        body.zen-mode .CodeMirror-gutter-filler,
+        body.zen-mode .CodeMirror-vscrollbar {
+            overflow: hidden !important;
+        }
+
+        body.zen-mode .CodeMirror-scroll {
+            overflow-y: auto !important;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body.zen-mode .CodeMirror-scroll::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        .mermaid {
+            background: var(--container-bg) !important;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .mermaid svg {
+            background: var(--container-bg) !important;
+            max-width: 100% !important;
+        }
+
+        .mermaid .label {
+            color: var(--text-color) !important;
+            fill: var(--text-color) !important;
+        }
+
+        .mermaid-error {
+            padding: 1rem;
+            border: 1px solid #ff5555;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+
     </style>
+
 </head>
 
 <body data-theme="dark">
-    <!-- Main Editor Container -->
     <div class="writing-container">
         <div class="header">
             <div class="stats" style="font-size: 1.3rem;">
                 <span id="statsDisplay">Words: 0 · Readability: —</span>
             </div>
             <div class="controls">
-                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
-                    data-tooltip="Save Markdown File (Ctrl+S)">Save .md</button>
-                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
-                    data-tooltip="Open Markdown File (Ctrl+O)">Open .md</button>
+                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn" data-tooltip="Save Markdown File (Ctrl+S)">Save .md</button>
+                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn" data-tooltip="Open Markdown File (Ctrl+O)">Open .md</button>
                 <input type="file" accept=".md" id="fileInput" style="display:none" />
                 <button type="button" class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
-                <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
-                    On</button>
+                <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell On</button>
                 <button type="button" class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
+                <button type="button" class="toggle-btn" id="exportDiagramBtn" data-tooltip="Export Mermaid Diagram">Export</button>
+                <button type="button" class="toggle-btn" id="zenToggle" data-tooltip="Zen Mode (Ctrl+Z)">Zen</button>
             </div>
         </div>
         <div class="content">
-            <!-- Use a <textarea> so CodeMirror can attach itself -->
-            <textarea id="editor" placeholder="Start Writer …"></textarea>
+            <textarea id="editor" placeholder="Start Writing …"></textarea>
             <div class="preview" id="preview"></div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        © 2025 Ankit Deshmukh · <a style="color: #808080;" href="https://www.ankitdeshmukh.com" target="_blank"
-            rel="noopener">ankitdeshmukh.com</a>
+        © 2025 Ankit Deshmukh · <a style="color: #808080;" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a>
     </div>
 
-    <!-- Pomodoro Timer with Task Management -->
     <div id="pomodoro-timer">
         <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
         <div class="timer-display" id="timer">
@@ -889,7 +923,6 @@
         <div class="timer-controls">
             <button type="button" id="toggle-timer" class="timer-button">Start</button>
             <button type="button" id="reset" class="timer-button">Reset</button>
-            <!-- Audio Controls -->
             <div id="audio-controls">
                 <button type="button" id="toggle-music" class="timer-button">Play Music</button>
                 <select id="audio-select">
@@ -899,15 +932,13 @@
                     <option value="background4.opus">Focus</option>
                 </select>
             </div>
-            <!-- Task Management -->
             <div class="task-controls">
                 <div class="task-input">
-                    <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;">
+                    <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;" />
                     <button type="button" class="timer-button" id="addTask">Add</button>
                 </div>
                 <ul id="taskList" class="task-list"></ul>
             </div>
-            <!-- Pomodoro Count -->
             <div id="pomodoro-count">Pomodoros: 0</div>
         </div>
     </div>
@@ -916,17 +947,15 @@
         <div id="assessment-panel1">
             <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
             <div class="assessment-content">
-                <div class="assessment-metric" title="US school grade level. Lower is easier to read."
-                    style=" padding-top: 10px;">
+                <div class="assessment-metric" title="US school grade level. Lower is easier to read." style="padding-top: 10px;">
                     <label>Flesch–Kincaid Grade:</label>
                     <span id="fkGrade">—</span>
                 </div>
-                <div class="assessment-metric" title="Score between 0-100. Higher is easier to read.">
+                <div class="assessment-metric" title="Score between 0–100. Higher is easier to read.">
                     <label>Reading Ease:</label>
                     <span id="readingEase">—</span>
                 </div>
-                <div class="assessment-metric"
-                    title="Number of years of formal education needed to easily understand a piece of writing.">
+                <div class="assessment-metric" title="Number of years of formal education needed.">
                     <label>Gunning Fog Index:</label>
                     <span id="gunningFog">—</span>
                 </div>
@@ -950,11 +979,9 @@
         </div>
     </div>
 
-    <!-- Hidden Audio Elements -->
-    <audio id="audio-unlocker" style="display:none;"></audio>
+    <audio id="audio-unlocker" style="display: none;"></audio>
     <audio id="background-audio" src="background.opus" loop></audio>
 
-    <!-- CodeMirror 5 and Dependencies (no integrity/crossorigin) -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/placeholder.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
@@ -976,6 +1003,8 @@
         const openBtn = document.getElementById('openBtn');
         const saveBtn = document.getElementById('saveBtn');
         const fileInput = document.getElementById('fileInput');
+        const zenToggle = document.getElementById('zenToggle');
+        const exportDiagramBtn = document.getElementById('exportDiagramBtn');
 
         // CodeMirror instance will be stored here
         let codemirror;
@@ -1024,6 +1053,30 @@
          * 2. INIT CODEMIRROR (v5) WITH CONTENTEDITABLE INPUT
          ******************************************************************/
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Mermaid
+            // Moved here to ensure Mermaid library is loaded and DOM is ready
+            if (window.mermaid) {
+                try {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'neutral',   // You can try 'neutral', 'forest', 'dark' if 'default' causes issues
+                    themeVariables: {
+                        background: 'var(--container-bg)',
+                        primaryColor: '#689d6a',
+                        textColor: 'var(--text-color)'
+                    },
+                    securityLevel: 'loose',
+                    fontFamily: 'Roboto, sans-serif'
+                });
+
+                    console.log("Mermaid initialized successfully on DOMContentLoaded.");
+                } catch (initError) {
+                    console.error("Error initializing Mermaid:", initError);
+                }
+            } else {
+                console.error("Mermaid library (window.mermaid) not found during DOMContentLoaded for initialization.");
+            }
+
             codemirror = CodeMirror.fromTextArea(document.getElementById('editor'), {
                 mode: 'markdown',
                 lineNumbers: false,
@@ -1042,6 +1095,9 @@
                 }
             });
 
+            // Disable default blink so our smooth blink can take over:
+            codemirror.setOption('cursorBlinkRate', 0);
+
             // Apply initial spellcheck state directly on the actual input field:
             codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
 
@@ -1053,48 +1109,44 @@
          * 3. INITIALIZE APPLICATION
          ******************************************************************/
         function initializeApp() {
-        const renderer = new marked.Renderer();
+            const renderer = new marked.Renderer();
 
-        // renderer.paragraph = (text) => {
-        // let str = (typeof text === 'string')
-        //     ? text
-        //     : (text && typeof text.raw === 'string')
-        //     ? text.raw
-        //     : String(text);
-        // str = str.trim();
-        // if (str.startsWith('$$') && str.endsWith('$$')) {
-        //     const rawMath = str.slice(2, -2).trim();
-        //     return `<div class="katex-block">$$${rawMath}$$</div>`;
-        // }
-        // return `<p>${str}</p>`;
-        // };
+            // Preserve existing paragraph override:
+            renderer.paragraph = (text) => {
+                let str = (typeof text === 'string')
+                    ? text
+                    : (text && typeof text.raw === 'string')
+                        ? text.raw
+                        : String(text);
 
+                // Normalize the lines
+                const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
+                const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
 
-        renderer.paragraph = (text) => {
-        let str = (typeof text === 'string')
-            ? text
-            : (text && typeof text.raw === 'string')
-            ? text.raw
-            : String(text);
+                if (isBlockMath) {
+                    return `<div class="katex-block">$$${trimmed}$$</div>`;
+                }
+                return `<p>${str}</p>`;
+            };
 
-        // Normalize the lines
-        const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
-        const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
+            // === OVERRIDE fenced code so that ```mermaid blocks become <div class="mermaid">…</div> ===
+            renderer.fence = (code, infostring, escaped) => {
+                const lang = (infostring || '').trim().toLowerCase();
+                if (lang === 'mermaid') {
+                    const safeCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    return `<div class="mermaid">${safeCode}</div>`;
+                }
+                // otherwise fall back to default
+                return marked.Renderer.prototype.fence.call(renderer, code, infostring, escaped);
+            };
 
-        if (isBlockMath) {
-            return `<div class="katex-block">$$${trimmed}$$</div>`;
-        }
-        return `<p>${str}</p>`;
-        };
-
-
-        marked.setOptions({
-            breaks: true,
-            gfm: true,
-            mangle: false,
-            headerIds: false,
-            renderer
-        });
+            marked.setOptions({
+                breaks: true,
+                gfm: true,
+                mangle: false,
+                headerIds: false,
+                renderer
+            });
 
             // Add event listeners
             setupEventListeners();
@@ -1107,7 +1159,7 @@
             updateAssessment();
             updateTimerControls();
 
-            // Hide unsupported features
+            // Hide unsupported features if necessary
             if (!window.showSaveFilePicker) {
                 saveBtn.style.display = 'none';
             }
@@ -1124,8 +1176,22 @@
             codemirror.on('change', (cm) => {
                 updateStats();
                 updateAssessment();
-                if (isPreview) preview.innerHTML = marked.parse(cm.getValue());
+                if (isPreview) {
+                    // Render Markdown → HTML in preview
+                    const html = marked.parse(cm.getValue());
+                    preview.innerHTML = html;
+                    // Re-render math and diagrams after innerHTML update
+                    renderDynamicContent();
+                }
                 hasUnsavedChanges = true;
+            });
+
+            // Typewriter sound (optional):
+            const keySound = new Audio('[https://assets.codepen.io/3/typewriter-key.mp3](https://assets.codepen.io/3/typewriter-key.mp3)');
+            keySound.volume = 0.08;
+            codemirror.on('keypress', () => {
+                keySound.currentTime = 0;
+                keySound.play().catch(() => { });
             });
 
             // Keyboard shortcuts
@@ -1160,6 +1226,24 @@
                     e.preventDefault();
                     toggleSpellcheck();
                 }
+
+                // Toggle Zen Mode (Ctrl+Z)
+                if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+                    e.preventDefault();
+                    document.body.classList.toggle('zen-mode');
+                    zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+                    // Auto-pause music in Zen:
+                    if (document.body.classList.contains('zen-mode')) {
+                        backgroundAudio.pause();
+                        document.getElementById('toggle-music').textContent = 'Play Music';
+                    }
+                }
+
+                if (e.key === 'Escape' && document.body.classList.contains('zen-mode')) {
+                    e.preventDefault();
+                    document.body.classList.remove('zen-mode');
+                    zenToggle.textContent = 'Zen';
+                }
             });
 
             // Button clicks
@@ -1169,6 +1253,15 @@
             openBtn.addEventListener('click', () => fileInput.click());
             fileInput.addEventListener('change', handleFileOpen);
             saveBtn.addEventListener('click', handleSave);
+            zenToggle.addEventListener('click', () => {
+                document.body.classList.toggle('zen-mode');
+                zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+                if (document.body.classList.contains('zen-mode')) {
+                    backgroundAudio.pause();
+                    document.getElementById('toggle-music').textContent = 'Play Music';
+                }
+            });
+            exportDiagramBtn.addEventListener('click', exportDiagram);
 
             window.addEventListener('beforeunload', (e) => {
                 if (hasUnsavedChanges) {
@@ -1241,43 +1334,39 @@
             "indicate", "individual", "interpret", "involve", "issue", "labor", "legal", "legislate", "major", "method",
             "occur", "percent", "period", "policy", "principle", "proceed", "process", "require", "research", "respond", "role",
             "section", "sector", "significant", "similar", "source", "structure", "theory", "vary", "achieve", "acquire",
-            "administrate", "affect", "appropriate", "aspect", "assist", "category", "chapter", "commission", "community",
-            "complex", "compute", "conclude", "conduct", "consequence", "construct", "consume", "credit", "culture", "design",
-            "distinct", "element", "equate", "evaluate", "feature", "final", "focus", "impact", "injure", "institute",
-            "invest", "item", "journal", "maintain", "normal", "obtain", "participate", "perceive", "positive", "potential",
-            "previous", "primary", "purchase", "range", "region", "regulate", "relevant", "reside", "resource", "restrict",
-            "secure", "select", "site", "strategy", "survey", "text", "tradition", "transfer", "alternative", "circumstance",
-            "comment", "compensate", "component", "consent", "considerable", "constant", "constrain", "contribute", "convene",
-            "coordinate", "core", "corporate", "correspond", "criteria", "deduce", "demonstrate", "document", "dominate",
-            "emphasis", "ensure", "exclude", "framework", "fund", "illustrate", "immigrate", "imply", "initial", "instance",
-            "interact", "justify", "layer", "link", "locate", "maximise", "minor", "negate", "outcome", "partner", "philosophy",
-            "proportion", "publish", "react", "register", "rely", "remove", "scheme", "sequence", "sex", "shift", "specify",
-            "sufficient", "task", "technical", "technique", "technology", "valid", "volume", "access", "adequate", "annual",
-            "apparent", "approximate", "attitude", "attribute", "civil", "code", "commit", "communicate", "concentrate",
-            "conference", "contrast", "cycle", "debate", "despite", "dimension", "domestic", "emerge", "error", "ethnic",
-            "goal", "grant", "hence", "hypothesis", "implement", "implicate", "impose", "integrate", "internal", "investigate",
-            "job", "label", "mechanism", "obvious", "occupy", "option", "output", "overall", "parallel", "parameter",
-            "phase", "predict", "principal", "prior", "professional", "project", "promote", "resolve", "retain", "series",
-            "statistic", "status", "stress", "substitute", "sufficient", "summary", "undertake", "academy", "adjust",
-            "alter", "amend", "aware", "capacity", "challenge", "clause", "compound", "conflict", "consult", "contact",
-            "decline", "discrete", "draft", "enable", "energy", "enforce", "entity", "equivalent", "evolve", "expand",
-            "expose", "external", "facilitate", "fundamental", "generate", "generation", "image", "liberal", "licence",
-            "logic", "marginal", "medical", "mental", "modify", "monitor", "network", "notion", "objective", "orient",
-            "output", "overall", "perspective", "precise", "prime", "psychology", "pursue", "ratio", "reject", "revenue",
-            "stable", "style", "subsidy", "substitute", "symbol", "target", "transition", "trend", "version", "welfare",
-            "whereas", "abstract", "accurate", "acknowledge", "aggregate", "allocate", "assign", "attach", "author",
-            "brief", "capable", "cite", "cooperate", "discriminate", "display", "diverse", "domain", "edit", "enhance",
-            "estate", "exceed", "expert", "explicit", "federal", "fee", "flexible", "ignore", "incentive", "incorporate",
-            "index", "inhibit", "initiate", "input", "instruction", "intelligence", "interval", "lecture", "migrate",
-            "minimum", "minimum", "nuclear", "overseas", "precede", "presume", "rational", "recover", "reveal", "revenue",
-            "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilize", "adapt", "adult",
-            "advocate", "aid", "channel", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert",
-            "decade", "definite", "deny", "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip",
-            "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "identify",
-            "ignore", "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
-            "manual", "media", "mode", "paradigm", "phenomenon", "priority", "protocol", "publication", "refine",
-            "reform", "regime", "relax", "restrain", "revolution", "scenario", "schedule", "scheme", "scope", "simulate",
-            "sole", "somewhat", "submit", "successor", "survive", "suspend", "team", "tense", "terminate", "theme",
+            "administrate", "affect", "appropriate", "aspect", "assist", "category", "chapter", "commission", "community", "complex",
+            "compute", "conclude", "conduct", "consequence", "construct", "consume", "credit", "culture", "design", "distinct",
+            "element", "equate", "evaluate", "feature", "final", "focus", "impact", "injure", "institute", "invest", "item",
+            "journal", "maintain", "normal", "obtain", "participate", "perceive", "positive", "potential", "previous", "primary",
+            "purchase", "range", "region", "regulate", "relevant", "reside", "resource", "restrict", "secure", "select", "site",
+            "strategy", "survey", "text", "tradition", "transfer", "alternative", "circumstance", "comment", "compensate", "component",
+            "consent", "considerable", "constant", "constrain", "contribute", "convene", "coordinate", "core", "corporate", "correspond",
+            "criteria", "deduce", "demonstrate", "document", "dominate", "emphasis", "ensure", "exclude", "framework", "fund",
+            "illustrate", "immigrate", "imply", "initial", "instance", "interact", "justify", "layer", "link", "locate", "maximize",
+            "minor", "negate", "outcome", "partner", "philosophy", "proportion", "publish", "react", "register", "rely", "remove",
+            "scheme", "sequence", "sex", "shift", "specify", "sufficient", "task", "technical", "technique", "technology", "valid",
+            "volume", "access", "adequate", "annual", "apparent", "approximate", "attitude", "attribute", "civil", "code", "commit",
+            "communicate", "concentrate", "conference", "contrast", "cycle", "debate", "despite", "dimension", "domestic", "emerge",
+            "error", "ethnic", "goal", "grant", "hence", "hypothesis", "implement", "implicate", "impose", "integrate", "internal",
+            "investigate", "job", "label", "mechanism", "obvious", "occupy", "option", "output", "overall", "parallel", "parameter",
+            "phase", "predict", "principal", "prior", "professional", "project", "promote", "resolve", "retain", "series", "statistic",
+            "status", "stress", "substitute", "summary", "undertake", "academy", "adjust", "alter", "amend", "aware", "capacity",
+            "challenge", "clause", "compound", "conflict", "consult", "contact", "decline", "discrete", "draft", "enable", "energy",
+            "enforce", "entity", "equivalent", "evolve", "expand", "expose", "external", "facilitate", "fundamental", "generate",
+            "generation", "image", "liberal", "license", "logic", "marginal", "medical", "mental", "modify", "monitor", "network",
+            "notion", "objective", "orient", "perspective", "precise", "prime", "psychology", "pursue", "ratio", "reject", "revenue",
+            "stable", "style", "subsidy", "symbol", "target", "transition", "trend", "version", "welfare", "whereas", "abstract",
+            "accurate", "acknowledge", "aggregate", "allocate", "assign", "attach", "author", "brief", "capable", "cite", "cooperate",
+            "discriminate", "display", "diverse", "domain", "edit", "enhance", "estate", "exceed", "expert", "explicit", "federal",
+            "fee", "flexible", "ignore", "incentive", "incorporate", "index", "inhibit", "initiate", "input", "instruction", "intelligence",
+            "interval", "lecture", "migrate", "minimum", "nuclear", "overseas", "precede", "presume", "rational", "recover", "reveal",
+            "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilize", "adapt", "adult", "advocate", "aid",
+            "channel", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert", "decade", "definite", "deny",
+            "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip", "extract", "file", "finite", "foundation", "grade",
+            "guarantee", "hierarchy", "highlight", "identify", "ignore", "incentive", "incorporate", "index", "inhibit", "initiate",
+            "input", "insert", "intervene", "isolate", "manual", "media", "mode", "paradigm", "phenomenon", "priority", "protocol",
+            "publication", "refine", "reform", "regime", "relax", "restrain", "revolution", "scenario", "schedule", "scheme", "scope",
+            "simulate", "sole", "somewhat", "submit", "successor", "survive", "suspend", "team", "tense", "terminate", "theme",
             "thereby", "topic", "transmit", "ultimate", "unique", "visible", "volunteer"
         ];
 
@@ -1339,23 +1428,13 @@
         }
 
         /******************************************************************
-         * 7. TOGGLE EDIT ↔ PREVIEW
+         * 7. RENDER DYNAMIC CONTENT (KaTeX & Mermaid)
          ******************************************************************/
-
-        function toggleMode() {
-            isPreview = !isPreview;
-            if (isPreview) {
-                codemirror.getWrapperElement().style.display = 'none';
-                preview.style.display = 'block';
-
-                // First render Markdown
-                const html = marked.parse(codemirror.getValue());
-                preview.innerHTML = html;
-
-                // Then render KaTeX after slight delay
-                setTimeout(() => {
-                    if (typeof renderMathInElement !== 'undefined') {
-                    if (window.renderMathInElement) {
+        function renderDynamicContent() {
+            // Render KaTeX
+            setTimeout(() => {
+                if (typeof renderMathInElement !== 'undefined' && window.renderMathInElement) {
+                    try {
                         renderMathInElement(preview, {
                             delimiters: [
                                 { left: '$$', right: '$$', display: true },
@@ -1364,29 +1443,65 @@
                                 { left: '\\[', right: '\\]', display: true }
                             ],
                             ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
-                            ignoredClasses: ["cm-code"],
+                            ignoredClasses: ["cm-code"], // Ensure CodeMirror content isn't processed by KaTeX
                             throwOnError: false,
                             strict: false
                         });
-                    }else{
-                        console.error("KaTeX renderMathInElement is not available.");
+                    } catch (katexError) {
+                        console.error("KaTeX rendering error:", katexError);
                     }
-                    }
-                }, 10);
+                }
+            }, 10); // Short delay for KaTeX
+
+            // Mermaid rendering with error handling
+                const mermaidDivs = Array.from(preview.querySelectorAll('.mermaid'));
+                if (mermaidDivs.length > 0) {
+                    mermaidDivs.forEach(div => {
+                        try {
+                            div.innerHTML = div.textContent; // Reset content
+                            mermaid.init(undefined, div); // Initialize individual diagram
+                        } catch (err) {
+                            console.error('Mermaid render error:', err);
+                            div.innerHTML = `<div class="mermaid-error" style="color: #ff5555;">
+                                Diagram error: ${err.message}
+                            </div>`;
+                        }
+                    });
+                }
+        }
+
+        /******************************************************************
+         * 8. TOGGLE EDIT ↔ PREVIEW
+         ******************************************************************/
+        function toggleMode() {
+            isPreview = !isPreview;
+
+            if (isPreview) {
+                // Hide editor, show preview
+                codemirror.getWrapperElement().style.display = 'none';
+                preview.style.display = 'block';
+
+                // 1) Render Markdown → HTML
+                const html = marked.parse(codemirror.getValue());
+                preview.innerHTML = html;
+
+                // 2) Render KaTeX & Mermaid
+                renderDynamicContent();
 
                 modeToggle.textContent = 'Edit';
             } else {
+                // Back to editor
                 preview.style.display = 'none';
                 codemirror.getWrapperElement().style.display = 'block';
                 modeToggle.textContent = 'Preview';
             }
-            updateAssessment();
-            updateStats();
+
+            updateAssessment(); // This might be redundant if called elsewhere on content change
+            updateStats();      // This might be redundant
         }
 
-
         /******************************************************************
-         * 8. TOGGLE DARK ↔ LIGHT THEME
+         * 9. TOGGLE DARK ↔ LIGHT THEME
          ******************************************************************/
         function toggleTheme() {
             isDarkTheme = !isDarkTheme;
@@ -1396,17 +1511,16 @@
         }
 
         /******************************************************************
-         * 9. TOGGLE SPELLCHECK ON ↔ OFF
+         * 10. TOGGLE SPELLCHECK ON ↔ OFF
          ******************************************************************/
         function toggleSpellcheck() {
             spellCheckEnabled = !spellCheckEnabled;
-            // Now set it on the actual contenteditable input field, not the wrapper:
             codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
             spellToggle.textContent = spellCheckEnabled ? 'Spell Off' : 'Spell On';
         }
 
         /******************************************************************
-         * 10. HANDLE FILE OPEN
+         * 11. HANDLE FILE OPEN
          ******************************************************************/
         function handleFileOpen(e) {
             const file = e.target.files[0];
@@ -1415,22 +1529,29 @@
             const reader = new FileReader();
             reader.onload = (evt) => {
                 codemirror.setValue(evt.target.result);
-                updateStats();
-                updateAssessment();
-                if (isPreview) preview.innerHTML = marked.parse(codemirror.getValue());
+                // updateStats(); // Called by codemirror 'change' event
+                // updateAssessment(); // Called by codemirror 'change' event
+                if (isPreview) { // If already in preview mode, refresh it
+                    const html = marked.parse(codemirror.getValue());
+                    preview.innerHTML = html;
+                    renderDynamicContent();
+                }
             };
             reader.onerror = () => {
+                // Consider using a custom modal instead of alert
+                console.error('Failed to read the file.');
                 alert('Failed to read the file. Please try again.');
             };
             reader.readAsText(file);
-            fileInput.value = '';
+            fileInput.value = ''; // Reset file input
         }
 
         /******************************************************************
-         * 11. HANDLE FILE SAVE
+         * 12. HANDLE FILE SAVE
          ******************************************************************/
         async function handleSave() {
             if (!window.showSaveFilePicker) {
+                 // Consider using a custom modal instead of alert
                 alert('Save feature not supported in this browser.');
                 return;
             }
@@ -1445,13 +1566,22 @@
                 await writable.write(text);
                 await writable.close();
                 hasUnsavedChanges = false;
+
+                // Pulse Save Button
+                saveBtn.classList.add('save-success');
+                setTimeout(() => saveBtn.classList.remove('save-success'), 1000);
+
+                // Gentle container glow
+                const container = document.querySelector('.writing-container');
+                container.classList.add('glow-confirm');
+                setTimeout(() => container.classList.remove('glow-confirm'), 1200);
             } catch (err) {
                 if (err.name !== 'AbortError') console.error('Save failed:', err);
             }
         }
 
         /******************************************************************
-         * 12. POMODORO TIMER FUNCTIONALITY
+         * 13. POMODORO TIMER FUNCTIONALITY
          ******************************************************************/
         const backgroundAudio = document.getElementById('background-audio');
         const toggleMusicButton = document.getElementById('toggle-music');
@@ -1459,21 +1589,26 @@
         // Unlock audio on first interaction
         function unlockAudio() {
             if (audioUnlocked) return;
-            const unlockSound = new Audio();
-            unlockSound.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
+            const unlockSound = new Audio(); // Use a very short, silent audio if needed
+            unlockSound.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA='; // Minimal WAV
             unlockSound.play()
                 .then(() => {
-                    unlockSound.pause();
+                    unlockSound.pause(); // Stop it immediately
+                    audioUnlocked = true;
+                    updateTimerControls(); // Enable buttons now that audio context is unlocked
+                    console.log("Audio context unlocked.");
+                })
+                .catch((e) => {
+                    console.warn('Audio unlock interaction failed or was not needed:', e);
+                     // Assume it might be unlocked by other means or browser doesn't require it as strictly
                     audioUnlocked = true;
                     updateTimerControls();
-                })
-                .catch(() => {
-                    console.warn('Audio unlock failed');
                 });
         }
 
         document.addEventListener('click', unlockAudio, { once: true });
         document.addEventListener('touchstart', unlockAudio, { once: true });
+
 
         function updateTimerDisplay() {
             minutesElement.textContent = String(minutes).padStart(2, '0');
@@ -1486,10 +1621,19 @@
 
         function startTimer() {
             if (!audioUnlocked) {
-                alert('Please interact with the page to unlock audio.');
-                return;
+                // alert('Please interact with the page to unlock audio.');
+                console.warn('Audio not unlocked. Attempting to play may fail.');
+                // Try to play to see if it's already unlocked or browser allows it
+                backgroundAudio.play().then(() => {
+                    audioUnlocked = true; // If it plays, it's unlocked
+                }).catch(() => {
+                    alert('Please click anywhere on the page first to enable audio, then start the timer.');
+                    return;
+                });
+            } else {
+                 backgroundAudio.play().catch((e) => console.error('Audio play failed:', e));
             }
-            backgroundAudio.play().catch(() => alert('Audio failed to play.'));
+
             timerInterval = setInterval(() => {
                 seconds--;
                 if (seconds < 0) {
@@ -1498,9 +1642,9 @@
                 }
                 if (minutes < 0) {
                     clearInterval(timerInterval);
-                    alert('Pomodoro complete!');
+                    alert('Pomodoro complete!'); // Consider custom modal
                     pomodoroCount++;
-                    resetTimer();
+                    resetTimer(); // This also updates pomodoro count display
                     return;
                 }
                 updateTimerDisplay();
@@ -1511,7 +1655,7 @@
 
         function pauseTimer() {
             clearInterval(timerInterval);
-            backgroundAudio.pause();
+            if (audioUnlocked) backgroundAudio.pause();
             isTimerRunning = false;
             toggleTimerButton.textContent = 'Start';
         }
@@ -1523,22 +1667,40 @@
 
         function resetTimer() {
             clearInterval(timerInterval);
-            backgroundAudio.pause();
-            backgroundAudio.currentTime = 0;
+            if (audioUnlocked) {
+                backgroundAudio.pause();
+                backgroundAudio.currentTime = 0;
+            }
             minutes = 25;
             seconds = 0;
             updateTimerDisplay();
             isTimerRunning = false;
             toggleTimerButton.textContent = 'Start';
-            updatePomodoroCount();
+            updatePomodoroCount(); // Update display
         }
 
         /******************************************************************
-         * 13. AUDIO CONTROLS
+         * 14. AUDIO CONTROLS
          ******************************************************************/
         function toggleMusic() {
             if (!audioUnlocked) {
-                alert('Please interact with the page to unlock audio.');
+                 // Try to unlock audio first
+                unlockAudio(); // Attempt to unlock
+                // Inform user they might need to click again if unlock was the first interaction
+                setTimeout(() => {
+                    if (!audioUnlocked) {
+                         alert('Please click anywhere on the page first to enable audio, then try playing music.');
+                         return;
+                    }
+                     // If unlockAudio made it true, proceed
+                    if (backgroundAudio.paused) {
+                        backgroundAudio.play().catch(e => console.error("Music play failed:", e));
+                        toggleMusicButton.textContent = 'Pause Music';
+                    } else {
+                        backgroundAudio.pause();
+                        toggleMusicButton.textContent = 'Play Music';
+                    }
+                }, 50); // Small delay to allow unlockAudio to potentially complete
                 return;
             }
             try {
@@ -1550,54 +1712,72 @@
                     toggleMusicButton.textContent = 'Play Music';
                 }
             } catch (err) {
-                alert('Audio playback failed: ' + err.message);
+                alert('Audio playback failed: ' + err.message); // Custom modal
             }
         }
 
         function changeAudio() {
-            if (!audioUnlocked) return;
+            if (!audioUnlocked) {
+                // alert('Please interact with the page to unlock audio before changing tracks.');
+                // Attempt to unlock, then user might need to re-select
+                unlockAudio();
+                return;
+            }
             try {
+                const wasPlaying = !backgroundAudio.paused;
                 backgroundAudio.pause();
                 backgroundAudio.currentTime = 0;
                 backgroundAudio.src = audioSelect.value;
-                backgroundAudio.play();
-                toggleMusicButton.textContent = 'Pause Music';
+                if (wasPlaying) {
+                    backgroundAudio.play();
+                    toggleMusicButton.textContent = 'Pause Music';
+                } else {
+                    toggleMusicButton.textContent = 'Play Music'; // Stays paused if it was paused
+                }
             } catch (err) {
-                alert('Failed to load audio track: ' + err.message);
+                alert('Failed to load audio track: ' + err.message); // Custom modal
             }
         }
 
         /******************************************************************
-         * 14. TASK MANAGEMENT
+         * 15. TASK MANAGEMENT
          ******************************************************************/
         function saveTasks() {
-            localStorage.setItem('tasks', JSON.stringify(tasks));
+            try {
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            } catch (e) {
+                console.error("Error saving tasks to localStorage:", e);
+            }
         }
 
         function loadTasks() {
-            const saved = localStorage.getItem('tasks');
-            if (saved) {
-                try {
+            try {
+                const saved = localStorage.getItem('tasks');
+                if (saved) {
                     tasks = JSON.parse(saved);
                     renderTasks();
-                } catch (e) {
-                    console.error('Failed to parse saved tasks', e);
                 }
+            } catch (e) {
+                console.error('Failed to parse saved tasks from localStorage:', e);
+                tasks = []; // Reset to empty array on error
             }
         }
 
         function addTask(text) {
-            if (!text.trim()) return;
-            tasks.push({ text, completed: false });
+            const taskText = text.trim();
+            if (!taskText) return;
+            tasks.push({ text: taskText, completed: false });
             saveTasks();
             renderTasks();
             taskInput.value = '';
         }
 
         function toggleTask(index) {
-            tasks[index].completed = !tasks[index].completed;
-            saveTasks();
-            renderTasks();
+            if (tasks[index]) {
+                tasks[index].completed = !tasks[index].completed;
+                saveTasks();
+                renderTasks();
+            }
         }
 
         function deleteTask(index) {
@@ -1607,22 +1787,28 @@
         }
 
         function renderTasks() {
-            taskList.innerHTML = '';
+            taskList.innerHTML = ''; // Clear existing tasks
             tasks.forEach((task, index) => {
                 const li = document.createElement('li');
                 li.className = `task-item ${task.completed ? 'completed' : ''}`;
+
                 const span = document.createElement('span');
                 span.textContent = task.text;
+                span.addEventListener('click', () => toggleTask(index)); // Allow clicking text to toggle
+
                 const actions = document.createElement('div');
                 actions.className = 'task-actions';
+
                 const checkBtn = document.createElement('button');
                 checkBtn.textContent = task.completed ? '✓' : '☐';
-                checkBtn.title = 'Toggle completion';
+                checkBtn.title = task.completed ? 'Mark as incomplete' : 'Mark as complete';
                 checkBtn.addEventListener('click', () => toggleTask(index));
+
                 const delBtn = document.createElement('button');
                 delBtn.textContent = '✕';
                 delBtn.title = 'Delete task';
                 delBtn.addEventListener('click', () => deleteTask(index));
+
                 actions.appendChild(checkBtn);
                 actions.appendChild(delBtn);
                 li.appendChild(span);
@@ -1632,19 +1818,22 @@
         }
 
         /******************************************************************
-         * 15. UPDATE CONTROLS BASED ON AUDIO UNLOCK STATUS
+         * 16. UPDATE CONTROLS BASED ON AUDIO UNLOCK STATUS
          ******************************************************************/
         function updateTimerControls() {
-            toggleTimerButton.disabled = !audioUnlocked;
-            resetButton.disabled = !audioUnlocked;
-            toggleMusicButton.disabled = !audioUnlocked;
-            audioSelect.disabled = !audioUnlocked;
-            addTaskButton.disabled = !audioUnlocked;
-            taskInput.disabled = !audioUnlocked;
+            // Buttons are generally enabled, actual play/pause handles audioUnlocked state.
+            // This function can be simplified or removed if unlockAudio handles enabling directly.
+            toggleTimerButton.disabled = false; // !audioUnlocked;
+            resetButton.disabled = false; // !audioUnlocked;
+            toggleMusicButton.disabled = false; // !audioUnlocked;
+            audioSelect.disabled = false; // !audioUnlocked;
+            // Task controls are not dependent on audio
+            addTaskButton.disabled = false;
+            taskInput.disabled = false;
         }
 
         /******************************************************************
-         * 16. UPDATE STATS
+         * 17. UPDATE STATS
          ******************************************************************/
         function updateStats() {
             const rawText = codemirror ? codemirror.getValue().trim() : '';
@@ -1684,11 +1873,86 @@
         }
 
         /******************************************************************
-         * 17. HANDLE AUDIO ERRORS
+         * 18. EXPORT MERMAID DIAGRAMS AS PNG AT 300 DPI
          ******************************************************************/
-        backgroundAudio.addEventListener('error', () => {
-            alert('Failed to load audio. Please try another track.');
-            toggleMusicButton.textContent = 'Play Music';
+        function exportDiagram() {
+            // Ensure diagrams are rendered if in preview mode
+            if (!isPreview) {
+                alert("Please switch to Preview mode to render diagrams before exporting.");
+                return;
+            }
+
+            const svgs = preview.querySelectorAll('.mermaid svg');
+            if (svgs.length === 0) {
+                alert('No diagrams found in the preview to export. Ensure they are rendered.');
+                return;
+            }
+            svgs.forEach((svgEl, idx) => {
+                const serializer = new XMLSerializer();
+                let svgString = serializer.serializeToString(svgEl);
+
+                // Inject styles for external fonts if not already inline (Mermaid usually inlines styles)
+                // This step might be complex if styles are not self-contained by Mermaid.
+                // For simplicity, we assume Mermaid's output SVG is mostly self-contained.
+
+                const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+                const url = URL.createObjectURL(svgBlob);
+                const img = new Image();
+
+                img.onload = () => {
+                    // 96 DPI is browser default; scale up to 300 DPI
+                    const dpiScale = 300 / 96;
+                    const canvas = document.createElement('canvas');
+
+                    // Get the original SVG dimensions
+                    const svgWidth = parseFloat(svgEl.getAttribute('width')) || img.width;
+                    const svgHeight = parseFloat(svgEl.getAttribute('height')) || img.height;
+
+                    canvas.width = svgWidth * dpiScale;
+                    canvas.height = svgHeight * dpiScale;
+
+                    const ctx = canvas.getContext('2d');
+                    // Optional: Fill background if SVG is transparent and PNG needs a color
+                    // ctx.fillStyle = 'white'; // Or use var(--container-bg) if accessible and converted to actual color
+                    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.scale(dpiScale, dpiScale);
+                    ctx.drawImage(img, 0, 0, svgWidth, svgHeight);
+
+                    URL.revokeObjectURL(url); // Clean up blob URL
+
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            const a = document.createElement('a');
+                            a.href = URL.createObjectURL(blob);
+                            const filename = svgs.length === 1 ? 'diagram.png' : `diagram-${idx + 1}.png`;
+                            a.download = filename;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(a.href); // Clean up blob URL for download link
+                        } else {
+                            console.error("Failed to create blob from canvas.");
+                            alert("Failed to export diagram. See console for details.");
+                        }
+                    }, 'image/png', 1.0); // Quality 1.0 for PNG
+                };
+                img.onerror = () => {
+                    URL.revokeObjectURL(url);
+                    console.error("Failed to load SVG into image for export.");
+                    alert("Failed to load SVG for export. Diagram might be too complex or contain errors.");
+                };
+                img.src = url;
+            });
+        }
+
+        /******************************************************************
+         * 19. HANDLE AUDIO ERRORS
+         ******************************************************************/
+        backgroundAudio.addEventListener('error', (e) => {
+            console.error('Background audio error:', e);
+            // alert('Failed to load audio. Please try another track or check the audio file.');
+            toggleMusicButton.textContent = 'Play Music'; // Reset button state
         });
     </script>
 </body>
