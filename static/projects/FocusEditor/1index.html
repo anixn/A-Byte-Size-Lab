@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/gruvbox-dark.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
 
     <!-- Custom Fonts & Root Colors -->
     <style>
@@ -87,6 +87,7 @@
 
         html,
         body {
+            letter-spacing: 0.02em;
             font-size: 62.5%;
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -110,7 +111,15 @@
             transition: background-color 0.2s ease;
         }
 
-        .writing-container {
+
+        h1,
+        h2,
+        h3 {
+            margin: 1.5rem 0 0.75rem;
+            line-height: 1.3;
+            letter-spacing: 0.03em;
+        }
+.writing-container {
             width: 100%;
             max-width: 720px;
             height: 92vh;
@@ -442,7 +451,18 @@
             font-weight: bold;
         }
 
+        /* Ensure block equations are centered */
+        .katex-display {
+            margin: 1.2em 0;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
 
+        /* Prevent line breaks in equations */
+        .katex {
+            white-space: nowrap;
+        }
 
         .preview a,
         .footer a {
@@ -836,15 +856,15 @@
                 <span id="statsDisplay">Words: 0 · Readability: —</span>
             </div>
             <div class="controls">
-                <button style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
+                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
                     data-tooltip="Save Markdown File (Ctrl+S)">Save .md</button>
-                <button style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
+                <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
                     data-tooltip="Open Markdown File (Ctrl+O)">Open .md</button>
                 <input type="file" accept=".md" id="fileInput" style="display:none" />
-                <button class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
-                <button class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
+                <button type="button" class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
+                <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell
                     On</button>
-                <button class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
+                <button type="button" class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
             </div>
         </div>
         <div class="content">
@@ -862,16 +882,16 @@
 
     <!-- Pomodoro Timer with Task Management -->
     <div id="pomodoro-timer">
-        <button id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
+        <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
         <div class="timer-display" id="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
         </div>
         <div class="timer-controls">
-            <button id="toggle-timer" class="timer-button">Start</button>
-            <button id="reset" class="timer-button">Reset</button>
+            <button type="button" id="toggle-timer" class="timer-button">Start</button>
+            <button type="button" id="reset" class="timer-button">Reset</button>
             <!-- Audio Controls -->
             <div id="audio-controls">
-                <button id="toggle-music" class="timer-button">Play Music</button>
+                <button type="button" id="toggle-music" class="timer-button">Play Music</button>
                 <select id="audio-select">
                     <option value="background.opus">Cosmic</option>
                     <option value="background2.opus">Muse</option>
@@ -883,7 +903,7 @@
             <div class="task-controls">
                 <div class="task-input">
                     <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;">
-                    <button class="timer-button" id="addTask">Add</button>
+                    <button type="button" class="timer-button" id="addTask">Add</button>
                 </div>
                 <ul id="taskList" class="task-list"></ul>
             </div>
@@ -894,7 +914,7 @@
 
     <div id="assess-timer">
         <div id="assessment-panel1">
-            <button id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
+            <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
             <div class="assessment-content">
                 <div class="assessment-metric" title="US school grade level. Lower is easier to read."
                     style=" padding-top: 10px;">
@@ -935,11 +955,13 @@
     <audio id="background-audio" src="background.opus" loop></audio>
 
     <!-- CodeMirror 5 and Dependencies (no integrity/crossorigin) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/placeholder.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/placeholder.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/display/fullscreen.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
     <script>
         /******************************************************************
@@ -1031,8 +1053,48 @@
          * 3. INITIALIZE APPLICATION
          ******************************************************************/
         function initializeApp() {
-            // Configure marked.js
-            marked.setOptions({ breaks: true, gfm: true });
+        const renderer = new marked.Renderer();
+
+        // renderer.paragraph = (text) => {
+        // let str = (typeof text === 'string')
+        //     ? text
+        //     : (text && typeof text.raw === 'string')
+        //     ? text.raw
+        //     : String(text);
+        // str = str.trim();
+        // if (str.startsWith('$$') && str.endsWith('$$')) {
+        //     const rawMath = str.slice(2, -2).trim();
+        //     return `<div class="katex-block">$$${rawMath}$$</div>`;
+        // }
+        // return `<p>${str}</p>`;
+        // };
+
+
+        renderer.paragraph = (text) => {
+        let str = (typeof text === 'string')
+            ? text
+            : (text && typeof text.raw === 'string')
+            ? text.raw
+            : String(text);
+
+        // Normalize the lines
+        const trimmed = str.trim().replace(/^\$\$\s*\n?/, '').replace(/\n?\s*\$\$$/, '');
+        const isBlockMath = /^\$\$[\s\S]*\$\$$/.test(str.trim());
+
+        if (isBlockMath) {
+            return `<div class="katex-block">$$${trimmed}$$</div>`;
+        }
+        return `<p>${str}</p>`;
+        };
+
+
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            mangle: false,
+            headerIds: false,
+            renderer
+        });
 
             // Add event listeners
             setupEventListeners();
@@ -1279,12 +1341,39 @@
         /******************************************************************
          * 7. TOGGLE EDIT ↔ PREVIEW
          ******************************************************************/
+
         function toggleMode() {
             isPreview = !isPreview;
             if (isPreview) {
                 codemirror.getWrapperElement().style.display = 'none';
                 preview.style.display = 'block';
-                preview.innerHTML = marked.parse(codemirror.getValue());
+
+                // First render Markdown
+                const html = marked.parse(codemirror.getValue());
+                preview.innerHTML = html;
+
+                // Then render KaTeX after slight delay
+                setTimeout(() => {
+                    if (typeof renderMathInElement !== 'undefined') {
+                    if (window.renderMathInElement) {
+                        renderMathInElement(preview, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false },
+                                { left: '\\(', right: '\\)', display: false },
+                                { left: '\\[', right: '\\]', display: true }
+                            ],
+                            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+                            ignoredClasses: ["cm-code"],
+                            throwOnError: false,
+                            strict: false
+                        });
+                    }else{
+                        console.error("KaTeX renderMathInElement is not available.");
+                    }
+                    }
+                }, 10);
+
                 modeToggle.textContent = 'Edit';
             } else {
                 preview.style.display = 'none';
@@ -1294,6 +1383,7 @@
             updateAssessment();
             updateStats();
         }
+
 
         /******************************************************************
          * 8. TOGGLE DARK ↔ LIGHT THEME
