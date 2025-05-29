@@ -14,6 +14,7 @@
   <meta property="og:type" content="website" />
   <link rel="icon" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.ico"/>
   <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.png" />
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png" /> -->
   <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
   <script>
@@ -38,9 +39,6 @@
 
   <!-- Mermaid CSS (Mermaid will inject its own styling) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.css" />
-
-  <!-- html2canvas (for PNG export) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <!-- Custom Fonts & Root Colors -->
   <style>
@@ -687,7 +685,6 @@
       border: 1px solid var(--border-color);
       background-color: var(--container-bg);
       color: var(--text-color);
-      font-size: 1rem;
     }
 
     .task-list {
@@ -1296,8 +1293,8 @@
       "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilize", "adapt", "adult",
       "advocate", "aid", "channel", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert",
       "decade", "definite", "deny", "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip",
-      "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "ignore",
-      "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
+      "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "identify",
+      "ignore", "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
       "manual", "media", "mode", "paradigm", "phenomenon", "priority", "protocol", "publication", "refine",
       "reform", "regime", "relax", "restrain", "revolution", "scenario", "schedule", "scheme", "scope", "simulate",
       "sole", "somewhat", "submit", "successor", "survive", "suspend", "team", "tense", "terminate", "theme",
@@ -1381,7 +1378,7 @@
     }
 
     /******************************************************************
-     * 8. PROCESS PREVIEW (MARKDOWN → HTML → KaTeX → Mermaid ← SVG/PNG EXPORT)
+     * 8. PROCESS PREVIEW (MARKDOWN → HTML → KaTeX → Mermaid ← SVG EXPORT)
      ******************************************************************/
     function processPreview() {
       // 1. Convert Markdown to HTML
@@ -1414,57 +1411,38 @@
         }).catch((e) => console.error('Mermaid error:', e));
       }, 100);
 
-      // 4. Attach both SVG and PNG export buttons
+      // 4. Attach only SVG‐export buttons (no PNG)
       setTimeout(attachExportButtons, 150);
     }
 
     /******************************************************************
-     * 9. ATTACH EXPORT BUTTONS FOR MERMAID DIAGRAMS (SVG + PNG)
+     * 9. ATTACH EXPORT BUTTONS FOR MERMAID DIAGRAMS (SVG ONLY)
      ******************************************************************/
     function attachExportButtons() {
       const mermaidWrappers = preview.querySelectorAll('.mermaid');
-      mermaidWrappers.forEach((wrapper, index) => {
-        // If buttons already exist for this wrapper, skip
+      mermaidWrappers.forEach((wrapper) => {
         if (wrapper.querySelector('.export-btn')) return;
 
-        // Container to hold both buttons, centered
-        const btnContainer = document.createElement('div');
-        btnContainer.style.textAlign = 'center';
-        btnContainer.style.margin = '0.5rem auto';
-
-        // --- SVG Export Button ---
+        // Create SVG Export Button
         const svgBtn = document.createElement('button');
         svgBtn.textContent = 'Export SVG';
         svgBtn.className = 'export-btn';
-        svgBtn.style.cssText = baseButtonStyle();
+        svgBtn.style.cssText = `
+          display: block;
+          margin: 0.5rem auto;
+          padding: 0.4rem 0.8rem;
+          border: 1px solid var(--border-color);
+          border-radius: 12px;
+          background: transparent;
+          color: var(--accent-color);
+          cursor: pointer;
+          font-size: 1.2rem;
+        `;
         svgBtn.addEventListener('click', () => exportMermaidAsSVG(wrapper));
 
-        // --- PNG Export Button ---
-        const pngBtn = document.createElement('button');
-        pngBtn.textContent = 'Export PNG';
-        pngBtn.className = 'export-btn';
-        pngBtn.style.cssText = baseButtonStyle();
-        pngBtn.addEventListener('click', () => exportMermaidAsPNG(wrapper, index));
-
-        btnContainer.appendChild(svgBtn);
-        btnContainer.appendChild(pngBtn);
-        wrapper.parentNode.insertBefore(btnContainer, wrapper.nextSibling);
+        // Insert button after the diagram, centered
+        wrapper.parentNode.insertBefore(svgBtn, wrapper.nextSibling);
       });
-    }
-
-    // Centralized styling for both export buttons
-    function baseButtonStyle() {
-      return `
-        display: inline-block;
-        margin: 0.3rem 0.6rem;
-        padding: 0.4rem 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        background: transparent;
-        color: var(--accent-color);
-        cursor: pointer;
-        font-size: 1.2rem;
-      `;
     }
 
     /******************************************************************
@@ -1492,40 +1470,6 @@
     }
 
     /******************************************************************
-     * EXPORT MERMAID AS PNG (HIGH-QUALITY USING html2canvas)
-     ******************************************************************/
-    async function exportMermaidAsPNG(wrapper, index) {
-      const svg = wrapper.querySelector('svg');
-      if (!svg) return alert('No SVG found to export.');
-
-      // Prompt user for a scale factor (1–6 recommended)
-      const factor = prompt("Enter export resolution (1–6 recommended)", "3");
-      const scale = Math.max(1, Math.min(6, parseInt(factor))) || 3;
-
-      // Clone the wrapper to ensure clean background and isolate from CSS
-      const cloned = wrapper.cloneNode(true);
-      cloned.style.margin = "0 auto";
-      cloned.style.backgroundColor = "#ffffff";
-      document.body.appendChild(cloned);
-
-      // Use html2canvas to capture the cloned div
-      const canvas = await html2canvas(cloned, {
-        scale: scale,
-        backgroundColor: "#ffffff",
-        useCORS: true
-      });
-
-      // Trigger download
-      const link = document.createElement('a');
-      link.download = `diagram-${index + 1}@${scale}x.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-
-      // Clean up
-      document.body.removeChild(cloned);
-    }
-
-    /******************************************************************
      * HELPER: ESCAPE HTML FOR CODE BLOCKS
      ******************************************************************/
     function escapeHtml(html) {
@@ -1545,7 +1489,7 @@
       document.body.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
       codemirror.setOption('theme', isDarkTheme ? 'gruvbox' : 'default');
       themeToggle.textContent = isDarkTheme ? 'Light Mode' : 'Dark Mode';
-      // Mermaid theme stays neutral
+      // We keep Mermaid on neutral, so no need to reinitialize its theme here
     }
 
     /******************************************************************
@@ -1602,145 +1546,182 @@
 
         // Gentle container glow
         const container = document.querySelector('.writing-container');
-        container.classList.add('save-glow');
-        setTimeout(() => container.classList.remove('save-glow'), 800);
+        container.classList.add('glow-confirm');
+        setTimeout(() => container.classList.remove('glow-confirm'), 1200);
       } catch (err) {
-        console.error('Save failed:', err);
-        alert('An error occurred while saving. Please try again.');
+        if (err.name !== 'AbortError') console.error('Save failed:', err);
       }
     }
 
     /******************************************************************
-     * 15. TEXT STATS (WORDS, READABILITY)
+     * 15. POMODORO TIMER FUNCTIONALITY
      ******************************************************************/
-    function updateStats() {
-      const text = codemirror ? codemirror.getValue() : '';
-      const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
-      statsDisplay.textContent = `Words: ${words} · Readability: ${words > 0 ? '' : '—'}`;
-    }
+    const backgroundAudio = document.getElementById('background-audio');
+    const toggleMusicButton = document.getElementById('toggle-music');
 
-    /******************************************************************
-     * 16. POMODORO TIMER (Start, Pause, Reset)
-     ******************************************************************/
+    // Unlock audio on first interaction
+    function unlockAudio() {
+      if (audioUnlocked) return;
+      const unlockSound = new Audio();
+      unlockSound.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
+      unlockSound.play()
+        .then(() => {
+          unlockSound.pause();
+          audioUnlocked = true;
+          updateTimerDisplay();
+        })
+        .catch(() => {
+          console.warn('Audio unlock failed');
+        });
+    }
+    document.addEventListener('click', unlockAudio, { once: true });
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+
     function updateTimerDisplay() {
       minutesElement.textContent = String(minutes).padStart(2, '0');
       secondsElement.textContent = String(seconds).padStart(2, '0');
-    }
-
-    function toggleTimer() {
-      if (isTimerRunning) {
-        clearInterval(timerInterval);
-        toggleTimerButton.textContent = 'Start';
-        isTimerRunning = false;
-      } else {
-        timerInterval = setInterval(() => {
-          if (seconds === 0) {
-            if (minutes === 0) {
-              clearInterval(timerInterval);
-              isTimerRunning = false;
-              toggleTimerButton.textContent = 'Start';
-              pomodoroCount++;
-              updatePomodoroCount();
-              return;
-            }
-            minutes--;
-            seconds = 59;
-          } else {
-            seconds--;
-          }
-          updateTimerDisplay();
-        }, 1000);
-        toggleTimerButton.textContent = 'Pause';
-        isTimerRunning = true;
-      }
-    }
-
-    function resetTimer() {
-      clearInterval(timerInterval);
-      isTimerRunning = false;
-      minutes = 25;
-      seconds = 0;
-      toggleTimerButton.textContent = 'Start';
-      updateTimerDisplay();
     }
 
     function updatePomodoroCount() {
       pomodoroCountElement.textContent = `Pomodoros: ${pomodoroCount}`;
     }
 
-    /******************************************************************
-     * 17. AUDIO CONTROLS
-     ******************************************************************/
-    const backgroundAudio = document.getElementById('background-audio');
-    let isMusicPlaying = false;
-
-    function changeAudio() {
-      backgroundAudio.src = audioSelect.value;
-      backgroundAudio.pause();
-      isMusicPlaying = false;
-      document.getElementById('toggle-music').textContent = 'Play Music';
+    function startTimer() {
+      if (!audioUnlocked) {
+        alert('Please interact with the page to unlock audio.');
+        return;
+      }
+      backgroundAudio.play().catch(() => alert('Audio failed to play.'));
+      timerInterval = setInterval(() => {
+        seconds--;
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+        }
+        if (minutes < 0) {
+          clearInterval(timerInterval);
+          alert('Pomodoro complete!');
+          pomodoroCount++;
+          resetTimer();
+          return;
+        }
+        updateTimerDisplay();
+      }, 1000);
+      isTimerRunning = true;
+      toggleTimerButton.textContent = 'Pause';
     }
 
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      backgroundAudio.pause();
+      isTimerRunning = false;
+      toggleTimerButton.textContent = 'Start';
+    }
+
+    function toggleTimer() {
+      if (isTimerRunning) pauseTimer();
+      else startTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      backgroundAudio.pause();
+      backgroundAudio.currentTime = 0;
+      minutes = 25;
+      seconds = 0;
+      updateTimerDisplay();
+      isTimerRunning = false;
+      toggleTimerButton.textContent = 'Start';
+      updatePomodoroCount();
+    }
+
+    /******************************************************************
+     * 16. AUDIO CONTROLS
+     ******************************************************************/
     function toggleMusic() {
       if (!audioUnlocked) {
-        audioUnlocked = true;
-        document.getElementById('audio-unlocker').play().catch(() => {});
+        alert('Please interact with the page to unlock audio.');
+        return;
       }
-      if (isMusicPlaying) {
+      try {
+        if (backgroundAudio.paused) {
+          backgroundAudio.play();
+          toggleMusicButton.textContent = 'Pause Music';
+        } else {
+          backgroundAudio.pause();
+          toggleMusicButton.textContent = 'Play Music';
+        }
+      } catch (err) {
+        alert('Audio playback failed: ' + err.message);
+      }
+    }
+
+    function changeAudio() {
+      if (!audioUnlocked) return;
+      try {
         backgroundAudio.pause();
-        isMusicPlaying = false;
-        document.getElementById('toggle-music').textContent = 'Play Music';
-      } else {
-        backgroundAudio.play().catch(() => {});
-        isMusicPlaying = true;
-        document.getElementById('toggle-music').textContent = 'Pause Music';
+        backgroundAudio.currentTime = 0;
+        backgroundAudio.src = audioSelect.value;
+        backgroundAudio.play();
+        toggleMusicButton.textContent = 'Pause Music';
+      } catch (err) {
+        alert('Failed to load audio track: ' + err.message);
       }
     }
 
     /******************************************************************
-     * 18. TASK MANAGEMENT
+     * 17. TASK MANAGEMENT
      ******************************************************************/
-    function loadTasks() {
-      const saved = localStorage.getItem('focusEditorTasks');
-      if (saved) {
-        tasks = JSON.parse(saved);
-        renderTasks();
-      }
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    function saveTasks() {
-      localStorage.setItem('focusEditorTasks', JSON.stringify(tasks));
+    function loadTasks() {
+      const saved = localStorage.getItem('tasks');
+      if (saved) {
+        try {
+          tasks = JSON.parse(saved);
+          renderTasks();
+        } catch {
+          tasks = [];
+        }
+      }
     }
 
     function renderTasks() {
       taskList.innerHTML = '';
       tasks.forEach((task, idx) => {
         const li = document.createElement('li');
-        li.className = `task-item ${task.completed ? 'completed' : ''}`;
+        li.className = 'task-item' + (task.completed ? ' completed' : '');
         const span = document.createElement('span');
         span.textContent = task.text;
-        span.style.cursor = 'pointer';
-        span.addEventListener('click', () => {
+        const actions = document.createElement('div');
+        actions.className = 'task-actions';
+
+        // Complete / Incomplete Toggle
+        const toggleBtn = document.createElement('button');
+        toggleBtn.textContent = task.completed ? '↺' : '✔';
+        toggleBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
+        toggleBtn.addEventListener('click', () => {
           tasks[idx].completed = !tasks[idx].completed;
           saveTasks();
           renderTasks();
         });
 
-        const div = document.createElement('div');
-        div.className = 'task-actions';
-
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '✕';
-        delBtn.title = 'Delete Task';
-        delBtn.addEventListener('click', () => {
+        // Delete Button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '✕';
+        deleteBtn.title = 'Delete Task';
+        deleteBtn.addEventListener('click', () => {
           tasks.splice(idx, 1);
           saveTasks();
           renderTasks();
         });
 
-        div.appendChild(delBtn);
+        actions.appendChild(toggleBtn);
+        actions.appendChild(deleteBtn);
         li.appendChild(span);
-        li.appendChild(div);
+        li.appendChild(actions);
         taskList.appendChild(li);
       });
     }
@@ -1748,34 +1729,40 @@
     function addTask(text) {
       if (!text.trim()) return;
       tasks.push({ text: text.trim(), completed: false });
+      taskInput.value = '';
       saveTasks();
       renderTasks();
-      taskInput.value = '';
     }
 
     /******************************************************************
-     * 19. FILE SYSTEM EVENTS: SAVE GLOW ANIMATION
+     * 18. UPDATE WORD COUNT & READABILITY STATS
      ******************************************************************/
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .save-success {
-        animation: scale 0.3s ease-in-out;
+    function updateStats() {
+      const text = codemirror.getValue();
+      const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+      statsDisplay.textContent = `Words: ${words} · Readability: —`;
+      computeReadabilityMetrics(text); // Updates “Readability” in stats
+    }
+
+    function computeReadabilityMetrics(text) {
+      if (!text.trim()) {
+        statsDisplay.textContent = `Words: 0 · Readability: —`;
+        return;
       }
-      .save-glow {
-        animation: glow 0.8s ease-in-out;
-      }
-      @keyframes scale {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-      }
-      @keyframes glow {
-        0% { box-shadow: 0 0 0px var(--accent-color); }
-        50% { box-shadow: 0 0 14px var(--accent-color); }
-        100% { box-shadow: 0 0 0px var(--accent-color); }
-      }
-    `;
-    document.head.appendChild(style);
+      const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0).length || 1;
+      const wordsArr = text.split(/\s+/).filter(w => w.trim().length > 0).length || 1;
+      let totalSyllables = 0;
+      wordsArr && text.split(/\s+/).filter(w => w.trim().length > 0).forEach(w => {
+        totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ""));
+      });
+      const fk = 0.39 * (wordsArr / sentences) + 11.8 * (totalSyllables / wordsArr) - 15.59;
+      statsDisplay.textContent = `Words: ${wordsArr} · Readability: ${fk.toFixed(1)}`;
+    }
+
+    /******************************************************************
+     * 19. INITIALIZE TIMER DISPLAY & TASK LIST on LOAD
+     ******************************************************************/
+    // Already called inside initializeApp()
   </script>
 </body>
 </html>

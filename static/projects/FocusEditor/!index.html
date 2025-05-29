@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pomodoro Writer with Mermaid</title>
-
   <!-- SEO & Open Graph Metadata -->
   <meta name="description" content="A Writer with Pomodoro, Tasks, Analytics & Mermaid Diagrams" />
   <meta property="og:title" content="Writer with Pomodoro, Tasks & Mermaid Support" />
@@ -15,8 +14,8 @@
   <meta property="og:type" content="website" />
   <link rel="icon" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.ico"/>
   <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.png" />
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="https://ankitdeshmukh.com/favicon-32x32.png" /> -->
   <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png" />
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
   <script>
     var doNotTrack = false;
@@ -27,7 +26,6 @@
       gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
     }
   </script>
-
   <meta name="author" content="Dr. Ankit Deshmukh" />
   <link rel="canonical" href="https://www.ankitdeshmukh.com/projects/FocusEditor/" />
   <meta name="google-site-verification" content="G-R5FJKDQD1M" />
@@ -41,9 +39,6 @@
 
   <!-- Mermaid CSS (Mermaid will inject its own styling) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.css" />
-
-  <!-- html2canvas (for PNG export) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <!-- Custom Fonts & Root Colors -->
   <style>
@@ -99,11 +94,12 @@
       line-height: 1.6;
       background-color: var(--bg-color);
       color: var(--text-color);
-      transition: background-color 0.3s ease, background 0.6s ease-in-out;
+      transition: background-color 0.3s ease;
       scroll-behavior: smooth;
       -ms-overflow-style: none;
       scrollbar-width: none;
       overflow: auto;
+      transition: background 0.6s ease-in-out;
     }
 
     body[data-theme="dark"] {
@@ -201,7 +197,7 @@
     #modeToggle:hover::after { content: "Toggle Preview (Ctrl+L)"; }
     #saveBtn:hover::after { content: "Save Markdown File (Ctrl+S)"; }
     #openBtn:hover::after { content: "Open Markdown File (Ctrl+O)"; }
-    #zenToggle:hover::after { content: "Toggle Zen Mode (Ctrl+X)"; }
+    #zenToggle:hover::after { content: attr(data-tooltip); }
 
     .content {
       flex: 1 1 auto;
@@ -520,6 +516,7 @@
     }
 
     .footer {
+      /* color: #808080; */
       font-size: 1.2rem;
       margin-top: 1rem;
       padding-bottom: 0.5rem;
@@ -688,7 +685,6 @@
       border: 1px solid var(--border-color);
       background-color: var(--container-bg);
       color: var(--text-color);
-      font-size: 1rem;
     }
 
     .task-list {
@@ -832,27 +828,6 @@
     body.zen-mode .CodeMirror-scroll::-webkit-scrollbar {
       display: none !important;
     }
-
-    /* Save button animation */
-    .save-success {
-      animation: scale 0.3s ease-in-out;
-    }
-
-    .glow-confirm {
-      animation: glow 0.8s ease-in-out;
-    }
-
-    @keyframes scale {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes glow {
-      0% { box-shadow: 0 0 0px var(--accent-color); }
-      50% { box-shadow: 0 0 14px var(--accent-color); }
-      100% { box-shadow: 0 0 0px var(--accent-color); }
-    }
   </style>
 </head>
 
@@ -868,10 +843,10 @@
         <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
                 data-tooltip="Open Markdown File (Ctrl+O)">Open .md</button>
         <input type="file" accept=".md" id="fileInput" style="display:none" />
+        <button type="button" class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
         <button type="button" class="toggle-btn" id="spellCheckToggle" data-tooltip="Toggle Spellcheck (Ctrl+K)">Spell On</button>
         <button type="button" class="toggle-btn" id="modeToggle" data-tooltip="Toggle Preview (Ctrl+L)">Preview</button>
-        <button type="button" class="toggle-btn" id="zenToggle" data-tooltip="Toggle Zen Mode (Ctrl+Z)">Zen</button>
-        <button type="button" class="toggle-btn" id="themeToggle" data-tooltip="Toggle Theme">Light Mode</button>
+        <button type="button" class="toggle-btn" id="zenToggle" data-tooltip="Zen Mode (Ctrl+Z)">Zen</button>
       </div>
     </div>
     <div class="content">
@@ -975,17 +950,19 @@
     /******************************************************************
      * INITIAL STATE & MERMAID INITIALIZATION
      ******************************************************************/
+    // Declare theme flag once
     let isDarkTheme = true;
+    // We’ll force Mermaid to use "neutral" always
     let mermaidTheme = 'neutral';
 
     window.addEventListener('load', () => {
       mermaid.initialize({
         startOnLoad: true,
-        theme: 'neutral',
+        theme: 'neutral',       // Always use neutral
         securityLevel: 'loose',
         logLevel: 'warn',
         themeVariables: {
-          fontFamily: 'Roboto, sans-serif'
+            fontFamily: 'Roboto, sans-serif'
         }
       });
     });
@@ -1004,8 +981,10 @@
     const fileInput = document.getElementById('fileInput');
     const zenToggle = document.getElementById('zenToggle');
 
+    // CodeMirror instance will be stored here
     let codemirror;
 
+    // Pomodoro references
     const minutesElement = document.getElementById('minutes');
     const secondsElement = document.getElementById('seconds');
     const toggleTimerButton = document.getElementById('toggle-timer');
@@ -1013,13 +992,16 @@
     const pomodoroCountElement = document.getElementById('pomodoro-count');
     const audioSelect = document.getElementById('audio-select');
 
+    // Task references
     const taskInput = document.getElementById('taskInput');
     const addTaskButton = document.getElementById('addTask');
     const taskList = document.getElementById('taskList');
 
+    // Minimize buttons
     const minimizeBtn = document.getElementById('minimizeBtn');
     const assessmentMinimizeBtn1 = document.getElementById('assessmentMinimizeBtn1');
 
+    // Assessment references
     const fkGradeSpan = document.getElementById('fkGrade');
     const readingEaseSpan = document.getElementById('readingEase');
     const gunningFogSpan = document.getElementById('gunningFog');
@@ -1029,6 +1011,7 @@
     const awlCountSpan = document.getElementById('awlCount');
     const assessmentPanel = document.getElementById('assessment-panel1');
 
+    // State Flags
     let isPreview = false;
     let spellCheckEnabled = false;
     let hasUnsavedChanges = false;
@@ -1050,7 +1033,7 @@
         theme: 'gruvbox',
         autofocus: true,
         lineWrapping: true,
-        inputStyle: 'contenteditable',
+        inputStyle: 'contenteditable', // so spellcheck works
         placeholder: "Start Writing …",
         extraKeys: {
           'F11': function(cm) {
@@ -1062,9 +1045,13 @@
         }
       });
 
+      // Disable default blink so our smooth blink can take over:
       codemirror.setOption('cursorBlinkRate', 0);
+
+      // Apply initial spellcheck state:
       codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
 
+      // Initialize app
       initializeApp();
     });
 
@@ -1090,10 +1077,12 @@
           }
         },
         renderer(token) {
+          // Wrap each <div class="mermaid"> in a flex container that centers it
           return `<div class="mermaid" style="display: flex; justify-content: center;">${token.text}</div>\n`;
         }
       };
 
+      // Use marked + our Mermaid extension
       marked.use({ extensions: [mermaidExtension] });
       marked.setOptions({
         breaks: true,
@@ -1102,6 +1091,7 @@
         headerIds: false
       });
 
+      // Setup event listeners, load tasks, stats, etc.
       setupEventListeners();
       loadTasks();
       updateStats();
@@ -1109,14 +1099,20 @@
       updateTimerDisplay();
       updatePomodoroCount();
 
-      if (!window.showSaveFilePicker) saveBtn.style.display = 'none';
-      if (!window.File || !window.FileReader) openBtn.style.display = 'none';
+      // Hide unsupported features if necessary
+      if (!window.showSaveFilePicker) {
+        saveBtn.style.display = 'none';
+      }
+      if (!window.File || !window.FileReader) {
+        openBtn.style.display = 'none';
+      }
     }
 
     /******************************************************************
      * 4. EVENT LISTENERS SETUP
      ******************************************************************/
     function setupEventListeners() {
+      // React to CodeMirror content changes
       codemirror.on('change', (cm) => {
         updateStats();
         updateAssessment();
@@ -1124,6 +1120,7 @@
         hasUnsavedChanges = true;
       });
 
+      // Typewriter sound (optional)
       const keySound = new Audio('https://assets.codepen.io/3/typewriter-key.mp3');
       keySound.volume = 0.08;
       codemirror.on('keypress', () => {
@@ -1131,33 +1128,45 @@
         keySound.play().catch(() => {});
       });
 
+      // Keyboard shortcuts
       document.addEventListener('keydown', (e) => {
+        // Toggle preview (Ctrl+L)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l') {
           e.preventDefault();
           toggleMode();
         }
+        // Minimize (Ctrl+M)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') {
           e.preventDefault();
           document.getElementById('pomodoro-timer').classList.toggle('minimized');
           document.getElementById('assess-timer').classList.toggle('minimized');
         }
+        // Save (Ctrl+S)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
           e.preventDefault();
           saveBtn.click();
         }
+        // Open (Ctrl+O)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'o') {
           e.preventDefault();
           fileInput.click();
         }
+        // Toggle spellcheck (Ctrl+K)
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
           toggleSpellcheck();
         }
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'x') {
+        // Toggle Zen (Ctrl+Z)
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
           e.preventDefault();
           document.body.classList.toggle('zen-mode');
           zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+          if (document.body.classList.contains('zen-mode')) {
+            backgroundAudio.pause();
+            toggleMusicButton.textContent = 'Play Music';
+          }
         }
+        // Escape to exit Zen
         if (e.key === 'Escape' && document.body.classList.contains('zen-mode')) {
           e.preventDefault();
           document.body.classList.remove('zen-mode');
@@ -1165,6 +1174,7 @@
         }
       });
 
+      // Button clicks
       modeToggle.addEventListener('click', toggleMode);
       themeToggle.addEventListener('click', toggleTheme);
       spellToggle.addEventListener('click', toggleSpellcheck);
@@ -1187,16 +1197,19 @@
         }
       });
 
+      // Pomodoro controls
       toggleTimerButton.addEventListener('click', toggleTimer);
       resetButton.addEventListener('click', resetTimer);
       audioSelect.addEventListener('change', changeAudio);
       document.getElementById('toggle-music').addEventListener('click', toggleMusic);
 
+      // Task management
       addTaskButton.addEventListener('click', () => addTask(taskInput.value));
       taskInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') addTask(taskInput.value);
       });
 
+      // Minimize buttons
       minimizeBtn.addEventListener('click', () => {
         document.getElementById('pomodoro-timer').classList.toggle('minimized');
       });
@@ -1280,8 +1293,8 @@
       "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilize", "adapt", "adult",
       "advocate", "aid", "channel", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert",
       "decade", "definite", "deny", "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip",
-      "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "identify", "ignore",
-      "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
+      "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "identify",
+      "ignore", "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
       "manual", "media", "mode", "paradigm", "phenomenon", "priority", "protocol", "publication", "refine",
       "reform", "regime", "relax", "restrain", "revolution", "scenario", "schedule", "scheme", "scope", "simulate",
       "sole", "somewhat", "submit", "successor", "survive", "suspend", "team", "tense", "terminate", "theme",
@@ -1301,11 +1314,13 @@
         return;
       }
 
+      // Sentence split
       const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0);
       const words = text.split(/\s+/).filter(w => w.trim().length > 0);
       const numSentences = sentences.length || 1;
       const numWords = words.length || 1;
 
+      // Syllable and letter counts
       let totalSyllables = 0;
       let totalLetters = 0;
       words.forEach(w => {
@@ -1315,6 +1330,7 @@
 
       const complexWords = countComplexWords(text);
 
+      // AWL matching
       let awlMatches = 0;
       words.forEach(w => {
         if (AWL.includes(w.toLowerCase().replace(/[^A-Za-z]/g, ""))) {
@@ -1322,14 +1338,17 @@
         }
       });
 
+      // Averages
       const avgWordLength = totalLetters / numWords;
       const avgSentenceLength = numWords / numSentences;
 
+      // Readability formulas
       const fk = 0.39 * (numWords / numSentences) + 11.8 * (totalSyllables / numWords) - 15.59;
       const ease = 206.835 - 1.015 * (numWords / numSentences) - 84.6 * (totalSyllables / numWords);
       const fog = 0.4 * ((numWords / numSentences) + 100 * (complexWords / numWords));
       const cl = computeColemanLiau(text);
 
+      // Update DOM
       fkGradeSpan.textContent = fk.toFixed(1);
       readingEaseSpan.textContent = ease.toFixed(1);
       gunningFogSpan.textContent = fog.toFixed(1);
@@ -1359,12 +1378,14 @@
     }
 
     /******************************************************************
-     * 8. PROCESS PREVIEW (MARKDOWN → HTML → KaTeX → Mermaid ← SVG/PNG EXPORT)
+     * 8. PROCESS PREVIEW (MARKDOWN → HTML → KaTeX → Mermaid ← SVG EXPORT)
      ******************************************************************/
     function processPreview() {
+      // 1. Convert Markdown to HTML
       const rawHtml = marked.parse(codemirror.getValue());
       preview.innerHTML = rawHtml;
 
+      // 2. Render math with KaTeX
       setTimeout(() => {
         if (typeof renderMathInElement !== 'undefined' && window.renderMathInElement) {
           renderMathInElement(preview, {
@@ -1382,6 +1403,7 @@
         }
       }, 10);
 
+      // 3. Render Mermaid diagrams (centered via our extension)
       setTimeout(() => {
         mermaid.run({
           querySelector: '.mermaid',
@@ -1389,53 +1411,38 @@
         }).catch((e) => console.error('Mermaid error:', e));
       }, 100);
 
+      // 4. Attach only SVG‐export buttons (no PNG)
       setTimeout(attachExportButtons, 150);
     }
 
     /******************************************************************
-     * 9. ATTACH EXPORT BUTTONS FOR MERMAID DIAGRAMS (SVG + PNG)
+     * 9. ATTACH EXPORT BUTTONS FOR MERMAID DIAGRAMS (SVG ONLY)
      ******************************************************************/
     function attachExportButtons() {
       const mermaidWrappers = preview.querySelectorAll('.mermaid');
-      mermaidWrappers.forEach((wrapper, index) => {
+      mermaidWrappers.forEach((wrapper) => {
         if (wrapper.querySelector('.export-btn')) return;
 
-        const btnContainer = document.createElement('div');
-        btnContainer.style.textAlign = 'center';
-        btnContainer.style.margin = '0.5rem auto';
-
-        // SVG Button
+        // Create SVG Export Button
         const svgBtn = document.createElement('button');
         svgBtn.textContent = 'Export SVG';
         svgBtn.className = 'export-btn';
-        svgBtn.style.cssText = baseButtonStyle();
+        svgBtn.style.cssText = `
+          display: block;
+          margin: 0.5rem auto;
+          padding: 0.4rem 0.8rem;
+          border: 1px solid var(--border-color);
+          border-radius: 12px;
+          background: transparent;
+          color: var(--accent-color);
+          cursor: pointer;
+          font-size: 1.2rem;
+        `;
         svgBtn.addEventListener('click', () => exportMermaidAsSVG(wrapper));
 
-        // PNG Button
-        const pngBtn = document.createElement('button');
-        pngBtn.textContent = 'Export PNG';
-        pngBtn.className = 'export-btn';
-        pngBtn.style.cssText = baseButtonStyle();
-        pngBtn.addEventListener('click', () => exportMermaidAsPNG(wrapper, index));
-
-        btnContainer.appendChild(svgBtn);
-        btnContainer.appendChild(pngBtn);
-        wrapper.parentNode.insertBefore(btnContainer, wrapper.nextSibling);
+        // Insert button after the diagram, centered
+        wrapper.parentNode.insertBefore(svgBtn, wrapper.nextSibling);
       });
-    }
-
-    function baseButtonStyle() {
-      return `
-        display: inline-block;
-        margin: 0.3rem 0.6rem;
-        padding: 0.4rem 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        background: transparent;
-        color: var(--accent-color);
-        cursor: pointer;
-        font-size: 1.2rem;
-      `;
     }
 
     /******************************************************************
@@ -1463,35 +1470,6 @@
     }
 
     /******************************************************************
-     * EXPORT MERMAID AS PNG (HIGH-QUALITY USING html2canvas)
-     ******************************************************************/
-    async function exportMermaidAsPNG(wrapper, index) {
-      const svg = wrapper.querySelector('svg');
-      if (!svg) return alert('No SVG found to export.');
-
-      const factor = prompt("Enter export resolution (1–6 recommended)", "3");
-      const scale = Math.max(1, Math.min(6, parseInt(factor))) || 3;
-
-      const cloned = wrapper.cloneNode(true);
-      cloned.style.margin = "0 auto";
-      cloned.style.backgroundColor = "#ffffff";
-      document.body.appendChild(cloned);
-
-      const canvas = await html2canvas(cloned, {
-        scale: scale,
-        backgroundColor: "#ffffff",
-        useCORS: true
-      });
-
-      const link = document.createElement('a');
-      link.download = `diagram-${index + 1}@${scale}x.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-
-      document.body.removeChild(cloned);
-    }
-
-    /******************************************************************
      * HELPER: ESCAPE HTML FOR CODE BLOCKS
      ******************************************************************/
     function escapeHtml(html) {
@@ -1504,17 +1482,18 @@
     }
 
     /******************************************************************
-     * 10. TOGGLE DARK ↔ LIGHT THEME (APP‐LEVEL, not Mermaid)
+     * 11. TOGGLE DARK ↔ LIGHT THEME (APP‐LEVEL, not Mermaid)
      ******************************************************************/
     function toggleTheme() {
       isDarkTheme = !isDarkTheme;
       document.body.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
       codemirror.setOption('theme', isDarkTheme ? 'gruvbox' : 'default');
       themeToggle.textContent = isDarkTheme ? 'Light Mode' : 'Dark Mode';
+      // We keep Mermaid on neutral, so no need to reinitialize its theme here
     }
 
     /******************************************************************
-     * 11. TOGGLE SPELLCHECK ON ↔ OFF
+     * 12. TOGGLE SPELLCHECK ON ↔ OFF
      ******************************************************************/
     function toggleSpellcheck() {
       spellCheckEnabled = !spellCheckEnabled;
@@ -1523,7 +1502,7 @@
     }
 
     /******************************************************************
-     * 12. HANDLE FILE OPEN
+     * 13. HANDLE FILE OPEN
      ******************************************************************/
     function handleFileOpen(e) {
       const file = e.target.files[0];
@@ -1543,7 +1522,7 @@
     }
 
     /******************************************************************
-     * 13. HANDLE FILE SAVE (File System Access API)
+     * 14. HANDLE FILE SAVE (File System Access API)
      ******************************************************************/
     async function handleSave() {
       if (!window.showSaveFilePicker) {
@@ -1575,7 +1554,7 @@
     }
 
     /******************************************************************
-     * 14. POMODORO TIMER FUNCTIONALITY
+     * 15. POMODORO TIMER FUNCTIONALITY
      ******************************************************************/
     const backgroundAudio = document.getElementById('background-audio');
     const toggleMusicButton = document.getElementById('toggle-music');
@@ -1657,7 +1636,7 @@
     }
 
     /******************************************************************
-     * 15. AUDIO CONTROLS
+     * 16. AUDIO CONTROLS
      ******************************************************************/
     function toggleMusic() {
       if (!audioUnlocked) {
@@ -1691,7 +1670,7 @@
     }
 
     /******************************************************************
-     * 16. TASK MANAGEMENT
+     * 17. TASK MANAGEMENT
      ******************************************************************/
     function saveTasks() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -1719,6 +1698,7 @@
         const actions = document.createElement('div');
         actions.className = 'task-actions';
 
+        // Complete / Incomplete Toggle
         const toggleBtn = document.createElement('button');
         toggleBtn.textContent = task.completed ? '↺' : '✔';
         toggleBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
@@ -1728,6 +1708,7 @@
           renderTasks();
         });
 
+        // Delete Button
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '✕';
         deleteBtn.title = 'Delete Task';
@@ -1754,13 +1735,13 @@
     }
 
     /******************************************************************
-     * 17. UPDATE WORD COUNT & READABILITY STATS
+     * 18. UPDATE WORD COUNT & READABILITY STATS
      ******************************************************************/
     function updateStats() {
       const text = codemirror.getValue();
       const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
       statsDisplay.textContent = `Words: ${words} · Readability: —`;
-      computeReadabilityMetrics(text);
+      computeReadabilityMetrics(text); // Updates “Readability” in stats
     }
 
     function computeReadabilityMetrics(text) {
@@ -1779,7 +1760,7 @@
     }
 
     /******************************************************************
-     * 18. INITIALIZE TIMER DISPLAY & TASK LIST on LOAD
+     * 19. INITIALIZE TIMER DISPLAY & TASK LIST on LOAD
      ******************************************************************/
     // Already called inside initializeApp()
   </script>
