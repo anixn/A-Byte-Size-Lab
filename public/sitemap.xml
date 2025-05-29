@@ -21,8 +21,16 @@
     <lastmod>2024-12-27T00:00:00+00:00</lastmod>
   </url>
   <url>
+    <loc>https://ankitdeshmukh.com/avocation/pomodorowriter/</loc>
+    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/</loc>
-    <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/avocation/</loc>
+    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/categories/</loc>
@@ -99,10 +107,6 @@
   <url>
     <loc>https://ankitdeshmukh.com/tags/utility/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/avocation/</loc>
-    <lastmod>2024-12-27T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/slides/20241220_hydro-2024/</loc>
@@ -295,7 +299,7 @@
   
   <url>
     <loc>https://ankitdeshmukh.com/pomodoro/</loc>
-    <lastmod>2025-05-29T12:52:24+05:30</lastmod>
+    <lastmod>2025-05-29T16:30:28+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
