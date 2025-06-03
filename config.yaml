@@ -78,7 +78,7 @@ params:
     profileMode:
         enabled: true
         title: "Hi, I'm Ankit Deshmukh"
-        subtitle: Academia | Water Resources | Hydrological Modeling<br />Geospatial Analysis | Data Analysis | Freelancing <br /> <br />
+        subtitle: Academia | Water Resources | Geospatial Analysis <br /> Data Analysis | WoodWorking <br />
         imageUrl: "Avatar.jpg"
         imageTitle: Profile picture of Dr. Ankit Deshmukh
         imageWidth: 160
@@ -88,8 +88,6 @@ params:
               url: /projects/FocusEditor/
             - name: "Timer"
               url: /projects/pomodoro/
-            - name: "Mermaid"
-              url: /projects/mermaid/
             - name: "Color"
               url: /projects/colorpicker/
 

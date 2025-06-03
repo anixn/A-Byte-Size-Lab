@@ -66,6 +66,7 @@
       --link-color: #689d68;
       --selection-bg: #8ec07c;
       --selection-text: #1a1a1a;
+      --save-indicator-color: #689d6a;
     }
 
     [data-theme="light"] {
@@ -83,6 +84,7 @@
       --link-color: #689d68;
       --selection-bg: #b8bb26;
       --selection-text: #ffffff;
+      --save-indicator-color: #427b58;
     }
 
     * {
@@ -160,6 +162,35 @@
     .stats {
       font-size: 1.3rem;
       color: var(--text-color);
+    }
+
+    /* LOCAL STORAGE INDICATOR STYLES */
+    .save-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+
+    .save-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--save-indicator-color);
+      transition: background-color 0.3s;
+    }
+
+    .save-indicator.saving {
+      background-color: #fabd2f;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     .controls {
@@ -297,9 +328,6 @@
       transition: font-size 0.4s ease, padding 0.4s ease;
     }
 
-    .CodeMirror-empty .CodeMirror-placeholder {
-      opacity: 0.4;
-    }
 
     .CodeMirror-scroll {
       padding: 1rem 2rem 2rem;
@@ -403,6 +431,16 @@
     .CodeMirror .cm-table-header {
       color: #fe8019 !important;
       font-weight: bold;
+    }
+
+
+    .CodeMirror-empty {
+      opacity: 0.4;
+    }
+
+    .CodeMirror-placeholder {
+    opacity: 0.4 !important;
+    display: inline !important;
     }
 
     .katex-display {
@@ -512,6 +550,10 @@
 
       .preview {
         padding: 1rem 1.5rem 1.5rem;
+      }
+      .save-status {
+        margin-left: 0;
+        margin-top: 0.5rem;
       }
     }
 
@@ -853,14 +895,23 @@
       50% { box-shadow: 0 0 14px var(--accent-color); }
       100% { box-shadow: 0 0 0px var(--accent-color); }
     }
+
+
   </style>
 </head>
 
 <body data-theme="dark">
   <div class="writing-container">
     <div class="header">
-      <div class="stats" style="font-size: 1.3rem;">
-        <span id="statsDisplay">Words: 0 · Readability: —</span>
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <div class="stats" style="font-size: 1.3rem;">
+          <span id="statsDisplay">Words: 0 · Readability: —</span>
+        </div>
+        <!-- LOCAL STORAGE INDICATOR -->
+        <div class="save-status">
+          <span class="save-indicator" id="saveIndicator"></span>
+          <span id="statusText">Saved locally</span>
+        </div>
       </div>
       <div class="controls">
         <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
@@ -876,16 +927,16 @@
     </div>
     <div class="content">
       <!-- Use a <textarea> so CodeMirror can attach itself -->
-      <textarea id="editor" placeholder="Start Writing …"></textarea>
+      <textarea id="editor"></textarea>
       <div class="preview" id="preview"></div>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    © 2025 Ankit Deshmukh ·
-    <a href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a> ·
-    <a href="https://www.ankitdeshmukh.com/avocation/pomodorowriter/" target="_blank" rel="noopener">Features</a> ·
+    © 2025 Ankit Deshmukh •
+    <a style="color: var(--text-color);" href="https://www.ankitdeshmukh.com" target="_blank" rel="noopener">ankitdeshmukh.com</a> •
+    <a style="color: var(--text-color);" href="https://www.ankitdeshmukh.com/avocation/pomodorowriter/" target="_blank" rel="noopener">Documentation</a>
   </div>
 
   <!-- Pomodoro Timer with Task Management -->
@@ -1004,6 +1055,8 @@
     const saveBtn = document.getElementById('saveBtn');
     const fileInput = document.getElementById('fileInput');
     const zenToggle = document.getElementById('zenToggle');
+    const saveIndicator = document.getElementById('saveIndicator');
+    const statusText = document.getElementById('statusText');
 
     let codemirror;
 
@@ -1040,6 +1093,7 @@
     let seconds = 0;
     let timerInterval;
     let isTimerRunning = false;
+    let saveTimeout;
 
     /******************************************************************
      * 2. INIT CODEMIRROR (v5) WITH CONTENTEDITABLE INPUT
@@ -1066,6 +1120,7 @@
       codemirror.setOption('cursorBlinkRate', 0);
       codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
 
+
       initializeApp();
     });
 
@@ -1073,6 +1128,12 @@
      * 3. INITIALIZE APPLICATION
      ******************************************************************/
     function initializeApp() {
+      // LOCAL STORAGE: Load saved content
+      const savedContent = localStorage.getItem('editorContent');
+      if (savedContent) {
+        codemirror.setValue(savedContent);
+      }
+
       const mermaidExtension = {
         name: 'mermaid',
         level: 'block',
@@ -1123,6 +1184,14 @@
         updateAssessment();
         if (isPreview) processPreview();
         hasUnsavedChanges = true;
+
+        // LOCAL STORAGE: Auto-save with debounce
+        clearTimeout(saveTimeout);
+        showStatus('Saving...');
+        saveTimeout = setTimeout(() => {
+          saveToLocalStorage();
+          showStatus('Saved locally');
+        }, 1000);
       });
 
       const keySound = new Audio('https://assets.codepen.io/3/typewriter-key.mp3');
@@ -1204,6 +1273,23 @@
       assessmentMinimizeBtn1.addEventListener('click', () => {
         assessTimer.classList.toggle('minimized');
       });
+    }
+
+    /******************************************************************
+     * LOCAL STORAGE FUNCTIONS
+     ******************************************************************/
+    function saveToLocalStorage() {
+      const content = codemirror.getValue();
+      localStorage.setItem('editorContent', content);
+    }
+
+    function showStatus(message) {
+      statusText.textContent = message;
+      if (message === 'Saving...') {
+        saveIndicator.classList.add('saving');
+      } else {
+        saveIndicator.classList.remove('saving');
+      }
     }
 
     /******************************************************************
@@ -1535,6 +1621,9 @@
         updateStats();
         updateAssessment();
         if (isPreview) processPreview();
+        // Save to local storage after opening file
+        saveToLocalStorage();
+        showStatus('Saved locally');
       };
       reader.onerror = () => {
         alert('Failed to read the file. Please try again.');

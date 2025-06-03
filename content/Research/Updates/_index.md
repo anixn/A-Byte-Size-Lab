@@ -24,7 +24,15 @@ weight: 1
 {{< /box >}}
 
 ---
-### Presentation and Talks
+### Presentation, Talks, and Publications
+
+#### 30 May 2025
+- Patent Alert: Continuous external vehicle monitoring and alerting/warning system for traffic management.
+    >  Inventor: Dr. Vasudeo Chaudhari  and Dr. Ankit Deshmukh (Application No.202421090466 A)
+
+#### 16 April 2025 | An Invited Talk on Wood Working
+- A talk on "The Art of Woodworking: Crafted with Geometry (Precision • Passion • Wood)"
+    > Ankit Deshmukh from AVD Woodworking! [Slides of the Talk]({{< ref "avocation/avdww/" >}})
 
 #### 23 December 2024
 - I attended the HYDRO 2024 Conference, which was hosted at Central Water and Power Research Station (CWPRS) in Pune. It was a fantastic opportunity to network with other field experts and researchers.
