@@ -85,7 +85,7 @@ params:
         imageHeight: 160
         buttons:
             - name: "Writer"
-              url: /projects/FocusEditor/
+              url: /projects/PomodoroWriter/
             - name: "Timer"
               url: /projects/pomodoro/
             - name: "Color"
