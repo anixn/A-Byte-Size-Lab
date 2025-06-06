@@ -610,18 +610,34 @@
       text-align: center;
     }
 
-    /* --- Pomodoro Timer --- */
-    #pomodoro-timer {
+    /*****************************************************************
+     *  TIMERS CONTAINER (NEW):
+     *
+     *  This wraps both timers and ensures they stack vertically at the
+     *  left side without overlap. Each timer's minimize button remains
+     *  in its own top‐right corner.
+     *****************************************************************/
+    #timers-container {
       position: fixed;
       top: 2rem;
-      right: 2rem;
-      min-width: 20rem;
+      left: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;                  /* space between Assess & Pomodoro */
+      z-index: 1000;
+    }
+
+    /*****************************************************************
+     *  POMODORO TIMER (unstyled positioning removed; now inside container)
+     *****************************************************************/
+    #pomodoro-timer {
       background-color: var(--container-bg);
       padding: 1rem 1.5rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
       transition: all 0.3s ease;
+      min-width: 20rem;
+      position: relative; /* for its minimize button */
     }
 
     #pomodoro-timer:hover {
@@ -660,39 +676,6 @@
     #pomodoro-timer.minimized #audio-controls,
     #pomodoro-timer.minimized .task-controls,
     #pomodoro-timer.minimized #pomodoro-count {
-      display: none;
-    }
-
-    /* --- Assessment Panel --- */
-    #assess-timer {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      background-color: var(--container-bg);
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      min-width: 20rem;
-      transition: all 0.3s ease;
-    }
-
-    #assess-timer:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    #assess-timer.minimized {
-      width: 36px;
-      min-width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      padding: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    #assess-timer.minimized #assessment-panel1,
-    #assess-timer.minimized .assessment-metric {
       display: none;
     }
 
@@ -813,7 +796,29 @@
     .task-actions button:hover {
       background-color: var(--code-background);
     }
+    .task-item.completed span {
+    text-decoration: line-through;
+    color: var(--task-complete);
+    }
 
+    /*****************************************************************
+     *  ASSESSMENT PANEL (unstyled positioning removed; now inside container)
+     *****************************************************************/
+    #assess-timer {
+      background-color: var(--container-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      min-width: 20rem;
+      position: relative; /* for its minimize button */
+    }
+
+    #assess-timer:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Remove 'position: relative' here so the button uses #assess-timer as its reference */
     #assessment-panel1 {
       font-family: Roboto, sans-serif;
       font-size: 1.2rem;
@@ -823,7 +828,7 @@
     #assessmentMinimizeBtn1 {
       position: absolute;
       top: 7px;
-      left: 10px;
+      right: 10px;
       background-color: transparent;
       color: var(--border-color);
       border: none;
@@ -837,7 +842,7 @@
       transform: rotate(90deg);
     }
 
-    #assessment-panel1.minimized {
+    #assess-timer.minimized {
       width: 36px;
       min-width: 36px;
       height: 36px;
@@ -845,6 +850,19 @@
       padding: 0;
       overflow: hidden;
       transition: all 0.3s ease;
+    }
+
+    /* Collapse panel box but keep the button visible */
+    #assess-timer.minimized #assessment-panel1 {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Hide only the metric rows when minimized */
+    #assess-timer.minimized .assessment-metric {
+      display: none;
     }
 
     .assessment-content {
@@ -972,7 +990,7 @@
     <div class="header">
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
         <div class="stats" style="font-size: 1.3rem;">
-          <span id="statsDisplay">Words: 0 · Readability: —</span>
+          <span id="statsDisplay">Words: 0 </span>
         </div>
         <div class="save-status">
           <span class="save-indicator" id="saveIndicator" data-tooltip="Saved locally"></span>
@@ -1012,65 +1030,70 @@
     <a style="color: var(--text-color);" href="https://www.ankitdeshmukh.com/avocation/pomodorowriter/" target="_blank" rel="noopener">Documentation</a>
   </div>
 
-  <!-- Pomodoro Timer with Task Management -->
-  <div id="pomodoro-timer">
-    <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
-    <div class="timer-display" id="timer">
-      <span id="minutes">25</span>:<span id="seconds">00</span>
-    </div>
-    <div class="timer-controls">
-      <button type="button" id="toggle-timer" class="timer-button">Start</button>
-      <button type="button" id="reset" class="timer-button">Reset</button>
-      <!-- Audio Controls -->
-      <div id="audio-controls">
-        <button type="button" id="toggle-music" class="timer-button">Play Music</button>
-        <select id="audio-select">
-          <option value="background.opus">Cosmic</option>
-          <option value="background2.opus">Muse</option>
-          <option value="background3.opus">Burble</option>
-          <option value="background4.opus">Focus</option>
-        </select>
+  <!-- =========================
+       TIMERS CONTAINER
+       ========================= -->
+  <div id="timers-container">
+    <!-- Pomodoro Timer with Audio & Tasks -->
+    <div id="pomodoro-timer">
+      <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
+      <div class="timer-display" id="timer">
+        <span id="minutes">25</span>:<span id="seconds">00</span>
       </div>
-      <!-- Task Management -->
-      <div class="task-controls">
-        <div class="task-input">
-          <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;" />
-          <button type="button" class="timer-button" id="addTask">Add</button>
+      <div class="timer-controls">
+        <button type="button" id="toggle-timer" class="timer-button">Start</button>
+        <button type="button" id="reset" class="timer-button">Reset</button>
+        <!-- Audio Controls -->
+        <div id="audio-controls">
+          <button type="button" id="toggle-music" class="timer-button">Play Music</button>
+          <select id="audio-select">
+            <option value="background.opus">Cosmic</option>
+            <option value="background2.opus">Muse</option>
+            <option value="background3.opus">Burble</option>
+            <option value="background4.opus">Focus</option>
+          </select>
         </div>
-        <ul id="taskList" class="task-list"></ul>
+        <!-- Task Management -->
+        <div class="task-controls">
+          <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;" />
+            <button type="button" class="timer-button" id="addTask">Add</button>
+          </div>
+          <ul id="taskList" class="task-list"></ul>
+        </div>
+        <!-- Pomodoro Count -->
+        <div id="pomodoro-count">Pomodoros: 0</div>
       </div>
-      <!-- Pomodoro Count -->
-      <div id="pomodoro-count">Pomodoros: 0</div>
     </div>
-  </div>
 
-  <!-- Assessment Timer & Metrics -->
-  <div id="assess-timer">
-      <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
-    <div id="assessment-panel1">
-      <div class="assessment-content">
-        <div class="assessment-metric" title="US school grade level. Lower is easier to read."
-             style="padding-top: 10px;">
-          <label>Flesch–Kincaid Grade:</label> <span id="fkGrade">—</span>
-        </div>
-        <div class="assessment-metric" title="Score between 0–100. Higher is easier to read.">
-          <label>Reading Ease:</label> <span id="readingEase">—</span>
-        </div>
-        <div class="assessment-metric"
-             title="Number of years of formal education needed to easily understand a piece of writing.">
-          <label>Gunning Fog Index:</label> <span id="gunningFog">—</span>
-        </div>
-        <div class="assessment-metric" title="Grade level based on letters and sentences.">
-          <label>Coleman–Liau Index:</label> <span id="colemanLiau">—</span>
-        </div>
-        <div class="assessment-metric" title="Average characters per word.">
-          <label>Avg. Word Length:</label> <span id="avgWordLength">—</span>
-        </div>
-        <div class="assessment-metric" title="Average words per sentence.">
-          <label>Avg. Sentence Length:</label> <span id="avgSentenceLength">—</span>
-        </div>
-        <div class="assessment-metric" title="Count of Academic Word List (AWL) matches.">
-          <label>AWL Matches:</label> <span id="awlCount">—</span>
+    <!-- Assessment Timer & Metrics -->
+    <div id="assess-timer">
+      <div id="assessment-panel1">
+        <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
+        <div class="assessment-content">
+          <div class="assessment-metric" title="US school grade level. Lower is easier to read."
+               style="padding-top: 10px;">
+            <label>Flesch–Kincaid Grade:</label> <span id="fkGrade">—</span>
+          </div>
+          <div class="assessment-metric" title="Score between 0–100. Higher is easier to read.">
+            <label>Reading Ease:</label> <span id="readingEase">—</span>
+          </div>
+          <div class="assessment-metric"
+               title="Number of years of formal education needed to easily understand a piece of writing.">
+            <label>Gunning Fog Index:</label> <span id="gunningFog">—</span>
+          </div>
+          <div class="assessment-metric" title="Grade level based on letters and sentences.">
+            <label>Coleman–Liau Index:</label> <span id="colemanLiau">—</span>
+          </div>
+          <div class="assessment-metric" title="Average characters per word.">
+            <label>Avg. Word Length:</label> <span id="avgWordLength">—</span>
+          </div>
+          <div class="assessment-metric" title="Average words per sentence.">
+            <label>Avg. Sentence Length:</label> <span id="avgSentenceLength">—</span>
+          </div>
+          <div class="assessment-metric" title="Count of Academic Word List (AWL) matches.">
+            <label>AWL Matches:</label> <span id="awlCount">—</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1879,96 +1902,95 @@
         backgroundAudio.play();
         toggleMusicButton.textContent = 'Pause Music';
       } catch (err) {
-        alert('Failed to load audio track: ' + err.message);
+        alert('Failed to change audio: ' + err.message);
       }
     }
 
     /******************************************************************
      * 16. TASK MANAGEMENT
      ******************************************************************/
+    function loadTasks() {
+      const saved = localStorage.getItem('tasks');
+      if (!saved) return;
+      try {
+        tasks = JSON.parse(saved);
+        renderTasks();
+      } catch {
+        tasks = [];
+      }
+    }
+
     function saveTasks() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    function loadTasks() {
-      const saved = localStorage.getItem('tasks');
-      if (saved) {
-        try {
-          tasks = JSON.parse(saved);
-          renderTasks();
-        } catch {
-          tasks = [];
-        }
-      }
-    }
-
-    function renderTasks() {
-      taskList.innerHTML = '';
-      tasks.forEach((task, idx) => {
-        const li = document.createElement('li');
-        li.className = 'task-item' + (task.completed ? ' completed' : '');
-        const span = document.createElement('span');
-        span.textContent = task.text;
-        const actions = document.createElement('div');
-        actions.className = 'task-actions';
-
-        const toggleBtn = document.createElement('button');
-        toggleBtn.textContent = task.completed ? '↺' : '✔';
-        toggleBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
-        toggleBtn.addEventListener('click', () => {
-          tasks[idx].completed = !tasks[idx].completed;
-          saveTasks();
-          renderTasks();
-        });
-
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = '✕';
-        deleteBtn.title = 'Delete Task';
-        deleteBtn.addEventListener('click', () => {
-          tasks.splice(idx, 1);
-          saveTasks();
-          renderTasks();
-        });
-
-        actions.appendChild(toggleBtn);
-        actions.appendChild(deleteBtn);
-        li.appendChild(span);
-        li.appendChild(actions);
-        taskList.appendChild(li);
-      });
-    }
-
     function addTask(text) {
-      if (!text.trim()) return;
-      tasks.push({ text: text.trim(), completed: false });
+      const trimmed = text.trim();
+      if (!trimmed) return;
+      const newTask = { id: Date.now(), text: trimmed, completed: false };
+      tasks.unshift(newTask);
       taskInput.value = '';
       saveTasks();
       renderTasks();
     }
 
-    /******************************************************************
-     * 17. UPDATE WORD COUNT & READABILITY STATS
-     ******************************************************************/
-    function updateStats() {
-      const text = codemirror.getValue();
-      const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
-      statsDisplay.textContent = `Words: ${words} · Readability: —`;
-      computeReadabilityMetrics(text);
+    function toggleTaskCompletion(id) {
+      tasks = tasks.map(t => {
+        if (t.id === id) return { ...t, completed: !t.completed };
+        return t;
+      });
+      saveTasks();
+      renderTasks();
     }
 
-    function computeReadabilityMetrics(text) {
-      if (!text.trim()) {
-        statsDisplay.textContent = `Words: 0 · Readability: —`;
-        return;
-      }
-      const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0).length || 1;
-      const wordsArr = text.split(/\s+/).filter(w => w.trim().length > 0).length || 1;
-      let totalSyllables = 0;
-      text.split(/\s+/).filter(w => w.trim().length > 0).forEach(w => {
-        totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ""));
-      });
-      const fk = 0.39 * (wordsArr / sentences) + 11.8 * (totalSyllables / wordsArr) - 15.59;
-      statsDisplay.textContent = `Words: ${wordsArr} · Readability: ${fk.toFixed(1)}`;
+    function deleteTask(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
+      renderTasks();
+    }
+
+
+function renderTasks() {
+  taskList.innerHTML = '';
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.className = 'task-item';
+    if (task.completed) li.classList.add('completed');
+
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    span.style.cursor = 'pointer';
+
+    const actions = document.createElement('div');
+    actions.className = 'task-actions';
+
+    // Complete button
+    const completeBtn = document.createElement('button');
+    completeBtn.textContent = task.completed ? '↺' : '✓';
+    completeBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
+    completeBtn.addEventListener('click', () => toggleTaskCompletion(task.id));
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.textContent = '✕';
+    delBtn.title = 'Delete Task';
+    delBtn.addEventListener('click', () => deleteTask(task.id));
+
+    actions.appendChild(completeBtn);
+    actions.appendChild(delBtn);
+    li.appendChild(span);
+    li.appendChild(actions);
+    taskList.appendChild(li);
+  });
+}
+
+    /******************************************************************
+     * 17. UPDATE STATS (Word Count & Flesch–Kincaid Readability)
+     ******************************************************************/
+    function updateStats() {
+      const text = codemirror ? codemirror.getValue().trim() : '';
+      const words = text ? text.split(/\s+/).filter(w => w.trim().length > 0).length : 0;
+      statsDisplay.textContent = `Words: ${words} · `;
     }
   </script>
 </body>
