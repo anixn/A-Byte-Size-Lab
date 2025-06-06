@@ -896,6 +896,30 @@
       100% { box-shadow: 0 0 0px var(--accent-color); }
     }
 
+    /* Add this to your CSS */
+    .save-indicator {
+        position: relative;
+        display: inline-block;
+        cursor: default;
+    }
+
+    .save-indicator[data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--container-bg);
+        color: var(--text-color);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 1rem;
+        white-space: nowrap;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
 
   </style>
 </head>
@@ -907,11 +931,10 @@
         <div class="stats" style="font-size: 1.3rem;">
           <span id="statsDisplay">Words: 0 · Readability: —</span>
         </div>
-        <!-- LOCAL STORAGE INDICATOR -->
         <div class="save-status">
-          <span class="save-indicator" id="saveIndicator"></span>
-          <span id="statusText">Saved locally</span>
+            <span class="save-indicator" id="saveIndicator" data-tooltip="Saved locally"></span>
         </div>
+
       </div>
       <div class="controls">
         <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
@@ -1056,7 +1079,6 @@
     const fileInput = document.getElementById('fileInput');
     const zenToggle = document.getElementById('zenToggle');
     const saveIndicator = document.getElementById('saveIndicator');
-    const statusText = document.getElementById('statusText');
 
     let codemirror;
 
@@ -1117,6 +1139,7 @@
         }
       });
 
+
       codemirror.setOption('cursorBlinkRate', 0);
       codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
 
@@ -1173,6 +1196,7 @@
 
       if (!window.showSaveFilePicker) saveBtn.style.display = 'none';
       if (!window.File || !window.FileReader) openBtn.style.display = 'none';
+      showStatus('Saved locally');
     }
 
     /******************************************************************
@@ -1283,14 +1307,17 @@
       localStorage.setItem('editorContent', content);
     }
 
+    // Replace the showStatus function with this
     function showStatus(message) {
-      statusText.textContent = message;
-      if (message === 'Saving...') {
-        saveIndicator.classList.add('saving');
-      } else {
-        saveIndicator.classList.remove('saving');
-      }
+        const indicator = document.getElementById('saveIndicator');
+        indicator.setAttribute('data-tooltip', message);
+        if (message === 'Saving...') {
+            indicator.classList.add('saving');
+        } else {
+            indicator.classList.remove('saving');
+        }
     }
+
 
     /******************************************************************
      * 5. SYLLABLE COUNT & READABILITY IMPLEMENTATIONS
