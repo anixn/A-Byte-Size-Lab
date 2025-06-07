@@ -1,17 +1,22 @@
 ---
 title: "Pomodoro Writer - Focus, Tasks, music!"
 layout: "main"
-# url: /list/
 weight: 500
 date: 2025-05-29
 draft: false
+toc: true
 ---
 
 **Help Document: Pomodoro Writer**
 
 **Author:** Dr. Ankit Deshmukh
+
+**LInk:** [Pomodoro Writer](https://ankitdeshmukh.com/projects/pomodorowriter/)
+
 **Purpose:**
 This web application is designed as a distraction-free writing environment that integrates a Pomodoro timer, task management, real-time text quality assessment, and support for Mermaid diagrams. Its goal is to help writers, researchers, and creatives stay focused, track writing metrics, manage tasks, and visualize ideas in diagrammatic form—all within a single interface.
+
+[![Pomodoro Writer - Focus, Tasks, music!](./Dark_Light.gif)](https://ankitdeshmukh.com/projects/pomodorowriter/)
 
 ---
 
