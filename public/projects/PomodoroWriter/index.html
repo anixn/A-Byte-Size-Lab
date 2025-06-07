@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pomodoro Writer with Mermaid</title>
+  <title>Pomodoro Writer</title>
 
   <!-- SEO & Open Graph Metadata -->
   <meta name="description" content="A Writer with Pomodoro, Tasks, Analytics & Mermaid Diagrams" />
@@ -13,9 +13,9 @@
   <meta property="og:image" content="https://www.ankitdeshmukh.com/assets/mermaid-preview.png" />
   <meta property="og:url" content="https://www.ankitdeshmukh.com/" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.ico"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/projects/FocusEditor/favicon.png" />
-  <link rel="apple-touch-icon" href="https://ankitdeshmukh.com/apple-touch-icon.png" />
+  <link rel="icon" href="https://ankitdeshmukh.com/projects/PomodoroWriter/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ankitdeshmukh.com/projects/PomodoroWriter/favicon.png" />
+  <link rel="apple-touch-icon" href="https://www.ankitdeshmukh.com/apple-touch-icon.png" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
   <script>
@@ -29,7 +29,7 @@
   </script>
 
   <meta name="author" content="Dr. Ankit Deshmukh" />
-  <link rel="canonical" href="https://www.ankitdeshmukh.com/projects/FocusEditor/" />
+  <link rel="canonical" href="https://www.ankitdeshmukh.com/projects/PomodoroWriter/" />
   <meta name="google-site-verification" content="G-R5FJKDQD1M" />
 
   <!-- CodeMirror 5 CSS -->
@@ -197,6 +197,7 @@
       display: flex;
       gap: 0.8rem;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .toggle-btn {
@@ -232,7 +233,8 @@
     #modeToggle:hover::after { content: "Toggle Preview (Ctrl+L)"; }
     #saveBtn:hover::after { content: "Save Markdown File (Ctrl+S)"; }
     #openBtn:hover::after { content: "Open Markdown File (Ctrl+O)"; }
-    #zenToggle:hover::after { content: "Toggle Zen Mode (Ctrl+X)"; }
+    #zenToggle:hover::after { content: "Toggle Zen Mode (Ctrl+Z)"; }
+    #toggleHeaderBtn:hover::after { content: "Hide/Show All"; }
 
     .content {
       flex: 1 1 auto;
@@ -268,19 +270,57 @@
     .preview p code, .preview li code {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 1.4rem;
-      background-color: var(--code-background);
+      background-color: var(--container-bg);
       color: var(--accent-color);
       padding: 0.2rem 0.4rem;
       border-radius: 4px;
     }
 
+    /* Code block styling in preview */
     .preview pre {
       background-color: var(--code-background);
       color: var(--text-color);
       padding: 1rem;
       overflow-x: auto;
-      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
       font-size: 1.4rem;
+      position: relative; /* for copy button */
+      padding-top: 1.5rem;  /* make room for copy button */
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .preview pre code {
+      background: transparent;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.4rem;
+    }
+
+    /* Dark theme overrides: use the vs2015 highlight.js colors */
+    body[data-theme="dark"] .preview pre code.hljs {
+      /* vs2015 colors apply automatically, no override needed */
+    }
+
+    /* Light-theme overrides: force darker text and override hljs coloring */
+    body[data-theme="light"] .preview pre {
+      background-color: var(--code-background);
+      border-color: var(--border-color);
+    }
+
+    body[data-theme="light"] .preview pre code.hljs {
+      color: var(--text-color) !important;
+    }
+    body[data-theme="light"] .preview pre code.hljs .hljs-keyword,
+    body[data-theme="light"] .preview pre code.hljs .hljs-title,
+    body[data-theme="light"] .preview pre code.hljs .hljs-string,
+    body[data-theme="light"] .preview pre code.hljs .hljs-comment,
+    body[data-theme="light"] .preview pre code.hljs .hljs-number,
+    body[data-theme="light"] .preview pre code.hljs .hljs-built_in,
+    body[data-theme="light"] .preview pre code.hljs .hljs-attr,
+    body[data-theme="light"] .preview pre code.hljs .hljs-literal,
+    body[data-theme="light"] .preview pre code.hljs .hljs-section,
+    body[data-theme="light"] .preview pre code.hljs .hljs-selector-tag {
+      color: var(--text-color) !important;
     }
 
     .preview hr {
@@ -327,7 +367,6 @@
       background-color: var(--container-bg);
       transition: font-size 0.4s ease, padding 0.4s ease;
     }
-
 
     .CodeMirror-scroll {
       padding: 1rem 2rem 2rem;
@@ -433,14 +472,13 @@
       font-weight: bold;
     }
 
-
     .CodeMirror-empty {
       opacity: 0.4;
     }
 
     .CodeMirror-placeholder {
-    opacity: 0.4 !important;
-    display: inline !important;
+      opacity: 0.4 !important;
+      display: inline !important;
     }
 
     .katex-display {
@@ -485,6 +523,16 @@
         max-width: 90%;
         line-height: 1.7;
       }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .save-status {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
     }
 
     .preview img {
@@ -527,40 +575,34 @@
       color: var(--header3-color);
     }
 
-    .preview code, pre {
-      display: block;
-      width: 100%;
-      font-family: "IBM Plex Mono", monospace;
-      font-style: normal;
-      background-color: var(--code-background);
-      padding: 0.6rem;
-      white-space: pre-wrap;
-      box-sizing: border-box;
-      overflow-x: auto;
+    /* Copy‐button styles for code blocks */
+    .copy-btn {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+      padding: 0.2rem 0.5rem;
+      font-size: 1rem;
+      background: var(--container-bg);
+      border: 1px solid var(--border-color);
       border-radius: 4px;
+      cursor: pointer;
+      color: var(--text-color);
+      opacity: 0.7;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      z-index: 10;
+    }
+    .copy-btn:hover {
+      opacity: 1;
+      background: var(--accent-color);
+      color: var(--container-bg);
     }
 
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .preview {
-        padding: 1rem 1.5rem 1.5rem;
-      }
-      .save-status {
-        margin-left: 0;
-        margin-top: 0.5rem;
-      }
-    }
-
+    /* Hide scrollbars in content & preview */
     .content::-webkit-scrollbar, .preview::-webkit-scrollbar {
       display: none;
     }
 
+    /* Footer */
     .footer {
       font-size: 1.2rem;
       margin-top: 1rem;
@@ -568,18 +610,34 @@
       text-align: center;
     }
 
-    /* --- Pomodoro Timer --- */
-    #pomodoro-timer {
+    /*****************************************************************
+     *  TIMERS CONTAINER (NEW):
+     *
+     *  This wraps both timers and ensures they stack vertically at the
+     *  left side without overlap. Each timer's minimize button remains
+     *  in its own top‐right corner.
+     *****************************************************************/
+    #timers-container {
       position: fixed;
       top: 2rem;
-      right: 2rem;
-      min-width: 20rem;
+      left: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;                  /* space between Assess & Pomodoro */
+      z-index: 1000;
+    }
+
+    /*****************************************************************
+     *  POMODORO TIMER (unstyled positioning removed; now inside container)
+     *****************************************************************/
+    #pomodoro-timer {
       background-color: var(--container-bg);
       padding: 1rem 1.5rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
       transition: all 0.3s ease;
+      min-width: 20rem;
+      position: relative; /* for its minimize button */
     }
 
     #pomodoro-timer:hover {
@@ -617,41 +675,7 @@
     #pomodoro-timer.minimized .timer-controls,
     #pomodoro-timer.minimized #audio-controls,
     #pomodoro-timer.minimized .task-controls,
-    #pomodoro-timer.minimized #pomodoro-count,
-    #pomodoro-timer.minimized #assessment-panel1 {
-      display: none;
-    }
-
-    /* --- Assessment Panel --- */
-    #assess-timer {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      background-color: var(--container-bg);
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      min-width: 20rem;
-      transition: all 0.3s ease;
-    }
-
-    #assess-timer:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    #assess-timer.minimized {
-      width: 36px;
-      min-width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      padding: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    #assess-timer.minimized #assessment-content,
-    #assess-timer.minimized .assessment-metric {
+    #pomodoro-timer.minimized #pomodoro-count {
       display: none;
     }
 
@@ -772,7 +796,29 @@
     .task-actions button:hover {
       background-color: var(--code-background);
     }
+    .task-item.completed span {
+    text-decoration: line-through;
+    color: var(--task-complete);
+    }
 
+    /*****************************************************************
+     *  ASSESSMENT PANEL (unstyled positioning removed; now inside container)
+     *****************************************************************/
+    #assess-timer {
+      background-color: var(--container-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      min-width: 20rem;
+      position: relative; /* for its minimize button */
+    }
+
+    #assess-timer:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Remove 'position: relative' here so the button uses #assess-timer as its reference */
     #assessment-panel1 {
       font-family: Roboto, sans-serif;
       font-size: 1.2rem;
@@ -782,7 +828,7 @@
     #assessmentMinimizeBtn1 {
       position: absolute;
       top: 7px;
-      left: 10px;
+      right: 10px;
       background-color: transparent;
       color: var(--border-color);
       border: none;
@@ -796,7 +842,7 @@
       transform: rotate(90deg);
     }
 
-    #assessment-panel1.minimized {
+    #assess-timer.minimized {
       width: 36px;
       min-width: 36px;
       height: 36px;
@@ -804,6 +850,19 @@
       padding: 0;
       overflow: hidden;
       transition: all 0.3s ease;
+    }
+
+    /* Collapse panel box but keep the button visible */
+    #assess-timer.minimized #assessment-panel1 {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Hide only the metric rows when minimized */
+    #assess-timer.minimized .assessment-metric {
+      display: none;
     }
 
     .assessment-content {
@@ -826,6 +885,7 @@
       font-weight: 700;
     }
 
+    /* Zen Mode */
     body.zen-mode .header,
     body.zen-mode .footer,
     body.zen-mode #pomodoro-timer,
@@ -896,32 +956,33 @@
       100% { box-shadow: 0 0 0px var(--accent-color); }
     }
 
-    /* Add this to your CSS */
+    /* Add tooltip for save-indicator */
     .save-indicator {
-        position: relative;
-        display: inline-block;
-        cursor: default;
+      position: relative;
+      display: inline-block;
+      cursor: default;
     }
 
     .save-indicator[data-tooltip]:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: -28px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--container-bg);
-        color: var(--text-color);
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 1rem;
-        white-space: nowrap;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--container-bg);
+      color: var(--text-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 1rem;
+      white-space: nowrap;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
     }
-
-
   </style>
+
+  <!-- Highlight.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css" />
 </head>
 
 <body data-theme="dark">
@@ -929,14 +990,21 @@
     <div class="header">
       <div style="display: flex; align-items: center; flex-wrap: wrap;">
         <div class="stats" style="font-size: 1.3rem;">
-          <span id="statsDisplay">Words: 0 · Readability: —</span>
+          <span id="statsDisplay">Words: 0 </span>
         </div>
         <div class="save-status">
-            <span class="save-indicator" id="saveIndicator" data-tooltip="Saved locally"></span>
+          <span class="save-indicator" id="saveIndicator" data-tooltip="Saved locally"></span>
         </div>
-
       </div>
       <div class="controls">
+        <!-- ARROW TO HIDE/SHOW ALL HEADER BUTTONS -->
+        <button type="button"
+                style="color: var(--text-color); font-size: 1.6rem; border: none;"
+                class="toggle-btn"
+                id="toggleHeaderBtn"
+                data-tooltip="Hide/Show All">❱</button>
+
+        <!-- ALL OTHER HEADER BUTTONS (TO BE TOGGLED) -->
         <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="saveBtn"
                 data-tooltip="Save Markdown File (Ctrl+S)">Save .md</button>
         <button type="button" style="color: var(--acc-color);" class="toggle-btn" id="openBtn"
@@ -962,64 +1030,70 @@
     <a style="color: var(--text-color);" href="https://www.ankitdeshmukh.com/avocation/pomodorowriter/" target="_blank" rel="noopener">Documentation</a>
   </div>
 
-  <!-- Pomodoro Timer with Task Management -->
-  <div id="pomodoro-timer">
-    <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
-    <div class="timer-display" id="timer">
-      <span id="minutes">25</span>:<span id="seconds">00</span>
-    </div>
-    <div class="timer-controls">
-      <button type="button" id="toggle-timer" class="timer-button">Start</button>
-      <button type="button" id="reset" class="timer-button">Reset</button>
-      <!-- Audio Controls -->
-      <div id="audio-controls">
-        <button type="button" id="toggle-music" class="timer-button">Play Music</button>
-        <select id="audio-select">
-          <option value="background.opus">Cosmic</option>
-          <option value="background2.opus">Muse</option>
-          <option value="background3.opus">Burble</option>
-          <option value="background4.opus">Focus</option>
-        </select>
+  <!-- =========================
+       TIMERS CONTAINER
+       ========================= -->
+  <div id="timers-container">
+    <!-- Pomodoro Timer with Audio & Tasks -->
+    <div id="pomodoro-timer">
+      <button type="button" id="minimizeBtn" aria-label="Minimize Pomodoro Timer" title="Minimize Timer (Ctrl+M)">✕</button>
+      <div class="timer-display" id="timer">
+        <span id="minutes">25</span>:<span id="seconds">00</span>
       </div>
-      <!-- Task Management -->
-      <div class="task-controls">
-        <div class="task-input">
-          <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;" />
-          <button type="button" class="timer-button" id="addTask">Add</button>
+      <div class="timer-controls">
+        <button type="button" id="toggle-timer" class="timer-button">Start</button>
+        <button type="button" id="reset" class="timer-button">Reset</button>
+        <!-- Audio Controls -->
+        <div id="audio-controls">
+          <button type="button" id="toggle-music" class="timer-button">Play Music</button>
+          <select id="audio-select">
+            <option value="background.opus">Cosmic</option>
+            <option value="background2.opus">Muse</option>
+            <option value="background3.opus">Burble</option>
+            <option value="background4.opus">Focus</option>
+          </select>
         </div>
-        <ul id="taskList" class="task-list"></ul>
+        <!-- Task Management -->
+        <div class="task-controls">
+          <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Add new task..." style="width: 10rem;" />
+            <button type="button" class="timer-button" id="addTask">Add</button>
+          </div>
+          <ul id="taskList" class="task-list"></ul>
+        </div>
+        <!-- Pomodoro Count -->
+        <div id="pomodoro-count">Pomodoros: 0</div>
       </div>
-      <!-- Pomodoro Count -->
-      <div id="pomodoro-count">Pomodoros: 0</div>
     </div>
-  </div>
 
-  <div id="assess-timer">
-    <div id="assessment-panel1">
-      <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
-      <div class="assessment-content">
-        <div class="assessment-metric" title="US school grade level. Lower is easier to read."
-             style="padding-top: 10px;">
-          <label>Flesch–Kincaid Grade:</label> <span id="fkGrade">—</span>
-        </div>
-        <div class="assessment-metric" title="Score between 0-100. Higher is easier to read.">
-          <label>Reading Ease:</label> <span id="readingEase">—</span>
-        </div>
-        <div class="assessment-metric"
-             title="Number of years of formal education needed to easily understand a piece of writing.">
-          <label>Gunning Fog Index:</label> <span id="gunningFog">—</span>
-        </div>
-        <div class="assessment-metric" title="Grade level based on letters and sentences.">
-          <label>Coleman–Liau Index:</label> <span id="colemanLiau">—</span>
-        </div>
-        <div class="assessment-metric" title="Average characters per word.">
-          <label>Avg. Word Length:</label> <span id="avgWordLength">—</span>
-        </div>
-        <div class="assessment-metric" title="Average words per sentence.">
-          <label>Avg. Sentence Length:</label> <span id="avgSentenceLength">—</span>
-        </div>
-        <div class="assessment-metric" title="Count of Academic Word List (AWL) matches.">
-          <label>AWL Matches:</label> <span id="awlCount">—</span>
+    <!-- Assessment Timer & Metrics -->
+    <div id="assess-timer">
+      <div id="assessment-panel1">
+        <button type="button" id="assessmentMinimizeBtn1" title="Minimize Assessment (Ctrl+M)">✕</button>
+        <div class="assessment-content">
+          <div class="assessment-metric" title="US school grade level. Lower is easier to read."
+               style="padding-top: 10px;">
+            <label>Flesch–Kincaid Grade:</label> <span id="fkGrade">—</span>
+          </div>
+          <div class="assessment-metric" title="Score between 0–100. Higher is easier to read.">
+            <label>Reading Ease:</label> <span id="readingEase">—</span>
+          </div>
+          <div class="assessment-metric"
+               title="Number of years of formal education needed to easily understand a piece of writing.">
+            <label>Gunning Fog Index:</label> <span id="gunningFog">—</span>
+          </div>
+          <div class="assessment-metric" title="Grade level based on letters and sentences.">
+            <label>Coleman–Liau Index:</label> <span id="colemanLiau">—</span>
+          </div>
+          <div class="assessment-metric" title="Average characters per word.">
+            <label>Avg. Word Length:</label> <span id="avgWordLength">—</span>
+          </div>
+          <div class="assessment-metric" title="Average words per sentence.">
+            <label>Avg. Sentence Length:</label> <span id="avgSentenceLength">—</span>
+          </div>
+          <div class="assessment-metric" title="Count of Academic Word List (AWL) matches.">
+            <label>AWL Matches:</label> <span id="awlCount">—</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1043,15 +1117,18 @@
        ======================== -->
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
-  <!-- ========================
-       MAIN APPLICATION SCRIPTS
-       ======================== -->
+  <!-- Highlight.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script>
+    hljs.configure({ languages: ["r", "python", "javascript", "bash", "xml", "markdown"] });
+  </script>
+
+  <!-- Main Application Script -->
   <script>
     /******************************************************************
      * INITIAL STATE & MERMAID INITIALIZATION
      ******************************************************************/
     let isDarkTheme = true;
-    let mermaidTheme = 'neutral';
 
     window.addEventListener('load', () => {
       mermaid.initialize({
@@ -1059,16 +1136,13 @@
         theme: 'neutral',
         securityLevel: 'loose',
         logLevel: 'warn',
-        themeVariables: {
-          fontFamily: 'Roboto, sans-serif'
-        }
+        themeVariables: { fontFamily: 'Roboto, sans-serif' }
       });
     });
 
     /******************************************************************
      * ELEMENT REFERENCES & STATE FLAGS
      ******************************************************************/
-    const assessTimer = document.getElementById('assess-timer');
     const preview = document.getElementById('preview');
     const statsDisplay = document.getElementById('statsDisplay');
     const themeToggle = document.getElementById('themeToggle');
@@ -1081,17 +1155,25 @@
     const saveIndicator = document.getElementById('saveIndicator');
 
     let codemirror;
+    let isPreview = false;
+    let spellCheckEnabled = false;
+    let hasUnsavedChanges = false;
+    let audioUnlocked = false;
 
+    // Pomodoro elements
     const minutesElement = document.getElementById('minutes');
     const secondsElement = document.getElementById('seconds');
     const toggleTimerButton = document.getElementById('toggle-timer');
     const resetButton = document.getElementById('reset');
     const pomodoroCountElement = document.getElementById('pomodoro-count');
     const audioSelect = document.getElementById('audio-select');
+    let minutes = 25, seconds = 0;
+    let timerInterval, isTimerRunning = false, pomodoroCount = 0;
 
     const taskInput = document.getElementById('taskInput');
     const addTaskButton = document.getElementById('addTask');
     const taskList = document.getElementById('taskList');
+    let tasks = [];
 
     const minimizeBtn = document.getElementById('minimizeBtn');
     const assessmentMinimizeBtn1 = document.getElementById('assessmentMinimizeBtn1');
@@ -1103,19 +1185,6 @@
     const avgWordLengthSpan = document.getElementById('avgWordLength');
     const avgSentenceLengthSpan = document.getElementById('avgSentenceLength');
     const awlCountSpan = document.getElementById('awlCount');
-    const assessmentPanel = document.getElementById('assessment-panel1');
-
-    let isPreview = false;
-    let spellCheckEnabled = false;
-    let hasUnsavedChanges = false;
-    let audioUnlocked = false;
-    let tasks = [];
-    let pomodoroCount = 0;
-    let minutes = 25;
-    let seconds = 0;
-    let timerInterval;
-    let isTimerRunning = false;
-    let saveTimeout;
 
     /******************************************************************
      * 2. INIT CODEMIRROR (v5) WITH CONTENTEDITABLE INPUT
@@ -1130,19 +1199,12 @@
         inputStyle: 'contenteditable',
         placeholder: "Start Writing …",
         extraKeys: {
-          'F11': function(cm) {
-            cm.setOption('fullScreen', !cm.getOption('fullScreen'));
-          },
-          'Esc': function(cm) {
-            if (cm.getOption('fullScreen')) cm.setOption('fullScreen', false);
-          }
+          'F11': (cm) => cm.setOption('fullScreen', !cm.getOption('fullScreen')),
+          'Esc': (cm) => { if (cm.getOption('fullScreen')) cm.setOption('fullScreen', false); }
         }
       });
-
       codemirror.setOption('cursorBlinkRate', 0);
       codemirror.getInputField().setAttribute('spellcheck', spellCheckEnabled);
-
-
       initializeApp();
     });
 
@@ -1150,27 +1212,22 @@
      * 3. INITIALIZE APPLICATION
      ******************************************************************/
     function initializeApp() {
-      // LOCAL STORAGE: Load saved content
+      // LOCAL STORAGE: Load saved editor content
       const savedContent = localStorage.getItem('editorContent');
       if (savedContent) {
         codemirror.setValue(savedContent);
       }
 
+      // MARKED + Mermaid extension
       const mermaidExtension = {
         name: 'mermaid',
         level: 'block',
-        start(src) {
-          return src.match(/^```mermaid\s*\n/)?.index;
-        },
+        start(src) { return src.match(/^```mermaid\s*\n/)?.index; },
         tokenizer(src) {
           const rule = /^```mermaid\s*\n([\s\S]+?)```/;
           const match = rule.exec(src);
           if (match) {
-            return {
-              type: 'mermaid',
-              raw: match[0],
-              text: match[1].trim()
-            };
+            return { type: 'mermaid', raw: match[0], text: match[1].trim() };
           }
         },
         renderer(token) {
@@ -1183,7 +1240,13 @@
         breaks: true,
         gfm: true,
         mangle: false,
-        headerIds: false
+        headerIds: false,
+        highlight: (code, lang) => {
+          if (lang && hljs.getLanguage(lang)) {
+            return hljs.highlight(code, { language: lang }).value;
+          }
+          return hljs.highlightAuto(code).value;
+        }
       });
 
       setupEventListeners();
@@ -1202,21 +1265,22 @@
      * 4. EVENT LISTENERS SETUP
      ******************************************************************/
     function setupEventListeners() {
-      codemirror.on('change', (cm) => {
+      codemirror.on('change', () => {
         updateStats();
         updateAssessment();
         if (isPreview) processPreview();
         hasUnsavedChanges = true;
 
-        // LOCAL STORAGE: Auto-save with debounce
-        clearTimeout(saveTimeout);
+        // Auto‐save to localStorage (debounced)
+        clearTimeout(autoSaveTimeout);
         showStatus('Saving...');
-        saveTimeout = setTimeout(() => {
+        autoSaveTimeout = setTimeout(() => {
           saveToLocalStorage();
           showStatus('Saved locally');
         }, 1000);
       });
 
+      // Typing sound
       const keySound = new Audio('https://assets.codepen.io/3/typewriter-key.mp3');
       keySound.volume = 0.08;
       codemirror.on('keypress', () => {
@@ -1250,6 +1314,10 @@
           e.preventDefault();
           document.body.classList.toggle('zen-mode');
           zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
+          if (document.body.classList.contains('zen-mode')) {
+            backgroundAudio.pause();
+            document.getElementById('toggle-music').textContent = 'Play Music';
+          }
         }
         if (e.key === 'Escape' && document.body.classList.contains('zen-mode')) {
           e.preventDefault();
@@ -1269,7 +1337,7 @@
         zenToggle.textContent = document.body.classList.contains('zen-mode') ? 'Exit Zen' : 'Zen';
         if (document.body.classList.contains('zen-mode')) {
           backgroundAudio.pause();
-          toggleMusicButton.textContent = 'Play Music';
+          document.getElementById('toggle-music').textContent = 'Play Music';
         }
       });
 
@@ -1294,9 +1362,23 @@
         document.getElementById('pomodoro-timer').classList.toggle('minimized');
       });
       assessmentMinimizeBtn1.addEventListener('click', () => {
-        assessTimer.classList.toggle('minimized');
+        document.getElementById('assess-timer').classList.toggle('minimized');
+      });
+
+      // Toggle header buttons:
+      const toggleHeaderBtn = document.getElementById('toggleHeaderBtn');
+      toggleHeaderBtn.addEventListener('click', () => {
+        const headerButtons = document.querySelectorAll('.controls .toggle-btn:not(#toggleHeaderBtn)');
+        headerButtons.forEach(btn => {
+          btn.style.display = (btn.style.display !== 'none' ? 'none' : 'inline-flex');
+        });
+        const firstVisible = document.querySelector('.controls .toggle-btn:not(#toggleHeaderBtn)').style.display !== 'none';
+        toggleHeaderBtn.textContent = firstVisible ? '❱' : '☰';
+        toggleHeaderBtn.setAttribute('data-tooltip', firstVisible ? 'Hide All' : 'Show All');
       });
     }
+
+    let autoSaveTimeout;
 
     /******************************************************************
      * LOCAL STORAGE FUNCTIONS
@@ -1306,17 +1388,12 @@
       localStorage.setItem('editorContent', content);
     }
 
-    // Replace the showStatus function with this
     function showStatus(message) {
-        const indicator = document.getElementById('saveIndicator');
-        indicator.setAttribute('data-tooltip', message);
-        if (message === 'Saving...') {
-            indicator.classList.add('saving');
-        } else {
-            indicator.classList.remove('saving');
-        }
+      const indicator = document.getElementById('saveIndicator');
+      indicator.setAttribute('data-tooltip', message);
+      if (message === 'Saving...') indicator.classList.add('saving');
+      else indicator.classList.remove('saving');
     }
-
 
     /******************************************************************
      * 5. SYLLABLE COUNT & READABILITY IMPLEMENTATIONS
@@ -1337,73 +1414,69 @@
       const letters = cleanText.replace(/[^A-Za-z]/g, '').length;
       const L = (letters / words) * 100;
       const S = (sentences / words) * 100;
-      const index = 0.0588 * L - 0.296 * S - 15.8;
-      return index;
+      return 0.0588 * L - 0.296 * S - 15.8;
     }
 
     function countComplexWords(text) {
       const cleanText = text.replace(/[^A-Za-z\s]/g, '');
-      const wordsArray = cleanText.split(/\s+/).filter((w) => w.length > 0);
-      let complexCount = 0;
-      for (const w of wordsArray) {
-        if (countSyllables(w) >= 3) complexCount++;
-      }
-      return complexCount;
+      const wordsArray = cleanText.split(/\s+/).filter(w => w.length > 0);
+      let count = 0;
+      wordsArray.forEach(w => { if (countSyllables(w) >= 3) count++; });
+      return count;
     }
 
     /******************************************************************
      * 6. UPDATE TEXT ASSESSMENT
      ******************************************************************/
     const AWL = [
-      "analyze", "approach", "area", "assess", "assume", "authority", "available", "benefit", "concept", "consistent",
-      "constitute", "context", "contract", "create", "data", "define", "derive", "distribute", "economic", "environment",
-      "establish", "estimate", "evident", "export", "factor", "finance", "formula", "function", "identify", "impact",
-      "indicate", "individual", "interpret", "involve", "issue", "labor", "legal", "legislate", "major", "method",
-      "occur", "percent", "period", "policy", "principle", "proceed", "process", "require", "research", "respond", "role",
-      "section", "sector", "significant", "similar", "source", "structure", "theory", "vary", "achieve", "acquire",
-      "administrate", "affect", "appropriate", "aspect", "assist", "category", "chapter", "commission", "community",
-      "complex", "compute", "conclude", "conduct", "consequence", "construct", "consume", "credit", "culture", "design",
-      "distinct", "element", "equate", "evaluate", "feature", "final", "focus", "impact", "injure", "institute",
-      "invest", "item", "journal", "maintain", "normal", "obtain", "participate", "perceive", "positive", "potential",
-      "previous", "primary", "purchase", "range", "region", "regulate", "relevant", "reside", "resource", "restrict",
-      "secure", "select", "site", "strategy", "survey", "text", "tradition", "transfer", "alternative", "circumstance",
-      "comment", "compensate", "component", "consent", "considerable", "constant", "constrain", "contribute", "convene",
-      "coordinate", "core", "corporate", "correspond", "criteria", "deduce", "demonstrate", "document", "dominate",
-      "emphasis", "ensure", "exclude", "framework", "fund", "illustrate", "immigrate", "imply", "initial", "instance",
-      "interact", "justify", "layer", "link", "locate", "maximise", "minor", "negate", "outcome", "partner", "philosophy",
-      "proportion", "publish", "react", "register", "rely", "remove", "scheme", "sequence", "sex", "shift", "specify",
-      "sufficient", "task", "technical", "technique", "technology", "valid", "volume", "access", "adequate", "annual",
-      "apparent", "approximate", "attitude", "attribute", "civil", "code", "commit", "communicate", "concentrate",
-      "conference", "contrast", "cycle", "debate", "despite", "dimension", "domestic", "emerge", "error", "ethnic",
-      "goal", "grant", "hence", "hypothesis", "implement", "implicate", "impose", "integrate", "internal", "investigate",
-      "job", "label", "mechanism", "obvious", "occupy", "option", "output", "overall", "parallel", "parameter",
-      "phase", "predict", "principal", "prior", "professional", "project", "promote", "resolve", "retain", "series",
-      "statistic", "status", "stress", "substitute", "sufficient", "summary", "undertake", "academy", "adjust",
-      "alter", "amend", "aware", "capacity", "challenge", "clause", "compound", "conflict", "consult", "contact",
-      "decline", "discrete", "draft", "enable", "energy", "enforce", "entity", "equivalent", "evolve", "expand",
-      "expose", "external", "facilitate", "fundamental", "generate", "generation", "image", "liberal", "licence",
-      "logic", "marginal", "medical", "mental", "modify", "monitor", "network", "notion", "objective", "orient",
-      "output", "overall", "perspective", "precise", "prime", "psychology", "pursue", "ratio", "reject", "revenue",
-      "stable", "style", "subsidy", "substitute", "symbol", "target", "transition", "trend", "version", "welfare",
-      "whereas", "abstract", "accurate", "acknowledge", "aggregate", "allocate", "assign", "attach", "author",
-      "brief", "capable", "cite", "cooperate", "discriminate", "display", "diverse", "domain", "edit", "enhance",
-      "estate", "exceed", "expert", "explicit", "federal", "fee", "flexible", "ignore", "incentive", "incorporate",
-      "index", "inhibit", "initiate", "input", "instruction", "intelligence", "interval", "lecture", "migrate",
-      "minimum", "minimum", "nuclear", "overseas", "precede", "presume", "rational", "recover", "reveal", "revenue",
-      "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilize", "adapt", "adult",
-      "advocate", "aid", "channel", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert",
-      "decade", "definite", "deny", "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip",
-      "extract", "file", "finite", "foundation", "grade", "guarantee", "hierarchy", "highlight", "identify", "ignore",
-      "incentive", "incorporate", "index", "inhibit", "initiate", "input", "insert", "intervene", "isolate",
-      "manual", "media", "mode", "paradigm", "phenomenon", "priority", "protocol", "publication", "refine",
-      "reform", "regime", "relax", "restrain", "revolution", "scenario", "schedule", "scheme", "scope", "simulate",
-      "sole", "somewhat", "submit", "successor", "survive", "suspend", "team", "tense", "terminate", "theme",
-      "thereby", "topic", "transmit", "ultimate", "unique", "visible", "volunteer"
+      "analyze","approach","area","assess","assume","authority","available","benefit","concept","consistent",
+      "constitute","context","contract","create","data","define","derive","distribute","economic","environment",
+      "establish","estimate","evident","export","factor","finance","formula","function","identify","impact",
+      "indicate","individual","interpret","involve","issue","labor","legal","legislate","major","method",
+      "occur","percent","period","policy","principle","proceed","process","require","research","respond","role",
+      "section","sector","significant","similar","source","structure","theory","vary","achieve","acquire",
+      "administrate","affect","appropriate","aspect","assist","category","chapter","commission","community",
+      "complex","compute","conclude","conduct","consequence","construct","consume","credit","culture","design",
+      "distinct","element","equate","evaluate","feature","final","focus","impact","injure","institute",
+      "invest","item","journal","maintain","normal","obtain","participate","perceive","positive","potential",
+      "previous","primary","purchase","range","region","regulate","relevant","reside","resource","restrict",
+      "secure","select","site","strategy","survey","text","tradition","transfer","alternative","circumstance",
+      "comment","compensate","component","consent","considerable","constant","constrain","contribute","convene",
+      "coordinate","core","corporate","correspond","criteria","deduce","demonstrate","document","dominate",
+      "emphasis","ensure","exclude","framework","fund","illustrate","immigrate","imply","initial","instance",
+      "interact","justify","layer","link","locate","maximize","minor","negate","outcome","partner","philosophy",
+      "proportion","publish","react","register","rely","remove","scheme","sequence","sex","shift","specify",
+      "sufficient","task","technical","technique","technology","valid","volume","access","adequate","annual",
+      "apparent","approximate","attitude","attribute","civil","code","commit","communicate","concentrate",
+      "conference","contrast","cycle","debate","despite","dimension","domestic","emerge","error","ethnic",
+      "goal","grant","hence","hypothesis","implement","implicate","impose","integrate","internal","investigate",
+      "job","label","mechanism","obvious","occupy","option","output","overall","parallel","parameter",
+      "phase","predict","principal","prior","professional","project","promote","resolve","retain","series",
+      "statistic","status","stress","substitute","sufficient","summary","undertake","academy","adjust",
+      "alter","amend","aware","capacity","challenge","clause","compound","conflict","consult","contact",
+      "decline","discrete","draft","enable","energy","enforce","entity","equivalent","evolve","expand",
+      "expose","external","facilitate","fundamental","generate","generation","image","liberal","licence",
+      "logic","marginal","medical","mental","modify","monitor","network","notion","objective","orient",
+      "output","overall","perspective","precise","prime","psychology","pursue","ratio","reject","revenue",
+      "stable","style","subsidy","substitute","symbol","target","transition","trend","version","welfare",
+      "whereas","abstract","accurate","acknowledge","aggregate","allocate","assign","attach","author",
+      "brief","capable","cite","cooperate","discriminate","display","diverse","domain","edit","enhance",
+      "estate","exceed","expert","explicit","federal","fee","flexible","ignore","incentive","incorporate",
+      "index","inhibit","initiate","input","instruction","intelligence","interval","lecture","migrate",
+      "minimum","nuclear","overseas","precede","presume","rational","recover","reveal","revenue","scope",
+      "subsidiary","tape","trace","transform","transport","underlie","utilize","adapt","adult","advocate",
+      "aid","channel","classic","comprehensive","comprise","confirm","contrary","convert","decade","definite",
+      "deny","differentiate","dispose","dynamic","eliminate","empirical","equip","extract","file","finite",
+      "foundation","grade","guarantee","hierarchy","highlight","identify","ignore","incentive","incorporate",
+      "index","inhibit","initiate","input","insert","intervene","isolate","manual","media","mode","paradigm",
+      "phenomenon","priority","protocol","publication","refine","reform","regime","relax","restrain","revolution",
+      "scenario","schedule","scheme","scope","simulate","sole","somewhat","submit","successor","survive","suspend",
+      "team","tense","terminate","theme","thereby","topic","transmit","ultimate","unique","visible","volunteer"
     ];
 
     function updateAssessment() {
       const text = codemirror ? codemirror.getValue().trim() : '';
-      if (text.length === 0) {
+      if (!text) {
         fkGradeSpan.textContent = '—';
         readingEaseSpan.textContent = '—';
         gunningFogSpan.textContent = '—';
@@ -1414,23 +1487,23 @@
         return;
       }
 
-      const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0);
-      const words = text.split(/\s+/).filter(w => w.trim().length > 0);
-      const numSentences = sentences.length || 1;
-      const numWords = words.length || 1;
+      const sentenceArr = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0);
+      const wordsArr = text.split(/\s+/).filter(w => w.trim().length > 0);
+      const numSentences = sentenceArr.length || 1;
+      const numWords = wordsArr.length || 1;
 
       let totalSyllables = 0;
       let totalLetters = 0;
-      words.forEach(w => {
-        totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ""));
-        totalLetters += w.replace(/[^A-Za-z]/g, "").length;
+      wordsArr.forEach(w => {
+        totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ''));
+        totalLetters += w.replace(/[^A-Za-z]/g, '').length;
       });
 
       const complexWords = countComplexWords(text);
 
       let awlMatches = 0;
-      words.forEach(w => {
-        if (AWL.includes(w.toLowerCase().replace(/[^A-Za-z]/g, ""))) {
+      wordsArr.forEach(w => {
+        if (AWL.includes(w.toLowerCase().replace(/[^A-Za-z]/g, ''))) {
           awlMatches++;
         }
       });
@@ -1463,6 +1536,10 @@
         processPreview();
         modeToggle.textContent = 'Edit';
       } else {
+        // Remove any existing copy buttons from preview
+        preview.querySelectorAll('.copy-btn').forEach(btn => btn.remove());
+        // Remove any export buttons from preview
+        preview.querySelectorAll('.export-btn').forEach(btn => btn.remove());
         preview.style.display = 'none';
         codemirror.getWrapperElement().style.display = 'block';
         modeToggle.textContent = 'Preview';
@@ -1475,9 +1552,40 @@
      * 8. PROCESS PREVIEW (MARKDOWN → HTML → KaTeX → Mermaid ← SVG/PNG EXPORT)
      ******************************************************************/
     function processPreview() {
+      // Only run if currently in preview mode
+      if (!isPreview) return;
+
       const rawHtml = marked.parse(codemirror.getValue());
       preview.innerHTML = rawHtml;
 
+      // Syntax highlighting for all code blocks
+      preview.querySelectorAll('pre code').forEach(block => {
+        hljs.highlightElement(block);
+      });
+      // Add “Copy” button to each <pre> inside preview
+      preview.querySelectorAll('pre').forEach(preBlock => {
+        if (!preBlock.querySelector('.copy-btn')) {
+          const button = document.createElement('button');
+          button.className = 'copy-btn';
+          button.innerText = 'Copy';
+          button.setAttribute('title', 'Copy code to clipboard');
+          preBlock.insertBefore(button, preBlock.firstChild);
+          button.addEventListener('click', () => {
+            const codeNode = preBlock.querySelector('code');
+            if (!codeNode) return;
+            const textToCopy = codeNode.innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              button.innerText = 'Copied!';
+              setTimeout(() => (button.innerText = 'Copy'), 1000);
+            }, () => {
+              button.innerText = 'Error';
+              setTimeout(() => (button.innerText = 'Copy'), 1000);
+            });
+          });
+        }
+      });
+
+      // KaTeX rendering
       setTimeout(() => {
         if (typeof renderMathInElement !== 'undefined' && window.renderMathInElement) {
           renderMathInElement(preview, {
@@ -1487,19 +1595,17 @@
               { left: '\\(', right: '\\)', display: false },
               { left: '\\[', right: '\\]', display: true }
             ],
-            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
-            ignoredClasses: ["cm-code"],
+            ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            ignoredClasses: ['cm-code'],
             throwOnError: false,
             strict: false
           });
         }
       }, 10);
 
+      // Mermaid diagrams
       setTimeout(() => {
-        mermaid.run({
-          querySelector: '.mermaid',
-          suppressErrors: true
-        }).catch((e) => console.error('Mermaid error:', e));
+        mermaid.run({ querySelector: '.mermaid', suppressErrors: true }).catch(e => console.error('Mermaid error:', e));
       }, 100);
 
       setTimeout(attachExportButtons, 150);
@@ -1600,7 +1706,6 @@
       link.download = `diagram-${index + 1}@${scale}x.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
-
       document.body.removeChild(cloned);
     }
 
@@ -1636,7 +1741,7 @@
     }
 
     /******************************************************************
-     * 12. HANDLE FILE OPEN
+     * 12. HANDLE FILE OPEN (File System Access API)
      ******************************************************************/
     function handleFileOpen(e) {
       const file = e.target.files[0];
@@ -1647,7 +1752,6 @@
         updateStats();
         updateAssessment();
         if (isPreview) processPreview();
-        // Save to local storage after opening file
         saveToLocalStorage();
         showStatus('Saved locally');
       };
@@ -1696,20 +1800,16 @@
     const backgroundAudio = document.getElementById('background-audio');
     const toggleMusicButton = document.getElementById('toggle-music');
 
-    // Unlock audio on first interaction
     function unlockAudio() {
       if (audioUnlocked) return;
-      const unlockSound = new Audio();
-      unlockSound.src = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
+      const unlockSound = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=');
       unlockSound.play()
         .then(() => {
           unlockSound.pause();
           audioUnlocked = true;
           updateTimerDisplay();
         })
-        .catch(() => {
-          console.warn('Audio unlock failed');
-        });
+        .catch(() => {});
     }
     document.addEventListener('click', unlockAudio, { once: true });
     document.addEventListener('touchstart', unlockAudio, { once: true });
@@ -1728,7 +1828,7 @@
         alert('Please interact with the page to unlock audio.');
         return;
       }
-      backgroundAudio.play().catch(() => alert('Audio failed to play.'));
+      backgroundAudio.play().catch(() => {});
       timerInterval = setInterval(() => {
         seconds--;
         if (seconds < 0) {
@@ -1802,102 +1902,96 @@
         backgroundAudio.play();
         toggleMusicButton.textContent = 'Pause Music';
       } catch (err) {
-        alert('Failed to load audio track: ' + err.message);
+        alert('Failed to change audio: ' + err.message);
       }
     }
 
     /******************************************************************
      * 16. TASK MANAGEMENT
      ******************************************************************/
+    function loadTasks() {
+      const saved = localStorage.getItem('tasks');
+      if (!saved) return;
+      try {
+        tasks = JSON.parse(saved);
+        renderTasks();
+      } catch {
+        tasks = [];
+      }
+    }
+
     function saveTasks() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    function loadTasks() {
-      const saved = localStorage.getItem('tasks');
-      if (saved) {
-        try {
-          tasks = JSON.parse(saved);
-          renderTasks();
-        } catch {
-          tasks = [];
-        }
-      }
-    }
-
-    function renderTasks() {
-      taskList.innerHTML = '';
-      tasks.forEach((task, idx) => {
-        const li = document.createElement('li');
-        li.className = 'task-item' + (task.completed ? ' completed' : '');
-        const span = document.createElement('span');
-        span.textContent = task.text;
-        const actions = document.createElement('div');
-        actions.className = 'task-actions';
-
-        const toggleBtn = document.createElement('button');
-        toggleBtn.textContent = task.completed ? '↺' : '✔';
-        toggleBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
-        toggleBtn.addEventListener('click', () => {
-          tasks[idx].completed = !tasks[idx].completed;
-          saveTasks();
-          renderTasks();
-        });
-
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = '✕';
-        deleteBtn.title = 'Delete Task';
-        deleteBtn.addEventListener('click', () => {
-          tasks.splice(idx, 1);
-          saveTasks();
-          renderTasks();
-        });
-
-        actions.appendChild(toggleBtn);
-        actions.appendChild(deleteBtn);
-        li.appendChild(span);
-        li.appendChild(actions);
-        taskList.appendChild(li);
-      });
-    }
-
     function addTask(text) {
-      if (!text.trim()) return;
-      tasks.push({ text: text.trim(), completed: false });
+      const trimmed = text.trim();
+      if (!trimmed) return;
+      const newTask = { id: Date.now(), text: trimmed, completed: false };
+      tasks.unshift(newTask);
       taskInput.value = '';
       saveTasks();
       renderTasks();
     }
 
+    function toggleTaskCompletion(id) {
+      tasks = tasks.map(t => {
+        if (t.id === id) return { ...t, completed: !t.completed };
+        return t;
+      });
+      saveTasks();
+      renderTasks();
+    }
+
+    function deleteTask(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
+      renderTasks();
+    }
+
+
+function renderTasks() {
+  taskList.innerHTML = '';
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.className = 'task-item';
+    if (task.completed) li.classList.add('completed');
+
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    span.style.cursor = 'pointer';
+
+    const actions = document.createElement('div');
+    actions.className = 'task-actions';
+
+    // Complete button
+    const completeBtn = document.createElement('button');
+    completeBtn.textContent = task.completed ? '↺' : '✓';
+    completeBtn.title = task.completed ? 'Mark Incomplete' : 'Mark Complete';
+    completeBtn.addEventListener('click', () => toggleTaskCompletion(task.id));
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.textContent = '✕';
+    delBtn.title = 'Delete Task';
+    delBtn.addEventListener('click', () => deleteTask(task.id));
+
+    actions.appendChild(completeBtn);
+    actions.appendChild(delBtn);
+    li.appendChild(span);
+    li.appendChild(actions);
+    taskList.appendChild(li);
+  });
+}
+
     /******************************************************************
-     * 17. UPDATE WORD COUNT & READABILITY STATS
+     * 17. UPDATE STATS (Word Count & Flesch–Kincaid Readability)
      ******************************************************************/
     function updateStats() {
-      const text = codemirror.getValue();
-      const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
-      statsDisplay.textContent = `Words: ${words} · Readability: —`;
-      computeReadabilityMetrics(text);
+      const text = codemirror ? codemirror.getValue().trim() : '';
+      const words = text ? text.split(/\s+/).filter(w => w.trim().length > 0).length : 0;
+      statsDisplay.textContent = `Words: ${words} · `;
     }
-
-    function computeReadabilityMetrics(text) {
-      if (!text.trim()) {
-        statsDisplay.textContent = `Words: 0 · Readability: —`;
-        return;
-      }
-      const sentences = text.split(/[\.\!?]+/).filter(s => s.trim().length > 0).length || 1;
-      const wordsArr = text.split(/\s+/).filter(w => w.trim().length > 0).length || 1;
-      let totalSyllables = 0;
-      wordsArr && text.split(/\s+/).filter(w => w.trim().length > 0).forEach(w => {
-        totalSyllables += countSyllables(w.replace(/[^A-Za-z]/g, ""));
-      });
-      const fk = 0.39 * (wordsArr / sentences) + 11.8 * (totalSyllables / wordsArr) - 15.59;
-      statsDisplay.textContent = `Words: ${wordsArr} · Readability: ${fk.toFixed(1)}`;
-    }
-
-    /******************************************************************
-     * 18. INITIALIZE TIMER DISPLAY & TASK LIST on LOAD
-     ******************************************************************/
-    // Already called inside initializeApp()
   </script>
 </body>
 </html>
