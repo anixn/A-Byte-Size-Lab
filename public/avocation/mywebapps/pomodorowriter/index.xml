@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Pomodoro Writer - Focus, Tasks, music! on Ankit&#39;s Hydro-Geo Insights</title>
-    <link>https://ankitdeshmukh.com/avocation/pomodorowriter/</link>
+    <link>https://ankitdeshmukh.com/avocation/mywebapps/pomodorowriter/</link>
     <description>Recent content in Pomodoro Writer - Focus, Tasks, music! on Ankit&#39;s Hydro-Geo Insights</description>
     <image>
       <url>https://ankitdeshmukh.com/Site-Cover.jpg</url>
@@ -10,6 +10,6 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/avocation/pomodorowriter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/avocation/mywebapps/pomodorowriter/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

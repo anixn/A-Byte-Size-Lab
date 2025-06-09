@@ -37,9 +37,9 @@ languages:
                 - name: Slides
                   url: /Slides/
                   weight: 20
-                - name: Avocation
-                  url: /Avocation/
-                  weight: 30
+                # - name: Avocation
+                #   url: /Avocation/
+                #   weight: 30
                 - name: Archive
                   url: /archives
                   weight: 11
@@ -84,12 +84,12 @@ params:
         imageWidth: 160
         imageHeight: 160
         buttons:
-            - name: "Writer"
-              url: /projects/PomodoroWriter/
-            - name: "Timer"
-              url: /projects/pomodoro/
-            - name: "Color"
-              url: /projects/colorpicker/
+            - name: "My Web Apps"
+              url: /avocation/mywebapps/
+            - name: "Avocation"
+              url: /avocation/
+            - name: "Updates"
+              url: research/updates/
 
     homeInfoParams:
         Title: "Dr. Ankit Deshmukh"
