@@ -11,7 +11,7 @@
     <title>Zen Pomodoro Timer | Ankit's Hydro-Geo Insights</title>
     <meta name="keywords" content="Ankit Deshmukh, Timer, Zen, Pomodoro, Meditation, Buddha, Peace, Calm">
     <meta name="description"
-        content="Discover calm and happiness with Ankit Deshmukh’s Pomodoro Timer, a Zen-inspired tool for focus and peace. Enhance productivity, practice meditation, and enjoy soothing soundscapes like Cosmic Hymn and Relaxing Rain. Cultivate mindfulness and inner tranquility in an attention-hungry world.">
+        content="Discover calm and happiness with Ankit Deshmukh's Pomodoro Timer, a Zen-inspired tool for focus and peace. Enhance productivity, practice meditation, and enjoy soothing soundscapes like Cosmic Hymn and Relaxing Rain. Cultivate mindfulness and inner tranquility in an attention-hungry world.">
 
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R5FJKDQD1M"></script>
 
@@ -61,6 +61,7 @@
             /* Keeps the background fixed while scrolling */
             overflow: hidden;
             /* Prevent body from scrolling */
+            transition: background-image 0.5s ease-in-out;
         }
 
         #app {
@@ -88,21 +89,66 @@
             /* Add some margin for better spacing */
         }
 
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
         button {
-            margin: 5px 5px;
-            padding: 10px 20px;
+            margin: 0;
+            padding: 10px 18px;
             background-color: #bdae93;
             color: #282828;
             border: none;
             border-radius: 18px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
             font-family: 'Onest';
+            min-width: 80px;
         }
 
         button:hover {
-            background-color: #d79921;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #toggle-timer {
+            background-color: #b8bb26;
+            font-weight: 700;
+            flex: 2;
+            min-width: 120px;
+        }
+
+        #toggle-timer:hover {
+            background-color: #98971a;
+        }
+
+        #reset {
+            background-color: #fb4934;
+            flex: 1;
+        }
+
+        #reset:hover {
+            background-color: #cc241d;
+        }
+
+        #toggle-music {
+            background-color: #458588;
+            flex: 1;
+        }
+
+        #toggle-music:hover {
+            background-color: #076678;
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
         }
 
         ol {
@@ -148,6 +194,10 @@
             margin: 10px 0;
             font-weight: 700;
             color: #fbf1c7;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .current-task {
@@ -280,31 +330,151 @@
             outline: none;
             border-color: #d79921;
         }
+
+        /* Timer adjustment buttons - SMALLER SIZE (24x24) */
+        .timer-adjust-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1px;
+            background-color: #504945;
+            color: #ebdbb2;
+            border: solid double #32a1ce;;
+            border-radius: 16%;
+            width: 32px;
+            height: 24px !important;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-adjust-btn:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #decrease-time {
+            left: 80px;
+            background-color: #d3869b00;
+        }
+
+        #decrease-time:hover {
+            background-color: #b16286;
+        }
+
+        #increase-time {
+            right: 80px;
+            background-color: #8ec07c00;
+        }
+
+        #increase-time:hover {
+            background-color: #689d6a;
+        }
+
+        #timer-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 0;
+        }
+
+
+        #decrease-time {
+        width: 42px !important;
+        height: 36px !important;
+        min-width: 0 !important;
+        }
+
+
+        #increase-time {
+        width: 42px !important;
+        height: 36px !important;
+        min-width: 0 !important;
+        }
+
+        /* Background changer button */
+        #background-changer {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(59, 56, 54, 0.7);
+            border: 1px solid #b16e11;
+            color: #ebdbb2;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            min-width: 0 !important;
+        }
+
+        #background-changer:hover {
+            background-color: rgba(80, 73, 69, 0.9);
+            transform: scale(1.1);
+        }
+
+        #background-changer:active {
+            transform: scale(0.95);
+        }
+
+        .bg-icon {
+            font-size: 20px;
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- Background changer button -->
+    <button id="background-changer" title="Change background">
+        <span class="bg-icon">✨</span>
+    </button>
+
     <div id="app">
         <h1><img src="logo.svg" alt="Pomodoro Timer Logo" style="width: 24px; height: auto; fill:#fabd2f ">Zen Pomodoro
             Timer</h1>
-        <div id="timer">
-            <span id="minutes">25</span>:<span id="seconds">00</span>
-        </div>
-        <button id="toggle-timer">Start</button>
-        <button id="reset">Reset</button>
-        <button id="toggle-music">Play Music</button>
 
-        <!-- Dropdown for audio selection -->
-        <select id="audio-select">
-            <option value="background.opus" style="background-color: #504945;">Cosmic</option>
-            <option value="background2.opus" style="background-color: #504945;">Muse</option>
-            <option value="background3.opus" style="background-color: #504945;">Burble</option>
-            <option value="background4.opus" style="background-color: #504945;" >ADHD</option>
-        </select>
+        <div id="timer-container">
+            <button id="decrease-time" class="timer-adjust-btn"> (-5)</button>
+            <div id="timer">
+                <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+            <button id="increase-time" class="timer-adjust-btn">(+5)</button>
+        </div>
+
+        <!-- Primary action buttons -->
+        <div class="button-group">
+            <button id="toggle-timer">Start</button>
+            <button id="reset">Reset</button>
+            <button id="toggle-music">Play Music</button>
+        </div>
+
+        <!-- Audio selection -->
+        <div class="audio-controls">
+            <select id="audio-select">
+                <option value="background.opus" style="background-color: #504945;">Cosmic Hymn</option>
+                <option value="background2.opus" style="background-color: #504945;">Muse</option>
+                <option value="background3.opus" style="background-color: #504945;">Burble</option>
+                <option value="background4.opus" style="background-color: #504945;">ADHD Focus</option>
+                <option value="background5.opus" style="background-color: #504945;">BiNural Beats</option>
+            </select>
+        </div>
 
         <audio id="background-audio" src="background.opus" type="audio/ogg; codecs=opus" loop></audio>
         <div id="alerts"></div>
         <div id="pomodoro-count">Pomodoros Completed: 0</div>
+
         <div class="collapsible-section">
             <h4 class="collapsible-header">Current Task</h4>
             <div class="collapsible-content">
@@ -326,10 +496,9 @@
 
     <div id="app" style="text-align: left; padding-top: 4px; padding-bottom: 4px; font-size: 0.85em; ">
         <blockquote style="margin-top: 8px; margin-bottom: 4px; color: #8ec07c;">
-            “Among all the secrets, I am the Silence!” — Geeta
+            "Among all the secrets, I am the Silence!" — Geeta
         </blockquote>
-        <p style="margin-top: 8px;"> The observation of Silence by restraining speech is one of the most powerful meditation technique. </p>
-        <hr style="border: 1px solid rgb(115, 153, 115);">
+        <hr style="border: 0.5px solid rgb(115, 153, 115);">
         <p style="margin-top: 4px; margin-bottom: 4px; font-size: 0.8em;text-align: center;color: #bdaebd;">
             <a style="color: #d79921;" href="https://twitter.com/anix7n" target="_blank" rel="noopener noreferrer">
                 Twitter</a> |
@@ -338,7 +507,6 @@
             <a style="color: #d79921;" href="https://www.youtube.com/@edgeospatial" target="_blank"
                 rel="noopener noreferrer">YouTube</a>.
         </p>
-    <p style="color: #555;">&copy; <span id="current-year"></span> Dr. Ankit Deshmukh. All rights reserved.</p>
     </div>
 
     <script>
@@ -360,6 +528,38 @@
         const currentTaskElement = document.getElementById('current-task');
         const pomodoroCountElement = document.getElementById('pomodoro-count');
         const audioSelect = document.getElementById('audio-select');
+        const decreaseTimeButton = document.getElementById('decrease-time');
+        const increaseTimeButton = document.getElementById('increase-time');
+        const backgroundChanger = document.getElementById('background-changer');
+
+        // Array of background images
+        const backgroundImages = [
+            'ThinkingPlace.webp',
+            'ThinkingPlace1.webp',
+            'ThinkingPlace2.webp'
+        ];
+
+        let currentBackgroundIndex = 0;
+
+        // Function to change background
+        function changeBackground() {
+            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundImages.length;
+            document.body.style.backgroundImage = `url('${backgroundImages[currentBackgroundIndex]}')`;
+
+            // Save to localStorage
+            localStorage.setItem('pomodoroBackground', currentBackgroundIndex);
+        }
+
+        // Load background preference from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTasks();
+
+            const savedBackgroundIndex = localStorage.getItem('pomodoroBackground');
+            if (savedBackgroundIndex !== null) {
+                currentBackgroundIndex = parseInt(savedBackgroundIndex);
+                document.body.style.backgroundImage = `url('${backgroundImages[currentBackgroundIndex]}')`;
+            }
+        });
 
         window.addEventListener('beforeunload', (e) => {
             if (isTimerRunning) {
@@ -368,6 +568,81 @@
                 return 'Your timer is still running! Are you sure you want to leave?';
             }
         });
+
+        // Save tasks to localStorage
+        function saveTasks() {
+            const tasks = [];
+            const taskElements = toDoList.querySelectorAll('li');
+
+            taskElements.forEach(taskElement => {
+                const taskText = taskElement.querySelector('.task-content span:nth-child(2)').textContent;
+                const taskTime = taskElement.querySelector('.task-time').textContent;
+                tasks.push({ text: taskText, time: taskTime });
+            });
+
+            localStorage.setItem('pomodoroTasks', JSON.stringify(tasks));
+        }
+
+        // Load tasks from localStorage
+        function loadTasks() {
+            const savedTasks = localStorage.getItem('pomodoroTasks');
+            if (savedTasks) {
+                const tasks = JSON.parse(savedTasks);
+                tasks.forEach(task => {
+                    createTaskElement(task.text, task.time);
+                });
+                updateTaskNumbers();
+            }
+        }
+
+        function createTaskElement(taskText, taskTime = null) {
+            const taskItem = document.createElement('li');
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'task-content';
+
+            const numberSpan = document.createElement('span');
+            numberSpan.className = 'task-number';
+
+            const taskSpan = document.createElement('span');
+            taskSpan.textContent = taskText;
+
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'task-time';
+
+            if (taskTime) {
+                timeSpan.textContent = taskTime;
+            } else {
+                const now = new Date();
+                timeSpan.textContent = now.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+            }
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '×';
+            deleteButton.classList.add('delete-task');
+            deleteButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                taskItem.remove();
+                updateTaskNumbers();
+                saveTasks(); // Save after deletion
+            });
+
+            taskItem.addEventListener('click', () => {
+                currentTaskElement.textContent = `⌛  ${taskText}`;
+            });
+
+            contentDiv.appendChild(numberSpan);
+            contentDiv.appendChild(taskSpan);
+            contentDiv.appendChild(timeSpan);
+            taskItem.appendChild(contentDiv);
+            taskItem.appendChild(deleteButton);
+            toDoList.appendChild(taskItem);
+
+            return taskItem;
+        }
 
         function updateTaskNumbers() {
             const tasks = toDoList.children;
@@ -387,53 +662,20 @@
             }
 
             try {
-                const taskItem = document.createElement('li');
-                const contentDiv = document.createElement('div');
-                contentDiv.className = 'task-content';
-
-                const numberSpan = document.createElement('span');
-                numberSpan.className = 'task-number';
-
-                const taskSpan = document.createElement('span');
-                taskSpan.textContent = taskText;
-
-                const timeSpan = document.createElement('span');
-                timeSpan.className = 'task-time';
-                const now = new Date();
-                timeSpan.textContent = now.toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false
-                });
-
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = '×';
-                deleteButton.classList.add('delete-task');
-                deleteButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    taskItem.remove();
-                    updateTaskNumbers();
-                });
-
-                taskItem.addEventListener('click', () => {
-                    currentTaskElement.textContent = `⌛  ${taskText}`;
-                });
-
-                contentDiv.appendChild(numberSpan);
-                contentDiv.appendChild(taskSpan);
-                contentDiv.appendChild(timeSpan);
-                taskItem.appendChild(contentDiv);
-                taskItem.appendChild(deleteButton);
-                toDoList.appendChild(taskItem);
-
+                createTaskElement(taskText);
                 updateTaskNumbers();
                 newTaskInput.value = '';
                 newTaskInput.focus();
-
+                saveTasks(); // Save after adding
             } catch (error) {
                 console.error('Error adding task:', error);
                 alert('Failed to add task. Please try again.');
             }
+        }
+
+        function updateDisplay() {
+            minutesElement.textContent = String(minutes).padStart(2, '0');
+            secondsElement.textContent = String(seconds).padStart(2, '0');
         }
 
         function updateTimer() {
@@ -452,8 +694,7 @@
                 return;
             }
 
-            minutesElement.textContent = String(minutes).padStart(2, '0');
-            secondsElement.textContent = String(seconds).padStart(2, '0');
+            updateDisplay();
         }
 
         function toggleTimer() {
@@ -461,6 +702,7 @@
                 backgroundAudio.pause();
                 clearInterval(timerInterval);
                 toggleTimerButton.textContent = 'Start';
+                toggleTimerButton.style.backgroundColor = '#b8bb26';
             } else {
                 backgroundAudio.play().catch(error => {
                     console.error('Audio playback failed:', error);
@@ -468,6 +710,7 @@
                 });
                 timerInterval = setInterval(updateTimer, 1000);
                 toggleTimerButton.textContent = 'Pause';
+                toggleTimerButton.style.backgroundColor = '#98971a';
             }
             isTimerRunning = !isTimerRunning;
         }
@@ -477,9 +720,9 @@
             clearInterval(timerInterval);
             minutes = 25;
             seconds = 0;
-            minutesElement.textContent = '25';
-            secondsElement.textContent = '00';
+            updateDisplay();
             toggleTimerButton.textContent = 'Start';
+            toggleTimerButton.style.backgroundColor = '#b8bb26';
             isTimerRunning = false;
         }
 
@@ -490,9 +733,11 @@
                     alert('Error playing audio. Please interact with the page first.');
                 });
                 toggleMusicButton.textContent = 'Pause Music';
+                toggleMusicButton.style.backgroundColor = '#076678';
             } else {
                 backgroundAudio.pause();
                 toggleMusicButton.textContent = 'Play Music';
+                toggleMusicButton.style.backgroundColor = '#458588';
             }
         }
 
@@ -510,8 +755,27 @@
             }
         }
 
+        // Timer adjustment functions
+        function decreaseTime() {
+            if (minutes >= 5) {
+                minutes -= 5;
+                updateDisplay();
+            } else if (minutes > 0) {
+                minutes = 0;
+                updateDisplay();
+            }
+        }
+
+        function increaseTime() {
+            minutes += 5;
+            updateDisplay();
+        }
+
         // Event listener for the dropdown change
         audioSelect.addEventListener('change', changeAudio);
+
+        // Event listener for background changer button
+        backgroundChanger.addEventListener('click', changeBackground);
 
         // Collapsible functionality
         document.querySelectorAll('.collapsible-header').forEach(header => {
@@ -531,6 +795,8 @@
         toggleTimerButton.addEventListener('click', toggleTimer);
         resetButton.addEventListener('click', resetTimer);
         toggleMusicButton.addEventListener('click', toggleMusic);
+        decreaseTimeButton.addEventListener('click', decreaseTime);
+        increaseTimeButton.addEventListener('click', increaseTime);
     </script>
 </body>
 
