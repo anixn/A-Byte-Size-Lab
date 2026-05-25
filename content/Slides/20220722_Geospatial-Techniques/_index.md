@@ -18,3 +18,6 @@ The collection of slide of the subject I teach to undergrauate students.
 
 ### Geographical Information Systems
 - [Introduction- Geographical Information Systems](/Slides/20220722_Geospatial-Techniques/GA-W-05/Slides.html)
+
+You can further explore Geospatial data analysis in Drone Workshop slide.
+
