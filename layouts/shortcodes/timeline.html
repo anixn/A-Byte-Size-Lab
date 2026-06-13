@@ -1,0 +1,12 @@
+{{ $entries := .Site.Data.updates }}
+{{ $sorted := sort $entries "date" "desc" }}
+
+<div class="timeline">
+  {{ range $sorted }}
+    <div class="timeline-item type-{{ .type }}">
+      <div class="timeline-date">{{ .date | time.Format "2 Jan 2006" }}</div>
+      <div class="timeline-title">{{ .title }}</div>
+      <div class="timeline-description">{{ .description | markdownify }}</div>
+    </div>
+  {{ end }}
+</div>

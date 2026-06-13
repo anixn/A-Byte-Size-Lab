@@ -1,7 +1,7 @@
 theme: "hugo-PaperMod"
 baseURL: https://ankitdeshmukh.com/
 languageCode: en-us
-title: "Ankit's Hydro-Geo Insights"
+title: "Ankit Deshmukh"
 
 paginate: 8
 
@@ -13,115 +13,115 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
-googleAnalytics: 'G-R5FJKDQD1M'
+googleAnalytics: "G-R5FJKDQD1M"
 
 minify:
-    disableXML: true
+  disableXML: true
 
 languages:
-    en:
-        languageName: "English"
-        weight: 1
-        taxonomies:
-          category: categories
-          tag: tags
-          series: series
-        menu:
-            main:
-                - name: Blogs
-                  url: /post/
-                  weight: 10
-                - name: Research
-                  url: /Research/
-                  weight: 12
-                - name: Slides
-                  url: /Slides/
-                  weight: 20
-                # - name: Avocation
-                #   url: /Avocation/
-                #   weight: 30
-                - name: Archive
-                  url: /archives
-                  weight: 11
-                - name: "About me"
-                  url: about/
-                  weight: 50
-                - name: "🔎︎"
-                  url: search/
-                  weight: 60
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Research
+          url: /Research/
+          weight: 10
+        - name: Tools
+          url: /tools/
+          weight: 11
+        # - name: Teaching
+        #   url: /teaching/
+        #   weight: 12
+        - name: Activities
+          url: /activities/
+          weight: 13
+        - name: Blogs
+          url: /post/
+          weight: 14
+        - name: Archive
+          url: /archives
+          weight: 15
+        - name: "🔎︎"
+          url: search/
+          weight: 60
 
 params:
-    env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "Welcome to my vibrant corner of the internet! Here, I'll share my discoveries in the dynamic realms of Geospatial Analysis, Water Resources, & R-programming."
-    author: Dr. Ankit Deshmukh
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: "Dr. Ankit Deshmukh: Research in computational hydrology, geospatial AI, drought analytics, and Earth observation. Using machine learning for environmental sustainability."
+  author: Ankit Deshmukh
 
-    defaultTheme: dark
-    # disableThemeToggle: true
-    ShowShareButtons: true
-    ShareButtons: ["linkedin", "twitter"] # To customize which share buttons to be enabled on page
-    ShowReadingTime: true
-    # disableSpecial1stPost: true
-    displayFullLangName: true
-    ShowPostNavLinks: true
-    ShowBreadCrumbs: true
-    ShowCodeCopyButtons: true
-    ShowRssButtonInSectionTermList: true
-    ShowToc: true
-    TocOpen: false
-    comments: true
-    images: ["Site-Cover.jpg"]
-    label:
-      text: Ankit's Hydro-Geo Insight!
-      icon: /Logo.png
-      iconHeight: 35
+  defaultTheme: dark
+  # disableThemeToggle: true
+  ShowShareButtons: true
+  ShareButtons: ["linkedin", "twitter"] # To customize which share buttons to be enabled on page
+  ShowReadingTime: true
+  # disableSpecial1stPost: true
+  displayFullLangName: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  TocOpen: false
+  comments: true
+  images: ["Site-Cover.jpg"]
+  label:
+    text: Ankit Deshmukh
+    icon: /Logo.png
+    iconHeight: 35
 
-    profileMode:
-        enabled: true
-        title: "Hi, I'm Ankit Deshmukh"
-        subtitle: Academia | Water Resources | Geospatial Analysis <br /> Data Analysis | WoodWorking <br />
-        imageUrl: "Avatar.jpg"
-        imageTitle: Profile picture of Dr. Ankit Deshmukh
-        imageWidth: 160
-        imageHeight: 160
-        buttons:
-            - name: "My Web Apps"
-              url: /avocation/mywebapps/
-            - name: "Avocation"
-              url: /avocation/
-            - name: "Updates"
-              url: research/updates/
+  profileMode:
+    enabled: true
+    title: "Ankit Deshmukh, Ph.D."
+    subtitle: 💼&#xFE0E; &nbsp;Computational Hydrology • Geospatial Intelligence  • Drought Analytics<br /> ♫&#xFE0E; &nbsp;Earth Observation • Cartography • WoodWorking
+    imageUrl: "Avatar.jpg"
+    imageTitle: Profile picture of Dr. Ankit Deshmukh
+    imageWidth: 160
+    imageHeight: 160
+    buttons:
+      - name: "My Web Apps"
+        url: /avocation/mywebapps/
+      - name: "Avocation"
+        url: /avocation/
+      - name: "Updates"
+        url: research/updates/
 
-    homeInfoParams:
-        Title: "Dr. Ankit Deshmukh"
-        Content: >
-            Welcome to my blog, I will be posting the blogs of my learnings in the field of Data Visulization, R-Programming, Machine Learning, and Hydrology. Use [Categories](https://bytesize-blog.netlify.app/categories/) tab to filter out post for aformensioned categories. Do give a 🌟 on [Github](https://github.com/anixn)! For colebration and webinar reach out to me on [Twitter](https://twitter.com/anix7n).
+  homeInfoParams:
+    Title: "Dr. Ankit Deshmukh"
+    Content: >
+      Welcome to my blog. I will be posting about my learnings in data visualization, R programming, machine learning, and hydrology. Please give a star on [Github](https://github.com/anixn) if you find value in my work. For collaboration and webinars, reach out to me on [Twitter](https://twitter.com/anix7n).
 
-    socialIcons:
-        - name: github
-          url: "https://github.com/anixn"
-        - name: linkedin
-          url: "https://www.linkedin.com/in/anixn/"
-        - name: twitter
-          url: "https://twitter.com/anix7n"
-        - name: youtube
-          url: "https://www.youtube.com/@edgeospatial"
+  socialIcons:
+    - name: github
+      url: "https://github.com/anixn"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/anixn/"
+    - name: twitter
+      url: "https://twitter.com/anix7n"
+    - name: youtube
+      url: "https://www.youtube.com/@edgeospatial"
 
-    analytics:
-        google:
-            SiteVerificationTag: "G-R5FJKDQD1M"
+  analytics:
+    google:
+      SiteVerificationTag: "G-R5FJKDQD1M"
 
-    hideFooter: true
+  hideFooter: true
 
-    assets:
-        # disableHLJS: true # to disable highlight.js
-        disableFingerprinting: true
-        favicon: "favicon.ico"
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    disableFingerprinting: true
+    favicon: "favicon.ico"
 
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON # is necessary
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
 
 markup:
   goldmark:

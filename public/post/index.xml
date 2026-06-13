@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Ankit&#39;s Hydro-Geo Insights</title>
+    <title>Posts on Ankit Deshmukh</title>
     <link>https://ankitdeshmukh.com/post/</link>
-    <description>Recent content in Posts on Ankit&#39;s Hydro-Geo Insights</description>
+    <description>Recent content in Posts on Ankit Deshmukh</description>
     <image>
       <url>https://ankitdeshmukh.com/Site-Cover.jpg</url>
       <link>https://ankitdeshmukh.com/Site-Cover.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ankitdeshmukh.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Waters Remember: What Ancient India Knew About Hydrology</title>
+      <link>https://ankitdeshmukh.com/post/2026-06-12-the-waters-remember-what-ancient-india-knew-about-hydrology/</link>
+      <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://ankitdeshmukh.com/post/2026-06-12-the-waters-remember-what-ancient-india-knew-about-hydrology/</guid>
+      <description>A hydrologist&amp;rsquo;s field notes from millennia of Sanskrit and stone
+I. The Field Site I have spent years measuring rivers, modeling monsoons, and watching reservoirs fill and empty. But the most sophisticated water management I have ever encountered was not built with concrete and steel. It was built with stone, brick, verse, and ritual — in a civilization that understood water not as a resource to be extracted, but as a living system to be respected.</description>
+    </item>
+    
     <item>
       <title>Setting Up Local Large Language Models on Windows: Ollama, RAG, and Opne-webui</title>
       <link>https://ankitdeshmukh.com/post/2025-02-07-running-llm-locally-setting-up-deepseek-r1/</link>

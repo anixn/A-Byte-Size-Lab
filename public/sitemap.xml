@@ -2,43 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ankitdeshmukh.com/avocation/creative/</loc>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/research/updates/</loc>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/research/research-summary/</loc>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/research/publications/</loc>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/avocation/avdww/</loc>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/avocation/wateraround/</loc>
-    <lastmod>2024-12-27T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/avocation/mywebapps/</loc>
+    <loc>https://ankitdeshmukh.com/tools/</loc>
     <lastmod>2025-05-29T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/avocation/mywebapps/pomodorowriter/</loc>
+    <loc>https://ankitdeshmukh.com/tools/pomodorowriter/</loc>
     <lastmod>2025-05-29T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/</loc>
-    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/avocation/</loc>
-    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
+    <loc>https://ankitdeshmukh.com/categories/blog/</loc>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/categories/</loc>
-    <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/post/</loc>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/post/2026-06-12-the-waters-remember-what-ancient-india-knew-about-hydrology/</loc>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/categories/water/</loc>
+    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/tags/chatgpt/</loc>
@@ -54,10 +47,6 @@
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/tags/opensourceai/</loc>
-    <lastmod>2025-02-07T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/post/</loc>
     <lastmod>2025-02-07T00:00:00+00:00</lastmod>
   </url>
   <url>
@@ -113,11 +102,11 @@
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20241220_hydro-2024/</loc>
+    <loc>https://ankitdeshmukh.com/activities/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20241220_hydro-2024/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url>
   <url>
@@ -145,7 +134,7 @@
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20240313_geospatial_analysis_with_r/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20240313_geospatial_analysis_with_r/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
   </url>
   <url>
@@ -161,11 +150,11 @@
     <lastmod>2024-01-08T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20231221_hydro-2023/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20231221_hydro-2023/</loc>
     <lastmod>2023-12-21T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20231211_introduction-of-drone-based-survey/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20231211_introduction-of-drone-based-survey/</loc>
     <lastmod>2023-12-11T00:00:00+00:00</lastmod>
   </url>
   <url>
@@ -197,7 +186,7 @@
     <lastmod>2022-08-16T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20220722_geospatial-techniques/</loc>
+    <loc>https://ankitdeshmukh.com/activities/teaching/20220722_geospatial-techniques/</loc>
     <lastmod>2022-07-22T00:00:00+00:00</lastmod>
   </url>
   <url>
@@ -273,25 +262,28 @@
     <lastmod>2021-09-20T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20210322_catchment_delineation/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20210322_catchment_delineation/</loc>
     <lastmod>2021-03-22T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20200604_how-to-make-a-scientific-presentation/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20200604_how-to-make-a-scientific-presentation/</loc>
     <lastmod>2020-06-04T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/slides/20191031_latex-tutorial/</loc>
+    <loc>https://ankitdeshmukh.com/activities/slides/20191031_latex-tutorial/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/about/</loc>
   </url>
   <url>
+    <loc>https://ankitdeshmukh.com/archives/</loc>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/</loc>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/archives/</loc>
+    <loc>https://ankitdeshmukh.com/research/funded_project/resilient-communities/</loc>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/search/</loc>
@@ -299,11 +291,14 @@
   <url>
     <loc>https://ankitdeshmukh.com/series/</loc>
   </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/updates/</loc>
+  </url>
 
   
   <url>
     <loc>https://ankitdeshmukh.com/pomodoro/</loc>
-    <lastmod>2026-05-25T21:41:31+05:30</lastmod>
+    <lastmod>2026-06-13T15:09:50+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

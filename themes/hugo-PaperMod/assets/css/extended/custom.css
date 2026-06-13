@@ -1,0 +1,123 @@
+/* Research cards hover effect */
+.research-summary div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Publication list styling */
+.publications li {
+  transition: background 0.2s;
+}
+.publications li:hover {
+  background: #f8f9fa;
+  padding-left: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .research-summary div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Research cards */
+.research-summary div {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.research-summary div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Publication items */
+.publications li {
+  transition: background 0.2s ease;
+}
+.publications li:hover {
+  background: #f5f5f5;
+  padding-left: 8px;
+}
+
+/* Project cards */
+.projects div {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.projects div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover */
+a[style*="background: #007acc"]:hover {
+  background: #005f99 !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .research-summary div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Research cards */
+.research-summary div {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.research-summary div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+[data-theme="dark"] .research-summary div:hover {
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.05);
+}
+
+/* Publication items */
+.publications li {
+  transition: background 0.2s ease;
+}
+.publications li:hover {
+  background: var(--entry);
+}
+
+/* Project cards */
+.projects div {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.projects div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+[data-theme="dark"] .projects div:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Button hover */
+a[style*="background: var(--link-color)"]:hover {
+  filter: brightness(0.9);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.project-link:hover {
+  text-decoration: underline;
+}
+.project-link.disabled {
+  color: var(--secondary);
+  cursor: default;
+  text-decoration: none;
+}

@@ -1,0 +1,14 @@
+- title: "Funded Project on 'Building Resilient Communities Through Integrated Early Warning Systems for Urban Floods and Agricultural Droughts in India'"
+  description: "A five-year longitudinal ICSSR study on community-driven early warning systems, flood and drought risk mapping, risk perception, and disaster preparedness using GIS, remote sensing, sensors, surveys, and machine learning."
+  wide: true
+  url: "/research/funded_project/resilient-communities/"
+
+- title: "Development of an R Package for Comprehensive Hydrological Analysis and Water Resources Assessment"
+  description: "An open-source R package integrating hydrological data processing, quality control, hydrograph analysis, drought indices, baseflow separation, trend detection, hydrological signatures, model evaluation, and geospatial workflows for reproducible water resources research and operational hydrology."
+  wide: false
+  # url: "#"
+
+- title: "GeoHydroLab: Geospatial Intelligence for Hydrology, Drought Monitoring, and Climate Resilience"
+  description: "An applied geospatial research initiative integrating satellite observations, GIS, hydroclimatic datasets, spatial modeling, and machine learning to support drought assessment, water availability mapping, watershed management, and climate adaptation planning."
+  wide: false
+  # url: "#"

@@ -1,0 +1,15 @@
+- title: "Computational Hydrology"
+  description: "Exploring how data, models, and computation can improve our understanding of streamflow, groundwater contributions, watershed processes, and hydrological responses under changing climates."
+  wide: false
+
+- title: "Drought Analytics"
+  description: "Advancing drought monitoring and forecasting through the integration of climate data, remote sensing observations, drought indices, and machine learning techniques."
+  wide: false
+
+- title: "Geospatial Intelligence"
+  description: "Combining remote sensing, GIS, machine learning, and spatial statistics to transform Earth observation data into actionable insights for water resources and environmental systems."
+  wide: true
+
+- title: "Drone Data Collection & Analysis"
+  description: "Collecting and processing high-resolution UAV imagery using photogrammetry, 3D reconstruction, and spatial analysis to support environmental monitoring and field-scale investigations."
+  wide: true

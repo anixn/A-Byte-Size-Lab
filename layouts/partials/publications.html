@@ -1,0 +1,17 @@
+<div class="publications" style="margin-bottom: 2.5rem">
+  <h2 class="section-heading">
+    📑&#xFE0E; <a href="/research/">Selected Publications</a>
+  </h2>
+  <div class="card-grid card-grid-publications">
+    {{ range .Site.Data.publications }}
+    <div class="card">
+      <strong class="pub-title">{{ .title }}</strong>
+      <div class="pub-authors">{{ .authors }} • {{ .venue }}</div>
+      <div class="pub-links">
+        <a href="{{ .pdf }}">[PDF]</a>
+        <a href="{{ .code }}">[Code]</a>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>

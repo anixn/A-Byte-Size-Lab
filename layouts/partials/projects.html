@@ -1,0 +1,18 @@
+<div class="projects" style="margin-bottom: 2.5rem;">
+  <h2 class="section-heading">
+    💻&#xFE0E; <a href="research/funded_project/ ">Projects</a>
+  </h2>
+  <div class="card-grid">
+    {{ range .Site.Data.projects }}
+      <div class="card {{ if .wide }}card-wide{{ end }}">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        {{ if .url }}
+          <a href="{{ .url }}" class="project-link">📄 Project Details →</a>
+        {{ else }}
+          <span class="project-link disabled">Details coming soon</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
