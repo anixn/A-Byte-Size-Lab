@@ -5,13 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Pomodoro Writer - Focus, Tasks, music! | Ankit Deshmukh</title>
+<title>Pomodoro Writer – Documentation | Ankit Deshmukh</title>
 <meta name="keywords" content="">
-<meta name="description" content="Help Document: Pomodoro Writer
-Author: Dr. Ankit Deshmukh
-LInk: Pomodoro Writer
-Purpose: This web application is designed as a distraction-free writing environment that integrates a Pomodoro timer, task management, real-time text quality assessment, and support for Mermaid diagrams. Its goal is to help writers, researchers, and creatives stay focused, track writing metrics, manage tasks, and visualize ideas in diagrammatic form—all within a single interface.
-1. Overview of Features Distraction-Free Writing Canvas">
+<meta name="description" content="Application URL: https://ankitdeshmukh.com/projects/pomodorowriter/
+Overview Pomodoro Writer is a web‑based, distraction‑free writing environment that integrates:
+A Pomodoro timer with task management and ambient audio Real‑time writing analytics (readability scores, word count, academic word list) Markdown preview with Mermaid diagram rendering and export File operations (open/save .md files) Zen Mode, theme switching, and spellcheck toggles 1. Core Features 1.1 Editor Powered by CodeMirror Dark mode theme: gruvbox Light mode theme: default Full‑screen editing (F11) Markdown syntax highlighting 1.">
 <meta name="author" content="Ankit Deshmukh">
 <link rel="canonical" href="https://ankitdeshmukh.com/tools/pomodorowriter/">
 <meta name="google-site-verification" content="G-R5FJKDQD1M">
@@ -63,7 +61,7 @@ if (!doNotTrack) {
 	gtag('config', 'G-R5FJKDQD1M', { 'anonymize_ip': false });
 }
 </script>
-<meta property="og:title" content="Pomodoro Writer - Focus, Tasks, music!" />
+<meta property="og:title" content="Pomodoro Writer – Documentation" />
 <meta property="og:description" content="Dr. Ankit Deshmukh: Research in computational hydrology, geospatial AI, drought analytics, and Earth observation. Using machine learning for environmental sustainability." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ankitdeshmukh.com/tools/pomodorowriter/" /><meta property="og:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
@@ -71,7 +69,7 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ankitdeshmukh.com/Site-Cover.jpg"/>
 
-<meta name="twitter:title" content="Pomodoro Writer - Focus, Tasks, music!"/>
+<meta name="twitter:title" content="Pomodoro Writer – Documentation"/>
 <meta name="twitter:description" content="Dr. Ankit Deshmukh: Research in computational hydrology, geospatial AI, drought analytics, and Earth observation. Using machine learning for environmental sustainability."/>
 
 
@@ -89,7 +87,7 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Pomodoro Writer - Focus, Tasks, music!",
+      "name": "Pomodoro Writer – Documentation",
       "item": "https://ankitdeshmukh.com/tools/pomodorowriter/"
     }
   ]
@@ -171,7 +169,7 @@ if (!doNotTrack) {
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://ankitdeshmukh.com/">Home</a>&nbsp;»&nbsp;<a href="https://ankitdeshmukh.com/tools/">My Web Apps - Productivity toolkit!</a></div>
   <h1>
-    Pomodoro Writer - Focus, Tasks, music!
+    Pomodoro Writer – Documentation
     <a href="index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
@@ -182,302 +180,235 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
-<div class="post-content"><p><strong>Help Document: Pomodoro Writer</strong></p>
-<p><strong>Author:</strong> Dr. Ankit Deshmukh</p>
-<p><strong>LInk:</strong> <a href="https://ankitdeshmukh.com/projects/pomodorowriter/">Pomodoro Writer</a></p>
-<p><strong>Purpose:</strong>
-This web application is designed as a distraction-free writing environment that integrates a Pomodoro timer, task management, real-time text quality assessment, and support for Mermaid diagrams. Its goal is to help writers, researchers, and creatives stay focused, track writing metrics, manage tasks, and visualize ideas in diagrammatic form—all within a single interface.</p>
-<p><a href="https://ankitdeshmukh.com/projects/pomodorowriter/"><img loading="lazy" src="./Dark_Light.gif" alt="Pomodoro Writer - Focus, Tasks, music!"  />
-</a></p>
+<div class="post-content"><p><strong>Application URL:</strong> <a href="https://ankitdeshmukh.com/projects/pomodorowriter/">https://ankitdeshmukh.com/projects/pomodorowriter/</a></p>
+<h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>Pomodoro Writer is a web‑based, distraction‑free writing environment that integrates:</p>
+<ul>
+<li>A <strong>Pomodoro timer</strong> with task management and ambient audio</li>
+<li>Real‑time <strong>writing analytics</strong> (readability scores, word count, academic word list)</li>
+<li><strong>Markdown preview</strong> with <strong>Mermaid diagram</strong> rendering and export</li>
+<li><strong>File operations</strong> (open/save <code>.md</code> files)</li>
+<li><strong>Zen Mode</strong>, theme switching, and spellcheck toggles</li>
+</ul>
+<p><img loading="lazy" src="./Dark_Light.gif" alt="Pomodoro Writer interface – Dark/Light mode toggle"  />
+</p>
 <hr>
-<h2 id="1-overview-of-features">1. Overview of Features<a hidden class="anchor" aria-hidden="true" href="#1-overview-of-features">#</a></h2>
+<h2 id="1-core-features">1. Core Features<a hidden class="anchor" aria-hidden="true" href="#1-core-features">#</a></h2>
+<h3 id="11-editor">1.1 Editor<a hidden class="anchor" aria-hidden="true" href="#11-editor">#</a></h3>
+<ul>
+<li>Powered by <strong>CodeMirror</strong>
+<ul>
+<li>Dark mode theme: <code>gruvbox</code></li>
+<li>Light mode theme: <code>default</code></li>
+</ul>
+</li>
+<li>Full‑screen editing (F11)</li>
+<li>Markdown syntax highlighting</li>
+</ul>
+<h3 id="12-pomodoro-timer--tasks">1.2 Pomodoro Timer &amp; Tasks<a hidden class="anchor" aria-hidden="true" href="#12-pomodoro-timer--tasks">#</a></h3>
+<ul>
+<li><strong>Timer</strong> – Default 25:00, controls: Start / Pause / Reset</li>
+<li><strong>Audio tracks</strong> – Cosmic, Muse, Burble, Focus (unlock on first click)</li>
+<li><strong>Task list</strong> – Add, toggle complete, delete (persists in <code>localStorage</code>)</li>
+<li><strong>Pomodoro counter</strong> – Increments after each full interval</li>
+</ul>
+<h3 id="13-writing-analytics">1.3 Writing Analytics<a hidden class="anchor" aria-hidden="true" href="#13-writing-analytics">#</a></h3>
+<p>Displayed in top header and collapsible assessment panel:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Word count</td>
+<td>Total words in editor</td>
+</tr>
+<tr>
+<td>Flesch–Kincaid Grade</td>
+<td>U.S. school grade level required</td>
+</tr>
+<tr>
+<td>Reading Ease</td>
+<td>0–100 (higher = easier)</td>
+</tr>
+<tr>
+<td>Gunning Fog Index</td>
+<td>Complexity based on complex words</td>
+</tr>
+<tr>
+<td>Coleman–Liau Index</td>
+<td>Grade level from letters &amp; sentences</td>
+</tr>
+<tr>
+<td>Avg. Word Length</td>
+<td>Characters per word</td>
+</tr>
+<tr>
+<td>Avg. Sentence Length</td>
+<td>Words per sentence</td>
+</tr>
+<tr>
+<td>AWL Matches</td>
+<td>Count of Academic Word List terms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-markdown-preview">1.4 Markdown Preview<a hidden class="anchor" aria-hidden="true" href="#14-markdown-preview">#</a></h3>
+<ul>
+<li>Toggle <strong>Edit</strong> ↔ <strong>Preview</strong> (Ctrl+L)</li>
+<li>Renders with <strong>marked.js</strong></li>
+<li>Math expressions via <strong>KaTeX</strong> (delimiters: <code>$…$</code>, <code>$$…$$</code>, <code>\(…\)</code>, <code>\[…\]</code>)</li>
+</ul>
+<h3 id="15-mermaid-diagrams">1.5 Mermaid Diagrams<a hidden class="anchor" aria-hidden="true" href="#15-mermaid-diagrams">#</a></h3>
+<ul>
+<li>Fenced code blocks with language <code>mermaid</code> are automatically rendered in Preview mode.</li>
+<li>Each rendered diagram provides two export buttons:
+<ul>
+<li><strong>Export SVG</strong> – downloads as <code>.svg</code></li>
+<li><strong>Export PNG</strong> – prompts for resolution scale (1–6) and downloads high‑resolution <code>.png</code> (via html2canvas)</li>
+</ul>
+</li>
+</ul>
+<h3 id="16-theme--ui-toggles">1.6 Theme &amp; UI Toggles<a hidden class="anchor" aria-hidden="true" href="#16-theme--ui-toggles">#</a></h3>
+<ul>
+<li><strong>Theme</strong> – Dark Mode / Light Mode (affects CodeMirror theme and page background)</li>
+<li><strong>Spellcheck</strong> – Enable/disable browser spellcheck (Ctrl+K)</li>
+<li><strong>Zen Mode</strong> – Hides header, footer, timer, and assessment panel (Ctrl+Z)</li>
+</ul>
+<h3 id="17-file-operations">1.7 File Operations<a hidden class="anchor" aria-hidden="true" href="#17-file-operations">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save <code>.md</code></td>
+<td>Ctrl+S</td>
+<td>Uses File System Access API (Chromium browsers). Saves current editor content.</td>
+</tr>
+<tr>
+<td>Open <code>.md</code></td>
+<td>Ctrl+O</td>
+<td>Loads a Markdown file from local disk, replaces editor content.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-usage-guide">2. Usage Guide<a hidden class="anchor" aria-hidden="true" href="#2-usage-guide">#</a></h2>
+<h3 id="21-first-access">2.1 First Access<a hidden class="anchor" aria-hidden="true" href="#21-first-access">#</a></h3>
 <ol>
-<li>
-<p><strong>Distraction-Free Writing Canvas</strong></p>
-<ul>
-<li>A central editor powered by CodeMirror (theme: “gruvbox” in dark mode or default in light mode) that offers a clean, full-screen writing surface.</li>
-<li>Supports Markdown syntax; you can write plain text, headings, lists, code blocks, and more.</li>
-<li>Zen Mode: removes all UI elements except the editor itself to minimize distractions.</li>
-</ul>
-</li>
-<li>
-<p><strong>Pomodoro Timer &amp; Task Management</strong></p>
-<ul>
-<li>
-<p>A fixed-position Pomodoro timer in the top-right corner that starts with a default 25:00 countdown.</p>
-</li>
-<li>
-<p>Controls to Start/Pause and Reset the timer.</p>
-</li>
-<li>
-<p>Select from multiple background audio tracks (“Cosmic,” “Muse,” “Burble,” “Focus”) to play during work sessions (audio unlock required on first click/touch).</p>
-</li>
-<li>
-<p>Task input field and task list under the timer:</p>
-<ul>
-<li>Add new tasks with a single click or by pressing Enter.</li>
-<li>Mark tasks complete/incomplete (✔ or ↺) and delete tasks (✕).</li>
-<li>Task state persists in localStorage, so your list remains available on page reload.</li>
-</ul>
-</li>
-<li>
-<p>Pomodoro count below the timer, incrementing each time you complete a full interval.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Real-Time Writing Analytics &amp; Readability Metrics</strong></p>
-<ul>
-<li>
-<p>Word count and basic Flesch–Kincaid Grade readability displayed in the top header (“Words: X · Readability: Y.Y”).</p>
-</li>
-<li>
-<p>An assessment panel in the top-left corner (collapsible) showing:</p>
-<ul>
-<li><strong>Flesch–Kincaid Grade</strong> (U.S. school grade level)</li>
-<li><strong>Reading Ease</strong> (0–100 scale; higher = easier)</li>
-<li><strong>Gunning Fog Index</strong> (complexity based on complex words)</li>
-<li><strong>Coleman–Liau Index</strong> (grade level based on letter/sentence counts)</li>
-<li><strong>Avg. Word Length</strong> (characters per word)</li>
-<li><strong>Avg. Sentence Length</strong> (words per sentence)</li>
-<li><strong>AWL Matches</strong> (count of words from the Academic Word List)</li>
-</ul>
-</li>
-<li>
-<p>These metrics update on every change to your text.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Markdown Preview with Mermaid Diagram Support</strong></p>
-<ul>
-<li>
-<p>Toggle between Editor and Preview modes via the “Preview” button (or Ctrl + L).</p>
-</li>
-<li>
-<p>In Preview mode:</p>
-<ul>
-<li>Renders your Markdown into HTML (using marked.js).</li>
-<li>Renders Math expressions via KaTeX (delimiters: <code>$…$</code>, <code>$$…$$</code>, <code>\(...\)</code>, <code>\[...\]</code>).</li>
-<li>Detects fenced code blocks labeled “mermaid” (<code>mermaid … </code>) and automatically renders diagrams using Mermaid.js.</li>
-<li>Provides “Export SVG” and “Export PNG” buttons below each rendered Mermaid diagram, so you can download high-quality graphics.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Theme &amp; Spellcheck Toggles</strong></p>
-<ul>
-<li>
-<p><strong>Theme Toggle:</strong> Switch between Dark Mode and Light Mode.</p>
-<ul>
-<li>In Dark Mode: background gradient of deep blues/greens; CodeMirror theme “gruvbox.”</li>
-<li>In Light Mode: brighter gradient of yellows/oranges; CodeMirror theme “default.”</li>
-</ul>
-</li>
-<li>
-<p><strong>Spellcheck Toggle:</strong> Enable/disable browser spellchecking within the editor (Ctrl + K).</p>
-</li>
-<li>
-<p><strong>Zen Mode:</strong> Hide header, footer, timers, and assessment panel for an immersive full-screen writing experience (Ctrl + Z or click “Zen”).</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>File Operations (Save/Open Markdown)</strong></p>
-<ul>
-<li><strong>Save (.md):</strong> If your browser supports the File System Access API, click “Save .md” (or press Ctrl + S) to choose a location and save your document as a Markdown file.</li>
-<li><strong>Open (.md):</strong> Click “Open .md” (or press Ctrl + O) to load an existing Markdown file into the editor.</li>
-</ul>
-</li>
-<li>
-<p><strong>Keyboard Shortcuts</strong></p>
-<ul>
-<li><strong>F11 / Esc:</strong> Toggle CodeMirror full-screen in the editor.</li>
-<li><strong>Ctrl + L (⌘ + L):</strong> Toggle between Editor and Preview modes.</li>
-<li><strong>Ctrl + K (⌘ + K):</strong> Toggle spellcheck on/off.</li>
-<li><strong>Ctrl + Z (⌘ + Z):</strong> Enter/exit Zen Mode.</li>
-<li><strong>Ctrl + M (⌘ + M):</strong> Minimize/restore the Pomodoro timer and assessment panel.</li>
-<li><strong>Ctrl + S (⌘ + S):</strong> Save Markdown file (if supported).</li>
-<li><strong>Ctrl + O (⌘ + O):</strong> Open Markdown file.</li>
-</ul>
-</li>
-<li>
-<p><strong>Footer &amp; Attribution</strong></p>
-<ul>
-<li>At the bottom of the page, a footer displays “© 2025 Ankit Deshmukh,” with links back to the main site and to the “Features” page.</li>
-</ul>
-</li>
+<li>Open the application in a modern browser (Chrome, Edge, or Chromium‑based).</li>
+<li>Click or tap anywhere to unlock audio playback.</li>
 </ol>
-<hr>
-<h2 id="2-detailed-purpose">2. Detailed Purpose<a hidden class="anchor" aria-hidden="true" href="#2-detailed-purpose">#</a></h2>
-<ol>
-<li>
-<p><strong>Distraction-Free Composition</strong></p>
+<h3 id="22-writing--markdown">2.2 Writing &amp; Markdown<a hidden class="anchor" aria-hidden="true" href="#22-writing--markdown">#</a></h3>
 <ul>
-<li>By providing a minimalist writing container and optional Zen Mode, the tool helps you eliminate clutter and focus solely on your words.</li>
-<li>Keyboard shortcuts and smoothly animated transitions preserve immersion.</li>
-</ul>
-</li>
-<li>
-<p><strong>Time Management (Pomodoro Technique)</strong></p>
-<ul>
-<li>The integrated Pomodoro timer encourages sustained, focused writing sessions of 25 minutes, followed by breaks.</li>
-<li>Background audio options (unlock on first interaction) allow you to choose ambient tracks that suit your concentration style.</li>
-<li>Seeing your completed Pomodoros tallied motivates continued productivity.</li>
-</ul>
-</li>
-<li>
-<p><strong>Task Tracking</strong></p>
-<ul>
-<li>Lightweight task list alongside the timer helps you jot down writing sub-tasks (e.g., “Finish intro,” “Insert sources,” “Add diagram”).</li>
-<li>Easily mark tasks done or delete them, keeping your task list concise and up to date.</li>
-</ul>
-</li>
-<li>
-<p><strong>Real-Time Readability &amp; Quality Metrics</strong></p>
-<ul>
-<li>As you type, readability indices give you immediate feedback on how accessible your writing is.</li>
-<li>Word count and Flesch–Kincaid Grade display in the header remind you of progress and difficulty level at a glance.</li>
-<li>Academic Word List (AWL) count helps academic writers track usage of high-level vocabulary.</li>
-</ul>
-</li>
-<li>
-<p><strong>Visual Thinking with Mermaid Diagrams</strong></p>
-<ul>
-<li>
-<p>Writers and researchers often need to sketch flowcharts, graphs, or conceptual maps. Mermaid integration in Markdown preview means you can write a simple code block like:</p>
-<pre tabindex="0"><code>```mermaid
-graph TD
+<li>Write directly in the editor. Use standard Markdown syntax.</li>
+<li>For a Mermaid diagram, insert:
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
   A[Start] --&gt; B{Decision}
   B --&gt;|Yes| C[Option 1]
-  B --&gt;|No| D[Option 2]
-```
 </code></pre></li>
-<li>
-<p>On Preview, that block renders as a scalable diagram. You can then export it as SVG or PNG for inclusion in presentations, papers, or notes.</p>
-</li>
 </ul>
-</li>
-</ol>
-<hr>
-<h2 id="3-how-to-use-it">3. How to Use It<a hidden class="anchor" aria-hidden="true" href="#3-how-to-use-it">#</a></h2>
-<p>Follow these steps to get the most out of the Pomodoro Writer with Mermaid:</p>
+<h3 id="23-timer--tasks">2.3 Timer &amp; Tasks<a hidden class="anchor" aria-hidden="true" href="#23-timer--tasks">#</a></h3>
 <ol>
-<li>
-<p><strong>Access &amp; Initial Setup</strong></p>
-<ul>
-<li>Open the webpage in a modern browser (Chrome, Edge, or any Chromium-based browser recommended for File System API support).</li>
-<li>On first click or touch anywhere, the app unlocks audio so that background tracks will play when you start the timer.</li>
-</ul>
-</li>
-<li>
-<p><strong>Writing in the Editor</strong></p>
-<ul>
-<li>
-<p>Click inside the large editing area (or press any key) to begin.</p>
-</li>
-<li>
-<p>Write in Markdown: use <code>#</code>, <code>##</code>, <code>###</code> for headings; <code>-</code> or <code>*</code> for lists; <code>`inline code`</code> and triple-backticks for code blocks.</p>
-</li>
-<li>
-<p>To insert a Mermaid diagram, type:</p>
-<pre tabindex="0"><code>```mermaid
-[your Mermaid syntax here]
-```
-</code></pre></li>
-<li>
-<p>CodeMirror will provide syntax highlighting, automatic line wrapping, and a contenteditable experience similar to a modern writing app.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Monitoring Word Count &amp; Readability</strong></p>
-<ul>
-<li>Above the editor, you’ll see “Words: 0 · Readability: —” update in real time.</li>
-<li>The assessment panel (top-left) displays deeper metrics (Flesch–Kincaid Grade, Reading Ease, etc.).</li>
-<li>If you prefer more space, collapse the assessment panel by clicking the “✕” icon next to “Assessment.”</li>
-</ul>
-</li>
-<li>
-<p><strong>Using the Pomodoro Timer</strong></p>
-<ul>
-<li>Locate the Pomodoro timer in the top-right corner. By default, it shows “25:00.”</li>
-<li>Click <strong>Start</strong> to begin the countdown. The selected background audio will play.</li>
-<li>When the timer reaches zero, an alert notifies you: “Pomodoro complete!” and your Pomodoro count increments by one.</li>
-<li>Click <strong>Pause</strong> to pause the session at any time. Click <strong>Reset</strong> to drop the timer back to 25:00 and pause.</li>
-<li>Use the <strong>Minimize</strong> (✕) button to collapse the timer into a small icon; click again to restore. You can also press Ctrl + M (⌘ + M) to toggle minimize.</li>
-</ul>
-</li>
-<li>
-<p><strong>Task Management</strong></p>
-<ul>
-<li>Under the timer, type a task description into the “Add new task…” input and click <strong>Add</strong> (or press Enter).</li>
-<li>Your task appears in a list below, each with two buttons: ✔ / ↺ to mark complete/incomplete and ✕ to delete.</li>
-<li>Completed tasks are drawn with a strikethrough and a green tint. All tasks persist via localStorage, so you can close/reopen the page without losing them.</li>
-</ul>
-</li>
-<li>
-<p><strong>Preview &amp; Exporting Diagrams</strong></p>
-<ul>
-<li>
-<p>Click <strong>Preview</strong> (or press Ctrl + L) to switch from the editor to the rendered view.</p>
-</li>
-<li>
-<p>The preview pane shows your Markdown as HTML, renders math expressions with KaTeX, and converts Mermaid code blocks into live diagrams.</p>
-</li>
-<li>
-<p>Below each rendered Mermaid diagram, two buttons appear: <strong>Export SVG</strong> and <strong>Export PNG</strong>:</p>
-<ul>
-<li><strong>Export SVG:</strong> Immediately downloads the diagram as a <code>.svg</code> file.</li>
-<li><strong>Export PNG:</strong> Prompts you to enter a resolution scale (1–6 recommended). After entering a number (e.g., “3”), it uses html2canvas to create a high-resolution PNG.</li>
-</ul>
-</li>
-<li>
-<p>Click <strong>Edit</strong> (or Ctrl + L again) to return to the Markdown editor.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Theme, Spellcheck, and Zen Mode</strong></p>
-<ul>
-<li><strong>Theme (Light/Dark):</strong> Click <strong>Light Mode</strong> to switch to a light theme; click again (now “Dark Mode”) to revert. The CodeMirror theme and page colors update instantly.</li>
-<li><strong>Spell On/Off:</strong> Click <strong>Spell On</strong> to enable browser spellcheck; the button toggles to “Spell Off.” You can also press Ctrl + K.</li>
-<li><strong>Zen Mode:</strong> Click <strong>Zen</strong> (or press Ctrl + Z) to hide header, footer, timer, and assessment panel. Your editor expands to fill more of the screen. To exit Zen Mode, click <strong>Exit Zen</strong> (or press Esc or Ctrl + Z).</li>
-</ul>
-</li>
-<li>
-<p><strong>Saving &amp; Opening Markdown Files</strong></p>
-<ul>
-<li><strong>Save .md:</strong> If your browser supports the File System Access API (Chrome, Edge), click <strong>Save .md</strong> (or press Ctrl + S). A “Save file” dialog appears; choose a location and filename (default: “document.md”). On successful save, the button briefly pulses, and the writing container glows to confirm.</li>
-<li><strong>Open .md:</strong> Click <strong>Open .md</strong> (or press Ctrl + O) to select an existing Markdown file (<code>*.md</code>) from your local drive. Once loaded, its contents replace the current editor text, and all stats/assessments update immediately.</li>
-</ul>
-</li>
-<li>
-<p><strong>Keyboard Shortcuts Recap</strong></p>
-<ul>
-<li><strong>F11:</strong> Enter/exit CodeMirror full-screen editing.</li>
-<li><strong>Esc:</strong> Exit full-screen or Zen Mode.</li>
-<li><strong>Ctrl + L:</strong> Toggle Editor/Preview.</li>
-<li><strong>Ctrl + K:</strong> Toggle Spellcheck.</li>
-<li><strong>Ctrl + M:</strong> Minimize/Restore Pomodoro &amp; Assessment panels.</li>
-<li><strong>Ctrl + S:</strong> Save Markdown.</li>
-<li><strong>Ctrl + O:</strong> Open Markdown.</li>
-<li><strong>Ctrl + Z:</strong> Enter/exit Zen Mode.</li>
-</ul>
-</li>
+<li>Click <strong>Start</strong> – the countdown begins and selected background audio plays.</li>
+<li>At zero, an alert appears and the Pomodoro counter increments.</li>
+<li><strong>Add tasks</strong> – type description → Enter or click <strong>Add</strong>.</li>
+<li><strong>Manage tasks</strong> – use ✔ (complete), ↺ (reopen), ✕ (delete).</li>
 </ol>
-<hr>
-<h2 id="4-tips-for-effective-use">4. Tips for Effective Use<a hidden class="anchor" aria-hidden="true" href="#4-tips-for-effective-use">#</a></h2>
+<h3 id="24-preview--diagram-export">2.4 Preview &amp; Diagram Export<a hidden class="anchor" aria-hidden="true" href="#24-preview--diagram-export">#</a></h3>
+<ol>
+<li>Click <strong>Preview</strong> (or Ctrl+L) to render Markdown, math, and Mermaid diagrams.</li>
+<li>Below each diagram, click <strong>Export SVG</strong> or <strong>Export PNG</strong>.</li>
+</ol>
 <ul>
-<li><strong>Leverage the Pomodoro Technique:</strong> Keep your writing sessions short and focused. Use the built-in timer rather than a separate app. Each completed session (25 minutes) increments your Pomodoro counter—watch it grow as motivation.</li>
-<li><strong>Manage Tasks Inline:</strong> Rather than maintaining a separate to-do list, jot down quick tasks (“Outline section 2,” “Proofread intro”) directly under the timer. Marking them off feels rewarding and keeps you on track.</li>
-<li><strong>Monitor Readability:</strong> As a researcher or content creator, you may want to target a specific audience. The Flesch–Kincaid Grade and Reading Ease scores help you adjust sentence structure and vocabulary in real time.</li>
-<li><strong>Build Diagrams as You Write:</strong> When describing processes, use Mermaid code blocks so you can visualize system flows, decision trees, or data pipelines right within the editor. Export them as SVG/PNG for inclusion in reports or presentations.</li>
-<li><strong>Use Zen Mode for Deep Focus:</strong> When drafting or brainstorming, enter Zen Mode to remove all UI distractions. Your entire viewport becomes a blank canvas.</li>
+<li>For PNG, enter a scale (e.g., <code>3</code> for 3× resolution).</li>
+</ul>
+<ol start="3">
+<li>Click <strong>Edit</strong> (or Ctrl+L) to return to the editor.</li>
+</ol>
+<h3 id="25-saving--opening-files">2.5 Saving / Opening Files<a hidden class="anchor" aria-hidden="true" href="#25-saving--opening-files">#</a></h3>
+<ul>
+<li><strong>Save</strong> – Ctrl+S → choose location and filename (default <code>document.md</code>).</li>
+<li><strong>Open</strong> – Ctrl+O → select a <code>.md</code> file → content loads into editor.</li>
+</ul>
+<h3 id="26-ui-adjustments">2.6 UI Adjustments<a hidden class="anchor" aria-hidden="true" href="#26-ui-adjustments">#</a></h3>
+<ul>
+<li><strong>Theme</strong> – Click <strong>Light Mode</strong> / <strong>Dark Mode</strong> button.</li>
+<li><strong>Spellcheck</strong> – Click <strong>Spell On/Off</strong> or Ctrl+K.</li>
+<li><strong>Zen Mode</strong> – Ctrl+Z to enter/exit. Press Esc or Ctrl+Z to exit.</li>
+<li><strong>Minimize panels</strong> – Click the ✕ on the Pomodoro timer or Assessment panel, or press Ctrl+M.</li>
 </ul>
 <hr>
-<p><strong>Best of Luck! Happy Writing!</strong></p>
+<h2 id="3-keyboard-shortcuts-reference">3. Keyboard Shortcuts Reference<a hidden class="anchor" aria-hidden="true" href="#3-keyboard-shortcuts-reference">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Shortcut (Windows/Linux)</th>
+<th>macOS</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F11</td>
+<td>F11</td>
+<td>Full‑screen editor (CodeMirror)</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>Esc</td>
+<td>Exit full‑screen or Zen Mode</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>⌘ + L</td>
+<td>Toggle Editor / Preview</td>
+</tr>
+<tr>
+<td>Ctrl+K</td>
+<td>⌘ + K</td>
+<td>Toggle spellcheck</td>
+</tr>
+<tr>
+<td>Ctrl+M</td>
+<td>⌘ + M</td>
+<td>Minimize / restore Pomodoro &amp; Assessment panels</td>
+</tr>
+<tr>
+<td>Ctrl+S</td>
+<td>⌘ + S</td>
+<td>Save Markdown file</td>
+</tr>
+<tr>
+<td>Ctrl+O</td>
+<td>⌘ + O</td>
+<td>Open Markdown file</td>
+</tr>
+<tr>
+<td>Ctrl+Z</td>
+<td>⌘ + Z</td>
+<td>Enter / exit Zen Mode</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-technical-notes">4. Technical Notes<a hidden class="anchor" aria-hidden="true" href="#4-technical-notes">#</a></h2>
+<ul>
+<li><strong>File System Access API</strong> – Required for Save/Open operations. Fully supported in Chromium‑based browsers.</li>
+<li><strong>Audio unlock</strong> – Browsers require a user interaction before audio can play. The app unlocks audio on the first click/touch anywhere.</li>
+<li><strong>Persistence</strong> – Task list is stored in <code>localStorage</code> (no backend).</li>
+<li><strong>Mermaid export</strong> – PNG export uses <code>html2canvas</code>; scale values above 6 may cause performance issues.</li>
+<li><strong>Spellcheck</strong> – Relies on the browser’s native spellchecking; languages vary by browser settings.</li>
+</ul>
+<hr>
 
 
 </div>

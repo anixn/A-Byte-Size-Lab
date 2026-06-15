@@ -12,18 +12,6 @@ My current research focuses on the development of a Physio-climatic catchment ch
 
 ### Contact me!
 
-```{r}
-Dr. Ankit Deshmukh
-Assistant Professor
-Department of Civil Engineering
-Pandit Deendayal Energy University,
-Gandhinagar, Gujarat, India, 382421.
-
-- Personal: deshmukh.acad@gmail.com
-- Work: ankit.deshmukh@sot.pdpu.ac.in
-- Site: www.ankitdeshmukh.com/
-```
-
 <div class="vcard">
 <div class="vcard-inner">
 <!-- Left panel: identity & address -->

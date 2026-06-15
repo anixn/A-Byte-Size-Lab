@@ -156,36 +156,36 @@ A collection of interactive tools I've built and the essential software I use da
 
 <div class="tools-grid">
   <div class="tool-card">
-    <div class="tool-name">🐍 R + RStudio</div>
+    <div class="tool-name">R + RStudio</div>
     <div class="tool-desc">Statistical computing, hydrological modelling, and data visualisation (ggplot2, tidyverse).</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">📊 QGIS</div>
+    <div class="tool-name">QGIS</div>
     <div class="tool-desc">Geospatial analysis, catchment delineation, and map production.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">✍️ LaTeX (Overleaf)</div>
+    <div class="tool-name">LaTeX and Rmarkdown</div>
     <div class="tool-desc">Writing research papers, theses, and presentations with professional typesetting.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">🎨 Inkscape</div>
+    <div class="tool-name">Inkscape</div>
     <div class="tool-desc">Vector graphics for figures, schematics, and publication‑ready illustrations.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">🐍 Python (Jupyter)</div>
+    <div class="tool-name">Python for Geospatial Work</div>
     <div class="tool-desc">Machine learning, data pipelines, and scripting for hydrologic time series.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">🗄️ Git / GitHub</div>
+    <div class="tool-name">Website with Blogdown</div>
     <div class="tool-desc">Version control for code, collaborative research, and website deployment.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">🌍 Google Earth Engine</div>
+    <div class="tool-name">Google Earth Engine</div>
     <div class="tool-desc">Cloud‑based geospatial analysis for large‑scale environmental data.</div>
   </div>
   <div class="tool-card">
-    <div class="tool-name">📈 MATLAB</div>
-    <div class="tool-desc">Numerical computing and hydrologic model calibration.</div>
+    <div class="tool-name">Drone Data Processing</div>
+    <div class="tool-desc">UAV image processing using WebODM, including georeferencing, orthomosaic generation, and DSM/DTM creation</div>
   </div>
 </div>
 

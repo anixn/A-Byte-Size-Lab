@@ -9,7 +9,8 @@
         <h3>{{ .title }}</h3>
         <p>{{ .description }}</p>
         {{ if .url }}
-          <a href="{{ .url }}" class="project-link">📄 Project Details →</a>
+          <a href="{{ .url }}" class="project-link">
+            {{ partial "icon" (dict "name" "info" "size" 13) }} Project Details →</a>
         {{ else }}
           <span class="project-link disabled">Details coming soon</span>
         {{ end }}
