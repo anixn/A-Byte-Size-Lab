@@ -9,7 +9,7 @@ paginate: true
 </p>
 
 <details style="margin-bottom: 1rem;">
-  <summary style="cursor: pointer; color: var(--link-color); font-size: 0.85rem;">🛈︎ Event color legend</summary>
+  <summary style="cursor: pointer; color: var(--link-color); font-size: 0.85rem;">{{< icon name="info" size=14 >}} Event color legend</summary>
 
 <div class="event-legend">
   <div class="legend-inner">

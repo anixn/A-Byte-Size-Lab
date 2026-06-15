@@ -1,6 +1,7 @@
 <div class="publications" style="margin-bottom: 2.5rem">
   <h2 class="section-heading">
-    📑&#xFE0E; <a href="/research/">Selected Publications</a>
+    {{ partial "icon" (dict "name" "paper" "size" 22) }}
+    <a href="/research/">Selected Publications</a>
   </h2>
   <div class="card-grid card-grid-publications">
     {{ range .Site.Data.publications }}

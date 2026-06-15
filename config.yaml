@@ -34,9 +34,6 @@ languages:
         - name: Tools
           url: /tools/
           weight: 11
-        # - name: Teaching
-        #   url: /teaching/
-        #   weight: 12
         - name: Activities
           url: /activities/
           weight: 13
@@ -46,7 +43,7 @@ languages:
         - name: Archive
           url: /archives
           weight: 15
-        - name: "🔎︎"
+        - name: "Search"
           url: search/
           weight: 60
 

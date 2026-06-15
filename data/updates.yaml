@@ -1,15 +1,20 @@
+- date: 2026-06-14
+  title: "Certification Successfully Completed"
+  description: "Successfully completed the Coursera course AI For Everyone on June 13, 2026, earning a grade of 95%; certificate verified by Coursera at https://coursera.org/verify/HZ5UQDVMM1WW."
+  type: workshop
+
 - date: 2025-05-30
   title: "Patent: Vehicle Monitoring System"
   description: "Continuous external vehicle monitoring and alerting system for traffic management (Application No. 202421090466 A) – with Dr. Vasudeo Chaudhari."
   type: patent
 
 - date: 2025-04-16
-  title: "Invited Talk – Woodworking"
+  title: "Invited Talk - Woodworking"
   description: "“The Art of Woodworking: Crafted with Geometry (Precision • Passion • Wood)”"
   type: talk
 
 - date: 2024-12-23
-  title: "HYDRO 2024 Conference – Pune"
+  title: "HYDRO 2024 Conference - Pune"
   description: "Presented: “Large-Sample Hydrology to Improve Prediction in Ungauged Basins using Information Theory Techniques.”"
   type: conference
 

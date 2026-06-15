@@ -1,6 +1,7 @@
 <div class="projects" style="margin-bottom: 2.5rem;">
   <h2 class="section-heading">
-    💻&#xFE0E; <a href="research/funded_project/ ">Projects</a>
+    {{ partial "icon" (dict "name" "project" "size" 22) }}
+    <a href="research/funded_project/ ">Projects</a>
   </h2>
   <div class="card-grid">
     {{ range .Site.Data.projects }}

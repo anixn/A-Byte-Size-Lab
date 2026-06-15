@@ -1,13 +1,14 @@
-<div class="research-summary" style="margin-bottom: 2.5rem;">
+<div class="research-summary" style="margin-bottom: 2.5rem">
   <h2 class="section-heading">
-    🔬&#xFE0E; <a href="/research/">Research Focus</a>
+    {{ partial "icon" (dict "name" "telescope" "size" 22) }}
+    <a href="/research/">Research Focus</a>
   </h2>
   <div class="card-grid">
     {{ range .Site.Data.research_focus }}
-      <div class="card {{ if .wide }}card-wide{{ end }}">
-        <h3>{{ .title }}</h3>
-        <p>{{ .description }}</p>
-      </div>
+    <div class="card {{ if .wide }}card-wide{{ end }}">
+      <h3>{{ .title }}</h3>
+      <p>{{ .description }}</p>
+    </div>
     {{ end }}
   </div>
 </div>

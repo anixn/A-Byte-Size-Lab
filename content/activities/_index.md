@@ -185,5 +185,4 @@ layout: "main"
 <div style="text-align: center; margin-top: 2rem;">
   <a href="/" style="color: var(--link-color); text-decoration: none; font-weight: 500;">← Back to Home</a>
 </div>
-
 </div>

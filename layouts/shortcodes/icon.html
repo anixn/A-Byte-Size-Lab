@@ -1,0 +1,4 @@
+{{ $name := .Get "name" }}
+{{ $size := .Get "size" | default 16 }}
+{{ $class := .Get "class" | default "" }}
+{{ partial "icon" (dict "name" $name "size" $size "class" $class) }}
