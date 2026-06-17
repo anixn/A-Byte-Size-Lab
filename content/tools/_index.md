@@ -1,5 +1,5 @@
 ---
-title: "My Web Apps - Productivity toolkit!"
+title: ""
 layout: "main"
 weight: 500
 date: 2025-05-29
@@ -14,14 +14,17 @@ draft: false
   <style>
     body {
       margin: 0;
-      padding: 2rem;
+      padding: 1rem;
       background: var(--theme);
       color: var(--primary);
+    }
+    p {
+      margin: 0.5rem 0;
     }
     .apps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
+      gap: 0.75rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -32,7 +35,7 @@ draft: false
         background: var(--entry);
         box-sizing: border-box;
         overflow: hidden;
-        padding: 1.5rem;
+        padding: 1rem;
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
@@ -63,25 +66,25 @@ draft: false
     .section-title {
       font-size: 1.8rem;
       font-weight: bold;
-      margin: 2rem 0 1rem 0;
+      margin: 0.5rem 0 0.5rem 0;
       text-align: center;
-      border-bottom: 2px solid var(--border);
+      /* border-bottom: 2px solid var(--border); */
       display: inline-block;
       width: auto;
-      padding-bottom: 0.3rem;
+      /* padding-bottom: 0.3rem; */
       color: var(--primary);
     }
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
+      gap: 0.75rem;
       max-width: 1200px;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
     }
     .tool-card {
       background: var(--entry);
       border-radius: 8px;
-      padding: 1.2rem;
+      padding: 1rem;
       text-align: center;
       transition: transform 0.2s ease;
       border: 1px solid var(--border);
@@ -103,7 +106,7 @@ draft: false
       color: var(--secondary);
     }
     hr {
-      margin: 2rem 0;
+      margin: 1rem 0;
       border-color: var(--border);
     }
     a {
@@ -152,7 +155,7 @@ A collection of interactive tools I've built and the essential software I use da
 
 <!-- Research Software & Tools Section -->
 <h2 class="section-title">Research Software & Tools</h2>
-<p style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto; color: var(--secondary);">Essential software I use daily for data analysis, visualisation, and scientific writing.</p>
+<p style="text-align: left; max-width: 800px; color: var(--secondary);">Essential software I use daily for data analysis, visualisation, and scientific writing.</p>
 
 <div class="tools-grid">
   <div class="tool-card">
