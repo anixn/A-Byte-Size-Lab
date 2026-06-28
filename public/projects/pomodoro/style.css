@@ -1,12 +1,15 @@
-/* ---------- PAPERMOD DARK THEME (refined) ---------- */
+/* ---------- PAPERMOD DARK THEME — FROSTED GLASS / ACRYLIC ---------- */
 :root {
     --bg: #1d1e20;
-    --card-bg: #2a2b2e;
-    --card-hover: #333538;
+    /* Increased opacity and added a slightly darker tint for a solid acrylic feel */
+    --card-bg: rgba(30, 31, 34, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.65);
+    --card-hover: rgba(51, 53, 56, 0.9);
     --text: #e6e6e6;
     --text-light: #ffffff;
     --text-muted: #b0b0b0;
-    --accent: #d4b84c;          /* muted gold */
+    --accent: #d4b84c;
     --accent-hover: #c4a83c;
     --border: #3d3e42;
     --radius: 8px;
@@ -43,16 +46,28 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;           /* reduced vertical spacing */
+    gap: 0.75rem;
+}
+
+/* ---------- STRONG ACRYLIC / FROSTED GLASS BASE ---------- */
+.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius);
 }
 
 /* ---------- HEADER ---------- */
 .app-header {
     background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: var(--radius);
     padding: 0.6rem 1.2rem;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,20 +92,22 @@ body {
     font-size: 0.8rem;
 }
 
-/* ---------- MAIN CARD ---------- */
+/* ---------- MAIN CARD (strong acrylic) ---------- */
 #app {
     background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: var(--radius);
     padding: 1.2rem;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
     text-align: center;
     width: 100%;
     max-height: 70vh;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--accent) var(--card-bg);
+    scrollbar-color: var(--accent) transparent;
+    transition: var(--transition);
 }
 #app:hover {
     border-color: var(--accent);
@@ -99,7 +116,7 @@ body {
     width: 6px;
 }
 #app::-webkit-scrollbar-track {
-    background: var(--card-bg);
+    background: transparent;
 }
 #app::-webkit-scrollbar-thumb {
     background: var(--accent);
@@ -115,6 +132,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 #timer-container {
@@ -127,8 +145,9 @@ body {
 
 .timer-adjust-btn {
     padding: 0.2rem 0.6rem;
-    background: transparent;
-    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     color: var(--text-muted);
     font-size: 0.9rem;
@@ -139,13 +158,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 .timer-adjust-btn:hover {
     opacity: 1;
     border-color: var(--accent);
     color: var(--text-light);
-    background: var(--card-hover);
+    background: rgba(51, 53, 56, 0.9);
 }
 
 .button-group {
@@ -156,7 +175,7 @@ body {
     margin: 0.8rem 0;
 }
 
-/* ----- All primary buttons: same size, subtle colours ----- */
+/* ----- All primary buttons with acrylic base ----- */
 .button-group button {
     padding: 0.5rem 1.2rem;
     min-width: 100px;
@@ -166,8 +185,9 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
-    border: 1px solid var(--border);
-    background: transparent;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
     color: var(--text-muted);
 }
 .button-group button:hover {
@@ -175,8 +195,9 @@ body {
     box-shadow: var(--shadow);
 }
 
+/* Solid accent buttons (still slightly translucent to blend with glass) */
 #toggle-timer {
-    background: var(--accent);
+    background: rgba(212, 184, 76, 0.92);
     color: var(--bg);
     border-color: var(--accent);
 }
@@ -186,29 +207,31 @@ body {
 }
 
 #reset {
-    background: #7a4a4a;       /* muted brick */
-    border-color: #7a4a4a;
+    background: rgba(122, 74, 74, 0.92);
+    border-color: rgba(122, 74, 74, 0.92);
     color: #fff;
 }
 #reset:hover {
-    background: #8f5a5a;
-    border-color: #8f5a5a;
+    background: rgba(143, 90, 90, 0.95);
+    border-color: rgba(143, 90, 90, 0.95);
 }
 
 #toggle-music {
-    background: #4a6a7a;       /* muted teal */
-    border-color: #4a6a7a;
+    background: rgba(74, 106, 122, 0.92);
+    border-color: rgba(74, 106, 122, 0.92);
     color: #fff;
 }
 #toggle-music:hover {
-    background: #5a7a8a;
-    border-color: #5a7a8a;
+    background: rgba(90, 122, 138, 0.95);
+    border-color: rgba(90, 122, 138, 0.95);
 }
 
+/* ----- Form Elements (frosted acrylic) ----- */
 select {
     padding: 0.4rem 0.8rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     color: var(--text);
     font-family: inherit;
@@ -224,8 +247,9 @@ select:focus {
 
 input[type="text"] {
     padding: 0.4rem 0.8rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     color: var(--text);
     width: 100%;
@@ -237,14 +261,16 @@ input[type="text"]:focus {
     border-color: var(--accent);
 }
 
+/* ----- To-Do List Items (frosted) ----- */
 ol {
     padding: 0;
     list-style: none;
     margin: 0.3rem 0;
 }
 li {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     padding: 0.3rem 0.6rem;
     margin: 0.3rem 0;
@@ -279,23 +305,30 @@ li:hover {
     color: #d47a7a;
 }
 
+/* ---------- COLLAPSIBLE SECTIONS – minimal & muted (no glass, just faint lines) ---------- */
 .collapsible-section {
     margin: 0.6rem 0;
     text-align: left;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 0.3rem;
 }
 .collapsible-header {
     cursor: pointer;
-    font-weight: 500;
-    color: var(--text-light);
+    font-weight: 400;
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.1rem 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
 }
 .collapsible-header::before {
     content: '▼';
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     transition: transform 0.2s;
+    opacity: 0.5;
 }
 .collapsible-section.collapsed .collapsible-header::before {
     content: '▶';
@@ -305,15 +338,18 @@ li:hover {
     transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
     max-height: 1000px;
     opacity: 1;
+    background: transparent;
 }
 .collapsible-section.collapsed .collapsible-content {
     max-height: 0;
     opacity: 0;
 }
 
+/* Current task inside collapsible — light frosted touch */
 .current-task {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     padding: 0.3rem 0.6rem;
     color: var(--text-muted);
@@ -326,13 +362,15 @@ li:hover {
     margin-top: 0.3rem;
 }
 
-/* ---------- FOOTER ---------- */
+/* ---------- FOOTER (acrylic glass) ---------- */
 .site-footer {
     background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: var(--radius);
     padding: 0.5rem 1.2rem;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -359,31 +397,37 @@ li:hover {
     font-size: 0.7rem;
 }
 
-/* ---------- BACKGROUND CHANGER ---------- */
+/* ---------- MINIMAL FROSTED GLASS BACKGROUND CHANGER ---------- */
 #background-changer {
     position: fixed;
     bottom: 1.5rem;
     left: 1.5rem;
-    width: 40px;
-    height: 40px;
+    width: 34px;               /* smaller footprint */
+    height: 34px;
     border-radius: 50%;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    background: rgba(30, 31, 34, 0.45);  /* more transparent acrylic */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);  /* thinner, subtler border */
     color: var(--text-muted);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 0.9rem;         /* slightly smaller icon */
     transition: var(--transition);
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);  /* softer shadow */
     z-index: 10;
 }
+
 #background-changer:hover {
     border-color: var(--accent);
     color: var(--text-light);
+    background: rgba(30, 31, 34, 0.7);  /* slight darkening on hover */
     transform: scale(1.05);
 }
+
+
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {

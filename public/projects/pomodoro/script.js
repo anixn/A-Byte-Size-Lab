@@ -23,7 +23,8 @@ const backgroundChanger = document.getElementById('background-changer');
 const backgroundImages = [
     'ThinkingPlace.webp',
     'ThinkingPlace1.webp',
-    'ThinkingPlace2.webp'
+    'ThinkingPlace2.webp',
+    'ThinkingPlace3.webp'
 ];
 let currentBackgroundIndex = 0;
 
