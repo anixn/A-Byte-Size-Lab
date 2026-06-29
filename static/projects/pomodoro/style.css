@@ -124,7 +124,7 @@ body {
 }
 
 /* ---------- TYPOGRAPHY & ELEMENTS ---------- */
-#timer {
+/* #timer {
     font-size: 4rem;
     font-weight: 700;
     color: var(--text-light);
@@ -133,6 +133,27 @@ body {
     align-items: center;
     justify-content: center;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+} */
+
+#timer {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0.2rem 0;
+    display: flex;                /* changed from inline-flex */
+    align-items: baseline;       /* keeps numbers and colon aligned */
+    justify-content: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+
+    /* ★ Fixed width – adjust value if needed */
+    width: 200px;
+    min-width: 200px;
+    flex-shrink: 0;
+
+    /* ★ Monospace digits so each character has equal width */
+    /* font-family: 'Roboto Mono', 'Courier New', monospace; */
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
 }
 
 #timer-container {
