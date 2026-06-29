@@ -2,12 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ankitdeshmukh.com/research/research_interests/</loc>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/research/publications/</loc>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/research/research_snippets/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/tools/</loc>
     <lastmod>2025-05-29T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/</loc>
-    <lastmod>2026-06-12T00:00:00+00:00</lastmod>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/research/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/categories/blog/</loc>
@@ -276,9 +290,6 @@
     <loc>https://ankitdeshmukh.com/archives/</loc>
   </url>
   <url>
-    <loc>https://ankitdeshmukh.com/research/</loc>
-  </url>
-  <url>
     <loc>https://ankitdeshmukh.com/research/funded_project/resilient-communities/</loc>
   </url>
   <url>
@@ -294,7 +305,7 @@
   
   <url>
     <loc>https://ankitdeshmukh.com/pomodoro/</loc>
-    <lastmod>2026-06-29T15:38:21+05:30</lastmod>
+    <lastmod>2026-06-29T23:01:02+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
