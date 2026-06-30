@@ -6,7 +6,7 @@ layout: "main"
 
 <div class="image-overlay-container">
   <!-- Your image -->
-  <img src="banner.jpg" alt="Profile or banner image" class="background-image">
+  <img src="banner.webp" alt="Profile or banner image" class="background-image">
 
   <!-- Social icons overlay -->
   <div class="social-icons-custom">
@@ -57,37 +57,6 @@ layout: "main"
   width: 28px;
   height: 28px;
   display: block;
+ filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.91));
 }
-
-
-</style>
-
-<style>
-  /* Minimal styling for collapsible details – does not break theme */
-  details {
-    margin: 1.5em 0;
-  }
-  details summary {
-    cursor: pointer;
-    list-style: none; /* Removes default triangle in some browsers */
-  }
-  details summary::-webkit-details-marker {
-    display: none; /* Hides default triangle in WebKit */
-  }
-  details summary::before {
-    content: "▶";
-    margin-right: 0.5rem;
-    font-size: 0.9em;
-    display: inline-block;
-    transition: transform 0.2s;
-  }
-  details[open] summary::before {
-    transform: rotate(90deg);
-  }
-  /* Keep heading inside summary inline */
-  details summary h3,
-  details summary h2 {
-    display: inline;
-    font-size: inherit;
-  }
 </style>
