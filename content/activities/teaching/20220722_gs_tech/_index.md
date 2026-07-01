@@ -4,7 +4,7 @@ layout: "main"
 #url: /default/
 date: 2022-07-22
 ---
-![header](geo_ana_banner.webp)
+![header](./geo_ana_banner.jpg)
 
 The collection of slide of the subject I teach to undergraduate students.
 
