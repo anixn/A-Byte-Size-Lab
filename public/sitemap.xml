@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ankitdeshmukh.com/activities/teaching/202607_intro2ai/</loc>
+    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://ankitdeshmukh.com/research/research_interests/</loc>
   </url>
   <url>
@@ -22,6 +26,10 @@
   <url>
     <loc>https://ankitdeshmukh.com/research/</loc>
     <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ankitdeshmukh.com/activities/</loc>
+    <lastmod>2026-06-20T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/categories/blog/</loc>
@@ -110,10 +118,6 @@
   <url>
     <loc>https://ankitdeshmukh.com/tags/utility/</loc>
     <lastmod>2025-01-04T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://ankitdeshmukh.com/activities/</loc>
-    <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://ankitdeshmukh.com/activities/slides/20241220_hydro-2024/</loc>
@@ -308,7 +312,7 @@
   
   <url>
     <loc>https://ankitdeshmukh.com/pomodoro/</loc>
-    <lastmod>2026-07-01T22:29:48+05:30</lastmod>
+    <lastmod>2026-07-30T12:31:42+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

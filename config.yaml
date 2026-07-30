@@ -33,19 +33,22 @@ languages:
           weight: 10
         - name: Tools
           url: /tools/
-          weight: 11
+          weight: 20
         - name: Activities
           url: /activities/
-          weight: 13
+          weight: 30
+        - name: Teaching
+          url: /activities/teaching/
+          weight: 40
         - name: Blogs
           url: /post/
-          weight: 14
+          weight: 50
         - name: Archive
           url: /archives
-          weight: 15
+          weight: 60
         - name: "Search"
           url: search/
-          weight: 60
+          weight: 100
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
