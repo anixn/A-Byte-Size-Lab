@@ -1,5 +1,5 @@
 ---
-title: "Introduction To AI for Civil Engineering"
+title: "Introduction to AI for Civil Engineering"
 layout: "main"
 date: 2026-06-20
 weight: 10
@@ -7,10 +7,14 @@ weight: 10
 
 ![](./banner.jpg)
 
-> `Introduction to AI for Civil Engineering` explores how artificial intelligence can improve planning, design, construction, and infrastructure management through data-driven decision-making.
-The course covers AI fundamentals, statistics, machine learning workflows, and real-world applications in transportation, geotechnical, structural, environmental, and water resources engineering.
-Students develop practical skills in analyzing engineering data, building predictive models, and critically evaluating AI solutions for civil engineering challenges.
+{{< box info >}}
+**Update:**<br />  <br />
+Unit-1 Slides are updated!
+{{< /box >}}
 
+> `Introduction to AI for Civil Engineering` explores how artificial intelligence can improve planning, design, construction, and infrastructure management through data-driven decision-making.
+> The course covers AI fundamentals, statistics, machine learning workflows, and real-world applications in transportation, geotechnical, structural, environmental, and water resources engineering.
+> Students develop practical skills in analyzing engineering data, building predictive models, and critically evaluating AI solutions for civil engineering challenges.
 
 ### Assignments
 
