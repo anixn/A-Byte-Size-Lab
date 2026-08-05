@@ -1,0 +1,48 @@
+{{- $text := .Get "text" | default "NEW" -}} {{- $color := .Get "color" |
+default "" -}} {{- $bg := .Get "bg" | default "" -}} {{/* If custom colors are
+provided, set them as inline CSS custom properties */}} {{- $style := "" -}} {{-
+if or $color $bg -}} {{- $style = "style=\"" -}} {{- if $color -}}{{- $style =
+printf "%s--badge-color: %s; " $style $color -}}{{- end -}} {{- if $bg -}}{{-
+$style = printf "%s--badge-bg: %s; " $style $bg -}}{{- end -}} {{- $style =
+printf "%s\"" $style -}} {{- end -}} {{/* Inject CSS once per page (handled by
+Scratch) */}} {{- if not ($.Page.Scratch.Get "badge_css_loaded") -}} {{-
+$.Page.Scratch.Set "badge_css_loaded" true -}}
+<style>
+  .badge-shortcode {
+    /* Default (light theme) values */
+    --badge-bg: #ffffff;
+    --badge-color: #e74c3c;
+
+    /* background: var(--badge-bg); */
+    color: var(--badge-color);
+    padding: 0.1em 0.6em;
+    border-radius: 12px;
+    font-size: 0.65em;
+    font-weight: 700;
+    border: 1.5px solid var(--badge-color);
+    display: inline-block;
+    margin-left: 0.5em;
+    vertical-align: middle;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Dark mode via prefers-color-scheme */
+  @media (prefers-color-scheme: dark) {
+    .badge-shortcode {
+      --badge-bg: #2c2c2c;
+      --badge-color: #ff6b6b;
+    }
+  }
+
+  /* Dark mode via common classes (for JS toggles) */
+  .dark .badge-shortcode,
+  [data-theme="dark"] .badge-shortcode {
+    --badge-bg: #2c2c2c;
+    --badge-color: #ff6b6b;
+  }
+</style>
+{{- end -}}
+
+<span class="badge-shortcode" {{ $style | safeHTMLAttr }}> {{- $text -}} </span>
