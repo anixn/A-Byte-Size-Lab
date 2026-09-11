@@ -21,13 +21,14 @@ weight: 10
 
 - [Unit-00: Introduction and Evaluation Schemes](https://anixn.github.io/slides/Introduction_to_AI/Slides/0.Introduction.pdf)
 - [Unit-01: Foundations of AI in Civil Engineering](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit_1_Foundations_of_AI_in_Civil_Engineering.html)
-- [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit_2_Statistics_and_Exploratory_Data_Analysis.html) {{< badge text="NEW" >}}
+- [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit_2_Statistics_and_Exploratory_Data_Analysis.html)
   - [Basin Plots in R for EDA](https://anixn.github.io/slides/Introduction_to_AI/Slides/1.Plot-for-EDA/Test.html)
   - [Data Cleaning and Outlier identification](https://anixn.github.io/slides/Introduction_to_AI/Slides/2.Data-Cleaning/Document.html)
   - [Regression_Analysis and Model Fitting](https://anixn.github.io/slides/Introduction_to_AI/Slides/3.Regression-Analysis/Regression_Analysis_Iris_Teaching.html)
   - [Identifying Feature Relationships in Data](https://anixn.github.io/slides/Introduction_to_AI/Slides/4.Identifying-Feature-Relationships/Document.html)
   - [Case study with `Superstore` dataset](https://anixn.github.io/slides/Introduction_to_AI/Slides/5.CaseStudy-1/Case_Study-1.html)
 - [Unit-02: Exploratory Data Analysis-Handouts](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-2-EDA-Handout.html) {{< badge text="NEW" >}}
+- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit3-Machine-Learning-Workflows-and-Evaluation.html) {{< badge text="NEW" >}}
 ---
 
 ### Assignments
