@@ -27,6 +27,7 @@ weight: 10
   - [Regression_Analysis and Model Fitting](https://anixn.github.io/slides/Introduction_to_AI/Slides/3.Regression-Analysis/Regression_Analysis_Iris_Teaching.html)
   - [Identifying Feature Relationships in Data](https://anixn.github.io/slides/Introduction_to_AI/Slides/4.Identifying-Feature-Relationships/Document.html)
   - [Case study with `Superstore` dataset](https://anixn.github.io/slides/Introduction_to_AI/Slides/5.CaseStudy-1/Case_Study-1.html)
+- [Unit-02: Exploratory Data Analysis-Handouts](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-2-EDA-Handout.html) {{< badge text="NEW" >}}
 ---
 
 ### Assignments
