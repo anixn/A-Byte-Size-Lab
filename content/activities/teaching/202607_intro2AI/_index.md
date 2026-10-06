@@ -7,8 +7,10 @@ weight: 10
 
 ![](./banner.jpg)
 
-{{< box info >}}
+{{< box warning >}}
 **Update-1:** Unit-3 and 4 Slides are updated!
+{{< /box >}}
+{{< box warning >}}
 **Update-2:** Mid Exam Key are updated!
 {{< /box >}}
 
@@ -28,9 +30,8 @@ weight: 10
 ---
 
 ### Mid Exam Question Key, Grading Scheme & Result
-- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/Slides/QP/202609_Mid_Exam_Key.pdf){{< badge text="NEW" >}}
+- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf){{< badge text="NEW" >}}
 - <p style="color: gray;">Mid Exam Result - TBA</p>
-
 
 
 ### Assignments
