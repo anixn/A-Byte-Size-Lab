@@ -27,12 +27,13 @@ weight: 10
 - [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-02.pdf)
 - [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) {{< badge text="NEW" >}}
 - [Unit-04: Advanced Modeling and Civil Engineering Applications](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-04.pdf) {{< badge text="NEW" >}}
+
 ---
 
 ### Mid Exam Question Key, Grading Scheme & Result
-- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf){{< badge text="NEW" >}}
-- <p style="color: gray;">Mid Exam Result - TBA</p>
 
+- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf){{< badge text="NEW" >}}
+- [Mid Exam Result](https://anixn.github.io/slides/Introduction_to_AI/QP/Mid_Result.html){{< badge text="NEW" >}}
 
 ### Assignments
 
