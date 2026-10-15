@@ -8,10 +8,7 @@ weight: 10
 ![](./banner.jpg)
 
 {{< box warning >}}
-**Update-1:** Unit-3 and 4 Slides are updated!
-{{< /box >}}
-{{< box warning >}}
-**Update-2:** Mid Exam Key are updated!
+**Update:** Mid Exam Result updated!
 {{< /box >}}
 
 > `Introduction to AI for Civil Engineering` explores how artificial intelligence can improve planning, design, construction, and infrastructure management through data-driven decision-making.
@@ -25,8 +22,14 @@ weight: 10
 - [Unit-00: Introduction and Evaluation Schemes](https://anixn.github.io/slides/Introduction_to_AI/Slides/0.Introduction.pdf)
 - [Unit-01: Foundations of AI in Civil Engineering](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-01.pdf)
 - [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-02.pdf)
-- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) {{< badge text="NEW" >}}
+- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf)
 - [Unit-04: Advanced Modeling and Civil Engineering Applications](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-04.pdf) {{< badge text="NEW" >}}
+
+{{< box tip >}}
+**Useful links:**
+[ML Intractive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html)
+
+> {{< /box >}}
 
 ---
 
