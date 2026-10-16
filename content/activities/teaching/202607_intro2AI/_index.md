@@ -22,12 +22,13 @@ weight: 10
 - [Unit-00: Introduction and Evaluation Schemes](https://anixn.github.io/slides/Introduction_to_AI/Slides/0.Introduction.pdf)
 - [Unit-01: Foundations of AI in Civil Engineering](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-01.pdf)
 - [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-02.pdf)
-- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf)
+- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) | <a href="https://anixn.github.io/slides/Introduction_to_AI/Practice/U_3_Practice.xlsx" target="_blank" style="color: blue; font-style: italic;">Download: Practice file</a>
+
 - [Unit-04: Advanced Modeling and Civil Engineering Applications](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-04.pdf) {{< badge text="NEW" >}}
 
 {{< box tip >}}
 **Useful links:**
-[ML Intractive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html)
+[ML Intractive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html) | [k-NN](https://www.youtube.com/watch?v=gs9E7E0qOIc) | [Decision and Classification Trees](https://www.youtube.com/watch?v=_L39rN6gz7Y)
 
 > {{< /box >}}
 
