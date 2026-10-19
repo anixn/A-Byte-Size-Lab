@@ -17,29 +17,26 @@ weight: 10
 
 ---
 
-### Handouts and Reading Material
+## Handouts and Reading Material
 
 - [Unit-00: Introduction and Evaluation Schemes](https://anixn.github.io/slides/Introduction_to_AI/Slides/0.Introduction.pdf)
 - [Unit-01: Foundations of AI in Civil Engineering](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-01.pdf)
 - [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-02.pdf)
 - [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) <a href="https://anixn.github.io/slides/Introduction_to_AI/Practice/U_3_Practice.xlsx" target="_blank" style="color: rgb(175, 128, 0); text-transform: uppercase;">(Download: Practice file)</a>
-
 - [Unit-04: Advanced Modeling and Civil Engineering Applications](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-04.pdf) {{< badge text="NEW" >}}
-
-{{< box tip >}}
-**Useful links:**
-[ML Intractive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html) | [k-NN](https://www.youtube.com/watch?v=gs9E7E0qOIc) | [Decision and Classification Trees](https://www.youtube.com/watch?v=_L39rN6gz7Y)
-
-> {{< /box >}}
 
 ---
 
-### Mid Exam Question Key, Grading Scheme & Result
+## Useful Links
 
-- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf){{< badge text="NEW" >}}
-- [Mid Exam Result](https://anixn.github.io/slides/Introduction_to_AI/QP/Mid_Result.html){{< badge text="NEW" >}}
+{{< box tip >}}
+**Interactive tools & references:**
+[ML Interactive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html) | [k-NN](https://www.youtube.com/watch?v=gs9E7E0qOIc) | [Decision and Classification Trees](https://www.youtube.com/watch?v=_L39rN6gz7Y)
+{{< /box >}}
 
-### Assignments
+---
+
+## Assignments
 
 > Deadline: <span style="color:#C46A6A">30 October 2026</span>
 
@@ -50,7 +47,14 @@ weight: 10
 
 ---
 
-### Quiz Dates
+## Quiz Dates
 
 - Quiz-01: <span style="color:#C46A6A">18 September 2026</span>
 - Quiz-02: <span style="color:#C46A6A">23 October 2026</span>
+
+---
+
+## Mid Exam Question Key, Grading Scheme & Result
+
+- [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf) {{< badge text="NEW" >}}
+- [Mid Exam Result](https://anixn.github.io/slides/Introduction_to_AI/QP/Mid_Result.html) {{< badge text="NEW" >}}
