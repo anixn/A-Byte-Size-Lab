@@ -8,7 +8,7 @@ weight: 10
 ![](./banner.jpg)
 
 {{< box warning >}}
-**Update:** Mid Exam Result updated!
+**Update:** Mid Exam Result Updated on **TCSIon!**
 {{< /box >}}
 
 > `Introduction to AI for Civil Engineering` explores how artificial intelligence can improve planning, design, construction, and infrastructure management through data-driven decision-making.
@@ -22,7 +22,7 @@ weight: 10
 - [Unit-00: Introduction and Evaluation Schemes](https://anixn.github.io/slides/Introduction_to_AI/Slides/0.Introduction.pdf)
 - [Unit-01: Foundations of AI in Civil Engineering](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-01.pdf)
 - [Unit-02: Statistics and Exploratory Data Analysis](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-02.pdf)
-- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) | <a href="https://anixn.github.io/slides/Introduction_to_AI/Practice/U_3_Practice.xlsx" target="_blank" style="color: blue; font-style: italic;">Download: Practice file</a>
+- [Unit-03: Machine Learning Workflows and Evaluation](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-03.pdf) <a href="https://anixn.github.io/slides/Introduction_to_AI/Practice/U_3_Practice.xlsx" target="_blank" style="color: rgb(175, 128, 0); text-transform: uppercase;">(Download: Practice file)</a>
 
 - [Unit-04: Advanced Modeling and Civil Engineering Applications](https://anixn.github.io/slides/Introduction_to_AI/Slides/Unit-04.pdf) {{< badge text="NEW" >}}
 
