@@ -27,15 +27,6 @@ weight: 10
 
 ---
 
-## Useful Links
-
-{{< box tip >}}
-**Interactive tools & references:**
-[ML Interactive](https://mlplayground.co.in/) | [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html) | [k-NN](https://www.youtube.com/watch?v=gs9E7E0qOIc) | [Decision and Classification Trees](https://www.youtube.com/watch?v=_L39rN6gz7Y)
-{{< /box >}}
-
----
-
 ## Assignments
 
 > Deadline: <span style="color:#C46A6A">30 October 2026</span>
@@ -58,3 +49,11 @@ weight: 10
 
 - [Key and Grading Scheme](https://anixn.github.io/slides/Introduction_to_AI/QP/202609_Mid_Exam_Key.pdf) {{< badge text="NEW" >}}
 - [Mid Exam Result](https://anixn.github.io/slides/Introduction_to_AI/QP/Mid_Result.html) {{< badge text="NEW" >}}
+
+---
+
+## Interactive tools & references
+
+> [Confusion Matrix](https://frtendero.github.io/precision-recall-playground/) | [Regression Score](https://codingace.net/ds/regression_score_online.html)
+
+> [ML Interactive](https://mlplayground.co.in/) | [k-NN](https://www.youtube.com/watch?v=gs9E7E0qOIc) | [Decision and Classification Trees](https://www.youtube.com/watch?v=_L39rN6gz7Y)
