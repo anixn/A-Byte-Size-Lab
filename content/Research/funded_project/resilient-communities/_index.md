@@ -3,11 +3,17 @@ title: "Resilient Communities"
 layout: "main"
 ---
 
-> A five-year research project on flood and drought early warning systems in India, combining satellite data, IoT, machine learning, and community-based validation to improve disaster preparedness, resilience, and policy action.
+> A five-year research project on "Developing Early Warning Systems and Disaster Readiness Framework through Resilient Community Engagement".
+>
+> _Dr. Anurag Srivastava\*, Dr. Vinod Varghese, Dr. Prateek Kumar Singh, Dr. Ankit Deshmukh, Dr. Shreekant Varshney, Dr. Sandeep Pandey._
 
 ---
 
 This project is a five-year longitudinal study on pre-disaster preparedness and early warning systems in India, with a primary focus on Gujarat and comparative benchmarking across other disaster-prone states. It integrates satellite remote sensing, GIS, IoT-based monitoring, community participation, and policy analysis to improve flood and drought preparedness, especially for agricultural drought and urban flood risk.
+
+{{< box info >}}
+[Project Dashboard (alpha)](https://anixn.github.io/slides/Dashboard_ICSSR_Project/dashboard.html) {{< badge text="NEW" >}}
+{{< /box >}}
 
 ### Details
 
