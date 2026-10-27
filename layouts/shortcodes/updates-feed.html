@@ -1,0 +1,673 @@
+{{/*
+  updates-feed.html — Facebook-style card feed, PaperMod-theme-aware
+  Usage:  {{< updates-feed >}}
+  Data:   data/updates.yaml
+*/}}
+
+{{- $updates := .Site.Data.updates -}}
+{{- if not $updates -}}
+  <p class="uf-empty">No updates yet. Add entries to <code>data/updates.yaml</code>.</p>
+{{- else -}}
+
+{{- $typeList := slice -}}
+{{- range $updates -}}
+  {{- $t := .type | default .category | default "general" | lower -}}
+  {{- if not (in $typeList $t) -}}{{- $typeList = $typeList | append $t -}}{{- end -}}
+{{- end -}}
+{{- $typeList = sort $typeList -}}
+
+{{- $featured := where $updates "featured" true -}}
+{{- $rest := where $updates "featured" "ne" true -}}
+{{- $rest = sort $rest "date" "desc" -}}
+{{- $sorted := $featured | append $rest -}}
+
+<style>
+  /* ── Root ─────────────────────────────────────────────── */
+  .uf {
+    --uf-bg: var(--entry);
+    --uf-bg-soft: var(--code-bg);
+    --uf-text: var(--content);
+    --uf-muted: var(--secondary);
+    --uf-accent: var(--primary);
+    --uf-border: 1px solid var(--border);
+    --uf-radius: var(--radius);
+    --uf-type-color: var(--primary);
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+    align-self: stretch;
+    margin: var(--gap) 0;
+    color: var(--uf-text);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .uf *, .uf *::before, .uf *::after { box-sizing: border-box; }
+
+  /* ── Per-type accent colours (light) ──────────────────── */
+  .uf-card.type-patent       { --uf-type-color: #8b6914; }
+  .uf-card.type-talk         { --uf-type-color: #ed6c02; }
+  .uf-card.type-conference   { --uf-type-color: #1976d2; }
+  .uf-card.type-presentation { --uf-type-color: #c2185b; }
+  .uf-card.type-webinar      { --uf-type-color: #7b1fa2; }
+  .uf-card.type-workshop     { --uf-type-color: #00838f; }
+  .uf-card.type-publication  { --uf-type-color: #388e3c; }
+  .uf-card.type-general      { --uf-type-color: #475569; }
+
+  /* ── Per-type accent colours (dark) ─────────────────────
+     Covers every PaperMod toggle convention:
+       • [data-theme="dark"]  → attribute on <html>, <body> or wrapper
+       • html.dark / body.dark → class (older PaperMod / forks)
+       • @media (prefers-color-scheme: dark) → auto mode
+  ─────────────────────────────────────────────────────── */
+  [data-theme="dark"] .uf-card.type-patent,
+  html.dark .uf-card.type-patent,
+  body.dark .uf-card.type-patent       { --uf-type-color: #d4af37; }
+  [data-theme="dark"] .uf-card.type-talk,
+  html.dark .uf-card.type-talk,
+  body.dark .uf-card.type-talk         { --uf-type-color: #ffa726; }
+  [data-theme="dark"] .uf-card.type-conference,
+  html.dark .uf-card.type-conference,
+  body.dark .uf-card.type-conference   { --uf-type-color: #42a5f5; }
+  [data-theme="dark"] .uf-card.type-presentation,
+  html.dark .uf-card.type-presentation,
+  body.dark .uf-card.type-presentation { --uf-type-color: #f06292; }
+  [data-theme="dark"] .uf-card.type-webinar,
+  html.dark .uf-card.type-webinar,
+  body.dark .uf-card.type-webinar      { --uf-type-color: #ce93d8; }
+  [data-theme="dark"] .uf-card.type-workshop,
+  html.dark .uf-card.type-workshop,
+  body.dark .uf-card.type-workshop     { --uf-type-color: #4dd0e1; }
+  [data-theme="dark"] .uf-card.type-publication,
+  html.dark .uf-card.type-publication,
+  body.dark .uf-card.type-publication  { --uf-type-color: #81c784; }
+  [data-theme="dark"] .uf-card.type-general,
+  html.dark .uf-card.type-general,
+  body.dark .uf-card.type-general      { --uf-type-color: #94a3b8; }
+
+  /* Auto mode: OS prefers dark AND user hasn't forced light */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf-card.type-patent,
+    body:not([data-theme="light"]) .uf-card.type-patent       { --uf-type-color: #d4af37; }
+    :root:not([data-theme="light"]) .uf-card.type-talk,
+    body:not([data-theme="light"]) .uf-card.type-talk         { --uf-type-color: #ffa726; }
+    :root:not([data-theme="light"]) .uf-card.type-conference,
+    body:not([data-theme="light"]) .uf-card.type-conference   { --uf-type-color: #42a5f5; }
+    :root:not([data-theme="light"]) .uf-card.type-presentation,
+    body:not([data-theme="light"]) .uf-card.type-presentation { --uf-type-color: #f06292; }
+    :root:not([data-theme="light"]) .uf-card.type-webinar,
+    body:not([data-theme="light"]) .uf-card.type-webinar      { --uf-type-color: #ce93d8; }
+    :root:not([data-theme="light"]) .uf-card.type-workshop,
+    body:not([data-theme="light"]) .uf-card.type-workshop     { --uf-type-color: #4dd0e1; }
+    :root:not([data-theme="light"]) .uf-card.type-publication,
+    body:not([data-theme="light"]) .uf-card.type-publication  { --uf-type-color: #81c784; }
+    :root:not([data-theme="light"]) .uf-card.type-general,
+    body:not([data-theme="light"]) .uf-card.type-general      { --uf-type-color: #94a3b8; }
+  }
+
+  /* ── Controls ─────────────────────────────────────────── */
+  .uf-controls {
+    display: flex; flex-wrap: wrap; gap: .75rem 1rem;
+    align-items: center; margin-bottom: 1rem;
+    width: 100%;
+  }
+  .uf-search { flex: 1 1 260px; min-width: 220px; }
+  .uf-search input {
+    width: 100%; padding: .6rem .85rem;
+    font: inherit; font-size: .95rem;
+    color: var(--uf-text);
+    background: var(--uf-bg);
+    border: var(--uf-border);
+    border-radius: var(--uf-radius);
+  }
+  .uf-search input:focus-visible,
+  .uf-filter:focus-visible,
+  .uf-actions a:focus-visible,
+  .uf-media img:focus-visible {
+    outline: 2px solid var(--uf-accent);
+    outline-offset: 2px;
+  }
+
+  .uf-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .uf-filter {
+    padding: .4rem .8rem;
+    font: inherit; font-size: .85rem;
+    color: var(--uf-muted);
+    background: var(--uf-bg-soft);
+    border: var(--uf-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .uf-filter:hover { color: var(--uf-text); background: var(--uf-bg); }
+  .uf-filter.is-active {
+    color: var(--theme);
+    background: var(--uf-accent);
+    border-color: var(--uf-accent);
+  }
+
+  .uf-status {
+    min-height: 1.2em; margin: 0 0 .5rem;
+    font-size: .85rem; color: var(--uf-muted);
+  }
+
+  /* ── Feed ─────────────────────────────────────────────── */
+  .uf-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .uf-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+    background: var(--uf-bg);
+    border: var(--uf-border);
+    border-radius: var(--uf-radius);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.05);
+    transition: box-shadow .2s, transform .2s;
+  }
+  [data-theme="dark"] .uf-card,
+  html.dark .uf-card,
+  body.dark .uf-card {
+    box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 4px 14px rgba(0,0,0,.15);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf-card,
+    body:not([data-theme="light"]) .uf-card {
+      box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 4px 14px rgba(0,0,0,.15);
+    }
+  }
+  .uf-card:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 10px 28px rgba(0,0,0,.08);
+  }
+  [data-theme="dark"] .uf-card:hover,
+  html.dark .uf-card:hover,
+  body.dark .uf-card:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 10px 28px rgba(0,0,0,.2);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf-card:hover,
+    body:not([data-theme="light"]) .uf-card:hover {
+      box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 10px 28px rgba(0,0,0,.2);
+    }
+  }
+  .uf-card[hidden] { display: none; }
+
+  .uf-card.is-featured {
+    border-color: var(--uf-type-color);
+    border-width: 2px;
+    box-shadow: 0 0 0 2px var(--uf-type-color),
+                0 1px 2px rgba(0,0,0,.04),
+                0 4px 14px rgba(0,0,0,.05);
+  }
+  [data-theme="dark"] .uf-card.is-featured,
+  html.dark .uf-card.is-featured,
+  body.dark .uf-card.is-featured {
+    box-shadow: 0 0 0 2px var(--uf-type-color),
+                0 1px 2px rgba(0,0,0,.2),
+                0 4px 14px rgba(0,0,0,.15);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf-card.is-featured,
+    body:not([data-theme="light"]) .uf-card.is-featured {
+      box-shadow: 0 0 0 2px var(--uf-type-color),
+                  0 1px 2px rgba(0,0,0,.2),
+                  0 4px 14px rgba(0,0,0,.15);
+    }
+  }
+
+  /* Image */
+  .uf-media {
+    margin: 0;
+    background: var(--uf-bg-soft);
+    width: 100%;
+  }
+  .uf-media-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 1.91 / 1;
+    width: 100%;
+  }
+  .uf-media img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform .35s ease;
+  }
+  .uf-card:hover .uf-media img { transform: scale(1.04); }
+
+  /* Caption — overrides PaperMod's heavy figcaption */
+  .uf-media .uf-caption,
+  .post-content figure > figcaption.uf-caption {
+    padding: .5rem 1rem;
+    margin: 0;
+    font-size: .9rem;
+    font-weight: 300;
+    line-height: 1.35;
+    font-style: italic;
+    color: var(--uf-muted);
+    border-top: var(--uf-border);
+    text-align: left;
+  }
+
+  /* Body */
+  .uf-body { padding: .7rem 1rem .65rem; min-width: 0; width: 100%; }
+  .uf-meta {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: .5rem .75rem; margin-bottom: .3rem;
+    font-size: .82rem;
+  }
+
+  .uf-type-chip {
+    display: inline-block;
+    padding: .15rem .7rem;
+    font-weight: 600; font-size: .72rem;
+    letter-spacing: .03em; text-transform: uppercase;
+    color: var(--uf-type-color);
+    border: 1.5px solid var(--uf-type-color);
+    border-radius: 999px;
+    background: transparent;
+  }
+  .uf-date { color: var(--uf-muted); }
+
+  .uf-title {
+    margin: 0 0 .25rem;
+    font-size: 1.1rem; line-height: 1.3;
+    color: var(--uf-text);
+  }
+  .uf-desc {
+    margin: 0;
+    color: var(--uf-muted);
+    line-height: 1.45;
+  }
+
+  /* Actions */
+  .uf-actions {
+    display: flex; flex-wrap: wrap;
+    gap: .4rem;
+    padding: .65rem 1rem;
+    border-top: var(--uf-border);
+    background: var(--uf-bg-soft);
+    width: 100%;
+  }
+  .uf-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .35rem .85rem;
+    font-size: .82rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    color: var(--uf-type-color);
+    background: transparent;
+    border: 1.5px solid var(--uf-type-color);
+    border-radius: 999px;
+    transition: background .15s ease, color .15s ease,
+                transform .15s ease, box-shadow .15s ease;
+  }
+  .uf-actions a:hover,
+  .uf-actions a:focus-visible {
+    background: var(--uf-type-color);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    outline: none;
+  }
+  .uf-actions a.is-primary {
+    background: var(--uf-type-color);
+    color: #fff;
+  }
+  .uf-actions a.is-primary:hover,
+  .uf-actions a.is-primary:focus-visible {
+    filter: brightness(1.08);
+    box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  }
+  [data-theme="dark"] .uf-actions a:hover,
+  [data-theme="dark"] .uf-actions a:focus-visible,
+  [data-theme="dark"] .uf-actions a.is-primary,
+  html.dark .uf-actions a:hover,
+  html.dark .uf-actions a:focus-visible,
+  html.dark .uf-actions a.is-primary,
+  body.dark .uf-actions a:hover,
+  body.dark .uf-actions a:focus-visible,
+  body.dark .uf-actions a.is-primary {
+    color: #1a1a1a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf-actions a:hover,
+    :root:not([data-theme="light"]) .uf-actions a:focus-visible,
+    :root:not([data-theme="light"]) .uf-actions a.is-primary,
+    body:not([data-theme="light"]) .uf-actions a:hover,
+    body:not([data-theme="light"]) .uf-actions a:focus-visible,
+    body:not([data-theme="light"]) .uf-actions a.is-primary {
+      color: #1a1a1a;
+    }
+  }
+
+  .uf-empty {
+    margin: 1rem 0; padding: 1rem 1.2rem;
+    color: var(--uf-muted);
+    background: var(--uf-bg-soft);
+    border: 1px dashed var(--uf-border);
+    border-radius: var(--uf-radius);
+  }
+  .uf-sr {
+    position: absolute !important; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── Lightbox ─────────────────────────────────────────── */
+  .uf-lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: ufFadeIn .2s ease;
+  }
+  .uf-lightbox[hidden] { display: none; }
+  .uf-lightbox-img {
+    max-width: 95vw; max-height: 90vh;
+    width: auto; height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    cursor: zoom-out;
+    user-select: none;
+  }
+  .uf-lightbox-close {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 44px; height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1.75rem; line-height: 1;
+    color: #fff; background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  .uf-lightbox-close:hover,
+  .uf-lightbox-close:focus-visible {
+    background: rgba(255,255,255,.28);
+    transform: scale(1.06);
+    outline: none;
+  }
+
+  .uf .uf-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+  }
+  .uf .uf-list > .uf-card {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  @keyframes ufFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  body.uf-locked { overflow: hidden; }
+</style>
+
+<section class="uf" aria-labelledby="uf-heading">
+  <h2 id="uf-heading" class="uf-sr">Updates and activities</h2>
+
+  <div class="uf-controls" role="search">
+    <label class="uf-search">
+      <span class="uf-sr">Search updates</span>
+      <input type="search" id="uf-search-input"
+             placeholder="Search updates…" autocomplete="off"
+             aria-controls="uf-list">
+    </label>
+
+    <div class="uf-filters" role="group" aria-label="Filter by type">
+      <button type="button" class="uf-filter is-active"
+              data-type="all" aria-pressed="true">All</button>
+      {{- range $typeList }}
+        {{- $t := . -}}
+        {{- $count := 0 -}}
+        {{- range $updates -}}
+          {{- $ut := .type | default .category | default "general" | lower -}}
+          {{- if eq $ut $t -}}{{- $count = add $count 1 -}}{{- end -}}
+        {{- end -}}
+        <button type="button" class="uf-filter"
+                data-type="{{ $t }}" aria-pressed="false">
+          {{ $t | title }} ({{ $count }})
+        </button>
+      {{- end }}
+    </div>
+  </div>
+
+  <p class="uf-status" id="uf-status" role="status" aria-live="polite"></p>
+
+  <ol class="uf-list" id="uf-list">
+    {{- range $sorted }}
+      {{- $t := .type | default .category | default "general" | lower -}}
+      {{- $u := . -}}
+      <li class="uf-card type-{{ $t }}{{ if .featured }} is-featured{{ end }}"
+          data-type="{{ $t }}"
+          data-search="{{ lower (printf "%s %s %s %s" (.title | default "") (.description | default "") $t (.date | default "")) }}">
+
+        {{- with .image }}
+        {{- $imgSrc := . | relURL -}}
+        {{- with $.Page.Resources.GetMatch . -}}
+          {{- $imgSrc = .RelPermalink -}}
+        {{- end -}}
+        <figure class="uf-media">
+          <div class="uf-media-img-wrap">
+            <img src="{{ $imgSrc }}"
+                 alt="{{ $u.image_alt | default $u.title }}"
+                 loading="lazy" decoding="async">
+          </div>
+          {{- with $u.image_caption }}
+          <figcaption class="uf-caption">{{ . }}</figcaption>
+          {{- end }}
+        </figure>
+        {{- end }}
+
+        <div class="uf-body">
+          <div class="uf-meta">
+            <span class="uf-type-chip">{{ $t | title }}</span>
+            <time class="uf-date" datetime="{{ .date }}">
+              {{- .date | time.Format ":date_medium" -}}
+            </time>
+          </div>
+
+          <h3 class="uf-title">{{ .title }}</h3>
+
+          {{- with .description }}
+          <p class="uf-desc">{{ . | markdownify | plainify }}</p>
+          {{- end }}
+        </div>
+
+        {{- if or .url .links }}
+        <div class="uf-actions">
+          <!-- {{- with .url }}
+          <a href="{{ . }}"
+             class="is-primary"
+             {{- if hasPrefix . "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            Read more <span aria-hidden="true">→</span>
+          </a>
+          {{- end }} -->
+
+
+          {{- with .url }}
+          {{- $href := . -}}
+          {{- with $.Page.Resources.Get . }}{{ $href = .RelPermalink }}{{ end -}}
+          <a href="{{ $href }}"
+            class="is-primary"
+            {{- if hasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            Read more <span aria-hidden="true">→</span>
+          </a>
+          {{- end }}
+
+          <!-- {{- range .links }}
+          <a href="{{ .url }}"
+             class="{{ if .primary }}is-primary{{ end }}"
+             {{- if hasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            {{ .label }}{{ if hasPrefix .url "http" }}<span aria-hidden="true"> ↗</span>{{ end }}
+          </a>
+          {{- end }} -->
+
+
+          {{- range .links }}
+          {{- $href := .url -}}
+          {{- with $.Page.Resources.Get .url }}{{ $href = .RelPermalink }}{{ end -}}
+          <a href="{{ $href }}"
+            class="{{ if .primary }}is-primary{{ end }}"
+            {{- if hasPrefix $href "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
+            {{ .label }}{{ if hasPrefix $href "http" }}<span aria-hidden="true"> ↗</span>{{ end }}
+          </a>
+          {{- end }}
+
+        </div>
+        {{- end }}
+      </li>
+    {{- end }}
+  </ol>
+
+  <p class="uf-empty" id="uf-no-results" hidden>
+    No updates match your search. Try a different keyword or type.
+  </p>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  var lb = null;
+  function ensureLightbox() {
+    if (lb) return lb;
+
+    lb = document.createElement("div");
+    lb.className = "uf-lightbox";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Image preview");
+    lb.hidden = true;
+    lb.innerHTML =
+      '<button type="button" class="uf-lightbox-close" aria-label="Close preview">×</button>' +
+      '<img class="uf-lightbox-img" alt="">';
+    document.body.appendChild(lb);
+
+    var img = lb.querySelector(".uf-lightbox-img");
+    var btn = lb.querySelector(".uf-lightbox-close");
+
+    function close() {
+      lb.hidden = true;
+      img.src = "";
+      img.alt = "";
+      document.body.classList.remove("uf-locked");
+    }
+    btn.addEventListener("click", close);
+    img.addEventListener("click", close);
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !lb.hidden) close();
+    });
+
+    lb._open = function (src, alt) {
+      img.src = src;
+      img.alt = alt || "";
+      lb.hidden = false;
+      document.body.classList.add("uf-locked");
+      btn.focus();
+    };
+    return lb;
+  }
+
+  function init(root) {
+    var list = root.querySelector("#uf-list");
+    if (!list) return;
+    var cards = Array.prototype.slice.call(list.querySelectorAll(".uf-card"));
+    var searchInput = root.querySelector("#uf-search-input");
+    var filterButtons = Array.prototype.slice.call(root.querySelectorAll(".uf-filter"));
+    var status = root.querySelector("#uf-status");
+    var noResults = root.querySelector("#uf-no-results");
+    var activeType = "all";
+    var query = "";
+
+    root.querySelectorAll(".uf-media img").forEach(function (img) {
+      img.setAttribute("role", "button");
+      img.setAttribute("tabindex", "0");
+      img.setAttribute("aria-label", "Open image preview: " + (img.alt || "image"));
+      function open() { ensureLightbox()._open(img.src, img.alt); }
+      img.addEventListener("click", open);
+      img.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+
+    function apply() {
+      var visible = 0, q = query.trim().toLowerCase();
+      cards.forEach(function (card) {
+        var t = (card.getAttribute("data-type") || "").toLowerCase();
+        var hay = (card.getAttribute("data-search") || "").toLowerCase();
+        var show = (activeType === "all" || t === activeType.toLowerCase())
+                   && (!q || hay.indexOf(q) !== -1);
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      if (noResults) noResults.hidden = visible !== 0;
+      if (status) {
+        status.textContent = visible === cards.length
+          ? "" : visible + " of " + cards.length + " updates shown";
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", function (e) {
+        query = e.target.value || ""; apply();
+      });
+    }
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        activeType = btn.getAttribute("data-type") || "all";
+        filterButtons.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        apply();
+      });
+    });
+    apply();
+  }
+
+  function boot() {
+    document.querySelectorAll(".uf").forEach(init);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+
+{{- end -}}

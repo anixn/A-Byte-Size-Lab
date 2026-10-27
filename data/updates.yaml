@@ -1,49 +1,124 @@
-- date: 2026-06-14
+# ─────────────────────────────────────────────────────────────
+# Updates feed data — sorted newest → oldest.
+# The shortcode also sorts: featured first, then date desc,
+# so YAML order is for readability only.
+# ─────────────────────────────────────────────────────────────
+
+# ── 2026 ─────────────────────────────────────────────────────
+
+- type: general
+  featured: false
+  date: 2026-10-01
+  title: "DGCA-Certified Remote Pilot"
+  description: >-
+    Successfully completed the DGCA-approved Drone Pilot Training and
+    Certification program and have been issued the **Remote Pilot
+    Certificate** under the Drone (Amendment) Rules, 2022, via the eGCA
+    platform. Endorsed for **Rotorcraft RPAS, Small class, VLOS**
+    operations (RPTO: Kaushalya The Skill University). This strengthens
+    teaching of Surveying and Drone Laboratory courses, and supports
+    UAV-based surveying, photogrammetry and GIS workflows in research.
+  image: "20261027_drone_cert.png"
+  image_alt: "DGCA Remote Pilot Certificate — Dr. Ankit Deshmukh"
+  image_caption: "Remote Pilot Certificate issued through the eGCA platform"
+  links:
+    - label: "View Certificate"
+      url: "files/remote-pilot-certificate.pdf"
+      primary: true
+    - label: "Verify on eGCA"
+      url: "https://www.dgca.gov.in/digigov-portal/jsp/dgca/InventoryList/headerblock/drones/RPAS.jsp"
+
+- date: "2026-10-26"
+  type: "publication"
+  title: "Featured in a media update on drought and water resilience"
+  description: >
+    A short media feature covering ongoing work on drought monitoring,
+    geospatial intelligence, and community-driven early warning systems.
+  image: "20261027_image.png"
+  image_alt: "Media coverage thumbnail"
+  image_caption: "Screenshot from the feature — Oct 2026"
+  url: "/media/2026-10-feature/"
+  links:
+    - label: "Read the feature"
+      url: "https://ankitdeshmukh.com/"
+      primary: true
+    - label: "Download PDF"
+      url: "/pdfs/media-2026-10.pdf"
+  featured: true
+
+- date: "2026-06-14"
+  type: "workshop"
   title: "Certification Successfully Completed"
   description: "Successfully completed the Coursera course AI For Everyone on June 13, 2026, earning a grade of 95%; certificate verified by Coursera at https://coursera.org/verify/HZ5UQDVMM1WW."
-  type: workshop
 
-- date: 2025-05-30
+# ── 2025 ─────────────────────────────────────────────────────
+
+- date: "2025-06-15"
+  type: "publication"
+  title: "Novel control strategies for electric vehicle charging stations"
+  description: "Varshney et al., 2025 • Scientific Reports."
+  links:
+    - label: "View publication"
+      url: "https://www.nature.com/srep/"
+      primary: true
+
+- date: "2025-05-30"
+  type: "patent"
   title: "Patent: Vehicle Monitoring System"
   description: "Continuous external vehicle monitoring and alerting system for traffic management (Application No. 202421090466 A) – with Dr. Vasudeo Chaudhari."
-  type: patent
 
-- date: 2025-04-16
+- date: "2025-04-16"
+  type: "talk"
   title: "Invited Talk - Woodworking"
   description: "“The Art of Woodworking: Crafted with Geometry (Precision • Passion • Wood)”"
-  type: talk
 
-- date: 2024-12-23
+# ── 2024 ─────────────────────────────────────────────────────
+
+- date: "2024-12-23"
+  type: "conference"
   title: "HYDRO 2024 Conference - Pune"
   description: "Presented: “Large-Sample Hydrology to Improve Prediction in Ungauged Basins using Information Theory Techniques.”"
-  type: conference
 
-- date: 2022-08-24
+# ── 2022 ─────────────────────────────────────────────────────
+
+- date: "2022-08-24"
+  type: "presentation"
   title: "Presentation: Vishal Rakhecha"
   description: "Innovation in Smart and Sustainable Infrastructure conference – “An enhanced bottom-up approach to assess catchments' vulnerability to climate change.”"
-  type: presentation
 
-- date: 2022-08-24
+- date: "2022-08-24"
+  type: "presentation"
   title: "Presentation: Shweta Kumari"
   description: "Innovation in Smart and Sustainable Infrastructure conference – “Comparison of image processing techniques for LULC changes in Indian semi‑arid region.”"
-  type: presentation
 
-- date: 2022-06-24
+- date: "2022-06-24"
+  type: "webinar"
   title: "Webinar: Climate Change & Catchments"
   description: "“How is climate change affecting catchment response?” – Pandit Deendayal Energy University."
-  type: webinar
 
-- date: 2021-09-23
+# ── 2021 ─────────────────────────────────────────────────────
+
+- date: "2021-09-23"
+  type: "talk"
   title: "Invited Talk – SVNIT Surat"
   description: "Atal FDP on Air Pollution & Climate Change – “What is ‘Climate Change’ and how it’s affecting catchments’ response?”"
-  type: talk
 
-- date: 2021-03-22
+- date: "2021-08-01"
+  type: "talk"
+  title: "Impact of climate change on meteorological drought across the Indian sub-continent"
+  description: "Deshmukh and Kumari, 2021 • AOGS 2021."
+  links:
+    - label: "Conference page"
+      url: "https://www.asiaoceania.org/"
+
+- date: "2021-03-22"
+  type: "workshop"
   title: "Workshop: Advanced Modelling Techniques"
   description: "“Advanced Modelling Technique for Water Resource Management” – PDEU, Gandhinagar."
-  type: workshop
 
-- date: 2020-12-15
+# ── 2020 ─────────────────────────────────────────────────────
+
+- date: "2020-12-15"
+  type: "publication"
   title: "AGU Fall Meeting 2020"
   description: "Shweta Kumari & Ankit Deshmukh – “Impact of climate change on meteorological drought in different climate zones across the Indian sub‑continent.” AGU Fall Meeting Abstracts, Vol. 2020, H184‑06."
-  type: publication

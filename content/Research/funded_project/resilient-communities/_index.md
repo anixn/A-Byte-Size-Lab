@@ -4,8 +4,6 @@ layout: "main"
 ---
 
 > A five-year research project on "Developing Early Warning Systems and Disaster Readiness Framework through Resilient Community Engagement".
->
-> _Dr. Anurag Srivastava\*, Dr. Vinod Varghese, Dr. Prateek Kumar Singh, Dr. Ankit Deshmukh, Dr. Shreekant Varshney, Dr. Sandeep Pandey._
 
 ---
 
