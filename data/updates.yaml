@@ -61,10 +61,75 @@
       url: "/pdfs/media-2026-10.pdf"
   featured: true
 
+- type: talk
+  featured: false
+  date: "2026-08-24"
+  title: "Coordinator — SEQUENCE 2026 Climate Action Track"
+  description: >-
+    Served as **Coordinator for the Climate Action (Climate Change) track** at
+    SEQUENCE 2026, a one-day international partnership-building summit hosted
+    at Pandit Deendayal Energy University (PDEU), Gandhinagar, on 24 August
+    2026. Contributed to coordination of the track focused on climate science,
+    resilience, mitigation, adaptation, policy, and technology solutions.
+  # url: "https://sequence-phi-gules.vercel.app/"
+  image: "20260824_Climate_Action.png"
+  image_alt: "SEQUENCE 2026 Climate Action Industry Round Table banner featuring industry experts and Dr. Ankit Deshmukh as Coordinator."
+  image_caption: "Coordinator for the Climate Action - Industry Round Table at PDEU's SEQUENCE 2026 Summit."
+
+  links:
+    - label: "Visit SEQUENCE 2026"
+      url: "https://sequence-phi-gules.vercel.app/"
+      primary: true
+
 - date: "2026-06-14"
   type: "workshop"
   title: "Certification Successfully Completed"
   description: "Successfully completed the Coursera course AI For Everyone on June 13, 2026, earning a grade of 95%; certificate verified by Coursera at https://coursera.org/verify/HZ5UQDVMM1WW."
+
+- type: talk
+  featured: false
+  date: "2026-08-02"
+  title: "Keynote Session 05 — Geospatial Intelligence for Smart EV Charging Infrastructure: GIS-Based Site Selection and Multi-Criteria Decision Analysis"
+  description: >-
+    Delivered Keynote Session 05 (11:45 AM - 01:00 PM) on Day 2 of the two-day
+    workshop on smart EV charging infrastructures at PDEU, Gandhinagar. The talk
+    examined why charging-station siting is a spatial decision problem - India's
+    charger-to-EV ratio, low utilisation and stranded-asset risk - and set out a
+    **GIS-MCDA** workflow: criteria definition, thematic GIS layers, AHP-based
+    criteria weighting, suitability overlay and ranking, demonstrated with
+    OpenStreetMap-based case work in QGIS.
+  image: "20260802_GIS_MCDA_workshop.jpg"
+  image_alt: "Dr. Ankit Deshmukh delivering Keynote Session 05 on GIS-based site selection and MCDA for EV charging infrastructure at PDEU"
+  image_caption: "Keynote Session 05 — GIS-based site selection and MCDA, PDEU, 02 August 2026"
+  links:
+    - label: "View slides"
+      url: "files/20260802_GIIS_Talk_Slides.pdf"
+      primary: true
+
+- type: workshop
+  featured: false
+  date: "2026-08-01"
+  title: "Organizer — Two-Day Workshop on Grid Integration and Intelligent Control for Smart EV Charging Infrastructures"
+  description: >-
+    Served as one of the event coordinators and organizers of the two-day
+    workshop, “Grid Integration and Intelligent Control: Energy Management
+    Strategies for Smart EV Charging Infrastructures,” held at Pandit Deendayal
+    Energy University (PDEU), Gandhinagar, on 01–02 August 2026. The programme
+    covered grid integration and intelligent control, electric vehicle
+    infrastructures, energy management techniques, stochastic modelling and
+    optimization, sustainable energy modelling, solar PV and its applications,
+    and battery swapping and energy storage techniques. Coordinated jointly with
+    **Dr. Shreekant Varshney** (Dept. of Mathematics, SoT) and **Dr. Kaibalya
+    Prasad Panda** (Dept. of Electrical Engineering, SoET); participation was
+    limited to the first 30 UG/PG/PhD students from all branches of Engineering
+    and Science.
+  image: "20260802_GIIC_workshop.jpg"
+  image_alt: "Poster of the two-day workshop on grid integration and intelligent control for smart EV charging infrastructures, PDEU, 01–02 August 2026"
+  image_caption: "Two-day workshop on smart EV charging infrastructures, PDEU, 01–02 August 2026"
+  links:
+    - label: "Program schedule"
+      url: "files/20260801_Program_Schedule.pdf"
+      primary: true
 
 # ── 2025 ─────────────────────────────────────────────────────
 
