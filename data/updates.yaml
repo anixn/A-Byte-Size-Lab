@@ -8,6 +8,21 @@
 
 - type: general
   featured: false
+  date: "2026-09-15"
+  title: "Recognition for ICSSR-Funded Early Warning and Community Resilience Project (Co-PI)"
+  description: >-
+    Received an award in recognition of the ICSSR-funded project, “Developing
+    Early Warning Systems and Disaster Readiness Framework through Resilient
+    Community Engagement,” in which I serve as Co-Principal Investigator.
+    The five-year project has a funding allocation of ₹99 lakh and focuses on
+    strengthening early warning systems, disaster preparedness, and community
+    resilience through community engagement.
+  image: "20260915_icssr_project_award.png"
+  image_alt: "Dr. Ankit Deshmukh receiving recognition for the ICSSR-funded early warning and community resilience project with colleagues"
+  image_caption: "Recognition for the ICSSR-funded project on early warning systems and community resilience"
+
+- type: general
+  featured: false
   date: 2026-10-01
   title: "DGCA-Certified Remote Pilot"
   description: >-
