@@ -131,6 +131,26 @@
       url: "files/20260801_Program_Schedule.pdf"
       primary: true
 
+- type: workshop
+  featured: false
+  date: "2026-05-29"
+  title: "Resource Person — One-Week Skill-Based Course on Drone Technology"
+  description: >-
+    Served as a Resource Person for the one-week skill-based course,
+
+    "Drone Technology: Fundamentals, Flight and Field Applications,"
+
+    organized by the School of Technology, PDEU, from 25–29 May 2026.
+    Delivered technical sessions on Drone-Based Data Collection,  <br />DGCA
+    Regulations and Safety (Day 2), as well as Remote Sensing,
+    Photogrammetry, and Digital Image Processing using Python & OpenCV
+    (Day 4). Guided participants through hands-on image analysis,
+    real-world survey case studies, and the final drone flight challenge
+    competition, providing practical exposure to UAV engineering applications.
+  image: "20260529_drone_workshop.png"
+  image_alt: "Poster of the One-Week Skill-Based Course on Drone Technology at PDEU featuring Dr. Ankit Deshmukh as a Resource Person"
+  image_caption: "One-Week Skill-Based Course on Drone Technology, PDEU, 25–29 May 2026"
+
 # ── 2025 ─────────────────────────────────────────────────────
 
 - date: "2025-06-15"
