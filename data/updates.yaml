@@ -2,53 +2,23 @@
 # Updates feed data — sorted newest → oldest.
 # The shortcode also sorts: featured first, then date desc,
 # so YAML order is for readability only.
+#
+# Multi-line / bullet descriptions use `|-` (literal block) so
+# newlines and blank lines survive markdownify. Single-paragraph
+# descriptions use plain strings or `>-` folded style.
+#
+# `featured: true` pins an entry to the top with an accent ring.
+# Omitted = false (no need to write `featured: false`).
 # ─────────────────────────────────────────────────────────────
 
-# ── 2026 ─────────────────────────────────────────────────────
-
-- type: general
-  featured: false
-  date: "2026-09-15"
-  title: "Recognition for ICSSR-Funded Early Warning and Community Resilience Project (Co-PI)"
-  description: >-
-    Received an award in recognition of the ICSSR-funded project, “Developing
-    Early Warning Systems and Disaster Readiness Framework through Resilient
-    Community Engagement,” in which I serve as Co-Principal Investigator.
-    The five-year project has a funding allocation of ₹99 lakh and focuses on
-    strengthening early warning systems, disaster preparedness, and community
-    resilience through community engagement.
-  image: "20260915_icssr_project_award.png"
-  image_alt: "Dr. Ankit Deshmukh receiving recognition for the ICSSR-funded early warning and community resilience project with colleagues"
-  image_caption: "Recognition for the ICSSR-funded project on early warning systems and community resilience"
-
-- type: general
-  featured: false
-  date: 2026-10-01
-  title: "DGCA-Certified Remote Pilot"
-  description: >-
-    Successfully completed the DGCA-approved Drone Pilot Training and
-    Certification program and have been issued the **Remote Pilot
-    Certificate** under the Drone (Amendment) Rules, 2022, via the eGCA
-    platform. Endorsed for **Rotorcraft RPAS, Small class, VLOS**
-    operations (RPTO: Kaushalya The Skill University). This strengthens
-    teaching of Surveying and Drone Laboratory courses, and supports
-    UAV-based surveying, photogrammetry and GIS workflows in research.
-  image: "20261027_drone_cert.png"
-  image_alt: "DGCA Remote Pilot Certificate — Dr. Ankit Deshmukh"
-  image_caption: "Remote Pilot Certificate issued through the eGCA platform"
-  links:
-    - label: "View Certificate"
-      url: "files/remote-pilot-certificate.pdf"
-      primary: true
-    - label: "Verify on eGCA"
-      url: "https://www.dgca.gov.in/digigov-portal/jsp/dgca/InventoryList/headerblock/drones/RPAS.jsp"
+# ── October 2026 ─────────────────────────────────────────────
 
 - date: "2026-10-26"
   type: "publication"
   title: "Featured in a media update on drought and water resilience"
-  description: >
-    A short media feature covering ongoing work on drought monitoring,
-    geospatial intelligence, and community-driven early warning systems.
+  description: >-
+    A short media feature covering ongoing work on **drought monitoring**,
+    **geospatial intelligence**, and **community-driven early warning systems**.
   image: "20261027_image.png"
   image_alt: "Media coverage thumbnail"
   image_caption: "Screenshot from the feature — Oct 2026"
@@ -61,43 +31,60 @@
       url: "/pdfs/media-2026-10.pdf"
   featured: true
 
-- type: talk
-  featured: false
-  date: "2026-08-24"
-  title: "Coordinator — SEQUENCE 2026 Climate Action Track"
-  description: >-
-    Served as **Coordinator for the Climate Action (Climate Change) track** at
-    SEQUENCE 2026, a one-day international partnership-building summit hosted
-    at Pandit Deendayal Energy University (PDEU), Gandhinagar, on 24 August
-    2026. Contributed to coordination of the track focused on climate science,
-    resilience, mitigation, adaptation, policy, and technology solutions.
-  # url: "https://sequence-phi-gules.vercel.app/"
-  image: "20260824_Climate_Action.png"
-  image_alt: "SEQUENCE 2026 Climate Action Industry Round Table banner featuring industry experts and Dr. Ankit Deshmukh as Coordinator."
-  image_caption: "Coordinator for the Climate Action - Industry Round Table at PDEU's SEQUENCE 2026 Summit."
+- date: "2026-10-01"
+  type: "general"
+  title: "DGCA-Certified Remote Pilot"
+  description: |-
+    Successfully completed the **DGCA-approved Drone Pilot Training and Certification** program and was issued the **Remote Pilot Certificate** under the Drone (Amendment) Rules, 2022, via the eGCA platform. Endorsed for **Rotorcraft RPAS, Small class, VLOS** operations (RPTO: Kaushalya The Skill University).
 
+    This strengthens teaching of **Surveying and Drone Laboratory** courses, and supports UAV-based surveying, photogrammetry, and GIS workflows in research.
+  image: "20261027_drone_cert.png"
+  image_alt: "DGCA Remote Pilot Certificate — Dr. Ankit Deshmukh"
+  image_caption: "Remote Pilot Certificate issued through the eGCA platform"
+  links:
+    - label: "View Certificate"
+      url: "files/remote-pilot-certificate.pdf"
+      primary: true
+    - label: "Verify on eGCA"
+      url: "https://www.dgca.gov.in/digigov-portal/jsp/dgca/InventoryList/headerblock/drones/RPAS.jsp"
+
+# ── September 2026 ───────────────────────────────────────────
+
+- date: "2026-09-15"
+  type: "general"
+  title: "Recognition for ICSSR-Funded Early Warning and Community Resilience Project (Co-PI)"
+  description: |-
+    Received an award in recognition of the ICSSR-funded project, **“Developing Early Warning Systems and Disaster Readiness Framework through Resilient Community Engagement,”** in which I serve as **Co-Principal Investigator**.
+
+    The five-year project has a funding allocation of **₹99 lakh** and focuses on strengthening early warning systems, disaster preparedness, and community resilience through community engagement.
+  image: "20260915_icssr_project_award.png"
+  image_alt: "Dr. Ankit Deshmukh receiving recognition for the ICSSR-funded early warning and community resilience project with colleagues"
+  image_caption: "Recognition for the ICSSR-funded project on early warning systems and community resilience"
+
+# ── August 2026 ──────────────────────────────────────────────
+
+- date: "2026-08-24"
+  type: "talk"
+  title: "Coordinator — SEQUENCE 2026 Climate Action Track"
+  description: |-
+    Served as **Coordinator for the Climate Action (Climate Change) track** at **SEQUENCE 2026**, a one-day international partnership-building summit hosted at **Pandit Deendayal Energy University (PDEU)**, Gandhinagar, on 24 August 2026.
+
+    Contributed to the coordination of the track, which focused on climate science, resilience, mitigation, adaptation, policy, and technology solutions.
+  image: "20260824_Climate_Action.png"
+  image_alt: "SEQUENCE 2026 Climate Action Industry Round Table banner featuring industry experts and Dr. Ankit Deshmukh as Coordinator"
+  image_caption: "Coordinator for the Climate Action — Industry Round Table at PDEU's SEQUENCE 2026 Summit"
   links:
     - label: "Visit SEQUENCE 2026"
       url: "https://sequence-phi-gules.vercel.app/"
       primary: true
 
-- date: "2026-06-14"
-  type: "workshop"
-  title: "Certification Successfully Completed"
-  description: "Successfully completed the Coursera course AI For Everyone on June 13, 2026, earning a grade of 95%; certificate verified by Coursera at https://coursera.org/verify/HZ5UQDVMM1WW."
-
-- type: talk
-  featured: false
-  date: "2026-08-02"
+- date: "2026-08-02"
+  type: "talk"
   title: "Keynote Session 05 — Geospatial Intelligence for Smart EV Charging Infrastructure: GIS-Based Site Selection and Multi-Criteria Decision Analysis"
-  description: >-
-    Delivered Keynote Session 05 (11:45 AM - 01:00 PM) on Day 2 of the two-day
-    workshop on smart EV charging infrastructures at PDEU, Gandhinagar. The talk
-    examined why charging-station siting is a spatial decision problem - India's
-    charger-to-EV ratio, low utilisation and stranded-asset risk - and set out a
-    **GIS-MCDA** workflow: criteria definition, thematic GIS layers, AHP-based
-    criteria weighting, suitability overlay and ranking, demonstrated with
-    OpenStreetMap-based case work in QGIS.
+  description: |-
+    Delivered **Keynote Session 05** (11:45 AM – 01:00 PM) on Day 2 of the two-day workshop on smart EV charging infrastructures at **PDEU, Gandhinagar**.
+
+    The talk examined why charging-station siting is a **spatial decision problem** — India's charger-to-EV ratio, low utilisation, and stranded-asset risk — and set out a **GIS-MCDA** workflow: criteria definition, thematic GIS layers, AHP-based criteria weighting, suitability overlay and ranking, demonstrated with **OpenStreetMap-based case work in QGIS**.
   image: "20260802_GIS_MCDA_workshop.jpg"
   image_alt: "Dr. Ankit Deshmukh delivering Keynote Session 05 on GIS-based site selection and MCDA for EV charging infrastructure at PDEU"
   image_caption: "Keynote Session 05 — GIS-based site selection and MCDA, PDEU, 02 August 2026"
@@ -106,23 +93,15 @@
       url: "files/20260802_GIIS_Talk_Slides.pdf"
       primary: true
 
-- type: workshop
-  featured: false
-  date: "2026-08-01"
+- date: "2026-08-01"
+  type: "workshop"
   title: "Organizer — Two-Day Workshop on Grid Integration and Intelligent Control for Smart EV Charging Infrastructures"
-  description: >-
-    Served as one of the event coordinators and organizers of the two-day
-    workshop, “Grid Integration and Intelligent Control: Energy Management
-    Strategies for Smart EV Charging Infrastructures,” held at Pandit Deendayal
-    Energy University (PDEU), Gandhinagar, on 01–02 August 2026. The programme
-    covered grid integration and intelligent control, electric vehicle
-    infrastructures, energy management techniques, stochastic modelling and
-    optimization, sustainable energy modelling, solar PV and its applications,
-    and battery swapping and energy storage techniques. Coordinated jointly with
-    **Dr. Shreekant Varshney** (Dept. of Mathematics, SoT) and **Dr. Kaibalya
-    Prasad Panda** (Dept. of Electrical Engineering, SoET); participation was
-    limited to the first 30 UG/PG/PhD students from all branches of Engineering
-    and Science.
+  description: |-
+    Served as one of the event coordinators and organizers of the two-day workshop, **“Grid Integration and Intelligent Control: Energy Management Strategies for Smart EV Charging Infrastructures,”** held at **Pandit Deendayal Energy University (PDEU)**, Gandhinagar, on **01–02 August 2026**.
+
+    - The programme covered grid integration and intelligent control, electric vehicle infrastructures, energy management techniques, stochastic modelling and optimization, sustainable energy modelling, solar PV and its applications, and battery swapping and energy storage techniques.
+    - Coordinated jointly with **Dr. Shreekant Varshney** (Dept. of Mathematics, SoT) and **Dr. Kaibalya Prasad Panda** (Dept. of Electrical Engineering, SoET).
+    - Participation was limited to the first **30 UG/PG/PhD students** from all branches of Engineering and Science.
   image: "20260802_GIIC_workshop.jpg"
   image_alt: "Poster of the two-day workshop on grid integration and intelligent control for smart EV charging infrastructures, PDEU, 01–02 August 2026"
   image_caption: "Two-day workshop on smart EV charging infrastructures, PDEU, 01–02 August 2026"
@@ -131,94 +110,113 @@
       url: "files/20260801_Program_Schedule.pdf"
       primary: true
 
-- type: workshop
-  featured: false
-  date: "2026-05-29"
+# ── June 2026 ────────────────────────────────────────────────
+
+- date: "2026-06-14"
+  type: "workshop"
+  title: "Certification: AI For Everyone"
+  description: |-
+    Successfully completed the Coursera course **AI For Everyone** on **13 June 2026**, earning a grade of **95%**; certificate verified by Coursera at [coursera.org/verify/HZ5UQDVMM1WW](https://coursera.org/verify/HZ5UQDVMM1WW).
+
+    - Learned to distinguish **AI, machine learning, and deep learning**, and assess AI feasibility by defining computational problems, input data, target variables, and performance criteria.
+    - Understood the **ML pipeline**, including data preprocessing, feature engineering, model training, validation, and evaluation, with emphasis on data quality and appropriate metrics.
+    - Explored AI feasibility, practical value, bias, interpretability, and human oversight for **responsible implementation** in scientific and engineering applications.
+  image: "20260614_AIForEveryone.jpg"
+  image_alt: "DeepLearning.AI AI for Everyone course completion certificate issued through Coursera to Ankit Deshmukh on June 13, 2026"
+  image_caption: "Completed AI for Everyone, an online course by DeepLearning.AI offered through Coursera, on June 13, 2026."
+
+# ── May 2026 ─────────────────────────────────────────────────
+
+- date: "2026-05-29"
+  type: "workshop"
   title: "Resource Person — One-Week Skill-Based Course on Drone Technology"
-  description: >-
-    Served as a Resource Person for the one-week skill-based course,
+  description: |-
+    Served as a **Resource Person** for the one-week skill-based course **“Drone Technology: Fundamentals, Flight and Field Applications,”** organized by the School of Technology, PDEU, from **25–29 May 2026**.
 
-    "Drone Technology: Fundamentals, Flight and Field Applications,"
-
-    organized by the School of Technology, PDEU, from 25–29 May 2026.
-    Delivered technical sessions on Drone-Based Data Collection,  <br />DGCA
-    Regulations and Safety (Day 2), as well as Remote Sensing,
-    Photogrammetry, and Digital Image Processing using Python & OpenCV
-    (Day 4). Guided participants through hands-on image analysis,
-    real-world survey case studies, and the final drone flight challenge
-    competition, providing practical exposure to UAV engineering applications.
+    - Delivered technical sessions on **(Day 2)** Drone-Based Data Collection, DGCA Regulations and Safety, plus Remote Sensing, Photogrammetry, and Digital Image Processing using `R`.
+    - **(Day 4)** Guided participants through hands-on image analysis, real-world survey case studies, and the final drone flight challenge competition, providing practical exposure to UAV engineering applications.
   image: "20260529_drone_workshop.png"
   image_alt: "Poster of the One-Week Skill-Based Course on Drone Technology at PDEU featuring Dr. Ankit Deshmukh as a Resource Person"
   image_caption: "One-Week Skill-Based Course on Drone Technology, PDEU, 25–29 May 2026"
 
-# ── 2025 ─────────────────────────────────────────────────────
+# ── June 2025 ────────────────────────────────────────────────
 
 - date: "2025-06-15"
   type: "publication"
   title: "Novel control strategies for electric vehicle charging stations"
-  description: "Varshney et al., 2025 • Scientific Reports."
+  description: "**Varshney et al., 2025** • *Scientific Reports*."
   links:
     - label: "View publication"
       url: "https://www.nature.com/srep/"
       primary: true
 
+# ── May 2025 ─────────────────────────────────────────────────
+
 - date: "2025-05-30"
   type: "patent"
   title: "Patent: Vehicle Monitoring System"
-  description: "Continuous external vehicle monitoring and alerting system for traffic management (Application No. 202421090466 A) – with Dr. Vasudeo Chaudhari."
+  description: "Continuous external vehicle monitoring and alerting system for traffic management (**Application No. 202421090466 A**) — with **Dr. Vasudeo Chaudhari**."
+
+# ── April 2025 ───────────────────────────────────────────────
 
 - date: "2025-04-16"
   type: "talk"
-  title: "Invited Talk - Woodworking"
-  description: "“The Art of Woodworking: Crafted with Geometry (Precision • Passion • Wood)”"
+  title: "Invited Talk — Woodworking"
+  description: "**“The Art of Woodworking: Crafted with Geometry (Precision • Passion • Wood)”**"
 
-# ── 2024 ─────────────────────────────────────────────────────
+# ── December 2024 ────────────────────────────────────────────
 
 - date: "2024-12-23"
   type: "conference"
-  title: "HYDRO 2024 Conference - Pune"
-  description: "Presented: “Large-Sample Hydrology to Improve Prediction in Ungauged Basins using Information Theory Techniques.”"
+  title: "HYDRO 2024 Conference — Pune"
+  description: "Presented: **“Large-Sample Hydrology to Improve Prediction in Ungauged Basins using Information Theory Techniques.”**"
 
-# ── 2022 ─────────────────────────────────────────────────────
+# ── August 2022 ──────────────────────────────────────────────
 
 - date: "2022-08-24"
   type: "presentation"
   title: "Presentation: Vishal Rakhecha"
-  description: "Innovation in Smart and Sustainable Infrastructure conference – “An enhanced bottom-up approach to assess catchments' vulnerability to climate change.”"
+  description: "Innovation in Smart and Sustainable Infrastructure conference — **“An enhanced bottom-up approach to assess catchments' vulnerability to climate change.”**"
 
 - date: "2022-08-24"
   type: "presentation"
   title: "Presentation: Shweta Kumari"
-  description: "Innovation in Smart and Sustainable Infrastructure conference – “Comparison of image processing techniques for LULC changes in Indian semi‑arid region.”"
+  description: "Innovation in Smart and Sustainable Infrastructure conference — **“Comparison of image processing techniques for LULC changes in Indian semi-arid region.”**"
+
+# ── June 2022 ────────────────────────────────────────────────
 
 - date: "2022-06-24"
   type: "webinar"
   title: "Webinar: Climate Change & Catchments"
-  description: "“How is climate change affecting catchment response?” – Pandit Deendayal Energy University."
+  description: "**“How is climate change affecting catchment response?”** — Pandit Deendayal Energy University."
 
-# ── 2021 ─────────────────────────────────────────────────────
+# ── September 2021 ───────────────────────────────────────────
 
 - date: "2021-09-23"
   type: "talk"
-  title: "Invited Talk – SVNIT Surat"
-  description: "Atal FDP on Air Pollution & Climate Change – “What is ‘Climate Change’ and how it’s affecting catchments’ response?”"
+  title: "Invited Talk — SVNIT Surat"
+  description: "Atal FDP on Air Pollution & Climate Change — **“What is ‘Climate Change’ and how it’s affecting catchments’ response?”**"
+
+# ── August 2021 ──────────────────────────────────────────────
 
 - date: "2021-08-01"
   type: "talk"
   title: "Impact of climate change on meteorological drought across the Indian sub-continent"
-  description: "Deshmukh and Kumari, 2021 • AOGS 2021."
+  description: "**Deshmukh and Kumari, 2021** • *AOGS 2021*."
   links:
     - label: "Conference page"
       url: "https://www.asiaoceania.org/"
 
+# ── March 2021 ───────────────────────────────────────────────
+
 - date: "2021-03-22"
   type: "workshop"
   title: "Workshop: Advanced Modelling Techniques"
-  description: "“Advanced Modelling Technique for Water Resource Management” – PDEU, Gandhinagar."
+  description: "**“Advanced Modelling Technique for Water Resource Management”** — PDEU, Gandhinagar."
 
-# ── 2020 ─────────────────────────────────────────────────────
+# ── December 2020 ────────────────────────────────────────────
 
 - date: "2020-12-15"
   type: "publication"
   title: "AGU Fall Meeting 2020"
-  description: "Shweta Kumari & Ankit Deshmukh – “Impact of climate change on meteorological drought in different climate zones across the Indian sub‑continent.” AGU Fall Meeting Abstracts, Vol. 2020, H184‑06."
+  description: "**Shweta Kumari & Ankit Deshmukh** — “Impact of climate change on meteorological drought in different climate zones across the Indian sub-continent.” *AGU Fall Meeting Abstracts*, Vol. 2020, H184-06."

@@ -2,6 +2,12 @@
   updates-feed.html — Facebook-style card feed, PaperMod-theme-aware
   Usage:  {{< updates-feed >}}
   Data:   data/updates.yaml
+
+  Each card gets an anchor id:
+    - from .slug in YAML if provided,
+    - else auto-generated: <title-anchor>-<date>
+  Permalink icon copies the full URL and scrolls to the card.
+  Deep links: /updates/#<slug>, /updates/?type=talk, /updates/?q=drought
 */}}
 
 {{- $updates := .Site.Data.updates -}}
@@ -55,12 +61,7 @@
   .uf-card.type-publication  { --uf-type-color: #388e3c; }
   .uf-card.type-general      { --uf-type-color: #475569; }
 
-  /* ── Per-type accent colours (dark) ─────────────────────
-     Covers every PaperMod toggle convention:
-       • [data-theme="dark"]  → attribute on <html>, <body> or wrapper
-       • html.dark / body.dark → class (older PaperMod / forks)
-       • @media (prefers-color-scheme: dark) → auto mode
-  ─────────────────────────────────────────────────────── */
+  /* ── Per-type accent colours (dark) ───────────────────── */
   [data-theme="dark"] .uf-card.type-patent,
   html.dark .uf-card.type-patent,
   body.dark .uf-card.type-patent       { --uf-type-color: #d4af37; }
@@ -86,7 +87,6 @@
   html.dark .uf-card.type-general,
   body.dark .uf-card.type-general      { --uf-type-color: #94a3b8; }
 
-  /* Auto mode: OS prefers dark AND user hasn't forced light */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) .uf-card.type-patent,
     body:not([data-theme="light"]) .uf-card.type-patent       { --uf-type-color: #d4af37; }
@@ -124,6 +124,7 @@
   .uf-search input:focus-visible,
   .uf-filter:focus-visible,
   .uf-actions a:focus-visible,
+  .uf-permalink:focus-visible,
   .uf-media img:focus-visible {
     outline: 2px solid var(--uf-accent);
     outline-offset: 2px;
@@ -177,6 +178,7 @@
     overflow: hidden;
     box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.05);
     transition: box-shadow .2s, transform .2s;
+    scroll-margin-top: 5rem; /* clear sticky PaperMod header on anchor jump */
   }
   [data-theme="dark"] .uf-card,
   html.dark .uf-card,
@@ -204,6 +206,41 @@
     }
   }
   .uf-card[hidden] { display: none; }
+
+  /* Native anchor landing: /updates/#slug */
+  .uf-card:target {
+    animation: ufFlash 2s ease;
+  }
+  /* JS-driven flash after permalink copy */
+  .uf-card.is-flash {
+    animation: ufFlash 2s ease;
+  }
+  @keyframes ufFlash {
+    0%, 100% {
+      box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.05);
+    }
+    15%, 70% {
+      box-shadow: 0 0 0 4px var(--uf-accent),
+                  0 6px 22px rgba(0,0,0,.15);
+    }
+  }
+  [data-theme="dark"] .uf-card:target,
+  [data-theme="dark"] .uf-card.is-flash,
+  html.dark .uf-card:target,
+  html.dark .uf-card.is-flash,
+  body.dark .uf-card:target,
+  body.dark .uf-card.is-flash {
+    animation-name: ufFlashDark;
+  }
+  @keyframes ufFlashDark {
+    0%, 100% {
+      box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 4px 14px rgba(0,0,0,.15);
+    }
+    15%, 70% {
+      box-shadow: 0 0 0 4px var(--uf-accent),
+                  0 6px 22px rgba(0,0,0,.35);
+    }
+  }
 
   .uf-card.is-featured {
     border-color: var(--uf-type-color);
@@ -247,7 +284,6 @@
   }
   .uf-card:hover .uf-media img { transform: scale(1.04); }
 
-  /* Caption — overrides PaperMod's heavy figcaption */
   .uf-media .uf-caption,
   .post-content figure > figcaption.uf-caption {
     padding: .5rem 1rem;
@@ -280,6 +316,29 @@
     background: transparent;
   }
   .uf-date { color: var(--uf-muted); }
+
+  /* Permalink icon */
+  .uf-permalink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    margin-left: auto; /* push to the right end of the meta row */
+    color: var(--uf-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .15s, background .15s, border-color .15s;
+  }
+  .uf-permalink:hover,
+  .uf-permalink:focus-visible {
+    color: var(--uf-type-color);
+    background: var(--uf-bg-soft);
+    border-color: var(--uf-type-color);
+  }
+  .uf-permalink svg { display: block; }
 
   .uf-title {
     margin: 0 0 .25rem;
@@ -407,6 +466,7 @@
     outline: none;
   }
 
+  /* Override inherited <ol> padding from PaperMod */
   .uf .uf-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -423,6 +483,27 @@
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
+  }
+
+  /* Toast */
+  .uf-toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    padding: .6rem 1.2rem;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--theme, #fff);
+    background: var(--primary, #222);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    animation: ufToastIn .2s ease;
+  }
+  @keyframes ufToastIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
   @keyframes ufFadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -464,7 +545,13 @@
     {{- range $sorted }}
       {{- $t := .type | default .category | default "general" | lower -}}
       {{- $u := . -}}
+      {{- /* Slug: explicit from YAML, else "<title-anchor>-<date-anchor>" */ -}}
+      {{- $slug := .slug -}}
+      {{- if not $slug -}}
+        {{- $slug = printf "%s-%s" (.title | anchorize) (.date | anchorize) -}}
+      {{- end -}}
       <li class="uf-card type-{{ $t }}{{ if .featured }} is-featured{{ end }}"
+          id="{{ $slug }}"
           data-type="{{ $t }}"
           data-search="{{ lower (printf "%s %s %s %s" (.title | default "") (.description | default "") $t (.date | default "")) }}">
 
@@ -491,26 +578,32 @@
             <time class="uf-date" datetime="{{ .date }}">
               {{- .date | time.Format ":date_medium" -}}
             </time>
+
+            {{- /* Permalink: copies full URL, scrolls to card, flashes */ -}}
+            <a class="uf-permalink"
+               href="#{{ $slug }}"
+               data-permalink="{{ $.Page.Permalink }}#{{ $slug }}"
+               title="Copy link to this update"
+               aria-label="Copy link to this update">
+              <svg width="14" height="14" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            </a>
           </div>
 
           <h3 class="uf-title">{{ .title }}</h3>
 
           {{- with .description }}
-          <p class="uf-desc">{{ . | markdownify | plainify }}</p>
+          <div class="uf-desc">{{ . | markdownify }}</div>
           {{- end }}
         </div>
 
         {{- if or .url .links }}
         <div class="uf-actions">
-          <!-- {{- with .url }}
-          <a href="{{ . }}"
-             class="is-primary"
-             {{- if hasPrefix . "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
-            Read more <span aria-hidden="true">→</span>
-          </a>
-          {{- end }} -->
-
-
           {{- with .url }}
           {{- $href := . -}}
           {{- with $.Page.Resources.Get . }}{{ $href = .RelPermalink }}{{ end -}}
@@ -521,15 +614,6 @@
           </a>
           {{- end }}
 
-          <!-- {{- range .links }}
-          <a href="{{ .url }}"
-             class="{{ if .primary }}is-primary{{ end }}"
-             {{- if hasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
-            {{ .label }}{{ if hasPrefix .url "http" }}<span aria-hidden="true"> ↗</span>{{ end }}
-          </a>
-          {{- end }} -->
-
-
           {{- range .links }}
           {{- $href := .url -}}
           {{- with $.Page.Resources.Get .url }}{{ $href = .RelPermalink }}{{ end -}}
@@ -539,7 +623,6 @@
             {{ .label }}{{ if hasPrefix $href "http" }}<span aria-hidden="true"> ↗</span>{{ end }}
           </a>
           {{- end }}
-
         </div>
         {{- end }}
       </li>
@@ -555,10 +638,19 @@
 (function () {
   "use strict";
 
+  /* ── Toast ────────────────────────────────────────────── */
+  function showToast(msg) {
+    var t = document.createElement("div");
+    t.className = "uf-toast";
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function () { t.remove(); }, 1800);
+  }
+
+  /* ── Lightbox ─────────────────────────────────────────── */
   var lb = null;
   function ensureLightbox() {
     if (lb) return lb;
-
     lb = document.createElement("div");
     lb.className = "uf-lightbox";
     lb.setAttribute("role", "dialog");
@@ -575,8 +667,7 @@
 
     function close() {
       lb.hidden = true;
-      img.src = "";
-      img.alt = "";
+      img.src = ""; img.alt = "";
       document.body.classList.remove("uf-locked");
     }
     btn.addEventListener("click", close);
@@ -598,6 +689,7 @@
     return lb;
   }
 
+  /* ── Per-feed init ────────────────────────────────────── */
   function init(root) {
     var list = root.querySelector("#uf-list");
     if (!list) return;
@@ -609,6 +701,7 @@
     var activeType = "all";
     var query = "";
 
+    /* ── Image click → lightbox ─────────────────────────── */
     root.querySelectorAll(".uf-media img").forEach(function (img) {
       img.setAttribute("role", "button");
       img.setAttribute("tabindex", "0");
@@ -623,6 +716,36 @@
       });
     });
 
+    /* ── Permalink: copy + jump + flash ─────────────────── */
+    root.querySelectorAll(".uf-permalink").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var id = link.getAttribute("href").slice(1);
+        var target = document.getElementById(id);
+        if (!target) return;
+
+        var fullUrl = link.getAttribute("data-permalink") || location.href;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(fullUrl).then(function () {
+            showToast("Link copied");
+          }).catch(function () {
+            showToast("Press Ctrl+C to copy");
+          });
+        } else {
+          showToast(fullUrl);
+        }
+
+        history.replaceState(null, "", "#" + id);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.classList.remove("is-flash");
+        void target.offsetWidth;
+        target.classList.add("is-flash");
+        setTimeout(function () { target.classList.remove("is-flash"); }, 2000);
+      });
+    });
+
+    /* ── Filter function ────────────────────────────────── */
     function apply() {
       var visible = 0, q = query.trim().toLowerCase();
       cards.forEach(function (card) {
@@ -656,7 +779,45 @@
         apply();
       });
     });
+
+    /* ── Deep links: ?type= & ?q= ───────────────────────── */
+    try {
+      var params = new URLSearchParams(location.search);
+      var qp = params.get("q");
+      if (qp && searchInput) {
+        searchInput.value = qp;
+        query = qp;
+      }
+      var tp = params.get("type");
+      if (tp) {
+        var want = tp.toLowerCase();
+        var match = filterButtons.filter(function (b) {
+          return (b.getAttribute("data-type") || "").toLowerCase() === want;
+        })[0];
+        if (match) {
+          activeType = want;
+          filterButtons.forEach(function (b) {
+            var on = b === match;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-pressed", on ? "true" : "false");
+          });
+        }
+      }
+    } catch (e) { /* URLSearchParams not available — ignore */ }
+
     apply();
+
+    /* ── If URL has a hash on load, defer to :target + scroll ── */
+    if (location.hash) {
+      var targetId = location.hash.slice(1);
+      var el = document.getElementById(targetId);
+      if (el && list.contains(el)) {
+        /* Give the browser a tick to layout, then make sure it's in view */
+        setTimeout(function () {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 60);
+      }
+    }
   }
 
   function boot() {
