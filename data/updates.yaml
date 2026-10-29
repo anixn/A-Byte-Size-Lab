@@ -22,13 +22,12 @@
   image: "20261027_image.png"
   image_alt: "Media coverage thumbnail"
   image_caption: "Screenshot from the feature — Oct 2026"
-  url: "/media/2026-10-feature/"
   links:
     - label: "Read the feature"
-      url: "https://ankitdeshmukh.com/"
+      url: "https://timesofindia.indiatimes.com/city/ahmedabad/despite-its-heat-ahmedabad-is-getting-marginally-blue/articleshow/135196860.cms"
       primary: true
     - label: "Download PDF"
-      url: "/pdfs/media-2026-10.pdf"
+      url: "files/20261029_Times_of_India_Article.pdf"
   featured: true
 
 - date: "2026-10-01"
