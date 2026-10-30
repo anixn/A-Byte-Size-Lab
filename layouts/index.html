@@ -20,13 +20,11 @@
         </p>
         {{- end -}}
 
-      <div class="quote-block">
-        <hr class="quote-line">
-        <blockquote class="quote-text">
-          "I am a researcher working at the intersection of machine learning, computational hydrology, geospatial analysis, and environmental sustainability. My research develops data-driven methods for drought monitoring, hydrological modeling, and climate-risk assessment using Earth observation and AI. I also explore how community perspectives can inform more resilient responses to flood and drought hazards."
-        </blockquote>
-        <hr class="quote-line">
-      </div>
+        <div class="quote-block">
+          <blockquote class="quote-text">
+            I am a researcher working at the intersection of machine learning, computational hydrology, geospatial analysis, and environmental sustainability. My research develops data-driven methods for drought monitoring, hydrological modeling, and climate-risk assessment using Earth observation and AI. I also explore how community perspectives can inform more resilient responses to flood and drought hazards.
+          </blockquote>
+        </div>
 
       <div class="social-icons">
         <a href="/about/" rel="noopener noreferrer me" title="About" class="about-icon">
@@ -146,10 +144,10 @@
       max-width: 600px;
       margin: 0 auto 0.5rem;
     }
-    .quote-block {
+    /* .quote-block {
       max-width: 800px;
-      margin: 2rem auto;
-      padding: 1.5rem 2rem;
+      margin: 0rem auto;
+      padding: 0.75rem 2rem;
     }
     .quote-line {
       width: 20%;
@@ -166,7 +164,77 @@
       font-style: italic;
       margin: 0;
       padding: 0;
-    }
+    } */
+
+
+/* ===== QUOTE / STATEMENT OF RESEARCH (minimal) ===== */
+.quote-block {
+  position: relative;
+  max-width: 800px;
+  margin: 0.8rem auto 1.25rem;   /* tight before / after */
+  padding: 0.25rem 2.5rem;
+  text-align: center;
+}
+
+/* Decorative opening quote */
+.quote-block::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.55rem;
+  left: 0.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--link-color);
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Decorative closing quote */
+.quote-block::after {
+  content: "\201D";
+  position: absolute;
+  bottom: -1rem;
+  right: 0.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--link-color);
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+.quote-text {
+  text-align: center;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  font-style: italic;
+  letter-spacing: 0.2px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .quote-block {
+    padding: 0.25rem 1.5rem;
+    margin: 0.5rem auto 1rem;
+  }
+  .quote-block::before,
+  .quote-block::after {
+    font-size: 2.75rem;
+  }
+  .quote-text {
+    font-size: 0.9rem;
+    line-height: 1.1;
+  }
+}
+
+
+
     .social-icons {
       margin-top: 0.5rem;
       display: flex;
