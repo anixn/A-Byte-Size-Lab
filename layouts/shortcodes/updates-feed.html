@@ -122,7 +122,7 @@
     border-radius: var(--uf-radius);
   }
   .uf-search input:focus-visible,
-  .uf-filter:focus-visible,
+  .uf .uf-filter:focus-visible,
   .uf-actions a:focus-visible,
   .uf-permalink:focus-visible,
   .uf-media img:focus-visible {
@@ -130,23 +130,84 @@
     outline-offset: 2px;
   }
 
-  .uf-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .uf-filter {
-    padding: .4rem .8rem;
-    font: inherit; font-size: .85rem;
-    color: var(--uf-muted);
-    background: var(--uf-bg-soft);
-    border: var(--uf-border);
+  /* ── Filter type colours (scoped to .uf) ──────────────── */
+  .uf {
+    --uf-c-patent:       #8b6914;
+    --uf-c-talk:         #ed6c02;
+    --uf-c-conference:   #1976d2;
+    --uf-c-presentation: #c2185b;
+    --uf-c-webinar:      #7b1fa2;
+    --uf-c-workshop:     #00838f;
+    --uf-c-publication:  #388e3c;
+    --uf-c-general:      #475569;
+  }
+  [data-theme="dark"] .uf,
+  html.dark .uf,
+  body.dark .uf {
+    --uf-c-patent:       #d4af37;
+    --uf-c-talk:         #ffa726;
+    --uf-c-conference:   #42a5f5;
+    --uf-c-presentation: #f06292;
+    --uf-c-webinar:      #ce93d8;
+    --uf-c-workshop:     #4dd0e1;
+    --uf-c-publication:  #81c784;
+    --uf-c-general:      #94a3b8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .uf,
+    body:not([data-theme="light"]) .uf {
+      --uf-c-patent:       #d4af37;
+      --uf-c-talk:         #ffa726;
+      --uf-c-conference:   #42a5f5;
+      --uf-c-presentation: #f06292;
+      --uf-c-webinar:      #ce93d8;
+      --uf-c-workshop:     #4dd0e1;
+      --uf-c-publication:  #81c784;
+      --uf-c-general:      #94a3b8;
+    }
+  }
+
+  /* ── Filter chips — theme-native font & background, coloured outline ── */
+  .uf .uf-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;                       /* tighter */
+  }
+
+  .uf .uf-filter {
+    /* Only the border colour is customised. Font and background
+       follow the theme exactly — same as any native PaperMod button. */
+    --uf-filter-color: var(--secondary);   /* fallback = "All" */
+    padding: .24rem .65rem;                /* compact — font unchanged */
+    font: inherit;
+    font-size: .85rem;
+    line-height: 1.2;
+    color: inherit;                        /* theme text colour */
+    background: transparent;               /* theme bg shows through */
+    border: 1.5px solid var(--uf-filter-color);
     border-radius: 999px;
     cursor: pointer;
-    transition: background .15s, color .15s, border-color .15s;
+    transition: background .15s, border-color .15s;
   }
-  .uf-filter:hover { color: var(--uf-text); background: var(--uf-bg); }
-  .uf-filter.is-active {
-    color: var(--theme);
-    background: var(--uf-accent);
-    border-color: var(--uf-accent);
+  .uf .uf-filter:hover {
+    background: var(--uf-bg-soft);         /* theme-native soft bg */
   }
+  .uf .uf-filter.is-active {
+    background: var(--uf-bg-soft);
+    border-width: 2px;
+    font-weight: 600;
+  }
+
+  /* Per-type outline colours — same palette as the cards above.
+     "All" has no override, so it falls back to var(--secondary). */
+  .uf .uf-filter[data-type="patent"]       { --uf-filter-color: var(--uf-c-patent); }
+  .uf .uf-filter[data-type="talk"]         { --uf-filter-color: var(--uf-c-talk); }
+  .uf .uf-filter[data-type="conference"]   { --uf-filter-color: var(--uf-c-conference); }
+  .uf .uf-filter[data-type="presentation"] { --uf-filter-color: var(--uf-c-presentation); }
+  .uf .uf-filter[data-type="webinar"]      { --uf-filter-color: var(--uf-c-webinar); }
+  .uf .uf-filter[data-type="workshop"]     { --uf-filter-color: var(--uf-c-workshop); }
+  .uf .uf-filter[data-type="publication"]  { --uf-filter-color: var(--uf-c-publication); }
+  .uf .uf-filter[data-type="general"]      { --uf-filter-color: var(--uf-c-general); }
 
   .uf-status {
     min-height: 1.2em; margin: 0 0 .5rem;
