@@ -78,7 +78,7 @@ params:
   profileMode:
     enabled: true
     title: "Ankit Deshmukh, Ph.D."
-    subtitle: 💼&#xFE0E; &nbsp;Computational Hydrology • Geospatial Intelligence  • Drought Analytics<br /> ♫&#xFE0E; &nbsp;Earth Observation • Cartography • WoodWorking
+    subtitle: Computational Hydrology • Geospatial Intelligence  • Hydroclimatic Extremes • Optimization
     imageUrl: "Avatar.jpg"
     imageTitle: Profile picture of Dr. Ankit Deshmukh
     imageWidth: 160

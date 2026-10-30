@@ -10,7 +10,7 @@ layout: "main"
 This project is a five-year longitudinal study on pre-disaster preparedness and early warning systems in India, with a primary focus on Gujarat and comparative benchmarking across other disaster-prone states. It integrates satellite remote sensing, GIS, IoT-based monitoring, community participation, and policy analysis to improve flood and drought preparedness, especially for agricultural drought and urban flood risk.
 
 {{< box info >}}
-[Project Dashboard (alpha)](https://anixn.github.io/slides/Dashboard_ICSSR_Project/dashboard.html) {{< badge text="NEW" >}}
+[Project Dashboard (alpha)](https://anixn.github.io/slides/Dashboard_ICSSR/dashboard.html) {{< badge text="NEW" >}}
 {{< /box >}}
 
 ### Details
