@@ -75,9 +75,15 @@ languages:
           name: Funded Projects
           url: /Research/funded_project/
           weight: 14
-        - name: Tools
+        - identifier: tools
+          name: Tools
           url: /tools/
           weight: 60
+        - identifier: drought-dashboard
+          parent: tools
+          name: Drought Dashboard
+          url: https://drought.ankitdeshmukh.com
+          weight: 62
         - identifier: activities
           name: Activities
           url: /activities/

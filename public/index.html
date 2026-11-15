@@ -125,67 +125,189 @@ if (!doNotTrack) {
             </div>
         </div>
         <ul id="menu">
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/research/" title="Research">
                     <span>Research</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/publications/" title="Publications">
+                            <span>Publications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/research_interests/" title="Research Interests">
+                            <span>Research Interests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/research_snippets/" title="Research Snippets">
+                            <span>Research Snippets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/funded_project/" title="Funded Projects">
+                            <span>Funded Projects</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/tools/" title="Tools">
-                    <span>Tools</span>
-                </a>
-            </li>
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/activities/" title="Activities">
                     <span>Activities</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/teaching/" title="Teaching">
+                            <span>Teaching</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/service/" title="Service">
+                            <span>Service</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/slides/" title="Slides">
+                            <span>Slides</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/activities/teaching/" title="Teaching">
-                    <span>Teaching</span>
-                </a>
-            </li>
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/post/" title="Blogs">
                     <span>Blogs</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/archives" title="Archive">
+                            <span>Archive</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/search/" title="Search">
+                            <span>Search</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/archives" title="Archive">
-                    <span>Archive</span>
+            <li class="has-children">
+                <a href="https://ankitdeshmukh.com/tools/" title="Tools">
+                    <span>Tools</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
-            </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://drought.ankitdeshmukh.com" title="Drought Dashboard" target="_blank" rel="noopener noreferrer">
+                            <span>Drought Dashboard</span>
+                            <svg class="ext-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M7 17L17 7" />
+                                <path d="M7 7h10v10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
 </header>
+
+<script>
+
+
+(function () {
+    var menu = document.getElementById('menu');
+    if (!menu) return;
+    var parents = Array.prototype.slice.call(menu.querySelectorAll('li.has-children'));
+    var mq = window.matchMedia('(max-width: 768px)');
+
+    function isMobile() { return mq.matches; }
+
+    function closeAll() {
+        parents.forEach(function (li) {
+            li.classList.remove('open');
+            var a = li.querySelector(':scope > a');
+            if (a) a.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    
+
+    function positionPanel(li) {
+        var dd = li.querySelector('.dropdown');
+        if (!dd) return;
+        dd.style.left = '0';
+        dd.style.right = 'auto';
+        if (dd.getBoundingClientRect().right > document.documentElement.clientWidth - 8) {
+            dd.style.left = 'auto';
+            dd.style.right = '0';
+            if (dd.getBoundingClientRect().left < 8) {
+                dd.style.left = '8px';
+                dd.style.right = 'auto';
+            }
+        }
+    }
+
+    parents.forEach(function (li) {
+        var link = li.querySelector(':scope > a');
+        if (!link) return;
+        link.setAttribute('aria-expanded', 'false');
+        link.addEventListener('click', function (e) {
+            if (!isMobile()) return;       
+            var wasOpen = li.classList.contains('open');
+            closeAll();
+            if (wasOpen) return;           
+            e.preventDefault();            
+            li.classList.add('open');
+            link.setAttribute('aria-expanded', 'true');
+            positionPanel(li);
+        });
+    });
+
+     
+    document.addEventListener('click', function (e) {
+        if (isMobile() && !e.target.closest('#menu li.has-children')) closeAll();
+    });
+
+     
+    function onBreakpointChange() {
+        closeAll();
+        parents.forEach(function (li) {
+            var dd = li.querySelector('.dropdown');
+            if (dd) { dd.style.left = ''; dd.style.right = ''; }
+        });
+    }
+    if (mq.addEventListener) mq.addEventListener('change', onBreakpointChange);
+    else if (mq.addListener) mq.addListener(onBreakpointChange);
+})();
+</script>
 <main class="main">
   <div class="profile-container"><img src="Avatar.jpg" alt="Profile picture of Dr. Ankit Deshmukh" class="profile-avatar"><h1 class="profile-title">Ankit Deshmukh, Ph.D.</h1>
 
         <p class="profile-subtitle">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="" style="display: inline-block; vertical-align: middle;"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 12h.01"/>
-    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-    <path d="M22 13a18.15 18.15 0 0 1-20 0"/>
-    <rect width="20" height="14" x="2" y="6" rx="2"/>
-  </svg>
-          Computational Hydrology • Geospatial Intelligence • Drought Analytics
-          <br>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="" style="display: inline-block; vertical-align: middle;"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-  </svg>  
-          Earth Observation • Cartography • WoodWorking
+          Computational Hydrology • Geospatial Intelligence • Hydroclimatic Extremes • Computational Modelling & Optimization
         </p><div class="quote-block">
-        <hr class="quote-line">
-        <blockquote class="quote-text">
-          "I am a researcher working at the intersection of machine learning, computational hydrology, geospatial analysis, and environmental sustainability. My research develops data-driven methods for drought monitoring, hydrological modeling, and climate-risk assessment using Earth observation and AI. I also explore how community perspectives can inform more resilient responses to flood and drought hazards."
-        </blockquote>
-        <hr class="quote-line">
-      </div>
+          <blockquote class="quote-text">
+            I am a researcher working at the intersection of machine learning, computational hydrology, geospatial analysis, and environmental sustainability. My research develops data-driven methods for drought monitoring, hydrological modeling, and climate-risk assessment using Earth observation and AI. I also explore how community perspectives can inform more resilient responses to flood and drought hazards.
+          </blockquote>
+        </div>
 
       <div class="social-icons">
         <a href="/about/" rel="noopener noreferrer me" title="About" class="about-icon">
@@ -213,7 +335,17 @@ if (!doNotTrack) {
         d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
     </path>
     <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-</svg></a></div>
+</svg></a><span class="social-sep" aria-hidden="true"></span>
+        <a class="home-cta" href="https://drought.ankitdeshmukh.com" target="_blank" rel="noopener noreferrer"
+          title="Drought Intelligence Explorer – interactive drought analytics for India">
+          <span>Drought Intelligence Explorer</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
     </div>
   <div class="two-column-layout">
     
@@ -369,11 +501,11 @@ if (!doNotTrack) {
 
                 <div class="update-item">
                   <div class="update-meta">
-                    <small>Jun 2026</small>
+                    <small>Sep 2026</small>
                     <span class="meta-dot">•</span>
-                    <span class="event-type event-workshop">Workshop</span>
+                    <span class="event-type event-general">General</span>
                   </div>
-                  <p class="update-title">Certification Successfully Completed</p>
+                  <p class="update-title">Recognition for ICSSR-Funded Early Warning and Community Resilience Project (Co-PI)</p>
                 </div>
 
               
@@ -449,37 +581,147 @@ if (!doNotTrack) {
       width: 120px;
       height: 120px;
     }
+
+     
+    .home-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--entry);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+    .home-cta:hover {
+      transform: translateY(-3px);
+      border-color: var(--link-color);
+      color: var(--link-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+    .home-cta svg {
+      width: 13px;
+      height: 13px;
+    }
+
+     
+    .social-sep {
+      flex: none;
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      margin: 0 0.15rem;
+    }
+
+     
+    @media (max-width: 640px) {
+      .social-sep {
+        display: none;
+      }
+      .home-cta {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 0.6rem;
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
     .profile-title {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
       color: var(--primary);
     }
+
     .profile-subtitle {
       color: var(--secondary);
       max-width: 600px;
       margin: 0 auto 0.5rem;
+      line-height: 1.3;         
+      text-wrap: pretty;        
     }
-    .quote-block {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1.5rem 2rem;
+    @media (max-width: 768px) {
+      .profile-subtitle {
+        line-height: 1.25;      
+        font-size: 0.9rem;      
+        margin: 0 auto 0.35rem;
+      }
     }
-    .quote-line {
-      width: 20%;
-      border: none;
-      border-top: 2px solid var(--border);
-      margin: 1em auto;
-      opacity: 0.6;
-    }
-    .quote-text {
-      text-align: center;
-      font-size: 1rem;
-      line-height: 1.4;
-      color: var(--secondary);
-      font-style: italic;
-      margin: 0;
-      padding: 0;
-    }
+.quote-block {
+  position: relative;
+  max-width: 800px;
+  margin: 0.8rem auto 1.25rem;    
+  padding: 0.25rem 2.5rem;
+  text-align: center;
+}
+
+ 
+.quote-block::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.55rem;
+  left: 0.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--link-color);
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+ 
+.quote-block::after {
+  content: "\201D";
+  position: absolute;
+  bottom: -1rem;
+  right: 0.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--link-color);
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+.quote-text {
+  text-align: center;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  font-style: italic;
+  letter-spacing: 0.2px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .quote-block {
+    padding: 0.25rem 1.5rem;
+    margin: 0.5rem auto 1rem;
+  }
+  .quote-block::before,
+  .quote-block::after {
+    font-size: 2.75rem;
+  }
+  .quote-text {
+    font-size: 0.9rem;
+    line-height: 1.1;
+  }
+}
+
+
+
     .social-icons {
       margin-top: 0.5rem;
       display: flex;

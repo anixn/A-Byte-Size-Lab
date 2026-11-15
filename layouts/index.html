@@ -35,6 +35,17 @@
             </a>
           {{- end -}}
         {{- end -}}
+
+        <span class="social-sep" aria-hidden="true"></span>
+        <a class="home-cta" href="https://drought.ankitdeshmukh.com" target="_blank" rel="noopener noreferrer"
+          title="Drought Intelligence Explorer – interactive drought analytics for India">
+          <span>Drought Intelligence Explorer</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
       </div>
     </div>
   {{- end -}}
@@ -129,6 +140,60 @@
       border-radius: 50%;
       width: 120px;
       height: 120px;
+    }
+
+    /* CTA button — sits inline with the social icons, after a thin vertical separator */
+    .home-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--entry);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    }
+    .home-cta:hover {
+      transform: translateY(-3px);
+      border-color: var(--link-color);
+      color: var(--link-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+    .home-cta svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* thin vertical separator between the social icons and the CTA */
+    .social-sep {
+      flex: none;
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      margin: 0 0.15rem;
+    }
+
+    /* small screens: the CTA drops to its own row below the icons */
+    @media (max-width: 640px) {
+      .social-sep {
+        display: none;
+      }
+      .home-cta {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 0.6rem;
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+      }
     }
     .profile-title {
       margin-top: 1rem;

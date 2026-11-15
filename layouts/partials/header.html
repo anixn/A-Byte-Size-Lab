@@ -139,27 +139,47 @@
                 <ul class="dropdown">
                     {{- range .Children }}
                     {{- $child_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+                    {{- $child_is_external := or (strings.HasPrefix .URL "http://") (strings.HasPrefix .URL "https://") }}
                     <li>
-                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                        <a href="{{ if $child_is_external }}{{ .URL }}{{ else }}{{ .URL | absLangURL }}{{ end }}" title="{{ .Title | default .Name }}"
+                        {{- if $child_is_external }} target="_blank" rel="noopener noreferrer"{{ end }}>
                             <span {{- if eq $child_item_url $page_url }} class="active" {{- end }}>
                                 {{- .Pre }}
                                 {{- .Name -}}
                                 {{ .Post -}}
                             </span>
+                            {{- if $child_is_external }}
+                            <svg class="ext-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M7 17L17 7" />
+                                <path d="M7 7h10v10" />
+                            </svg>
+                            {{- end }}
                         </a>
                     </li>
                     {{- end }}
                 </ul>
             </li>
             {{- else }}
+            {{- $is_external := or (strings.HasPrefix .URL "http://") (strings.HasPrefix .URL "https://") }}
             <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+                <a href="{{ if $is_external }}{{ .URL }}{{ else }}{{ .URL | absLangURL }}{{ end }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+                {{- if $is_external }} target="_blank" rel="noopener noreferrer"{{ end }}
                 {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
                         {{- .Pre }}
                         {{- .Name -}}
                         {{ .Post -}}
                     </span>
+                    {{- if $is_external }}
+                    <svg class="ext-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                    </svg>
+                    {{- end }}
                 </a>
             </li>
             {{- end }}
@@ -167,3 +187,75 @@
         </ul>
     </nav>
 </header>
+
+<script>
+/* Mobile dropdown behaviour: on narrow screens a tap opens a dropdown,
+   opening another one (or tapping outside) auto-collapses the previous
+   one, and a second tap on the same parent follows its link. Desktop
+   keeps pure hover behaviour (this script does nothing there). */
+(function () {
+    var menu = document.getElementById('menu');
+    if (!menu) return;
+    var parents = Array.prototype.slice.call(menu.querySelectorAll('li.has-children'));
+    var mq = window.matchMedia('(max-width: 768px)');
+
+    function isMobile() { return mq.matches; }
+
+    function closeAll() {
+        parents.forEach(function (li) {
+            li.classList.remove('open');
+            var a = li.querySelector(':scope > a');
+            if (a) a.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    /* keep an open panel inside the viewport when the parent sits near
+       an edge (dropdowns are wider than the compact items) */
+    function positionPanel(li) {
+        var dd = li.querySelector('.dropdown');
+        if (!dd) return;
+        dd.style.left = '0';
+        dd.style.right = 'auto';
+        if (dd.getBoundingClientRect().right > document.documentElement.clientWidth - 8) {
+            dd.style.left = 'auto';
+            dd.style.right = '0';
+            if (dd.getBoundingClientRect().left < 8) {
+                dd.style.left = '8px';
+                dd.style.right = 'auto';
+            }
+        }
+    }
+
+    parents.forEach(function (li) {
+        var link = li.querySelector(':scope > a');
+        if (!link) return;
+        link.setAttribute('aria-expanded', 'false');
+        link.addEventListener('click', function (e) {
+            if (!isMobile()) return;      /* desktop: hover opens, click navigates */
+            var wasOpen = li.classList.contains('open');
+            closeAll();
+            if (wasOpen) return;          /* second tap on an open parent → follow the link */
+            e.preventDefault();           /* first tap → open instead of navigating */
+            li.classList.add('open');
+            link.setAttribute('aria-expanded', 'true');
+            positionPanel(li);
+        });
+    });
+
+    /* tap outside any dropdown parent → collapse everything */
+    document.addEventListener('click', function (e) {
+        if (isMobile() && !e.target.closest('#menu li.has-children')) closeAll();
+    });
+
+    /* leaving the mobile breakpoint: reset classes and inline positions */
+    function onBreakpointChange() {
+        closeAll();
+        parents.forEach(function (li) {
+            var dd = li.querySelector('.dropdown');
+            if (dd) { dd.style.left = ''; dd.style.right = ''; }
+        });
+    }
+    if (mq.addEventListener) mq.addEventListener('change', onBreakpointChange);
+    else if (mq.addListener) mq.addListener(onBreakpointChange);
+})();
+</script>

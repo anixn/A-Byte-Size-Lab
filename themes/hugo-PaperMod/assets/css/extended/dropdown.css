@@ -7,121 +7,113 @@
 /* The theme sets overflow-x: auto on #menu, which would clip the
    absolutely-positioned dropdown. Let it overflow instead. */
 #menu {
-  overflow: visible;
-  /* .nav gives every item a 60px line box, which stretches the items
+    overflow: visible;
+    /* .nav gives every item a 60px line box, which stretches the items
        to full header height. Compact them and center vertically so the
        underline and the dropdown hug the text. */
-  align-items: center;
+    align-items: center;
 }
 
 /* Compact link box: the .active underline now sits right under the
    text instead of ~20px below it. */
 #menu > li > a {
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 #menu li {
-  position: relative;
+    position: relative;
 }
 
 #menu li a {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 /* caret icon */
 #menu .caret {
-  width: 10px;
-  height: 6px;
-  margin-inline-start: 6px;
-  transition: transform 0.2s ease;
+    width: 10px;
+    height: 6px;
+    margin-inline-start: 6px;
+    transition: transform 0.2s ease;
 }
 
-#menu li.has-children:hover .caret,
-#menu li.has-children:focus-within .caret {
-  transform: rotate(180deg);
+/* external-link arrow (items pointing to another site) */
+#menu .ext-icon {
+    width: 12px;
+    height: 12px;
+    margin-inline-start: 5px;
+    opacity: 0.7;
 }
 
 /* the dropdown panel — anchored to the compact item, so it sits flush
    under the menu text (no dead zone, so hover can't flicker) */
 #menu li.has-children .dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 180px;
-  margin: 0;
-  padding: 6px 0 8px;
-  list-style: none;
-  background: var(--theme);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  z-index: 99;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    margin: 0;
+    padding: 6px 0 8px;
+    list-style: none;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 99;
 }
 
-/* open on hover (mouse) or keyboard focus (tab) */
+/* open on hover (mouse), keyboard focus (tab), or tapped open on mobile
+   (.open is toggled by the small script in header.html). On touch
+   screens the click handler opens/closes the menu, so hover and tap
+   never fight each other. */
 #menu li.has-children:hover .dropdown,
-#menu li.has-children:focus-within .dropdown {
-  display: block;
+#menu li.has-children:focus-within .dropdown,
+#menu li.has-children.open .dropdown {
+    display: block;
+}
+
+#menu li.has-children:hover .caret,
+#menu li.has-children:focus-within .caret,
+#menu li.has-children.open .caret {
+    transform: rotate(180deg);
 }
 
 #menu li.has-children .dropdown li {
-  margin-inline-start: 0; /* undo theme's "#menu li + li" spacing */
-  padding: 0 16px;
-  white-space: nowrap;
+    margin-inline-start: 0; /* undo theme's "#menu li + li" spacing */
+    padding: 0 16px;
+    white-space: nowrap;
 }
 
 #menu li.has-children .dropdown li a {
-  display: block;
-  padding: 6px 0;
-  font-size: 15px;
-  line-height: 1.5; /* undo .nav's 60px line-height */
-  color: var(--secondary);
+    display: block;
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 1.5; /* undo .nav's 60px line-height */
+    color: var(--secondary);
 }
 
 #menu li.has-children .dropdown li a:hover {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 /* highlight the dropdown item matching the current page */
 #menu li.has-children .dropdown li a .active {
-  font-weight: 500;
-  border-bottom: 2px solid currentColor;
+    font-weight: 500;
+    border-bottom: 2px solid currentColor;
 }
 
-/* ---------- small screens: menu bar is a wrapped list ---------- */
+/* ---------- small screens: same flow as desktop, tap to open ---------- */
 @media screen and (max-width: 768px) {
-  #menu {
-    flex-wrap: wrap;
-  }
+    /* top-level items flow in a line and wrap, exactly like desktop —
+       children are NOT shown inline anymore, they open as dropdowns */
+    #menu {
+        flex-wrap: wrap;
+        row-gap: 2px;
+    }
 
-  /* each dropdown parent takes a full row, its children show
-       inline below it, indented and dimmed */
-  #menu li.has-children {
-    flex-basis: 100%;
-  }
-
-  #menu li.has-children .dropdown {
-    display: flex;
-    flex-wrap: wrap;
-    position: static;
-    flex-basis: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  #menu li.has-children .dropdown li {
-    padding: 0;
-    margin-inline-end: var(--gap);
-  }
-
-  #menu li.has-children .dropdown li a {
-    font-size: 14px;
-    padding: 2px 0 2px 8px;
-  }
+    /* slightly tighter spacing between items on narrow screens */
+    #menu li + li {
+        margin-inline-start: calc(var(--gap) * 0.6);
+    }
 }

@@ -12,12 +12,9 @@ draft: false
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
-      margin: 0;
-      padding: 1rem;
-      background: var(--theme);
-      color: var(--primary);
-    }
+    /* NOTE: no body/html rules here — global selectors in a page-level
+       <style> leak into the whole site (they were pushing the header
+       down by 1rem on this page only). Keep everything class-scoped. */
     p {
       margin: 0.5rem 0;
     }
@@ -48,20 +45,36 @@ draft: false
       border-color: var(--primary);
     }
     .app-icon {
+      /* fixed icon band so every card is the same height */
       width: 100%;
-      max-height: 200px;
+      height: 120px;
       object-fit: contain;
-      padding: 1rem;
+      padding: 0.5rem 1rem 0.25rem;
+      box-sizing: border-box;
     }
     .app-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--primary);
+      /* 2-line title band so all titles (and the rows) align evenly */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(2 * 1.6em);
     }
     .app-description {
       font-size: 0.85rem;
       margin-top: 0.5rem;
       color: var(--secondary);
+      /* truncate long descriptions to 2 lines so rows stay balanced */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(2 * 1.6em); /* keep 1-liners the same height */
     }
     .section-title {
       font-size: 1.8rem;
@@ -121,6 +134,13 @@ A collection of interactive tools I've built and the essential software I use da
 <!-- Web Apps Section -->
 <h2 class="section-title">Interactive Web Apps</h2>
 <div class="apps-grid">
+
+  <!-- Flagship: Drought Intelligence Explorer (external dashboard) -->
+  <a href="https://drought.ankitdeshmukh.com" target="_blank" rel="noopener" class="app-card" title="Drought Intelligence Explorer">
+    <img src="/projects/die/die.svg" alt="Drought Intelligence Explorer" class="app-icon" />
+    <div class="app-title">Drought Dashboard</div>
+    <div class="app-description">Interactive maps of historical drought across Indian districts – frequency, severity, trends & propagation.</div>
+  </a>
 
   <!-- App 1 -->
   <a href="/projects/colorpicker/index.html" target="_blank" class="app-card">

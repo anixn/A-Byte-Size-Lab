@@ -169,44 +169,179 @@ Test for thisHow to download a sample data.Processing and mearging the data.L
             </div>
         </div>
         <ul id="menu">
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/research/" title="Research">
                     <span>Research</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/publications/" title="Publications">
+                            <span>Publications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/research_interests/" title="Research Interests">
+                            <span>Research Interests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/research_snippets/" title="Research Snippets">
+                            <span>Research Snippets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/research/funded_project/" title="Funded Projects">
+                            <span>Funded Projects</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/tools/" title="Tools">
-                    <span>Tools</span>
-                </a>
-            </li>
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/activities/" title="Activities">
                     <span>Activities</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/teaching/" title="Teaching">
+                            <span>Teaching</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/service/" title="Service">
+                            <span>Service</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/activities/slides/" title="Slides">
+                            <span>Slides</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/activities/teaching/" title="Teaching">
-                    <span>Teaching</span>
-                </a>
-            </li>
-            <li>
+            <li class="has-children">
                 <a href="https://ankitdeshmukh.com/post/" title="Blogs">
                     <span>Blogs</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://ankitdeshmukh.com/archives" title="Archive">
+                            <span>Archive</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ankitdeshmukh.com/search/" title="Search">
+                            <span>Search</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/archives" title="Archive">
-                    <span>Archive</span>
+            <li class="has-children">
+                <a href="https://ankitdeshmukh.com/tools/" title="Tools">
+                    <span>Tools</span>
+                    <svg class="caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
-            </li>
-            <li>
-                <a href="https://ankitdeshmukh.com/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="https://drought.ankitdeshmukh.com" title="Drought Dashboard" target="_blank" rel="noopener noreferrer">
+                            <span>Drought Dashboard</span>
+                            <svg class="ext-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <path d="M7 17L17 7" />
+                                <path d="M7 7h10v10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
 </header>
+
+<script>
+
+
+(function () {
+    var menu = document.getElementById('menu');
+    if (!menu) return;
+    var parents = Array.prototype.slice.call(menu.querySelectorAll('li.has-children'));
+    var mq = window.matchMedia('(max-width: 768px)');
+
+    function isMobile() { return mq.matches; }
+
+    function closeAll() {
+        parents.forEach(function (li) {
+            li.classList.remove('open');
+            var a = li.querySelector(':scope > a');
+            if (a) a.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    
+
+    function positionPanel(li) {
+        var dd = li.querySelector('.dropdown');
+        if (!dd) return;
+        dd.style.left = '0';
+        dd.style.right = 'auto';
+        if (dd.getBoundingClientRect().right > document.documentElement.clientWidth - 8) {
+            dd.style.left = 'auto';
+            dd.style.right = '0';
+            if (dd.getBoundingClientRect().left < 8) {
+                dd.style.left = '8px';
+                dd.style.right = 'auto';
+            }
+        }
+    }
+
+    parents.forEach(function (li) {
+        var link = li.querySelector(':scope > a');
+        if (!link) return;
+        link.setAttribute('aria-expanded', 'false');
+        link.addEventListener('click', function (e) {
+            if (!isMobile()) return;       
+            var wasOpen = li.classList.contains('open');
+            closeAll();
+            if (wasOpen) return;           
+            e.preventDefault();            
+            li.classList.add('open');
+            link.setAttribute('aria-expanded', 'true');
+            positionPanel(li);
+        });
+    });
+
+     
+    document.addEventListener('click', function (e) {
+        if (isMobile() && !e.target.closest('#menu li.has-children')) closeAll();
+    });
+
+     
+    function onBreakpointChange() {
+        closeAll();
+        parents.forEach(function (li) {
+            var dd = li.querySelector('.dropdown');
+            if (dd) { dd.style.left = ''; dd.style.right = ''; }
+        });
+    }
+    if (mq.addEventListener) mq.addEventListener('change', onBreakpointChange);
+    else if (mq.addListener) mq.addListener(onBreakpointChange);
+})();
+</script>
 <main class="main">
 
 <article class="post-single">
