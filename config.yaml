@@ -27,28 +27,90 @@ languages:
       tag: tags
       series: series
     menu:
+      # main:
+      #   - name: Research
+      #     url: /Research/
+      #     weight: 10
+      #   - name: Tools
+      #     url: /tools/
+      #     weight: 20
+      #   - name: Activities
+      #     url: /activities/
+      #     weight: 30
+      #   - name: Teaching
+      #     url: /activities/teaching/
+      #     weight: 40
+      #   - name: Blogs
+      #     url: /post/
+      #     weight: 50
+      #   - name: Archive
+      #     url: /archives
+      #     weight: 60
+      #   - name: "Search"
+      #     url: search/
+      #     weight: 100
+
       main:
-        - name: Research
+        - identifier: research
+          name: Research
           url: /Research/
           weight: 10
+        - identifier: publications
+          parent: research
+          name: Publications
+          url: /Research/publications/
+          weight: 11
+        - identifier: research-interests
+          parent: research
+          name: Research Interests
+          url: /Research/research_interests/
+          weight: 12
+        - identifier: research-snippets
+          parent: research
+          name: Research Snippets
+          url: /Research/research_snippets/
+          weight: 13
+        - identifier: funded-projects
+          parent: research
+          name: Funded Projects
+          url: /Research/funded_project/
+          weight: 14
         - name: Tools
           url: /tools/
-          weight: 20
-        - name: Activities
+          weight: 60
+        - identifier: activities
+          name: Activities
           url: /activities/
           weight: 30
-        - name: Teaching
+        - identifier: teaching
+          parent: activities
+          name: Teaching
           url: /activities/teaching/
-          weight: 40
-        - name: Blogs
+          weight: 31
+        - identifier: service
+          parent: activities
+          name: Service
+          url: /activities/service/
+          weight: 32
+        - identifier: slides
+          parent: activities
+          name: Slides
+          url: /activities/slides/
+          weight: 33
+        - identifier: blogs
+          name: Blogs
           url: /post/
           weight: 50
-        - name: Archive
+        - identifier: archives
+          parent: blogs
+          name: Archive
           url: /archives
-          weight: 60
-        - name: "Search"
+          weight: 51
+        - identifier: search
+          parent: blogs
+          name: "Search"
           url: search/
-          weight: 100
+          weight: 52
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
