@@ -1,0 +1,105 @@
+{{- /* ================================================================
+     Cookie / analytics consent banner. Works together with the
+     Google Consent Mode v2 defaults in extend_head.html.
+     The choice is stored in localStorage under 'cm-consent'.
+     New file — nothing existing is overwritten.
+     ================================================================ */ -}}
+<div id="consent-banner" role="dialog" aria-modal="false" aria-labelledby="consent-banner-text" hidden>
+  <p id="consent-banner-text">
+    This site uses Google Analytics cookies to understand which pages are
+    read most, no ads, no profiling.<br />
+    See <a href="{{ "privacy/" | relURL }}">privacy&nbsp;policy</a>.<br />
+    <strong>May I collect anonymous usage statistics?</strong>
+  </p>
+  <div class="consent-actions">
+    <button id="consent-decline" type="button" class="consent-btn">Decline</button>
+    <button id="consent-accept" type="button" class="consent-btn">Allow</button>
+  </div>
+</div>
+
+<style>
+  #consent-banner {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    box-sizing: border-box;
+    width: min(92vw, 34rem);
+    padding: 1rem 1.25rem;
+    background: var(--theme, #fff);
+    color: var(--secondary, #333);
+    border: 1px solid var(--tertiary, #ccc);
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    text-align: center;
+  }
+  #consent-banner[hidden] { display: none; }
+  #consent-banner a { color: var(--primary, #08f); text-decoration: underline; }
+  #consent-banner .consent-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+  #consent-banner .consent-btn {
+    flex: 0 0 auto;
+    min-width: 7rem;
+    padding: 0.5rem 1.1rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 999px;
+    border: 1px solid var(--primary, #333);
+    background: var(--primary, #333);
+    /* In PaperMod, --primary is near-black (light mode) / near-white (dark
+       mode) and --theme is the page background, so this "inverted" pairing
+       follows the theme and keeps high contrast in both modes. */
+    color: var(--theme, #fff);
+  }
+  /* Both buttons are styled identically on purpose: declining must be
+     exactly as easy as accepting (GDPR/ePrivacy and CNIL guidance). */
+  #consent-banner .consent-btn:hover { opacity: 0.85; }
+  #consent-banner .consent-btn:focus-visible {
+    outline: 2px solid var(--secondary, #333);
+    outline-offset: 2px;
+  }
+  @media (max-width: 480px) {
+    #consent-banner { bottom: 0.5rem; }
+    #consent-banner .consent-btn { min-width: 6rem; }
+  }
+</style>
+
+<script>
+  (function () {
+    var KEY = 'cm-consent';
+    var banner = document.getElementById('consent-banner');
+    if (!banner) return;
+
+    function setConsent(choice) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify({ analytics_storage: choice }));
+      } catch (e) { /* storage blocked: the banner will simply reappear */ }
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': choice
+        });
+      }
+      banner.hidden = true;
+    }
+
+    var saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { /* ignore */ }
+    if (!saved || !saved.analytics_storage) {
+      banner.hidden = false;
+    }
+
+    document.getElementById('consent-accept').addEventListener('click', function () { setConsent('granted'); });
+    document.getElementById('consent-decline').addEventListener('click', function () { setConsent('denied'); });
+  })();
+</script>
