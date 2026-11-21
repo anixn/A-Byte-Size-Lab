@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;700&display=swap");
 
 *,
 ::after,
 ::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    -webkit-tap-highlight-color: transparent;
-    overflow-y: scroll;
+  -webkit-tap-highlight-color: transparent;
+  overflow-y: scroll;
 }
 
 a,
@@ -22,15 +23,17 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, Barlow, Roboto,'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    word-break: break-word;
-    background: var(--theme);
+  font-family:
+    -apple-system, BlinkMacSystemFont, Barlow, Roboto, "Segoe UI", Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  word-break: break-word;
+  background: var(--theme);
 }
 
 article,
@@ -44,7 +47,7 @@ main,
 nav,
 section,
 table {
-    display: block;
+  display: block;
 }
 
 h1,
@@ -53,7 +56,7 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 h1,
@@ -63,63 +66,75 @@ h4,
 h5,
 h6,
 p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body,
 figure,
 ul {
-    margin: 0;
+  margin: 0;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    overflow-x: auto;
-    word-break: keep-all;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-x: auto;
+  word-break: keep-all;
 }
 
 button,
 input,
 textarea {
-    padding: 0;
-    font: inherit;
-    background: 0 0;
-    border: 0;
+  padding: 0;
+  font: inherit;
+  background: 0 0;
+  border: 0;
 }
 
 input,
 textarea {
-    outline: 0;
+  outline: 0;
 }
 
 button,
-input[type=button],
-input[type=submit] {
-    cursor: pointer;
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
 }
 
 input:-webkit-autofill,
 textarea:-webkit-autofill {
-    box-shadow: 0 0 0 50px var(--theme) inset;
+  box-shadow: 0 0 0 50px var(--theme) inset;
 }
 
 img {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 code,
 pre {
-    font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
+}
+
+.iast {
+  font-family: "Gentium Plus", "Gentium Book Plus", Georgia, serif;
+  font-size: 1.06em;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+.sanskrit {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 1.12em;
+  line-height: 1.9;
 }
