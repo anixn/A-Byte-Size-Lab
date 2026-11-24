@@ -43,6 +43,10 @@ weight: 10
 - Quiz-01: <span style="color:#C46A6A">18 September 2026</span>
 - Quiz-02: <span style="color:#C46A6A">23 October 2026</span>
 
+- Quiz Download
+  - [Quiz-1](https://anixn.github.io/slides/Introduction_to_AI/Quiz/Quiz-1.pdf)
+  - [Quiz-2](https://anixn.github.io/slides/Introduction_to_AI/Quiz/Quiz-2.pdf)
+
 ---
 
 ## Mid Exam Question Key, Grading Scheme & Result
